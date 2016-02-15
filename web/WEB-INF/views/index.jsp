@@ -212,7 +212,7 @@
 						<span class="hidden-xs">订单管理</span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="javascript:void(0);" onclick="toPage('role/addPiao','1')">订单列表</a></li>
+						<li><a href="javascript:void(0);" onclick="toPage('order/list','1')">订单列表</a></li>
 					</ul>
 				</li>
 
