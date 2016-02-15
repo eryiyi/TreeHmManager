@@ -180,7 +180,7 @@
 						<span class="hidden-xs">举报管理</span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="javascript:void(0);" onclick="toPage('role/addPiao','1')">举报列表</a></li>
+						<li><a href="javascript:void(0);" onclick="toPage('/report/list','1')">举报列表</a></li>
 					</ul>
 				</li>
 
