@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.RecordDao">
+    <resultMap id="record" type="com.liangxunwang.unimanager.model.Record">
+        <id column="mm_msg_id" property="mm_msg_id"/>
+        <result column="mm_emp_id" property="mm_emp_id"/>
+        <result column="mm_msg_type" property="mm_msg_type"/>
+        <result column="mm_msg_content" property="mm_msg_content"/>
+        <result column="mm_msg_picurl" property="mm_msg_picurl"/>
+        <result column="dateline" property="dateline"/>
+        <result column="is_del" property="is_del"/>
+        <result column="is_top" property="is_top"/>
+        <result column="top_num" property="top_num"/>
+        <result column="provinceid" property="provinceid"/>
+        <result column="cityid" property="cityid"/>
+        <result column="countryid" property="countryid"/>
+    </resultMap>
+    <resultMap id="record_vo" type="com.liangxunwang.unimanager.mvc.vo.RecordVO">
+        <id column="mm_msg_id" property="mm_msg_id"/>
+        <result column="mm_emp_id" property="mm_emp_id"/>
+        <result column="mm_msg_type" property="mm_msg_type"/>
+        <result column="mm_msg_content" property="mm_msg_content"/>
+        <result column="mm_msg_picurl" property="mm_msg_picurl"/>
+        <result column="dateline" property="dateline"/>
+        <result column="is_del" property="is_del"/>
+        <result column="is_top" property="is_top"/>
+        <result column="top_num" property="top_num"/>
+        <result column="provinceid" property="provinceid"/>
+        <result column="cityid" property="cityid"/>
+        <result column="countryid" property="countryid"/>
+        <result column="mm_emp_mobile" property="mm_emp_mobile"/>
+        <result column="mm_emp_nickname" property="mm_emp_nickname"/>
+        <result column="mm_emp_type" property="mm_emp_type"/>
+        <result column="mm_emp_company_type" property="mm_emp_company_type"/>
+        <result column="mm_emp_company" property="mm_emp_company"/>
+        <result column="mm_level_id" property="mm_level_id"/>
+        <result column="is_chengxin" property="is_chengxin"/>
+        <result column="is_miaomu" property="is_miaomu"/>
+    </resultMap>
+
+    <select id="listRecordVo" resultMap="record_vo">
+        SELECT sn.* ,lemp.mm_emp_mobile as mm_emp_mobile, lemp.mm_emp_nickname as mm_emp_nickname, lemp.mm_emp_type as mm_emp_type, lemp.mm_emp_company_type as mm_emp_company_type
+        , lemp.mm_emp_company as mm_emp_company, lemp.mm_level_id as mm_level_id, lemp.is_chengxin as is_chengxin , lemp.is_miaomu as is_miaomu  from mm_msg sn
+        LEFT JOIN mm_emp lemp ON sn.mm_emp_id=lemp.mm_emp_id
+        WHERE 1=1
+        <if test="mm_msg_type != null and mm_msg_type != ''">
+        AND sn.mm_msg_type = #{mm_msg_type}
+        </if>
+        <if test="provinceid != null and provinceid != ''">
+        AND sn.provinceid = #{provinceid}
+        </if>
+        <if test="countryid != null and countryid != ''">
+        AND sn.countryid = #{countryid}
+        </if>
+
+        ORDER BY sn.dateline DESC limit #{index},#{size}
+    </select>
+
+    <select id="count" resultType="Long">
+        SELECT count(sn.mm_msg_id) FROM mm_msg sn
+        LEFT JOIN mm_emp lemp ON sn.mm_emp_id=lemp.mm_emp_id
+        WHERE 1=1
+        <if test="mm_msg_type != null and mm_msg_type != ''">
+            AND sn.mm_msg_type = #{mm_msg_type}
+        </if>
+        <if test="provinceid != null and provinceid != ''">
+            AND sn.provinceid = #{provinceid}
+        </if>
+        <if test="countryid != null and countryid != ''">
+            AND sn.countryid = #{countryid}
+        </if>
+    </select>
+
+</mapper>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.LogoDao">
+    <resultMap id="logo" type="com.liangxunwang.unimanager.model.LogoObj">
+        <id column="mm_logo_id" property="mm_logo_id"/>
+        <result column="mm_logo_content" property="mm_logo_content"/>
+        <result column="mm_manager_id" property="mm_manager_id"/>
+        <result column="dateline" property="dateline"/>
+    </resultMap>
+    <resultMap id="logo_vo" type="com.liangxunwang.unimanager.mvc.vo.LogoVO">
+        <id column="mm_logo_id" property="mm_logo_id"/>
+        <result column="mm_logo_content" property="mm_logo_content"/>
+        <result column="mm_manager_id" property="mm_manager_id"/>
+        <result column="dateline" property="dateline"/>
+        <result column="mm_manager_nickname" property="mm_manager_nickname"/>
+    </resultMap>
+
+    <select id="listRecordVo" resultMap="logo_vo">
+        SELECT sn.* ,lemp.mm_manager_nickname as mm_manager_nickname from mm_logo sn
+        LEFT JOIN mm_manager lemp ON sn.mm_manager_id=lemp.mm_manager_id
+        ORDER BY sn.dateline DESC limit #{index},#{size}
+    </select>
+
+    <select id="count" resultType="Long">
+        SELECT count(sn.mm_logo_id) FROM mm_logo sn
+        LEFT JOIN mm_manager lemp ON sn.mm_manager_id=lemp.mm_manager_id
+    </select>
+
+</mapper>
