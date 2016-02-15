@@ -44,38 +44,38 @@
       </div>
       <div class="box-content">
         <form class="form-inline">
-          <%--<div class="form-group">--%>
-            <%--<input type="text" class="form-control" id="emp_name" value="${query.empName}" placeholder="买家名称">--%>
-          <%--</div>--%>
-          <%--<div class="form-group">--%>
-            <%--<input type="tel" class="form-control" id="emp_phone" value="${query.empPhone}" placeholder="买家电话">--%>
-          <%--</div>--%>
-          <%--<div class="form-group">--%>
-            <%--<select class="form-control" id="order_status">--%>
-              <%--<option value="">--选择订单状态--</option>--%>
-              <%--<option value="1" ${query.orderStatus=='1'?'selected':''}>订单生成</option>--%>
-              <%--<option value="2" ${query.orderStatus=='2'?'selected':''}>订单支付</option>--%>
-              <%--<option value="3" ${query.orderStatus=='3'?'selected':''}>订单取消</option>--%>
-              <%--<option value="4" ${query.orderStatus=='4'?'selected':''}>订单作废</option>--%>
-              <%--<option value="5" ${query.orderStatus=='5'?'selected':''}>订单完成</option>--%>
-            <%--</select>--%>
-          <%--</div>--%>
-          <%--<div class="form-group">--%>
-            <%--<select class="form-control" id="pay_status">--%>
-              <%--<option value="" >--选择付款状态--</option>--%>
-              <%--<option value="0" ${query.payStatus=='0'?'selected':''}>未支付</option>--%>
-              <%--<option value="1" ${query.payStatus=='1'?'selected':''}>已支付</option>--%>
-              <%--<option value="2" ${query.payStatus=='2'?'selected':''}>退款</option>--%>
-            <%--</select>--%>
-          <%--</div>--%>
-          <%--<div class="form-group">--%>
-            <%--<select class="form-control" id="distribution_status">--%>
-              <%--<option value="">--选择配送状态--</option>--%>
-              <%--<option value="0" ${query.distribStatus=='0'?'selected':''}>未支付</option>--%>
-              <%--<option value="1" ${query.distribStatus=='1'?'selected':''}>已支付</option>--%>
-              <%--<option value="2" ${query.distribStatus=='2'?'selected':''}>退款</option>--%>
-            <%--</select>--%>
-          <%--</div>--%>
+          <div class="form-group">
+            <select class="form-control" id="ischeck">
+              <option value="">--选择审核状态--</option>
+              <option value="0" ${query.ischeck=='0'?'selected':''}>未审核</option>
+              <option value="1" ${query.ischeck=='1'?'selected':''}>已审核</option>
+              <option value="1" ${query.ischeck=='2'?'selected':''}>未通过</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <select class="form-control" id="mm_emp_type">
+              <option value="">--选择注册类型--</option>
+              <option value="0" ${query.mm_emp_type=='0'?'selected':''}>苗木经营</option>
+              <option value="1" ${query.mm_emp_type=='1'?'selected':''}>苗木会员</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <select class="form-control" id="mm_emp_company_type">
+              <option value="">--选择公司类型--</option>
+              <option value="0" ${query.mm_emp_company_type=='0'?'selected':''}>苗木</option>
+              <option value="1" ${query.mm_emp_company_type=='1'?'selected':''}>园林</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <select class="form-control" id="mm_level_id">
+              <option value="">--选择VIP星级--</option>
+              <c:forEach items="${listLevels}" var="e" varStatus="st">
+                <option value="${e.mm_level_id}" ${query.mm_level_id=='0'?'selected':''}>${e.mm_level_name}</option>
+              </c:forEach>
+            </select>
+          </div>
+
           <button type="submit" onclick="searchOrder('1')" class="btn btn-default btn-sm">查找</button>
         </form>
         <%--<p>For basic styling add the base class <code>.table</code> to any <code>&lt;table&gt;</code>.</p>--%>
@@ -91,6 +91,7 @@
             <th>诚信</th>
             <th>协会</th>
             <th>星级</th>
+            <th>到期时间</th>
             <th>审核状态</th>
             <th>操作</th>
           </tr>
@@ -102,15 +103,6 @@
               <td>${e.mm_emp_mobile}</td>
               <td>${e.mm_emp_type}</td>
               <td>${e.mm_emp_company}</td>
-              <%--<td>--%>
-                <%--<c:if test="${e.create_time!=null && e.create_time!=''}">${um:format(e.create_time, "yyyy-MM-dd HH:mm:ss")}</c:if>--%>
-              <%--</td>--%>
-              <%--<td>--%>
-                <%--<c:if test="${e.pay_time!=null && e.pay_time!=''}">${um:format(e.pay_time, "yyyy-MM-dd HH:mm:ss")}</c:if>--%>
-              <%--</td>--%>
-              <%--<td>--%>
-                <%--<c:if test="${e.send_time!=null && e.send_time!=''}">${um:format(e.send_time, "yyyy-MM-dd HH:mm:ss")}</c:if>--%>
-              <%--</td>--%>
               <td>
                 <c:if test="${e.mm_emp_company_type=='0'}">苗木</c:if>
                 <c:if test="${e.mm_emp_company_type=='1'}">园林</c:if>
@@ -125,6 +117,7 @@
                 <c:if test="${e.is_miaomu=='1'}">是</c:if>
               </td>
               <td>${e.levelName}</td>
+              <td>${e.mm_emp_endtime}</td>
               <td>
                 <c:if test="${e.ischeck=='0'}">未审核</c:if>
                 <c:if test="${e.ischeck=='1'}">已审核</c:if>
@@ -182,13 +175,15 @@
     if(e.keyCode != 13) return;
     var _index = $("#index").val();
     var size = getCookie("contract_size");
-    var empName = $("#emp_name").val();
-    var empPhone = $("#emp_phone").val();
-    var orderStatus = $("#order_status").val();
-    var payStatus = $("#pay_status").val();
-    var distributionStatus = $("#distribution_status").val();
+    var mm_emp_type = $("#mm_emp_type").val();
+    var mm_emp_company_type = $("#mm_emp_company_type").val();
+    var mm_level_id = $("#mm_level_id").val();
+    var ischeck = $("#ischeck").val();
     if(_index <= ${page.pageCount} && _index >= 1){
-      window.location.href="#module=/order/list&page="+page+"&size="+size+"&empName="+empName+"&empPhone="+empPhone+"&orderStatus="+orderStatus+"&payStatus="+payStatus+"&distribStatus="+distributionStatus;
+      window.location.href="#module=/emp/list&page="+page+"&size="+size+"&mm_emp_type="+mm_emp_type
+      +"&mm_emp_company_type="+mm_emp_company_type
+      +"&mm_level_id="+mm_level_id
+      +"&ischeck="+ischeck;
     }else{
       alert("请输入1-${page.pageCount}的页码数");
     }
@@ -196,14 +191,17 @@
   function nextPage(_page) {
     var page = parseInt(_page);
     var size = $("#size").val();
-    var empName = $("#emp_name").val();
-    var empPhone = $("#emp_phone").val();
-    var orderStatus = $("#order_status").val();
-    var payStatus = $("#pay_status").val();
-    var distributionStatus = $("#distribution_status").val();
+    var mm_emp_type = $("#mm_emp_type").val();
+    var mm_emp_company_type = $("#mm_emp_company_type").val();
+    var mm_level_id = $("#mm_level_id").val();
+    var ischeck = $("#ischeck").val();
     addCookie("contract_size", size, 36);
     if ((page <= ${page.pageCount} && page >= 1)) {
-      window.location.href="#module=/order/list&page="+page+"&size="+size+"&empName="+empName+"&empPhone="+empPhone+"&orderStatus="+orderStatus+"&payStatus="+payStatus+"&distribStatus="+distributionStatus;
+      window.location.href="#module=/emp/list&page="+page+"&size="+size
+      +"&mm_emp_type="+mm_emp_type
+      +"&mm_emp_company_type="+mm_emp_company_type
+      +"&mm_level_id="+mm_level_id
+      +"&ischeck="+ischeck;
     } else {
       alert("请输入1-${page.pageCount}的页码数");
     }
@@ -212,14 +210,17 @@
   function searchOrder(_page){
     var page = parseInt(_page);
     var size = $("#size").val();
-    var empName = $("#emp_name").val();
-    var empPhone = $("#emp_phone").val();
-    var orderStatus = $("#order_status").val();
-    var payStatus = $("#pay_status").val();
-    var distributionStatus = $("#distribution_status").val();
+    var mm_emp_type = $("#mm_emp_type").val();
+    var mm_emp_company_type = $("#mm_emp_company_type").val();
+    var mm_level_id = $("#mm_level_id").val();
+    var ischeck = $("#ischeck").val();
     addCookie("contract_size", size, 36);
     if ((page <= ${page.pageCount} && page >= 1)) {
-      window.location.href="#module=/order/list&page="+page+"&size="+size+"&empName="+empName+"&empPhone="+empPhone+"&orderStatus="+orderStatus+"&payStatus="+payStatus+"&distribStatus="+distributionStatus;
+      window.location.href="#module=/emp/list&page="+page+"&size="+size
+      +"&mm_emp_type="+mm_emp_type
+      +"&mm_emp_company_type="+mm_emp_company_type
+      +"&mm_level_id="+mm_level_id
+      +"&ischeck="+ischeck;
     } else {
       alert("请输入1-${page.pageCount}的页码数");
     }

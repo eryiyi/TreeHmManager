@@ -1,7 +1,9 @@
 package com.liangxunwang.unimanager.mvc.admin;
 
 import com.liangxunwang.unimanager.model.Children;
+import com.liangxunwang.unimanager.model.Level;
 import com.liangxunwang.unimanager.query.EmpQuery;
+import com.liangxunwang.unimanager.query.LevelQuery;
 import com.liangxunwang.unimanager.query.MemberQuery;
 import com.liangxunwang.unimanager.service.DeleteService;
 import com.liangxunwang.unimanager.service.ListService;
@@ -29,6 +31,11 @@ public class EmpController extends ControllerConstants {
     private ListService empServiceList;
 
 
+
+    @Autowired
+    @Qualifier("levelService")
+    private ListService levelService;
+
     @RequestMapping("list")
     public String list(HttpSession session,ModelMap map, EmpQuery query, Page page){
         query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
@@ -41,6 +48,10 @@ public class EmpController extends ControllerConstants {
         page.setPageCount(calculatePageCount(query.getSize(), count));
         map.addAttribute("page", page);
         map.addAttribute("query", query);
+        //查询等级
+        LevelQuery levelQuery = new LevelQuery();
+        List<Level> list = (List<Level>) levelService.list(levelQuery);
+        map.put("listLevels", list);
         return "/emp/list";
     }
 

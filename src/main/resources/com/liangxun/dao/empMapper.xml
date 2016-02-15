@@ -33,6 +33,7 @@
         <result column="is_miaomu" property="is_miaomu"/>
         <result column="lat" property="lat"/>
         <result column="lng" property="lng"/>
+        <result column="ischeck" property="ischeck"/>
     </resultMap>
     <resultMap id="emp_vo" type="com.liangxunwang.unimanager.mvc.vo.EmpVO">
         <id column="mm_emp_id" property="mm_emp_id"/>
@@ -64,6 +65,7 @@
         <result column="is_miaomu" property="is_miaomu"/>
         <result column="lat" property="lat"/>
         <result column="lng" property="lng"/>
+        <result column="ischeck" property="ischeck"/>
 
         <result column="levelName" property="levelName"/>
         <result column="provinceName" property="provinceName"/>
@@ -89,6 +91,9 @@
         <if test="mm_level_id != null and mm_level_id != ''">
         AND sn.mm_level_id = #{mm_level_id}
         </if>
+        <if test="ischeck != null and ischeck != ''">
+        AND sn.ischeck = #{ischeck}
+        </if>
 
         ORDER BY sn.mm_emp_regtime DESC limit #{index},#{size}
     </select>
@@ -108,6 +113,9 @@
         </if>
         <if test="mm_level_id != null and mm_level_id != ''">
             AND sn.mm_level_id = #{mm_level_id}
+        </if>
+        <if test="ischeck != null and ischeck != ''">
+            AND sn.ischeck = #{ischeck}
         </if>
 
     </select>

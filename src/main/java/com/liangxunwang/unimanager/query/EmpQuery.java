@@ -9,6 +9,15 @@ public class EmpQuery {
     private String mm_emp_type;
     private String mm_emp_company_type;
     private String mm_level_id;
+    private String ischeck;
+
+    public String getIscheck() {
+        return ischeck;
+    }
+
+    public void setIscheck(String ischeck) {
+        this.ischeck = ischeck;
+    }
 
     public int getIndex() {
         return index;

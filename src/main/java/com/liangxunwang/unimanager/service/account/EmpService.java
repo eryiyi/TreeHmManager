@@ -46,6 +46,9 @@ public class EmpService implements ListService , UpdateService{
         if (!StringUtil.isNullOrEmpty(query.getMm_level_id())) {
             map.put("mm_level_id", query.getMm_level_id());
         }
+        if (!StringUtil.isNullOrEmpty(query.getIscheck())) {
+            map.put("ischeck", query.getIscheck());
+        }
 
         List<EmpVO> lists = empDao.listMemberByName(map);
         long count = empDao.count(map);
