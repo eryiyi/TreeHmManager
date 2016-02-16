@@ -1,7 +1,9 @@
 package com.liangxunwang.unimanager.mvc.admin;
 
 import com.liangxunwang.unimanager.model.Admin;
+import com.liangxunwang.unimanager.model.LogoObj;
 import com.liangxunwang.unimanager.service.ExecuteService;
+import com.liangxunwang.unimanager.service.SaveService;
 import com.liangxunwang.unimanager.service.ServiceException;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.StringUtil;
@@ -24,6 +26,10 @@ public class AdminLoginController extends ControllerConstants {
     @Qualifier("adminLoginService")
     private ExecuteService adminLoginService;
 
+    @Autowired
+    @Qualifier("logoService")
+    private SaveService logoService;
+
     @RequestMapping("/adminLogin")
     @ResponseBody
     public String adminLogin(HttpSession session,HttpServletRequest request, @Param(value = "username")String username,@Param(value = "password") String password){
@@ -45,6 +51,8 @@ public class AdminLoginController extends ControllerConstants {
                 return toJSONString(ERROR_6);
             }
             session.setAttribute(ControllerConstants.PERMISSIONS, permissions);
+            //日志记录
+            logoService.save(new LogoObj("管理员:"+admin.getMm_manager_nickname()+"登陆", admin.getMm_manager_id()));
             return toJSONString(SUCCESS);
         }catch (ServiceException e){
             String msg = e.getMessage();

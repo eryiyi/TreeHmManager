@@ -28,4 +28,9 @@
         LEFT JOIN mm_manager lemp ON sn.mm_manager_id=lemp.mm_manager_id
     </select>
 
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.LogoObj">
+        INSERT INTO mm_logo(mm_logo_id, mm_logo_content, mm_manager_id, dateline)
+        VALUES (#{mm_logo_id}, #{mm_logo_content}, #{mm_manager_id}, #{dateline})
+    </insert>
+
 </mapper>

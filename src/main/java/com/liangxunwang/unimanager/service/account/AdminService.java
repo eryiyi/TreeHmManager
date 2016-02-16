@@ -29,13 +29,13 @@ public class AdminService implements ExecuteService,ListService{
     @Qualifier("adminDao")
     private AdminDao adminDao;
 
-
     @Override
     public Object execute(Object object) throws ServiceException {
         Object[] params = (Object[]) object;
         String userId = (String) params[0];
         String userPass = (String) params[1];
         adminDao.updatePass(userId, userPass);
+
         return null;
     }
 

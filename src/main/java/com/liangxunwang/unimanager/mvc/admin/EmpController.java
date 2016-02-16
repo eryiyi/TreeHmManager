@@ -50,8 +50,13 @@ public class EmpController extends ControllerConstants {
     @Qualifier("empService")
     private ExecuteService empServiceExecute;
 
+    @Autowired
+    @Qualifier("logoService")
+    private SaveService logoService;
+
     @RequestMapping("list")
     public String list(HttpSession session,ModelMap map, EmpQuery query, Page page){
+        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
         query.setSize(query.getSize() == 0 ? page.getDefaultSize() : query.getSize());
         query.setMm_emp_type("0");//苗木经营户
@@ -66,11 +71,15 @@ public class EmpController extends ControllerConstants {
         LevelQuery levelQuery = new LevelQuery();
         List<Level> list = (List<Level>) levelService.list(levelQuery);
         map.put("listLevels", list);
+
+        //日志记录
+        logoService.save(new LogoObj("查看经营户列表", manager.getMm_manager_id()));
         return "/emp/list";
     }
 
     @RequestMapping("listEmp")
     public String listEmp(HttpSession session,ModelMap map, EmpQuery query, Page page){
+        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
         query.setSize(query.getSize() == 0 ? page.getDefaultSize() : query.getSize());
         query.setMm_emp_type("1");//苗木会员
@@ -81,11 +90,15 @@ public class EmpController extends ControllerConstants {
         page.setPageCount(calculatePageCount(query.getSize(), count));
         map.addAttribute("page", page);
         map.addAttribute("query", query);
+
+        //日志记录
+        logoService.save(new LogoObj("查看会员列表", manager.getMm_manager_id()));
         return "/emp/list";
     }
 
     @RequestMapping("/detail")
     public String updateType(ModelMap map, HttpSession session, String mm_emp_id){
+        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         //查看该会员信息
         EmpVO empVO = (EmpVO) empServiceExecute.execute(mm_emp_id);
         //vip星级
@@ -116,6 +129,8 @@ public class EmpController extends ControllerConstants {
         map.put("listCitysAll", listCitysAll);
         map.put("listsCountryAll", listsCountryAll);
 
+        //日志记录
+        logoService.save(new LogoObj("查看会员："+empVO.getMm_emp_nickname()+"的详情", manager.getMm_manager_id()));
         return "/emp/detail";
     }
 
@@ -124,9 +139,12 @@ public class EmpController extends ControllerConstants {
     //更改会员数据
     @RequestMapping("/updateEmp")
     @ResponseBody
-    public String updateEmp(Emp emp){
+    public String updateEmp( HttpSession session, Emp emp){
+        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         try {
             empServiceUpdate.update(emp);
+            //日志记录
+            logoService.save(new LogoObj("更新会员:："+emp.getMm_emp_nickname()+"的信息", manager.getMm_manager_id()));
             return toJSONString(SUCCESS);
         }catch (ServiceException e){
             return toJSONString(ERROR_1);

@@ -1,5 +1,7 @@
 package com.liangxunwang.unimanager.dao;
 
+import com.liangxunwang.unimanager.model.Level;
+import com.liangxunwang.unimanager.model.LogoObj;
 import com.liangxunwang.unimanager.mvc.vo.LogoVO;
 import com.liangxunwang.unimanager.mvc.vo.RecordVO;
 import org.springframework.stereotype.Repository;
@@ -18,6 +20,10 @@ public interface LogoDao {
      */
     List<LogoVO> listRecordVo(Map<String, Object> map);
     long count(Map<String, Object> map);
+
+
+    //保存
+    void save(LogoObj level);
 
 
 }

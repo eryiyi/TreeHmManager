@@ -1,8 +1,11 @@
 package com.liangxunwang.unimanager.mvc.admin;
 
+import com.liangxunwang.unimanager.model.Admin;
+import com.liangxunwang.unimanager.model.LogoObj;
 import com.liangxunwang.unimanager.query.OrderQuery;
 import com.liangxunwang.unimanager.query.ReportQuery;
 import com.liangxunwang.unimanager.service.ListService;
+import com.liangxunwang.unimanager.service.SaveService;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +26,14 @@ public class OrderController extends ControllerConstants {
     @Qualifier("orderService")
     private ListService orderService;
 
+    @Autowired
+    @Qualifier("logoService")
+    private SaveService logoService;
+
 
     @RequestMapping("list")
     public String listQiugou(HttpSession session,ModelMap map, OrderQuery query, Page page){
+        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
         query.setSize(query.getSize() == 0 ? page.getDefaultSize() : query.getSize());
         Object[] results = (Object[]) orderService.list(query);
@@ -35,6 +43,8 @@ public class OrderController extends ControllerConstants {
         page.setPageCount(calculatePageCount(query.getSize(), count));
         map.addAttribute("page", page);
         map.addAttribute("query", query);
+        //日志记录
+        logoService.save(new LogoObj("查看订单", manager.getMm_manager_id()));
         return "order/list";
     }
 

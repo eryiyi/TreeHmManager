@@ -1,7 +1,9 @@
 package com.liangxunwang.unimanager.mvc.admin;
 
+import com.liangxunwang.unimanager.model.Admin;
 import com.liangxunwang.unimanager.model.FeiyongObj;
 import com.liangxunwang.unimanager.model.Level;
+import com.liangxunwang.unimanager.model.LogoObj;
 import com.liangxunwang.unimanager.query.LevelQuery;
 import com.liangxunwang.unimanager.query.MemberQuery;
 import com.liangxunwang.unimanager.service.*;
@@ -14,6 +16,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -43,10 +46,17 @@ public class LevelController extends ControllerConstants {
     @Qualifier("levelService")
     private DeleteService levelServiceSaveDel;
 
+    @Autowired
+    @Qualifier("logoService")
+    private SaveService logoService;
+
     @RequestMapping("list")
-    public String list(ModelMap map, LevelQuery query){
+    public String list(HttpSession session,ModelMap map, LevelQuery query){
+        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         List<Level> list = (List<Level>) levelService.list(query);
         map.put("list", list);
+        //日志记录
+        logoService.save(new LogoObj("查看等级列表", manager.getMm_manager_id()));
         return "/level/list";
     }
 
@@ -57,22 +67,31 @@ public class LevelController extends ControllerConstants {
 
     @RequestMapping("addLevel")
     @ResponseBody
-    public String addPiao(Level level){
+    public String addPiao(HttpSession session,Level level){
+        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         levelServiceSave.save(level);
+        //日志记录
+        logoService.save(new LogoObj("添加等级："+level.getMm_level_name(), manager.getMm_manager_id()));
         return toJSONString(SUCCESS);
     }
 
     @RequestMapping("delete")
     @ResponseBody
-    public String delete(String mm_level_id){
+    public String delete(HttpSession session,String mm_level_id){
+        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         levelServiceSaveDel.delete(mm_level_id);
+        //日志记录
+        logoService.save(new LogoObj("删除等级："+mm_level_id, manager.getMm_manager_id()));
         return toJSONString(SUCCESS);
     }
 
     @RequestMapping("/edit")
-    public String toUpdateType(ModelMap map, String typeId){
+    public String toUpdateType(HttpSession session,ModelMap map, String typeId){
+        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         Level level = (Level) levelServiceSaveExe.execute(typeId);
         map.put("levelObj", level);
+        //日志记录
+        logoService.save(new LogoObj("编辑等级："+level.getMm_level_name(), manager.getMm_manager_id()));
         return "/level/editlevel";
     }
 
@@ -83,9 +102,12 @@ public class LevelController extends ControllerConstants {
      */
     @RequestMapping("/editLevel")
     @ResponseBody
-    public String updateGoodsType(Level level){
+    public String updateGoodsType(HttpSession session,Level level){
+        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         try {
             levelServiceSaveUpdate.update(level);
+            //日志记录
+            logoService.save(new LogoObj("编辑等级："+level.getMm_level_name(), manager.getMm_manager_id()));
             return toJSONString(SUCCESS);
         }catch (ServiceException e){
             return toJSONString(ERROR_1);

@@ -3,13 +3,11 @@ package com.liangxunwang.unimanager.mvc.admin;
 import com.liangxunwang.unimanager.model.Admin;
 import com.liangxunwang.unimanager.model.FeiyongObj;
 import com.liangxunwang.unimanager.model.Level;
+import com.liangxunwang.unimanager.model.LogoObj;
 import com.liangxunwang.unimanager.query.AdminQuery;
 import com.liangxunwang.unimanager.query.EmpQuery;
 import com.liangxunwang.unimanager.query.LevelQuery;
-import com.liangxunwang.unimanager.service.ExecuteService;
-import com.liangxunwang.unimanager.service.ListService;
-import com.liangxunwang.unimanager.service.ServiceException;
-import com.liangxunwang.unimanager.service.UpdateService;
+import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.Page;
 import com.liangxunwang.unimanager.util.StringUtil;
@@ -37,6 +35,12 @@ public class AdminController extends ControllerConstants {
     @Autowired
     @Qualifier("adminService")
     private ListService adminListService;
+
+
+    @Autowired
+    @Qualifier("logoService")
+    private SaveService logoService;
+
     /**
      * �޸�����
      * @param session
@@ -46,8 +50,11 @@ public class AdminController extends ControllerConstants {
     @ResponseBody
     public String changePass(HttpSession session, String mm_manager_password, String mm_manager_id){
         try {
+            Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
             Object[] params = new Object[]{mm_manager_id, mm_manager_password};
             adminExecuteService.execute(params);
+            //日志记录
+            logoService.save(new LogoObj("修改密码", manager.getMm_manager_id()));
             session.removeAttribute(ACCOUNT_KEY);
             return toJSONString(SUCCESS);
         }catch (ServiceException e){
@@ -62,6 +69,7 @@ public class AdminController extends ControllerConstants {
 
     @RequestMapping("/admin/list")
     public String list(HttpSession session,ModelMap map, AdminQuery query, Page page){
+        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
         query.setSize(query.getSize() == 0 ? page.getDefaultSize() : query.getSize());
         Object[] results = (Object[]) adminListService.list(query);
@@ -71,6 +79,8 @@ public class AdminController extends ControllerConstants {
         page.setPageCount(calculatePageCount(query.getSize(), count));
         map.addAttribute("page", page);
         map.addAttribute("query", query);
+        //日志记录
+        logoService.save(new LogoObj("查询管理员列表", manager.getMm_manager_id()));
         return "/admin/list";
     }
 

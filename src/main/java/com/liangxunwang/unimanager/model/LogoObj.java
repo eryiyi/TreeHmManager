@@ -9,6 +9,10 @@ public class LogoObj {
     private String mm_manager_id;
     private String dateline;
 
+    public LogoObj() {
+        super();
+    }
+
     public String getMm_logo_id() {
         return mm_logo_id;
     }
@@ -39,5 +43,10 @@ public class LogoObj {
 
     public void setDateline(String dateline) {
         this.dateline = dateline;
+    }
+
+    public LogoObj(String mm_logo_content, String mm_manager_id) {
+        this.mm_logo_content = mm_logo_content;
+        this.mm_manager_id = mm_manager_id;
     }
 }
