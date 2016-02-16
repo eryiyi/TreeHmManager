@@ -2,6 +2,7 @@ package com.liangxunwang.unimanager.dao;
 
 import com.liangxunwang.unimanager.model.CityObj;
 import com.liangxunwang.unimanager.model.ProvinceObj;
+import com.liangxunwang.unimanager.mvc.vo.CityVO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,6 +19,9 @@ public interface CityDao {
      * 查询城市根据省
      */
     List<CityObj> lists(Map<String, Object> map);
+
+    //查询城市 及其所属省份
+    List<CityVO> listsVo(Map<String, Object> map);
 
 
     //保存

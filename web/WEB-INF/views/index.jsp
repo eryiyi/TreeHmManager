@@ -210,13 +210,13 @@
 					</a>
 					<ul class="dropdown-menu">
 						<c:if test="${um:permission('PROVINCE_LIST', sessionScope.powers)}">
-							<li><a href="javascript:void(0);" onclick="toPage('role/addPiao','1')">省份列表</a></li>
+							<li><a href="javascript:void(0);" onclick="toPage('province/list','1')">省份列表</a></li>
 						</c:if>
 						<c:if test="${um:permission('CITY_LIST', sessionScope.powers)}">
-							<li><a href="javascript:void(0);" onclick="toPage('role/addPiao','1')">城市列表</a></li>
+							<li><a href="javascript:void(0);" onclick="toPage('city/list','1')">城市列表</a></li>
 						</c:if>
 						<c:if test="${um:permission('COUNTY_LIST', sessionScope.powers)}">
-							<li><a href="javascript:void(0);" onclick="toPage('role/addPiao','1')">地区列表</a></li>
+							<li><a href="javascript:void(0);" onclick="toPage('country/list','1')">地区列表</a></li>
 						</c:if>
 					</ul>
 				</li>

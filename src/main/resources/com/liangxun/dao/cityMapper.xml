@@ -10,10 +10,27 @@
         <result column="father" property="father"/>
     </resultMap>
 
+    <resultMap id="city_vo" type="com.liangxunwang.unimanager.mvc.vo.CityVO">
+        <id column="id" property="id"/>
+        <result column="cityID" property="cityID"/>
+        <result column="city" property="city"/>
+        <result column="father" property="father"/>
+        <result column="provinceName" property="provinceName"/>
+    </resultMap>
+
     <select id="lists" resultMap="city">
         SELECT * from hat_city WHERE 1=1
         <if test="father != null and father != ''">
             AND father = #{father}
+        </if>
+    </select>
+
+    <select id="listsVo" resultMap="city_vo">
+        SELECT sn.*,lprovince.province as provinceName from hat_city sn
+        LEFT JOIN hat_province lprovince ON sn.father=lprovince.provinceID
+        WHERE 1=1
+        <if test="father != null and father != ''">
+            AND sn.father = #{father}
         </if>
     </select>
 

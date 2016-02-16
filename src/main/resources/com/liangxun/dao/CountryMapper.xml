@@ -9,6 +9,13 @@
         <result column="area" property="area"/>
         <result column="father" property="father"/>
     </resultMap>
+    <resultMap id="country_vo" type="com.liangxunwang.unimanager.mvc.vo.CountryVO">
+        <id column="id" property="id"/>
+        <result column="areaID" property="areaID"/>
+        <result column="area" property="area"/>
+        <result column="father" property="father"/>
+        <result column="cityName" property="cityName"/>
+    </resultMap>
 
     <select id="lists" resultMap="country">
         SELECT * from hat_area WHERE 1=1
@@ -16,6 +23,16 @@
             AND father = #{father}
         </if>
     </select>
+
+    <select id="listsVo" resultMap="country_vo">
+        SELECT sn.*,lcity.city as cityName from hat_area sn
+        LEFT JOIN hat_city lcity ON sn.father=lcity.cityID
+        WHERE 1=1
+        <if test="father != null and father != ''">
+            AND sn.father = #{father}
+        </if>
+    </select>
+
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.CountryObj">
         INSERT INTO hat_area(id, areaID, area, father)
