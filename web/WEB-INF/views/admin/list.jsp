@@ -60,6 +60,8 @@
           <tr>
             <th>姓名</th>
             <th>电话</th>
+            <th>管理员类型</th>
+            <th>管理员所属区域</th>
             <th>状态</th>
             <th>操作</th>
           </tr>
@@ -69,6 +71,19 @@
             <tr>
               <td>${e.mm_manager_nickname}</td>
               <td>${e.mm_manager_mobile}</td>
+              <td>
+                <c:if test="${e.mm_manager_type=='0'}">最高管理员</c:if>
+                <c:if test="${e.mm_manager_type=='1'}">县级</c:if>
+                <c:if test="${e.mm_manager_type=='2'}">市级</c:if>
+                <c:if test="${e.mm_manager_type=='3'}">省级</c:if>
+                <c:if test="${e.mm_manager_type=='4'}">全国</c:if>
+              </td>
+              <c:if test="${e.mm_manager_type=='0'}"><td>不限</td></c:if>
+              <c:if test="${e.mm_manager_type=='1'}"><td>${e.areaName}</td></c:if>
+              <c:if test="${e.mm_manager_type=='2'}"><td>${e.areaName}</td></c:if>
+              <c:if test="${e.mm_manager_type=='3'}"><td>${e.areaName}</td></c:if>
+              <c:if test="${e.mm_manager_type=='4'}"><td>全国</td></c:if>
+
               <td>
                 <c:if test="${e.mm_manager_is_use=='0'}">禁用</c:if>
                 <c:if test="${e.mm_manager_is_use=='1'}">启用</c:if>

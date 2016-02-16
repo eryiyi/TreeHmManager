@@ -9,6 +9,24 @@ public class Admin {
     private String mm_manager_password;
     private String mm_manager_is_use;
     private String permissions;
+    private String mm_manager_type;
+    private String mm_manager_area_uuid;
+
+    public String getMm_manager_type() {
+        return mm_manager_type;
+    }
+
+    public void setMm_manager_type(String mm_manager_type) {
+        this.mm_manager_type = mm_manager_type;
+    }
+
+    public String getMm_manager_area_uuid() {
+        return mm_manager_area_uuid;
+    }
+
+    public void setMm_manager_area_uuid(String mm_manager_area_uuid) {
+        this.mm_manager_area_uuid = mm_manager_area_uuid;
+    }
 
     public String getPermissions() {
         return permissions;

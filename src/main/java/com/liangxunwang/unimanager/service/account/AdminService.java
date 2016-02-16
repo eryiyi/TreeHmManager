@@ -2,6 +2,7 @@ package com.liangxunwang.unimanager.service.account;
 
 import com.liangxunwang.unimanager.dao.AdminDao;
 import com.liangxunwang.unimanager.model.Admin;
+import com.liangxunwang.unimanager.mvc.vo.AdminVO;
 import com.liangxunwang.unimanager.mvc.vo.EmpVO;
 import com.liangxunwang.unimanager.query.AdminQuery;
 import com.liangxunwang.unimanager.query.EmpQuery;
@@ -52,7 +53,7 @@ public class AdminService implements ExecuteService,ListService{
             map.put("mm_manager_is_use", query.getMm_manager_is_use());
         }
 
-        List<Admin> lists = adminDao.lists(map);
+        List<AdminVO> lists = adminDao.lists(map);
         long count = adminDao.count(map);
 
         return new Object[]{lists, count};

@@ -1,6 +1,7 @@
 package com.liangxunwang.unimanager.dao;
 
 import com.liangxunwang.unimanager.model.Admin;
+import com.liangxunwang.unimanager.mvc.vo.AdminVO;
 import com.liangxunwang.unimanager.mvc.vo.EmpVO;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -31,7 +32,7 @@ public interface AdminDao {
     /**
      * 查询所有的后台管理员信息
      */
-    List<Admin> lists(Map<String, Object> map);
+    List<AdminVO> lists(Map<String, Object> map);
     long count(Map<String,Object> map);
 
     Admin findById(String id);
