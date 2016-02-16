@@ -107,6 +107,15 @@ public class EmpController extends ControllerConstants {
         map.put("listCitys", listCitys);
         map.put("listsCountry", listsCountry);
 
+        //查询地市all
+        CityQuery cityQueryAll = new CityQuery();
+        List<CityObj> listCitysAll = (List<CityObj>) cityService.list(cityQueryAll);
+        //查询县区all
+        CountryQuery countryQueryAll = new CountryQuery();
+        List<CountryObj> listsCountryAll = (List<CountryObj>) countryService.list(countryQueryAll);
+        map.put("listCitysAll", listCitysAll);
+        map.put("listsCountryAll", listsCountryAll);
+
         return "/emp/detail";
     }
 

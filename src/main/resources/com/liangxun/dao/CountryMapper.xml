@@ -11,7 +11,10 @@
     </resultMap>
 
     <select id="lists" resultMap="country">
-        SELECT * from hat_area WHERE father=#{father}
+        SELECT * from hat_area WHERE 1=1
+        <if test="father != null and father != ''">
+            AND father = #{father}
+        </if>
     </select>
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.CountryObj">

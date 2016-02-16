@@ -121,7 +121,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">县区</label>
             <div class="col-sm-4">
-              <select class="form-control" id="mm_emp_countryId">
+              <select class="form-control" id="mm_emp_countryId" >
                 <option value="">--选择县区--</option>
                 <c:forEach items="${listsCountry}" var="e" varStatus="st">
                   <option value="${e.areaID}"  ${empVO.mm_emp_countryId==e.areaID?'selected':''}>${e.area}</option>
@@ -488,7 +488,7 @@
         var data = $.parseJSON(_data);
         if(data.success){
           alert("修改成功");
-          window.location.href = "#module=emp/detail&mm_emp_id=" + mm_manager_id;
+          window.location.href = "#module=emp/detail&mm_emp_id=" + mm_emp_id;
         }else{
           var _case = {1:"修改失败"};
           alert(_case[data.code])
@@ -497,7 +497,17 @@
     });
   };
 
-
+  <%--function selectColleges(){--%>
+    <%--var citys =${listCitysAll};--%>
+    <%--var province = $("#mm_emp_provinceId").val();--%>
+    <%--var ret = '';--%>
+    <%--for(var i= citys.length-1; i>=0; i-- ){--%>
+      <%--if(citys[i].father==province){--%>
+        <%--ret += "<option value='"+citys[i].cityID+"'>"+citys[i].city+"</option>";--%>
+      <%--}--%>
+    <%--}--%>
+    <%--$("#mm_emp_cityId").html(ret);--%>
+  <%--};--%>
 
 </script>
 

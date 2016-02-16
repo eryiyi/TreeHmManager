@@ -11,7 +11,10 @@
     </resultMap>
 
     <select id="lists" resultMap="city">
-        SELECT * from hat_city WHERE father=#{father}
+        SELECT * from hat_city WHERE 1=1
+        <if test="father != null and father != ''">
+            AND father = #{father}
+        </if>
     </select>
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.CityObj">

@@ -132,7 +132,7 @@
         mm_emp_company_detail=#{mm_emp_company_detail},
         mm_emp_provinceId=#{mm_emp_provinceId},
         mm_emp_cityId=#{mm_emp_cityId},
-        mm_emp_ countryId=#{mm_emp_ countryId},
+        mm_emp_countryId=#{mm_emp_countryId},
         mm_emp_regtime=#{mm_emp_regtime},
         mm_emp_endtime=#{mm_emp_endtime},
         mm_level_id=#{mm_level_id},
