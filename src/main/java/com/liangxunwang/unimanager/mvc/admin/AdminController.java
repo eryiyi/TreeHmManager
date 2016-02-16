@@ -22,28 +22,13 @@ public class AdminController extends ControllerConstants {
 
     @Autowired
     @Qualifier("adminService")
-    private UpdateService adminUpdateService;
-
-    @Autowired
-    @Qualifier("adminService")
     private ExecuteService adminExecuteService;
 
-    @RequestMapping("/updateRole")
-    @ResponseBody
-    public String updateRole(String empId, String roleId){
-        if (StringUtil.isNullOrEmpty(empId) || StringUtil.isNullOrEmpty(roleId)){
-            return toJSONString(ERROR_1);
-        }
-        Object[] params = new Object[]{empId, roleId};
-        adminUpdateService.update(params);
-        return toJSONString(SUCCESS);
-    }
-
     /**
-     * ÐÞ¸ÄÃÜÂë
+     * ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½ï¿½
      * @param session
-     * @param ePass Ô­ÃÜÂë
-     * @param pass  ÐÂÃÜÂë
+     * @param ePass Ô­ï¿½ï¿½ï¿½ï¿½
+     * @param pass  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
      * @return
      */
     @RequestMapping("/changePass")
@@ -52,13 +37,13 @@ public class AdminController extends ControllerConstants {
         try {
             Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
             if (manager == null){
-                return toJSONString(ERROR_2);//Ã»ÓÐµÇÂ¼
+                return toJSONString(ERROR_2);//Ã»ï¿½Ðµï¿½Â¼
             }
-            //Èç¹ûÔ­À´ÃÜÂëÑéÖ¤²»Í¨¹ý²»ÈÃ¸ü¸Ä
-            if (!manager.getPassword().equals(ePass)){
+            //ï¿½ï¿½ï¿½Ô­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½ï¿½Ã¸ï¿½ï¿½ï¿½
+            if (!manager.getMm_manager_password().equals(ePass)){
                 return toJSONString(ERROR_3);
             }
-            Object[] params = new Object[]{manager.getId(), pass};
+            Object[] params = new Object[]{manager.getMm_manager_id(), pass};
             adminExecuteService.execute(params);
             session.removeAttribute(ACCOUNT_KEY);
             return toJSONString(SUCCESS);

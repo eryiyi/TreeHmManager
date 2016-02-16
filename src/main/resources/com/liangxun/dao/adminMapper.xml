@@ -4,42 +4,33 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.liangxunwang.unimanager.dao.AdminDao">
     <resultMap id="my_admin" type="com.liangxunwang.unimanager.model.Admin">
-        <id column="manager_id" property="id"/>
-        <result column="manager_admin" property="username"/>
-        <result column="manager_pass" property="password"/>
-        <result column="is_use" property="isUse"/>
+        <id column="mm_manager_id" property="mm_manager_id"/>
+        <result column="mm_manager_mobile" property="mm_manager_mobile"/>
+        <result column="mm_manager_nickname" property="mm_manager_nickname"/>
+        <result column="mm_manager_password" property="mm_manager_password"/>
+        <result column="mm_manager_is_use" property="mm_manager_is_use"/>
         <result column="permissions" property="permissions"/>
-        <result column="type" property="type"/>
-        <result column="emp_id" property="empId"/>
-        <result column="goods_count" property="goodsCount"/>
     </resultMap>
 
     <select id="findByUsername" resultMap="my_admin" parameterType="String">
-        SELECT * from lx_manager WHERE manager_admin=#{username}
+        SELECT * from mm_manager WHERE mm_manager_mobile=#{mm_manager_mobile}
     </select>
 
     <select id="findByEmpId" resultMap="my_admin" parameterType="String">
-        SELECT * from lx_manager WHERE EMP_ID=#{empId}
+        SELECT * from mm_manager WHERE mm_manager_id=#{mm_manager_id}
     </select>
 
     <insert id="add" parameterType="com.liangxunwang.unimanager.model.Admin">
-        INSERT INTO LX_MANAGER(MANAGER_ID, MANAGER_ADMIN, MANAGER_PASS, IS_USE, PERMISSIONS, TYPE , EMP_ID, GOODS_COUNT)
-         VALUES (#{id}, #{username}, #{password}, #{isUse}, #{permissions, jdbcType=VARCHAR}, #{type}, #{empId}, #{goodsCount, jdbcType=VARCHAR})
+        INSERT INTO mm_manager(mm_manager_id, mm_manager_mobile, mm_manager_nickname, mm_manager_password, mm_manager_is_use)
+         VALUES (#{mm_manager_id}, #{mm_manager_mobile}, #{mm_manager_nickname}, #{mm_manager_password}, #{mm_manager_is_use})
     </insert>
 
     <delete id="delete" parameterType="String">
-        DELETE FROM LX_MANAGER WHERE EMP_ID=#{id}
+        DELETE FROM mm_manager WHERE mm_manager_id=#{mm_manager_id}
     </delete>
 
-    <update id="updateRole" parameterType="String">
-        UPDATE LX_MANAGER SET PERMISSIONS=#{roleId} WHERE EMP_ID=#{empId}
-    </update>
-
     <update id="updatePass" parameterType="String">
-        UPDATE LX_MANAGER SET MANAGER_PASS=#{pass} WHERE MANAGER_ID=#{id}
+        UPDATE mm_manager SET mm_manager_password=#{pass} WHERE mm_manager_id=#{id}
     </update>
 
-    <update id="updateCount" parameterType="String">
-        UPDATE LX_MANAGER SET GOODS_COUNT=#{count} WHERE EMP_ID=#{empId}
-    </update>
 </mapper>

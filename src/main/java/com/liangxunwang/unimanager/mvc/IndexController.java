@@ -21,10 +21,16 @@ import java.util.List;
 public class IndexController extends ControllerConstants {
     @Autowired
     @Qualifier("indexService")
+    private ListService indexListService;
 
     @RequestMapping("/index")
-    public String index(){
-        return "/index";
+    public String index(HttpSession session){
+        Admin admin = (Admin) session.getAttribute(ControllerConstants.ACCOUNT_KEY);
+        if (admin != null){
+            return "/index";
+        }
+
+        return "/adminLogin";
     }
 
     @RequestMapping("/main")
@@ -32,6 +38,29 @@ public class IndexController extends ControllerConstants {
 
         return "/index";
     }
+
+    @RequestMapping("/mainPage")
+    public String mainPage(ModelMap map){
+        List<Object> list = (List<Object>) indexListService.list(null);
+        //总共会员数量
+        Long memberCount = (Long) list.get(0);
+        map.put("memberCount", memberCount);
+        return "/main";
+    }
+
+    /**
+     *
+     * @return
+     */
+    @RequestMapping("/logout")
+    public String logout(HttpSession session){
+        Enumeration en = session.getAttributeNames();
+        while (en.hasMoreElements()) {
+            session.removeAttribute((String)en.nextElement());
+        }
+        return "redirect:/";
+    }
+
 
 
 }

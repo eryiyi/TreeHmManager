@@ -17,23 +17,26 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
         String uri = request.getRequestURI();
         Object account = request.getSession().getAttribute(ACCOUNT_KEY);
 
-//        if(uri.contains(".json")){
-//                return true;
-//        }
-//
-//        if(uri.matches("(^/$)|(^/index\\.do$)|(^/adminLogin\\.do$)|(^/logout\\.do$)"
-//
-//        ) || account != null) {
-//            return true;
-//        }
-//
-//        if("true".equals(request.getParameter("j"))) {
-//            PrintWriter out = response.getWriter();
-//            out.print(toJSONString(TIMEOUT));
-//            out.close();
-//        } else {
-//            request.getRequestDispatcher("/WEB-INF/session.jsp").forward(request, response);
-//        }
+        if(uri.contains(".json")){
+                return true;
+        }
+
+        if(uri.matches("(^/$)|(^/index\\.do$)|(^/adminLogin\\.do$)|(^/logout\\.do$)" +
+                        "|(^/uploadImage\\.do$)" +
+                        "|(^/uploadUnCompressImage\\.do$)" +
+                        "|(^/recordList\\.do$)"
+
+        ) || account != null) {
+            return true;
+        }
+
+        if("true".equals(request.getParameter("j"))) {
+            PrintWriter out = response.getWriter();
+            out.print(toJSONString(TIMEOUT));
+            out.close();
+        } else {
+            request.getRequestDispatcher("/WEB-INF/session.jsp").forward(request, response);
+        }
         return true;
     }
     @Override

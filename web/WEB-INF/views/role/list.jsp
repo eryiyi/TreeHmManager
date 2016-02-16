@@ -8,8 +8,8 @@
     </a>
     <ol class="breadcrumb pull-left">
       <li><a href="index.html">主页</a></li>
-      <li><a href="#">萌宝管理</a></li>
-      <li><a href="#">萌宝列表</a></li>
+      <li><a href="#">角色管理</a></li>
+      <li><a href="#">角色列表</a></li>
     </ol>
     <div id="social" class="pull-right">
       <a href="#"><i class="fa fa-google-plus"></i></a>
@@ -27,7 +27,7 @@
       <div class="box-header">
         <div class="box-name ui-draggable-handle">
           <i class="fa fa-table"></i>
-          <span>萌宝列表</span>
+          <span>角色列表</span>
         </div>
         <div class="box-icons">
           <a class="collapse-link">
@@ -47,25 +47,18 @@
         <table class="table">
           <thead>
           <tr>
-            <th>萌宝ID</th>
-            <th>萌宝名称</th>
-            <th>电话</th>
-            <th>得票数</th>
-            <th>取消票数</th>
-            <th>人气数</th>
+            <th>#</th>
+            <th>角色名称</th>
             <th>操作</th>
           </tr>
           </thead>
           <tbody>
           <c:forEach items="${list}" var="e" varStatus="st">
             <tr>
-              <td>${e.id}</td>
-              <td>${e.nickname}</td>
-              <td>${e.phone}</td>
-              <td>${e.num}</td>
-              <td>${e.dnum}</td>
-              <td>${e.sharenum}</td>
+              <td>${st.index + 1}</td>
+              <td>${e.name}</td>
               <td>
+                <a class="btn btn-default btn-sm" href="#module=/role/edit&id=${e.id}" role="button">修改权限</a>
                 <a class="btn btn-default btn-sm" href="javascript:void (0)" onclick="deleteRole('${e.id}')" role="button">删除</a>
               </td>
             </tr>
@@ -78,7 +71,7 @@
 </div>
 <script type="text/javascript">
   function deleteRole(_id){
-    if(confirm("确定要删除该萌宝么？")){
+    if(confirm("确定要删除该角色么？")){
       $.ajax({
         url:"/role/delete.do",
         data:{"id":_id},

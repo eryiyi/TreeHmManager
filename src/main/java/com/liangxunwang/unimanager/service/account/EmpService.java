@@ -1,9 +1,7 @@
 package com.liangxunwang.unimanager.service.account;
 
 import com.liangxunwang.unimanager.dao.EmpDao;
-import com.liangxunwang.unimanager.dao.MemberDao;
 import com.liangxunwang.unimanager.model.Emp;
-import com.liangxunwang.unimanager.model.Member;
 import com.liangxunwang.unimanager.mvc.vo.EmpVO;
 import com.liangxunwang.unimanager.query.EmpQuery;
 import com.liangxunwang.unimanager.query.MemberQuery;
@@ -58,7 +56,7 @@ public class EmpService implements ListService , UpdateService{
 
     @Override
     public Object update(Object object) {
-        if (object instanceof Member){
+        if (object instanceof Emp){
             Emp member = (Emp) object;
             empDao.update(member);
         }

@@ -9,14 +9,13 @@ import org.springframework.stereotype.Repository;
  */
 @Repository("adminDao")
 public interface AdminDao {
-    Admin findByUsername(String username);
-    Admin findByEmpId(String empId);
+    Admin findByUsername(String mm_manager_mobile);
+    Admin findByEmpId(String mm_manager_id);
 
     void add(Admin admin);
 
     void delete(String id);
 
-    void updateRole(@Param(value = "empId")String empId, @Param(value = "roleId") String roleId);
 
     /**
      * 根据ID修改密码
@@ -25,5 +24,4 @@ public interface AdminDao {
      */
     void updatePass(@Param(value = "id")String id, @Param(value = "pass") String pass);
 
-    void updateCount(@Param(value = "empId")String empId, @Param(value = "count") String count);
 }

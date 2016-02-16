@@ -118,6 +118,25 @@
 						<span class="hidden-xs">主页</span>
 					</a>
 				</li>
+
+				<c:if test="${um:permission('LIST_ROLE', sessionScope.powers)||um:permission('ADD_ROLE', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="javascript:void (0);" class="dropdown-toggle">
+							<i class="fa fa-table"></i>
+							<span class="hidden-xs">角色管理</span>
+						</a>
+						<ul class="dropdown-menu">
+							<c:if test="${um:permission('ADD_ROLE', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('/role/add','')">添加角色</a></li>
+							</c:if>
+							<c:if test="${um:permission('LIST_ROLE', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('/role/list','')">角色列表</a></li>
+							</c:if>
+						</ul>
+					</li>
+				</c:if>
+
+				<c:if test="${um:permission('LIST_EMPLOYEE_JY', sessionScope.powers)||um:permission('LIST_EMPLOYEE_EMP', sessionScope.powers)}">
 					<li class="dropdown">
 						<a href="javascript:void (0);" class="dropdown-toggle">
 							<i class="fa fa-table"></i>
@@ -125,96 +144,144 @@
 						</a>
 						<ul class="dropdown-menu">
 								<%--<li><a href="javascript:void(0);" onclick="toPage('/role/add','')">添加宝宝</a></li>--%>
-								<li><a href="javascript:void(0);" onclick="toPage('/emp/list','1')">经营户</a></li>
-								<li><a href="javascript:void(0);" onclick="toPage('/emp/listEmp','1')">会员</a></li>
+									<c:if test="${um:permission('LIST_EMPLOYEE_JY', sessionScope.powers)}">
+										<li><a href="javascript:void(0);" onclick="toPage('/emp/list','1')">经营户</a></li>
+									</c:if>
+									<c:if test="${um:permission('LIST_EMPLOYEE_EMP', sessionScope.powers)}">
+										<li><a href="javascript:void(0);" onclick="toPage('/emp/listEmp','1')">会员</a></li>
+									</c:if>
 						</ul>
 					</li>
+				</c:if>
 
+				<c:if test="${um:permission('QIUGOU_MSG', sessionScope.powers)||um:permission('GONGYING_MSG', sessionScope.powers)}">
 					<li class="dropdown">
 						<a href="javascript:void (0);" class="dropdown-toggle">
 							<i class="fa fa-table"></i>
 							<span class="hidden-xs">信息管理</span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="javascript:void(0);" onclick="toPage('record/listQiugou','1')">求购信息</a></li>
-							<li><a href="javascript:void(0);" onclick="toPage('record/listGongying','1')">供应信息</a></li>
+							<c:if test="${um:permission('QIUGOU_MSG', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('record/listQiugou','1')">求购信息</a></li>
+							</c:if>
+							<c:if test="${um:permission('GONGYING_MSG', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('record/listGongying','1')">供应信息</a></li>
+							</c:if>
 						</ul>
 					</li>
+				</c:if>
 
+				<c:if test="${um:permission('ADD_NOTICE', sessionScope.powers)||um:permission('NOTICE_LIST', sessionScope.powers)}">
 				<li class="dropdown">
 					<a href="javascript:void (0);" class="dropdown-toggle">
 						<i class="fa fa-table"></i>
 						<span class="hidden-xs">公告管理</span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="javascript:void(0);" onclick="toPage('role/addPiao','1')">添加公告</a></li>
-						<li><a href="javascript:void(0);" onclick="toPage('role/addPiao','1')">公告列表</a></li>
+						<c:if test="${um:permission('ADD_NOTICE', sessionScope.powers)}">
+							<li><a href="javascript:void(0);" onclick="toPage('role/addPiao','1')">添加公告</a></li>
+						</c:if>
+						<c:if test="${um:permission('NOTICE_LIST', sessionScope.powers)}">
+							<li><a href="javascript:void(0);" onclick="toPage('role/addPiao','1')">公告列表</a></li>
+						</c:if>
+
 					</ul>
 				</li>
+				</c:if>
 
+				<c:if test="${um:permission('PROVINCE_LIST', sessionScope.powers)||um:permission('CITY_LIST', sessionScope.powers)||um:permission('COUNTY_LIST', sessionScope.powers)}">
 				<li class="dropdown">
 					<a href="javascript:void (0);" class="dropdown-toggle">
 						<i class="fa fa-table"></i>
 						<span class="hidden-xs">地区管理</span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="javascript:void(0);" onclick="toPage('role/addPiao','1')">省份列表</a></li>
-						<li><a href="javascript:void(0);" onclick="toPage('role/addPiao','1')">城市列表</a></li>
-						<li><a href="javascript:void(0);" onclick="toPage('role/addPiao','1')">地区列表</a></li>
+						<c:if test="${um:permission('PROVINCE_LIST', sessionScope.powers)}">
+							<li><a href="javascript:void(0);" onclick="toPage('role/addPiao','1')">省份列表</a></li>
+						</c:if>
+						<c:if test="${um:permission('CITY_LIST', sessionScope.powers)}">
+							<li><a href="javascript:void(0);" onclick="toPage('role/addPiao','1')">城市列表</a></li>
+						</c:if>
+						<c:if test="${um:permission('COUNTY_LIST', sessionScope.powers)}">
+							<li><a href="javascript:void(0);" onclick="toPage('role/addPiao','1')">地区列表</a></li>
+						</c:if>
 					</ul>
 				</li>
+				</c:if>
 
-				<li class="dropdown">
-					<a href="javascript:void (0);" class="dropdown-toggle">
-						<i class="fa fa-table"></i>
-						<span class="hidden-xs">日志管理</span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a href="javascript:void(0);" onclick="toPage('/logo/list','1')">日志列表</a></li>
-					</ul>
-				</li>
+					<c:if test="${um:permission('LOGO_LIST', sessionScope.powers)}">
+						<li class="dropdown">
+							<a href="javascript:void (0);" class="dropdown-toggle">
+								<i class="fa fa-table"></i>
+								<span class="hidden-xs">日志管理</span>
+							</a>
+							<ul class="dropdown-menu">
+								<c:if test="${um:permission('LOGO_LIST', sessionScope.powers)}">
+									<li><a href="javascript:void(0);" onclick="toPage('/logo/list','1')">日志列表</a></li>
+								</c:if>
+							</ul>
+						</li>
+					</c:if>
 
-				<li class="dropdown">
-					<a href="javascript:void (0);" class="dropdown-toggle">
-						<i class="fa fa-table"></i>
-						<span class="hidden-xs">举报管理</span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a href="javascript:void(0);" onclick="toPage('/report/list','1')">举报列表</a></li>
-					</ul>
-				</li>
+					<c:if test="${um:permission('REPORT_LIST', sessionScope.powers)}">
+						<li class="dropdown">
+							<a href="javascript:void (0);" class="dropdown-toggle">
+								<i class="fa fa-table"></i>
+								<span class="hidden-xs">举报管理</span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="javascript:void(0);" onclick="toPage('/report/list','1')">举报列表</a></li>
+							</ul>
+						</li>
+					</c:if>
 
-				<li class="dropdown">
-					<a href="javascript:void (0);" class="dropdown-toggle">
-						<i class="fa fa-table"></i>
-						<span class="hidden-xs">等级管理</span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a href="javascript:void(0);" onclick="toPage('/level/add','')">添加等级</a></li>
-						<li><a href="javascript:void(0);" onclick="toPage('/level/list','1')">等级列表</a></li>
-					</ul>
-				</li>
+					<c:if test="${um:permission('ADD_LEVEL', sessionScope.powers)||um:permission('LEVEL_LIST', sessionScope.powers)}">
+						<li class="dropdown">
+							<a href="javascript:void (0);" class="dropdown-toggle">
+								<i class="fa fa-table"></i>
+								<span class="hidden-xs">等级管理</span>
+							</a>
+							<ul class="dropdown-menu">
+								<c:if test="${um:permission('ADD_LEVEL', sessionScope.powers)}">
+									<li><a href="javascript:void(0);" onclick="toPage('/level/add','')">添加等级</a></li>
+								</c:if>
+								<c:if test="${um:permission('LEVEL_LIST', sessionScope.powers)}">
+									<li><a href="javascript:void(0);" onclick="toPage('/level/list','1')">等级列表</a></li>
+								</c:if>
+							</ul>
+						</li>
+					</c:if>
 
-				<li class="dropdown">
-					<a href="javascript:void (0);" class="dropdown-toggle">
-						<i class="fa fa-table"></i>
-						<span class="hidden-xs">会费管理</span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a href="javascript:void(0);" onclick="toPage('feiyong/add','')">会费添加</a></li>
-						<li><a href="javascript:void(0);" onclick="toPage('feiyong/list','1')">会费列表</a></li>
-					</ul>
-				</li>
+					<c:if test="${um:permission('ADD_FEIYONG', sessionScope.powers)||um:permission('FEIYONG_LIST', sessionScope.powers)}">
+						<li class="dropdown">
+							<a href="javascript:void (0);" class="dropdown-toggle">
+								<i class="fa fa-table"></i>
+								<span class="hidden-xs">会费管理</span>
+							</a>
+							<ul class="dropdown-menu">
+								<c:if test="${um:permission('ADD_FEIYONG', sessionScope.powers)}">
+									<li><a href="javascript:void(0);" onclick="toPage('feiyong/add','')">会费添加</a></li>
+								</c:if>
+								<c:if test="${um:permission('FEIYONG_LIST', sessionScope.powers)}">
+									<li><a href="javascript:void(0);" onclick="toPage('feiyong/list','1')">会费列表</a></li>
+								</c:if>
+							</ul>
+						</li>
+					</c:if>
 
-				<li class="dropdown">
-					<a href="javascript:void (0);" class="dropdown-toggle">
-						<i class="fa fa-table"></i>
-						<span class="hidden-xs">订单管理</span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a href="javascript:void(0);" onclick="toPage('order/list','1')">订单列表</a></li>
-					</ul>
-				</li>
+					<c:if test="${um:permission('ORDER_LIST', sessionScope.powers)}">
+						<li class="dropdown">
+							<a href="javascript:void (0);" class="dropdown-toggle">
+								<i class="fa fa-table"></i>
+								<span class="hidden-xs">订单管理</span>
+							</a>
+							<ul class="dropdown-menu">
+								<c:if test="${um:permission('ORDER_LIST', sessionScope.powers)}">
+									<li><a href="javascript:void(0);" onclick="toPage('order/list','1')">订单列表</a></li>
+								</c:if>
+							</ul>
+						</li>
+					</c:if>
 
 			</ul>
 		</div>
