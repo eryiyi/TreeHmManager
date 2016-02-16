@@ -1,13 +1,8 @@
 package com.liangxunwang.unimanager.mvc.admin;
 
-import com.liangxunwang.unimanager.model.Admin;
-import com.liangxunwang.unimanager.model.Children;
-import com.liangxunwang.unimanager.model.Level;
-import com.liangxunwang.unimanager.model.Role;
+import com.liangxunwang.unimanager.model.*;
 import com.liangxunwang.unimanager.mvc.vo.EmpVO;
-import com.liangxunwang.unimanager.query.EmpQuery;
-import com.liangxunwang.unimanager.query.LevelQuery;
-import com.liangxunwang.unimanager.query.MemberQuery;
+import com.liangxunwang.unimanager.query.*;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.Page;
@@ -38,6 +33,17 @@ public class EmpController extends ControllerConstants {
     @Autowired
     @Qualifier("levelService")
     private ListService levelService;
+
+    @Autowired
+    @Qualifier("provinceService")
+    private ListService provinceService;
+
+    @Autowired
+    @Qualifier("cityService")
+    private ListService cityService;
+    @Autowired
+    @Qualifier("countryService")
+    private ListService countryService;
 
 
     @Autowired
@@ -78,16 +84,44 @@ public class EmpController extends ControllerConstants {
         return "/emp/list";
     }
 
-
-
     @RequestMapping("/detail")
     public String updateType(ModelMap map, HttpSession session, String mm_emp_id){
+        //查看该会员信息
         EmpVO empVO = (EmpVO) empServiceExecute.execute(mm_emp_id);
         //vip星级
         LevelQuery query = new LevelQuery();
         List<Level> list = (List<Level>) levelService.list(query);
+        //查询省份
+        List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list("");
+        //查询地市
+        CityQuery cityQuery = new CityQuery();
+        cityQuery.setFather(empVO.getMm_emp_provinceId());
+        List<CityObj> listCitys = (List<CityObj>) cityService.list(cityQuery);
+        //查询县区
+        CountryQuery countryQuery = new CountryQuery();
+        countryQuery.setFather(empVO.getMm_emp_cityId());
+        List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);
         map.put("listLevels", list);
         map.put("empVO", empVO);
+        map.put("listProvinces", listProvinces);
+        map.put("listCitys", listCitys);
+        map.put("listsCountry", listsCountry);
+
         return "/emp/detail";
     }
+
+
+
+    //更改会员数据
+    @RequestMapping("/updateEmp")
+    @ResponseBody
+    public String updateEmp(Emp emp){
+        try {
+            empServiceUpdate.update(emp);
+            return toJSONString(SUCCESS);
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+        }
+    }
+
 }

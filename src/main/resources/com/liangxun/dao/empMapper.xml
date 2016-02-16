@@ -122,7 +122,36 @@
 
 
     <update id="update" parameterType="com.liangxunwang.unimanager.model.Emp">
-        UPDATE mm_emp SET mm_emp_nickname=#{mm_emp_nickname}, mm_emp_password=#{mm_emp_password}, mm_emp_type=#{mm_emp_type}  WHERE mm_emp_id=#{mm_emp_id}
+        UPDATE mm_emp SET mm_emp_nickname=#{mm_emp_nickname},
+        mm_emp_mobile=#{mm_emp_mobile},
+        mm_emp_password=#{mm_emp_password},
+        mm_emp_type=#{mm_emp_type},
+        mm_emp_company=#{mm_emp_company},
+        mm_emp_company_type=#{mm_emp_company_type},
+        mm_emp_company_address=#{mm_emp_company_address},
+        mm_emp_company_detail=#{mm_emp_company_detail},
+        mm_emp_provinceId=#{mm_emp_provinceId},
+        mm_emp_cityId=#{mm_emp_cityId},
+        mm_emp_ countryId=#{mm_emp_ countryId},
+        mm_emp_regtime=#{mm_emp_regtime},
+        mm_emp_endtime=#{mm_emp_endtime},
+        mm_level_id=#{mm_level_id},
+        mm_emp_beizhu=#{mm_emp_beizhu},
+        mm_emp_msg_num=#{mm_emp_msg_num},
+        is_login=#{is_login},
+        is_fabugongying=#{is_fabugongying},
+        is_fabuqiugou=#{is_fabuqiugou},
+        is_fabugongying_see=#{is_fabugongying_see},
+        is_fabuqiugou_see=#{is_fabuqiugou_see},
+        is_see_all=#{is_see_all},
+        is_pic=#{is_pic},
+        is_chengxin=#{is_chengxin},
+        is_miaomu=#{is_miaomu},
+        is_use=#{is_use},
+        lat=#{lat},
+        lng=#{lng},
+        ischeck=#{ischeck}
+        WHERE mm_emp_id=#{mm_emp_id}
     </update>
 
     <select id="findById" resultMap="emp_vo" parameterType="String">

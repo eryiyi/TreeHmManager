@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.CityDao">
+    <resultMap id="city" type="com.liangxunwang.unimanager.model.CityObj">
+        <id column="id" property="id"/>
+        <result column="cityID" property="cityID"/>
+        <result column="city" property="city"/>
+        <result column="father" property="father"/>
+    </resultMap>
+
+    <select id="lists" resultMap="city">
+        SELECT * from hat_city WHERE father=#{father}
+    </select>
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.CityObj">
+        INSERT INTO hat_city(id, cityID, city, father)
+        VALUES (#{id}, #{cityID}, #{city} , #{father})
+    </insert>
+
+
+</mapper>

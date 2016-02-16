@@ -19,8 +19,7 @@ public interface EmpDao {
     List<EmpVO> listMemberByName(Map<String, Object> map);
     long count(Map<String,Object> map);
 
-
-    //更新宝宝数据---最终一步
+    //更新会员数据
     void update(Emp emp);
 
     //根据用户ID查询用户信息

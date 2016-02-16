@@ -59,8 +59,8 @@ public class EmpService implements ListService , UpdateService , ExecuteService{
     @Override
     public Object update(Object object) {
         if (object instanceof Emp){
-            Emp member = (Emp) object;
-            empDao.update(member);
+            Emp emp = (Emp) object;
+            empDao.update(emp);
         }
         return null;
     }
