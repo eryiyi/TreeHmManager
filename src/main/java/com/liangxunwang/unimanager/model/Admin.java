@@ -1,7 +1,6 @@
 package com.liangxunwang.unimanager.model;
 
 /**
- * Created by liuzwei on 2015/1/29.
  */
 public class Admin {
     private String mm_manager_id;

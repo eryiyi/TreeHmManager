@@ -8,8 +8,8 @@
     </a>
     <ol class="breadcrumb pull-left">
       <li><a href="index.html">主页</a></li>
-      <li><a href="#">会员管理</a></li>
-      <li><a href="#">经营户列表</a></li>
+      <li><a href="#">管理员</a></li>
+      <li><a href="#">管理员列表</a></li>
     </ol>
     <div id="social" class="pull-right">
       <a href="#"><i class="fa fa-google-plus"></i></a>
@@ -27,7 +27,7 @@
       <div class="box-header">
         <div class="box-name ui-draggable-handle">
           <i class="fa fa-table"></i>
-          <span>经营户列表</span>
+          <span>管理员列表</span>
         </div>
         <div class="box-icons">
           <a class="collapse-link">
@@ -45,86 +45,36 @@
       <div class="box-content">
         <form class="form-inline">
           <div class="form-group">
-            <select class="form-control" id="ischeck">
-              <option value="">--选择审核状态--</option>
-              <option value="0" ${query.ischeck=='0'?'selected':''}>未审核</option>
-              <option value="1" ${query.ischeck=='1'?'selected':''}>已审核</option>
-              <option value="1" ${query.ischeck=='2'?'selected':''}>未通过</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <select class="form-control" id="mm_emp_type">
-              <option value="">--选择注册类型--</option>
-              <option value="0" ${query.mm_emp_type=='0'?'selected':''}>苗木经营</option>
-              <option value="1" ${query.mm_emp_type=='1'?'selected':''}>苗木会员</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <select class="form-control" id="mm_emp_company_type">
-              <option value="">--选择公司类型--</option>
-              <option value="0" ${query.mm_emp_company_type=='0'?'selected':''}>苗木</option>
-              <option value="1" ${query.mm_emp_company_type=='1'?'selected':''}>园林</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <select class="form-control" id="mm_level_id">
-              <option value="">--选择VIP星级--</option>
-              <c:forEach items="${listLevels}" var="e" varStatus="st">
-                <option value="${e.mm_level_id}" ${query.mm_level_id=='0'?'selected':''}>${e.mm_level_name}</option>
-              </c:forEach>
+            <select class="form-control" id="mm_manager_is_use">
+              <option value="">--是否禁用--</option>
+              <option value="0" ${query.mm_manager_is_use=='0'?'selected':''}>是</option>
+              <option value="1" ${query.mm_manager_is_use=='1'?'selected':''}>否</option>
             </select>
           </div>
 
           <button type="submit" onclick="searchOrder('1')" class="btn btn-default btn-sm">查找</button>
         </form>
-        <%--<p>For basic styling add the base class <code>.table</code> to any <code>&lt;table&gt;</code>.</p>--%>
+
         <table class="table">
           <thead>
           <tr>
             <th>姓名</th>
             <th>电话</th>
-            <th>用户类型</th>
-            <th>公司名称</th>
-            <th>公司类型</th>
-            <th>所属地区</th>
-            <th>诚信</th>
-            <th>协会</th>
-            <th>星级</th>
-            <th>到期时间</th>
-            <th>审核状态</th>
+            <th>是否禁用</th>
             <th>操作</th>
           </tr>
           </thead>
           <tbody>
           <c:forEach items="${list}" var="e" varStatus="st">
             <tr>
-              <td>${e.mm_emp_nickname}</td>
-              <td>${e.mm_emp_mobile}</td>
-              <td>${e.mm_emp_type}</td>
-              <td>${e.mm_emp_company}</td>
+              <td>${e.mm_manager_nickname}</td>
+              <td>${e.mm_manager_mobile}</td>
               <td>
-                <c:if test="${e.mm_emp_company_type=='0'}">苗木</c:if>
-                <c:if test="${e.mm_emp_company_type=='1'}">园林</c:if>
-              </td>
-              <td>${e.areaName}</td>
-              <td>
-                <c:if test="${e.is_chengxin=='0'}">否</c:if>
-                <c:if test="${e.is_chengxin=='1'}">是</c:if>
+                <c:if test="${e.mm_manager_is_use=='0'}">是</c:if>
+                <c:if test="${e.mm_manager_is_use=='1'}">否</c:if>
               </td>
               <td>
-                <c:if test="${e.is_miaomu=='0'}">否</c:if>
-                <c:if test="${e.is_miaomu=='1'}">是</c:if>
-              </td>
-              <td>${e.levelName}</td>
-              <td>${e.mm_emp_endtime}</td>
-              <td>
-                <c:if test="${e.ischeck=='0'}">未审核</c:if>
-                <c:if test="${e.ischeck=='1'}">已审核</c:if>
-                <c:if test="${e.ischeck=='2'}">未通过</c:if>
-              </td>
-              <td>
-                <a class="btn btn-default btn-sm" href="#module=/order/detail&id=${e.mm_emp_id}" role="button">编辑</a>
+                <a class="btn btn-default btn-sm" href="#module=/order/detail&id=${e.mm_manager_id}" role="button">管理</a>
               </td>
             </tr>
           </c:forEach>
@@ -175,15 +125,9 @@
     if(e.keyCode != 13) return;
     var _index = $("#index").val();
     var size = getCookie("contract_size");
-    var mm_emp_type = $("#mm_emp_type").val();
-    var mm_emp_company_type = $("#mm_emp_company_type").val();
-    var mm_level_id = $("#mm_level_id").val();
-    var ischeck = $("#ischeck").val();
+    var mm_manager_is_use = $("#mm_manager_is_use").val();
     if(_index <= ${page.pageCount} && _index >= 1){
-      window.location.href="#module=/emp/list&page="+page+"&size="+size+"&mm_emp_type="+mm_emp_type
-      +"&mm_emp_company_type="+mm_emp_company_type
-      +"&mm_level_id="+mm_level_id
-      +"&ischeck="+ischeck;
+      window.location.href="#module=/admin/list&page="+page+"&size="+size+"&mm_manager_is_use="+mm_manager_is_use;
     }else{
       alert("请输入1-${page.pageCount}的页码数");
     }
@@ -191,17 +135,10 @@
   function nextPage(_page) {
     var page = parseInt(_page);
     var size = $("#size").val();
-    var mm_emp_type = $("#mm_emp_type").val();
-    var mm_emp_company_type = $("#mm_emp_company_type").val();
-    var mm_level_id = $("#mm_level_id").val();
-    var ischeck = $("#ischeck").val();
+    var mm_manager_is_use = $("#mm_manager_is_use").val();
     addCookie("contract_size", size, 36);
     if ((page <= ${page.pageCount} && page >= 1)) {
-      window.location.href="#module=/emp/list&page="+page+"&size="+size
-      +"&mm_emp_type="+mm_emp_type
-      +"&mm_emp_company_type="+mm_emp_company_type
-      +"&mm_level_id="+mm_level_id
-      +"&ischeck="+ischeck;
+      window.location.href="#module=/admin/list&page="+page+"&size="+size+"&mm_manager_is_use="+mm_manager_is_use;
     } else {
       alert("请输入1-${page.pageCount}的页码数");
     }
@@ -210,17 +147,10 @@
   function searchOrder(_page){
     var page = parseInt(_page);
     var size = $("#size").val();
-    var mm_emp_type = $("#mm_emp_type").val();
-    var mm_emp_company_type = $("#mm_emp_company_type").val();
-    var mm_level_id = $("#mm_level_id").val();
-    var ischeck = $("#ischeck").val();
+    var mm_manager_is_use = $("#mm_manager_is_use").val();
     addCookie("contract_size", size, 36);
     if ((page <= ${page.pageCount} && page >= 1)) {
-      window.location.href="#module=/emp/list&page="+page+"&size="+size
-      +"&mm_emp_type="+mm_emp_type
-      +"&mm_emp_company_type="+mm_emp_company_type
-      +"&mm_level_id="+mm_level_id
-      +"&ischeck="+ischeck;
+      window.location.href="#module=/admin/list&page="+page+"&size="+size+"&mm_manager_is_use="+mm_manager_is_use;
     } else {
       alert("请输入1-${page.pageCount}的页码数");
     }

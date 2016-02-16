@@ -30,7 +30,7 @@ public class LogoService implements ListService {
     public Object list(Object object) throws ServiceException {
         LogoQuery query = (LogoQuery) object;
         Map<String, Object> map = new HashMap<String, Object>();
-        int index = ((query.getIndex() - 1) * query.getSize()) + 1;
+        int index = (query.getIndex() - 1) * query.getSize();
         int size = query.getIndex() * query.getSize();
 
         map.put("index", index);

@@ -4,6 +4,9 @@
         <permission id="LIST_ROLE" name="角色列表"/>
         <permission id="ADD_ROLE" name="添加角色"/>
     </group>
+    <group id="MANAGER_MANAGE" name="管理员">
+        <permission id="MANAGER_LIST_MANAGE" name="管理员列表"/>
+    </group>
     <group id="EMPLOYEE_MANAGE" name="会员管理">
         <permission id="LIST_EMPLOYEE_JY" name="经营户"/>
         <permission id="LIST_EMPLOYEE_EMP" name="会员"/>

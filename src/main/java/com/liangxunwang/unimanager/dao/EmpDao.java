@@ -1,7 +1,6 @@
 package com.liangxunwang.unimanager.dao;
 
 import com.liangxunwang.unimanager.model.Emp;
-import com.liangxunwang.unimanager.model.Member;
 import com.liangxunwang.unimanager.mvc.vo.EmpVO;
 import org.springframework.stereotype.Repository;
 

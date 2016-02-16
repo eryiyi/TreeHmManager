@@ -33,4 +33,23 @@
         UPDATE mm_manager SET mm_manager_password=#{pass} WHERE mm_manager_id=#{id}
     </update>
 
+
+    <select id="lists" resultMap="my_admin">
+        SELECT sn.* from mm_manager sn
+        WHERE 1=1
+        <if test="mm_manager_is_use != null and mm_manager_is_use != ''">
+            AND sn.mm_manager_is_use = #{mm_manager_is_use}
+        </if>
+        limit #{index},#{size}
+    </select>
+
+    <select id="count" resultType="Long">
+        SELECT count(sn.mm_manager_id) FROM mm_manager sn
+        WHERE 1=1
+        <if test="mm_manager_is_use != null and mm_manager_is_use != ''">
+            AND sn.mm_manager_is_use = #{mm_manager_is_use}
+        </if>
+    </select>
+
+
 </mapper>

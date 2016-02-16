@@ -51,11 +51,15 @@ public class AdminLoginController extends ControllerConstants {
             if (msg.equals("USERNAME_ERROR")){
                 return toJSONString(ERROR_3);
             }
+            if(msg.equals("QUANXIAN_ERROR")) {
+                return toJSONString(ERROR_6);
+            }
             if (msg.equals("PASSWORD_ERROR")){
                 return toJSONString(ERROR_4);
             }else {
                 return toJSONString(ERROR_5);
             }
+
         }
     }
 }

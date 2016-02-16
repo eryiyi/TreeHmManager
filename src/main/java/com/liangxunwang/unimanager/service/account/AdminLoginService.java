@@ -37,6 +37,9 @@ public class AdminLoginService implements ExecuteService {
         if (!admin.getMm_manager_password().equals(password)){
             throw new ServiceException("PASSWORD_ERROR");
         }
+        if (admin.getMm_manager_is_use().equals("0")){
+            throw new ServiceException("QUANXIAN_ERROR");
+        }
         String permission = null;
         if ("all".equals(admin.getPermissions())){
             permission = "all";

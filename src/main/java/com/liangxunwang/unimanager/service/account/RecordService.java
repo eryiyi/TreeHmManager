@@ -1,8 +1,6 @@
 package com.liangxunwang.unimanager.service.account;
 
-import com.liangxunwang.unimanager.dao.MemberDao;
 import com.liangxunwang.unimanager.dao.RecordDao;
-import com.liangxunwang.unimanager.model.Member;
 import com.liangxunwang.unimanager.mvc.vo.EmpVO;
 import com.liangxunwang.unimanager.mvc.vo.RecordVO;
 import com.liangxunwang.unimanager.query.EmpQuery;
@@ -33,7 +31,7 @@ public class RecordService implements ListService {
     public Object list(Object object) throws ServiceException {
         RecordQuery query = (RecordQuery) object;
         Map<String, Object> map = new HashMap<String, Object>();
-        int index = ((query.getIndex() - 1) * query.getSize()) + 1;
+        int index = (query.getIndex() - 1) * query.getSize();
         int size = query.getIndex() * query.getSize();
 
         map.put("index", index);

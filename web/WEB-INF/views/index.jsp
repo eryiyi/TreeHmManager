@@ -135,6 +135,19 @@
 						</ul>
 					</li>
 				</c:if>
+				<c:if test="${um:permission('MANAGER_LIST_MANAGE', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="javascript:void (0);" class="dropdown-toggle">
+							<i class="fa fa-table"></i>
+							<span class="hidden-xs">管理员</span>
+						</a>
+						<ul class="dropdown-menu">
+							<c:if test="${um:permission('MANAGER_LIST_MANAGE', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('/admin/list','1')">管理员列表</a></li>
+							</c:if>
+						</ul>
+					</li>
+				</c:if>
 
 				<c:if test="${um:permission('LIST_EMPLOYEE_JY', sessionScope.powers)||um:permission('LIST_EMPLOYEE_EMP', sessionScope.powers)}">
 					<li class="dropdown">
