@@ -34,4 +34,11 @@ public interface AdminDao {
     List<Admin> lists(Map<String, Object> map);
     long count(Map<String,Object> map);
 
+    Admin findById(String id);
+    /**
+     * 根据ID修改状态
+     * @param id
+     * @param pass
+     */
+    void updateStatus(@Param(value = "mm_manager_id")String id, @Param(value = "mm_manager_is_use") String pass);
 }

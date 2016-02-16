@@ -46,9 +46,9 @@
         <form class="form-inline">
           <div class="form-group">
             <select class="form-control" id="mm_manager_is_use">
-              <option value="">--是否禁用--</option>
-              <option value="0" ${query.mm_manager_is_use=='0'?'selected':''}>是</option>
-              <option value="1" ${query.mm_manager_is_use=='1'?'selected':''}>否</option>
+              <option value="">--选择用户状态--</option>
+              <option value="0" ${query.mm_manager_is_use=='0'?'selected':''}>禁用</option>
+              <option value="1" ${query.mm_manager_is_use=='1'?'selected':''}>启用</option>
             </select>
           </div>
 
@@ -60,7 +60,7 @@
           <tr>
             <th>姓名</th>
             <th>电话</th>
-            <th>是否禁用</th>
+            <th>状态</th>
             <th>操作</th>
           </tr>
           </thead>
@@ -70,11 +70,11 @@
               <td>${e.mm_manager_nickname}</td>
               <td>${e.mm_manager_mobile}</td>
               <td>
-                <c:if test="${e.mm_manager_is_use=='0'}">是</c:if>
-                <c:if test="${e.mm_manager_is_use=='1'}">否</c:if>
+                <c:if test="${e.mm_manager_is_use=='0'}">禁用</c:if>
+                <c:if test="${e.mm_manager_is_use=='1'}">启用</c:if>
               </td>
               <td>
-                <a class="btn btn-default btn-sm" href="#module=/order/detail&id=${e.mm_manager_id}" role="button">管理</a>
+                <a class="btn btn-default btn-sm" href="#module=/admin/detail&id=${e.mm_manager_id}" role="button">管理</a>
               </td>
             </tr>
           </c:forEach>

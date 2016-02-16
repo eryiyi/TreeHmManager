@@ -2,7 +2,6 @@ package com.liangxunwang.unimanager.mvc.admin;
 
 import com.liangxunwang.unimanager.model.FeiyongObj;
 import com.liangxunwang.unimanager.model.Level;
-import com.liangxunwang.unimanager.model.Member;
 import com.liangxunwang.unimanager.query.LevelQuery;
 import com.liangxunwang.unimanager.query.MemberQuery;
 import com.liangxunwang.unimanager.service.*;

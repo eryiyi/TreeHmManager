@@ -1,6 +1,5 @@
 package com.liangxunwang.unimanager.mvc.admin;
 
-import com.liangxunwang.unimanager.model.Member;
 import com.liangxunwang.unimanager.mvc.vo.LogoVO;
 import com.liangxunwang.unimanager.query.LogoQuery;
 import com.liangxunwang.unimanager.query.MemberQuery;

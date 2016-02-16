@@ -1,13 +1,14 @@
 package com.liangxunwang.unimanager.mvc.admin;
 
+import com.liangxunwang.unimanager.model.Admin;
 import com.liangxunwang.unimanager.model.Children;
 import com.liangxunwang.unimanager.model.Level;
+import com.liangxunwang.unimanager.model.Role;
+import com.liangxunwang.unimanager.mvc.vo.EmpVO;
 import com.liangxunwang.unimanager.query.EmpQuery;
 import com.liangxunwang.unimanager.query.LevelQuery;
 import com.liangxunwang.unimanager.query.MemberQuery;
-import com.liangxunwang.unimanager.service.DeleteService;
-import com.liangxunwang.unimanager.service.ListService;
-import com.liangxunwang.unimanager.service.SaveService;
+import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +31,18 @@ public class EmpController extends ControllerConstants {
     @Qualifier("empService")
     private ListService empServiceList;
 
-
+    @Autowired
+    @Qualifier("empService")
+    private UpdateService empServiceUpdate;
 
     @Autowired
     @Qualifier("levelService")
     private ListService levelService;
+
+
+    @Autowired
+    @Qualifier("empService")
+    private ExecuteService empServiceExecute;
 
     @RequestMapping("list")
     public String list(HttpSession session,ModelMap map, EmpQuery query, Page page){
@@ -70,4 +78,16 @@ public class EmpController extends ControllerConstants {
         return "/emp/list";
     }
 
+
+
+    @RequestMapping("/detail")
+    public String updateType(ModelMap map, HttpSession session, String mm_emp_id){
+        EmpVO empVO = (EmpVO) empServiceExecute.execute(mm_emp_id);
+        //vip星级
+        LevelQuery query = new LevelQuery();
+        List<Level> list = (List<Level>) levelService.list(query);
+        map.put("listLevels", list);
+        map.put("empVO", empVO);
+        return "/emp/detail";
+    }
 }

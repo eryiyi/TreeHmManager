@@ -47,7 +47,6 @@
         <table class="table">
           <thead>
           <tr>
-            <th>等级ID</th>
             <th>等级名称</th>
             <th>等级描述</th>
             <th>操作</th>
@@ -57,7 +56,6 @@
           <tbody>
           <c:forEach items="${list}" var="e" varStatus="st">
             <tr>
-              <td>${e.mm_level_id}</td>
               <td>${e.mm_level_name}</td>
               <td>${e.mm_level_cont}</td>
               <td>

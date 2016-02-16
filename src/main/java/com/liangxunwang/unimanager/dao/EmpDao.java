@@ -22,4 +22,7 @@ public interface EmpDao {
 
     //更新宝宝数据---最终一步
     void update(Emp emp);
+
+    //根据用户ID查询用户信息
+    EmpVO findById(String mm_emp_id);
 }

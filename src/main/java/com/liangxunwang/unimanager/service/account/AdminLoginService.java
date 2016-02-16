@@ -20,6 +20,7 @@ public class AdminLoginService implements ExecuteService {
     @Autowired
     @Qualifier("adminDao")
     private AdminDao adminDao;
+
     @Autowired
     @Qualifier("roleDao")
     private RoleDao roleDao;

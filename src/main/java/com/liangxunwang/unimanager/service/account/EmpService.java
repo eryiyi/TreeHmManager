@@ -5,6 +5,7 @@ import com.liangxunwang.unimanager.model.Emp;
 import com.liangxunwang.unimanager.mvc.vo.EmpVO;
 import com.liangxunwang.unimanager.query.EmpQuery;
 import com.liangxunwang.unimanager.query.MemberQuery;
+import com.liangxunwang.unimanager.service.ExecuteService;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.ServiceException;
 import com.liangxunwang.unimanager.service.UpdateService;
@@ -20,7 +21,7 @@ import java.util.Map;
 /**
  */
 @Service("empService")
-public class EmpService implements ListService , UpdateService{
+public class EmpService implements ListService , UpdateService , ExecuteService{
     @Autowired
     @Qualifier("empDao")
     private EmpDao empDao;
@@ -51,6 +52,7 @@ public class EmpService implements ListService , UpdateService{
         List<EmpVO> lists = empDao.listMemberByName(map);
         long count = empDao.count(map);
 
+
         return new Object[]{lists, count};
     }
 
@@ -63,4 +65,11 @@ public class EmpService implements ListService , UpdateService{
         return null;
     }
 
+    @Override
+    public Object execute(Object object) throws ServiceException {
+        String id = (String) object;
+        EmpVO empVO = empDao.findById(id);
+
+        return empVO;
+    }
 }

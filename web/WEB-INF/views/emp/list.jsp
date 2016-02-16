@@ -107,7 +107,7 @@
                 <c:if test="${e.mm_emp_company_type=='0'}">苗木</c:if>
                 <c:if test="${e.mm_emp_company_type=='1'}">园林</c:if>
               </td>
-              <td>${e.areaName}</td>
+              <td>${e.provinceName}${e.cityName}${e.areaName}</td>
               <td>
                 <c:if test="${e.is_chengxin=='0'}">否</c:if>
                 <c:if test="${e.is_chengxin=='1'}">是</c:if>
@@ -124,7 +124,7 @@
                 <c:if test="${e.ischeck=='2'}">未通过</c:if>
               </td>
               <td>
-                <a class="btn btn-default btn-sm" href="#module=/order/detail&id=${e.mm_emp_id}" role="button">编辑</a>
+                <a class="btn btn-default btn-sm" href="#module=/emp/detail&mm_emp_id=${e.mm_emp_id}" role="button">编辑</a>
               </td>
             </tr>
           </c:forEach>

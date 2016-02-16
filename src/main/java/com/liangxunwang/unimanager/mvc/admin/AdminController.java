@@ -1,6 +1,7 @@
 package com.liangxunwang.unimanager.mvc.admin;
 
 import com.liangxunwang.unimanager.model.Admin;
+import com.liangxunwang.unimanager.model.FeiyongObj;
 import com.liangxunwang.unimanager.model.Level;
 import com.liangxunwang.unimanager.query.AdminQuery;
 import com.liangxunwang.unimanager.query.EmpQuery;
@@ -39,23 +40,13 @@ public class AdminController extends ControllerConstants {
     /**
      * �޸�����
      * @param session
-     * @param ePass ԭ����
-     * @param pass  ������
      * @return
      */
     @RequestMapping("/changePass")
     @ResponseBody
-    public String changePass(HttpSession session, String ePass, String pass){
+    public String changePass(HttpSession session, String mm_manager_password, String mm_manager_id){
         try {
-            Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
-            if (manager == null){
-                return toJSONString(ERROR_2);//û�е�¼
-            }
-            //���ԭ��������֤��ͨ�����ø���
-            if (!manager.getMm_manager_password().equals(ePass)){
-                return toJSONString(ERROR_3);
-            }
-            Object[] params = new Object[]{manager.getMm_manager_id(), pass};
+            Object[] params = new Object[]{mm_manager_id, mm_manager_password};
             adminExecuteService.execute(params);
             session.removeAttribute(ACCOUNT_KEY);
             return toJSONString(SUCCESS);
@@ -82,4 +73,5 @@ public class AdminController extends ControllerConstants {
         map.addAttribute("query", query);
         return "/admin/list";
     }
+
 }

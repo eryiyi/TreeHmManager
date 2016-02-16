@@ -47,7 +47,6 @@
         <table class="table">
           <thead>
           <tr>
-            <th>费用ID</th>
             <th>费用名称</th>
             <th>费用金额</th>
             <th>操作</th>
@@ -57,7 +56,6 @@
           <tbody>
           <c:forEach items="${list}" var="e" varStatus="st">
             <tr>
-              <td>${e.mm_feiyong_id}</td>
               <td>${e.mm_feiyong_name}</td>
               <td>${e.mm_feiyong_jine}</td>
               <td>

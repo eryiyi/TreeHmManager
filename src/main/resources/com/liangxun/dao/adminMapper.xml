@@ -12,6 +12,10 @@
         <result column="permissions" property="permissions"/>
     </resultMap>
 
+    <select id="findById" resultMap="my_admin" parameterType="String">
+        SELECT * from mm_manager WHERE mm_manager_id=#{mm_manager_id}
+    </select>
+
     <select id="findByUsername" resultMap="my_admin" parameterType="String">
         SELECT * from mm_manager WHERE mm_manager_mobile=#{mm_manager_mobile}
     </select>
@@ -31,6 +35,10 @@
 
     <update id="updatePass" parameterType="String">
         UPDATE mm_manager SET mm_manager_password=#{pass} WHERE mm_manager_id=#{id}
+    </update>
+
+    <update id="updateStatus" parameterType="String">
+        UPDATE mm_manager SET mm_manager_is_use=#{mm_manager_is_use} WHERE mm_manager_id=#{mm_manager_id}
     </update>
 
 

@@ -125,6 +125,8 @@
         UPDATE mm_emp SET mm_emp_nickname=#{mm_emp_nickname}, mm_emp_password=#{mm_emp_password}, mm_emp_type=#{mm_emp_type}  WHERE mm_emp_id=#{mm_emp_id}
     </update>
 
-
+    <select id="findById" resultMap="emp_vo" parameterType="String">
+        SELECT * from mm_emp WHERE mm_emp_id=#{mm_emp_id}
+    </select>
 
 </mapper>
