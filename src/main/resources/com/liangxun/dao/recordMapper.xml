@@ -33,6 +33,7 @@
         <result column="mm_emp_mobile" property="mm_emp_mobile"/>
         <result column="mm_emp_nickname" property="mm_emp_nickname"/>
         <result column="mm_emp_type" property="mm_emp_type"/>
+        <result column="mm_emp_cover" property="mm_emp_cover"/>
         <result column="mm_emp_company_type" property="mm_emp_company_type"/>
         <result column="mm_emp_company" property="mm_emp_company"/>
         <result column="mm_level_id" property="mm_level_id"/>
@@ -41,7 +42,7 @@
     </resultMap>
 
     <select id="listRecordVo" resultMap="record_vo">
-        SELECT sn.* ,lemp.mm_emp_mobile as mm_emp_mobile, lemp.mm_emp_nickname as mm_emp_nickname, lemp.mm_emp_type as mm_emp_type, lemp.mm_emp_company_type as mm_emp_company_type
+        SELECT sn.* ,lemp.mm_emp_mobile as mm_emp_mobile, lemp.mm_emp_nickname as mm_emp_nickname, lemp.mm_emp_type as mm_emp_type,lemp.mm_emp_cover as mm_emp_cover, lemp.mm_emp_company_type as mm_emp_company_type
         , lemp.mm_emp_company as mm_emp_company, lemp.mm_level_id as mm_level_id, lemp.is_chengxin as is_chengxin , lemp.is_miaomu as is_miaomu  from mm_msg sn
         LEFT JOIN mm_emp lemp ON sn.mm_emp_id=lemp.mm_emp_id
         WHERE 1=1
@@ -50,6 +51,9 @@
         </if>
         <if test="provinceid != null and provinceid != ''">
         AND sn.provinceid = #{provinceid}
+        </if>
+        <if test="cityid != null and cityid != ''">
+        AND sn.cityid = #{cityid}
         </if>
         <if test="countryid != null and countryid != ''">
         AND sn.countryid = #{countryid}
@@ -68,9 +72,30 @@
         <if test="provinceid != null and provinceid != ''">
             AND sn.provinceid = #{provinceid}
         </if>
+        <if test="cityid != null and cityid != ''">
+            AND sn.cityid = #{cityid}
+        </if>
         <if test="countryid != null and countryid != ''">
             AND sn.countryid = #{countryid}
         </if>
     </select>
 
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.Record">
+        INSERT INTO mm_msg(mm_msg_id, mm_emp_id, mm_msg_type, mm_msg_content, mm_msg_picurl, dateline,is_del, is_top, top_num, provinceid, cityid, countryid)
+        VALUES (#{mm_msg_id}, #{mm_emp_id}, #{mm_msg_type}, #{mm_msg_content, jdbcType=VARCHAR}, #{mm_msg_picurl, jdbcType=VARCHAR}, #{dateline}, #{is_del}, #{is_top}, #{top_num}, #{provinceid}, #{cityid}, #{countryid})
+    </insert>
+
+    <select id="findById" resultMap="record_vo" parameterType="String">
+        SELECT sn.* ,lemp.mm_emp_mobile as mm_emp_mobile, lemp.mm_emp_nickname as mm_emp_nickname, lemp.mm_emp_type as mm_emp_type,lemp.mm_emp_cover as mm_emp_cover, lemp.mm_emp_company_type as mm_emp_company_type
+        , lemp.mm_emp_company as mm_emp_company, lemp.mm_level_id as mm_level_id, lemp.is_chengxin as is_chengxin , lemp.is_miaomu as is_miaomu  from mm_msg sn
+        LEFT JOIN mm_emp lemp ON sn.mm_emp_id=lemp.mm_emp_id
+        WHERE 1=1
+        <if test="mm_msg_id != null and mm_msg_id != ''">
+            AND sn.mm_msg_id = #{id}
+        </if>
+    </select>
+
+    <delete id="deleteById" parameterType="String">
+        DELETE FROM mm_msg WHERE mm_msg_id=#{id}
+    </delete>
 </mapper>

@@ -5,14 +5,14 @@ package com.liangxunwang.unimanager.util;
  */
 public class Constants {
 //        public static final String URL = "http://61.156.40.154:7777/";
-                public static final String URL = "http://192.168.1.107:8080/";
+                public static final String URL = "http://192.168.1.100:8080/";
 
-        public static final String QINIU_URL = "http://7xlyf1.com2.z0.glb.qiniucdn.com/";
+        public static final String QINIU_URL = "http://7xqzj9.com1.z0.glb.clouddn.com/";
 //    public static final String URL = "http://192.168.1.105:8080/";
-        public static final String FFMPEG = "D:/ffmpeg/ffmpeg.exe";
+//        public static final String FFMPEG = "D:/ffmpeg/ffmpeg.exe";
 
-        public static final String QINIU_SPACE = "paopao-pic";
-        public static final String COVER_DEFAULT = "PIC";
+        public static final String QINIU_SPACE = "hmmm-pic";
+        public static final String COVER_DEFAULT = "tree_user_profile.png";
         public static final String FILE_PATH = "D://recordfile";
 
         public static final String API_KEY = "3aGjhyGfpiAdYkpO0Y8wvtBQ";
@@ -41,132 +41,6 @@ public class Constants {
 
 
         public static final String SMS_MESSAGE_URL = "http://60.209.7.78:8080/smsServer/submit";
-
-
-        public static final String[] PHOTOURLS = {
-                "upload/pic1.jpg",
-                "upload/pic2.jpg",
-                "upload/pic3.jpg",
-                "upload/pic4.jpg",
-                "upload/pic5.jpg",
-                "upload/pic6.jpg",
-                "upload/pic7.jpg",
-                "upload/pic8.jpg",
-                "upload/pic9.jpg",
-                "upload/pic10.jpg",
-                "upload/pic11.jpg",
-                "upload/pic12.jpg",
-                "upload/pic13.jpg",
-                "upload/pic14.jpg",
-                "upload/pic15.jpg",
-                "upload/pic16.jpg",
-                "upload/pic17.jpg",
-                "upload/pic18.jpg",
-                "upload/pic19.jpg",
-                "upload/pic20.jpg",
-                "upload/pic21.jpg",
-                "upload/pic22.jpg",
-                "upload/pic23.jpg",
-                "upload/pic24.jpg",
-                "upload/pic25.jpg",
-                "upload/pic26.jpg",
-                "upload/pic27.jpg",
-                "upload/pic28.jpg",
-                "upload/pic29.jpg",
-                "upload/pic30.jpg",
-                "upload/pic31.jpg",
-                "upload/pic32.jpg",
-                "upload/pic33.jpg",
-                "upload/pic34.jpg",
-                "upload/pic35.jpg",
-                "upload/pic36.jpg",
-                "upload/pic37.jpg",
-                "upload/pic38.jpg",
-                "upload/pic39.jpg",
-                "upload/pic40.jpg",
-                "upload/pic41.jpg",
-                "upload/pic42.jpg",
-                "upload/pic43.jpg",
-                "upload/pic44.jpg",
-                "upload/pic45.jpg",
-                "upload/pic46.jpg",
-                "upload/pic47.jpg",
-                "upload/pic48.jpg",
-                "upload/pic49.jpg",
-                "upload/pic50.jpg",
-                "upload/pic51.jpg",
-                "upload/pic52.jpg",
-                "upload/pic53.jpg",
-                "upload/pic54.jpg",
-                "upload/pic55.jpg",
-                "upload/pic56.jpg",
-                "upload/pic57.jpg",
-                "upload/pic58.jpg",
-                "upload/pic59.jpg",
-                "upload/pic60.jpg",
-                "upload/pic61.jpg",
-                "upload/pic62.jpg",
-                "upload/pic63.jpg",
-                "upload/pic64.jpg",
-                "upload/pic65.jpg",
-                "upload/pic66.jpg",
-                "upload/pic67.jpg",
-                "upload/pic68.jpg",
-                "upload/pic69.jpg",
-                "upload/pic70.jpg",
-                "upload/pic71.jpg",
-                "upload/pic72.jpg",
-                "upload/pic73.jpg",
-                "upload/pic74.jpg",
-                "upload/pic75.jpg",
-                "upload/pic76.jpg",
-                "upload/pic77.jpg",
-                "upload/pic78.jpg",
-                "upload/pic79.jpg",
-                "upload/pic80.jpg",
-                "upload/pic81.jpg",
-                "upload/pic82.jpg",
-                "upload/pic83.jpg",
-                "upload/pic84.jpg",
-                "upload/pic85.jpg",
-                "upload/pic86.jpg",
-                "upload/pic87.jpg",
-                "upload/pic88.jpg",
-                "upload/pic89.jpg",
-                "upload/pic90.jpg",
-                "upload/pic91.jpg",
-                "upload/pic92.jpg",
-                "upload/pic93.jpg",
-                "upload/pic94.jpg",
-                "upload/pic95.jpg",
-                "upload/pic96.jpg",
-                "upload/pic97.jpg",
-                "upload/pic98.jpg",
-                "upload/pic99.jpg",
-                "upload/pic100.jpg",
-                "upload/pic101.jpg",
-                "upload/pic102.jpg",
-                "upload/pic103.jpg",
-                "upload/pic104.jpg",
-                "upload/pic105.jpg",
-                "upload/pic106.jpg",
-                "upload/pic107.jpg",
-                "upload/pic108.jpg",
-                "upload/pic109.jpg",
-                "upload/pic110.jpg",
-                "upload/pic111.jpg",
-                "upload/pic112.jpg",
-                "upload/pic113.jpg",
-                "upload/pic114.jpg",
-                "upload/pic115.jpg",
-                "upload/pic116.jpg",
-                "upload/pic117.jpg",
-                "upload/pic118.jpg",
-                "upload/pic119.jpg",
-                "upload/pic120.jpg",
-                "upload/pic121.jpg",
-                "upload/pic122.jpg"
-        };
 
         public static final Long DAY_MILLISECOND = 86400000L;
 

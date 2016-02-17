@@ -12,8 +12,8 @@ import java.lang.reflect.Type;
 
 public class ControllerConstants {
 
-    public static final String QINIU_AK = "-8JSSLAPm_UqUj_SDveCbMbZTwAE_nk43J0Z6Yw7";
-    public static final String QINIU_SK = "ttJAuxzGU2QOG8MGdnVXBVqPEDYl_6HnzAx3ao1i";
+    public static final String QINIU_AK = "BlO03oIsOtiABwi5ir7uN6Sltkj1g_wdiDKJQnXO";
+    public static final String QINIU_SK = "l4yRw7Jvo3jZQCBoKBHKKzVKa743u_wfXw5ljf8s";
 
     public static final String ACCOUNT_KEY = "account";
     public static final String PERMISSIONS = "powers";

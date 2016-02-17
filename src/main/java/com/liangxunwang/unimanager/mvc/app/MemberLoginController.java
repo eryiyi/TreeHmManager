@@ -70,7 +70,6 @@ public class MemberLoginController extends ControllerConstants {
                 accessToken.setAccess_token(UUIDFactory.random());//随机生成一个 accseeToken
                 appAccessTokenServiceSave.save(accessToken);
             }
-
             //获得accesstoken
             member.setAccess_token(accessToken.getAccess_token());
         }catch (ServiceException e){

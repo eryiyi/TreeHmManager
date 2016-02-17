@@ -29,6 +29,11 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/getCountry\\.do$)"+
                         "|(^/getProvince\\.do$)"+
                         "|(^/memberRegister\\.do$)"+
+                        "|(^/recordList\\.do$)"+
+                        "|(^/sendRecord\\.do$)"+
+                        "|(^/getRecordById\\.do$)"+
+                        "|(^/viewRecord\\.do$)"+
+
                         "|(^/memberLogin\\.do$)"
 
         ) || account != null) {

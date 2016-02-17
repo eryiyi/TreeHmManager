@@ -9,12 +9,20 @@ public class RecordVO extends Record {
     private String mm_emp_mobile;
     private String mm_emp_nickname;
     private String mm_emp_type;
-
+    private String mm_emp_cover;
     private String mm_emp_company_type;
     private String mm_emp_company;
     private String mm_level_id;
     private String is_chengxin;
     private String is_miaomu;
+
+    public String getMm_emp_cover() {
+        return mm_emp_cover;
+    }
+
+    public void setMm_emp_cover(String mm_emp_cover) {
+        this.mm_emp_cover = mm_emp_cover;
+    }
 
     public String getIs_chengxin() {
         return is_chengxin;
