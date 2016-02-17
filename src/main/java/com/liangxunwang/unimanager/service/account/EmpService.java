@@ -69,7 +69,6 @@ public class EmpService implements ListService , UpdateService , ExecuteService{
     public Object execute(Object object) throws ServiceException {
         String id = (String) object;
         EmpVO empVO = empDao.findById(id);
-
         return empVO;
     }
 }

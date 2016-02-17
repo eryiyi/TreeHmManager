@@ -8,6 +8,7 @@ public class Emp {
     private String mm_emp_mobile;
     private String mm_emp_nickname;
     private String mm_emp_password;
+    private String mm_emp_cover;
     private String mm_emp_type;
     private String mm_emp_company;
     private String mm_emp_company_type;
@@ -34,6 +35,23 @@ public class Emp {
     private String lat;
     private String lng;
     private String ischeck;
+    private String access_token;
+
+    public String getAccess_token() {
+        return access_token;
+    }
+
+    public void setAccess_token(String access_token) {
+        this.access_token = access_token;
+    }
+
+    public String getMm_emp_cover() {
+        return mm_emp_cover;
+    }
+
+    public void setMm_emp_cover(String mm_emp_cover) {
+        this.mm_emp_cover = mm_emp_cover;
+    }
 
     public String getIscheck() {
         return ischeck;

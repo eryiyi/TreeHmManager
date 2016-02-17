@@ -24,7 +24,12 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
         if(uri.matches("(^/$)|(^/index\\.do$)|(^/adminLogin\\.do$)|(^/logout\\.do$)" +
                         "|(^/uploadImage\\.do$)" +
                         "|(^/uploadUnCompressImage\\.do$)" +
-                        "|(^/recordList\\.do$)"
+                        "|(^/getMemberInfoById\\.do$)"+
+                        "|(^/getCity\\.do$)"+
+                        "|(^/getCountry\\.do$)"+
+                        "|(^/getProvince\\.do$)"+
+                        "|(^/memberRegister\\.do$)"+
+                        "|(^/memberLogin\\.do$)"
 
         ) || account != null) {
             return true;

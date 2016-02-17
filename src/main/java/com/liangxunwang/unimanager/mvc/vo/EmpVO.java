@@ -11,6 +11,7 @@ public class EmpVO extends Emp{
     private String cityName;
     private String areaName;
 
+
     public String getLevelName() {
         return levelName;
     }

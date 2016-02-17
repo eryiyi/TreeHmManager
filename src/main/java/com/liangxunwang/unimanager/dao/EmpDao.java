@@ -24,4 +24,15 @@ public interface EmpDao {
 
     //根据用户ID查询用户信息
     EmpVO findById(String mm_emp_id);
+
+    /**
+     * 根据手机号查找会员
+     * @param mm_emp_mobile
+     * @return
+     */
+    EmpVO findByMobile(String mm_emp_mobile);
+
+    //保存会员信息
+    void save(Emp emp);
+
 }
