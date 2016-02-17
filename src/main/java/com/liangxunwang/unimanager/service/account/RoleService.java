@@ -28,7 +28,6 @@ public class RoleService implements SaveService, ListService, DeleteService, Fin
 
     @Override
     public Object list(Object object) throws ServiceException {
-
         return roleDao.list();
     }
 

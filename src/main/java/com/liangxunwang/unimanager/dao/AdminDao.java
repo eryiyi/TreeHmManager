@@ -16,6 +16,7 @@ import java.util.Map;
 public interface AdminDao {
     Admin findByUsername(String mm_manager_mobile);
     Admin findByEmpId(String mm_manager_id);
+    Admin findByMobile(String mm_manager_mobile);
 
     void add(Admin admin);
 
@@ -35,7 +36,7 @@ public interface AdminDao {
     List<AdminVO> lists(Map<String, Object> map);
     long count(Map<String,Object> map);
 
-    Admin findById(String id);
+    AdminVO findById(String id);
     /**
      * 根据ID修改状态
      * @param id

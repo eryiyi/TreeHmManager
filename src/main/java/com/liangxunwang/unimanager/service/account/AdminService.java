@@ -2,15 +2,14 @@ package com.liangxunwang.unimanager.service.account;
 
 import com.liangxunwang.unimanager.dao.AdminDao;
 import com.liangxunwang.unimanager.model.Admin;
+import com.liangxunwang.unimanager.model.Level;
 import com.liangxunwang.unimanager.mvc.vo.AdminVO;
 import com.liangxunwang.unimanager.mvc.vo.EmpVO;
 import com.liangxunwang.unimanager.query.AdminQuery;
 import com.liangxunwang.unimanager.query.EmpQuery;
-import com.liangxunwang.unimanager.service.ExecuteService;
-import com.liangxunwang.unimanager.service.ListService;
-import com.liangxunwang.unimanager.service.ServiceException;
-import com.liangxunwang.unimanager.service.UpdateService;
+import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.StringUtil;
+import com.liangxunwang.unimanager.util.UUIDFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -23,7 +22,7 @@ import java.util.Map;
  * Created by liuzh on 2015/8/12.
  */
 @Service("adminService")
-public class AdminService implements ExecuteService,ListService{
+public class AdminService implements ExecuteService,ListService,SaveService{
 
     @Autowired
     @Qualifier("adminDao")
@@ -57,5 +56,18 @@ public class AdminService implements ExecuteService,ListService{
         long count = adminDao.count(map);
 
         return new Object[]{lists, count};
+    }
+
+
+    @Override
+    public Object save(Object object) throws ServiceException {
+        Admin admin = (Admin) object;
+        //先查看手机号是否已经存在了
+        Admin admin1 = adminDao.findByMobile(admin.getMm_manager_mobile());
+        if (admin1 != null){
+            throw new ServiceException("MobileIsUse");
+        }
+        adminDao.add(admin);
+        return null;
     }
 }

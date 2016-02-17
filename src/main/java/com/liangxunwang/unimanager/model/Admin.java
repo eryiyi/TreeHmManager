@@ -7,10 +7,11 @@ public class Admin {
     private String mm_manager_mobile;
     private String mm_manager_nickname;
     private String mm_manager_password;
-    private String mm_manager_is_use;
-    private String permissions;
     private String mm_manager_type;
     private String mm_manager_area_uuid;
+    private String mm_manager_is_use;
+    private String permissions;
+
 
     public String getMm_manager_type() {
         return mm_manager_type;

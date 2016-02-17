@@ -63,9 +63,9 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-2 control-label">拥有权限</label>
+            <label class="col-sm-2 control-label">管理区域</label>
             <div class="col-lg-8">
-              <div id="permissions">${permissions_admin}</div>
+              <div id="permissions">${admin.provinceName}${admin.cityName}${admin.countryName}</div>
             </div>
           </div>
           <div class="form-group">

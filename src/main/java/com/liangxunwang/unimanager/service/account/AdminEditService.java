@@ -4,6 +4,7 @@ import com.liangxunwang.unimanager.dao.AdminDao;
 import com.liangxunwang.unimanager.dao.RoleDao;
 import com.liangxunwang.unimanager.model.Admin;
 import com.liangxunwang.unimanager.model.Role;
+import com.liangxunwang.unimanager.mvc.vo.AdminVO;
 import com.liangxunwang.unimanager.query.AdminQuery;
 import com.liangxunwang.unimanager.service.ExecuteService;
 import com.liangxunwang.unimanager.service.ListService;
@@ -35,7 +36,7 @@ public class AdminEditService implements ExecuteService,UpdateService{
     @Override
     public Object execute(Object object) throws ServiceException {
         String userId = (String) object;
-        Admin admin = adminDao.findById(userId);
+        AdminVO admin = adminDao.findById(userId);
         String permission = null;
         //查询权限
         if ("all".equals(admin.getPermissions())){

@@ -8,6 +8,7 @@ import com.liangxunwang.unimanager.query.AdminQuery;
 import com.liangxunwang.unimanager.query.EmpQuery;
 import com.liangxunwang.unimanager.query.LevelQuery;
 import com.liangxunwang.unimanager.service.*;
+import com.liangxunwang.unimanager.util.Constants;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.Page;
 import com.liangxunwang.unimanager.util.StringUtil;
@@ -40,6 +41,10 @@ public class AdminController extends ControllerConstants {
     @Autowired
     @Qualifier("logoService")
     private SaveService logoService;
+
+    @Autowired
+    @Qualifier("adminService")
+    private SaveService adminServiceSave;
 
     /**
      * �޸�����
@@ -83,5 +88,25 @@ public class AdminController extends ControllerConstants {
         logoService.save(new LogoObj("查询管理员列表", manager.getMm_manager_id()));
         return "/admin/list";
     }
+
+
+    //添加管理员
+    @RequestMapping("/admin/addAdmin")
+    @ResponseBody
+    public String addPiao(HttpSession session,Admin admin){
+        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
+        try {
+            adminServiceSave.save(admin);
+            //日志记录
+            logoService.save(new LogoObj("添加管理员："+admin.getMm_manager_nickname(), manager.getMm_manager_id()));
+        }catch (ServiceException e){
+            String msg = e.getMessage();
+            if (msg.equals("MobileIsUse")){
+                return toJSONString(ERROR_1);
+            }
+        }
+        return toJSONString(SUCCESS);
+    }
+
 
 }

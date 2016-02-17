@@ -4,6 +4,7 @@ import com.liangxunwang.unimanager.model.Admin;
 import com.liangxunwang.unimanager.model.FeiyongObj;
 import com.liangxunwang.unimanager.model.LogoObj;
 import com.liangxunwang.unimanager.model.Role;
+import com.liangxunwang.unimanager.mvc.vo.AdminVO;
 import com.liangxunwang.unimanager.query.AdminQuery;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.ControllerConstants;
@@ -39,7 +40,7 @@ public class AdminEditController extends ControllerConstants {
     public String toUpdateType(HttpSession session,ModelMap map, String id){
         Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         Object[] results = (Object[]) adminEditService.execute(id);
-        Admin admin = (Admin) results[0];
+        AdminVO admin = (AdminVO) results[0];
         String permissions = (String) results[1];
         Role role  = (Role) results[2];
 
@@ -69,6 +70,7 @@ public class AdminEditController extends ControllerConstants {
             return toJSONString(ERROR_1);
         }
     }
+
 
 //    @RequestMapping("/admin/updatePwr")
 //    @ResponseBody

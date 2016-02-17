@@ -79,9 +79,9 @@
                 <c:if test="${e.mm_manager_type=='4'}">全国</c:if>
               </td>
               <c:if test="${e.mm_manager_type=='0'}"><td>不限</td></c:if>
-              <c:if test="${e.mm_manager_type=='1'}"><td>${e.areaName}</td></c:if>
-              <c:if test="${e.mm_manager_type=='2'}"><td>${e.areaName}</td></c:if>
-              <c:if test="${e.mm_manager_type=='3'}"><td>${e.areaName}</td></c:if>
+              <c:if test="${e.mm_manager_type=='1'}"><td>${e.countryName}</td></c:if>
+              <c:if test="${e.mm_manager_type=='2'}"><td>${e.cityName}</td></c:if>
+              <c:if test="${e.mm_manager_type=='3'}"><td>${e.provinceName}</td></c:if>
               <c:if test="${e.mm_manager_type=='4'}"><td>全国</td></c:if>
 
               <td>
