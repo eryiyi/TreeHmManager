@@ -18,14 +18,6 @@ public class Record {
     private String countryid;
     private String accessToken;
 
-    public String getAccessToken() {
-        return accessToken;
-    }
-
-    public void setAccessToken(String accessToken) {
-        this.accessToken = accessToken;
-    }
-
     public String getMm_msg_id() {
         return mm_msg_id;
     }
@@ -120,5 +112,13 @@ public class Record {
 
     public void setCountryid(String countryid) {
         this.countryid = countryid;
+    }
+
+    public String getAccessToken() {
+        return accessToken;
+    }
+
+    public void setAccessToken(String accessToken) {
+        this.accessToken = accessToken;
     }
 }

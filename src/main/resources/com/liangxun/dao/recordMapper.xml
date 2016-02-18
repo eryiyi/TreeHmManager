@@ -84,21 +84,22 @@
     </select>
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.Record">
-        INSERT INTO mm_msg(mm_msg_id, mm_emp_id, mm_msg_type, mm_msg_content, mm_msg_picurl, dateline,is_del, is_top, top_num, provinceid, cityid, countryid)
-        VALUES (#{mm_msg_id}, #{mm_emp_id}, #{mm_msg_type}, #{mm_msg_content, jdbcType=VARCHAR}, #{mm_msg_picurl, jdbcType=VARCHAR}, #{dateline}, #{is_del}, #{is_top}, #{top_num}, #{provinceid}, #{cityid}, #{countryid})
+        INSERT INTO mm_msg( mm_msg_id, mm_emp_id, mm_msg_type, mm_msg_content, mm_msg_picurl, dateline,is_del, is_top, top_num, provinceid, cityid, countryid)
+        VALUES ( #{mm_msg_id}, #{mm_emp_id}, #{mm_msg_type}, #{mm_msg_content, jdbcType=VARCHAR}, #{mm_msg_picurl, jdbcType=VARCHAR}, #{dateline}, #{is_del}, #{is_top}, #{top_num}, #{provinceid}, #{cityid}, #{countryid})
     </insert>
 
     <select id="findById" resultMap="record_vo" parameterType="String">
+        SELECT m.*,
+        (SELECT mm_level_num FROM mm_level ll WHERE m.mm_level_id = ll.mm_level_id ) as mm_level_num
+        FROM (
         SELECT sn.* ,lemp.mm_emp_mobile as mm_emp_mobile, lemp.mm_emp_nickname as mm_emp_nickname, lemp.mm_emp_type as mm_emp_type,lemp.mm_emp_cover as mm_emp_cover, lemp.mm_emp_company_type as mm_emp_company_type
         , lemp.mm_emp_company as mm_emp_company, lemp.mm_level_id as mm_level_id, lemp.is_chengxin as is_chengxin , lemp.is_miaomu as is_miaomu  from mm_msg sn
         LEFT JOIN mm_emp lemp ON sn.mm_emp_id=lemp.mm_emp_id
-        WHERE 1=1
-        <if test="mm_msg_id != null and mm_msg_id != ''">
-            AND sn.mm_msg_id = #{id}
-        </if>
+         WHERE sn.mm_msg_id = #{id}
+        ) m
     </select>
 
     <delete id="deleteById" parameterType="String">
-        DELETE FROM mm_msg WHERE mm_msg_id=#{id}
+        DELETE FROM mm_msg WHERE mm_msg_id = #{id}
     </delete>
 </mapper>

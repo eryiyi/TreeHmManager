@@ -103,7 +103,8 @@ public class AppRecordService implements ListService ,SaveService, FindService{
 
     @Override
     public Object findById(Object object) throws ServiceException {
-        RecordVO vo = recordDao.findById((String) object);
+        String id = (String) object;
+        RecordVO vo = recordDao.findById(id);
         if (vo != null) {
             if (vo.getMm_emp_cover().startsWith("upload")) {
                 vo.setMm_emp_cover(Constants.URL + vo.getMm_emp_cover());

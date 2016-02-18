@@ -11,7 +11,7 @@
     </resultMap>
 
     <select id="lists" resultMap="level">
-        SELECT * from mm_level
+        SELECT * from mm_level ORDER BY mm_level_num asc
     </select>
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.Level">

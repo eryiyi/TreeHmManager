@@ -29,12 +29,11 @@ public interface RecordDao {
 
     /**
      * 根据ID查找动态
-     * @param id
      * @return
      */
     RecordVO findById(String id);
 
     //删除动态
-   void deleteById(String id);
+   void deleteById(String mm_msg_id);
 
 }

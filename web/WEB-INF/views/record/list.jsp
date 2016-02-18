@@ -72,7 +72,7 @@
               <td>${e.mm_msg_content}</td>
               <td>${e.dateline}</td>
               <td>
-                <a class="btn btn-default btn-sm" href="#module=/order/detail&id=${e.order_no}" role="button">编辑</a>
+                <a class="btn btn-default btn-sm" href="#module=/order/detail&id=${e.mm_msg_id}" role="button">编辑</a>
               </td>
             </tr>
           </c:forEach>

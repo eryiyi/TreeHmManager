@@ -7,6 +7,7 @@
         <id column="mm_emp_id" property="mm_emp_id"/>
         <result column="mm_emp_mobile" property="mm_emp_mobile"/>
         <result column="mm_emp_nickname" property="mm_emp_nickname"/>
+        <result column="mm_emp_cover" property="mm_emp_cover"/>
         <result column="mm_emp_password" property="mm_emp_password"/>
         <result column="mm_emp_type" property="mm_emp_type"/>
         <result column="mm_emp_company" property="mm_emp_company"/>
@@ -39,6 +40,7 @@
         <id column="mm_emp_id" property="mm_emp_id"/>
         <result column="mm_emp_mobile" property="mm_emp_mobile"/>
         <result column="mm_emp_nickname" property="mm_emp_nickname"/>
+        <result column="mm_emp_cover" property="mm_emp_cover"/>
         <result column="mm_emp_password" property="mm_emp_password"/>
         <result column="mm_emp_type" property="mm_emp_type"/>
         <result column="mm_emp_company" property="mm_emp_company"/>
@@ -76,7 +78,7 @@
 
 
     <select id="listMemberByName" resultMap="emp_vo">
-        SELECT sn.* ,lev.mm_level_name as levelName, hatp.province as provinceName, hatc.city as cityName, hata.area as areaName  from mm_emp sn
+        SELECT sn.* ,lev.mm_level_name as levelName,lev.mm_emp_cover as mm_emp_cover, hatp.province as provinceName, hatc.city as cityName, hata.area as areaName  from mm_emp sn
         LEFT JOIN mm_level lev ON sn.mm_level_id=lev.mm_level_id
         LEFT JOIN hat_province hatp ON sn.mm_emp_provinceId=hatp.provinceID
         LEFT JOIN hat_city hatc ON sn.mm_emp_cityId=hatc.cityID
@@ -154,7 +156,12 @@
     </update>
 
     <select id="findById" resultMap="emp_vo" parameterType="String">
-        SELECT * from mm_emp WHERE mm_emp_id=#{mm_emp_id}
+         SELECT sn.* ,lev.mm_level_name as levelName,lev.mm_emp_cover as mm_emp_cover, hatp.province as provinceName, hatc.city as cityName, hata.area as areaName  from mm_emp sn
+        LEFT JOIN mm_level lev ON sn.mm_level_id=lev.mm_level_id
+        LEFT JOIN hat_province hatp ON sn.mm_emp_provinceId=hatp.provinceID
+        LEFT JOIN hat_city hatc ON sn.mm_emp_cityId=hatc.cityID
+        LEFT JOIN hat_area hata ON sn.mm_emp_countryId=hata.areaID
+        WHERE sn.mm_emp_id=#{mm_emp_id}
     </select>
 
 
