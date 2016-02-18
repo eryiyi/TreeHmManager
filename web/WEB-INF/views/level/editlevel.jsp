@@ -58,6 +58,12 @@
               <input type="text" id="add_two" value ="${levelObj.mm_level_cont}"  class="form-control" placeholder="等级描述" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">等级星级</label>
+            <div class="col-sm-4">
+              <input type="text" id="add_three" value ="${levelObj.mm_level_num}"  class="form-control" placeholder="等级星级 数字" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+            </div>
+          </div>
 
           <div class="form-group">
             <div class="col-sm-9 col-sm-offset-3">
@@ -75,6 +81,7 @@
     var mm_level_id = $("#mm_level_id").val();
     var add_one = $("#add_one").val();
     var add_two = $("#add_two").val();
+    var add_three = $("#add_three").val();
 
     if(add_one.replace(/\s/g, '')==''){
       alert("请输入正确的等级名称");
@@ -84,12 +91,16 @@
       alert("请输入正确的等级描述");
       return;
     }
+    if(add_three.replace(/\s/g, '')==''){
+      alert("请输入正确的等级星级");
+      return;
+    }
 
     $.ajax({
       cache: true,
       type: "POST",
       url:"/level/editLevel.do",
-      data:{"mm_level_name":add_one, "mm_level_cont":add_two, "mm_level_id":mm_level_id},
+      data:{"mm_level_name":add_one, "mm_level_cont":add_two, "mm_level_id":mm_level_id, "mm_level_num":add_three},
       async: false,
       success: function(_data) {
         var data = $.parseJSON(_data);

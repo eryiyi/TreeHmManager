@@ -42,24 +42,27 @@
     </resultMap>
 
     <select id="listRecordVo" resultMap="record_vo">
+        SELECT m.*,
+        (SELECT mm_level_num FROM mm_level ll WHERE m.mm_level_id = ll.mm_level_id ) as mm_level_num
+        FROM (
         SELECT sn.* ,lemp.mm_emp_mobile as mm_emp_mobile, lemp.mm_emp_nickname as mm_emp_nickname, lemp.mm_emp_type as mm_emp_type,lemp.mm_emp_cover as mm_emp_cover, lemp.mm_emp_company_type as mm_emp_company_type
         , lemp.mm_emp_company as mm_emp_company, lemp.mm_level_id as mm_level_id, lemp.is_chengxin as is_chengxin , lemp.is_miaomu as is_miaomu  from mm_msg sn
         LEFT JOIN mm_emp lemp ON sn.mm_emp_id=lemp.mm_emp_id
         WHERE 1=1
         <if test="mm_msg_type != null and mm_msg_type != ''">
-        AND sn.mm_msg_type = #{mm_msg_type}
+            AND sn.mm_msg_type = #{mm_msg_type}
         </if>
         <if test="provinceid != null and provinceid != ''">
-        AND sn.provinceid = #{provinceid}
+            AND sn.provinceid = #{provinceid}
         </if>
         <if test="cityid != null and cityid != ''">
-        AND sn.cityid = #{cityid}
+            AND sn.cityid = #{cityid}
         </if>
         <if test="countryid != null and countryid != ''">
-        AND sn.countryid = #{countryid}
+            AND sn.countryid = #{countryid}
         </if>
-
-        ORDER BY sn.dateline DESC limit #{index},#{size}
+        ) m
+        ORDER  BY  m.dateline DESC  limit #{index},#{size}
     </select>
 
     <select id="count" resultType="Long">

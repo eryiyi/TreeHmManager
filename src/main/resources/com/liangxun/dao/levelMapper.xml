@@ -7,6 +7,7 @@
         <id column="mm_level_id" property="mm_level_id"/>
         <result column="mm_level_name" property="mm_level_name"/>
         <result column="mm_level_cont" property="mm_level_cont"/>
+        <result column="mm_level_num" property="mm_level_num"/>
     </resultMap>
 
     <select id="lists" resultMap="level">
@@ -14,8 +15,8 @@
     </select>
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.Level">
-        INSERT INTO mm_level(mm_level_id, mm_level_name, mm_level_cont)
-        VALUES (#{mm_level_id}, #{mm_level_name}, #{mm_level_cont})
+        INSERT INTO mm_level(mm_level_id, mm_level_name, mm_level_cont, mm_level_num)
+        VALUES (#{mm_level_id}, #{mm_level_name}, #{mm_level_cont}, #{mm_level_num})
     </insert>
 
 
@@ -28,6 +29,6 @@
     </select>
 
     <update id="update" parameterType="com.liangxunwang.unimanager.model.Level">
-        UPDATE mm_level SET mm_level_name=#{mm_level_name}, mm_level_cont=#{mm_level_cont} WHERE mm_level_id=#{mm_level_id}
+        UPDATE mm_level SET mm_level_name=#{mm_level_name}, mm_level_cont=#{mm_level_cont}, mm_level_num=#{mm_level_num} WHERE mm_level_id=#{mm_level_id}
     </update>
 </mapper>

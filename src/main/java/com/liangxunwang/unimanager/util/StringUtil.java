@@ -230,4 +230,24 @@ public class StringUtil {
         int i = Integer.parseInt(intes);
         return i;
     }
+
+    public static String tranStarToNum(String star){
+        String sNum ="" ;
+        if(star.equals("vip1")){
+            sNum="1";
+        }
+        if(star.equals("vip2")){
+            sNum="2";
+        }
+        if(star.equals("vip3")){
+            sNum="3";
+        }
+        if(star.equals("vip4")){
+            sNum="4";
+        }
+        if(star.equals("vip5")){
+            sNum="5";
+        }
+        return sNum;
+    }
 }
