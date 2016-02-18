@@ -34,7 +34,7 @@ public class MemberLoginService implements ExecuteService {
         if ("1".equals(member.getIs_use())){
             throw new ServiceException("NotUse");//禁用
         }
-        if (!"1".equals(member.getIs_use())){
+        if (!"1".equals(member.getIscheck())){
             throw new ServiceException("NotCheck");//未审核
         }
         member.setMm_emp_cover(Constants.QINIU_URL + member.getMm_emp_cover());

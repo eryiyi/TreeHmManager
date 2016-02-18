@@ -47,12 +47,12 @@
             </div>
           </div>
 
-          <div class="form-group">
-            <label class="col-sm-2 control-label">用户密码</label>
-            <div class="col-sm-4">
-              <input type="text" id="mm_emp_password" class="form-control" value="${empVO.mm_emp_password}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
-            </div>
-          </div>
+          <%--<div class="form-group">--%>
+            <%--<label class="col-sm-2 control-label">用户密码</label>--%>
+            <%--<div class="col-sm-4">--%>
+              <%--<input type="text" id="mm_emp_password" class="form-control" value="${empVO.mm_emp_password}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">--%>
+            <%--</div>--%>
+          <%--</div>--%>
 
           <div class="form-group">
             <label class="col-sm-2 control-label">用户类型</label>
@@ -151,8 +151,8 @@
 
           <div class="form-group">
             <label class="col-sm-2 control-label">注册日期</label>
-            <div class="col-sm-2">
-              <input type="date" id="mm_emp_regtime" readonly="true" class="form-control" value="${empVO.mm_emp_regtime}" >
+            <div class="col-sm-4">
+              <input type="text" id="mm_emp_regtime" readonly="true" class="form-control" value="${empVO.mm_emp_regtime}" >
             </div>
           </div>
 
@@ -290,7 +290,7 @@
                 <option value="">--请选择--</option>
                 <option value="0" ${empVO.ischeck=='0'?'selected':''}>未审核</option>
                 <option value="1" ${empVO.ischeck=='1'?'selected':''}>已审核</option>
-                <option value="1" ${empVO.ischeck=='1'?'selected':''}>未通过</option>
+                <option value="2" ${empVO.ischeck=='2'?'selected':''}>未通过</option>
               </select>
             </div>
           </div>
@@ -311,7 +311,7 @@
     var mm_emp_id = $("#mm_emp_id").val();
     var mm_emp_mobile = $("#mm_emp_mobile").val();
     var mm_emp_nickname = $("#mm_emp_nickname").val();
-    var mm_emp_password = $("#mm_emp_password").val();
+//    var mm_emp_password = $("#mm_emp_password").val();
     var mm_emp_type = $("#mm_emp_type").val();
     var mm_emp_company = $("#mm_emp_company").val();
     var mm_emp_company_type = $("#mm_emp_company_type").val();
@@ -347,15 +347,15 @@
       alert("手机号不能为空");
       return;
     }
-    if(mm_emp_password.replace(/\s/g, '') == ''){
-        alert("密码不能为空");
-        return;
-    }
-    if(mm_emp_password.length<6 || mm_emp_password.length>18){
-      alert("密码长度至少6位,最多18位");
-      return;
-    }
-    mm_emp_password = hex_md5(mm_emp_password);
+//    if(mm_emp_password.replace(/\s/g, '') == ''){
+//        alert("密码不能为空");
+//        return;
+//    }
+//    if(mm_emp_password.length<6 || mm_emp_password.length>18){
+//      alert("密码长度至少6位,最多18位");
+//      return;
+//    }
+//    mm_emp_password = hex_md5(mm_emp_password);
     if(mm_emp_type.replace(/\s/g, '') == ''){
       alert("请选择用户类型");
       return;
@@ -372,10 +372,10 @@
       alert("请填写公司地址");
       return;
     }
-    if(mm_emp_company_detail.replace(/\s/g, '') == ''){
-      alert("请填写公司简介");
-      return;
-    }
+//    if(mm_emp_company_detail.replace(/\s/g, '') == ''){
+//      alert("请填写公司简介");
+//      return;
+//    }
     if(mm_emp_provinceId.replace(/\s/g, '') == ''){
       alert("请选择省份");
       return;
@@ -388,18 +388,20 @@
       alert("请选择县区");
       return;
     }
-    if(mm_emp_endtime.replace(/\s/g, '') == ''){
-      alert("请选择VIP到期日期");
-      return;
-    }
+
     if(mm_level_id.replace(/\s/g, '') == ''){
       alert("请选择VIP星级");
       return;
     }
-    if(mm_emp_beizhu.replace(/\s/g, '') == ''){
-      alert("请填写备注");
-      return;
-    }
+
+//    if(mm_emp_endtime.replace(/\s/g, '') == ''){
+//      alert("请选择VIP到期日期");
+//      return;
+//    }
+//    if(mm_emp_beizhu.replace(/\s/g, '') == ''){
+//      alert("请填写备注");
+//      return;
+//    }
     if(mm_emp_msg_num.replace(/\s/g, '') == ''){
       alert("请填写允许发布信息数量");
       return;
@@ -452,7 +454,8 @@
       cache: true,
       type: "POST",
       url:"/emp/updateEmp.do",
-      data:{"mm_emp_password":mm_emp_password,
+      data:{
+//        "mm_emp_password":mm_emp_password,
         "mm_emp_id":mm_emp_id,
         "mm_emp_mobile":mm_emp_mobile,
         "mm_emp_nickname":mm_emp_nickname,

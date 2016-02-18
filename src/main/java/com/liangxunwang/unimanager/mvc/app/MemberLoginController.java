@@ -25,7 +25,7 @@ public class MemberLoginController extends ControllerConstants {
     /**
      */
     @Autowired
-    @Qualifier("empService")
+    @Qualifier("memberLoginService")
     private ExecuteService memberLoginService;
 
     @Autowired
@@ -48,10 +48,10 @@ public class MemberLoginController extends ControllerConstants {
     @ResponseBody
     public String memberLogin(@RequestParam String username, @RequestParam String password){
         if (StringUtil.isNullOrEmpty(username)){
-            return toJSONString(ERROR_4);
+            return toJSONString(ERROR_5);
         }
         if (StringUtil.isNullOrEmpty(password)){
-            return toJSONString(ERROR_5);
+            return toJSONString(ERROR_6);
         }
         Object[] params = new Object[]{username, password};
         EmpVO member = null;
@@ -65,6 +65,7 @@ public class MemberLoginController extends ControllerConstants {
                 appAccessTokenServiceUpdate.update(accessToken);
             }else {
                 //说明没有登录记录
+                accessToken = new AccessToken();
                 accessToken.setMm_access_token_id(UUIDFactory.random());
                 accessToken.setMm_emp_id(member.getMm_emp_id());
                 accessToken.setAccess_token(UUIDFactory.random());//随机生成一个 accseeToken

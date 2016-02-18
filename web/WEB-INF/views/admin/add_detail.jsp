@@ -58,8 +58,8 @@
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">注册日期</label>
-            <div class="col-sm-2">
-              <input type="date" id="mm_emp_regtime" readonly="true" class="form-control" value="${empVO.mm_emp_regtime}" >
+            <div class="col-sm-4">
+              <input type="text" id="mm_emp_regtime" readonly="true" class="form-control" value="${empVO.mm_emp_regtime}" >
             </div>
           </div>
 

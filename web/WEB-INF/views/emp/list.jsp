@@ -101,7 +101,10 @@
             <tr>
               <td>${e.mm_emp_nickname}</td>
               <td>${e.mm_emp_mobile}</td>
-              <td>${e.mm_emp_type}</td>
+              <td>
+                <c:if test="${e.mm_emp_type=='0'}">苗木经营</c:if>
+                <c:if test="${e.mm_emp_type=='1'}">苗木会员</c:if>
+              </td>
               <td>${e.mm_emp_company}</td>
               <td>
                 <c:if test="${e.mm_emp_company_type=='0'}">苗木</c:if>
