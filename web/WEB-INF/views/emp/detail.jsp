@@ -239,8 +239,8 @@
                 <option value="">--请选择--</option>
                 <option value="0" ${empVO.is_pic=='0'?'selected':''}>不允许</option>
                 <option value="1" ${empVO.is_pic=='1'?'selected':''}>允许3张</option>
-                <option value="1" ${empVO.is_pic=='1'?'selected':''}>允许6张</option>
-                <option value="1" ${empVO.is_pic=='1'?'selected':''}>允许9张</option>
+                <option value="2" ${empVO.is_pic=='2'?'selected':''}>允许6张</option>
+                <option value="3" ${empVO.is_pic=='3'?'selected':''}>允许9张</option>
               </select>
             </div>
           </div>

@@ -78,7 +78,7 @@
 
 
     <select id="listMemberByName" resultMap="emp_vo">
-        SELECT sn.* ,lev.mm_level_name as levelName,lev.mm_emp_cover as mm_emp_cover, hatp.province as provinceName, hatc.city as cityName, hata.area as areaName  from mm_emp sn
+        SELECT sn.* ,lev.mm_level_name as levelName, hatp.province as provinceName, hatc.city as cityName, hata.area as areaName  from mm_emp sn
         LEFT JOIN mm_level lev ON sn.mm_level_id=lev.mm_level_id
         LEFT JOIN hat_province hatp ON sn.mm_emp_provinceId=hatp.provinceID
         LEFT JOIN hat_city hatc ON sn.mm_emp_cityId=hatc.cityID
@@ -156,7 +156,7 @@
     </update>
 
     <select id="findById" resultMap="emp_vo" parameterType="String">
-         SELECT sn.* ,lev.mm_level_name as levelName,lev.mm_emp_cover as mm_emp_cover, hatp.province as provinceName, hatc.city as cityName, hata.area as areaName  from mm_emp sn
+         SELECT sn.* ,lev.mm_level_name as levelName, hatp.province as provinceName, hatc.city as cityName, hata.area as areaName  from mm_emp sn
         LEFT JOIN mm_level lev ON sn.mm_level_id=lev.mm_level_id
         LEFT JOIN hat_province hatp ON sn.mm_emp_provinceId=hatp.provinceID
         LEFT JOIN hat_city hatc ON sn.mm_emp_cityId=hatc.cityID

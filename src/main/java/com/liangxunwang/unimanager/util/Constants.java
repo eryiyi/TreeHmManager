@@ -12,7 +12,7 @@ public class Constants {
 //        public static final String FFMPEG = "D:/ffmpeg/ffmpeg.exe";
 
         public static final String QINIU_SPACE = "hmmm-pic";
-        public static final String COVER_DEFAULT = "tree_user_profile.png";
+        public static final String COVER_DEFAULT = "head_default.png";
         public static final String FILE_PATH = "D://recordfile";
 
         public static final String API_KEY = "3aGjhyGfpiAdYkpO0Y8wvtBQ";
