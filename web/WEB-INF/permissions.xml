@@ -49,4 +49,7 @@
     <group id="ABOUT_US_MANAGE" name="关于我们">
         <permission id="ABOUT_US_MANA" name="关于我们"/>
     </group>
+    <group id="SUGGEST_MANAGE" name="意见反馈">
+        <permission id="SUGGEST_MANAGE" name="意见反馈"/>
+    </group>
 </permissions>

@@ -329,6 +329,20 @@
 						</ul>
 					</li>
 				</c:if>
+				<c:if test="${um:permission('SUGGEST_MANAGE', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="javascript:void (0);" class="dropdown-toggle">
+							<i class="fa fa-leaf"></i>
+							<span class="hidden-xs">意见反馈</span>
+						</a>
+						<ul class="dropdown-menu">
+							<c:if test="${um:permission('SUGGEST_MANAGE', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('/suggest/list','')">意见反馈</a></li>
+							</c:if>
+						</ul>
+					</li>
+				</c:if>
+
 
 			</ul>
 		</div>
