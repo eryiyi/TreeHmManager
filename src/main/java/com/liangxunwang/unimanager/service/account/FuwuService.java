@@ -8,6 +8,7 @@ import com.liangxunwang.unimanager.query.FuwuQuery;
 import com.liangxunwang.unimanager.query.LevelQuery;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.DateUtil;
+import com.liangxunwang.unimanager.util.StringUtil;
 import com.liangxunwang.unimanager.util.UUIDFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -29,8 +30,17 @@ public class FuwuService implements ListService,SaveService ,DeleteService,Execu
     @Override
     public Object list(Object object) throws ServiceException {
         FuwuQuery query = (FuwuQuery) object;
-        Map<String, Object> map = new HashMap<String, Object>();
 
+        Map<String, Object> map = new HashMap<String, Object>();
+        if(!StringUtil.isNullOrEmpty(query.getLat())){
+            map.put("lat", query.getLat());
+        }
+        if(!StringUtil.isNullOrEmpty(query.getLng())){
+            map.put("lng", query.getLng());
+        }
+        if(!StringUtil.isNullOrEmpty(query.getMm_fuwu_type())){
+            map.put("mm_fuwu_type", query.getMm_fuwu_type());
+        }
         List<FuwuObj> lists = fuwuDao.lists(map);
 
         return lists;

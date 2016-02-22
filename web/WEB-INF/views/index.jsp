@@ -9,7 +9,9 @@
 	<meta name="description" content="description">
 	<meta name="author" content="DevOOPS">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" type="image/png" href="/img/logo.png">
 	<link href="/plugins/bootstrap/bootstrap.css" rel="stylesheet">
+	<link href="/css/cat.css" rel="stylesheet">
 	<link href="/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href="/plugins/fancybox/jquery.fancybox.css" rel="stylesheet">
@@ -114,7 +116,7 @@
 			<ul class="nav main-menu">
 				<li>
 					<a href="javascript:void(0);"  class="active" onclick="toPage('mainPage','')">
-						<i class="fa fa-dashboard"></i>
+						<i class="fa fa-home"></i>
 						<span class="hidden-xs">主页</span>
 					</a>
 				</li>
@@ -122,7 +124,7 @@
 				<c:if test="${um:permission('LIST_ROLE', sessionScope.powers)||um:permission('ADD_ROLE', sessionScope.powers)}">
 					<li class="dropdown">
 						<a href="javascript:void (0);" class="dropdown-toggle">
-							<i class="fa fa-table"></i>
+							<i class="fa fa-user-md"></i>
 							<span class="hidden-xs">角色管理</span>
 						</a>
 						<ul class="dropdown-menu">
@@ -138,7 +140,7 @@
 				<c:if test="${um:permission('MANAGER_LIST_MANAGE', sessionScope.powers) ||um:permission('MANAGER_ADD_MANAGE', sessionScope.powers)}">
 					<li class="dropdown">
 						<a href="javascript:void (0);" class="dropdown-toggle">
-							<i class="fa fa-table"></i>
+							<i class="fa fa-user"></i>
 							<span class="hidden-xs">管理员</span>
 						</a>
 						<ul class="dropdown-menu">
@@ -155,7 +157,7 @@
 				<c:if test="${um:permission('LIST_EMPLOYEE_JY', sessionScope.powers)||um:permission('LIST_EMPLOYEE_EMP', sessionScope.powers)}">
 					<li class="dropdown">
 						<a href="javascript:void (0);" class="dropdown-toggle">
-							<i class="fa fa-table"></i>
+							<i class="fa fa-group"></i>
 							<span class="hidden-xs">会员管理</span>
 						</a>
 						<ul class="dropdown-menu">
@@ -173,7 +175,7 @@
 				<c:if test="${um:permission('QIUGOU_MSG', sessionScope.powers)||um:permission('GONGYING_MSG', sessionScope.powers)}">
 					<li class="dropdown">
 						<a href="javascript:void (0);" class="dropdown-toggle">
-							<i class="fa fa-table"></i>
+							<i class="fa fa-comments"></i>
 							<span class="hidden-xs">信息管理</span>
 						</a>
 						<ul class="dropdown-menu">
@@ -190,7 +192,7 @@
 				<c:if test="${um:permission('ADD_NOTICE', sessionScope.powers)||um:permission('NOTICE_LIST', sessionScope.powers)}">
 				<li class="dropdown">
 					<a href="javascript:void (0);" class="dropdown-toggle">
-						<i class="fa fa-table"></i>
+						<i class="fa fa-bullhorn"></i>
 						<span class="hidden-xs">公告管理</span>
 					</a>
 					<ul class="dropdown-menu">
@@ -208,7 +210,7 @@
 				<c:if test="${um:permission('PROVINCE_LIST', sessionScope.powers)||um:permission('CITY_LIST', sessionScope.powers)||um:permission('COUNTY_LIST', sessionScope.powers)}">
 				<li class="dropdown">
 					<a href="javascript:void (0);" class="dropdown-toggle">
-						<i class="fa fa-table"></i>
+						<i class="fa fa-globe"></i>
 						<span class="hidden-xs">地区管理</span>
 					</a>
 					<ul class="dropdown-menu">
@@ -228,7 +230,7 @@
 					<c:if test="${um:permission('LOGO_LIST', sessionScope.powers)}">
 						<li class="dropdown">
 							<a href="javascript:void (0);" class="dropdown-toggle">
-								<i class="fa fa-table"></i>
+								<i class="fa fa-reorder"></i>
 								<span class="hidden-xs">日志管理</span>
 							</a>
 							<ul class="dropdown-menu">
@@ -242,7 +244,7 @@
 					<c:if test="${um:permission('REPORT_LIST', sessionScope.powers)}">
 						<li class="dropdown">
 							<a href="javascript:void (0);" class="dropdown-toggle">
-								<i class="fa fa-table"></i>
+								<i class="fa fa-envelope"></i>
 								<span class="hidden-xs">举报管理</span>
 							</a>
 							<ul class="dropdown-menu">
@@ -254,7 +256,7 @@
 					<c:if test="${um:permission('ADD_LEVEL', sessionScope.powers)||um:permission('LEVEL_LIST', sessionScope.powers)}">
 						<li class="dropdown">
 							<a href="javascript:void (0);" class="dropdown-toggle">
-								<i class="fa fa-table"></i>
+								<i class="fa fa-sitemap"></i>
 								<span class="hidden-xs">等级管理</span>
 							</a>
 							<ul class="dropdown-menu">
@@ -271,7 +273,7 @@
 					<c:if test="${um:permission('ADD_FEIYONG', sessionScope.powers)||um:permission('FEIYONG_LIST', sessionScope.powers)}">
 						<li class="dropdown">
 							<a href="javascript:void (0);" class="dropdown-toggle">
-								<i class="fa fa-table"></i>
+								<i class="fa fa-credit-card"></i>
 								<span class="hidden-xs">会费管理</span>
 							</a>
 							<ul class="dropdown-menu">
@@ -288,7 +290,7 @@
 					<c:if test="${um:permission('ORDER_LIST', sessionScope.powers)}">
 						<li class="dropdown">
 							<a href="javascript:void (0);" class="dropdown-toggle">
-								<i class="fa fa-table"></i>
+								<i class="fa fa-shopping-cart"></i>
 								<span class="hidden-xs">订单管理</span>
 							</a>
 							<ul class="dropdown-menu">
@@ -301,7 +303,7 @@
 				<c:if test="${um:permission('FUWU_LIST', sessionScope.powers)||um:permission('FUWU_ADD', sessionScope.powers)}">
 					<li class="dropdown">
 						<a href="javascript:void (0);" class="dropdown-toggle">
-							<i class="fa fa-table"></i>
+							<i class="fa fa-leaf"></i>
 							<span class="hidden-xs">服务管理</span>
 						</a>
 						<ul class="dropdown-menu">
@@ -314,6 +316,20 @@
 						</ul>
 					</li>
 				</c:if>
+				<c:if test="${um:permission('ABOUT_US_MANA', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="javascript:void (0);" class="dropdown-toggle">
+							<i class="fa fa-leaf"></i>
+							<span class="hidden-xs">关于我们</span>
+						</a>
+						<ul class="dropdown-menu">
+							<c:if test="${um:permission('ABOUT_US_MANA', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('aboutUs/add','')">关于我们</a></li>
+							</c:if>
+						</ul>
+					</li>
+				</c:if>
+
 			</ul>
 		</div>
 		<!--Start Content-->

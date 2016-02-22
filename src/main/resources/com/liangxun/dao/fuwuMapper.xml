@@ -15,7 +15,10 @@
     </resultMap>
 
     <select id="lists" resultMap="fuwu">
-        SELECT * from mm_fuwu
+        SELECT * from mm_fuwu WHERE  1=1
+        <if test="mm_fuwu_type != null and mm_fuwu_type != ''">
+            AND mm_fuwu_type = #{mm_fuwu_type}
+        </if>
     </select>
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.FuwuObj">

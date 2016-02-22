@@ -46,4 +46,7 @@
         <permission id="FUWU_LIST" name="服务列表"/>
         <permission id="FUWU_ADD" name="添加服务"/>
     </group>
+    <group id="ABOUT_US_MANAGE" name="关于我们">
+        <permission id="ABOUT_US_MANA" name="关于我们"/>
+    </group>
 </permissions>

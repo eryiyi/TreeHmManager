@@ -211,8 +211,8 @@
 
   //为地图注册click事件获取鼠标点击出的经纬度坐标
   var clickEventListener=AMap.event.addListener(mapObj,'click',function(e){
-    document.getElementById("lat").value=e.lnglat.getLng();
-    document.getElementById("lng").value=e.lnglat.getLat();
+    document.getElementById("lat").value=e.lnglat.getLat();
+    document.getElementById("lng").value=e.lnglat.getLng();
 
     marker.setMap(null);
     mapObj.setCenter( new AMap.LngLat(e.lnglat.getLng(), e.lnglat.getLat()));
