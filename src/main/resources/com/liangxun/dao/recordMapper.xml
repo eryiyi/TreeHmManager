@@ -61,6 +61,12 @@
         <if test="countryid != null and countryid != ''">
             AND sn.countryid = #{countryid}
         </if>
+        <if test="mm_emp_id != null and mm_emp_id != ''">
+            AND sn.mm_emp_id = #{mm_emp_id}
+        </if>
+        <if test="keyword != null and keyword != ''">
+            AND sn.mm_msg_content like '%'||#{keyword}||'%'
+        </if>
         ) m
         ORDER  BY  m.dateline DESC  limit #{index},#{size}
     </select>
@@ -80,6 +86,9 @@
         </if>
         <if test="countryid != null and countryid != ''">
             AND sn.countryid = #{countryid}
+        </if>
+        <if test="keyword != null and keyword != ''">
+            AND sn.mm_msg_content like '%'||#{keyword}||'%'
         </if>
     </select>
 

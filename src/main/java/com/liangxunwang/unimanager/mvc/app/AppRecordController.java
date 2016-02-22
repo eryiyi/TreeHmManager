@@ -48,9 +48,26 @@ public class AppRecordController extends ControllerConstants {
 //    private DeleteService deleteRecordService;
 
 
+    //首页获得求购供应信息
     @RequestMapping(value = "/recordList", produces = "text/plain;charset=UTF-8")
     @ResponseBody
     public String getRecord(RecordQuery query, Page page){
+        query.setIndex(page.getPage()==0?1:page.getPage());
+        query.setSize(query.getSize()==0?page.getDefaultSize():query.getSize());
+        try {
+            Object[] results = (Object[]) recordListService.list(query);
+//            List<RecordVO> list = (List<RecordVO>) recordListService.list(query);
+            DataTip tip = new DataTip();
+            tip.setData(results[0]);
+            return toJSONString(tip);
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+        }
+    }
+    //个人主页获得求购供应信息
+    @RequestMapping(value = "/recordListById", produces = "text/plain;charset=UTF-8")
+    @ResponseBody
+    public String getRecordById(RecordQuery query, Page page){
         query.setIndex(page.getPage()==0?1:page.getPage());
         query.setSize(query.getSize()==0?page.getDefaultSize():query.getSize());
         try {

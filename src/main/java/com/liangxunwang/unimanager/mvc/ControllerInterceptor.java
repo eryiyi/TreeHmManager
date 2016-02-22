@@ -33,6 +33,8 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/sendRecord\\.do$)"+
                         "|(^/getRecordById\\.do$)"+
                         "|(^/viewRecord\\.do$)"+
+                        "|(^/recordListById\\.do$)"+
+                        "|(^/sendLocation\\.do$)"+
 
                         "|(^/memberLogin\\.do$)"
 

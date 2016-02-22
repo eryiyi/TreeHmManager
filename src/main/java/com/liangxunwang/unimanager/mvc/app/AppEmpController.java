@@ -25,37 +25,10 @@ import java.util.List;
  */
 @Controller
 public class AppEmpController extends ControllerConstants {
-    @Autowired
-    @Qualifier("empService")
-    private ListService empServiceList;
-
-    @Autowired
-    @Qualifier("empService")
-    private UpdateService empServiceUpdate;
-
-    @Autowired
-    @Qualifier("levelService")
-    private ListService levelService;
-
-    @Autowired
-    @Qualifier("provinceService")
-    private ListService provinceService;
-
-    @Autowired
-    @Qualifier("cityService")
-    private ListService cityService;
-    @Autowired
-    @Qualifier("countryService")
-    private ListService countryService;
-
 
     @Autowired
     @Qualifier("empService")
     private ExecuteService empServiceExecute;
-
-    @Autowired
-    @Qualifier("logoService")
-    private SaveService logoService;
 
     @RequestMapping(value = "/getMemberInfoById", produces = "text/plain;charset=UTF-8;")
     @ResponseBody
@@ -71,4 +44,25 @@ public class AppEmpController extends ControllerConstants {
         }
     }
 
+    @Autowired
+    @Qualifier("appEmpService")
+    private UpdateService appEmpService;
+
+    @RequestMapping(value = "/sendLocation", produces = "text/plain;charset=UTF-8;")
+    @ResponseBody
+    public String sendLocation(String mm_emp_id,String lat, String lng){
+        try {
+            //保存用户定位数据
+            Emp emp = new Emp();
+            emp.setMm_emp_id(mm_emp_id);
+            emp.setLat(lat);
+            emp.setLng(lng);
+            appEmpService.update(emp);
+            DataTip tip = new DataTip();
+            tip.setData(tip);
+            return toJSONString(tip);
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+        }
+    }
 }

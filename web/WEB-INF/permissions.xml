@@ -42,4 +42,8 @@
     <group id="ORDER_MANAGE" name="订单管理">
         <permission id="ORDER_LIST" name="订单列表"/>
     </group>
+    <group id="FUWU_MANAGE" name="服务管理">
+        <permission id="FUWU_LIST" name="服务列表"/>
+        <permission id="FUWU_ADD" name="添加服务"/>
+    </group>
 </permissions>

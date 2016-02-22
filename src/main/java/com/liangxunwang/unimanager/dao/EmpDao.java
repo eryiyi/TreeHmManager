@@ -35,4 +35,6 @@ public interface EmpDao {
     //保存会员信息
     void save(Emp emp);
 
+    //更新会员数据--经纬度
+    void updateLoacation(Emp emp);
 }

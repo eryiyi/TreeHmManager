@@ -179,5 +179,12 @@
         VALUES  (#{mm_emp_id}, #{mm_emp_mobile},#{mm_emp_nickname},#{mm_emp_password},#{mm_emp_type},#{mm_emp_company},#{mm_emp_company_type},#{mm_emp_company_address,jdbcType=VARCHAR},#{mm_emp_company_detail,jdbcType=VARCHAR},#{mm_emp_provinceId},#{mm_emp_cityId},#{mm_emp_countryId},#{mm_emp_regtime},#{mm_emp_endtime,jdbcType=VARCHAR},#{mm_level_id},#{mm_emp_beizhu,jdbcType=VARCHAR},#{mm_emp_msg_num},#{is_login},#{is_fabugongying},#{is_fabuqiugou},#{is_fabuqiugou_see},#{is_fabugongying_see},#{is_see_all},#{is_use},#{is_pic},#{is_chengxin},#{is_miaomu},#{lat},#{lng},#{ischeck})
     </insert>
 
+    <update id="updateLoacation" parameterType="com.liangxunwang.unimanager.model.Emp">
+        UPDATE mm_emp SET
+        lat=#{lat},
+        lng=#{lng}
+        WHERE mm_emp_id=#{mm_emp_id}
+    </update>
+
 
 </mapper>

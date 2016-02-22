@@ -298,7 +298,22 @@
 							</ul>
 						</li>
 					</c:if>
-
+				<c:if test="${um:permission('FUWU_LIST', sessionScope.powers)||um:permission('FUWU_ADD', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="javascript:void (0);" class="dropdown-toggle">
+							<i class="fa fa-table"></i>
+							<span class="hidden-xs">服务管理</span>
+						</a>
+						<ul class="dropdown-menu">
+							<c:if test="${um:permission('FUWU_ADD', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('fuwu/add','')">服务添加</a></li>
+							</c:if>
+							<c:if test="${um:permission('FUWU_LIST', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('fuwu/list','1')">服务列表</a></li>
+							</c:if>
+						</ul>
+					</li>
+				</c:if>
 			</ul>
 		</div>
 		<!--Start Content-->

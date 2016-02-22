@@ -11,6 +11,24 @@ public class RecordQuery {
     private String cityid;
     private String countryid;
     private String accessToken;
+    private String mm_emp_id;
+    private String keyword;
+
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
+
+    public String getMm_emp_id() {
+        return mm_emp_id;
+    }
+
+    public void setMm_emp_id(String mm_emp_id) {
+        this.mm_emp_id = mm_emp_id;
+    }
 
     public String getAccessToken() {
         return accessToken;

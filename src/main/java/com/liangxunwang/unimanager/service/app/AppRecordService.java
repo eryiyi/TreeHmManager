@@ -49,6 +49,12 @@ public class AppRecordService implements ListService ,SaveService, FindService{
         if (!StringUtil.isNullOrEmpty(query.getCountryid())) {
             map.put("countryid", query.getCountryid());
         }
+        if (!StringUtil.isNullOrEmpty(query.getMm_emp_id())) {
+            map.put("mm_emp_id", query.getMm_emp_id());
+        }
+        if (!StringUtil.isNullOrEmpty(query.getKeyword())) {
+            map.put("keyword", query.getKeyword());
+        }
 
         List<RecordVO> list = recordDao.listRecordVo(map);
         long count = recordDao.count(map);
