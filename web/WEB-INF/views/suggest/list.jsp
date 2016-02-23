@@ -7,7 +7,7 @@
       <i class="fa fa-bars"></i>
     </a>
     <ol class="breadcrumb pull-left">
-      <li><a href="javascript:void(0)">主页</a></li>
+      <li><a href="javascript:void(0)"  onclick="toPage('mainPage','')">主页</a></li>
       <li><a href="javascript:void(0)">建议反馈</a></li>
       <li><a href="javascript:void(0)">建议反馈</a></li>
     </ol>
@@ -57,7 +57,7 @@
             <tr>
               <td>${e.mm_emp_nickname}</td>
               <td>${e.mm_suggest_cont}</td>
-              <td>${e.dateline}</td>
+              <td>${um:format(e.dateline, 'yyyy-MM-dd')}</td>
               <%--<td>--%>
                 <%--<a class="btn btn-default btn-sm" href="javascript:void (0)" onclick="editRole('${e.mm_level_id}')" role="button">编辑</a>--%>
               <%--</td>--%>

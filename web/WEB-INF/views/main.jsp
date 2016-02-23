@@ -6,14 +6,14 @@
         </div>
         <div class="row">
             <div class="col-md-4 col-sm-6">
-                <a href="" class="cat-item bg-blue">
+                <a href="javascript:void(0);" class="cat-item bg-blue" onclick="toPage('/emp/list','1')">
                     <span>会员数量</span>
                     <i>${memberCount}</i>
                     <input type="button" class="btn-export" value="导出">
                 </a>
             </div>
             <div class="col-md-4 col-sm-6">
-                <a href="" class="cat-item bg-purple">
+                <a href="javascript:void(0);" class="cat-item bg-purple" onclick="toPage('/emp/list','1')">
                     <span>待审核会员</span>
                     <i>${memberCountNo}</i>
                     <input type="button" class="btn-export" value="导出">
@@ -26,16 +26,16 @@
         </div>
         <div class="row">
             <div class="col-md-4 col-sm-6">
-                <a href="" class="cat-item bg-red">
+                <a href="javascript:void(0);"  onclick="toPage('record/listQiugou','1')" class="cat-item bg-red">
                     <span>求购信息</span>
-                    <i>13</i>
+                    <i>${countQiugou}</i>
                     <input type="button" class="btn-export" value="导出">
                 </a>
             </div>
             <div class="col-md-4 col-sm-6">
-                <a href="" class="cat-item bg-green">
+                <a href="javascript:void(0);" onclick="toPage('record/listGongying','1')" class="cat-item bg-green">
                     <span>供应信息</span>
-                    <i>13</i>
+                    <i>${countGongying}</i>
                     <input type="button" class="btn-export" value="导出">
                 </a>
             </div>
@@ -46,12 +46,21 @@
         </div>
         <div class="row">
             <div class="col-md-4 col-sm-6">
-                <a href="" class="cat-item bg-orange">
-                    <span>会员数量</span>
-                    <i>13</i>
+                <a href="javascript:void(0);" class="cat-item bg-orange">
+                    <span>未处理举报</span>
+                    <i></i>
                     <input type="button" class="btn-export" value="导出">
                 </a>
             </div>
         </div>
     </div>
     <!--End Content-->
+<script type="text/javascript">
+    function toPage(_url, _page){
+        if(_page != ''){
+            window.location.href="#module="+_url+"&page="+_page;
+        }else{
+            window.location.href="#module="+_url;
+        }
+    }
+</script>

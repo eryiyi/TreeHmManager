@@ -7,7 +7,7 @@
       <i class="fa fa-bars"></i>
     </a>
     <ol class="breadcrumb pull-left">
-      <li><a href="javascript:void(0)">主页</a></li>
+      <li><a href="javascript:void(0)"  onclick="toPage('mainPage','')">主页</a></li>
       <li><a href="javascript:void(0)">会员管理</a></li>
       <li><a href="javascript:void(0)">添加轮播图</a></li>
     </ol>
@@ -74,7 +74,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">排序</label>
             <div class="col-sm-4">
-              <input type="text" id="mm_emp_ad_num" class="form-control" placeholder="排序" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+              <input type="text" id="mm_emp_ad_num" class="form-control" placeholder="数字越大越靠前" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
           <div class="form-group">
@@ -133,15 +133,17 @@
     var mm_emp_ad_url = $("#mm_emp_ad_url").val();
     var mm_emp_ad_num = $("#mm_emp_ad_num").val();
 
+    var imagePath = $("img[name='imagePath']").attr("src");
+    if(imagePath== "" || imagePath==null){
+      alert("请上传图片");
+      return;
+    }
+
     if(mm_emp_ad_url.replace(/\s/g, '')==''){
       alert("请输入正确的图片链接");
       return;
     }
-    var imagePath = $("img[name='imagePath']").attr("src");
-    if(imagePath== ""){
-      alert("请上传图片");
-      return;
-    }
+
     $.ajax({
       cache: true,
       type: "POST",

@@ -65,7 +65,7 @@
             AND sn.mm_emp_id = #{mm_emp_id}
         </if>
         <if test="keyword != null and keyword != ''">
-            AND sn.mm_msg_content like '%'||#{keyword}||'%'
+            AND sn.mm_msg_content like '||'#{keyword}'||'
         </if>
         ) m
         ORDER  BY  m.dateline DESC  limit #{index},#{size}
@@ -88,7 +88,7 @@
             AND sn.countryid = #{countryid}
         </if>
         <if test="keyword != null and keyword != ''">
-            AND sn.mm_msg_content like '%'||#{keyword}||'%'
+            AND sn.mm_msg_content like '||'#{keyword}'||'
         </if>
     </select>
 

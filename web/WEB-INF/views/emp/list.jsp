@@ -7,7 +7,7 @@
       <i class="fa fa-bars"></i>
     </a>
     <ol class="breadcrumb pull-left">
-      <li><a href="javascript:void(0)">主页</a></li>
+      <li><a href="javascript:void(0)"  onclick="toPage('mainPage','')">主页</a></li>
       <li><a href="javascript:void(0)">会员管理</a></li>
       <li><a href="javascript:void(0)">经营户列表</a></li>
     </ol>
@@ -27,7 +27,8 @@
       <div class="box-header">
         <div class="box-name ui-draggable-handle">
           <i class="fa fa-table"></i>
-          <span>经营户列表</span>
+          <c:if test="${mm_emp_type=='0'}"><span>经营户</span></c:if>
+          <c:if test="${mm_emp_type=='1'}"><span>会员</span></c:if>
         </div>
         <div class="box-icons">
           <a class="collapse-link">
@@ -44,24 +45,58 @@
       </div>
       <div class="box-content">
         <form class="form-inline">
+          <input type="hidden" id="mm_emp_type" value="${mm_emp_type}" >
+          <c:if test="${is_manager=='0'}">
+            <div class="form-group">
+              <div class="col-sm-4">
+                <select class="form-control" id="mm_emp_provinceId" onchange="selectCitys()">
+                  <option value="">--选择省份--</option>
+                  <c:forEach items="${listProvinces}" var="e" varStatus="st">
+                    <option value="${e.provinceID}" >${e.province}</option>
+                  </c:forEach>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-4">
+                <select class="form-control" id="mm_emp_cityId" onchange="selectCountrys()">
+                  <option value="">--选择城市--</option>
+                  <c:forEach items="${listCitys}" var="e" varStatus="st">
+                    <option value="${e.cityID}" >${e.city}</option>
+                  </c:forEach>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-4">
+                <select class="form-control" id="mm_emp_countryId" onchange="selectArea()">
+                  <option value="">--选择县区--</option>
+                  <c:forEach items="${listsCountry}" var="e" varStatus="st">
+                    <option value="${e.areaID}" >${e.area}</option>
+                  </c:forEach>
+                </select>
+              </div>
+            </div>
+          </c:if>
+
           <div class="form-group">
             <select class="form-control" id="ischeck">
-              <option value="">--选择审核状态--</option>
+              <option value="">--审核状态--</option>
               <option value="0" ${query.ischeck=='0'?'selected':''}>未审核</option>
               <option value="1" ${query.ischeck=='1'?'selected':''}>已审核</option>
               <option value="1" ${query.ischeck=='2'?'selected':''}>未通过</option>
             </select>
           </div>
-          <div class="form-group">
-            <select class="form-control" id="mm_emp_type">
-              <option value="">--选择注册类型--</option>
-              <option value="0" ${query.mm_emp_type=='0'?'selected':''}>苗木经营</option>
-              <option value="1" ${query.mm_emp_type=='1'?'selected':''}>苗木会员</option>
-            </select>
-          </div>
+          <%--<div class="form-group">--%>
+            <%--<select class="form-control" id="mm_emp_type">--%>
+              <%--<option value="">--注册类型--</option>--%>
+              <%--<option value="0" ${query.mm_emp_type=='0'?'selected':''}>苗木经营</option>--%>
+              <%--<option value="1" ${query.mm_emp_type=='1'?'selected':''}>苗木会员</option>--%>
+            <%--</select>--%>
+          <%--</div>--%>
           <div class="form-group">
             <select class="form-control" id="mm_emp_company_type">
-              <option value="">--选择公司类型--</option>
+              <option value="">--公司类型--</option>
               <option value="0" ${query.mm_emp_company_type=='0'?'selected':''}>苗木</option>
               <option value="1" ${query.mm_emp_company_type=='1'?'selected':''}>园林</option>
             </select>
@@ -69,7 +104,7 @@
 
           <div class="form-group">
             <select class="form-control" id="mm_level_id">
-              <option value="">--选择VIP星级--</option>
+              <option value="">--VIP星级--</option>
               <c:forEach items="${listLevels}" var="e" varStatus="st">
                 <option value="${e.mm_level_id}" ${query.mm_level_id=='0'?'selected':''}>${e.mm_level_name}</option>
               </c:forEach>
@@ -241,6 +276,48 @@
       alert("请输入1-${page.pageCount}的页码数");
     }
   }
+
+
+
+  function selectCitys(){
+    var citys = ${listCitysAll};
+    var province = $("#mm_emp_provinceId").val();
+    var ret = '';
+    for(var i= citys.length-1; i>=0; i-- ){
+      if(citys[i].father==province){
+        ret += "<option value='"+citys[i].cityID+"'>"+citys[i].city+"</option>";
+      }
+    }
+    $("#mm_emp_cityId").html(ret);
+
+    var mm_emp_provinceId = $("#mm_emp_provinceId").val();
+
+  };
+
+  function selectCountrys(){
+    var countrys = ${listsCountryAll};
+    var city = $("#mm_emp_cityId").val();
+    var ret = '';
+    for(var i= countrys.length-1; i>=0; i-- ){
+      if(countrys[i].father==city){
+        ret += "<option value='"+countrys[i].areaID+"'>"+countrys[i].area+"</option>";
+      }
+    }
+    $("#mm_emp_countryId").html(ret);
+
+    var mm_emp_provinceId = $("#mm_emp_provinceId").val();
+    var mm_emp_cityId = $("#mm_emp_cityId").val();
+
+  };
+
+  function selectArea(){
+    var mm_emp_provinceId = $("#mm_emp_provinceId").val();
+    var mm_emp_cityId = $("#mm_emp_cityId").val();
+    var mm_emp_countryId = $("#mm_emp_countryId").val();
+
+  };
+
+
 </script>
 
 

@@ -7,6 +7,7 @@ public class Emp {
     private String mm_emp_id;
     private String mm_emp_mobile;
     private String mm_emp_nickname;
+    private String mm_emp_card;
     private String mm_emp_password;
     private String mm_emp_cover;
     private String mm_emp_type;
@@ -36,6 +37,14 @@ public class Emp {
     private String lng;
     private String ischeck;
     private String access_token;
+
+    public String getMm_emp_card() {
+        return mm_emp_card;
+    }
+
+    public void setMm_emp_card(String mm_emp_card) {
+        this.mm_emp_card = mm_emp_card;
+    }
 
     public String getAccess_token() {
         return access_token;

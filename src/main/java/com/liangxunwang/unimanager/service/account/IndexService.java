@@ -1,6 +1,7 @@
 package com.liangxunwang.unimanager.service.account;
 
 import com.liangxunwang.unimanager.dao.EmpDao;
+import com.liangxunwang.unimanager.dao.RecordDao;
 import com.liangxunwang.unimanager.query.BaseAreaQuery;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.ServiceException;
@@ -23,6 +24,10 @@ public class IndexService implements ListService {
     @Qualifier("empDao")
     private EmpDao empDao;
 
+    @Autowired
+    @Qualifier("recordDao")
+    private RecordDao recordDao;
+
     @Override
     public Object list(Object object) throws ServiceException {
         BaseAreaQuery query = (BaseAreaQuery) object;
@@ -41,9 +46,30 @@ public class IndexService implements ListService {
         //待审核的数量
         map.put("ischeck", "0");
         long memberCountNo = empDao.count(map);
+
+        //资讯管理
+        Map<String, Object> mapR = new HashMap<String, Object>();
+        //分地区管理
+        if(!StringUtil.isNullOrEmpty(query.getMm_emp_provinceId())){
+            mapR.put("provinceid", query.getMm_emp_provinceId());
+        }
+        if(!StringUtil.isNullOrEmpty(query.getMm_emp_cityId())){
+            mapR.put("cityid", query.getMm_emp_cityId());
+        }
+        if(!StringUtil.isNullOrEmpty(query.getMm_emp_countryId())){
+            mapR.put("countryid", query.getMm_emp_countryId());
+        }
+
+        mapR.put("mm_msg_type", "0");//求购信息
+        long countQiugou = recordDao.count(mapR);
+        mapR.put("mm_msg_type", "1");//供应信息
+        long countGongying = recordDao.count(mapR);
+
         List<Long> list = new ArrayList<Long>();
         list.add(memberCount);
         list.add(memberCountNo);
+        list.add(countQiugou);
+        list.add(countGongying);
         return list;
     }
 }

@@ -7,7 +7,7 @@
       <i class="fa fa-bars"></i>
     </a>
     <ol class="breadcrumb pull-left">
-      <li><a href="javascript:void(0)">主页</a></li>
+      <li><a href="javascript:void(0)"  onclick="toPage('mainPage','')">主页</a></li>
       <li><a href="javascript:void(0)">信息管理</a></li>
       <li><a href="javascript:void(0)">信息列表</a></li>
     </ol>
@@ -44,7 +44,7 @@
       </div>
       <div class="box-content">
         <form class="form-inline">
-
+          <input type="hidden"  value="${mm_msg_type}"  id="mm_msg_type">
           <div class="form-group">
             <div class="col-sm-4">
               <input type="text" placeholder="关键词" id="keywords" class="form-control"  data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
@@ -135,9 +135,15 @@
     var _index = $("#index").val();
     var size = getCookie("contract_size");
     var keywords = $("#keywords").val();
+    var mm_msg_type = $("#mm_msg_type").val();
 
     if(_index <= ${page.pageCount} && _index >= 1){
-      window.location.href="#module=/record/listQiugou&page="+page+"&size="+size+"&keyword="+keywords;
+      if(mm_msg_type == 0){
+        window.location.href="#module=/record/listQiugou&page="+page+"&size="+size+"&keyword="+keywords;
+      }else{
+        window.location.href="#module=/record/listGongying&page="+page+"&size="+size+"&keyword="+keywords;
+      }
+
     }else{
       alert("请输入1-${page.pageCount}的页码数");
     }
@@ -146,9 +152,14 @@
     var page = parseInt(_page);
     var size = $("#size").val();
     var keywords = $("#keywords").val();
+    var mm_msg_type = $("#mm_msg_type").val();
     addCookie("contract_size", size, 36);
     if ((page <= ${page.pageCount} && page >= 1)) {
-      window.location.href="#module=/record/listQiugou&page="+page+"&size="+size+"&keyword="+keywords;
+      if(mm_msg_type == 0){
+        window.location.href="#module=/record/listQiugou&page="+page+"&size="+size+"&keyword="+keywords;
+      }else{
+        window.location.href="#module=/record/listGongying&page="+page+"&size="+size+"&keyword="+keywords;
+      }
     } else {
       alert("请输入1-${page.pageCount}的页码数");
     }
@@ -158,17 +169,15 @@
     var page = parseInt(_page);
     var size = $("#size").val();
     var keywords = $("#keywords").val();
+    var mm_msg_type = $("#mm_msg_type").val();
     addCookie("contract_size", size, 36);
     if ((page <= ${page.pageCount} && page >= 1)) {
 
-      <%--<c:if test="${um:permission('QIUGOU_MSG', sessionScope.powers)}">--%>
-    <%--<li><a href="javascript:void(0);" onclick="toPage('record/listQiugou','1')">求购信息</a></li>--%>
-      <%--</c:if>--%>
-      <%--<c:if test="${um:permission('GONGYING_MSG', sessionScope.powers)}">--%>
-      <%--<li><a href="javascript:void(0);" onclick="toPage('record/listGongying','1')">供应信息</a></li>--%>
-      <%--</c:if>--%>
-
-      window.location.href="#module=/record/listQiugou&page="+page+"&size="+size+"&keyword="+keywords;
+      if(mm_msg_type == 0){
+        window.location.href="#module=/record/listQiugou&page="+page+"&size="+size+"&keyword="+keywords;
+      }else{
+        window.location.href="#module=/record/listGongying&page="+page+"&size="+size+"&keyword="+keywords;
+      }
     } else {
       alert("请输入1-${page.pageCount}的页码数");
     }

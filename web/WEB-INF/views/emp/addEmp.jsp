@@ -7,7 +7,7 @@
       <i class="fa fa-bars"></i>
     </a>
     <ol class="breadcrumb pull-left">
-      <li><a href="javascript:void(0)">主页</a></li>
+      <li><a href="javascript:void(0)"  onclick="toPage('mainPage','')">主页</a></li>
       <li><a href="javascript:void (0);">会员管理</a></li>
       <li><a href="javascript:void (0);">人工注册</a></li>
     </ol>
@@ -36,20 +36,27 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">用户名</label>
               <div class="col-sm-4">
-                  <input type="text" id="mm_emp_nickname" class="form-control"  data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+                  <input type="text" id="mm_emp_nickname" placeholder="真实姓名" class="form-control"  data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
               </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">用户手机号</label>
             <div class="col-sm-4">
-              <input type="text" id="mm_emp_mobile" class="form-control"  data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+              <input type="text" id="mm_emp_mobile" placeholder="手机号" class="form-control"  data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-sm-2 control-label">用户密码</label>
             <div class="col-sm-4">
-              <input type="text" id="mm_emp_password" class="form-control" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+              <input type="text" id="mm_emp_password" placeholder="6到18位密码" class="form-control" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">身份证号</label>
+            <div class="col-sm-4">
+              <input type="text" id="mm_emp_card" placeholder="身份证号" class="form-control" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
 
@@ -67,7 +74,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">公司名称</label>
             <div class="col-sm-4">
-              <input type="text" id="mm_emp_company" class="form-control"  data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+              <input type="text" id="mm_emp_company" placeholder="公司名称" class="form-control"  data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
 
@@ -85,14 +92,14 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">公司地址</label>
             <div class="col-sm-4">
-              <input type="text" id="mm_emp_company_address" class="form-control" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+              <input type="text" id="mm_emp_company_address" placeholder="公司地址" class="form-control" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-sm-2 control-label">公司简介</label>
             <div class="col-sm-4">
-              <input type="text" id="mm_emp_company_detail" class="form-control"  data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+              <input type="text" id="mm_emp_company_detail" placeholder="公司简介" class="form-control"  data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
           <div class="form-group">
@@ -295,6 +302,7 @@
 
   function saveRole(mm_emp_id){
     var mm_emp_mobile = $("#mm_emp_mobile").val();
+    var mm_emp_card = $("#mm_emp_card").val();
     var mm_emp_nickname = $("#mm_emp_nickname").val();
     var mm_emp_password = $("#mm_emp_password").val();
     var mm_emp_type = $("#mm_emp_type").val();
@@ -439,6 +447,7 @@
       data:{
         "mm_emp_mobile":mm_emp_mobile,
         "mm_emp_nickname":mm_emp_nickname,
+        "mm_emp_card":mm_emp_card,
         "mm_emp_type":mm_emp_type,
         "mm_emp_password":mm_emp_password,
         "mm_emp_company":mm_emp_company,

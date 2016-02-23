@@ -1,7 +1,8 @@
 package com.liangxunwang.unimanager.mvc.admin;
 
-import com.liangxunwang.unimanager.model.Admin;
-import com.liangxunwang.unimanager.model.LogoObj;
+import com.liangxunwang.unimanager.model.*;
+import com.liangxunwang.unimanager.query.CityQuery;
+import com.liangxunwang.unimanager.query.CountryQuery;
 import com.liangxunwang.unimanager.query.RecordQuery;
 import com.liangxunwang.unimanager.service.DeleteService;
 import com.liangxunwang.unimanager.service.ListService;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * Created by liuzh on 2015/8/12.
@@ -33,6 +35,18 @@ public class RecordController extends ControllerConstants {
     @Autowired
     @Qualifier("recordService")
     private DeleteService recordServiceDele;
+
+
+    @Autowired
+    @Qualifier("provinceService")
+    private ListService provinceService;
+
+    @Autowired
+    @Qualifier("cityService")
+    private ListService cityService;
+    @Autowired
+    @Qualifier("countryService")
+    private ListService countryService;
 
     @RequestMapping("listQiugou")
     public String listQiugou(HttpSession session,ModelMap map, RecordQuery query, Page page){
@@ -59,8 +73,23 @@ public class RecordController extends ControllerConstants {
         page.setPageCount(calculatePageCount(query.getSize(), count));
         map.addAttribute("page", page);
         map.addAttribute("query", query);
+        map.addAttribute("mm_msg_type", "0");
         //日志记录
         logoService.save(new LogoObj("查看求购信息", manager.getMm_manager_id()));
+
+        //查询省份
+        List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list("");
+        //查询地市all
+        CityQuery cityQueryAll = new CityQuery();
+        List<CityObj> listCitysAll = (List<CityObj>) cityService.list(cityQueryAll);
+        //查询县区all
+        CountryQuery countryQueryAll = new CountryQuery();
+        List<CountryObj> listsCountryAll = (List<CountryObj>) countryService.list(countryQueryAll);
+
+        map.put("listProvinces", listProvinces);
+        map.put("listCitysAll", toJSONString(listCitysAll));
+        map.put("listsCountryAll", toJSONString(listsCountryAll));
+
         return "record/list";
     }
     @RequestMapping("listGongying")
@@ -88,6 +117,7 @@ public class RecordController extends ControllerConstants {
         page.setPageCount(calculatePageCount(query.getSize(), count));
         map.addAttribute("page", page);
         map.addAttribute("query", query);
+        map.addAttribute("mm_msg_type", "1");
         //日志记录
         logoService.save(new LogoObj("查看供应信息", manager.getMm_manager_id()));
         return "record/list";

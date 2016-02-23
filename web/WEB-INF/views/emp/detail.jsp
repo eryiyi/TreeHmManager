@@ -7,7 +7,7 @@
       <i class="fa fa-bars"></i>
     </a>
     <ol class="breadcrumb pull-left">
-      <li><a href="javascript:void(0)">主页</a></li>
+      <li><a href="javascript:void(0)"  onclick="toPage('mainPage','')">主页</a></li>
       <li><a href="javascript:void (0);">会员管理</a></li>
       <li><a href="javascript:void (0);">会员详情</a></li>
     </ol>
@@ -44,6 +44,12 @@
             <label class="col-sm-2 control-label">用户手机号</label>
             <div class="col-sm-4">
               <input type="text" id="mm_emp_mobile" class="form-control" value="${empVO.mm_emp_mobile}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+            </div>
+          </div>
+            <div class="form-group">
+            <label class="col-sm-2 control-label">身份证号</label>
+            <div class="col-sm-4">
+              <input type="text" id="mm_emp_card" class="form-control" value="${empVO.mm_emp_card}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
 
@@ -311,6 +317,7 @@
     var mm_emp_id = $("#mm_emp_id").val();
     var mm_emp_mobile = $("#mm_emp_mobile").val();
     var mm_emp_nickname = $("#mm_emp_nickname").val();
+    var mm_emp_card = $("#mm_emp_card").val();
 //    var mm_emp_password = $("#mm_emp_password").val();
     var mm_emp_type = $("#mm_emp_type").val();
     var mm_emp_company = $("#mm_emp_company").val();
@@ -457,6 +464,7 @@
       data:{
 //        "mm_emp_password":mm_emp_password,
         "mm_emp_id":mm_emp_id,
+        "mm_emp_card":mm_emp_card,
         "mm_emp_mobile":mm_emp_mobile,
         "mm_emp_nickname":mm_emp_nickname,
         "mm_emp_type":mm_emp_type,

@@ -166,10 +166,10 @@
 										<li><a href="javascript:void(0);" onclick="toPage('/emp/toReg','1')">人工注册</a></li>
 									</c:if>
 									<c:if test="${um:permission('LIST_EMPLOYEE_JY', sessionScope.powers)}">
-										<li><a href="javascript:void(0);" onclick="toPage('/emp/list','1')">经营户</a></li>
+										<li><a href="javascript:void(0);" onclick="toPageEmp('/emp/list','1','0')">经营户</a></li>
 									</c:if>
 									<c:if test="${um:permission('LIST_EMPLOYEE_EMP', sessionScope.powers)}">
-										<li><a href="javascript:void(0);" onclick="toPage('/emp/listEmp','1')">会员</a></li>
+										<li><a href="javascript:void(0);" onclick="toPageEmp('/emp/list','1','1')">会员</a></li>
 									</c:if>
 						</ul>
 					</li>
@@ -429,23 +429,21 @@
 		}
 		window.setInterval(checkHash, 100);
 	})(window);
+
 	function toPage(_url, _page){
 		if(_page != ''){
 			window.location.href="#module="+_url+"&page="+_page;
 		}else{
 			window.location.href="#module="+_url;
 		}
+	}
 
-//		$.ajax({
-//			type: "post",
-//			url: _url,
-//			data:{"page":_page},
-//			success: function(response){
-//				$("#content").html(response);
-//			}
-//
-//		});
-//		history.pushState('', 'New URL: '+_url, "/#"+_url);
+	function toPageEmp(_url, _page, mm_emp_type){
+		if(_page != ''){
+			window.location.href="#module="+_url+"&page="+_page +"&mm_emp_type="+mm_emp_type;
+		}else{
+			window.location.href="#module="+_url;
+		}
 	}
 
 </script>

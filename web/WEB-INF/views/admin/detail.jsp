@@ -7,7 +7,7 @@
       <i class="fa fa-bars"></i>
     </a>
     <ol class="breadcrumb pull-left">
-      <li><a href="javascript:void(0)">主页</a></li>
+      <li><a href="javascript:void(0)"  onclick="toPage('mainPage','')">主页</a></li>
       <li><a href="javascript:void (0);">管理员</a></li>
       <li><a href="javascript:void (0);">管理员详情</a></li>
     </ol>
@@ -49,7 +49,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">用户密码</label>
             <div class="col-sm-4">
-              <input type="text" id="mm_manager_password" class="form-control" value="${admin.mm_manager_password}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+              <input type="text" id="mm_manager_password" class="form-control"  placeholder="新密码" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
 

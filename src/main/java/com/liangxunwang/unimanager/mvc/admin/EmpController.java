@@ -61,9 +61,6 @@ public class EmpController extends ControllerConstants {
         Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
         query.setSize(query.getSize() == 0 ? page.getDefaultSize() : query.getSize());
-        if(StringUtil.isNullOrEmpty(query.getMm_emp_type())){
-            query.setMm_emp_type("0");//苗木经营户
-        }
         //分地区管理
         if("1".equals(manager.getMm_manager_type())){
             query.setMm_emp_countryId(manager.getMm_manager_area_uuid());
@@ -90,46 +87,100 @@ public class EmpController extends ControllerConstants {
         //日志记录
         logoService.save(new LogoObj("查看经营户列表", manager.getMm_manager_id()));
 
-        //是否是顶级管理员 0是  1不是
-        map.put("is_manager", "1");
+        //是否是顶级管理员 0是  1不是  用于页面是否展示操作功能
+        if("0".equals(manager.getMm_manager_type()) || "4".equals(manager.getMm_manager_type())){
+            map.put("is_manager", "0");
+        }else {
+            map.put("is_manager", "1");
+        }
+
+        //查询省份
+        List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list("");
+        //查询地市
+        CityQuery cityQuery = new CityQuery();
+        List<CityObj> listCitys = (List<CityObj>) cityService.list(cityQuery);
+        //查询县区
+        CountryQuery countryQuery = new CountryQuery();
+        List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);
+        map.put("listProvinces", listProvinces);
+        map.put("listCitys", listCitys);
+        map.put("listsCountry", listsCountry);
+        //查询地市all
+        CityQuery cityQueryAll = new CityQuery();
+        List<CityObj> listCitysAll = (List<CityObj>) cityService.list(cityQueryAll);
+        //查询县区all
+        CountryQuery countryQueryAll = new CountryQuery();
+        List<CountryObj> listsCountryAll = (List<CountryObj>) countryService.list(countryQueryAll);
+
+        map.put("listCitysAll", toJSONString(listCitysAll));
+        map.put("listsCountryAll", toJSONString(listsCountryAll));
+
+        //0经营户 1会员
+        map.put("mm_emp_type", query.getMm_emp_type());
+
         return "/emp/list";
     }
 
-    @RequestMapping("listEmp")
-    public String listEmp(HttpSession session,ModelMap map, EmpQuery query, Page page){
-        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
-        query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
-        query.setSize(query.getSize() == 0 ? page.getDefaultSize() : query.getSize());
-        if(StringUtil.isNullOrEmpty(query.getMm_emp_type())){
-            query.setMm_emp_type("1");//苗木会员
-        }
-
-        //分地区管理
-        if("1".equals(manager.getMm_manager_type())){
-            query.setMm_emp_countryId(manager.getMm_manager_area_uuid());
-        }
-        if("2".equals(manager.getMm_manager_type())){
-            query.setMm_emp_cityId(manager.getMm_manager_area_uuid());
-        }
-        if("3".equals(manager.getMm_manager_type())){
-            query.setMm_emp_provinceId(manager.getMm_manager_area_uuid());
-        }
-
-
-        Object[] results = (Object[]) empServiceList.list(query);
-        map.put("list", results[0]);
-        long count = (Long) results[1];
-        page.setCount(count);
-        page.setPageCount(calculatePageCount(query.getSize(), count));
-        map.addAttribute("page", page);
-        map.addAttribute("query", query);
-
-        //日志记录
-        logoService.save(new LogoObj("查看会员列表", manager.getMm_manager_id()));
-        //是否是顶级管理员 0是  1不是
-        map.put("is_manager", "1");
-        return "/emp/list";
-    }
+//    @RequestMapping("listEmp")
+//    public String listEmp(HttpSession session,ModelMap map, EmpQuery query, Page page){
+//        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
+//        query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
+//        query.setSize(query.getSize() == 0 ? page.getDefaultSize() : query.getSize());
+//        if(StringUtil.isNullOrEmpty(query.getMm_emp_type())){
+//            query.setMm_emp_type("1");//苗木会员
+//        }
+//
+//        //分地区管理
+//        if("1".equals(manager.getMm_manager_type())){
+//            query.setMm_emp_countryId(manager.getMm_manager_area_uuid());
+//        }
+//        if("2".equals(manager.getMm_manager_type())){
+//            query.setMm_emp_cityId(manager.getMm_manager_area_uuid());
+//        }
+//        if("3".equals(manager.getMm_manager_type())){
+//            query.setMm_emp_provinceId(manager.getMm_manager_area_uuid());
+//        }
+//
+//
+//        Object[] results = (Object[]) empServiceList.list(query);
+//        map.put("list", results[0]);
+//        long count = (Long) results[1];
+//        page.setCount(count);
+//        page.setPageCount(calculatePageCount(query.getSize(), count));
+//        map.addAttribute("page", page);
+//        map.addAttribute("query", query);
+//
+//        //日志记录
+//        logoService.save(new LogoObj("查看会员列表", manager.getMm_manager_id()));
+//        //是否是顶级管理员 0是  1不是  用于页面是否展示操作功能
+//        if("0".equals(manager.getMm_manager_type()) || "4".equals(manager.getMm_manager_type())){
+//            map.put("is_manager", "0");
+//        }else {
+//            map.put("is_manager", "1");
+//        }
+//
+//        //查询省份
+//        List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list("");
+//        //查询地市
+//        CityQuery cityQuery = new CityQuery();
+//        List<CityObj> listCitys = (List<CityObj>) cityService.list(cityQuery);
+//        //查询县区
+//        CountryQuery countryQuery = new CountryQuery();
+//        List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);
+//        map.put("listProvinces", listProvinces);
+//        map.put("listCitys", listCitys);
+//        map.put("listsCountry", listsCountry);
+//        //查询地市all
+//        CityQuery cityQueryAll = new CityQuery();
+//        List<CityObj> listCitysAll = (List<CityObj>) cityService.list(cityQueryAll);
+//        //查询县区all
+//        CountryQuery countryQueryAll = new CountryQuery();
+//        List<CountryObj> listsCountryAll = (List<CountryObj>) countryService.list(countryQueryAll);
+//
+//        map.put("listCitysAll", toJSONString(listCitysAll));
+//        map.put("listsCountryAll", toJSONString(listsCountryAll));
+//        return "/emp/list";
+//    }
 
     @RequestMapping("/detail")
     public String updateType(ModelMap map, HttpSession session, String mm_emp_id){
