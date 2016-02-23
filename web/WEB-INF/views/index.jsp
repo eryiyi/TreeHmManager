@@ -162,6 +162,9 @@
 						</a>
 						<ul class="dropdown-menu">
 								<%--<li><a href="javascript:void(0);" onclick="toPage('/role/add','')">添加宝宝</a></li>--%>
+									<c:if test="${um:permission('REG_EMP', sessionScope.powers)}">
+										<li><a href="javascript:void(0);" onclick="toPage('/emp/toReg','1')">人工注册</a></li>
+									</c:if>
 									<c:if test="${um:permission('LIST_EMPLOYEE_JY', sessionScope.powers)}">
 										<li><a href="javascript:void(0);" onclick="toPage('/emp/list','1')">经营户</a></li>
 									</c:if>

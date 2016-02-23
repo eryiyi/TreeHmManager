@@ -94,6 +94,8 @@
             <th>到期时间</th>
             <th>审核状态</th>
             <th>操作</th>
+            <th>操作</th>
+            <th>操作</th>
           </tr>
           </thead>
           <tbody>
@@ -128,6 +130,12 @@
               </td>
               <td>
                 <a class="btn btn-default btn-sm" href="#module=/emp/detail&mm_emp_id=${e.mm_emp_id}" role="button">编辑</a>
+              </td>
+              <td>
+                <a class="btn btn-default btn-sm" href="#module=/emp/toUpdatePwr&mm_emp_id=${e.mm_emp_id}" role="button">修改密码</a>
+              </td>
+              <td>
+                <a class="btn btn-default btn-sm" href="#module=/empAd/list&mm_emp_id=${e.mm_emp_id}" role="button">轮播图</a>
               </td>
             </tr>
           </c:forEach>

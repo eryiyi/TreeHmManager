@@ -186,5 +186,11 @@
         WHERE mm_emp_id=#{mm_emp_id}
     </update>
 
+    <update id="updatePwr" parameterType="com.liangxunwang.unimanager.model.Emp">
+        UPDATE mm_emp SET
+        mm_emp_password=#{mm_emp_password}
+        WHERE mm_emp_mobile=#{mm_emp_mobile}
+    </update>
+
 
 </mapper>

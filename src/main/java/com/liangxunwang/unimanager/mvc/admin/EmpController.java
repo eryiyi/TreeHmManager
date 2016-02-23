@@ -4,6 +4,7 @@ import com.liangxunwang.unimanager.model.*;
 import com.liangxunwang.unimanager.mvc.vo.EmpVO;
 import com.liangxunwang.unimanager.query.*;
 import com.liangxunwang.unimanager.service.*;
+import com.liangxunwang.unimanager.util.Constants;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -227,4 +228,90 @@ public class EmpController extends ControllerConstants {
         logoService.save(new LogoObj("查看会员："+empVO.getMm_emp_nickname()+"的详情", manager.getMm_manager_id()));
         return "/admin/add_detail";
     }
+
+    @Autowired
+    @Qualifier("empRegisterService")
+    private SaveService empRegisterService;
+
+    /**
+     * 注册功能
+     * @param member  会员对象
+     * @return
+     */
+    @RequestMapping("/empReg")
+    @ResponseBody
+    public String empReg(Emp member){
+        try {
+            empRegisterService.save(member);
+        }catch (ServiceException e){
+            String msg = e.getMessage();
+            if (msg.equals("MobileIsUse")){
+                return toJSONString(ERROR_2);
+            }
+            if (msg.equals(Constants.SAVE_ERROR)){
+                return toJSONString(ERROR_1);
+            }
+
+        }
+        return toJSONString(SUCCESS);
+    }
+
+    @RequestMapping("/toReg")
+    public String toReg(ModelMap map, HttpSession session, String mm_emp_id){
+        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
+        //vip星级
+        LevelQuery query = new LevelQuery();
+        List<Level> list = (List<Level>) levelService.list(query);
+        //查询省份
+        List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list("");
+        //查询地市
+        CityQuery cityQuery = new CityQuery();
+        List<CityObj> listCitys = (List<CityObj>) cityService.list(cityQuery);
+        //查询县区
+        CountryQuery countryQuery = new CountryQuery();
+        List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);
+        map.put("listLevels", list);
+        map.put("listProvinces", listProvinces);
+        map.put("listCitys", listCitys);
+        map.put("listsCountry", listsCountry);
+
+        //查询地市all
+        CityQuery cityQueryAll = new CityQuery();
+        List<CityObj> listCitysAll = (List<CityObj>) cityService.list(cityQueryAll);
+        //查询县区all
+        CountryQuery countryQueryAll = new CountryQuery();
+        List<CountryObj> listsCountryAll = (List<CountryObj>) countryService.list(countryQueryAll);
+
+        map.put("listCitysAll", toJSONString(listCitysAll));
+        map.put("listsCountryAll", toJSONString(listsCountryAll));
+
+        return "/emp/addEmp";
+    }
+
+
+    @RequestMapping("/toUpdatePwr")
+    public String toUpdatePwr(ModelMap map, HttpSession session, String mm_emp_id){
+        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
+        //查看该会员信息
+        EmpVO empVO = (EmpVO) empServiceExecute.execute(mm_emp_id);
+        map.put("empVO", empVO);
+        return "/emp/updatePwr";
+    }
+
+
+    //更改会员数据--密码
+    @RequestMapping("/updateEmpPwr")
+    @ResponseBody
+    public String updateEmpPwr( HttpSession session, Emp emp){
+        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
+        try {
+            empServiceUpdate.update(emp);
+            //日志记录
+            logoService.save(new LogoObj("更新会员密码："+emp.getMm_emp_nickname()+"的信息", manager.getMm_manager_id()));
+            return toJSONString(SUCCESS);
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+        }
+    }
+
 }

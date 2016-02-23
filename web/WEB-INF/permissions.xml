@@ -9,6 +9,7 @@
         <permission id="MANAGER_LIST_MANAGE" name="管理员列表"/>
     </group>
     <group id="EMPLOYEE_MANAGE" name="会员管理">
+        <permission id="REG_EMP" name="人工注册"/>
         <permission id="LIST_EMPLOYEE_JY" name="经营户"/>
         <permission id="LIST_EMPLOYEE_EMP" name="会员"/>
     </group>

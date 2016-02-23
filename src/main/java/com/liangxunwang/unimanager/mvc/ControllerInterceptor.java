@@ -38,6 +38,7 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/getFuwuByLocationAndType\\.do$)"+
                         "|(^/getAboutUs\\.do$)"+
                         "|(^/suggest/addSuggest\\.do$)"+
+                        "|(^/updatePwr\\.do$)"+
 
                         "|(^/memberLogin\\.do$)"
 

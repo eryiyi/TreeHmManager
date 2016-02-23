@@ -37,4 +37,6 @@ public interface EmpDao {
 
     //更新会员数据--经纬度
     void updateLoacation(Emp emp);
+    //修改用户密码
+    void updatePwr(Emp emp);
 }

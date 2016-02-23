@@ -60,7 +60,11 @@ public class EmpService implements ListService , UpdateService , ExecuteService{
     public Object update(Object object) {
         if (object instanceof Emp){
             Emp emp = (Emp) object;
-            empDao.update(emp);
+            if(!StringUtil.isNullOrEmpty(emp.getMm_emp_password())){
+                empDao.updatePwr(emp);
+            }else {
+                empDao.update(emp);
+            }
         }
         return null;
     }

@@ -9,6 +9,7 @@ import com.liangxunwang.unimanager.query.EmpQuery;
 import com.liangxunwang.unimanager.query.LevelQuery;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.ControllerConstants;
+import com.liangxunwang.unimanager.util.MD5Util;
 import com.liangxunwang.unimanager.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -57,6 +58,24 @@ public class AppEmpController extends ControllerConstants {
             emp.setMm_emp_id(mm_emp_id);
             emp.setLat(lat);
             emp.setLng(lng);
+            appEmpService.update(emp);
+            DataTip tip = new DataTip();
+            tip.setData(tip);
+            return toJSONString(tip);
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+        }
+    }
+
+
+    @RequestMapping(value = "/updatePwr", produces = "text/plain;charset=UTF-8;")
+    @ResponseBody
+    public String sendLocation(String mm_emp_mobile,String newpass){
+        try {
+            //修改用户密码
+            Emp emp = new Emp();
+            emp.setMm_emp_mobile(mm_emp_mobile);
+            emp.setMm_emp_password(newpass);
             appEmpService.update(emp);
             DataTip tip = new DataTip();
             tip.setData(tip);
