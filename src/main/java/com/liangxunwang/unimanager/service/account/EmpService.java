@@ -9,6 +9,7 @@ import com.liangxunwang.unimanager.service.ExecuteService;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.ServiceException;
 import com.liangxunwang.unimanager.service.UpdateService;
+import com.liangxunwang.unimanager.util.MD5Util;
 import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -61,6 +62,7 @@ public class EmpService implements ListService , UpdateService , ExecuteService{
         if (object instanceof Emp){
             Emp emp = (Emp) object;
             if(!StringUtil.isNullOrEmpty(emp.getMm_emp_password())){
+                emp.setMm_emp_password(new MD5Util().getMD5ofStr(emp.getMm_emp_password()));//密码加密
                 empDao.updatePwr(emp);
             }else {
                 empDao.update(emp);

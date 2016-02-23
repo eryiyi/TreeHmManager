@@ -45,12 +45,26 @@
       <div class="box-content">
         <form class="form-horizontal" role="form">
           <input type="hidden" id="mm_emp_id" value="${mm_emp_id}">
+
+
           <div class="form-group">
-            <label class="col-sm-2 control-label">图片地址</label>
-            <div class="col-sm-4">
-              <input type="text" id="mm_emp_ad_pic" class="form-control" placeholder="图片地址" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+            <label class="col-sm-2 control-label" >图片</label>
+            <div class="col-sm-10">
+              <input type="file" name="file" id="fileUpload" style="float: left;" />
+              <input type="button" value="上传" onclick="uploadImage()" style="float: left;"/><br/><br/><div id="imageDiv" style="padding: 10px"></div>
             </div>
+
           </div>
+
+          <%--<div class="form-group">--%>
+            <%--<label class="col-sm-2 control-label">图片地址</label>--%>
+            <%--<div class="col-sm-4">--%>
+              <%--<input type="text" id="mm_emp_ad_pic" class="form-control" placeholder="图片地址" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">--%>
+            <%--</div>--%>
+          <%--</div>--%>
+
+
+
           <div class="form-group">
             <label class="col-sm-2 control-label">图片链接</label>
             <div class="col-sm-4">
@@ -75,26 +89,64 @@
 </div>
 
 <script type="text/javascript">
+  function uploadImage() {
+    $.ajaxFileUpload(
+            {
+              url:"/uploadUnCompressImage.do?_t=" + new Date().getTime(),            //需要链接到服务器地址
+              secureuri:false,//是否启用安全提交，默认为false
+              fileElementId:'fileUpload',                        //文件选择框的id属性
+              dataType: 'json',                                     //服务器返回的格式，可以是json, xml
+              success: function (data, status)  //服务器成功响应处理函数
+              {
+                if(data.success) {
+                  var html = '<img style="cursor: pointer" onmousedown="deleteImage(event, this)" src="'+data.data+'" width="150" height="150" name="imagePath" title="点击右键删除"/>';
+//                  var imageDivHtml = $("#imageDiv").html() + html;
+                  $("#imageDiv").html(html);
+                } else {
+                  if(data.code == 1) {
+                    alert("上传图片失败");
+                  } else if(data.code == 2) {
+                    alert("上传图片格式只能为：jpg、png、gif、bmp、jpeg");
+                  } else if(data.code == 3) {
+                    alert("请选择上传图片");
+                  }else {
+                    alert("上传失败");
+                  }
+                }
+              }
+            }
+    );
+  }
+
+  function deleteImage(e, node) {
+    if(e.button == 2) {
+      if(confirm("确定移除该图片吗？")) {
+        $(node).remove();
+      }
+    }
+  };
+
+
+
   function saveP(){
     var mm_emp_id = $("#mm_emp_id").val();
-    var mm_emp_ad_pic = $("#mm_emp_ad_pic").val();
     var mm_emp_ad_url = $("#mm_emp_ad_url").val();
     var mm_emp_ad_num = $("#mm_emp_ad_num").val();
 
-    if(mm_emp_ad_pic.replace(/\s/g, '')==''){
-      alert("请输入正确的图片地址");
-      return;
-    }
     if(mm_emp_ad_url.replace(/\s/g, '')==''){
       alert("请输入正确的图片链接");
       return;
     }
-
+    var imagePath = $("img[name='imagePath']").attr("src");
+    if(imagePath== ""){
+      alert("请上传图片");
+      return;
+    }
     $.ajax({
       cache: true,
       type: "POST",
       url:"/empAd/addEmpAd.do",
-      data:{"mm_emp_id":mm_emp_id, "mm_emp_ad_pic":mm_emp_ad_pic, "mm_emp_ad_url":mm_emp_ad_url, "mm_emp_ad_num":mm_emp_ad_num},
+      data:{"mm_emp_id":mm_emp_id, "mm_emp_ad_pic":imagePath, "mm_emp_ad_url":mm_emp_ad_url, "mm_emp_ad_num":mm_emp_ad_num},
       async: false,
       success: function(_data) {
         var data = $.parseJSON(_data);
@@ -108,5 +160,3 @@
     });
   }
 </script>
-
-

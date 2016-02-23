@@ -65,7 +65,7 @@ public class EmpAdController extends ControllerConstants {
 
     @RequestMapping("addEmpAd")
     @ResponseBody
-    public String addPiao(HttpSession session,EmpAdObj empAdObj){
+    public String addEmpAd(HttpSession session,EmpAdObj empAdObj){
         Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         levelServiceSave.save(empAdObj);
         //日志记录

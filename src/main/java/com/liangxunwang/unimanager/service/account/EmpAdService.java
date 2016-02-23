@@ -8,8 +8,10 @@ import com.liangxunwang.unimanager.mvc.vo.EmpAdVO;
 import com.liangxunwang.unimanager.query.EmpAdQuery;
 import com.liangxunwang.unimanager.query.LevelQuery;
 import com.liangxunwang.unimanager.service.*;
+import com.liangxunwang.unimanager.util.Constants;
 import com.liangxunwang.unimanager.util.StringUtil;
 import com.liangxunwang.unimanager.util.UUIDFactory;
+import org.apache.http.Header;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -35,6 +37,13 @@ public class EmpAdService implements ListService,SaveService ,DeleteService,Exec
             map.put("mm_emp_id", query.getMm_emp_id());
         }
         List<EmpAdVO> lists = empAdDao.lists(map);
+        for(EmpAdVO empAdVO:lists){
+            if (empAdVO.getMm_emp_ad_pic().startsWith("upload")) {
+                empAdVO.setMm_emp_ad_pic(Constants.URL + empAdVO.getMm_emp_ad_pic());
+            }else {
+                empAdVO.setMm_emp_ad_pic(Constants.QINIU_URL + empAdVO.getMm_emp_ad_pic());
+            }
+        }
         return lists;
     }
 

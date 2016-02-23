@@ -34,6 +34,7 @@
         <%--<h4 class="page-header">会员详情</h4>--%>
         <form class="form-horizontal" role="form">
           <input type="hidden" value="${empVO.mm_emp_id}" id="mm_emp_id">
+          <input type="hidden" value="${empVO.mm_emp_mobile}" id="mm_emp_mobile">
           <div class="form-group">
             <label class="col-sm-2 control-label">用户名</label>
               <div class="col-sm-4">
@@ -62,7 +63,7 @@
 <script type="text/javascript">
 
   function saveRole(mm_emp_id){
-    var mm_emp_id = $("#mm_emp_id").val();
+    var mm_emp_mobile = $("#mm_emp_mobile").val();
     var mm_emp_nickname = $("#mm_emp_nickname").val();
     var mm_emp_password = $("#mm_emp_password").val();
 
@@ -74,7 +75,6 @@
       alert("密码长度至少6位,最多18位");
       return;
     }
-    mm_emp_password = hex_md5(mm_emp_password);
 
     $.ajax({
       cache: true,
@@ -82,7 +82,7 @@
       url:"/emp/updateEmpPwr.do",
       data:{
         "mm_emp_password":mm_emp_password,
-        "mm_emp_id":mm_emp_id
+        "mm_emp_mobile":mm_emp_mobile
 
       },
       async: false,
