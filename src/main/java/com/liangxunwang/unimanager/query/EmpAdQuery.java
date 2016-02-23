@@ -3,7 +3,7 @@ package com.liangxunwang.unimanager.query;
 /**
  * Created by liuzwei on 2015/1/31.
  */
-public class EmpAdQuery {
+public class EmpAdQuery  extends BaseAreaQuery{
     private String mm_emp_id;
 
     private String mm_emp_ad_pic;

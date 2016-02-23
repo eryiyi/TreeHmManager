@@ -7,6 +7,7 @@ import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.Constants;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.Page;
+import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -60,7 +61,20 @@ public class EmpController extends ControllerConstants {
         Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
         query.setSize(query.getSize() == 0 ? page.getDefaultSize() : query.getSize());
-        query.setMm_emp_type("0");//苗木经营户
+        if(StringUtil.isNullOrEmpty(query.getMm_emp_type())){
+            query.setMm_emp_type("0");//苗木经营户
+        }
+        //分地区管理
+        if("1".equals(manager.getMm_manager_type())){
+            query.setMm_emp_countryId(manager.getMm_manager_area_uuid());
+        }
+        if("2".equals(manager.getMm_manager_type())){
+            query.setMm_emp_cityId(manager.getMm_manager_area_uuid());
+        }
+        if("3".equals(manager.getMm_manager_type())){
+            query.setMm_emp_provinceId(manager.getMm_manager_area_uuid());
+        }
+
         Object[] results = (Object[]) empServiceList.list(query);
         map.put("list", results[0]);
         long count = (Long) results[1];
@@ -75,6 +89,9 @@ public class EmpController extends ControllerConstants {
 
         //日志记录
         logoService.save(new LogoObj("查看经营户列表", manager.getMm_manager_id()));
+
+        //是否是顶级管理员 0是  1不是
+        map.put("is_manager", "1");
         return "/emp/list";
     }
 
@@ -83,7 +100,22 @@ public class EmpController extends ControllerConstants {
         Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
         query.setSize(query.getSize() == 0 ? page.getDefaultSize() : query.getSize());
-        query.setMm_emp_type("1");//苗木会员
+        if(StringUtil.isNullOrEmpty(query.getMm_emp_type())){
+            query.setMm_emp_type("1");//苗木会员
+        }
+
+        //分地区管理
+        if("1".equals(manager.getMm_manager_type())){
+            query.setMm_emp_countryId(manager.getMm_manager_area_uuid());
+        }
+        if("2".equals(manager.getMm_manager_type())){
+            query.setMm_emp_cityId(manager.getMm_manager_area_uuid());
+        }
+        if("3".equals(manager.getMm_manager_type())){
+            query.setMm_emp_provinceId(manager.getMm_manager_area_uuid());
+        }
+
+
         Object[] results = (Object[]) empServiceList.list(query);
         map.put("list", results[0]);
         long count = (Long) results[1];
@@ -94,6 +126,8 @@ public class EmpController extends ControllerConstants {
 
         //日志记录
         logoService.save(new LogoObj("查看会员列表", manager.getMm_manager_id()));
+        //是否是顶级管理员 0是  1不是
+        map.put("is_manager", "1");
         return "/emp/list";
     }
 

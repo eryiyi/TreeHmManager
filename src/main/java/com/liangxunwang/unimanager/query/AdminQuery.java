@@ -3,7 +3,7 @@ package com.liangxunwang.unimanager.query;
 /**
  * Created by liuzwei on 2015/1/31.
  */
-public class AdminQuery {
+public class AdminQuery extends BaseAreaQuery{
     private int index;
     private int size;
     private String mm_manager_is_use;

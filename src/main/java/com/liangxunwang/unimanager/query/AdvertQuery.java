@@ -3,7 +3,7 @@ package com.liangxunwang.unimanager.query;
 /**
  * Created by liuzwei on 2015/2/1.
  */
-public class AdvertQuery {
+public class AdvertQuery extends BaseAreaQuery{
     private int index;
     private int size;
 

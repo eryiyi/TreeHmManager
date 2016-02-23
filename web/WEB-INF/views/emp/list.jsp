@@ -7,16 +7,16 @@
       <i class="fa fa-bars"></i>
     </a>
     <ol class="breadcrumb pull-left">
-      <li><a href="index.html">主页</a></li>
-      <li><a href="#">会员管理</a></li>
-      <li><a href="#">经营户列表</a></li>
+      <li><a href="javascript:void(0)">主页</a></li>
+      <li><a href="javascript:void(0)">会员管理</a></li>
+      <li><a href="javascript:void(0)">经营户列表</a></li>
     </ol>
     <div id="social" class="pull-right">
-      <a href="#"><i class="fa fa-google-plus"></i></a>
-      <a href="#"><i class="fa fa-facebook"></i></a>
-      <a href="#"><i class="fa fa-twitter"></i></a>
-      <a href="#"><i class="fa fa-linkedin"></i></a>
-      <a href="#"><i class="fa fa-youtube"></i></a>
+      <a href="javascript:void(0)"><i class="fa fa-google-plus"></i></a>
+      <a href="javascript:void(0)"><i class="fa fa-facebook"></i></a>
+      <a href="javascript:void(0)"><i class="fa fa-twitter"></i></a>
+      <a href="javascript:void(0)"><i class="fa fa-linkedin"></i></a>
+      <a href="javascript:void(0)"><i class="fa fa-youtube"></i></a>
     </div>
   </div>
 </div>
@@ -94,8 +94,11 @@
             <th>到期时间</th>
             <th>审核状态</th>
             <th>操作</th>
-            <th>操作</th>
-            <th>操作</th>
+            <c:if test="${is_manager=='0'}">
+              <th>操作</th>
+              <th>操作</th>
+            </c:if>
+
           </tr>
           </thead>
           <tbody>
@@ -129,14 +132,16 @@
                 <c:if test="${e.ischeck=='2'}">未通过</c:if>
               </td>
               <td>
-                <a class="btn btn-default btn-sm" href="#module=/emp/detail&mm_emp_id=${e.mm_emp_id}" role="button">编辑</a>
-              </td>
-              <td>
                 <a class="btn btn-default btn-sm" href="#module=/emp/toUpdatePwr&mm_emp_id=${e.mm_emp_id}" role="button">修改密码</a>
               </td>
-              <td>
-                <a class="btn btn-default btn-sm" href="#module=/empAd/list&mm_emp_id=${e.mm_emp_id}" role="button">轮播图</a>
-              </td>
+              <c:if test="${is_manager=='0'}">
+                <td>
+                  <a class="btn btn-default btn-sm" href="#module=/empAd/list&mm_emp_id=${e.mm_emp_id}" role="button">轮播图</a>
+                </td>
+                <td>
+                  <a class="btn btn-default btn-sm" href="#module=/emp/detail&mm_emp_id=${e.mm_emp_id}" role="button">编辑</a>
+                </td>
+              </c:if>
             </tr>
           </c:forEach>
           </tbody>

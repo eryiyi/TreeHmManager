@@ -3,7 +3,7 @@ package com.liangxunwang.unimanager.query;
 /**
  * Created by liuzwei on 2015/1/31.
  */
-public class FeiyongQuery {
+public class FeiyongQuery  extends BaseAreaQuery{
     private String name;
 
     public String getName() {

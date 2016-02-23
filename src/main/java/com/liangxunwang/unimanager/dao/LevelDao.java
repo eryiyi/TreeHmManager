@@ -2,7 +2,6 @@ package com.liangxunwang.unimanager.dao;
 
 import com.liangxunwang.unimanager.model.FeiyongObj;
 import com.liangxunwang.unimanager.model.Level;
-import com.liangxunwang.unimanager.model.PiaoAdd;
 import com.liangxunwang.unimanager.mvc.vo.RecordVO;
 import org.springframework.stereotype.Repository;
 

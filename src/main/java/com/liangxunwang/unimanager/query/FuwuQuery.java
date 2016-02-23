@@ -3,7 +3,7 @@ package com.liangxunwang.unimanager.query;
 /**
  * Created by liuzwei on 2015/1/31.
  */
-public class FuwuQuery {
+public class FuwuQuery  extends BaseAreaQuery{
     private String mm_fuwu_type;
     private String lat;
     private String lng;

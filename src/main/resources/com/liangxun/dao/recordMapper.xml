@@ -48,7 +48,7 @@
         SELECT sn.* ,lemp.mm_emp_mobile as mm_emp_mobile, lemp.mm_emp_nickname as mm_emp_nickname, lemp.mm_emp_type as mm_emp_type,lemp.mm_emp_cover as mm_emp_cover, lemp.mm_emp_company_type as mm_emp_company_type
         , lemp.mm_emp_company as mm_emp_company, lemp.mm_level_id as mm_level_id, lemp.is_chengxin as is_chengxin , lemp.is_miaomu as is_miaomu  from mm_msg sn
         LEFT JOIN mm_emp lemp ON sn.mm_emp_id=lemp.mm_emp_id
-        WHERE 1=1
+        WHERE 1=1 AND sn.is_del = 0
         <if test="mm_msg_type != null and mm_msg_type != ''">
             AND sn.mm_msg_type = #{mm_msg_type}
         </if>
@@ -74,7 +74,7 @@
     <select id="count" resultType="Long">
         SELECT count(sn.mm_msg_id) FROM mm_msg sn
         LEFT JOIN mm_emp lemp ON sn.mm_emp_id=lemp.mm_emp_id
-        WHERE 1=1
+        WHERE 1=1 AND sn.is_del = 0
         <if test="mm_msg_type != null and mm_msg_type != ''">
             AND sn.mm_msg_type = #{mm_msg_type}
         </if>
@@ -108,7 +108,11 @@
         ) m
     </select>
 
-    <delete id="deleteById" parameterType="String">
-        DELETE FROM mm_msg WHERE mm_msg_id = #{id}
+    <delete id="" >
+        DELETE FROM mm_msg WHERE  = #{id}
     </delete>
+
+    <update id="deleteById" parameterType="String">
+        UPDATE mm_msg SET is_del=1 WHERE mm_msg_id=#{mm_msg_id}
+    </update>
 </mapper>

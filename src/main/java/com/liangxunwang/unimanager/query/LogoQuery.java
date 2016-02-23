@@ -3,7 +3,7 @@ package com.liangxunwang.unimanager.query;
 /**
  * Created by liuzwei on 2015/1/31.
  */
-public class LogoQuery {
+public class LogoQuery  extends BaseAreaQuery{
     private int index;
     private int size;
 

@@ -3,7 +3,7 @@ package com.liangxunwang.unimanager.query;
 /**
  * Created by liuzwei on 2015/1/31.
  */
-public class LevelQuery {
+public class LevelQuery  extends BaseAreaQuery{
     private String name;
 
     public String getName() {

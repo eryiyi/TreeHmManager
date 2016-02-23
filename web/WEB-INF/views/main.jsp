@@ -8,14 +8,14 @@
             <div class="col-md-4 col-sm-6">
                 <a href="" class="cat-item bg-blue">
                     <span>会员数量</span>
-                    <i>13</i>
+                    <i>${memberCount}</i>
                     <input type="button" class="btn-export" value="导出">
                 </a>
             </div>
             <div class="col-md-4 col-sm-6">
                 <a href="" class="cat-item bg-purple">
                     <span>待审核会员</span>
-                    <i>13</i>
+                    <i>${memberCountNo}</i>
                     <input type="button" class="btn-export" value="导出">
                 </a>
             </div>

@@ -7,16 +7,16 @@
       <i class="fa fa-bars"></i>
     </a>
     <ol class="breadcrumb pull-left">
-      <li><a href="index.html">主页</a></li>
-      <li><a href="#">信息管理</a></li>
-      <li><a href="#">信息列表</a></li>
+      <li><a href="javascript:void(0)">主页</a></li>
+      <li><a href="javascript:void(0)">信息管理</a></li>
+      <li><a href="javascript:void(0)">信息列表</a></li>
     </ol>
     <div id="social" class="pull-right">
-      <a href="#"><i class="fa fa-google-plus"></i></a>
-      <a href="#"><i class="fa fa-facebook"></i></a>
-      <a href="#"><i class="fa fa-twitter"></i></a>
-      <a href="#"><i class="fa fa-linkedin"></i></a>
-      <a href="#"><i class="fa fa-youtube"></i></a>
+      <a href="javascript:void(0)"><i class="fa fa-google-plus"></i></a>
+      <a href="javascript:void(0)"><i class="fa fa-facebook"></i></a>
+      <a href="javascript:void(0)"><i class="fa fa-twitter"></i></a>
+      <a href="javascript:void(0)"><i class="fa fa-linkedin"></i></a>
+      <a href="javascript:void(0)"><i class="fa fa-youtube"></i></a>
     </div>
   </div>
 </div>
@@ -44,35 +44,46 @@
       </div>
       <div class="box-content">
         <form class="form-inline">
+
+          <div class="form-group">
+            <div class="col-sm-4">
+              <input type="text" placeholder="关键词" id="keywords" class="form-control"  data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+            </div>
+          </div>
           <button type="submit" onclick="searchOrder('1')" class="btn btn-default btn-sm">查找</button>
         </form>
         <%--<p>For basic styling add the base class <code>.table</code> to any <code>&lt;table&gt;</code>.</p>--%>
         <table class="table">
           <thead>
           <tr>
-            <th>姓名</th>
-            <th>公司名称</th>
-            <th>电话</th>
+
             <th>发布类型</th>
             <th>发布内容</th>
             <th>发布时间</th>
+
+            <th>姓名</th>
+            <th>公司名称</th>
+            <th>电话</th>
+
             <th>操作</th>
           </tr>
           </thead>
           <tbody>
           <c:forEach items="${list}" var="e" varStatus="st">
             <tr>
-              <td>${e.mm_emp_nickname}</td>
-              <td>${e.mm_emp_company}</td>
-              <td>${e.mm_emp_mobile}</td>
+
               <td>
                 <c:if test="${e.mm_msg_type=='0'}">求购</c:if>
                 <c:if test="${e.mm_msg_type=='1'}">供应</c:if>
               </td>
               <td>${e.mm_msg_content}</td>
-              <td>${e.dateline}</td>
+              <td>${um:format(e.dateline, 'yyyy-MM-dd')}</td>
+              <td>${e.mm_emp_nickname}</td>
+              <td>${e.mm_emp_company}</td>
+              <td>${e.mm_emp_mobile}</td>
+
               <td>
-                <a class="btn btn-default btn-sm" href="#module=/order/detail&id=${e.mm_msg_id}" role="button">编辑</a>
+                <a class="btn btn-default btn-sm"  onclick="deleteRole('${e.mm_msg_id}')" role="button">删除</a>
               </td>
             </tr>
           </c:forEach>
@@ -123,13 +134,10 @@
     if(e.keyCode != 13) return;
     var _index = $("#index").val();
     var size = getCookie("contract_size");
-    var empName = $("#emp_name").val();
-    var empPhone = $("#emp_phone").val();
-    var orderStatus = $("#order_status").val();
-    var payStatus = $("#pay_status").val();
-    var distributionStatus = $("#distribution_status").val();
+    var keywords = $("#keywords").val();
+
     if(_index <= ${page.pageCount} && _index >= 1){
-      window.location.href="#module=/order/list&page="+page+"&size="+size+"&empName="+empName+"&empPhone="+empPhone+"&orderStatus="+orderStatus+"&payStatus="+payStatus+"&distribStatus="+distributionStatus;
+      window.location.href="#module=/record/listQiugou&page="+page+"&size="+size+"&keyword="+keywords;
     }else{
       alert("请输入1-${page.pageCount}的页码数");
     }
@@ -137,14 +145,10 @@
   function nextPage(_page) {
     var page = parseInt(_page);
     var size = $("#size").val();
-    var empName = $("#emp_name").val();
-    var empPhone = $("#emp_phone").val();
-    var orderStatus = $("#order_status").val();
-    var payStatus = $("#pay_status").val();
-    var distributionStatus = $("#distribution_status").val();
+    var keywords = $("#keywords").val();
     addCookie("contract_size", size, 36);
     if ((page <= ${page.pageCount} && page >= 1)) {
-      window.location.href="#module=/order/list&page="+page+"&size="+size+"&empName="+empName+"&empPhone="+empPhone+"&orderStatus="+orderStatus+"&payStatus="+payStatus+"&distribStatus="+distributionStatus;
+      window.location.href="#module=/record/listQiugou&page="+page+"&size="+size+"&keyword="+keywords;
     } else {
       alert("请输入1-${page.pageCount}的页码数");
     }
@@ -153,18 +157,43 @@
   function searchOrder(_page){
     var page = parseInt(_page);
     var size = $("#size").val();
-    var empName = $("#emp_name").val();
-    var empPhone = $("#emp_phone").val();
-    var orderStatus = $("#order_status").val();
-    var payStatus = $("#pay_status").val();
-    var distributionStatus = $("#distribution_status").val();
+    var keywords = $("#keywords").val();
     addCookie("contract_size", size, 36);
     if ((page <= ${page.pageCount} && page >= 1)) {
-      window.location.href="#module=/order/list&page="+page+"&size="+size+"&empName="+empName+"&empPhone="+empPhone+"&orderStatus="+orderStatus+"&payStatus="+payStatus+"&distribStatus="+distributionStatus;
+
+      <%--<c:if test="${um:permission('QIUGOU_MSG', sessionScope.powers)}">--%>
+    <%--<li><a href="javascript:void(0);" onclick="toPage('record/listQiugou','1')">求购信息</a></li>--%>
+      <%--</c:if>--%>
+      <%--<c:if test="${um:permission('GONGYING_MSG', sessionScope.powers)}">--%>
+      <%--<li><a href="javascript:void(0);" onclick="toPage('record/listGongying','1')">供应信息</a></li>--%>
+      <%--</c:if>--%>
+
+      window.location.href="#module=/record/listQiugou&page="+page+"&size="+size+"&keyword="+keywords;
     } else {
       alert("请输入1-${page.pageCount}的页码数");
     }
   }
+
+  function deleteRole(_id){
+    if(confirm("确定要删除该信息么？")){
+      $.ajax({
+        url:"/record/delete.do",
+        data:{"mm_msg_id":_id},
+        type:"POST",
+        success:function(_data){
+          var data = $.parseJSON(_data);
+          if(data.success){
+            alert("删除成功");
+            window.location.href = "#module=/record/listQiugou&page=1";
+          }else{
+            var _case = {1:"删除失败"};
+            alert(_case[data.code])
+          }
+        }
+      });
+    }
+  }
+
 </script>
 
 

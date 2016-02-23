@@ -97,6 +97,16 @@
         AND sn.ischeck = #{ischeck}
         </if>
 
+        <if test="mm_emp_provinceId != null and mm_emp_provinceId != ''">
+            AND sn.mm_emp_provinceId = #{mm_emp_provinceId}
+        </if>
+        <if test="mm_emp_cityId != null and mm_emp_cityId != ''">
+            AND sn.mm_emp_cityId = #{mm_emp_cityId}
+        </if>
+        <if test="mm_emp_countryId != null and mm_emp_countryId != ''">
+            AND sn.mm_emp_countryId = #{mm_emp_countryId}
+        </if>
+
         ORDER BY sn.mm_emp_regtime DESC limit #{index},#{size}
     </select>
 
@@ -118,6 +128,16 @@
         </if>
         <if test="ischeck != null and ischeck != ''">
             AND sn.ischeck = #{ischeck}
+        </if>
+
+        <if test="mm_emp_provinceId != null and mm_emp_provinceId != ''">
+            AND sn.mm_emp_provinceId = #{mm_emp_provinceId}
+        </if>
+        <if test="mm_emp_cityId != null and mm_emp_cityId != ''">
+            AND sn.mm_emp_cityId = #{mm_emp_cityId}
+        </if>
+        <if test="mm_emp_countryId != null and mm_emp_countryId != ''">
+            AND sn.mm_emp_countryId = #{mm_emp_countryId}
         </if>
 
     </select>

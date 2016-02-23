@@ -17,6 +17,7 @@ public interface EmpDao {
      * 查询所有的会员信息
      */
     List<EmpVO> listMemberByName(Map<String, Object> map);
+
     long count(Map<String,Object> map);
 
     //更新会员数据

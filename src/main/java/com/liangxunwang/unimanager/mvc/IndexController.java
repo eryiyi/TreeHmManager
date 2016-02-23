@@ -1,7 +1,9 @@
 package com.liangxunwang.unimanager.mvc;
 
 import com.liangxunwang.unimanager.model.Admin;
+import com.liangxunwang.unimanager.query.BaseAreaQuery;
 import com.liangxunwang.unimanager.service.ListService;
+import com.liangxunwang.unimanager.service.SaveService;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,13 +25,16 @@ public class IndexController extends ControllerConstants {
     @Qualifier("indexService")
     private ListService indexListService;
 
+    @Autowired
+    @Qualifier("logoService")
+    private SaveService logoService;
+
     @RequestMapping("/index")
     public String index(HttpSession session){
         Admin admin = (Admin) session.getAttribute(ControllerConstants.ACCOUNT_KEY);
         if (admin != null){
             return "/index";
         }
-
         return "/adminLogin";
     }
 
@@ -40,11 +45,28 @@ public class IndexController extends ControllerConstants {
     }
 
     @RequestMapping("/mainPage")
-    public String mainPage(ModelMap map){
-        List<Object> list = (List<Object>) indexListService.list(null);
+    public String mainPage(HttpSession session,ModelMap map,BaseAreaQuery query){
+        Admin admin = (Admin) session.getAttribute(ControllerConstants.ACCOUNT_KEY);
+//        默认0顶级管理员
+//        1是县级
+//        2是市级
+//        3是省级
+//        4是全国
+        if("1".equals(admin.getMm_manager_type())){
+            query.setMm_emp_countryId(admin.getMm_manager_area_uuid());
+        }
+        if("2".equals(admin.getMm_manager_type())){
+            query.setMm_emp_cityId(admin.getMm_manager_area_uuid());
+        }
+        if("3".equals(admin.getMm_manager_type())){
+            query.setMm_emp_provinceId(admin.getMm_manager_area_uuid());
+        }
+        List<Object> list = (List<Object>) indexListService.list(query);
         //总共会员数量
         Long memberCount = (Long) list.get(0);
+        Long memberCountNo = (Long) list.get(1);
         map.put("memberCount", memberCount);
+        map.put("memberCountNo", memberCountNo);
         return "/main";
     }
 

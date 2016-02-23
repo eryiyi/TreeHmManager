@@ -3,7 +3,7 @@ package com.liangxunwang.unimanager.query;
 /**
  * Created by liuzwei on 2015/1/31.
  */
-public class ReportQuery {
+public class ReportQuery  extends BaseAreaQuery{
     private int index;
     private int size;
     private String is_use;
