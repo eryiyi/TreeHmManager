@@ -40,4 +40,9 @@ public interface EmpDao {
     void updateLoacation(Emp emp);
     //修改用户密码
     void updatePwr(Emp emp);
+
+    /**
+     * 查询附近商家
+     */
+    List<EmpVO> listsLocation(Map<String, Object> map);
 }

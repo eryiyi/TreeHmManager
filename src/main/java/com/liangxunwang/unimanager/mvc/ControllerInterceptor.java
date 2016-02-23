@@ -40,6 +40,7 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/suggest/addSuggest\\.do$)"+
                         "|(^/updatePwr\\.do$)"+
                         "|(^/getEmpAd\\.do$)"+
+                        "|(^/getNearby\\.do$)"+
 
                         "|(^/memberLogin\\.do$)"
 

@@ -72,13 +72,14 @@
         <result column="ischeck" property="ischeck"/>
 
         <result column="levelName" property="levelName"/>
+        <result column="mm_level_num" property="mm_level_num"/>
         <result column="provinceName" property="provinceName"/>
         <result column="cityName" property="cityName"/>
         <result column="areaName" property="areaName"/>
     </resultMap>
 
     <select id="listMemberByName" resultMap="emp_vo">
-        SELECT sn.* ,lev.mm_level_name as levelName, hatp.province as provinceName, hatc.city as cityName, hata.area as areaName  from mm_emp sn
+        SELECT sn.* ,lev.mm_level_name as levelName,lev.mm_level_num as mm_level_num, hatp.province as provinceName, hatc.city as cityName, hata.area as areaName  from mm_emp sn
         LEFT JOIN mm_level lev ON sn.mm_level_id=lev.mm_level_id
         LEFT JOIN hat_province hatp ON sn.mm_emp_provinceId=hatp.provinceID
         LEFT JOIN hat_city hatc ON sn.mm_emp_cityId=hatc.cityID
@@ -177,7 +178,7 @@
     </update>
 
     <select id="findById" resultMap="emp_vo" parameterType="String">
-         SELECT sn.* ,lev.mm_level_name as levelName, hatp.province as provinceName, hatc.city as cityName, hata.area as areaName  from mm_emp sn
+         SELECT sn.* ,lev.mm_level_name as levelName,lev.mm_level_num as mm_level_num, hatp.province as provinceName, hatc.city as cityName, hata.area as areaName  from mm_emp sn
         LEFT JOIN mm_level lev ON sn.mm_level_id=lev.mm_level_id
         LEFT JOIN hat_province hatp ON sn.mm_emp_provinceId=hatp.provinceID
         LEFT JOIN hat_city hatc ON sn.mm_emp_cityId=hatc.cityID
@@ -187,7 +188,7 @@
 
 
     <select id="findByMobile" parameterType="String" resultMap="emp_vo">
-        SELECT sn.* ,lev.mm_level_name as levelName, hatp.province as provinceName, hatc.city as cityName, hata.area as areaName  from mm_emp sn
+        SELECT sn.* ,lev.mm_level_name as levelName,lev.mm_level_num as mm_level_num, hatp.province as provinceName, hatc.city as cityName, hata.area as areaName  from mm_emp sn
         LEFT JOIN mm_level lev ON sn.mm_level_id=lev.mm_level_id
         LEFT JOIN hat_province hatp ON sn.mm_emp_provinceId=hatp.provinceID
         LEFT JOIN hat_city hatc ON sn.mm_emp_cityId=hatc.cityID
@@ -212,5 +213,16 @@
         mm_emp_password=#{mm_emp_password}
         WHERE mm_emp_mobile=#{mm_emp_mobile}
     </update>
+
+
+    <select id="listsLocation" resultMap="emp_vo">
+        SELECT sn.* ,lev.mm_level_name as levelName,lev.mm_level_num as mm_level_num, hatp.province as provinceName, hatc.city as cityName, hata.area as areaName  from mm_emp sn
+        LEFT JOIN mm_level lev ON sn.mm_level_id=lev.mm_level_id
+        LEFT JOIN hat_province hatp ON sn.mm_emp_provinceId=hatp.provinceID
+        LEFT JOIN hat_city hatc ON sn.mm_emp_cityId=hatc.cityID
+        LEFT JOIN hat_area hata ON sn.mm_emp_countryId=hata.areaID
+        WHERE 1=1
+    </select>
+
 
 </mapper>

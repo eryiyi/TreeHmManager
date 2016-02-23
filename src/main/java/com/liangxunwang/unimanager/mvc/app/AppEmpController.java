@@ -31,6 +31,7 @@ public class AppEmpController extends ControllerConstants {
     @Qualifier("empService")
     private ExecuteService empServiceExecute;
 
+
     @RequestMapping(value = "/getMemberInfoById", produces = "text/plain;charset=UTF-8;")
     @ResponseBody
     public String getMemberInfoById(String id){
@@ -84,4 +85,23 @@ public class AppEmpController extends ControllerConstants {
             return toJSONString(ERROR_1);
         }
     }
+
+    @Autowired
+    @Qualifier("appEmpService")
+    private ListService appEmpServiceList;
+
+
+    @RequestMapping(value = "/getNearby", produces = "text/plain;charset=UTF-8;")
+    @ResponseBody
+    public String getMemberInfoById(String lat, String lng){
+        try {
+            List<EmpVO> lists = (List<EmpVO>)appEmpServiceList.list("");
+            DataTip tip = new DataTip();
+            tip.setData(lists);
+            return toJSONString(tip);
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+        }
+    }
+
 }

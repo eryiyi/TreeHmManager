@@ -7,10 +7,18 @@ import com.liangxunwang.unimanager.model.Emp;
  */
 public class EmpVO extends Emp{
     private String levelName;
+    private String mm_level_num;
     private String provinceName;
     private String cityName;
     private String areaName;
 
+    public String getMm_level_num() {
+        return mm_level_num;
+    }
+
+    public void setMm_level_num(String mm_level_num) {
+        this.mm_level_num = mm_level_num;
+    }
 
     public String getLevelName() {
         return levelName;
