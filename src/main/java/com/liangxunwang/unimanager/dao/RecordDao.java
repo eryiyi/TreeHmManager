@@ -42,4 +42,7 @@ public interface RecordDao {
     //更新置顶状态
     void updateTop(Record record);
 
+
+    //查询用户今天发布的信息数量
+    long countbyEmpId(Map<String, Object> map);
 }

@@ -99,7 +99,9 @@ public class AppRecordController extends ControllerConstants {
         }catch (ServiceException e){
             if (e.getMessage().equals("HAS_PUBLISH")){
                 return toJSONString(ERROR_2);
-            }else {
+            }else if(e.getMessage().equals("HAS_FULL")){
+                return toJSONString(ERROR_3);
+            }else{
                 return toJSONString(ERROR_1);
             }
         }

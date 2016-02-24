@@ -9,14 +9,15 @@ import com.liangxunwang.unimanager.util.*;
 import com.qiniu.common.QiniuException;
 import com.qiniu.storage.BucketManager;
 import com.qiniu.util.Auth;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created by liuzwei on 2015/3/3.
@@ -96,9 +97,28 @@ public class AppRecordService implements ListService ,SaveService, FindService{
     @Override
     public Object save(Object object) throws ServiceException {
         Record record = (Record) object;
-//        record.setRecordCont(CommonUtil.replaceBlank(record.getRecordCont()));
+        //先判断用户今天发布信息数量
+        String mm_emp_id = record.getMm_emp_id();
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("mm_emp_id", mm_emp_id);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
+        DateTimeFormatter timeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm");
+        String start = String.valueOf(df.format(new Date())) +" 00:00";//今天
+        String end = String.valueOf(df.format(new Date())) +" 23:59";//今天
+        if (!StringUtil.isNullOrEmpty(start)){
+            DateTime dateTime = DateTime.parse(start, timeFormatter);
+            map.put("start", dateTime.getMillis());
+        }
+        if (!StringUtil.isNullOrEmpty(end)){
+            DateTime dateTime = DateTime.parse(end, timeFormatter);
+            map.put("end", dateTime.getMillis());
+        }
+        long lNum =  recordDao.countbyEmpId(map);//今天已经发布的信息数量
+        long lCount = Long.valueOf(record.getMm_emp_msg_num());//允许发布的信息数量
+        if (lNum >= lCount){
+            throw new ServiceException("HAS_FULL");
+        }
         record.setDateline(System.currentTimeMillis() + "");
-
         record.setIs_del("0");
         record.setIs_top("0");
         record.setTop_num("0");

@@ -2,6 +2,7 @@ package com.liangxunwang.unimanager.dao;
 
 import com.liangxunwang.unimanager.model.FeiyongObj;
 import com.liangxunwang.unimanager.model.Level;
+import com.liangxunwang.unimanager.mvc.vo.FeiyongVO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public interface FeiyongDao {
     /**
      * 查询费用列表
      */
-    List<FeiyongObj> lists(Map<String, Object> map);
+    List<FeiyongVO> lists(Map<String, Object> map);
 //    long count(Map<String, Object> map);
 
 

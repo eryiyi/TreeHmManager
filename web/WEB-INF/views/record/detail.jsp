@@ -37,8 +37,8 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">信息类型</label>
                 <div class="col-lg-8">
-                    <c:if test="${mm_msg_type == 0}"><div id="mm_msg_type">${recordVO.mm_msg_type}</div></c:if>
-                    <c:if test="${mm_msg_type != 1}"><div id="mm_msg_type">${recordVO.mm_msg_type}</div></c:if>
+                    <c:if test="${mm_msg_type == 0}"><div id="mm_msg_type">求购</div></c:if>
+                    <c:if test="${mm_msg_type != 1}"><div id="mm_msg_type">供应</div></c:if>
                 </div>
             </div>
 
@@ -58,7 +58,7 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">时间戳</label>
                 <div class="col-lg-8">
-                    <div id="dateline">${recordVO.dateline}</div>
+                    <div id="dateline">${um:format(recordVO.dateline, "yyyy-MM-dd HH:mm:ss")}</div>
                 </div>
             </div>
 
@@ -76,7 +76,7 @@
             <div class="form-group">
                 <label class="col-sm-2 control-label">置顶数字</label>
                 <div class="col-sm-4">
-                    <input type="text" id="top_num" class="form-control" value="${recordVO.top_num}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+                    <input type="text" id="top_num" class="form-control" placeholder="置顶数字越大 越靠前" value="${recordVO.top_num}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
                 </div>
             </div>
 

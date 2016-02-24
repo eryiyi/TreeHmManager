@@ -49,6 +49,8 @@
           <tr>
             <th>费用名称</th>
             <th>费用金额</th>
+            <th>购买的月数</th>
+            <th>对应的等级</th>
             <th>操作</th>
             <th>操作</th>
           </tr>
@@ -58,6 +60,8 @@
             <tr>
               <td>${e.mm_feiyong_name}</td>
               <td>${e.mm_feiyong_jine}</td>
+              <td>${e.mm_feiyong_time}</td>
+              <td>${e.mm_level_name}</td>
               <td>
                 <a class="btn btn-default btn-sm" href="javascript:void (0)" onclick="editRole('${e.mm_feiyong_id}')" role="button">编辑</a>
               </td>

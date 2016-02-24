@@ -78,7 +78,7 @@ public class EmpService implements ListService , UpdateService , ExecuteService{
                 emp.setMm_emp_password(new MD5Util().getMD5ofStr(emp.getMm_emp_password()));//密码加密
                 empDao.updatePwr(emp);
             }else {
-                if(!StringUtil.isNullOrEmpty(emp.getMm_emp_cover())){
+                if(!StringUtil.isNullOrEmpty(emp.getMm_emp_cover()) && !emp.getMm_emp_cover().startsWith("http://")){
                     empDao.updateCover(emp);
                 }
                 empDao.update(emp);

@@ -4,6 +4,7 @@ import com.liangxunwang.unimanager.dao.FeiyongDao;
 import com.liangxunwang.unimanager.dao.LevelDao;
 import com.liangxunwang.unimanager.model.FeiyongObj;
 import com.liangxunwang.unimanager.model.Level;
+import com.liangxunwang.unimanager.mvc.vo.FeiyongVO;
 import com.liangxunwang.unimanager.query.FeiyongQuery;
 import com.liangxunwang.unimanager.query.LevelQuery;
 import com.liangxunwang.unimanager.service.*;
@@ -29,7 +30,7 @@ public class FeiyongService implements ListService,SaveService,DeleteService ,Ex
     public Object list(Object object) throws ServiceException {
         FeiyongQuery query = (FeiyongQuery) object;
         Map<String, Object> map = new HashMap<String, Object>();
-        List<FeiyongObj> lists = feiyongDao.lists(map);
+        List<FeiyongVO> lists = feiyongDao.lists(map);
         return lists;
     }
 

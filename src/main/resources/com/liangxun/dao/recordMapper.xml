@@ -135,4 +135,22 @@
         ORDER  BY  m.top_num DESC  limit #{index},#{size}
     </select>
 
+
+
+    <select id="countbyEmpId" resultType="Long">
+        SELECT count(sn.mm_msg_id) FROM mm_msg sn
+        LEFT JOIN mm_emp lemp ON sn.mm_emp_id=lemp.mm_emp_id
+        WHERE 1=1 AND sn.is_del = 0
+        <if test="mm_emp_id != null and mm_emp_id != ''">
+            AND sn.mm_emp_id = #{mm_emp_id}
+        </if>
+        <if test="start != null and start != ''">
+            AND sn.dateline &gt;= #{start}
+        </if>
+        <if test="end != null and end != ''">
+            AND sn.dateline &lt;= #{end}
+        </if>
+    </select>
+
+
 </mapper>

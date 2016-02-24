@@ -7,6 +7,33 @@ public class FeiyongObj {
     private String mm_feiyong_id;
     private String mm_feiyong_name;
     private String mm_feiyong_jine;
+    private String mm_feiyong_num;
+    private String mm_level_id;
+    private String mm_feiyong_time;
+
+    public String getMm_feiyong_time() {
+        return mm_feiyong_time;
+    }
+
+    public void setMm_feiyong_time(String mm_feiyong_time) {
+        this.mm_feiyong_time = mm_feiyong_time;
+    }
+
+    public String getMm_level_id() {
+        return mm_level_id;
+    }
+
+    public void setMm_level_id(String mm_level_id) {
+        this.mm_level_id = mm_level_id;
+    }
+
+    public String getMm_feiyong_num() {
+        return mm_feiyong_num;
+    }
+
+    public void setMm_feiyong_num(String mm_feiyong_num) {
+        this.mm_feiyong_num = mm_feiyong_num;
+    }
 
     public String getMm_feiyong_id() {
         return mm_feiyong_id;

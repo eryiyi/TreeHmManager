@@ -18,6 +18,16 @@ public class Record {
     private String countryid;
     private String accessToken;
 
+    private String mm_emp_msg_num;//允许会员发布的信息数量
+
+    public String getMm_emp_msg_num() {
+        return mm_emp_msg_num;
+    }
+
+    public void setMm_emp_msg_num(String mm_emp_msg_num) {
+        this.mm_emp_msg_num = mm_emp_msg_num;
+    }
+
     public String getMm_msg_id() {
         return mm_msg_id;
     }

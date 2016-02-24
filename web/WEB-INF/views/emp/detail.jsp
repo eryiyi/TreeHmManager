@@ -34,6 +34,7 @@
         <%--<h4 class="page-header">会员详情</h4>--%>
         <form class="form-horizontal" role="form">
           <input type="hidden" value="${empVO.mm_emp_id}" id="mm_emp_id">
+          <input type="hidden" value="${empVO.mm_emp_cover}" id="mm_emp_cover">
           <div class="form-group">
             <label class="col-sm-2 control-label">用户名</label>
               <div class="col-sm-4">
@@ -480,10 +481,11 @@
     }
 
       var imagePath = $("img[name='imagePath']").attr("src");
-//      if(imagePath== "" || imagePath==null){
-//          alert("请上传图片");
-//          return;
-//      }
+
+      if(imagePath== "" || imagePath==null){
+          imagePath = $("#mm_emp_cover").val();
+          return;
+      }
 
     $.ajax({
       cache: true,
