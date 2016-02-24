@@ -1,12 +1,12 @@
 package com.liangxunwang.unimanager.mvc.admin;
 
 import com.liangxunwang.unimanager.model.*;
+import com.liangxunwang.unimanager.mvc.vo.RecordVO;
 import com.liangxunwang.unimanager.query.CityQuery;
 import com.liangxunwang.unimanager.query.CountryQuery;
+import com.liangxunwang.unimanager.query.LevelQuery;
 import com.liangxunwang.unimanager.query.RecordQuery;
-import com.liangxunwang.unimanager.service.DeleteService;
-import com.liangxunwang.unimanager.service.ListService;
-import com.liangxunwang.unimanager.service.SaveService;
+import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +47,15 @@ public class RecordController extends ControllerConstants {
     @Autowired
     @Qualifier("countryService")
     private ListService countryService;
+
+
+    @Autowired
+    @Qualifier("recordService")
+    private ExecuteService recordServiceExer;
+
+    @Autowired
+    @Qualifier("recordService")
+    private UpdateService recordServiceUpdate;
 
     @RequestMapping("listQiugou")
     public String listQiugou(HttpSession session,ModelMap map, RecordQuery query, Page page){
@@ -132,4 +141,30 @@ public class RecordController extends ControllerConstants {
         logoService.save(new LogoObj("删除发布的信息："+mm_msg_id, manager.getMm_manager_id()));
         return toJSONString(SUCCESS);
     }
+
+
+    @RequestMapping("toDetail")
+    public String add(ModelMap map, String mm_msg_id){
+        RecordVO recordVO = (RecordVO) recordServiceExer.execute(mm_msg_id);
+        map.put("recordVO", recordVO);
+        return "/record/detail";
+    }
+
+
+    //更改数据
+    @RequestMapping("/update")
+    @ResponseBody
+    public String updateEmp( HttpSession session, Record record){
+        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
+        try {
+            recordServiceUpdate.update(record);
+            //日志记录
+            logoService.save(new LogoObj("更新信息："+record.getMm_msg_id(), manager.getMm_manager_id()));
+            return toJSONString(SUCCESS);
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+        }
+    }
+
+
 }

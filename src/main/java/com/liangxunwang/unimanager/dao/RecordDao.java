@@ -19,6 +19,9 @@ public interface RecordDao {
      * 查询求购、供应信息
      */
     List<RecordVO> listRecordVo(Map<String, Object> map);
+    //竞价排名
+    List<RecordVO> listRecordVoTop(Map<String, Object> map);
+
     long count(Map<String, Object> map);
 
     /**
@@ -35,5 +38,8 @@ public interface RecordDao {
 
     //删除动态
    void deleteById(String mm_msg_id);
+
+    //更新置顶状态
+    void updateTop(Record record);
 
 }

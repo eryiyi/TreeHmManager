@@ -9,6 +9,7 @@ import com.liangxunwang.unimanager.service.ExecuteService;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.ServiceException;
 import com.liangxunwang.unimanager.service.UpdateService;
+import com.liangxunwang.unimanager.util.Constants;
 import com.liangxunwang.unimanager.util.MD5Util;
 import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,6 +78,9 @@ public class EmpService implements ListService , UpdateService , ExecuteService{
                 emp.setMm_emp_password(new MD5Util().getMD5ofStr(emp.getMm_emp_password()));//密码加密
                 empDao.updatePwr(emp);
             }else {
+                if(!StringUtil.isNullOrEmpty(emp.getMm_emp_cover())){
+                    empDao.updateCover(emp);
+                }
                 empDao.update(emp);
             }
         }
@@ -87,6 +91,13 @@ public class EmpService implements ListService , UpdateService , ExecuteService{
     public Object execute(Object object) throws ServiceException {
         String id = (String) object;
         EmpVO empVO = empDao.findById(id);
+        if (!StringUtil.isNullOrEmpty(empVO.getMm_emp_cover())) {
+            if (empVO.getMm_emp_cover().startsWith("upload")) {
+                empVO.setMm_emp_cover(Constants.URL + empVO.getMm_emp_cover());
+            }else {
+                empVO.setMm_emp_cover(Constants.QINIU_URL + empVO.getMm_emp_cover());
+            }
+        }
         return empVO;
     }
 }

@@ -66,6 +66,7 @@
             <th>电话</th>
 
             <th>操作</th>
+            <th>操作</th>
           </tr>
           </thead>
           <tbody>
@@ -84,6 +85,9 @@
 
               <td>
                 <a class="btn btn-default btn-sm"  onclick="deleteRole('${e.mm_msg_id}')" role="button">删除</a>
+              </td>
+              <td>
+                <a class="btn btn-default btn-sm"  href="#module=/record/toDetail&mm_msg_id=${e.mm_msg_id}" role="button">管理</a>
               </td>
             </tr>
           </c:forEach>
@@ -202,6 +206,7 @@
       });
     }
   }
+
 
 </script>
 

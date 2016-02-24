@@ -1,15 +1,15 @@
 package com.liangxunwang.unimanager.service.account;
 
 import com.liangxunwang.unimanager.dao.RecordDao;
+import com.liangxunwang.unimanager.model.Emp;
+import com.liangxunwang.unimanager.model.Record;
 import com.liangxunwang.unimanager.mvc.vo.EmpVO;
 import com.liangxunwang.unimanager.mvc.vo.RecordVO;
 import com.liangxunwang.unimanager.query.EmpQuery;
 import com.liangxunwang.unimanager.query.MemberQuery;
 import com.liangxunwang.unimanager.query.RecordQuery;
-import com.liangxunwang.unimanager.service.DeleteService;
-import com.liangxunwang.unimanager.service.ListService;
-import com.liangxunwang.unimanager.service.ServiceException;
-import com.liangxunwang.unimanager.service.UpdateService;
+import com.liangxunwang.unimanager.service.*;
+import com.liangxunwang.unimanager.util.MD5Util;
 import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,7 +23,7 @@ import java.util.Map;
  * Created by liuzwei on 2015/3/3.
  */
 @Service("recordService")
-public class RecordService implements ListService,DeleteService {
+public class RecordService implements ListService,DeleteService,ExecuteService,UpdateService {
     @Autowired
     @Qualifier("recordDao")
     private RecordDao recordDao;
@@ -73,6 +73,22 @@ public class RecordService implements ListService,DeleteService {
     public Object delete(Object object) throws ServiceException {
         String mm_msg_id = (String) object;
         recordDao.deleteById(mm_msg_id);
+        return null;
+    }
+
+    @Override
+    public Object execute(Object object) throws ServiceException {
+        String mm_msg_id = (String) object;
+        RecordVO recordVO = recordDao.findById(mm_msg_id);
+        return recordVO;
+    }
+
+    @Override
+    public Object update(Object object) {
+        if (object instanceof Record){
+            Record record = (Record) object;
+            recordDao.updateTop(record);
+        }
         return null;
     }
 }

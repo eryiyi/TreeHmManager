@@ -15,6 +15,7 @@
         <result column="mm_emp_company_type" property="mm_emp_company_type"/>
         <result column="mm_emp_company_address" property="mm_emp_company_address"/>
         <result column="mm_emp_company_detail" property="mm_emp_company_detail"/>
+        <result column="mm_emp_company_url" property="mm_emp_company_url"/>
         <result column="mm_emp_provinceId" property="mm_emp_provinceId"/>
         <result column="mm_emp_cityId" property="mm_emp_cityId"/>
         <result column="mm_emp_countryId" property="mm_emp_countryId"/>
@@ -49,6 +50,7 @@
         <result column="mm_emp_company_type" property="mm_emp_company_type"/>
         <result column="mm_emp_company_address" property="mm_emp_company_address"/>
         <result column="mm_emp_company_detail" property="mm_emp_company_detail"/>
+        <result column="mm_emp_company_url" property="mm_emp_company_url"/>
         <result column="mm_emp_provinceId" property="mm_emp_provinceId"/>
         <result column="mm_emp_cityId" property="mm_emp_cityId"/>
         <result column="mm_emp_countryId" property="mm_emp_countryId"/>
@@ -153,6 +155,7 @@
         mm_emp_company_type=#{mm_emp_company_type},
         mm_emp_company_address=#{mm_emp_company_address},
         mm_emp_company_detail=#{mm_emp_company_detail},
+        mm_emp_company_url=#{mm_emp_company_url},
         mm_emp_provinceId=#{mm_emp_provinceId},
         mm_emp_cityId=#{mm_emp_cityId},
         mm_emp_countryId=#{mm_emp_countryId},
@@ -197,8 +200,8 @@
     </select>
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.Emp">
-        INSERT INTO mm_emp(mm_emp_id, mm_emp_mobile, mm_emp_nickname,mm_emp_card, mm_emp_password, mm_emp_type, mm_emp_company, mm_emp_company_type, mm_emp_company_address, mm_emp_company_detail, mm_emp_provinceId, mm_emp_cityId, mm_emp_countryId, mm_emp_regtime, mm_emp_endtime, mm_level_id, mm_emp_beizhu, mm_emp_msg_num, is_login, is_fabugongying, is_fabuqiugou, is_fabuqiugou_see, is_fabugongying_see, is_see_all, is_use, is_pic, is_chengxin, is_miaomu, lat, lng, ischeck)
-        VALUES  (#{mm_emp_id}, #{mm_emp_mobile},#{mm_emp_nickname}, #{mm_emp_card,jdbcType=VARCHAR}, #{mm_emp_password},#{mm_emp_type},#{mm_emp_company},#{mm_emp_company_type},#{mm_emp_company_address,jdbcType=VARCHAR},#{mm_emp_company_detail,jdbcType=VARCHAR},#{mm_emp_provinceId},#{mm_emp_cityId},#{mm_emp_countryId},#{mm_emp_regtime},#{mm_emp_endtime,jdbcType=VARCHAR},#{mm_level_id},#{mm_emp_beizhu,jdbcType=VARCHAR},#{mm_emp_msg_num},#{is_login},#{is_fabugongying},#{is_fabuqiugou},#{is_fabuqiugou_see},#{is_fabugongying_see},#{is_see_all},#{is_use},#{is_pic},#{is_chengxin},#{is_miaomu},#{lat},#{lng},#{ischeck})
+        INSERT INTO mm_emp(mm_emp_company_url,mm_emp_id, mm_emp_mobile, mm_emp_nickname,mm_emp_card, mm_emp_password, mm_emp_type, mm_emp_company, mm_emp_company_type, mm_emp_company_address, mm_emp_company_detail, mm_emp_provinceId, mm_emp_cityId, mm_emp_countryId, mm_emp_regtime, mm_emp_endtime, mm_level_id, mm_emp_beizhu, mm_emp_msg_num, is_login, is_fabugongying, is_fabuqiugou, is_fabuqiugou_see, is_fabugongying_see, is_see_all, is_use, is_pic, is_chengxin, is_miaomu, lat, lng, ischeck)
+        VALUES  (#{mm_emp_company_url,jdbcType=VARCHAR},#{mm_emp_id}, #{mm_emp_mobile},#{mm_emp_nickname}, #{mm_emp_card,jdbcType=VARCHAR}, #{mm_emp_password},#{mm_emp_type},#{mm_emp_company},#{mm_emp_company_type},#{mm_emp_company_address,jdbcType=VARCHAR},#{mm_emp_company_detail,jdbcType=VARCHAR},#{mm_emp_provinceId},#{mm_emp_cityId},#{mm_emp_countryId},#{mm_emp_regtime},#{mm_emp_endtime,jdbcType=VARCHAR},#{mm_level_id},#{mm_emp_beizhu,jdbcType=VARCHAR},#{mm_emp_msg_num},#{is_login},#{is_fabugongying},#{is_fabuqiugou},#{is_fabuqiugou_see},#{is_fabugongying_see},#{is_see_all},#{is_use},#{is_pic},#{is_chengxin},#{is_miaomu},#{lat},#{lng},#{ischeck})
     </insert>
 
     <update id="updateLoacation" parameterType="com.liangxunwang.unimanager.model.Emp">
@@ -211,6 +214,12 @@
     <update id="updatePwr" parameterType="com.liangxunwang.unimanager.model.Emp">
         UPDATE mm_emp SET
         mm_emp_password=#{mm_emp_password}
+        WHERE mm_emp_mobile=#{mm_emp_mobile}
+    </update>
+
+    <update id="updateCover" parameterType="com.liangxunwang.unimanager.model.Emp">
+        UPDATE mm_emp SET
+        mm_emp_cover=#{mm_emp_cover}
         WHERE mm_emp_mobile=#{mm_emp_mobile}
     </update>
 

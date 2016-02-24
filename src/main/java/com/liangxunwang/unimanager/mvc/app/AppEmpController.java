@@ -93,7 +93,7 @@ public class AppEmpController extends ControllerConstants {
 
     @RequestMapping(value = "/getNearby", produces = "text/plain;charset=UTF-8;")
     @ResponseBody
-    public String getMemberInfoById(String lat, String lng){
+    public String getNearby(String lat, String lng){
         try {
             List<EmpVO> lists = (List<EmpVO>)appEmpServiceList.list("");
             DataTip tip = new DataTip();

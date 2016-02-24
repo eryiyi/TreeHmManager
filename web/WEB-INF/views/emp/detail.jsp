@@ -52,7 +52,19 @@
               <input type="text" id="mm_emp_card" class="form-control" value="${empVO.mm_emp_card}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
-
+            <div class="form-group">
+                <label class="col-sm-2 control-label" >头像</label>
+                <div class="col-sm-10 col-md-2">
+                     <img class="img-thumbnail" name="imagePath" id="imageDiv"   style="cursor: pointer"  src="${empVO.mm_emp_cover}"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" ></label>
+                <div class="col-sm-10">
+                    <input type="file" name="file" id="fileUpload" style="float: left;" />
+                    <input type="button" value="上传" onclick="uploadImage()" style="float: left;"/><br/><br/>
+                </div>
+            </div>
           <%--<div class="form-group">--%>
             <%--<label class="col-sm-2 control-label">用户密码</label>--%>
             <%--<div class="col-sm-4">--%>
@@ -102,10 +114,18 @@
               <input type="text" id="mm_emp_company_detail" class="form-control" value="${empVO.mm_emp_company_detail}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
+
+            <div class="form-group">
+            <label class="col-sm-2 control-label">公司微网站</label>
+            <div class="col-sm-4">
+              <input type="text" id="mm_emp_company_url" placeholder="网址链接" class="form-control" value="${empVO.mm_emp_company_url}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+            </div>
+          </div>
+
           <div class="form-group">
             <label class="col-sm-2 control-label">省份</label>
             <div class="col-sm-4">
-              <select class="form-control" id="mm_emp_provinceId">
+              <select class="form-control" id="mm_emp_provinceId"  onchange="selectCitys()">
                 <option value="">--选择省份--</option>
                 <c:forEach items="${listProvinces}" var="e" varStatus="st">
                   <option value="${e.provinceID}"  ${empVO.mm_emp_provinceId==e.provinceID?'selected':''}>${e.province}</option>
@@ -116,7 +136,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">城市</label>
             <div class="col-sm-4">
-              <select class="form-control" id="mm_emp_cityId">
+              <select class="form-control" id="mm_emp_cityId" onchange="selectCountrys()">
                 <option value="">--选择城市--</option>
                 <c:forEach items="${listCitys}" var="e" varStatus="st">
                   <option value="${e.cityID}"  ${empVO.mm_emp_cityId==e.cityID?'selected':''}>${e.city}</option>
@@ -324,6 +344,7 @@
     var mm_emp_company_type = $("#mm_emp_company_type").val();
     var mm_emp_company_address = $("#mm_emp_company_address").val();
     var mm_emp_company_detail = $("#mm_emp_company_detail").val();
+    var mm_emp_company_url = $("#mm_emp_company_url").val();
     var mm_emp_provinceId = $("#mm_emp_provinceId").val();
     var mm_emp_cityId = $("#mm_emp_cityId").val();
     var mm_emp_countryId = $("#mm_emp_countryId").val();
@@ -457,6 +478,13 @@
       alert("请选择是否审核");
       return;
     }
+
+      var imagePath = $("img[name='imagePath']").attr("src");
+//      if(imagePath== "" || imagePath==null){
+//          alert("请上传图片");
+//          return;
+//      }
+
     $.ajax({
       cache: true,
       type: "POST",
@@ -465,6 +493,7 @@
 //        "mm_emp_password":mm_emp_password,
         "mm_emp_id":mm_emp_id,
         "mm_emp_card":mm_emp_card,
+        "mm_emp_cover":imagePath,
         "mm_emp_mobile":mm_emp_mobile,
         "mm_emp_nickname":mm_emp_nickname,
         "mm_emp_type":mm_emp_type,
@@ -472,6 +501,7 @@
         "mm_emp_company_type":mm_emp_company_type,
         "mm_emp_company_address":mm_emp_company_address,
         "mm_emp_company_detail":mm_emp_company_detail,
+        "mm_emp_company_url":mm_emp_company_url,
         "mm_emp_provinceId":mm_emp_provinceId,
         "mm_emp_cityId":mm_emp_cityId,
         "mm_emp_countryId":mm_emp_countryId,
@@ -522,4 +552,65 @@
 
 </script>
 
+<script type="text/javascript">
+    function uploadImage() {
+        $.ajaxFileUpload(
+                {
+                    url:"/uploadUnCompressImage.do?_t=" + new Date().getTime(),            //需要链接到服务器地址
+                    secureuri:false,//是否启用安全提交，默认为false
+                    fileElementId:'fileUpload',                        //文件选择框的id属性
+                    dataType: 'json',                                     //服务器返回的格式，可以是json, xml
+                    success: function (data, status)  //服务器成功响应处理函数
+                    {
+                        if(data.success) {
+                            document.getElementById('imageDiv').src= data.data;
+                        } else {
+                            if(data.code == 1) {
+                                alert("上传图片失败");
+                            } else if(data.code == 2) {
+                                alert("上传图片格式只能为：jpg、png、gif、bmp、jpeg");
+                            } else if(data.code == 3) {
+                                alert("请选择上传图片");
+                            }else {
+                                alert("上传失败");
+                            }
+                        }
+                    }
+                }
+        );
+    }
 
+    function deleteImage(e, node) {
+        if(e.button == 2) {
+            if(confirm("确定移除该图片吗？")) {
+                $(node).remove();
+            }
+        }
+    };
+
+
+    function selectCitys(){
+        var citys = ${listCitysAll};
+        var province = $("#mm_emp_provinceId").val();
+        var ret = '';
+        for(var i= citys.length-1; i>=0; i-- ){
+            if(citys[i].father==province){
+                ret += "<option value='"+citys[i].cityID+"'>"+citys[i].city+"</option>";
+            }
+        }
+        $("#mm_emp_cityId").html(ret);
+    };
+
+    function selectCountrys(){
+        var countrys = ${listsCountryAll};
+        var city = $("#mm_emp_cityId").val();
+        var ret = '';
+        for(var i= countrys.length-1; i>=0; i-- ){
+            if(countrys[i].father==city){
+                ret += "<option value='"+countrys[i].areaID+"'>"+countrys[i].area+"</option>";
+            }
+        }
+        $("#mm_emp_countryId").html(ret);
+    };
+
+</script>

@@ -102,6 +102,14 @@
               <input type="text" id="mm_emp_company_detail" placeholder="公司简介" class="form-control"  data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">公司微网站</label>
+            <div class="col-sm-4">
+              <input type="text" id="mm_emp_company_url" placeholder="网址链接，没有可以不用填写" class="form-control"  data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+            </div>
+          </div>
+
           <div class="form-group">
             <label class="col-sm-2 control-label">省份</label>
             <div class="col-sm-4">
@@ -310,6 +318,7 @@
     var mm_emp_company_type = $("#mm_emp_company_type").val();
     var mm_emp_company_address = $("#mm_emp_company_address").val();
     var mm_emp_company_detail = $("#mm_emp_company_detail").val();
+    var mm_emp_company_url = $("#mm_emp_company_url").val();
     var mm_emp_provinceId = $("#mm_emp_provinceId").val();
     var mm_emp_cityId = $("#mm_emp_cityId").val();
     var mm_emp_countryId = $("#mm_emp_countryId").val();
@@ -454,6 +463,7 @@
         "mm_emp_company_type":mm_emp_company_type,
         "mm_emp_company_address":mm_emp_company_address,
         "mm_emp_company_detail":mm_emp_company_detail,
+        "mm_emp_company_url":mm_emp_company_url,
         "mm_emp_provinceId":mm_emp_provinceId,
         "mm_emp_cityId":mm_emp_cityId,
         "mm_emp_countryId":mm_emp_countryId,

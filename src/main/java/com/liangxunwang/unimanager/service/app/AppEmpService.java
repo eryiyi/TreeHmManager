@@ -60,11 +60,11 @@ public class AppEmpService implements  UpdateService,ListService {
         for(EmpVO empVO:lists){
             if(!StringUtil.isNullOrEmpty(empVO.getLat())){
                 if (!StringUtil.isNullOrEmpty(empVO.getMm_emp_cover())) {
-                    if (empVO.getMm_emp_cover().startsWith("upload")) {
-                        empVO.setMm_emp_cover(Constants.URL + empVO.getMm_emp_cover());
-                    }else {
-                        empVO.setMm_emp_cover(Constants.QINIU_URL + empVO.getMm_emp_cover());
-                    }
+                        if (empVO.getMm_emp_cover().startsWith("upload")) {
+                            empVO.setMm_emp_cover(Constants.URL + empVO.getMm_emp_cover());
+                        }else {
+                            empVO.setMm_emp_cover(Constants.QINIU_URL + empVO.getMm_emp_cover());
+                        }
                 }
                 listsTmp.add(empVO);
             }

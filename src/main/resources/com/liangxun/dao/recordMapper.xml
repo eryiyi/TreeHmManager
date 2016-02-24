@@ -115,4 +115,24 @@
     <update id="deleteById" parameterType="String">
         UPDATE mm_msg SET is_del=1 WHERE mm_msg_id=#{mm_msg_id}
     </update>
+
+    <update id="updateTop" parameterType="String">
+        UPDATE mm_msg SET is_top = #{is_top}, top_num = #{top_num}  WHERE mm_msg_id=#{mm_msg_id}
+    </update>
+
+
+
+    <select id="listRecordVoTop" resultMap="record_vo">
+        SELECT m.*,
+        (SELECT mm_level_num FROM mm_level ll WHERE m.mm_level_id = ll.mm_level_id ) as mm_level_num
+        FROM (
+        SELECT sn.* ,lemp.mm_emp_mobile as mm_emp_mobile, lemp.mm_emp_nickname as mm_emp_nickname, lemp.mm_emp_type as mm_emp_type,lemp.mm_emp_cover as mm_emp_cover, lemp.mm_emp_company_type as mm_emp_company_type
+        , lemp.mm_emp_company as mm_emp_company, lemp.mm_level_id as mm_level_id, lemp.is_chengxin as is_chengxin , lemp.is_miaomu as is_miaomu  from mm_msg sn
+        LEFT JOIN mm_emp lemp ON sn.mm_emp_id=lemp.mm_emp_id
+        WHERE sn.is_del = 0 AND sn.is_top = 1
+
+        ) m
+        ORDER  BY  m.top_num DESC  limit #{index},#{size}
+    </select>
+
 </mapper>

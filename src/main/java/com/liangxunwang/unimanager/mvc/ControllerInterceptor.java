@@ -41,6 +41,7 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/updatePwr\\.do$)"+
                         "|(^/getEmpAd\\.do$)"+
                         "|(^/getNearby\\.do$)"+
+                        "|(^/getTopMsg\\.do$)"+
 
                         "|(^/memberLogin\\.do$)"
 

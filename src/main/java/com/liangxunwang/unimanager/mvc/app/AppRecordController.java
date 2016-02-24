@@ -36,6 +36,10 @@ public class AppRecordController extends ControllerConstants {
     private ListService recordListService;
 
     @Autowired
+    @Qualifier("appRecordTopService")
+    private ListService appRecordTopService;
+
+    @Autowired
     @Qualifier("appRecordService")
     private SaveService recordSaveService;
 
@@ -260,4 +264,22 @@ public class AppRecordController extends ControllerConstants {
             return toJSONString(ERROR_1);
         }
     }
+
+
+    //首页获得求购供应信息
+    @RequestMapping(value = "/getTopMsg", produces = "text/plain;charset=UTF-8")
+    @ResponseBody
+    public String getTopMsg(RecordQuery query, Page page){
+        query.setIndex(page.getPage()==0?1:page.getPage());
+        query.setSize(query.getSize()==0?page.getDefaultSize():query.getSize());
+        try {
+            List<RecordVO> lists = (List<RecordVO>) appRecordTopService.list(query);
+            DataTip tip = new DataTip();
+            tip.setData(lists);
+            return toJSONString(tip);
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+        }
+    }
+
 }

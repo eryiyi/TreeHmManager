@@ -6,6 +6,7 @@ import com.liangxunwang.unimanager.service.ExecuteService;
 import com.liangxunwang.unimanager.service.ServiceException;
 import com.liangxunwang.unimanager.util.Constants;
 import com.liangxunwang.unimanager.util.MD5Util;
+import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -37,7 +38,13 @@ public class MemberLoginService implements ExecuteService {
         if (!"1".equals(member.getIscheck())){
             throw new ServiceException("NotCheck");//未审核
         }
-        member.setMm_emp_cover(Constants.QINIU_URL + member.getMm_emp_cover());
+        if (!StringUtil.isNullOrEmpty(member.getMm_emp_cover())) {
+            if (member.getMm_emp_cover().startsWith("upload")) {
+                member.setMm_emp_cover(Constants.URL + member.getMm_emp_cover());
+            }else {
+                member.setMm_emp_cover(Constants.QINIU_URL + member.getMm_emp_cover());
+            }
+        }
         return member;
     }
 }

@@ -22,6 +22,8 @@ public interface EmpDao {
 
     //更新会员数据
     void update(Emp emp);
+    //更新头像
+    void updateCover(Emp emp);
 
     //根据用户ID查询用户信息
     EmpVO findById(String mm_emp_id);
