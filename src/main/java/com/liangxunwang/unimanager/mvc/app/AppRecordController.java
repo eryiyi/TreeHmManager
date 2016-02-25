@@ -56,7 +56,7 @@ public class AppRecordController extends ControllerConstants {
     @RequestMapping(value = "/recordList", produces = "text/plain;charset=UTF-8")
     @ResponseBody
     public String getRecord(RecordQuery query, Page page){
-        query.setIndex(page.getPage()==0?1:page.getPage());
+        query.setIndex(page.getIndex()==0?1:page.getIndex());
         query.setSize(query.getSize()==0?page.getDefaultSize():query.getSize());
         try {
             Object[] results = (Object[]) recordListService.list(query);
@@ -71,7 +71,7 @@ public class AppRecordController extends ControllerConstants {
     @RequestMapping(value = "/recordListById", produces = "text/plain;charset=UTF-8")
     @ResponseBody
     public String getRecordById(RecordQuery query, Page page){
-        query.setIndex(page.getPage()==0?1:page.getPage());
+        query.setIndex(page.getIndex()==0?1:page.getIndex());
         query.setSize(query.getSize()==0?page.getDefaultSize():query.getSize());
         try {
             Object[] results = (Object[]) recordListService.list(query);
