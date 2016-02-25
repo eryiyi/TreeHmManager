@@ -37,24 +37,57 @@ public class AppRecordService implements ListService ,SaveService, FindService{
 
         map.put("index", index);
         map.put("size", size);
-
+        if (!StringUtil.isNullOrEmpty(query.getKeyword())) {
+            map.put("keyword", query.getKeyword());
+        }
         if (!StringUtil.isNullOrEmpty(query.getMm_msg_type())) {
             map.put("mm_msg_type", query.getMm_msg_type());
-        }
-        if (!StringUtil.isNullOrEmpty(query.getProvinceid())) {
-            map.put("provinceid", query.getProvinceid());
-        }
-        if (!StringUtil.isNullOrEmpty(query.getCityid())) {
-            map.put("cityid", query.getCityid());
-        }
-        if (!StringUtil.isNullOrEmpty(query.getCountryid())) {
-            map.put("countryid", query.getCountryid());
         }
         if (!StringUtil.isNullOrEmpty(query.getMm_emp_id())) {
             map.put("mm_emp_id", query.getMm_emp_id());
         }
-        if (!StringUtil.isNullOrEmpty(query.getKeyword())) {
-            map.put("keyword", query.getKeyword());
+
+        if(!StringUtil.isNullOrEmpty(query.getIs_select_countryId())){
+            //说明要查看某一县区的信息
+            map.put("countryid", query.getIs_select_countryId());
+        }else{
+            //权限管理
+            if(!StringUtil.isNullOrEmpty(query.getMm_level_num())){
+                //存在等级
+                switch (Integer.parseInt(query.getMm_level_num())){
+                    case 0:
+                        if (!StringUtil.isNullOrEmpty(query.getCountryid())) {
+                            map.put("countryid", query.getCountryid());
+                        }
+                        break;
+                    case 1:
+                        if (!StringUtil.isNullOrEmpty(query.getCityid())) {
+                            map.put("cityid", query.getCityid());
+                        }
+                        break;
+                    case 2:
+                        if (!StringUtil.isNullOrEmpty(query.getProvinceid())) {
+                            map.put("provinceid", query.getProvinceid());
+                        }
+                        break;
+                    case 3:
+                        //全国
+                        break;
+                    case 4:
+                        //全国
+                        break;
+                }
+            }else {
+                if (!StringUtil.isNullOrEmpty(query.getCountryid())) {
+                    map.put("countryid", query.getCountryid());
+                }
+            }
+            //查看所有信息权限	0默认不允许 1允许
+            if("1".equals(query.getIs_see_all())){
+                map.put("countryid", "");
+                map.put("cityid", "");
+                map.put("provinceid", "");
+            }
         }
 
         List<RecordVO> list = recordDao.listRecordVo(map);
@@ -68,24 +101,27 @@ public class AppRecordService implements ListService ,SaveService, FindService{
                     record.setMm_emp_cover(Constants.QINIU_URL + record.getMm_emp_cover());
                 }
             }
-            //处理图片URL链接
-            StringBuffer buffer = new StringBuffer();
-            String[] pics = new String[]{};
-            if(record!=null && record.getMm_msg_picurl()!=null){
-                pics = record.getMm_msg_picurl().split(",");
-            }
-            for (int i=0; i<pics.length; i++){
-                if (pics[i].startsWith("upload")) {
-                    buffer.append(Constants.URL + pics[i]);
-                    if (i < pics.length - 1) {
-                        buffer.append(",");
-                    }
-                }else {
-                    buffer.append(Constants.QINIU_URL + pics[i]);
-                    if (i < pics.length - 1) {
-                        buffer.append(",");
+            if(!StringUtil.isNullOrEmpty(record.getMm_msg_picurl())){
+                //处理图片URL链接
+                StringBuffer buffer = new StringBuffer();
+                String[] pics = new String[]{};
+                if(record!=null && record.getMm_msg_picurl()!=null){
+                    pics = record.getMm_msg_picurl().split(",");
+                }
+                for (int i=0; i<pics.length; i++){
+                    if (pics[i].startsWith("upload")) {
+                        buffer.append(Constants.URL + pics[i]);
+                        if (i < pics.length - 1) {
+                            buffer.append(",");
+                        }
+                    }else {
+                        buffer.append(Constants.QINIU_URL + pics[i]);
+                        if (i < pics.length - 1) {
+                            buffer.append(",");
+                        }
                     }
                 }
+                record.setMm_msg_picurl(buffer.toString());
             }
             record.setDateline(RelativeDateFormat.format(Long.parseLong(record.getDateline())));
         }

@@ -60,7 +60,6 @@ public class AppRecordController extends ControllerConstants {
         query.setSize(query.getSize()==0?page.getDefaultSize():query.getSize());
         try {
             Object[] results = (Object[]) recordListService.list(query);
-//            List<RecordVO> list = (List<RecordVO>) recordListService.list(query);
             DataTip tip = new DataTip();
             tip.setData(results[0]);
             return toJSONString(tip);
@@ -76,7 +75,6 @@ public class AppRecordController extends ControllerConstants {
         query.setSize(query.getSize()==0?page.getDefaultSize():query.getSize());
         try {
             Object[] results = (Object[]) recordListService.list(query);
-//            List<RecordVO> list = (List<RecordVO>) recordListService.list(query);
             DataTip tip = new DataTip();
             tip.setData(results[0]);
             return toJSONString(tip);

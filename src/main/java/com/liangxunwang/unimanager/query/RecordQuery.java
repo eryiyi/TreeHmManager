@@ -1,7 +1,6 @@
 package com.liangxunwang.unimanager.query;
 
 /**
- * Created by liuzwei on 2015/1/31.
  */
 public class RecordQuery  extends BaseAreaQuery{
     private int index;
@@ -13,6 +12,33 @@ public class RecordQuery  extends BaseAreaQuery{
     private String accessToken;
     private String mm_emp_id;
     private String keyword;
+    private String mm_level_num;//等级 分等级查看省市区信息
+    private String is_see_all;//查看全部信息权限
+    private String is_select_countryId;//是否选择的县区
+
+    public String getIs_select_countryId() {
+        return is_select_countryId;
+    }
+
+    public void setIs_select_countryId(String is_select_countryId) {
+        this.is_select_countryId = is_select_countryId;
+    }
+
+    public String getIs_see_all() {
+        return is_see_all;
+    }
+
+    public void setIs_see_all(String is_see_all) {
+        this.is_see_all = is_see_all;
+    }
+
+    public String getMm_level_num() {
+        return mm_level_num;
+    }
+
+    public void setMm_level_num(String mm_level_num) {
+        this.mm_level_num = mm_level_num;
+    }
 
     public String getKeyword() {
         return keyword;
