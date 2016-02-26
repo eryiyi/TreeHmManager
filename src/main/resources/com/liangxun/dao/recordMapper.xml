@@ -65,7 +65,7 @@
             AND sn.mm_emp_id = #{mm_emp_id}
         </if>
         <if test="keyword != null and keyword != ''">
-            AND sn.mm_msg_content like '||'#{keyword}'||'
+            AND sn.mm_msg_content like  '%'||#{keyword}||'%'
         </if>
         ) m
         ORDER  BY  m.dateline DESC  limit #{index},#{size}
@@ -88,7 +88,7 @@
             AND sn.countryid = #{countryid}
         </if>
         <if test="keyword != null and keyword != ''">
-            AND sn.mm_msg_content like '||'#{keyword}'||'
+            AND sn.mm_msg_content like '%'||#{keyword}||'%'
         </if>
     </select>
 
@@ -120,8 +120,6 @@
         UPDATE mm_msg SET is_top = #{is_top}, top_num = #{top_num}  WHERE mm_msg_id=#{mm_msg_id}
     </update>
 
-
-
     <select id="listRecordVoTop" resultMap="record_vo">
         SELECT m.*,
         (SELECT mm_level_num FROM mm_level ll WHERE m.mm_level_id = ll.mm_level_id ) as mm_level_num
@@ -134,8 +132,6 @@
         ) m
         ORDER  BY  m.top_num DESC  limit #{index},#{size}
     </select>
-
-
 
     <select id="countbyEmpId" resultType="Long">
         SELECT count(sn.mm_msg_id) FROM mm_msg sn
@@ -151,6 +147,5 @@
             AND sn.dateline &lt;= #{end}
         </if>
     </select>
-
 
 </mapper>

@@ -39,15 +39,15 @@ public class AppFuwuController extends ControllerConstants {
     private ListService recordListService;
 
     @Autowired
-    @Qualifier("fuwuService")
-    private ListService fuwuService;
+    @Qualifier("appFuwuService")
+    private ListService appFuwuService;
 
     //服务信息列表
     @RequestMapping(value = "/getFuwuByLocationAndType", produces = "text/plain;charset=UTF-8")
     @ResponseBody
     public String getFuwuByLocationAndType(FuwuQuery query){
         try {
-            List<FuwuObj> list = (List<FuwuObj>) fuwuService.list(query);
+            List<FuwuObj> list = (List<FuwuObj>) appFuwuService.list(query);
             DataTip tip = new DataTip();
             tip.setData(list);
             return toJSONString(tip);

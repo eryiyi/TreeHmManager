@@ -279,7 +279,7 @@ public class AppRecordController extends ControllerConstants {
     @RequestMapping(value = "/getTopMsg", produces = "text/plain;charset=UTF-8")
     @ResponseBody
     public String getTopMsg(RecordQuery query, Page page){
-        query.setIndex(page.getPage()==0?1:page.getPage());
+        query.setIndex(page.getIndex()==0?1:page.getIndex());
         query.setSize(query.getSize()==0?page.getDefaultSize():query.getSize());
         try {
             List<RecordVO> lists = (List<RecordVO>) appRecordTopService.list(query);

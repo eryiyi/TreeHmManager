@@ -1,13 +1,10 @@
-package com.liangxunwang.unimanager.service.account;
+package com.liangxunwang.unimanager.service.app;
 
 import com.liangxunwang.unimanager.dao.AccessTokenDao;
 import com.liangxunwang.unimanager.dao.FuwuDao;
-import com.liangxunwang.unimanager.dao.LevelDao;
 import com.liangxunwang.unimanager.model.AccessToken;
 import com.liangxunwang.unimanager.model.FuwuObj;
-import com.liangxunwang.unimanager.model.Level;
 import com.liangxunwang.unimanager.query.FuwuQuery;
-import com.liangxunwang.unimanager.query.LevelQuery;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.DateUtil;
 import com.liangxunwang.unimanager.util.StringUtil;
@@ -23,8 +20,8 @@ import java.util.Map;
 /**
  * Created by liuzwei on 2015/3/3.
  */
-@Service("fuwuService")
-public class FuwuService implements ListService,SaveService ,DeleteService,ExecuteService, UpdateService{
+@Service("appFuwuService")
+public class AppFuwuService implements ListService,SaveService ,DeleteService,ExecuteService, UpdateService{
     @Autowired
     @Qualifier("fuwuDao")
     private FuwuDao fuwuDao;
@@ -38,6 +35,17 @@ public class FuwuService implements ListService,SaveService ,DeleteService,Execu
         FuwuQuery query = (FuwuQuery) object;
 
         Map<String, Object> map = new HashMap<String, Object>();
+
+        //判断accesstoken是否存在 是否是最新的
+        if(!StringUtil.isNullOrEmpty(query.getAccessToken())){
+            //不为空，判断是否单点登录
+            AccessToken accessToken = accessTokenDao.findByToken(query.getAccessToken());
+            if(accessToken == null){
+                throw new ServiceException("accessTokenNull");
+            }
+        }else {
+            throw new ServiceException("accessTokenNull");
+        }
 
         if(!StringUtil.isNullOrEmpty(query.getLat())){
             map.put("lat", query.getLat());
