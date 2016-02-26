@@ -30,7 +30,7 @@ a:visited {
   width: 60px;
   height: 70px;
   margin-left: 10px;
-  background: url("../pics/tree_icons_read_0.png") no-repeat center center;
+  background: url("/img/tree_icons_read_0.png") no-repeat center center;
   background-size: 60px;
 }
 .item .item-footer .read-status-readed {
@@ -38,7 +38,7 @@ a:visited {
   width: 60px;
   height: 70px;
   margin-left: 10px;
-  background: url("../pics/tree_icons_read_1.png") no-repeat center center;
+  background: url("/img/tree_icons_read_1.png") no-repeat center center;
   background-size: 60px;
 }
 .item .item-footer .button-pic {
@@ -46,23 +46,20 @@ a:visited {
   height: 70px;
   width: 50px;
   margin: 0 5px;
-  background: url("../pics/tree_button_pic.png") no-repeat center center;
+  background: url("/img/tree_button_pic.png") no-repeat center center;
   background-size: 50px;
 }
-.item .item-footer .button-pic:active {
-  background: url("../pics/tree_button_pic_p.png") no-repeat center center;
-  background-size: 50px;
-}
+
 .item .item-footer .button-phone {
   float: right;
   height: 70px;
   width: 50px;
   margin: 0 5px;
-  background: url("../pics/tree_button_call.png") no-repeat center center;
+  background: url("/img/tree_button_call.png") no-repeat center center;
   background-size: 50px;
 }
 .item .item-footer .button-phone:active {
-  background: url("../pics/tree_button_call_p.png") no-repeat center center;
+  background: url("/img/tree_button_call_p.png") no-repeat center center;
   background-size: 50px;
 }
 .item .item-footer .button-share {
@@ -70,11 +67,11 @@ a:visited {
   height: 70px;
   width: 50px;
   margin: 0 5px;
-  background: url("../pics/tree_button_share.png") no-repeat center center;
+  background: url("/img/tree_button_share.png") no-repeat center center;
   background-size: 50px;
 }
 .item .item-footer .button-share:active {
-  background: url("../pics/tree_button_share_p.png") no-repeat center center;
+  background: url("/img/tree_button_share_p.png") no-repeat center center;
   background-size: 50px;
 }
 .item .item-footer .button-report {
@@ -82,11 +79,11 @@ a:visited {
   height: 70px;
   width: 50px;
   margin: 0 5px;
-  background: url("../pics/tree_button_report.png") no-repeat center center;
+  background: url("/img/tree_button_report.png") no-repeat center center;
   background-size: 50px;
 }
 .item .item-footer .button-report:active {
-  background: url("../pics/tree_button_report_p.png") no-repeat center center;
+  background: url("/img/tree_button_report.png") no-repeat center center;
   background-size: 50px;
 }
 .item .button-phone-big {
@@ -115,7 +112,6 @@ a:visited {
 .item-heading {
   border-bottom: 1px solid #ECECEC;
   padding: 5px;
-  height: 50px;
 }
 .item-heading .left {
   float: left;

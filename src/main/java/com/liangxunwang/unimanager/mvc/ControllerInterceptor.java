@@ -45,6 +45,10 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/getVipList\\.do$)"+
                         "|(^/getLevelById\\.do$)"+
                         "|(^/saveReport\\.do$)"+
+                        "|(^/webv/toIndex\\.do$)"+
+                        "|(^/webvSell/toSell\\.do$)"+
+                        "|(^/webvRecommend/toRecommend\\.do$)"+
+                        "|(^/webvProfile/toProfile\\.do$)"+
 
                         "|(^/memberLogin\\.do$)"
 
