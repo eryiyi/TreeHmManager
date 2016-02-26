@@ -22,6 +22,8 @@ public interface AccessTokenDao {
      * @return
      */
     public AccessToken findById(String mm_emp_id);
+    //根据accesstoken查看是否存在
+    public AccessToken findByToken(String access_token);
     /**
      * 更新
      * @param accessToken

@@ -1,6 +1,8 @@
 package com.liangxunwang.unimanager.service.app;
 
+import com.liangxunwang.unimanager.dao.AccessTokenDao;
 import com.liangxunwang.unimanager.dao.RecordDao;
+import com.liangxunwang.unimanager.model.AccessToken;
 import com.liangxunwang.unimanager.model.Record;
 import com.liangxunwang.unimanager.mvc.vo.RecordVO;
 import com.liangxunwang.unimanager.query.RecordQuery;
@@ -28,10 +30,24 @@ public class AppRecordTopService implements ListService {
     @Qualifier("recordDao")
     private RecordDao recordDao;
 
+    @Autowired
+    @Qualifier("accessTokenDao")
+    private AccessTokenDao accessTokenDao;
+
     @Override
     public Object list(Object object) throws ServiceException {
         RecordQuery query = (RecordQuery) object;
         Map<String, Object> map = new HashMap<String, Object>();
+
+        //判断accesstoken是否存在 是否是最新的
+        if(!StringUtil.isNullOrEmpty(query.getAccessToken())){
+            //不为空，判断是否单点登录
+            AccessToken accessToken = accessTokenDao.findByToken(query.getAccessToken());
+            if(accessToken == null){
+                throw new ServiceException("accessTokenNull");
+            }
+        }
+
         int index = (query.getIndex() - 1) * query.getSize();
         int size = query.getIndex() * query.getSize();
 

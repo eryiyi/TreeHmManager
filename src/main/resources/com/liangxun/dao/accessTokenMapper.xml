@@ -23,6 +23,10 @@
         SELECT * FROM mm_access_token where mm_emp_id=#{mm_emp_id}
     </select>
 
+    <select id="findByToken" parameterType="String" resultMap="accessToken">
+        SELECT * FROM mm_access_token where access_token=#{access_token}
+    </select>
+
     <update id="update" parameterType="com.liangxunwang.unimanager.model.AccessToken">
         UPDATE mm_access_token SET access_token=#{access_token} WHERE mm_emp_id=#{mm_emp_id}
     </update>

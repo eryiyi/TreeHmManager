@@ -1,6 +1,8 @@
 package com.liangxunwang.unimanager.service.app;
 
+import com.liangxunwang.unimanager.dao.AccessTokenDao;
 import com.liangxunwang.unimanager.dao.RecordDao;
+import com.liangxunwang.unimanager.model.AccessToken;
 import com.liangxunwang.unimanager.model.Record;
 import com.liangxunwang.unimanager.mvc.vo.RecordVO;
 import com.liangxunwang.unimanager.query.RecordQuery;
@@ -28,13 +30,24 @@ public class AppRecordService implements ListService ,SaveService, FindService{
     @Qualifier("recordDao")
     private RecordDao recordDao;
 
+    @Autowired
+    @Qualifier("accessTokenDao")
+    private AccessTokenDao accessTokenDao;
+
     @Override
     public Object list(Object object) throws ServiceException {
         RecordQuery query = (RecordQuery) object;
         Map<String, Object> map = new HashMap<String, Object>();
+        //判断accesstoken是否存在 是否是最新的
+        if(!StringUtil.isNullOrEmpty(query.getAccessToken())){
+            //不为空，判断是否单点登录
+            AccessToken accessToken = accessTokenDao.findByToken(query.getAccessToken());
+            if(accessToken == null){
+                throw new ServiceException("accessTokenNull");
+            }
+        }
         int index = (query.getIndex() - 1) * query.getSize();
         int size = query.getIndex() * query.getSize();
-
         map.put("index", index);
         map.put("size", size);
         if (!StringUtil.isNullOrEmpty(query.getKeyword())) {
@@ -133,6 +146,16 @@ public class AppRecordService implements ListService ,SaveService, FindService{
     @Override
     public Object save(Object object) throws ServiceException {
         Record record = (Record) object;
+        //判断accesstoken是否存在 是否是最新的
+        if(!StringUtil.isNullOrEmpty(record.getAccessToken())){
+            //不为空，判断是否单点登录
+            AccessToken accessToken = accessTokenDao.findByToken(record.getAccessToken());
+            if(accessToken == null){
+                throw new ServiceException("accessTokenNull");
+            }
+        }else {
+            throw new ServiceException("accessTokenNull");
+        }
         //先判断用户今天发布信息数量
         String mm_emp_id = record.getMm_emp_id();
         Map<String, Object> map = new HashMap<String, Object>();
@@ -154,12 +177,41 @@ public class AppRecordService implements ListService ,SaveService, FindService{
         if (lNum >= lCount){
             throw new ServiceException("HAS_FULL");
         }
+        record.setMm_msg_id(UUIDFactory.random());
         record.setDateline(System.currentTimeMillis() + "");
         record.setIs_del("0");
         record.setIs_top("0");
         record.setTop_num("0");
         recordDao.save(record);
-        return null;
+
+        RecordVO vo = recordDao.findById(record.getMm_msg_id());
+        if (vo != null) {
+            if (vo.getMm_emp_cover().startsWith("upload")) {
+                vo.setMm_emp_cover(Constants.URL + vo.getMm_emp_cover());
+            }else {
+                vo.setMm_emp_cover(Constants.QINIU_URL + vo.getMm_emp_cover());
+            }
+            vo.setDateline(RelativeDateFormat.format(Long.parseLong(vo.getDateline())));
+            if (!StringUtil.isNullOrEmpty(vo.getMm_msg_picurl())) {
+                String[] pic = vo.getMm_msg_picurl().split(",");
+                StringBuffer buffer = new StringBuffer();
+                for (int i = 0; i < pic.length; i++) {
+                    if (pic[i].startsWith("upload")) {
+                        buffer.append(Constants.URL + pic[i]);
+                        if (i < pic.length - 1) {
+                            buffer.append(",");
+                        }
+                    }else {
+                        buffer.append(Constants.QINIU_URL + pic[i]);
+                        if (i < pic.length - 1) {
+                            buffer.append(",");
+                        }
+                    }
+                }
+                vo.setMm_msg_picurl(buffer.toString());
+            }
+        }
+        return vo;
     }
 
 

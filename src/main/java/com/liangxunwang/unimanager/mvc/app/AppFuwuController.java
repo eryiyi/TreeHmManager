@@ -52,7 +52,12 @@ public class AppFuwuController extends ControllerConstants {
             tip.setData(list);
             return toJSONString(tip);
         }catch (ServiceException e){
-            return toJSONString(ERROR_1);
+            String msg = e.getMessage();
+            if (msg.equals("accessTokenNull")){
+                return toJSONString(ERROR_9);
+            }else{
+                return toJSONString(ERROR_1);
+            }
         }
     }
 

@@ -5,10 +5,7 @@ import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.mvc.vo.RecordVO;
 import com.liangxunwang.unimanager.query.RecordQuery;
 import com.liangxunwang.unimanager.service.*;
-import com.liangxunwang.unimanager.util.ControllerConstants;
-import com.liangxunwang.unimanager.util.Page;
-import com.liangxunwang.unimanager.util.StringUtil;
-import com.liangxunwang.unimanager.util.UUIDFactory;
+import com.liangxunwang.unimanager.util.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,13 +55,19 @@ public class AppRecordController extends ControllerConstants {
     public String getRecord(RecordQuery query, Page page){
         query.setIndex(page.getIndex()==0?1:page.getIndex());
         query.setSize(query.getSize()==0?page.getDefaultSize():query.getSize());
+
         try {
             Object[] results = (Object[]) recordListService.list(query);
             DataTip tip = new DataTip();
             tip.setData(results[0]);
             return toJSONString(tip);
         }catch (ServiceException e){
-            return toJSONString(ERROR_1);
+            String msg = e.getMessage();
+            if (msg.equals("accessTokenNull")){
+                return toJSONString(ERROR_9);
+            }else{
+                return toJSONString(ERROR_1);
+            }
         }
     }
     //个人主页获得求购供应信息
@@ -79,7 +82,12 @@ public class AppRecordController extends ControllerConstants {
             tip.setData(results[0]);
             return toJSONString(tip);
         }catch (ServiceException e){
-            return toJSONString(ERROR_1);
+            String msg = e.getMessage();
+            if (msg.equals("accessTokenNull")){
+                return toJSONString(ERROR_9);
+            }else{
+                return toJSONString(ERROR_1);
+            }
         }
     }
 
@@ -87,10 +95,8 @@ public class AppRecordController extends ControllerConstants {
     @ResponseBody
     public String save(Record record, HttpSession session){
         try {
-            String recordId = UUIDFactory.random();
-            record.setMm_msg_id(recordId);
-            recordSaveService.save(record);//保存信息
-            RecordVO recordAdd = (RecordVO) findRecordService.findById(recordId);//查询保存的信息
+            RecordVO recordAdd = (RecordVO) recordSaveService.save(record);//保存信息
+//             = (RecordVO) findRecordService.findById(recordId);//查询保存的信息
             DataTip tip = new DataTip();
             tip.setData(recordAdd);
             return toJSONString(tip);
@@ -99,7 +105,10 @@ public class AppRecordController extends ControllerConstants {
                 return toJSONString(ERROR_2);
             }else if(e.getMessage().equals("HAS_FULL")){
                 return toJSONString(ERROR_3);
-            }else{
+            }else if(e.getMessage().equals("accessTokenNull")){
+                return toJSONString(ERROR_9);
+            }
+            else{
                 return toJSONString(ERROR_1);
             }
         }
@@ -278,7 +287,12 @@ public class AppRecordController extends ControllerConstants {
             tip.setData(lists);
             return toJSONString(tip);
         }catch (ServiceException e){
-            return toJSONString(ERROR_1);
+            String msg = e.getMessage();
+            if (msg.equals("accessTokenNull")){
+                return toJSONString(ERROR_9);
+            }else{
+                return toJSONString(ERROR_1);
+            }
         }
     }
 
