@@ -2,6 +2,7 @@ package com.liangxunwang.unimanager.service.account;
 
 import com.liangxunwang.unimanager.dao.EmpDao;
 import com.liangxunwang.unimanager.dao.RecordDao;
+import com.liangxunwang.unimanager.dao.ReportDao;
 import com.liangxunwang.unimanager.query.BaseAreaQuery;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.ServiceException;
@@ -27,6 +28,10 @@ public class IndexService implements ListService {
     @Autowired
     @Qualifier("recordDao")
     private RecordDao recordDao;
+
+    @Autowired
+    @Qualifier("reportDao")
+    private ReportDao reportDao;
 
     @Override
     public Object list(Object object) throws ServiceException {
@@ -65,11 +70,16 @@ public class IndexService implements ListService {
         mapR.put("mm_msg_type", "1");//供应信息
         long countGongying = recordDao.count(mapR);
 
+        //查询举报数量
+        Map<String, Object> mapReport = new HashMap<String, Object>();
+        long countReport = reportDao.count(mapReport);
+
         List<Long> list = new ArrayList<Long>();
         list.add(memberCount);
         list.add(memberCountNo);
         list.add(countQiugou);
         list.add(countGongying);
+        list.add(countReport);
         return list;
     }
 }

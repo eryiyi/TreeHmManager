@@ -28,11 +28,14 @@ public interface ReportDao {
      * @param mm_report_id
      * @return
      */
-    public ReportObj findById(String mm_report_id);
+    public ReportVO findById(String mm_report_id);
 
     /**
      * 更新
      * @param reportObj
      */
     public void update(ReportObj reportObj);
+
+    //保存
+    void save(ReportObj reportObj);
 }

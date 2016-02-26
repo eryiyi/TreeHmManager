@@ -73,6 +73,14 @@ public class IndexController extends ControllerConstants {
         map.put("countQiugou", countQiugou);
         map.put("countGongying", countGongying);
 
+        if("0".equals(admin.getMm_manager_type())){
+            //如果是顶级管理员查询举报未处理的数量
+            Long countReport = (Long) list.get(4);
+            map.put("countReport", countReport);
+        }
+
+        //管理员类别
+        map.put("mm_manager_type", admin.getMm_manager_type());
         return "/main";
     }
 

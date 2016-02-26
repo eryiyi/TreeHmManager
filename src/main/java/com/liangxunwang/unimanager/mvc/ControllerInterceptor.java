@@ -44,6 +44,7 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/getTopMsg\\.do$)"+
                         "|(^/getVipList\\.do$)"+
                         "|(^/getLevelById\\.do$)"+
+                        "|(^/saveReport\\.do$)"+
 
                         "|(^/memberLogin\\.do$)"
 

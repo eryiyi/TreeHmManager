@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!--Start Content-->
     <div class="cat-content">
         <div class="row">
@@ -41,18 +42,22 @@
             </div>
         </div>
 
-        <div class="row">
-            <h3 class="col-md-12 cat-title">投诉管理</h3>
-        </div>
-        <div class="row">
-            <div class="col-md-4 col-sm-6">
-                <a href="javascript:void(0);" class="cat-item bg-orange">
-                    <span>未处理举报</span>
-                    <i></i>
-                    <input type="button" class="btn-export" value="导出">
-                </a>
+        <c:if test="${mm_manager_type == 0}">
+            <div class="row">
+                <h3 class="col-md-12 cat-title">投诉管理</h3>
             </div>
-        </div>
+            <div class="row">
+                <div class="col-md-4 col-sm-6">
+                    <a href="javascript:void(0);" onclick="toPage('report/list','1')"   class="cat-item bg-orange">
+                        <span>未处理举报</span>
+                        <i>${countReport}</i>
+                        <input type="button" class="btn-export" value="导出">
+                    </a>
+                </div>
+            </div>
+        </c:if>
+
+
     </div>
     <!--End Content-->
 <script type="text/javascript">

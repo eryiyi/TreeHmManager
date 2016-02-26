@@ -2,10 +2,13 @@ package com.liangxunwang.unimanager.mvc.admin;
 
 import com.liangxunwang.unimanager.model.Admin;
 import com.liangxunwang.unimanager.model.LogoObj;
+import com.liangxunwang.unimanager.model.Record;
+import com.liangxunwang.unimanager.model.ReportObj;
+import com.liangxunwang.unimanager.mvc.vo.RecordVO;
+import com.liangxunwang.unimanager.mvc.vo.ReportVO;
 import com.liangxunwang.unimanager.query.RecordQuery;
 import com.liangxunwang.unimanager.query.ReportQuery;
-import com.liangxunwang.unimanager.service.ListService;
-import com.liangxunwang.unimanager.service.SaveService;
+import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 
@@ -25,6 +29,15 @@ public class ReportController extends ControllerConstants {
     @Autowired
     @Qualifier("reportService")
     private ListService reportService;
+
+    @Autowired
+    @Qualifier("reportService")
+    private ExecuteService reportServiceExecute;
+
+
+    @Autowired
+    @Qualifier("reportService")
+    private UpdateService reportServiceUpdate;
 
     @Autowired
     @Qualifier("logoService")
@@ -47,5 +60,30 @@ public class ReportController extends ControllerConstants {
         return "report/list";
     }
 
+
+    @RequestMapping("detail")
+    public String add(ModelMap map, String id){
+        ReportVO reportVO = (ReportVO) reportServiceExecute.execute(id);
+        map.put("reportVO", reportVO);
+        return "/report/detail";
+    }
+
+    //更改数据
+    @RequestMapping("/update")
+    @ResponseBody
+    public String updateEmp( HttpSession session, String mm_report_id){
+        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
+        try {
+            ReportObj reportObj = new ReportObj();
+            reportObj.setMm_manager_id(manager.getMm_manager_id());
+            reportObj.setMm_report_id(mm_report_id);
+            reportServiceUpdate.update(reportObj);
+            //日志记录
+            logoService.save(new LogoObj("处理举报信息："+reportObj.getMm_report_id(), manager.getMm_manager_id()));
+            return toJSONString(SUCCESS);
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+        }
+    }
 
 }

@@ -77,8 +77,8 @@
               <td>${e.mm_report_content}</td>
               <td>${e.msgCont}</td>
               <td>
-                <c:if test="${e.mm_msg_type=='0'}">未处理</c:if>
-                <c:if test="${e.mm_msg_type=='1'}">已处理</c:if>
+                <c:if test="${e.is_use=='0'}">未处理</c:if>
+                <c:if test="${e.is_use=='1'}">已处理</c:if>
               </td>
               <td>${e.managerName}</td>
               <td>${e.end_dateline}</td>
