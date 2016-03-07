@@ -4,7 +4,6 @@ import com.liangxunwang.unimanager.model.*;
 import com.liangxunwang.unimanager.mvc.vo.RecordVO;
 import com.liangxunwang.unimanager.query.CityQuery;
 import com.liangxunwang.unimanager.query.CountryQuery;
-import com.liangxunwang.unimanager.query.LevelQuery;
 import com.liangxunwang.unimanager.query.RecordQuery;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.ControllerConstants;
@@ -150,7 +149,6 @@ public class RecordController extends ControllerConstants {
         return "/record/detail";
     }
 
-
     //更改数据
     @RequestMapping("/update")
     @ResponseBody
@@ -165,6 +163,4 @@ public class RecordController extends ControllerConstants {
             return toJSONString(ERROR_1);
         }
     }
-
-
 }

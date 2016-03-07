@@ -7,10 +7,13 @@
         <id column="id" property="id"/>
         <result column="provinceID" property="provinceID"/>
         <result column="province" property="province"/>
+        <result column="pronum" property="pronum"/>
+        <result column="msgNum" property="msgNum"/>
     </resultMap>
 
     <select id="lists" resultMap="province">
-        SELECT * from hat_province
+        SELECT sn.*,(SELECT COUNT(0) FROM mm_msg lmsg WHERE sn.provinceID=lmsg.provinceid ) as msgNum from hat_province sn
+        ORDER by sn.pronum DESC
     </select>
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.ProvinceObj">

@@ -7,6 +7,7 @@ public class Record {
     private String mm_msg_id;
     private String mm_emp_id;
     private String mm_msg_type;
+    private String mm_msg_title;
     private String mm_msg_content;
     private String mm_msg_picurl;
     private String dateline;
@@ -19,6 +20,14 @@ public class Record {
     private String accessToken;
 
     private String mm_emp_msg_num;//允许会员发布的信息数量
+
+    public String getMm_msg_title() {
+        return mm_msg_title;
+    }
+
+    public void setMm_msg_title(String mm_msg_title) {
+        this.mm_msg_title = mm_msg_title;
+    }
 
     public String getMm_emp_msg_num() {
         return mm_emp_msg_num;

@@ -43,9 +43,15 @@
             </div>
 
             <div class="form-group">
-                <label class="col-sm-2 control-label">信息</label>
+                <label class="col-sm-2 control-label">标题</label>
                 <div class="col-lg-8">
-                  <div id="mm_msg_content">${recordVO.mm_msg_content}</div>
+                  <div id="mm_msg_title">${recordVO.mm_msg_title}</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">内容</label>
+                <div class="col-lg-8">
+                    <div id="mm_msg_content">${recordVO.mm_msg_content}</div>
                 </div>
             </div>
             <div class="form-group">

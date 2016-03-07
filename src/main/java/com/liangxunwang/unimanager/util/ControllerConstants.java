@@ -5,6 +5,7 @@ import com.liangxunwang.unimanager.model.tip.ErrorTip;
 import com.liangxunwang.unimanager.model.tip.SuccessTip;
 import com.liangxunwang.unimanager.model.tip.Tip;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -16,6 +17,7 @@ public class ControllerConstants {
     public static final String QINIU_SK = "l4yRw7Jvo3jZQCBoKBHKKzVKa743u_wfXw5ljf8s";
 
     public static final String ACCOUNT_KEY = "account";
+    public static final String MEMBER_KEY = "member";
     public static final String PERMISSIONS = "powers";
     public static final String ADMIN_KEY ="admin";
     public static final String VERIFY_CODE = "verify_code";

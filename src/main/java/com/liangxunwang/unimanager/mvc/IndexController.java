@@ -52,15 +52,21 @@ public class IndexController extends ControllerConstants {
 //        2是市级
 //        3是省级
 //        4是全国
-        if("1".equals(admin.getMm_manager_type())){
-            query.setMm_emp_countryId(admin.getMm_manager_area_uuid());
+        if(admin != null){
+            if("1".equals(admin.getMm_manager_type())){
+                query.setMm_emp_countryId(admin.getMm_manager_area_uuid());
+            }
+            if("2".equals(admin.getMm_manager_type())){
+                query.setMm_emp_cityId(admin.getMm_manager_area_uuid());
+            }
+            if("3".equals(admin.getMm_manager_type())){
+                query.setMm_emp_provinceId(admin.getMm_manager_area_uuid());
+            }
+            //管理员类别
+            map.put("mm_manager_type", admin.getMm_manager_type());
+
         }
-        if("2".equals(admin.getMm_manager_type())){
-            query.setMm_emp_cityId(admin.getMm_manager_area_uuid());
-        }
-        if("3".equals(admin.getMm_manager_type())){
-            query.setMm_emp_provinceId(admin.getMm_manager_area_uuid());
-        }
+
         List<Object> list = (List<Object>) indexListService.list(query);
         //总共会员数量
         Long memberCount = (Long) list.get(0);
@@ -73,14 +79,13 @@ public class IndexController extends ControllerConstants {
         map.put("countQiugou", countQiugou);
         map.put("countGongying", countGongying);
 
-        if("0".equals(admin.getMm_manager_type())){
+
+        if(admin != null && "0".equals(admin.getMm_manager_type())){
             //如果是顶级管理员查询举报未处理的数量
             Long countReport = (Long) list.get(4);
             map.put("countReport", countReport);
         }
 
-        //管理员类别
-        map.put("mm_manager_type", admin.getMm_manager_type());
         return "/main";
     }
 

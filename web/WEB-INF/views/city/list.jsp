@@ -51,6 +51,7 @@
             <th>城市</th>
             <th>所属省份UUID</th>
             <th>所属省份</th>
+            <th>信息数量</th>
           </tr>
           </thead>
           <tbody>
@@ -61,6 +62,7 @@
               <td>${e.city}</td>
               <td>${e.father}</td>
               <td>${e.provinceName}</td>
+              <td>${e.msgNum}</td>
             </tr>
           </c:forEach>
           </tbody>

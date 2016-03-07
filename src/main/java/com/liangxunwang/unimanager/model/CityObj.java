@@ -8,6 +8,24 @@ public class CityObj {
     private String cityID;
     private String city;
     private String father;
+    private String citynum;
+    private String msgNum;
+
+    public String getMsgNum() {
+        return msgNum;
+    }
+
+    public void setMsgNum(String msgNum) {
+        this.msgNum = msgNum;
+    }
+
+    public String getCitynum() {
+        return citynum;
+    }
+
+    public void setCitynum(String citynum) {
+        this.citynum = citynum;
+    }
 
     public String getId() {
         return id;

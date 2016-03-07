@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>后台管理系统</title>
+	<title>花木通后台管理系统</title>
 	<meta name="description" content="description">
 	<meta name="author" content="DevOOPS">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,20 +23,12 @@
 	<link href="/plugins/chartist/chartist.min.css" rel="stylesheet">
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
-	<script src="http://getbootstrap.com/docs-assets/js/html5shiv.js"></script>
 	<script src="/js/jquery.min.js"></script>
 	<script src="/js/Util.js"></script>
 	<script src="/js/validation.js"></script>
 	<script src="/js/md5.js"></script>
 	<script src="/js/ajaxfileupload.js"></script>
-	<script src="http://getbootstrap.com/docs-assets/js/respond.min.js"></script>
 	<![endif]-->
-
-	<%--<link href="/umeditor/themes/default/css/umeditor.min.css" type="text/css" rel="stylesheet">--%>
-	<%--<script src="/umeditor/third-party/jquery.min.js"></script>--%>
-	<%--<script type="text/javascript" charset="utf-8" src="/umeditor/umeditor.config.js"></script>--%>
-	<%--<script type="text/javascript" charset="utf-8" src="/umeditor/umeditor.min.js"></script>--%>
-	<%--<script type="text/javascript" src="/umeditor/lang/zh-cn/zh-cn.js"></script>--%>
 
 </head>
 <body>
@@ -346,6 +338,20 @@
 					</li>
 				</c:if>
 
+				<c:if test="${um:permission('TEL_KEFU_MANAGE', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="javascript:void (0);" class="dropdown-toggle">
+							<i class="fa fa-leaf"></i>
+							<span class="hidden-xs">客服电话</span>
+						</a>
+						<ul class="dropdown-menu">
+							<c:if test="${um:permission('TEL_KEFU_MANAGE', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('/kefu/list','')">客服电话</a></li>
+							</c:if>
+						</ul>
+					</li>
+				</c:if>
+
 
 			</ul>
 		</div>
@@ -369,17 +375,12 @@
 		<!--End Content-->
 	</div>
 </div>
-<!--End Container-->
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<%--<!--<script src="http://code.jquery.com/jquery.js"></script>-->--%>
 <script src="/plugins/jquery/jquery.min.js"></script>
 <script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/plugins/bootstrap/bootstrap.min.js"></script>
 <script src="/plugins/justified-gallery/jquery.justifiedGallery.min.js"></script>
 <script src="/plugins/tinymce/tinymce.min.js"></script>
 <script src="/plugins/tinymce/jquery.tinymce.min.js"></script>
-<!-- All functions for this theme + document.ready processing -->
 <script src="/js/devoops.js"></script>
 <script src="/js/china2.js"></script>
 <script type="text/javascript" src="/js/md5.js"></script>

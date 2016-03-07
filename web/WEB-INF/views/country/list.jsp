@@ -49,6 +49,7 @@
             <th>县区ID</th>
             <th>县区</th>
             <th>所属城市</th>
+            <th>信息数量</th>
           </tr>
           </thead>
           <tbody>
@@ -57,6 +58,7 @@
               <td>${e.id}</td>
               <td>${e.area}</td>
               <td>${e.cityName}</td>
+              <td>${e.msgNum}</td>
             </tr>
           </c:forEach>
           </tbody>

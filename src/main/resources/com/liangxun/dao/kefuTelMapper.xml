@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liangxunwang.unimanager.dao.KefuTelDao">
+    <resultMap id="kefu" type="com.liangxunwang.unimanager.model.KefuTel">
+        <id column="mm_tel_id" property="mm_tel_id"/>
+        <result column="mm_tel" property="mm_tel"/>
+    </resultMap>
+
+    <select id="lists" resultMap="kefu">
+        SELECT * from mm_tel
+    </select>
+
+    <insert id="save" parameterType="com.liangxunwang.unimanager.model.KefuTel">
+        INSERT INTO mm_tel(mm_tel_id, mm_tel)
+        VALUES (#{mm_tel_id}, #{mm_tel})
+    </insert>
+
+    <update id="update" parameterType="com.liangxunwang.unimanager.model.KefuTel">
+        UPDATE mm_tel SET mm_tel=#{mm_tel}
+         WHERE mm_tel_id=#{mm_tel_id}
+    </update>
+
+    <select id="findById" parameterType="String" resultMap="kefu">
+        SELECT * FROM mm_tel where mm_tel_id=#{mm_tel_id}
+    </select>
+
+</mapper>

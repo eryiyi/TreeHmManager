@@ -9,7 +9,9 @@ import com.liangxunwang.unimanager.query.EmpQuery;
 import com.liangxunwang.unimanager.query.MemberQuery;
 import com.liangxunwang.unimanager.query.RecordQuery;
 import com.liangxunwang.unimanager.service.*;
+import com.liangxunwang.unimanager.util.Constants;
 import com.liangxunwang.unimanager.util.MD5Util;
+import com.liangxunwang.unimanager.util.RelativeDateFormat;
 import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -41,16 +43,10 @@ public class RecordService implements ListService,DeleteService,ExecuteService,U
         if (!StringUtil.isNullOrEmpty(query.getMm_msg_type())) {
             map.put("mm_msg_type", query.getMm_msg_type());
         }
-//        if (!StringUtil.isNullOrEmpty(query.getProvinceid())) {
-//            map.put("provinceid", query.getProvinceid());
-//        }
-//        if (!StringUtil.isNullOrEmpty(query.getCityid())) {
-//            map.put("cityid", query.getCityid());
-//        }
-//        if (!StringUtil.isNullOrEmpty(query.getCountryid())) {
-//            map.put("countryid", query.getCountryid());
-//        }
 
+        if (!StringUtil.isNullOrEmpty(query.getKeyword())) {
+            map.put("keyword", query.getKeyword());
+        }
         //分地区管理
         if(!StringUtil.isNullOrEmpty(query.getMm_emp_provinceId())){
             map.put("provinceid", query.getMm_emp_provinceId());
@@ -63,6 +59,39 @@ public class RecordService implements ListService,DeleteService,ExecuteService,U
         }
 
         List<RecordVO> lists = recordDao.listRecordVo(map);
+        for (RecordVO record : lists){
+            if (!StringUtil.isNullOrEmpty(record.getMm_emp_cover())){
+                if (record.getMm_emp_cover().startsWith("upload")){
+                    record.setMm_emp_cover(Constants.URL+record.getMm_emp_cover());
+                }else {
+                    record.setMm_emp_cover(Constants.QINIU_URL + record.getMm_emp_cover());
+                }
+            }
+            if(!StringUtil.isNullOrEmpty(record.getMm_msg_picurl())){
+                //处理图片URL链接
+                StringBuffer buffer = new StringBuffer();
+                String[] pics = new String[]{};
+                if(record!=null && record.getMm_msg_picurl()!=null){
+                    pics = record.getMm_msg_picurl().split(",");
+                }
+                for (int i=0; i<pics.length; i++){
+                    if (pics[i].startsWith("upload")) {
+                        buffer.append(Constants.URL + pics[i]);
+                        if (i < pics.length - 1) {
+                            buffer.append(",");
+                        }
+                    }else {
+                        buffer.append(Constants.QINIU_URL + pics[i]);
+                        if (i < pics.length - 1) {
+                            buffer.append(",");
+                        }
+                    }
+                }
+                record.setMm_msg_picurl(buffer.toString());
+            }
+//            record.setDateline(RelativeDateFormat.format(Long.parseLong(record.getDateline())));
+        }
+
         long count = recordDao.count(map);
 
         return new Object[]{lists, count};

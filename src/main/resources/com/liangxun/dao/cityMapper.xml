@@ -8,6 +8,8 @@
         <result column="cityID" property="cityID"/>
         <result column="city" property="city"/>
         <result column="father" property="father"/>
+        <result column="citynum" property="citynum"/>
+        <result column="msgNum" property="msgNum"/>
     </resultMap>
 
     <resultMap id="city_vo" type="com.liangxunwang.unimanager.mvc.vo.CityVO">
@@ -15,18 +17,21 @@
         <result column="cityID" property="cityID"/>
         <result column="city" property="city"/>
         <result column="father" property="father"/>
+        <result column="citynum" property="citynum"/>
         <result column="provinceName" property="provinceName"/>
+        <result column="msgNum" property="msgNum"/>
     </resultMap>
 
     <select id="lists" resultMap="city">
-        SELECT * from hat_city WHERE 1=1
+        SELECT sn.*,(SELECT COUNT(0) FROM mm_msg lmsg WHERE sn.cityID=lmsg.cityid ) as msgNum from  hat_city sn WHERE 1=1
         <if test="father != null and father != ''">
-            AND father = #{father}
+            AND sn.father = #{father}
         </if>
+        ORDER  by sn.citynum DESC
     </select>
 
     <select id="listsVo" resultMap="city_vo">
-        SELECT sn.*,lprovince.province as provinceName from hat_city sn
+        SELECT sn.*,lprovince.province as provinceName ,(SELECT COUNT(0) FROM mm_msg lmsg WHERE sn.cityID=lmsg.cityid ) as msgNum from hat_city sn
         LEFT JOIN hat_province lprovince ON sn.father=lprovince.provinceID
         WHERE 1=1
         <if test="father != null and father != ''">

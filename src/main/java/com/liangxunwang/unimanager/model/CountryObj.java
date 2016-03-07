@@ -8,6 +8,15 @@ public class CountryObj {
     private String areaID;
     private String area;
     private String father;
+    private String msgNum;
+
+    public String getMsgNum() {
+        return msgNum;
+    }
+
+    public void setMsgNum(String msgNum) {
+        this.msgNum = msgNum;
+    }
 
     public String getId() {
         return id;

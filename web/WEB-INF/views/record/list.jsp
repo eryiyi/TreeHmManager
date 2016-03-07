@@ -47,7 +47,7 @@
           <input type="hidden"  value="${mm_msg_type}"  id="mm_msg_type">
           <div class="form-group">
             <div class="col-sm-4">
-              <input type="text" placeholder="关键词" id="keywords" class="form-control"  data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+              <input type="text" placeholder="企业名称、联系人、手机号、标题" id="keywords" class="form-control"  data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
           <button type="submit" onclick="searchOrder('1')" class="btn btn-default btn-sm">查找</button>
@@ -57,8 +57,8 @@
           <thead>
           <tr>
 
-            <th>发布类型</th>
-            <th>发布内容</th>
+            <th>信息类型</th>
+            <th>信息标题</th>
             <th>发布时间</th>
 
             <th>姓名</th>
@@ -77,7 +77,7 @@
                 <c:if test="${e.mm_msg_type=='0'}">求购</c:if>
                 <c:if test="${e.mm_msg_type=='1'}">供应</c:if>
               </td>
-              <td>${e.mm_msg_content}</td>
+              <td>${e.mm_msg_title}</td>
               <td>${um:format(e.dateline, 'yyyy-MM-dd')}</td>
               <td>${e.mm_emp_nickname}</td>
               <td>${e.mm_emp_company}</td>

@@ -49,6 +49,7 @@
             <th>省份ID</th>
             <th>省份UUID</th>
             <th>省份</th>
+            <th>信息数量</th>
           </tr>
           </thead>
           <tbody>
@@ -57,6 +58,7 @@
               <td>${e.id}</td>
               <td>${e.provinceID}</td>
               <td>${e.province}</td>
+              <td>${e.msgNum}</td>
             </tr>
           </c:forEach>
           </tbody>

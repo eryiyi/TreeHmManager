@@ -53,4 +53,7 @@
     <group id="SUGGEST_MANAGE" name="意见反馈">
         <permission id="SUGGEST_MANAGE" name="意见反馈"/>
     </group>
+    <group id="TEL_MANAGE" name="客服电话">
+        <permission id="TEL_KEFU_MANAGE" name="客服电话"/>
+    </group>
 </permissions>

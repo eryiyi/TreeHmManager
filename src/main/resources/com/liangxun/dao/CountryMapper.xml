@@ -8,6 +8,7 @@
         <result column="areaID" property="areaID"/>
         <result column="area" property="area"/>
         <result column="father" property="father"/>
+        <result column="msgNum" property="msgNum"/>
     </resultMap>
     <resultMap id="country_vo" type="com.liangxunwang.unimanager.mvc.vo.CountryVO">
         <id column="id" property="id"/>
@@ -15,17 +16,18 @@
         <result column="area" property="area"/>
         <result column="father" property="father"/>
         <result column="cityName" property="cityName"/>
+        <result column="msgNum" property="msgNum"/>
     </resultMap>
 
     <select id="lists" resultMap="country">
-        SELECT * from hat_area WHERE 1=1
+        SELECT sn.*,(SELECT COUNT(0) FROM mm_msg lmsg WHERE sn.areaID=lmsg.countryid ) as msgNum from hat_area sn WHERE 1=1
         <if test="father != null and father != ''">
-            AND father = #{father}
+            AND sn.father = #{father}
         </if>
     </select>
 
     <select id="listsVo" resultMap="country_vo">
-        SELECT sn.*,lcity.city as cityName from hat_area sn
+        SELECT sn.*,lcity.city as cityName,(SELECT COUNT(0) FROM mm_msg lmsg WHERE sn.areaID=lmsg.countryid ) as msgNum from hat_area sn
         LEFT JOIN hat_city lcity ON sn.father=lcity.cityID
         WHERE 1=1
         <if test="father != null and father != ''">

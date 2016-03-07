@@ -49,6 +49,14 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/webvSell/toSell\\.do$)"+
                         "|(^/webvRecommend/toRecommend\\.do$)"+
                         "|(^/webvProfile/toProfile\\.do$)"+
+                        "|(^/saveFavour\\.do$)"+
+                        "|(^/getFavourById\\.do$)"+
+                        "|(^/getKefuTel\\.do$)"+
+                        "|(^/webvLoginController/toLogin\\.do$)"+
+                        "|(^/webvRegController/toReg\\.do$)"+
+                        "|(^/webvFindPwrController/toFindPwr\\.do$)"+
+                        "|(^/webvLoginController/login\\.do$)"+
+                        "|(^/webvRecordController/toDetail\\.do$)"+
 
                         "|(^/memberLogin\\.do$)"
 
