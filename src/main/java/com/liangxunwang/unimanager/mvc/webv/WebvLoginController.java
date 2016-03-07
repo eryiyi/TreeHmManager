@@ -47,7 +47,8 @@ public class WebvLoginController extends ControllerConstants {
 
 
     @RequestMapping("toLogin")
-    public String toLogin(){
+    public String toLogin(HttpSession session){
+        session.setAttribute(ControllerConstants.MEMBER_KEY, null);
         return "/webv/login";
     }
 

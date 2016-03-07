@@ -4,10 +4,12 @@ import com.liangxunwang.unimanager.model.CityObj;
 import com.liangxunwang.unimanager.model.CountryObj;
 import com.liangxunwang.unimanager.model.ProvinceObj;
 import com.liangxunwang.unimanager.mvc.vo.EmpVO;
+import com.liangxunwang.unimanager.mvc.vo.RecordVO;
 import com.liangxunwang.unimanager.query.CityQuery;
 import com.liangxunwang.unimanager.query.CountryQuery;
 import com.liangxunwang.unimanager.query.RecordQuery;
 import com.liangxunwang.unimanager.service.ListService;
+import com.liangxunwang.unimanager.service.ServiceException;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.Page;
 import com.liangxunwang.unimanager.util.StringUtil;
@@ -28,8 +30,8 @@ import java.util.List;
 public class WebvRecommendController extends ControllerConstants {
 
     @Autowired
-    @Qualifier("webVRecordService")
-    private ListService recordService;
+    @Qualifier("appRecordTopService")
+    private ListService appRecordTopService;
 
     @Autowired
     @Qualifier("provinceService")
@@ -81,37 +83,48 @@ public class WebvRecommendController extends ControllerConstants {
             //说明没有登陆
         }
 
-        Object[] results = (Object[]) recordService.list(query);
-        map.put("list", results[0]);
-        long count = (Long) results[1];
-        page.setCount(count);
-        page.setPageCount(calculatePageCount(query.getSize(), count));
-        map.addAttribute("page", page);
-        map.addAttribute("query", query);
-        map.addAttribute("mm_msg_type", "0");
+        try {
+//            Object[] results = (Object[]) recordService.list(query);
+            List<RecordVO> lists = (List<RecordVO>) appRecordTopService.list(query);
+            map.put("list", lists);
+//        long count = (Long) results[1];
+//        page.setCount(count);
+//        page.setPageCount(calculatePageCount(query.getSize(), count));
+            map.addAttribute("page", page);
+            map.addAttribute("query", query);
+            map.addAttribute("mm_msg_type", "0");
 
-        //查询省份
-        List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list("");
-        //查询地市all
-        CityQuery cityQueryAll = new CityQuery();
-        List<CityObj> listCitysAll = (List<CityObj>) cityService.list(cityQueryAll);
-        //查询县区all
-        CountryQuery countryQueryAll = new CountryQuery();
-        List<CountryObj> listsCountryAll = (List<CountryObj>) countryService.list(countryQueryAll);
+            //查询省份
+            List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list("");
+            //查询地市all
+            CityQuery cityQueryAll = new CityQuery();
+            List<CityObj> listCitysAll = (List<CityObj>) cityService.list(cityQueryAll);
+            //查询县区all
+            CountryQuery countryQueryAll = new CountryQuery();
+            List<CountryObj> listsCountryAll = (List<CountryObj>) countryService.list(countryQueryAll);
 
-        map.put("listProvinces", listProvinces);
-        map.put("listCitysAll", toJSONString(listCitysAll));
-        map.put("listsCountryAll", toJSONString(listsCountryAll));
+            map.put("listProvinces", listProvinces);
+            map.put("listCitysAll", toJSONString(listCitysAll));
+            map.put("listsCountryAll", toJSONString(listsCountryAll));
 
-        if(emp != null){
-            //说明已经登陆
-            map.put("is_login", "1");
-            map.put("emp", emp);
-        }else{
-            //说明没有登陆
-            map.put("is_login", "0");
+            if(emp != null){
+                //说明已经登陆
+                map.put("is_login", "1");
+                map.put("emp", emp);
+            }else{
+                //说明没有登陆
+                map.put("is_login", "0");
+            }
+            return "/webv/recommend";
+        }catch (ServiceException e){
+            String msg = e.getMessage();
+            if (msg.equals("accessTokenNull")){
+                return "/webv/login";
+            }else{
+                return "/webv/login";
+            }
         }
-        return "/webv/recommend";
+//
     }
 
 }

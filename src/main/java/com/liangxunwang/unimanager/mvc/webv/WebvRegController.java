@@ -1,19 +1,21 @@
 package com.liangxunwang.unimanager.mvc.webv;
 
-import com.liangxunwang.unimanager.model.CityObj;
-import com.liangxunwang.unimanager.model.CountryObj;
-import com.liangxunwang.unimanager.model.ProvinceObj;
+import com.liangxunwang.unimanager.model.*;
+import com.liangxunwang.unimanager.mvc.vo.EmpVO;
 import com.liangxunwang.unimanager.query.CityQuery;
 import com.liangxunwang.unimanager.query.CountryQuery;
 import com.liangxunwang.unimanager.query.EmpQuery;
 import com.liangxunwang.unimanager.service.ListService;
-import com.liangxunwang.unimanager.util.ControllerConstants;
-import com.liangxunwang.unimanager.util.Page;
+import com.liangxunwang.unimanager.service.SaveService;
+import com.liangxunwang.unimanager.service.ServiceException;
+import com.liangxunwang.unimanager.util.*;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -60,6 +62,29 @@ public class WebvRegController extends ControllerConstants {
         map.put("listsCountryAll", toJSONString(listsCountryAll));
 
         return "/webv/reg";
+    }
+
+    @Autowired
+    @Qualifier("empRegisterService")
+    private SaveService empRegisterService;
+
+    @RequestMapping("/empReg")
+    @ResponseBody
+    public String empReg(Emp member){
+        try {
+            empRegisterService.save(member);
+            return toJSONString(SUCCESS);
+        }catch (ServiceException e){
+            String msg = e.getMessage();
+            if (msg.equals("MobileIsUse")){
+                return toJSONString(ERROR_2);
+            }else if (msg.equals(Constants.SAVE_ERROR)){
+                return toJSONString(ERROR_1);
+            }else{
+                return toJSONString(ERROR_1);
+            }
+        }
+
     }
 
 

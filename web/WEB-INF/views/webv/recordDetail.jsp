@@ -14,38 +14,16 @@
 	<meta name="Copyright" content="花木通版权所有" />
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="shortcut icon" type="image/png" href="/img/logo.png">
-	<link href="/plugins/bootstrap/bootstrap.css" rel="stylesheet">
-	<link href="/css/cat.css" rel="stylesheet">
-	<link href="/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
-	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="/plugins/fancybox/jquery.fancybox.css" rel="stylesheet">
-	<link href="/plugins/fullcalendar/fullcalendar.css" rel="stylesheet">
-	<link href="/plugins/xcharts/xcharts.min.css" rel="stylesheet">
-	<link href="/plugins/select2/select2.css" rel="stylesheet">
-	<link href="/plugins/justified-gallery/justifiedGallery.css" rel="stylesheet">
-	<link href="/css/style_v2.css" rel="stylesheet">
-	<link href="/plugins/chartist/chartist.min.css" rel="stylesheet">
-	<link rel="shortcut icon" type="image/png" href="/img/logo.png">
 	<link rel="stylesheet" href="/css/reset.css">
 	<link rel="stylesheet" href="/css/common.css">
 	<link rel="stylesheet" href="/css/index.css">
 
-	<script src="/js/jquery.min.js"></script>
-	<script src="/plugins/jquery/jquery.min.js"></script>
-	<script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
-	<script src="/plugins/bootstrap/bootstrap.min.js"></script>
-	<script src="/plugins/justified-gallery/jquery.justifiedGallery.min.js"></script>
-	<script src="/plugins/tinymce/tinymce.min.js"></script>
-	<script src="/plugins/tinymce/jquery.tinymce.min.js"></script>
-	<script src="/js/devoops.js"></script>
-	<script src="/js/china2.js"></script>
+	<script type="text/javascript" src="/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/md5.js"></script>
 	<script type="text/javascript" src="/js/cookie.js"></script>
 	<script type="text/javascript" src="/js/ajaxfileupload.js"></script>
 	<script type="text/javascript" src="/js/Util.js"></script>
-	<script src="/js/validation.js"></script>
-	<script src="http://getbootstrap.com/docs-assets/js/html5shiv.js"></script>
-	<script src="http://getbootstrap.com/docs-assets/js/respond.min.js"></script>
+	<script type="text/javascript" src="/js/validation.js"></script>
 
 </head>
 <body style="background-color: #fff;">
@@ -65,7 +43,7 @@
 		<input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${emp.mm_emp_id}">
 		<div class="item">
 			<div class="item-heading">
-				<a href="javaScript:void(0)" class="left clearfix">
+				<a href="/webvProfile/toProfile.do?mm_emp_id=${emp.mm_emp_id}"  class="left clearfix">
 					<img src="${recordVO.mm_emp_cover}" alt="" class="head-pic">
 					<div class="detail">
 						<h1 class="company">${recordVO.mm_emp_company} &nbsp;&nbsp;${recordVO.mm_emp_nickname}</h1>
@@ -97,7 +75,7 @@
 				</div>
 			</div>
 			<div class="item-footer clearfix">
-				<a class="button-share"></a>
+				<%--<a class="button-share"></a>--%>
 				<a class="button-fav" href="javaScript:void(0)" onclick="favourClick('${e.mm_msg_id}')"></a>
 				<a href="javaScript:void(0)" onclick="reportClick()" class="button-report"></a>
 			</div>
@@ -112,7 +90,7 @@
 		<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy buy-active"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvRecommend/toRecommend.do','1')" class="recommend"></a>
-		<a href="javaScript:void(0)" onclick="toPage('/webvProfile/toProfile.do','1')" class="mine"></a>
+		<a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')" class="mine"></a>
 	</div>
 	<!-- TOOLBAR -->
 </div>
@@ -154,9 +132,6 @@
 		}
 	}
 
-	function showDetail(_mm_msg_id){
-		window.location.href="/webvRecordController/toDetail.do?mm_msg_id="+_mm_msg_id;
-	}
 
 	function telClick(_mobile){
 		//先判断是否登录

@@ -14,38 +14,16 @@
 	<meta name="Copyright" content="花木通版权所有" />
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="shortcut icon" type="image/png" href="/img/logo.png">
-	<link href="/plugins/bootstrap/bootstrap.css" rel="stylesheet">
-	<link href="/css/cat.css" rel="stylesheet">
-	<link href="/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
-	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="/plugins/fancybox/jquery.fancybox.css" rel="stylesheet">
-	<link href="/plugins/fullcalendar/fullcalendar.css" rel="stylesheet">
-	<link href="/plugins/xcharts/xcharts.min.css" rel="stylesheet">
-	<link href="/plugins/select2/select2.css" rel="stylesheet">
-	<link href="/plugins/justified-gallery/justifiedGallery.css" rel="stylesheet">
-	<link href="/css/style_v2.css" rel="stylesheet">
-	<link href="/plugins/chartist/chartist.min.css" rel="stylesheet">
-	<link rel="shortcut icon" type="image/png" href="/img/logo.png">
 	<link rel="stylesheet" href="/css/reset.css">
 	<link rel="stylesheet" href="/css/common.css">
 	<link rel="stylesheet" href="/css/index.css">
 
-	<script src="/js/jquery.min.js"></script>
-	<script src="/plugins/jquery/jquery.min.js"></script>
-	<script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
-	<script src="/plugins/bootstrap/bootstrap.min.js"></script>
-	<script src="/plugins/justified-gallery/jquery.justifiedGallery.min.js"></script>
-	<script src="/plugins/tinymce/tinymce.min.js"></script>
-	<script src="/plugins/tinymce/jquery.tinymce.min.js"></script>
-	<script src="/js/devoops.js"></script>
-	<script src="/js/china2.js"></script>
+	<script type="text/javascript" src="/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/md5.js"></script>
 	<script type="text/javascript" src="/js/cookie.js"></script>
 	<script type="text/javascript" src="/js/ajaxfileupload.js"></script>
 	<script type="text/javascript" src="/js/Util.js"></script>
-	<script src="/js/validation.js"></script>
-	<script src="http://getbootstrap.com/docs-assets/js/html5shiv.js"></script>
-	<script src="http://getbootstrap.com/docs-assets/js/respond.min.js"></script>
+	<script type="text/javascript" src="/js/validation.js"></script>
 
 </head>
 <body>
@@ -69,9 +47,9 @@
 		<input type="hidden" id="accessToken" name="accessToken" value="${emp.access_token}">
 		<input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${emp.mm_emp_id}">
 		<c:forEach items="${list}" var="e" varStatus="st">
-			<div href="item_detail.html" class="item">
+			<div href="javaScript:void(0)"  class="item">
 				<div class="item-heading clearfix">
-					<a href="javaScript:void(0)" class="left clearfix">
+					<a href="javaScript:void(0)" onclick="showDetail('${e.mm_msg_id}')" class="left clearfix">
 						<img src="${e.mm_emp_cover}" alt="" class="head-pic">
 						<div class="detail">
 							<h1 class="company">${e.mm_emp_company}&nbsp;${e.mm_emp_nickname}</h1>
@@ -92,25 +70,22 @@
 						</div>
 					</div>
 				</div>
-				<a class="item-content">
+				<a class="item-content" href="javaScript:void(0)" onclick="showDetail('${e.mm_msg_id}')">
 						${e.mm_msg_title}
 						${e.mm_msg_content}
 				</a>
 				<div class="item-footer clearfix">
-					<button class="read-status-unread"></button>
-						<%--<a type="button" onclick="" class="button-share"></a>--%>
-
-					<div class="bdsharebuttonbox" data-tag="share_1">
-						<a class="bds_mshare" data-cmd="mshare"></a>
-						<a class="bds_qzone" data-cmd="qzone" href="#"></a>
-						<a class="bds_tsina" data-cmd="tsina"></a>
-						<a class="bds_baidu" data-cmd="baidu"></a>
-						<a class="bds_renren" data-cmd="renren"></a>
-						<a class="bds_tqq" data-cmd="tqq"></a>
-						<a class="bds_more" data-cmd="more">更多</a>
-						<a class="bds_count" data-cmd="count"></a>
+					<%--<button class="read-status-unread"></button>--%>
+					<div  class="share-left">
+						<div class="bdsharebuttonbox" >
+							<a class="bds_mshare" data-cmd="mshare"></a>
+							<a class="bds_qzone" data-cmd="qzone" href="javaScript:void(0)"></a>
+							<a class="bds_tsina" data-cmd="tsina"></a>
+							<a class="bds_tqq" data-cmd="tqq"></a>
+							<a class="bds_more" data-cmd="more">更多</a>
+							<a class="bds_count" data-cmd="count"></a>
+						</div>
 					</div>
-
 					<a type="button" href="javaScript:void(0)" onclick="telClick(${e.mm_emp_mobile})" class="button-phone"></a>
 					<a type="button" href="javaScript:void(0)" onclick="favourClick('${e.mm_msg_id}')" class="button-fav"></a>
 					<c:if test="${e.mm_msg_picurl !=''}"><a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-pic"></a></c:if>
@@ -123,40 +98,41 @@
 		<c:if test="${is_login=='0'}"><a href="/webvLoginController/toLogin.do" class="warning">请先登录...</a></c:if>
 
 		<c:if test="${is_login=='1'}">
-			<div style="margin-top: 20px;border-top: 1px solid #dedede;padding-bottom:15px; height: 50px">
-				<span style="line-height:28px;margin-top:25px;padding-left:10px; float: left">共${page.count}条/${page.pageCount}页</span>
-				<ul class="pagination" style="padding-left:100px; float: right">
-					<li>
-						<a style="margin-right:20px">每页显示&nbsp;<select name="size" id="size" onchange="nextPage('1')">
+			<div class="page-num clearfix">
+				<div class="brief hide-phone">
+					<a><span>共${page.count}条/${page.pageCount}页</span></a>
+					<a>每页显示
+						<select name="size" id="size" onchange="nextPage('1')">
 							<option value="10" ${query.size==10?'selected':''}>10</option>
 							<option value="20" ${query.size==20?'selected':''}>20</option>
 							<option value="30" ${query.size==30?'selected':''}>30</option>
 							<option value="100" ${query.size==100?'selected':''}>100</option>
-						</select>&nbsp;条</a>
-					</li>
+						</select>条
+					</a>
+				</div>
+				<div class="page-nav fr-screen clearfix">
 					<c:choose >
 						<c:when test="${page.page == 1}">
-							<li><a href="javascript:void(0)">首页</a></li>
-							<li><a href="javascript:void(0)"><span class="left">《</span></a></li>
+							<a href="javascript:void(0)">首页</a>
+							<a href="javascript:void(0)">《</a>
 						</c:when>
 						<c:otherwise>
-							<li><a href="javascript:void(0);" onclick="nextPage('1')">首页</a></li>
-							<li><a href="javascript:void(0);" onclick="nextPage('${page.page-1}')"><span class="left">《</span></a></li>
+							<a href="javascript:void(0);" onclick="nextPage('1')">首页</a>
+							<a href="javascript:void(0);" onclick="nextPage('${page.page-1}')">《</a>
 						</c:otherwise>
 					</c:choose>
-					<li><a style="height: 30px; width: 100px">第<input style="width: 40px;height:20px;" type="text" id="index" name="index" onkeyup="searchIndex(event)" value="${page.page}"/> 页</a></li>
-
+					<a>第<input type="text" id="index" name="index" onkeyup="searchIndex(event)" value="${page.page}">页</a>
 					<c:choose>
 						<c:when test="${page.page == page.pageCount}">
-							<li><a href="javascript:void(0)"><span class="right">》</span></a></li>
-							<li><a href="javascript:void(0)">末页</a></li>
+							<a href="javascript:void(0)">》</a>
+							<a href="javascript:void(0)">末页</a>
 						</c:when>
 						<c:otherwise>
-							<li><a href="javascript:void(0);" onclick="nextPage('${page.page+1}')"><span class="right">》</span></a></li>
-							<li><a href="javascript:void(0);" onclick="nextPage('${page.pageCount}')">末页</a></li>
+							<a href="javascript:void(0);" onclick="nextPage('${page.page+1}')">》</a>
+							<a href="javascript:void(0);" onclick="nextPage('${page.pageCount}')">末页</a>
 						</c:otherwise>
 					</c:choose>
-				</ul>
+				</div>
 			</div>
 		</c:if>
 
@@ -166,7 +142,7 @@
 		<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvRecommend/toRecommend.do','1')" class="recommend recommend-active"></a>
-		<a href="javaScript:void(0)" onclick="toPage('/webvProfile/toProfile.do','1')" class="mine"></a>
+		<a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')" class="mine"></a>
 	</div>
 	<!-- TOOLBAR -->
 </div>

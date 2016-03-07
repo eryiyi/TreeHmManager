@@ -5,11 +5,11 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>花木通供应信息</title>
+	<title>花木通_我的收藏</title>
 	<meta name="Keywords" content="花木通,花木,花草,苗联通,白蜡,园林,惠民皂户李镇,苗木协会" />
 	<meta name="Description" content="花木通是最优秀的花木信息软件，为客户提供最优质的服务" />
-	<meta property="og:title" content="花木通_供应"  />
-	<meta property="og:description" content="花木通_供应" />
+	<meta property="og:title" content="花木通_我的收藏"  />
+	<meta property="og:description" content="花木通_我的收藏" />
 	<meta name="author" content="花木通" />
 	<meta name="Copyright" content="花木通版权所有" />
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -30,16 +30,11 @@
 <div class="container">
 	<!-- HEADING -->
 	<div class="heading clearfix">
-		<div class="icon-group">
-			<i class="icon"></i>
-			<c:if test="${is_login=='1'}"><span class="location">${emp.areaName}</span></c:if>
-			<c:if test="${is_login=='0'}"><a href="javaScript:void(0)"><span class="location" onclick="login()">登录</span></a></c:if>
+		<!-- HEADING -->
+		<div class="heading clearfix">
+			<a href="javascript:history.back()" class="back"><img src="/img/tree_icons_back.png" alt=""></a>
+			<h1 class="head-title">我的收藏</h1>
 		</div>
-		<form action="" class="search-bar clearfix">
-			<input type="text" id="keyword" name="keyword" placeholder="关键词:信息标题/手机号/公司名称/联系人">
-			<button onclick="searchIndex(event)">搜索</button>
-		</form>
-		<button class="new"></button>
 	</div>
 	<!-- CONTENT -->
 	<div class="content">
@@ -47,7 +42,7 @@
 		<input type="hidden" id="accessToken" name="accessToken" value="${emp.access_token}">
 		<input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${emp.mm_emp_id}">
 		<c:forEach items="${list}" var="e" varStatus="st">
-			<div  class="item">
+			<div class="item">
 				<div class="item-heading clearfix">
 					<a href="javaScript:void(0)" onclick="showDetail('${e.mm_msg_id}')" class="left clearfix">
 						<img src="${e.mm_emp_cover}" alt="" class="head-pic">
@@ -75,72 +70,70 @@
 						${e.mm_msg_content}
 				</a>
 				<div class="item-footer clearfix">
-					<%--<button class="read-status-unread"></button>--%>
-					<div  class="share-left">
-						<div class="bdsharebuttonbox" >
-							<a class="bds_mshare" data-cmd="mshare"></a>
-							<a class="bds_qzone" data-cmd="qzone" href="javaScript:void(0)"></a>
-							<a class="bds_tsina" data-cmd="tsina"></a>
-							<a class="bds_tqq" data-cmd="tqq"></a>
-							<a class="bds_more" data-cmd="more">更多</a>
-							<a class="bds_count" data-cmd="count"></a>
+					<button class="read-status-unread"></button>
+						<div  class="share-left">
+							<div class="bdsharebuttonbox" >
+								<a class="bds_mshare" data-cmd="mshare"></a>
+								<a class="bds_qzone" data-cmd="qzone" href="javaScript:void(0)"></a>
+								<a class="bds_tsina" data-cmd="tsina"></a>
+								<a class="bds_tqq" data-cmd="tqq"></a>
+								<a class="bds_more" data-cmd="more">更多</a>
+								<a class="bds_count" data-cmd="count"></a>
+							</div>
 						</div>
-					</div>
 					<a type="button" href="javaScript:void(0)" onclick="telClick(${e.mm_emp_mobile})" class="button-phone"></a>
-					<a type="button" href="javaScript:void(0)" onclick="favourClick('${e.mm_msg_id}')" class="button-fav"></a>
 					<c:if test="${e.mm_msg_picurl !=''}"><a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-pic"></a></c:if>
 
 				</div>
 			</div>
 		</c:forEach>
 
-		<c:if test="${is_login=='1'}"><a href="/html/download.html" class="warning" target="_blank">下载客户端以查看更多内容...</a></c:if>
-		<c:if test="${is_login=='0'}"><a href="/webvLoginController/toLogin.do" class="warning">请先登录...</a></c:if>
+		<%--<c:if test="${is_login=='1'}"><a href="/html/download.html" class="warning" target="_blank">下载客户端以查看更多内容...</a></c:if>--%>
+		<%--<c:if test="${is_login=='0'}"><a href="/webvLoginController/toLogin.do" class="warning">请先登录...</a></c:if>--%>
+		<%--<c:if test="${is_login=='1'}">--%>
 
-		<c:if test="${is_login=='1'}">
-			<div class="page-num clearfix">
-				<div class="brief hide-phone">
-					<a><span>共${page.count}条/${page.pageCount}页</span></a>
-					<a>每页显示
-						<select name="size" id="size" onchange="nextPage('1')">
-							<option value="10" ${query.size==10?'selected':''}>10</option>
-							<option value="20" ${query.size==20?'selected':''}>20</option>
-							<option value="30" ${query.size==30?'selected':''}>30</option>
-							<option value="100" ${query.size==100?'selected':''}>100</option>
-						</select>条
-					</a>
-				</div>
-				<div class="page-nav fr-screen clearfix">
-					<c:choose >
-						<c:when test="${page.page == 1}">
-							<a href="javascript:void(0)">首页</a>
-							<a href="javascript:void(0)">《</a>
-						</c:when>
-						<c:otherwise>
-							<a href="javascript:void(0);" onclick="nextPage('1')">首页</a>
-							<a href="javascript:void(0);" onclick="nextPage('${page.page-1}')">《</a>
-						</c:otherwise>
-					</c:choose>
-					<a>第<input type="text" id="index" name="index" onkeyup="searchIndex(event)" value="${page.page}">页</a>
-					<c:choose>
-						<c:when test="${page.page == page.pageCount}">
-							<a href="javascript:void(0)">》</a>
-							<a href="javascript:void(0)">末页</a>
-						</c:when>
-						<c:otherwise>
-							<a href="javascript:void(0);" onclick="nextPage('${page.page+1}')">》</a>
-							<a href="javascript:void(0);" onclick="nextPage('${page.pageCount}')">末页</a>
-						</c:otherwise>
-					</c:choose>
-				</div>
-			</div>
-		</c:if>
-
+			<%--<div class="page-num clearfix">--%>
+				<%--<div class="brief hide-phone">--%>
+					<%--<a><span>共${page.count}条/${page.pageCount}页</span></a>--%>
+					<%--<a>每页显示--%>
+						<%--<select name="size" id="size" onchange="nextPage('1')">--%>
+							<%--<option value="10" ${query.size==10?'selected':''}>10</option>--%>
+							<%--<option value="20" ${query.size==20?'selected':''}>20</option>--%>
+							<%--<option value="30" ${query.size==30?'selected':''}>30</option>--%>
+							<%--<option value="100" ${query.size==100?'selected':''}>100</option>--%>
+						<%--</select>条--%>
+					<%--</a>--%>
+				<%--</div>--%>
+				<%--<div class="page-nav fr-screen clearfix">--%>
+					<%--<c:choose >--%>
+						<%--<c:when test="${page.page == 1}">--%>
+							<%--<a href="javascript:void(0)">首页</a>--%>
+							<%--<a href="javascript:void(0)">《</a>--%>
+						<%--</c:when>--%>
+						<%--<c:otherwise>--%>
+							<%--<a href="javascript:void(0);" onclick="nextPage('1')">首页</a>--%>
+							<%--<a href="javascript:void(0);" onclick="nextPage('${page.page-1}')">《</a>--%>
+						<%--</c:otherwise>--%>
+					<%--</c:choose>--%>
+					<%--<a>第<input type="text" id="index" name="index" onkeyup="searchIndex(event)" value="${page.page}">页</a>--%>
+					<%--<c:choose>--%>
+						<%--<c:when test="${page.page == page.pageCount}">--%>
+							<%--<a href="javascript:void(0)">》</a>--%>
+							<%--<a href="javascript:void(0)">末页</a>--%>
+						<%--</c:when>--%>
+						<%--<c:otherwise>--%>
+							<%--<a href="javascript:void(0);" onclick="nextPage('${page.page+1}')">》</a>--%>
+							<%--<a href="javascript:void(0);" onclick="nextPage('${page.pageCount}')">末页</a>--%>
+						<%--</c:otherwise>--%>
+					<%--</c:choose>--%>
+				<%--</div>--%>
+			<%--</div>--%>
+		<%--</c:if>--%>
 	</div>
 	<!-- TOOLBAR -->
 	<div class="toolbar">
-		<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy"></a>
-		<a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell sell-active"></a>
+		<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy buy-active"></a>
+		<a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvRecommend/toRecommend.do','1')" class="recommend"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')" class="mine"></a>
 	</div>
@@ -217,7 +210,7 @@
 		var size = $("#size").val();
 		var keyword = $("#keyword").val();
 		if(_index <= ${page.pageCount} && _index >= 1){
-			window.location.href="/webvSell/toSell.do?page="+page+"&size="+size+"&keyword="+keyword;
+			window.location.href="/webv/toIndex.do?page="+page+"&size="+size+"&keyword="+keyword;
 		}else{
 			alert("请输入1-${page.pageCount}的页码数");
 		}
@@ -229,7 +222,7 @@
 		var keyword = $("#keyword").val();
 		addCookie("contract_size", size, 36);
 		if ((page <= ${page.pageCount} && page >= 1)) {
-			window.location.href="/webvSell/toSell.do?page="+page+"&size="+size+"&keyword="+keyword;
+			window.location.href="/webv/toIndex.do?page="+page+"&size="+size+"&keyword="+keyword;
 		} else {
 			alert("请输入1-${page.pageCount}的页码数");
 		}

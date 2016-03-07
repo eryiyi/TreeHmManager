@@ -14,37 +14,18 @@
 	<meta name="Copyright" content="花木通版权所有" />
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="shortcut icon" type="image/png" href="/img/logo.png">
-	<link href="/plugins/bootstrap/bootstrap.css" rel="stylesheet">
-	<link href="/css/cat.css" rel="stylesheet">
-	<link href="/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
-	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-	<link href="/plugins/fancybox/jquery.fancybox.css" rel="stylesheet">
-	<link href="/plugins/fullcalendar/fullcalendar.css" rel="stylesheet">
-	<link href="/plugins/xcharts/xcharts.min.css" rel="stylesheet">
-	<link href="/plugins/select2/select2.css" rel="stylesheet">
-	<link href="/plugins/justified-gallery/justifiedGallery.css" rel="stylesheet">
-	<link href="/css/style_v2.css" rel="stylesheet">
-	<link href="/plugins/chartist/chartist.min.css" rel="stylesheet">
 	<link rel="shortcut icon" type="image/png" href="/img/logo.png">
 	<link rel="stylesheet" href="/css/reset.css">
 	<link rel="stylesheet" href="/css/common.css">
 	<link rel="stylesheet" href="/css/common_2.css">
 
-	<script src="/js/jquery.min.js"></script>
-	<script src="/plugins/jquery/jquery.min.js"></script>
-	<script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
-	<script src="/plugins/bootstrap/bootstrap.min.js"></script>
-	<script src="/plugins/justified-gallery/jquery.justifiedGallery.min.js"></script>
-	<script src="/plugins/tinymce/tinymce.min.js"></script>
-	<script src="/plugins/tinymce/jquery.tinymce.min.js"></script>
-	<script src="/js/devoops.js"></script>
-	<script src="/js/china2.js"></script>
+
+	<script type="text/javascript" src="/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/md5.js"></script>
 	<script type="text/javascript" src="/js/cookie.js"></script>
 	<script type="text/javascript" src="/js/ajaxfileupload.js"></script>
 	<script type="text/javascript" src="/js/Util.js"></script>
-	<script src="/js/Util.js"></script>
-	<script src="/js/validation.js"></script>
+	<script type="text/javascript" src="/js/validation.js"></script>
 
 
 </head>
@@ -59,31 +40,32 @@
 		</div>
 	</div>
 	<!-- CONTENT -->
-	<form class="content regist w85">
-		<div class="input-group-regist"><span>手机号</span><input type="text" placeholder="手机号" id="mm_emp_mobile" name="mm_emp_mobile"></div>
+	<div class="content regist w85">
+		<div class="input-group-regist"><span>手机号</span>
+			<input type="number" placeholder="手机号" id="mm_emp_mobile"></div>
 		<div class="input-group-regist"><span>密码</span><input  placeholder="密码" type="password" id="mm_emp_password" name="mm_emp_password"></div>
-		<div class="input-group-regist"><span>确认密码</span><input type="password" id="mm_emp_surepwr" name="mm_emp_surepwr"></div>
+		<div class="input-group-regist"><span>确认密码</span><input type="password" placeholder="确认密码" id="mm_emp_surepwr" name="mm_emp_surepwr"></div>
 		<%--<div class="input-group-regist verify">--%>
 			<%--<span>验证码</span>--%>
 			<%--<a class="fill-orange radius">获取验证码</a>--%>
 			<%--<input type="number">--%>
 		<%--</div>--%>
 		<div class="input-group-regist"><span>姓名</span><input placeholder="请输入真实姓名" type="text" id="mm_emp_nickname" name="mm_emp_nickname"></div>
-		<div class="input-group-regist"><span>身份证号</span><input placeholder="请输入身份证号" type="text" id="mm_emp_card" name="mm_emp_card"></div>
+		<div class="input-group-regist"><span>身份证号</span><input placeholder="请输入身份证号" type="number" id="mm_emp_card" name="mm_emp_card"></div>
 		<div class="select-group mt2 mb2"><span>注册类型</span>
 			<select name="mm_emp_type" id="mm_emp_type" class="bg-f2">
 				<option value="0">苗木经营户</option>
 				<option value="1">苗木会员</option>
 			</select>
 		</div>
-		<div class="input-group-regist"><span>公司名称</span><input type="text" id="mm_emp_company" name="mm_emp_company"></div>
+		<div class="input-group-regist"><span>公司名称</span><input type="text" placeholder="请输入公司名称，20字以内" id="mm_emp_company" name="mm_emp_company"></div>
 		<div class="select-group mt2 mb2"><span>公司类型</span>
 			<select name="mm_emp_company_type" id="mm_emp_company_type" class="bg-f2" >
 				<option value="0">苗木</option>
 				<option value="1">园林</option>
 			</select>
 		</div>
-		<div class="input-group-regist"><span>公司地址</span><input  placeholder="20字以内"  type="text" id="mm_emp_company_address" name="mm_emp_company_address"></div>
+		<div class="input-group-regist"><span>公司地址</span><input  placeholder="请输入公司地址"  type="text" id="mm_emp_company_address" name="mm_emp_company_address"></div>
 		<div class="select-group mt2 mb2"><span>-（省）</span>
 
 			<select class="bg-f2" name="mm_emp_provinceId" id="mm_emp_provinceId" onchange="selectCitys()">
@@ -110,14 +92,14 @@
 				</c:forEach>
 			</select>
 		</div>
-		<button class="button fill-blue mt3 w10 t-sh mb4" onclick="reg()">注册</button>
-	</form>
+		<button class="button fill-blue mt3 w10 t-sh mb4" type="submit" onclick="reg()">注册</button>
+		</div>
 	<!-- TOOLBAR -->
 	<div class="toolbar">
-		<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy"></a>
+		<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy buy-active"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvRecommend/toRecommend.do','1')" class="recommend"></a>
-		<a href="javaScript:void(0)" onclick="toPage('/webvProfile/toProfile.do','1')" class="mine"></a>
+		<a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')" class="mine"></a>
 	</div>
 	<!-- TOOLBAR -->
 </div>
@@ -150,15 +132,23 @@
 
 		if(mm_emp_mobile.replace(/\s/g, '') == ''){
 			alert("手机号不能为空");
-			return;
+			return ;
+		}
+		if(mm_emp_mobile.length != 11){
+			alert("手机号格式不正确");
+			return ;
 		}
 		if(mm_emp_password.replace(/\s/g, '') == ''){
 			alert("密码不能为空");
-			return;
+			return ;
+		}
+		if(mm_emp_password.length>18 || mm_emp_password.length<6){
+			alert("密码长度在6到18为之间");
+			return ;
 		}
 		if(mm_emp_surepwr.replace(/\s/g, '') == ''){
 			alert("确认密码不能为空");
-			return;
+			return ;
 		}
 		if(mm_emp_password != mm_emp_surepwr){
 			alert("两次输入密码不一致，请重新输入");
@@ -168,8 +158,16 @@
 			alert("姓名不能为空");
 			return;
 		}
+		if(mm_emp_nickname.length>10 || mm_emp_nickname.length<2){
+			alert("姓名2到10个字以内");
+			return;
+		}
 		if(mm_emp_card.replace(/\s/g, '') == ''){
 			alert("身份证号不能为空");
+			return;
+		}
+		if(mm_emp_card.length != 18){
+			alert("身份证号格式不正确");
 			return;
 		}
 		if(mm_emp_type.replace(/\s/g, '') == ''){
@@ -180,12 +178,20 @@
 			alert("公司名称不能为空");
 			return;
 		}
+		if(mm_emp_company.length > 20){
+			alert("公司名称20字以内");
+			return;
+		}
 		if(mm_emp_company_type.replace(/\s/g, '') == ''){
 			alert("请选择公司类型");
 			return;
 		}
 		if(mm_emp_company_address.replace(/\s/g, '') == ''){
 			alert("请输入公司地址");
+			return;
+		}
+		if(mm_emp_company_address.length > 30){
+			alert("公司地址30字以内");
 			return;
 		}
 		if(mm_emp_provinceId.replace(/\s/g, '') == ''){
@@ -203,7 +209,7 @@
 		$.ajax({
 			cache: true,
 			type: "POST",
-			url:"/emp/empReg.do",
+			url:"/webvRegController/empReg.do",
 			data:{
 				"mm_emp_mobile":mm_emp_mobile,
 				"mm_emp_nickname":mm_emp_nickname,

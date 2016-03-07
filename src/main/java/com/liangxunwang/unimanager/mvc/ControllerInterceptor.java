@@ -57,6 +57,17 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/webvFindPwrController/toFindPwr\\.do$)"+
                         "|(^/webvLoginController/login\\.do$)"+
                         "|(^/webvRecordController/toDetail\\.do$)"+
+                        "|(^/webvRegController/empReg\\.do$)"+
+                        "|(^/webvRegController/findPwr\\.do$)"+
+                        "|(^/webvServiceController/toService\\.do$)"+
+                        "|(^/webvUpdatePwrController/toFindPwr\\.do$)"+
+                        "|(^/webvUpdatePwrController/findPwr\\.do$)"+
+                        "|(^/webvSuggestController/toSuggest\\.do$)"+
+                        "|(^/webvSuggestController/addSuggest\\.do$)"+
+                        "|(^/webvNearbyController/nearby\\.do$)"+
+                        "|(^/webvMineFavourController/favour\\.do$)"+
+                        "|(^/webvAboutUsController/toAboutUs\\.do$)"+
+                        "|(^/webvFuwuCenterController/toCenter\\.do$)"+
 
                         "|(^/memberLogin\\.do$)"
 

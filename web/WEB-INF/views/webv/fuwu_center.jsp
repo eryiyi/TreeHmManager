@@ -5,11 +5,11 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>花木通找回密码</title>
+	<title>花木通_服务中心</title>
 	<meta name="Keywords" content="花木通,花木,花草,苗联通,白蜡,园林,惠民皂户李镇,苗木协会" />
 	<meta name="Description" content="花木通是最优秀的花木信息软件，为客户提供最优质的服务" />
-	<meta property="og:title" content="花木通_找回密码"  />
-	<meta property="og:description" content="花木通_找回密码" />
+	<meta property="og:title" content="花木通_服务中心"  />
+	<meta property="og:description" content="花木通_服务中心" />
 	<meta name="author" content="花木通" />
 	<meta name="Copyright" content="花木通版权所有" />
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -17,6 +17,7 @@
 	<link rel="stylesheet" href="/css/reset.css">
 	<link rel="stylesheet" href="/css/common.css">
 	<link rel="stylesheet" href="/css/common_2.css">
+	<link rel="stylesheet" href="/css/contact.css">
 
 	<script type="text/javascript" src="/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/md5.js"></script>
@@ -30,30 +31,56 @@
 <div class="container">
 	<!-- HEADING -->
 	<div class="heading clearfix">
-		<!-- HEADING -->
-		<div class="heading clearfix">
-			<a href="javascript:history.back()" class="back"><img src="/img/tree_icons_back.png" alt=""></a>
-			<h1 class="head-title">找回密码</h1>
-		</div>
+		<a href="javascript:history.back()()" class="back"><img src="/img/tree_icons_back.png" alt=""></a>
+		<h1 class="head-title">${name}</h1>
 	</div>
 	<!-- CONTENT -->
-	<div class="content w85">
-		<div class="input-group-regist"><span>手机号</span><input type="text" placeholder="请输入手机号" id="mm_emp_mobile" ></div>
-		<%--<div class="input-group-regist verify">--%>
-			<%--<span>验证码</span>--%>
-			<%--<a class="fill-orange radius">获取验证码</a>--%>
-			<%--<input type="number">--%>
-		<%--</div>--%>
-		<div class="input-group-regist"><span>新密码</span><input type="password" placeholder="请输入密码" id="mm_emp_password"></div>
-		<div class="input-group-regist"><span>确认密码</span><input type="password" placeholder="请输入确认密码" id="mm_emp_surepwr"></div>
-		<button class="button fill-green mt6 w10 mb5 t-sh" onclick="findPwr()">提交</button>
+	<div class="content">
+		<ul class="contact-list">
+			<%--<li>--%>
+				<%--<div class="contact clearfix">--%>
+					<%--<div class="left">--%>
+						<%--<h1 class="name">邴新科</h1>--%>
+						<%--<h3 class="company">山东良讯传媒有限公司</h3>--%>
+					<%--</div>--%>
+					<%--<div class="right">--%>
+						<%--<a href="tel:18366883986" class="button-phone-big clearfix">--%>
+							<%--<img src="pics/tree_button_icon_phone.png" alt="" class="phone-icon">--%>
+							<%--<h2 class="phone-number">18366883986</h2>--%>
+						<%--</a>--%>
+					<%--</div>--%>
+				<%--</div>--%>
+				<%--<div class="duty">--%>
+					<%--<h3 class="main-duty">主营：</h3>--%>
+					<%--<p class="duty-detail">过年过年，过年过年，过年正月十五</p>--%>
+				<%--</div>--%>
+			<%--</li>--%>
+				<c:forEach items="${list}" var="e" varStatus="st">
+					<li>
+						<div class="contact clearfix">
+							<div class="left">
+								<h1 class="name">${e.mm_fuwu_nickname}</h1>
+								<h3 class="company">${e.mm_fuwu_content}</h3>
+							</div>
+							<div class="right">
+								<a href="javaScript:void(0)" class="button-phone-big clearfix">
+									<img src="/img/tree_button_icon_phone.png" alt="" class="phone-icon">
+									<h2 class="phone-number">${e.mm_fuwu_tel}</h2>
+								</a>
+							</div>
+						</div>
+						<div class="duty"></div>
+					</li>
+				</c:forEach>
+
+		</ul>
 	</div>
 	<!-- TOOLBAR -->
 	<div class="toolbar">
-		<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy buy-active"></a>
+		<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvRecommend/toRecommend.do','1')" class="recommend"></a>
-		<a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')" class="mine"></a>
+		<a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')" class="mine mine-active"></a>
 	</div>
 	<!-- TOOLBAR -->
 </div>

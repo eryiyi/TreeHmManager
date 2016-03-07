@@ -498,7 +498,7 @@ table.no-border-bottom tr:last-child td {
   width: 40px;
 }
 .table-datatable .sorting {
-  background:url(../img/sort.png) right center no-repeat;
+  background:url(/img/sort.png) right center no-repeat;
   padding-right:16px;
   cursor:pointer;
 }
@@ -715,27 +715,27 @@ ul.DTTT_dropdown.dropdown-menu > li:hover > a {
 .well pre code {
   white-space: normal;
 }
-.btn {
-  border: 1px solid transparent;
-  border-bottom: 3px solid transparent;
-  text-decoration: none;
-  cursor: pointer;
-  font-family: "Lucida Grande","Lucida Sans","Lucida Sans Unicode","Segoe UI",Verdana,sans-serif;
-  display: inline-block;
-  vertical-align: top;
-  position: relative;
-  font-size: 12px;
-  font-weight: bold;
-  text-align: center;
-  line-height: 24px;
-  margin: 0 0 10px 0;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  outline: none !important;
-}
+/*.btn {*/
+  /*border: 1px solid transparent;*/
+  /*border-bottom: 3px solid transparent;*/
+  /*text-decoration: none;*/
+  /*cursor: pointer;*/
+  /*font-family: "Lucida Grande","Lucida Sans","Lucida Sans Unicode","Segoe UI",Verdana,sans-serif;*/
+  /*display: inline-block;*/
+  /*vertical-align: top;*/
+  /*position: relative;*/
+  /*font-size: 12px;*/
+  /*font-weight: bold;*/
+  /*text-align: center;*/
+  /*line-height: 24px;*/
+  /*margin: 0 0 10px 0;*/
+  /*-webkit-border-radius: 3px;*/
+  /*-moz-border-radius: 3px;*/
+  /*border-radius: 3px;*/
+  /*-moz-user-select: none;*/
+  /*-webkit-user-select: none;*/
+  /*outline: none !important;*/
+/*}*/
 .btn-label-left span {
   position: relative;
   left: -10px;
@@ -823,11 +823,11 @@ ul.DTTT_dropdown.dropdown-menu > li:hover > a {
 .ui-widget-header {
   background:none;
 }
-.progress-bar .ui-widget-header, .bg-default, .btn-default, .btn-default.disabled, .btn-default[disabled], fieldset[disabled] .btn-default, .btn-default.disabled:hover, .btn-default[disabled]:hover, fieldset[disabled] .btn-default:hover, .btn-default.disabled:focus, .btn-default[disabled]:focus, fieldset[disabled] .btn-default:focus, .btn-default.disabled:active, .btn-default[disabled]:active, fieldset[disabled] .btn-default:active, .btn-default.disabled.active, .btn-default[disabled].active, fieldset[disabled] .btn-default.active, .progress-bar {
-  background-color: #D8D8D8;
-  color: #505559;
-  border-color: #CBCBCB;
-}
+/*.progress-bar .ui-widget-header, .bg-default, .btn-default, .btn-default.disabled, .btn-default[disabled], fieldset[disabled] .btn-default, .btn-default.disabled:hover, .btn-default[disabled]:hover, fieldset[disabled] .btn-default:hover, .btn-default.disabled:focus, .btn-default[disabled]:focus, fieldset[disabled] .btn-default:focus, .btn-default.disabled:active, .btn-default[disabled]:active, fieldset[disabled] .btn-default:active, .btn-default.disabled.active, .btn-default[disabled].active, fieldset[disabled] .btn-default.active, .progress-bar {*/
+  /*background-color: #D8D8D8;*/
+  /*color: #505559;*/
+  /*border-color: #CBCBCB;*/
+/*}*/
 .txt-default {color: #D8D8D8;}
 .progress-bar-primary .ui-widget-header, .bg-primary, .btn-primary, .btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary, .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover, .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus, .btn-primary.disabled:active, .btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active, .btn-primary.disabled.active, .btn-primary[disabled].active, fieldset[disabled] .btn-primary.active,
 .table > thead > tr > td.primary, .table > tbody > tr > td.primary, .table > tfoot > tr > td.primary, .table > thead > tr > th.primary, .table > tbody > tr > th.primary, .table > tfoot > tr > th.primary, .table > thead > tr.primary > td, .table > tbody > tr.primary > td, .table > tfoot > tr.primary > td, .table > thead > tr.primary > th, .table > tbody > tr.primary > th, .table > tfoot > tr.primary > th {

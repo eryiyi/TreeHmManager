@@ -85,7 +85,10 @@ public class AppFavourService implements ListService,SaveService ,DeleteService,
                 }
                 record.setMm_msg_picurl(buffer.toString());
             }
-            record.setDatelineRecord(RelativeDateFormat.format(Long.parseLong(record.getDatelineRecord())));
+            if(!StringUtil.isNullOrEmpty(record.getDatelineRecord())){
+                record.setDatelineRecord(RelativeDateFormat.format(Long.parseLong(record.getDatelineRecord())));
+            }
+
         }
         return lists;
     }
