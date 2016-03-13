@@ -54,6 +54,11 @@
         <permission id="SUGGEST_MANAGE" name="意见反馈"/>
     </group>
     <group id="TEL_MANAGE" name="客服电话">
-        <permission id="TEL_KEFU_MANAGE" name="客服电话"/>
+        <permission id="ADD_TEL_KEFU_MANAGE" name="添加客服"/>
+        <permission id="TEL_KEFU_MANAGE" name="客服列表"/>
+    </group>
+    <group id="AD_MANAGE" name="广告管理">
+        <permission id="ADD_AD_MANAGE" name="添加广告"/>
+        <permission id="AD_LISTMANAGE" name="广告列表"/>
     </group>
 </permissions>

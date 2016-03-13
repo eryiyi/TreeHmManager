@@ -35,7 +35,12 @@ public class WebvFindPwrController extends ControllerConstants {
             appEmpService.update(member);
             return toJSONString(SUCCESS);
         }catch (ServiceException e){
-            return toJSONString(ERROR_1);
+            String msg = e.getMessage();
+            if (msg.equals("has_none")){
+                return toJSONString(ERROR_2);
+            }else{
+                return toJSONString(ERROR_1);
+            }
         }
 
     }

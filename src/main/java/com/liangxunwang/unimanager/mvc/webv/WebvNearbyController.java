@@ -32,17 +32,16 @@ public class WebvNearbyController extends ControllerConstants {
     @RequestMapping("nearby")
     public String nearby(HttpSession session, ModelMap map){
         EmpVO emp = (EmpVO) session.getAttribute(MEMBER_KEY);
-        List<EmpVO> list = (List<EmpVO>)appEmpServiceList.list("");
-        map.put("list", list);
-        if(emp != null){
-            //说明已经登陆
+        if(emp == null){
+            return "/webv/login";
+        }else{
+            List<EmpVO> list = (List<EmpVO>)appEmpServiceList.list("");
+            map.put("list", list);
             map.put("is_login", "1");
             map.put("emp", emp);
-        }else{
-            //说明没有登陆
-            map.put("is_login", "0");
+            return "/webv/nearby";
         }
-        return "/webv/nearby";
+
     }
 
 }

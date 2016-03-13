@@ -1,8 +1,9 @@
 package com.liangxunwang.unimanager.mvc.admin;
 
-import com.liangxunwang.unimanager.model.Admin;
-import com.liangxunwang.unimanager.model.KefuTel;
-import com.liangxunwang.unimanager.model.LogoObj;
+import com.liangxunwang.unimanager.model.*;
+import com.liangxunwang.unimanager.mvc.vo.KefuVO;
+import com.liangxunwang.unimanager.query.CityQuery;
+import com.liangxunwang.unimanager.query.CountryQuery;
 import com.liangxunwang.unimanager.query.KefuQuery;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.ControllerConstants;
@@ -39,10 +40,21 @@ public class KefuController extends ControllerConstants {
     @Qualifier("logoService")
     private SaveService logoService;
 
+    @Autowired
+    @Qualifier("provinceService")
+    private ListService provinceService;
+
+    @Autowired
+    @Qualifier("cityService")
+    private ListService cityService;
+    @Autowired
+    @Qualifier("countryService")
+    private ListService countryService;
+
     @RequestMapping("list")
     public String list(HttpSession session,ModelMap map, KefuQuery query){
         Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
-        List<KefuTel> list = (List<KefuTel>) levelService.list(query);
+        List<KefuVO> list = (List<KefuVO>) levelService.list(query);
         map.put("list", list);
         //日志记录
         logoService.save(new LogoObj("查看客服", manager.getMm_manager_id()));
@@ -51,12 +63,33 @@ public class KefuController extends ControllerConstants {
 
     @RequestMapping("add")
     public String add(ModelMap map, KefuQuery query){
-        return "/kefu/addfuwu";
+        //查询省份
+        List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list("");
+        //查询地市
+        CityQuery cityQuery = new CityQuery();
+        List<CityObj> listCitys = (List<CityObj>) cityService.list(cityQuery);
+        //查询县区
+        CountryQuery countryQuery = new CountryQuery();
+        List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);
+        map.put("listProvinces", listProvinces);
+        map.put("listCitys", listCitys);
+        map.put("listsCountry", listsCountry);
+        //查询地市all
+        CityQuery cityQueryAll = new CityQuery();
+        List<CityObj> listCitysAll = (List<CityObj>) cityService.list(cityQueryAll);
+        //查询县区all
+        CountryQuery countryQueryAll = new CountryQuery();
+        List<CountryObj> listsCountryAll = (List<CountryObj>) countryService.list(countryQueryAll);
+
+        map.put("listCitysAll", toJSONString(listCitysAll));
+        map.put("listsCountryAll", toJSONString(listsCountryAll));
+
+        return "/kefu/addkefu";
     }
 
     @RequestMapping("addKefu")
     @ResponseBody
-    public String addPiao(HttpSession session,KefuTel level){
+    public String addKefu(HttpSession session,KefuTel level){
         Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         levelServiceSave.save(level);
         //日志记录
@@ -68,8 +101,29 @@ public class KefuController extends ControllerConstants {
     @RequestMapping("/edit")
     public String toUpdateType(HttpSession session,ModelMap map, String typeId){
         Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
-        KefuTel level = (KefuTel) levelServiceSaveExe.execute(typeId);
+        KefuVO level = (KefuVO) levelServiceSaveExe.execute(typeId);
         map.put("levelObj", level);
+        //查询省份
+        List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list("");
+        //查询地市
+        CityQuery cityQuery = new CityQuery();
+        List<CityObj> listCitys = (List<CityObj>) cityService.list(cityQuery);
+        //查询县区
+        CountryQuery countryQuery = new CountryQuery();
+        List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);
+        map.put("listProvinces", listProvinces);
+        map.put("listCitys", listCitys);
+        map.put("listsCountry", listsCountry);
+        //查询地市all
+        CityQuery cityQueryAll = new CityQuery();
+        List<CityObj> listCitysAll = (List<CityObj>) cityService.list(cityQueryAll);
+        //查询县区all
+        CountryQuery countryQueryAll = new CountryQuery();
+        List<CountryObj> listsCountryAll = (List<CountryObj>) countryService.list(countryQueryAll);
+
+        map.put("listCitysAll", toJSONString(listCitysAll));
+        map.put("listsCountryAll", toJSONString(listsCountryAll));
+
         //日志记录
         logoService.save(new LogoObj("编辑客服："+level.getMm_tel_id(), manager.getMm_manager_id()));
         return "/kefu/editkefu";

@@ -39,4 +39,9 @@ public interface FavourDao {
      * @return
      */
     public Favour findOne(Map<String, Object> map);
+
+    //查询收藏数量
+    long count(Map<String,Object> map);
+
+
 }

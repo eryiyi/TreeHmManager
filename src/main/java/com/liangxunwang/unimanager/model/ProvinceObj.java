@@ -9,6 +9,15 @@ public class ProvinceObj {
     private String province;
     private String pronum;
     private String msgNum;
+    private String is_use;
+
+    public String getIs_use() {
+        return is_use;
+    }
+
+    public void setIs_use(String is_use) {
+        this.is_use = is_use;
+    }
 
     public String getMsgNum() {
         return msgNum;

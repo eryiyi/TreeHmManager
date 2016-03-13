@@ -73,22 +73,22 @@ public class MemberRegisterController extends ControllerConstants {
         return toJSONString(SUCCESS);
     }
 
-    /**
-     * 获得所有的省份
-     * @return
-     */
-    @RequestMapping(value = "/getProvince", produces = "text/plain;charset=UTF-8")
-    @ResponseBody
-    public String getProvince(){
-        try {
-            List<ProvinceObj> list = (List<ProvinceObj>) provinceService.list(null);
-            DataTip tip = new DataTip();
-            tip.setData(list);
-            return toJSONString(tip);
-        }catch (ServiceException e){
-            return toJSONString(ERROR_1);
-        }
-    }
+//    /**
+//     * 获得所有的省份
+//     * @return
+//     */
+//    @RequestMapping(value = "/getProvince", produces = "text/plain;charset=UTF-8")
+//    @ResponseBody
+//    public String getProvince(){
+//        try {
+//            List<ProvinceObj> list = (List<ProvinceObj>) provinceService.list(null);
+//            DataTip tip = new DataTip();
+//            tip.setData(list);
+//            return toJSONString(tip);
+//        }catch (ServiceException e){
+//            return toJSONString(ERROR_1);
+//        }
+//    }
 
     /**
      * 根据省份ID获得该省份的城市

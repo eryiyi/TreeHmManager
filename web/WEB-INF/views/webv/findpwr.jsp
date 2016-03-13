@@ -39,6 +39,7 @@
 	<!-- CONTENT -->
 	<div class="content w85">
 		<div class="input-group-regist"><span>手机号</span><input type="text" placeholder="请输入手机号" id="mm_emp_mobile" ></div>
+		<div class="input-group-regist"><span>身份证号</span><input type="text" placeholder="请输入身份证号" id="mm_emp_card" ></div>
 		<%--<div class="input-group-regist verify">--%>
 			<%--<span>验证码</span>--%>
 			<%--<a class="fill-orange radius">获取验证码</a>--%>
@@ -69,6 +70,7 @@
 
 	function findPwr(){
 		var mm_emp_mobile = $("#mm_emp_mobile").val();
+		var mm_emp_card = $("#mm_emp_card").val();
 		var mm_emp_password = $("#mm_emp_password").val();
 		var mm_emp_surepwr = $("#mm_emp_surepwr").val();
 		if(mm_emp_mobile.replace(/\s/g, '') == ''){
@@ -77,6 +79,10 @@
 		}
 		if(mm_emp_mobile.length != 11){
 			alert("手机号格式不正确");
+			return ;
+		}
+		if(mm_emp_card.replace(/\s/g, '') == ''){
+			alert("身份证号不能为空");
 			return ;
 		}
 		if(mm_emp_password.replace(/\s/g, '') == ''){
@@ -101,6 +107,7 @@
 			url:"/webvFindPwrController/findPwr.do",
 			data:{
 				"mm_emp_mobile":mm_emp_mobile,
+				"mm_emp_card":mm_emp_card,
 				"mm_emp_password":mm_emp_password
 
 			},
@@ -112,7 +119,7 @@
 					//登录页面跳转
 					window.location.href="/webvLoginController/toLogin.do";
 				}else{
-					var _case = {1:"找回密码失败",2:""};
+					var _case = {1:"找回密码失败",2:"手机号和身份证号不匹配，找回密码失败！"};
 					alert(_case[data.code])
 				}
 			}

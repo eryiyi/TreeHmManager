@@ -34,19 +34,12 @@ public class WebvMineFavourController extends ControllerConstants {
     @RequestMapping("favour")
     public String favour(FavourQuery query,HttpSession session, ModelMap map){
         EmpVO emp = (EmpVO) session.getAttribute(MEMBER_KEY);
-        if(emp != null){
+        if(emp == null){
+            return "/webv/login";
+        }else
             query.setAccessToken(emp.getAccess_token()==null?"":emp.getAccess_token());
-        }
-
-        if(emp != null){
-            //说明已经登陆
             map.put("is_login", "1");
             map.put("emp", emp);
-        }else{
-            //说明没有登陆
-            map.put("is_login", "0");
-        }
-
         try {
             List<FavourVO> list = (List<FavourVO>) appFavourService.list(query);
             map.put("list", list);

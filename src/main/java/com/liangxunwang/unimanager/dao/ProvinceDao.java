@@ -18,9 +18,21 @@ public interface ProvinceDao {
      */
     List<ProvinceObj> lists(Map<String, Object> map);
 
-
     //保存
     void save(ProvinceObj level);
 
+    /**
+     * 查询省份
+     */
+    List<ProvinceObj> listsApp(Map<String, Object> map);
 
+    //
+    ProvinceObj findById(Map<String,Object> map);
+
+
+    /**
+     * 更新
+     * @param provinceObj
+     */
+    public void update(ProvinceObj provinceObj);
 }

@@ -69,6 +69,7 @@
               <input type="text" id="add_three" value ="${levelObj.mm_fuwu_content}"  class="form-control" placeholder="服务内容" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
+
           <div class="form-group">
             <label class="col-sm-2 control-label">服务类型</label>
             <div class="col-sm-4">
@@ -82,7 +83,12 @@
               </select>
             </div>
           </div>
-
+          <div class="form-group">
+            <label class="col-sm-2 control-label">微网站链接</label>
+            <div class="col-sm-4">
+              <input type="text" id="mm_fuwu_url" value ="${levelObj.mm_fuwu_url}"  class="form-control" placeholder="微网站链接" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+            </div>
+          </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">经纬度</label>
             <div class="col-sm-4">
@@ -137,6 +143,7 @@
     var mm_fuwu_type = $("#mm_fuwu_type").val();
     var lat = $("#lat").val();
     var lng = $("#lng").val();
+    var mm_fuwu_url = $("#mm_fuwu_url").val();
 
     if(add_one.replace(/\s/g, '')==''){
       alert("请输入正确的服务名称");
@@ -162,7 +169,7 @@
       cache: true,
       type: "POST",
       url:"/fuwu/editFuwu.do",
-      data:{"mm_fuwu_nickname":add_one, "mm_fuwu_tel":add_two,"mm_fuwu_content":add_three, "mm_fuwu_id":mm_fuwu_id, "mm_fuwu_type":mm_fuwu_type,"lat":lat,"lng":lng},
+      data:{"mm_fuwu_nickname":add_one, "mm_fuwu_tel":add_two,"mm_fuwu_content":add_three, "mm_fuwu_id":mm_fuwu_id, "mm_fuwu_type":mm_fuwu_type,"lat":lat,"lng":lng,"mm_fuwu_url":mm_fuwu_url},
       async: false,
       success: function(_data) {
         var data = $.parseJSON(_data);

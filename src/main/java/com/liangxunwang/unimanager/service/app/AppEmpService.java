@@ -33,14 +33,29 @@ public class AppEmpService implements  UpdateService,ListService {
 
    //修改会员信息
     @Override
-    public Object update(Object object) {
+    public Object update(Object object) throws ServiceException {
         if (object instanceof Emp){
             Emp emp = (Emp) object;
             if(!StringUtil.isNullOrEmpty(emp.getMm_emp_password()))
             {
                 //修改密码
-                emp.setMm_emp_password(new MD5Util().getMD5ofStr(emp.getMm_emp_password()));//密码加密
-                empDao.updatePwr(emp);
+                //1，先查看身份证号和手机号是否正确
+                Map<String, Object> map = new HashMap<String, Object>();
+                if(!StringUtil.isNullOrEmpty(emp.getMm_emp_id())){
+                    map.put("mm_emp_id", emp.getMm_emp_id());
+                }
+                if(!StringUtil.isNullOrEmpty(emp.getMm_emp_card())){
+                    map.put("mm_emp_card", emp.getMm_emp_card());
+                }
+                EmpVO empVO = empDao.findByMobileAndCard(map);
+                if(empVO != null){
+                    //说明手机号和身份证号正确
+                    emp.setMm_emp_password(new MD5Util().getMD5ofStr(emp.getMm_emp_password()));//密码加密
+                    empDao.updatePwr(emp);
+                }else {
+                    throw new ServiceException("has_none");
+                }
+
             }else {
                 //上传用户定位数据  经纬度
                 empDao.updateLoacation(emp);

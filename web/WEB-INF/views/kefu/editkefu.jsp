@@ -10,7 +10,7 @@
     <ol class="breadcrumb pull-left">
       <li><a href="javascript:void(0)"  onclick="toPage('mainPage','')">主页</a></li>
       <li><a href="javascript:void(0)">客服电话</a></li>
-      <li><a href="javascript:void(0)">客服电话</a></li>
+      <li><a href="javascript:void(0)">编辑客服</a></li>
     </ol>
     <div id="social" class="pull-right">
       <a href="javascript:void(0)"><i class="fa fa-google-plus"></i></a>
@@ -28,7 +28,7 @@
       <div class="box-header">
         <div class="box-name">
           <i class="fa fa-search"></i>
-          <span>客服电话</span>
+          <span>编辑客服</span>
         </div>
         <div class="box-icons">
           <a class="collapse-link">
@@ -44,7 +44,7 @@
         <div class="no-move"></div>
       </div>
       <div class="box-content">
-        <h4 class="page-header">客服电话</h4>
+        <h4 class="page-header">编辑客服</h4>
         <form class="form-horizontal" role="form">
           <input type="hidden" id="mm_tel_id" value="${levelObj.mm_tel_id}">
 
@@ -52,6 +52,39 @@
             <label class="col-sm-2 control-label">客服电话</label>
             <div class="col-sm-4">
               <input type="text" id="mm_tel" value ="${levelObj.mm_tel}"  class="form-control" placeholder="服务电话" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">省份</label>
+            <div class="col-sm-4">
+              <select class="form-control" id="mm_emp_provinceId"  onchange="selectCitys()">
+                <option value="">--选择省份--</option>
+                <c:forEach items="${listProvinces}" var="e" varStatus="st">
+                  <option value="${e.provinceID}"  ${empVO.mm_emp_provinceId==e.provinceID?'selected':''}>${e.province}</option>
+                </c:forEach>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">城市</label>
+            <div class="col-sm-4">
+              <select class="form-control" id="mm_emp_cityId" onchange="selectCountrys()">
+                <option value="">--选择城市--</option>
+                <c:forEach items="${listCitys}" var="e" varStatus="st">
+                  <option value="${e.cityID}"  ${empVO.mm_emp_cityId==e.cityID?'selected':''}>${e.city}</option>
+                </c:forEach>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">县区</label>
+            <div class="col-sm-4">
+              <select class="form-control" id="mm_emp_countryId" >
+                <option value="">--选择县区--</option>
+                <c:forEach items="${listsCountry}" var="e" varStatus="st">
+                  <option value="${e.areaID}"  ${empVO.mm_emp_countryId==e.areaID?'selected':''}>${e.area}</option>
+                </c:forEach>
+              </select>
             </div>
           </div>
 
@@ -71,16 +104,32 @@
     var mm_tel_id = $("#mm_tel_id").val();
     var mm_tel = $("#mm_tel").val();
 
+    var mm_emp_provinceId = $("#mm_emp_provinceId").val();
+    var mm_emp_cityId = $("#mm_emp_cityId").val();
+    var mm_emp_countryId = $("#mm_emp_countryId").val();
+
+
     if(mm_tel.replace(/\s/g, '')==''){
       alert("请输入正确的客服电话");
       return;
     }
 
+//    if(mm_emp_provinceId.replace(/\s/g, '')==''){
+//      alert("请选择省份");
+//      return;
+//    } if(mm_emp_cityId.replace(/\s/g, '')==''){
+//      alert("请选择城市");
+//      return;
+//    } if(mm_emp_countryId.replace(/\s/g, '')==''){
+//      alert("请选择地区");
+//      return;
+//    }
+
     $.ajax({
       cache: true,
       type: "POST",
       url:"/kefu/editKefu.do",
-      data:{"mm_tel_id":mm_tel_id, "mm_tel":mm_tel},
+      data:{"mm_emp_provinceId":mm_emp_provinceId, "mm_emp_cityId":mm_emp_cityId, "mm_emp_countryId":mm_emp_countryId,"mm_tel_id":mm_tel_id, "mm_tel":mm_tel},
       async: false,
       success: function(_data) {
         var data = $.parseJSON(_data);

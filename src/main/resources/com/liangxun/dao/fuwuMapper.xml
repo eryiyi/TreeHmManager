@@ -12,6 +12,7 @@
         <result column="dateline" property="dateline"/>
         <result column="lat" property="lat"/>
         <result column="lng" property="lng"/>
+        <result column="mm_fuwu_url" property="mm_fuwu_url"/>
     </resultMap>
 
     <select id="lists" resultMap="fuwu">
@@ -22,8 +23,8 @@
     </select>
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.FuwuObj">
-        INSERT INTO mm_fuwu(mm_fuwu_id, mm_fuwu_nickname, mm_fuwu_tel, mm_fuwu_content, mm_fuwu_type,dateline,lat,lng)
-        VALUES (#{mm_fuwu_id}, #{mm_fuwu_nickname}, #{mm_fuwu_tel}, #{mm_fuwu_content,jdbcType=VARCHAR}, #{mm_fuwu_type}, #{dateline}, #{lat,jdbcType=VARCHAR}, #{lng,jdbcType=VARCHAR})
+        INSERT INTO mm_fuwu(mm_fuwu_id, mm_fuwu_nickname, mm_fuwu_tel, mm_fuwu_content, mm_fuwu_type,dateline,lat,lng,mm_fuwu_url)
+        VALUES (#{mm_fuwu_id}, #{mm_fuwu_nickname}, #{mm_fuwu_tel}, #{mm_fuwu_content,jdbcType=VARCHAR}, #{mm_fuwu_type}, #{dateline}, #{lat,jdbcType=VARCHAR}, #{lng,jdbcType=VARCHAR}, #{mm_fuwu_url,jdbcType=VARCHAR})
     </insert>
 
     <delete id="delete" parameterType="String">
@@ -35,7 +36,7 @@
     </select>
 
     <update id="update" parameterType="com.liangxunwang.unimanager.model.FuwuObj">
-        UPDATE mm_fuwu SET mm_fuwu_nickname=#{mm_fuwu_nickname}, mm_fuwu_tel=#{mm_fuwu_tel}, mm_fuwu_content=#{mm_fuwu_content}, mm_fuwu_type=#{mm_fuwu_type}, lat=#{lat}, lng=#{lng}
+        UPDATE mm_fuwu SET mm_fuwu_nickname=#{mm_fuwu_nickname}, mm_fuwu_tel=#{mm_fuwu_tel}, mm_fuwu_content=#{mm_fuwu_content}, mm_fuwu_type=#{mm_fuwu_type}, lat=#{lat}, lng=#{lng}, mm_fuwu_url=#{mm_fuwu_url}
          WHERE mm_fuwu_id=#{mm_fuwu_id}
     </update>
 </mapper>

@@ -20,7 +20,7 @@ import java.util.Map;
  * Created by liuzwei on 2015/3/3.
  */
 @Service("provinceService")
-public class ProvinceService implements ListService,SaveService{
+public class ProvinceService implements ListService,SaveService,ExecuteService,UpdateService{
     @Autowired
     @Qualifier("provinceDao")
     private ProvinceDao provinceDao;
@@ -44,4 +44,19 @@ public class ProvinceService implements ListService,SaveService{
     }
 
 
+    @Override
+    public Object execute(Object object) throws ServiceException {
+        String id = (String) object;
+        Map<String,Object> map = new HashMap<String, Object>();
+        map.put("id", id);
+        ProvinceObj provinceObj = provinceDao.findById(map);
+        return provinceObj;
+    }
+
+    @Override
+    public Object update(Object object) {
+        ProvinceObj level = (ProvinceObj) object;
+        provinceDao.update(level);
+        return null;
+    }
 }

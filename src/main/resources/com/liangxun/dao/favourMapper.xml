@@ -85,4 +85,13 @@
         mm_emp_id=#{mm_emp_id}
     </select>
 
+    <select id="count" resultType="Long">
+        SELECT count(sn.mm_emp_id) FROM mm_record_favour sn
+        WHERE 1=1
+        <if test="mm_emp_id != null and mm_emp_id != ''">
+            AND sn.mm_emp_id = #{mm_emp_id}
+        </if>
+    </select>
+
+
 </mapper>

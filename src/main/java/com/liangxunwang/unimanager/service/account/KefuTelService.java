@@ -5,6 +5,7 @@ import com.liangxunwang.unimanager.dao.FuwuDao;
 import com.liangxunwang.unimanager.dao.KefuTelDao;
 import com.liangxunwang.unimanager.model.FuwuObj;
 import com.liangxunwang.unimanager.model.KefuTel;
+import com.liangxunwang.unimanager.mvc.vo.KefuVO;
 import com.liangxunwang.unimanager.query.FuwuQuery;
 import com.liangxunwang.unimanager.query.KefuQuery;
 import com.liangxunwang.unimanager.service.*;
@@ -33,7 +34,7 @@ public class KefuTelService implements ListService,SaveService , UpdateService, 
     public Object list(Object object) throws ServiceException {
         KefuQuery query = (KefuQuery) object;
         Map<String, Object> map = new HashMap<String, Object>();
-        List<KefuTel> lists = fuwuDao.lists(map);
+        List<KefuVO> lists = fuwuDao.lists(map);
         return lists;
     }
 

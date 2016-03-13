@@ -2,6 +2,7 @@ package com.liangxunwang.unimanager.dao;
 
 import com.liangxunwang.unimanager.model.FuwuObj;
 import com.liangxunwang.unimanager.model.KefuTel;
+import com.liangxunwang.unimanager.mvc.vo.KefuVO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public interface KefuTelDao {
     /**
      * 查询客服
      */
-    List<KefuTel> lists(Map<String, Object> map);
+    List<KefuVO> lists(Map<String, Object> map);
 //    long count(Map<String, Object> map);
 
 

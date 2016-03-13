@@ -81,14 +81,23 @@ public class WebvIndexController extends ControllerConstants {
             //说明没有登陆
         }
 
-        Object[] results = (Object[]) recordService.list(query);
-        map.put("list", results[0]);
-        long count = (Long) results[1];
-        page.setCount(count);
-        page.setPageCount(calculatePageCount(query.getSize(), count));
-        map.addAttribute("page", page);
-        map.addAttribute("query", query);
-        map.addAttribute("mm_msg_type", "0");
+        try {
+            Object[] results = (Object[]) recordService.list(query);
+            map.put("list", results[0]);
+            long count = (Long) results[1];
+            page.setCount(count);
+            page.setPageCount(calculatePageCount(query.getSize(), count));
+            map.addAttribute("page", page);
+            map.addAttribute("query", query);
+            map.addAttribute("mm_msg_type", "0");
+        }catch (ServiceException e){
+            String msg = e.getMessage();
+            if (msg.equals("accessTokenNull")){
+                return "/webv/login";
+            }else{
+                return "/webv/login";
+            }
+        }
 
         //查询省份
         List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list("");

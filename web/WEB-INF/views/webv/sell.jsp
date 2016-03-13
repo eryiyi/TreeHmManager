@@ -76,16 +76,16 @@
 				</a>
 				<div class="item-footer clearfix">
 					<%--<button class="read-status-unread"></button>--%>
-					<div  class="share-left">
-						<div class="bdsharebuttonbox" >
-							<a class="bds_mshare" data-cmd="mshare"></a>
-							<a class="bds_qzone" data-cmd="qzone" href="javaScript:void(0)"></a>
-							<a class="bds_tsina" data-cmd="tsina"></a>
-							<a class="bds_tqq" data-cmd="tqq"></a>
-							<a class="bds_more" data-cmd="more">更多</a>
-							<a class="bds_count" data-cmd="count"></a>
-						</div>
-					</div>
+					<%--<div  class="share-left">--%>
+						<%--<div class="bdsharebuttonbox" >--%>
+							<%--<a class="bds_mshare" data-cmd="mshare"></a>--%>
+							<%--<a class="bds_qzone" data-cmd="qzone" href="javaScript:void(0)"></a>--%>
+							<%--<a class="bds_tsina" data-cmd="tsina"></a>--%>
+							<%--<a class="bds_tqq" data-cmd="tqq"></a>--%>
+							<%--<a class="bds_more" data-cmd="more">更多</a>--%>
+							<%--<a class="bds_count" data-cmd="count"></a>--%>
+						<%--</div>--%>
+					<%--</div>--%>
 					<a type="button" href="javaScript:void(0)" onclick="telClick(${e.mm_emp_mobile})" class="button-phone"></a>
 					<a type="button" href="javaScript:void(0)" onclick="favourClick('${e.mm_msg_id}')" class="button-fav"></a>
 					<c:if test="${e.mm_msg_picurl !=''}"><a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-pic"></a></c:if>
@@ -281,34 +281,34 @@
 
 </script>
 
-<script>
-	window._bd_share_config = {
-		common : {
-			bdText : '自定义分享内容',
-			bdDesc : '自定义分享摘要',
-			bdUrl : '自定义分享url地址',
-			bdPic : '自定义分享图片'
-		},
-		share : [{
-			"bdSize" : 16
-		}],
-		slide : [{
-			bdImg : 0,
-			bdPos : "right",
-			bdTop : 100
-		}],
-		image : [{
-			viewType : 'list',
-			viewPos : 'top',
-			viewColor : 'black',
-			viewSize : '16',
-			viewList : ['qzone','tsina','huaban','tqq','renren']
-		}],
-		selectShare : [{
-			"bdselectMiniList" : ['qzone','tqq','kaixin001','bdxc','tqf']
-		}]
-	}
-	with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
+<%--<script>--%>
+	<%--window._bd_share_config = {--%>
+		<%--common : {--%>
+			<%--bdText : '自定义分享内容',--%>
+			<%--bdDesc : '自定义分享摘要',--%>
+			<%--bdUrl : '自定义分享url地址',--%>
+			<%--bdPic : '自定义分享图片'--%>
+		<%--},--%>
+		<%--share : [{--%>
+			<%--"bdSize" : 16--%>
+		<%--}],--%>
+		<%--slide : [{--%>
+			<%--bdImg : 0,--%>
+			<%--bdPos : "right",--%>
+			<%--bdTop : 100--%>
+		<%--}],--%>
+		<%--image : [{--%>
+			<%--viewType : 'list',--%>
+			<%--viewPos : 'top',--%>
+			<%--viewColor : 'black',--%>
+			<%--viewSize : '16',--%>
+			<%--viewList : ['qzone','tsina','huaban','tqq','renren']--%>
+		<%--}],--%>
+		<%--selectShare : [{--%>
+			<%--"bdselectMiniList" : ['qzone','tqq','kaixin001','bdxc','tqf']--%>
+		<%--}]--%>
+	<%--}--%>
+	<%--with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];--%>
+<%--</script>--%>
 
 </html>

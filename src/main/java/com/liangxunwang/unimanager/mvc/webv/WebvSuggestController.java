@@ -23,7 +23,12 @@ import javax.servlet.http.HttpSession;
 public class WebvSuggestController extends ControllerConstants {
 
     @RequestMapping("toSuggest")
-    public String toLogin(){
+    public String toLogin(HttpSession session){
+        EmpVO emp = (EmpVO) session.getAttribute(MEMBER_KEY);
+        if(emp == null){
+            return "/webv/login";
+        }else
+
         return "/webv/suggest";
     }
 

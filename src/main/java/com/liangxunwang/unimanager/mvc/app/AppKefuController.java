@@ -4,6 +4,7 @@ import com.liangxunwang.unimanager.model.Favour;
 import com.liangxunwang.unimanager.model.KefuTel;
 import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.mvc.vo.FavourVO;
+import com.liangxunwang.unimanager.mvc.vo.KefuVO;
 import com.liangxunwang.unimanager.query.FavourQuery;
 import com.liangxunwang.unimanager.query.KefuQuery;
 import com.liangxunwang.unimanager.service.ListService;
@@ -33,7 +34,7 @@ public class AppKefuController extends ControllerConstants {
     @ResponseBody
     public String getKefuTel(KefuQuery query){
         try {
-            List<KefuTel> list = (List<KefuTel>) kefuTelService.list(query);
+            List<KefuVO> list = (List<KefuVO>) kefuTelService.list(query);
             DataTip tip = new DataTip();
             tip.setData(list);
             return toJSONString(tip);

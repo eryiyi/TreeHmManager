@@ -76,8 +76,8 @@
 			</div>
 			<div class="item-footer clearfix">
 				<%--<a class="button-share"></a>--%>
-				<a class="button-fav" href="javaScript:void(0)" onclick="favourClick('${e.mm_msg_id}')"></a>
-				<a href="javaScript:void(0)" onclick="reportClick()" class="button-report"></a>
+				<a class="button-fav" href="javaScript:void(0)" onclick="favourClick('${recordVO.mm_msg_id}')"></a>
+				<a href="javaScript:void(0)" onclick="reportClick('${recordVO.mm_emp_id}','${recordVO.mm_msg_id}')" class="button-report"></a>
 			</div>
 			<a href="javaScript:void(0)" onclick="telClick(${recordVO.mm_emp_mobile})" class="button-phone-big clearfix">
 				<img src="/img/tree_button_icon_phone.png" alt="" class="phone-icon">
@@ -150,9 +150,9 @@
 		window.location.href="/webvLoginController/toLogin.do";
 	}
 
-	function reportClick(){
+	function reportClick(_mm_emp_id,_mm_msg_id){
 		//举报
-		alert("举报");
+		window.location.href="/webvReportController/toReport.do?mm_msg_id="+_mm_msg_id+"&mm_emp_id="+_mm_emp_id;
 	}
 </script>
 

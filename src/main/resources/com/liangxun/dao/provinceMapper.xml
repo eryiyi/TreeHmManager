@@ -9,10 +9,17 @@
         <result column="province" property="province"/>
         <result column="pronum" property="pronum"/>
         <result column="msgNum" property="msgNum"/>
+        <result column="is_use" property="is_use"/>
     </resultMap>
 
     <select id="lists" resultMap="province">
         SELECT sn.*,(SELECT COUNT(0) FROM mm_msg lmsg WHERE sn.provinceID=lmsg.provinceid ) as msgNum from hat_province sn
+        ORDER by sn.pronum DESC
+    </select>
+
+    <select id="listsApp" resultMap="province">
+        SELECT sn.*,(SELECT COUNT(0) FROM mm_msg lmsg WHERE sn.provinceID=lmsg.provinceid ) as msgNum from hat_province sn
+        WHERE 1=1 AND sn.is_use = '1'
         ORDER by sn.pronum DESC
     </select>
 
@@ -21,5 +28,16 @@
         VALUES (#{id}, #{provinceID}, #{province})
     </insert>
 
+    <select id="findById" resultMap="province" parameterType="String">
+        SELECT * from hat_province
+        WHERE 1= '1'
+        <if test="id != null and id != ''">
+            AND id = #{id}
+        </if>
+    </select>
+
+    <update id="update" parameterType="com.liangxunwang.unimanager.model.ProvinceObj">
+        UPDATE hat_province SET pronum=#{pronum}, is_use=#{is_use} WHERE id=#{id}
+    </update>
 
 </mapper>

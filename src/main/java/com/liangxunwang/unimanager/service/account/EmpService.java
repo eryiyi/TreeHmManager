@@ -74,11 +74,11 @@ public class EmpService implements ListService , UpdateService , ExecuteService{
     public Object update(Object object) {
         if (object instanceof Emp){
             Emp emp = (Emp) object;
-            if(!StringUtil.isNullOrEmpty(emp.getMm_emp_password())){
+            if(emp != null && !StringUtil.isNullOrEmpty(emp.getMm_emp_password())){
                 emp.setMm_emp_password(new MD5Util().getMD5ofStr(emp.getMm_emp_password()));//密码加密
                 empDao.updatePwr(emp);
             }else {
-                if(!StringUtil.isNullOrEmpty(emp.getMm_emp_cover()) && !emp.getMm_emp_cover().startsWith("http://")){
+                if(emp != null && !StringUtil.isNullOrEmpty(emp.getMm_emp_cover()) && !emp.getMm_emp_cover().startsWith("http://")){
                     empDao.updateCover(emp);
                 }
                 empDao.update(emp);
@@ -91,7 +91,7 @@ public class EmpService implements ListService , UpdateService , ExecuteService{
     public Object execute(Object object) throws ServiceException {
         String id = (String) object;
         EmpVO empVO = empDao.findById(id);
-        if (!StringUtil.isNullOrEmpty(empVO.getMm_emp_cover())) {
+        if (empVO !=null && !StringUtil.isNullOrEmpty(empVO.getMm_emp_cover())) {
             if (empVO.getMm_emp_cover().startsWith("upload")) {
                 empVO.setMm_emp_cover(Constants.URL + empVO.getMm_emp_cover());
             }else {

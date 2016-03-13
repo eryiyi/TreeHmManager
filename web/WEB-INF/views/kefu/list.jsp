@@ -48,6 +48,9 @@
           <thead>
           <tr>
             <th>服务电话</th>
+            <th>省</th>
+            <th>市</th>
+            <th>县</th>
             <th>操作</th>
           </tr>
           </thead>
@@ -55,7 +58,9 @@
           <c:forEach items="${list}" var="e" varStatus="st">
             <tr>
               <td>${e.mm_tel}</td>
-
+              <td>${e.provinceName}</td>
+              <td>${e.cityName}</td>
+              <td>${e.areaName}</td>
               <td>
                 <a class="btn btn-default btn-sm" href="javascript:void (0)" onclick="editRole('${e.mm_tel_id}')" role="button">编辑</a>
               </td>

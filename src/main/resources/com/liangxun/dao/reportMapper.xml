@@ -46,9 +46,6 @@
         ORDER BY sn.dateline DESC limit #{index},#{size}
     </select>
 
-
-
-
     <select id="count" resultType="Long">
         SELECT count(sn.mm_report_id) FROM mm_report sn
         WHERE 1=1

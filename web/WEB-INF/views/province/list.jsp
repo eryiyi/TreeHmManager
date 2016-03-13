@@ -50,6 +50,8 @@
             <th>省份UUID</th>
             <th>省份</th>
             <th>信息数量</th>
+            <th>是否显示</th>
+            <th>操作</th>
           </tr>
           </thead>
           <tbody>
@@ -59,6 +61,11 @@
               <td>${e.provinceID}</td>
               <td>${e.province}</td>
               <td>${e.msgNum}</td>
+              <c:if test="${e.is_use=='0'}"><td>隐藏</td></c:if>
+              <c:if test="${e.is_use=='1'}"><td>显示</td></c:if>
+              <td>
+                <a class="btn btn-default btn-sm" href="#module=/province/edit&id=${e.id}" role="button">设置</a>
+              </td>
             </tr>
           </c:forEach>
           </tbody>

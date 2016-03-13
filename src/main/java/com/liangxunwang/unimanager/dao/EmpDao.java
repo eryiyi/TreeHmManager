@@ -47,4 +47,11 @@ public interface EmpDao {
      * 查询附近商家
      */
     List<EmpVO> listsLocation(Map<String, Object> map);
+
+    /**
+     * 根据手机号和身份证号查找会员
+     * @return
+     */
+    EmpVO findByMobileAndCard(Map<String, Object> map);
+
 }

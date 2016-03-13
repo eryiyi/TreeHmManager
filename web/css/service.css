@@ -3,6 +3,7 @@ body {
 }
 .glide {
   background-color: #fff;
+  min-height: 100px;
 }
 .glide .panel {
   z-index: 99;

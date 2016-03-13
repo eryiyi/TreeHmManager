@@ -314,7 +314,7 @@
 				<c:if test="${um:permission('ABOUT_US_MANA', sessionScope.powers)}">
 					<li class="dropdown">
 						<a href="javascript:void (0);" class="dropdown-toggle">
-							<i class="fa fa-leaf"></i>
+							<i class="fa fa-info"></i>
 							<span class="hidden-xs">关于我们</span>
 						</a>
 						<ul class="dropdown-menu">
@@ -327,7 +327,7 @@
 				<c:if test="${um:permission('SUGGEST_MANAGE', sessionScope.powers)}">
 					<li class="dropdown">
 						<a href="javascript:void (0);" class="dropdown-toggle">
-							<i class="fa fa-leaf"></i>
+							<i class="fa fa-envelope"></i>
 							<span class="hidden-xs">意见反馈</span>
 						</a>
 						<ul class="dropdown-menu">
@@ -338,20 +338,39 @@
 					</li>
 				</c:if>
 
-				<c:if test="${um:permission('TEL_KEFU_MANAGE', sessionScope.powers)}">
+				<c:if test="${um:permission('TEL_KEFU_MANAGE', sessionScope.powers)||um:permission('ADD_TEL_KEFU_MANAGE', sessionScope.powers)}">
 					<li class="dropdown">
 						<a href="javascript:void (0);" class="dropdown-toggle">
-							<i class="fa fa-leaf"></i>
+							<i class="fa fa-phone"></i>
 							<span class="hidden-xs">客服电话</span>
 						</a>
 						<ul class="dropdown-menu">
+							<c:if test="${um:permission('ADD_TEL_KEFU_MANAGE', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('/kefu/add','')">添加客服</a></li>
+							</c:if>
 							<c:if test="${um:permission('TEL_KEFU_MANAGE', sessionScope.powers)}">
-								<li><a href="javascript:void(0);" onclick="toPage('/kefu/list','')">客服电话</a></li>
+								<li><a href="javascript:void(0);" onclick="toPage('/kefu/list','')">客服列表</a></li>
 							</c:if>
 						</ul>
 					</li>
 				</c:if>
 
+				<c:if test="${um:permission('ADD_AD_MANAGE', sessionScope.powers)||um:permission('AD_LISTMANAGE', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="javascript:void (0);" class="dropdown-toggle">
+							<i class="fa fa-phone"></i>
+							<span class="hidden-xs">广告管理</span>
+						</a>
+						<ul class="dropdown-menu">
+							<c:if test="${um:permission('ADD_AD_MANAGE', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('/adObj/add','')">添加广告</a></li>
+							</c:if>
+							<c:if test="${um:permission('AD_LISTMANAGE', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('/adObj/list','')">广告列表</a></li>
+							</c:if>
+						</ul>
+					</li>
+				</c:if>
 
 			</ul>
 		</div>

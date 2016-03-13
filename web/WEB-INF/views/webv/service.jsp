@@ -68,7 +68,7 @@
 			$('.glide').glide({
 				mode:'horizontal',     // 幻灯片走向
 				autoplay:5000,         // 自动播放，false为关闭自动播放
-				startAt:2,             // 开始于哪个幻灯片
+				startAt:0,             // 开始于哪个幻灯片
 				// paddings:'1rem',       // 幻灯片左右的padding 可以是单位，%
 				centered:true,         // 当前幻灯片在slides的中间
 				hoverpause:true,       // 鼠标悬停的时候暂停播放
@@ -104,7 +104,7 @@
 				<%--<h5 class="icon-name">设置</h5>--%>
 			<%--</a>--%>
 
-			<a href="javaScript:void(0)" class="icon">
+			<a href="javaScript:void(0)" onclick="vipClick()" class="icon">
 				<div class="icon-pic"><img src="/img/tree_user_VIP.png" alt=""></div>
 				<h5 class="icon-name">升级VIP</h5>
 			</a>
@@ -117,8 +117,8 @@
 				<div class="icon-pic"><img src="/img/tree_user_fav.png" alt=""></div>
 				<h5 class="icon-name">我的收藏</h5>
 			</a>
-			<a href="javaScript:void(0)" class="icon">
-				<div class="icon-pic"><img src="/img/tree_user_aboutus.png" alt=""></div>
+			<a href="/webvKefuController/toKefu.do" class="icon">
+				<div class="icon-pic"><img src="/img/tree_user_crs.png" alt=""></div>
 				<h5 class="icon-name">客服中心</h5>
 			</a>
 
@@ -164,10 +164,10 @@
 	</div>
 	<!-- TOOLBAR -->
 	<div class="toolbar">
-		<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy buy-active"></a>
+		<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvRecommend/toRecommend.do','1')" class="recommend"></a>
-		<a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')" class="mine"></a>
+		<a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')" class="mine mine-active"></a>
 	</div>
 	<!-- TOOLBAR -->
 </div>
@@ -228,6 +228,9 @@
 	function login(){
 		//登录页面跳转
 		window.location.href="/webvLoginController/toLogin.do";
+	}
+	function vipClick(){
+		alert("暂未开通在线支付功能，升级vip请联系客服");
 	}
 </script>
 

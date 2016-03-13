@@ -4,8 +4,9 @@ package com.liangxunwang.unimanager.util;
  * Created by liuzwei on 2015/1/29.
  */
 public class Constants {
-        public static final String URL = "http://114.215.121.7:7777/";
-//                public static final String URL = "http://192.168.1.104:8080/";
+//        public static final String URL = "http://114.215.121.7:7777/";
+                public static final String URL = "http://192.168.1.106:8080/";
+//        public static final String URL = "http://xhmt.sdhmmm.cn:7777/";
 
         public static final String QINIU_URL = "http://7xqzj9.com1.z0.glb.clouddn.com/";
 

@@ -30,6 +30,14 @@ public class ProvinceController extends ControllerConstants {
     private ListService provinceService;
 
     @Autowired
+    @Qualifier("provinceService")
+    private ExecuteService provinceServiceExe;
+
+    @Autowired
+    @Qualifier("provinceService")
+    private UpdateService provinceServiceUpdate;
+
+    @Autowired
     @Qualifier("logoService")
     private SaveService logoService;
 
@@ -43,5 +51,33 @@ public class ProvinceController extends ControllerConstants {
         return "/province/list";
     }
 
+    @RequestMapping("/edit")
+    public String toUpdateType(HttpSession session,ModelMap map, String id){
+        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
+        ProvinceObj provinceObj = (ProvinceObj) provinceServiceExe.execute(id);
+        map.put("provinceObj", provinceObj);
+        //日志记录
+        logoService.save(new LogoObj("编辑省份："+provinceObj.getPronum(), manager.getMm_manager_id()));
+        return "/province/editprovince";
+    }
+
+    /**
+     * 更新
+     * @param provinceObj
+     * @return
+     */
+    @RequestMapping("/editProvince")
+    @ResponseBody
+    public String updateGoodsType(HttpSession session, ProvinceObj provinceObj){
+        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
+        try {
+            provinceServiceUpdate.update(provinceObj);
+            //日志记录
+            logoService.save(new LogoObj("编辑省份："+provinceObj.getPronum(), manager.getMm_manager_id()));
+            return toJSONString(SUCCESS);
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+        }
+    }
 
 }

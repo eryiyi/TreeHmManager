@@ -31,6 +31,9 @@ public class WebvFuwuCenterController extends ControllerConstants {
     @RequestMapping("toCenter")
     public String toLogin(HttpSession session,ModelMap map,FuwuQuery query){
         EmpVO emp = (EmpVO) session.getAttribute(MEMBER_KEY);
+        if(emp == null){
+            return "/webv/login";
+        }else
         query.setAccessToken(emp.getAccess_token());
         try {
             List<FuwuObj> list = (List<FuwuObj>) appFuwuService.list(query);

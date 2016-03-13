@@ -163,17 +163,19 @@
   border-radius: 50px;
   border: 1px solid #7bc942;
   padding: 5px 30px 5px 20px;
+  min-width: 140px;
 }
 .button-phone-big .phone-icon {
+  margin-top: 2.5px;
   display: block;
   float: left;
-  height: 30px;
-  width: 30px;
+  height: 25px;
+  width: 25px;
   margin-right: 10px;
 }
 .button-phone-big .phone-number {
   display: block;
-  float: left;
+  float: right;
   font-size: 1rem;
   color: #7bc942;
   line-height: 30px;

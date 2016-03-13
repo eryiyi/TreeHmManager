@@ -69,7 +69,7 @@
 				$('.glide').glide({
 					mode:'horizontal',     // 幻灯片走向
 					autoplay:5000,         // 自动播放，false为关闭自动播放
-					startAt:2,             // 开始于哪个幻灯片
+					startAt:0,             // 开始于哪个幻灯片
 					// paddings:'1rem',       // 幻灯片左右的padding 可以是单位，%
 					centered:true,         // 当前幻灯片在slides的中间
 					hoverpause:true,       // 鼠标悬停的时候暂停播放
@@ -86,7 +86,7 @@
 		<!-- user-info -->
 		<div class="content regist">
 			<div class="user-info w85">
-				<a href="${emp.mm_emp_company_url}" class="btn w85">公司微网站</a>
+				<a href="${emp.mm_emp_company_url}" target="_blank" class="btn w85">公司微网站</a>
 				<%--<div class="input-group-regist"><span>手机号</span><a href="tel:18366883986">18366883986</a></div>--%>
 				<%--<div class="input-group-regist"><span>姓名</span><input disabled="ture" placeholder="请输入真实姓名" type="text"></div>--%>
 				<%--<div class="select-group mt1"><span>注册类型</span>--%>
@@ -161,17 +161,17 @@
 							${e.mm_msg_content}
 					</a>
 					<div class="item-footer clearfix">
-						<button class="read-status-unread"></button>
-						<div  class="share-left">
-							<div class="bdsharebuttonbox" >
-								<a class="bds_mshare" data-cmd="mshare"></a>
-								<a class="bds_qzone" data-cmd="qzone" href="javaScript:void(0)"></a>
-								<a class="bds_tsina" data-cmd="tsina"></a>
-								<a class="bds_tqq" data-cmd="tqq"></a>
-								<a class="bds_more" data-cmd="more">更多</a>
-								<a class="bds_count" data-cmd="count"></a>
-							</div>
-						</div>
+						<%--<button class="read-status-unread"></button>--%>
+						<%--<div  class="share-left">--%>
+							<%--<div class="bdsharebuttonbox" >--%>
+								<%--<a class="bds_mshare" data-cmd="mshare"></a>--%>
+								<%--<a class="bds_qzone" data-cmd="qzone" href="javaScript:void(0)"></a>--%>
+								<%--<a class="bds_tsina" data-cmd="tsina"></a>--%>
+								<%--<a class="bds_tqq" data-cmd="tqq"></a>--%>
+								<%--<a class="bds_more" data-cmd="more">更多</a>--%>
+								<%--<a class="bds_count" data-cmd="count"></a>--%>
+							<%--</div>--%>
+						<%--</div>--%>
 						<a type="button" href="javaScript:void(0)" onclick="telClick(${e.mm_emp_mobile})" class="button-phone"></a>
 						<a type="button" href="javaScript:void(0)" onclick="favourClick('${e.mm_msg_id}')" class="button-fav"></a>
 						<c:if test="${e.mm_msg_picurl !=''}"><a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-pic"></a></c:if>
@@ -188,40 +188,12 @@
 		<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvRecommend/toRecommend.do','1')" class="recommend"></a>
-		<a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')" class="mine mine-active"></a>
+		<a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')" class="mine"></a>
 	</div>
 	<!-- TOOLBAR -->
 </div>
 </body>
-<script>
-	window._bd_share_config = {
-		common : {
-			bdText : '自定义分享内容',
-			bdDesc : '自定义分享摘要',
-			bdUrl : '自定义分享url地址',
-			bdPic : '自定义分享图片'
-		},
-		share : [{
-			"bdSize" : 16
-		}],
-		slide : [{
-			bdImg : 0,
-			bdPos : "right",
-			bdTop : 100
-		}],
-		image : [{
-			viewType : 'list',
-			viewPos : 'top',
-			viewColor : 'black',
-			viewSize : '16',
-			viewList : ['qzone','tsina','huaban','tqq','renren']
-		}],
-		selectShare : [{
-			"bdselectMiniList" : ['qzone','tqq','kaixin001','bdxc','tqf']
-		}]
-	}
-	with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
-</script>
+
 <script>
 	function toPage(_url, _page){
 		if(_page != ''){

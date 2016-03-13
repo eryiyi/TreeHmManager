@@ -7,6 +7,7 @@ import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.mvc.vo.FavourVO;
 import com.liangxunwang.unimanager.query.FavourQuery;
 import com.liangxunwang.unimanager.query.FuwuQuery;
+import com.liangxunwang.unimanager.service.ExecuteService;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.SaveService;
 import com.liangxunwang.unimanager.service.ServiceException;
@@ -32,6 +33,14 @@ public class AppFavourController extends ControllerConstants {
     @Autowired
     @Qualifier("appFavourService")
     private SaveService appFavourServiceSave;
+
+    @Autowired
+    @Qualifier("appFavourCountService")
+    private ExecuteService appFavourCountService;
+
+    @Autowired
+    @Qualifier("appFavourDelService")
+    private ExecuteService appFavourDelService;
 
     //收藏列表
     @RequestMapping(value = "/getFavourById", produces = "text/plain;charset=UTF-8")
@@ -74,4 +83,46 @@ public class AppFavourController extends ControllerConstants {
     }
 
 
+    //查询收藏数量
+    @RequestMapping(value = "/getFavourCount", produces = "text/plain;charset=UTF-8")
+    @ResponseBody
+    public String getFavourCount(String mm_emp_id){
+        try {
+            String count = (String) appFavourCountService.execute(mm_emp_id);
+            DataTip tip = new DataTip();
+            tip.setData(count);
+            return toJSONString(tip);
+        }catch (ServiceException e){
+            String msg = e.getMessage();
+            if (msg.equals("accessTokenNull")){
+                return toJSONString(ERROR_9);
+            }else if(msg.equals("hasExist")){
+                return toJSONString(ERROR_2);
+            }
+            else{
+                return toJSONString(ERROR_1);
+            }
+        }
+    }
+
+
+    //删除收藏
+    @RequestMapping(value = "/deleteFavour", produces = "text/plain;charset=UTF-8")
+    @ResponseBody
+    public String deleteFavour(String mm_record_favour_id){
+        try {
+            appFavourDelService.execute(mm_record_favour_id);
+            return toJSONString(SUCCESS);
+        }catch (ServiceException e){
+            String msg = e.getMessage();
+            if (msg.equals("accessTokenNull")){
+                return toJSONString(ERROR_9);
+            }else if(msg.equals("hasExist")){
+                return toJSONString(ERROR_2);
+            }
+            else{
+                return toJSONString(ERROR_1);
+            }
+        }
+    }
 }

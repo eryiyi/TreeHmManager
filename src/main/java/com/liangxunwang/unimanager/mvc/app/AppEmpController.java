@@ -71,12 +71,13 @@ public class AppEmpController extends ControllerConstants {
 
     @RequestMapping(value = "/updatePwr", produces = "text/plain;charset=UTF-8;")
     @ResponseBody
-    public String sendLocation(String mm_emp_mobile,String newpass){
+    public String updatePwr(String mm_emp_mobile,String newpass,String mm_emp_card){
         try {
             //修改用户密码
             Emp emp = new Emp();
             emp.setMm_emp_mobile(mm_emp_mobile);
             emp.setMm_emp_password(newpass);
+            emp.setMm_emp_card(mm_emp_card);
             appEmpService.update(emp);
             DataTip tip = new DataTip();
             tip.setData(tip);
