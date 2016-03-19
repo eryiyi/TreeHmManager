@@ -43,13 +43,23 @@
         <div class="no-move"></div>
       </div>
       <div class="box-content">
-
+        <form class="form-inline">
+          <input type="hidden"  value="${mm_msg_type}"  id="mm_msg_type">
+          <div class="form-group">
+            <div class="col-sm-4">
+              <input type="text" placeholder="关键词" id="keywords" class="form-control"  data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+            </div>
+          </div>
+          <button type="submit" onclick="searchOrder('1')" class="btn btn-default btn-sm">查找</button>
+        </form>
         <table class="table">
           <thead>
           <tr>
             <th>操作者</th>
             <th>日志内容</th>
             <th>日期</th>
+            <th>操作者</th>
+            <th>操作</th>
           </tr>
           </thead>
           <tbody>
@@ -58,6 +68,10 @@
               <td>${e.mm_manager_nickname}</td>
               <td>${e.mm_logo_content}</td>
               <td>${e.dateline}</td>
+              <td>${e.mm_manager_nickname}</td>
+              <td>
+                <a class="btn btn-default btn-sm"  onclick="deleteRole('${e.mm_logo_id}')" role="button">删除</a>
+              </td>
             </tr>
           </c:forEach>
           </tbody>
@@ -107,8 +121,9 @@
     if(e.keyCode != 13) return;
     var _index = $("#index").val();
     var size = getCookie("contract_size");
+    var keywords = $("#keywords").val();
     if(_index <= ${page.pageCount} && _index >= 1){
-      window.location.href="#module=/logo/list&page="+page+"&size="+size;
+      window.location.href="#module=/logo/list&page="+page+"&size="+size+"&keyword="+keywords;
     }else{
       alert("请输入1-${page.pageCount}的页码数");
     }
@@ -116,11 +131,45 @@
   function nextPage(_page) {
     var page = parseInt(_page);
     var size = $("#size").val();
+    var keywords = $("#keywords").val();
     addCookie("contract_size", size, 36);
     if ((page <= ${page.pageCount} && page >= 1)) {
-      window.location.href="#module=/logo/list&page="+page+"&size="+size;
+      window.location.href="#module=/logo/list&page="+page+"&size="+size+"&keyword="+keywords;
     } else {
       alert("请输入1-${page.pageCount}的页码数");
+    }
+  }
+
+  function searchOrder(_page){
+    var page = parseInt(_page);
+    var size = $("#size").val();
+    var keywords = $("#keywords").val();
+    var mm_msg_type = $("#mm_msg_type").val();
+    addCookie("contract_size", size, 36);
+    if ((page <= ${page.pageCount} && page >= 1)) {
+      window.location.href="#module=/logo/list&page="+page+"&size="+size+"&keyword="+keywords;
+    } else {
+      alert("请输入1-${page.pageCount}的页码数");
+    }
+  }
+
+  function deleteRole(_id){
+    if(confirm("确定要删除该日志信息么？")){
+      $.ajax({
+        url:"/logo/delete.do",
+        data:{"mm_logo_id":_id},
+        type:"POST",
+        success:function(_data){
+          var data = $.parseJSON(_data);
+          if(data.success){
+            alert("删除成功");
+            window.location.href="#module="+"logo/list"+"&page=1";
+          }else{
+            var _case = {1:"删除失败"};
+            alert(_case[data.code])
+          }
+        }
+      });
     }
   }
 

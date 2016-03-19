@@ -256,10 +256,8 @@ public class AppRecordController extends ControllerConstants {
     @RequestMapping(value = "/viewRecord",  produces = "text/plain;charset=UTF-8;")
     public String viewRecord(String id, ModelMap map){
         try {
-            Object[] params = new Object[]{id};
-            Object[] result = (Object[]) findRecordService.findById(params);
-            RecordVO record = (RecordVO) result[0];
-            map.put("record", record);
+//            Object[] params = new Object[]{id};
+            RecordVO record = (RecordVO) findRecordService.findById(id);
             if (!StringUtil.isNullOrEmpty(record.getMm_msg_picurl())){
                 String[] pics = record.getMm_msg_picurl().split(",");
                 List<String> list = new ArrayList<String>(pics.length);
@@ -268,7 +266,9 @@ public class AppRecordController extends ControllerConstants {
                 }
                 map.put("pics", pics);
             }
-            return "/record/viewRecord";
+            map.put("recordVO", record);
+            map.put("is_login", "0");
+            return "/webv/recordDetail";
         }catch (ServiceException e){
             return toJSONString(ERROR_1);
         }

@@ -8,6 +8,7 @@ import com.liangxunwang.unimanager.mvc.vo.LogoVO;
 import com.liangxunwang.unimanager.mvc.vo.RecordVO;
 import com.liangxunwang.unimanager.query.LogoQuery;
 import com.liangxunwang.unimanager.query.RecordQuery;
+import com.liangxunwang.unimanager.service.DeleteService;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.SaveService;
 import com.liangxunwang.unimanager.service.ServiceException;
@@ -27,7 +28,7 @@ import java.util.Map;
  * Created by liuzwei on 2015/3/3.
  */
 @Service("logoService")
-public class LogoService implements ListService,SaveService {
+public class LogoService implements ListService,SaveService,DeleteService {
     @Autowired
     @Qualifier("logoDao")
     private LogoDao logoDao;
@@ -41,6 +42,10 @@ public class LogoService implements ListService,SaveService {
 
         map.put("index", index);
         map.put("size", size);
+
+        if(!StringUtil.isNullOrEmpty(query.getKeyword())){
+            map.put("keyword", query.getKeyword());
+        }
 
         List<LogoVO> lists = logoDao.listRecordVo(map);
         long count = logoDao.count(map);
@@ -57,4 +62,12 @@ public class LogoService implements ListService,SaveService {
         logoDao.save(level);
         return null;
     }
+
+    @Override
+    public Object delete(Object object) throws ServiceException {
+        String mm_logo_id = (String) object;
+        logoDao.delete(mm_logo_id);
+        return null;
+    }
+
 }

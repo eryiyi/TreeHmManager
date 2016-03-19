@@ -70,6 +70,9 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/webvFuwuCenterController/toCenter\\.do$)"+
                         "|(^/webvReportController/toReport\\.do$)"+
                         "|(^/webvReportController/addReport\\.do$)"+
+                        "|(^/webvSelectProvinceController/toSelectProvince\\.do$)"+
+                        "|(^/webvSelectProvinceController/toSelectCity\\.do$)"+
+                        "|(^/webvSelectProvinceController/toSelectArea\\.do$)"+
                         "|(^/webvKefuController/toKefu\\.do$)"+
                         "|(^/getFavourCount\\.do$)"+
                         "|(^/deleteFavour\\.do$)"+

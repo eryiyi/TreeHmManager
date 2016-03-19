@@ -32,7 +32,7 @@
 	<div class="heading clearfix">
 		<div class="icon-group">
 			<i class="icon"></i>
-			<c:if test="${is_login=='1'}"><span class="location">${emp.areaName}</span></c:if>
+			<c:if test="${is_login=='1'}"><span class="location" onclick="selectPro()">${emp.areaName}</span></c:if>
 			<c:if test="${is_login=='0'}"><a href="javaScript:void(0)"><span class="location" onclick="login()">登录</span></a></c:if>
 		</div>
 		<form action="" class="search-bar clearfix">
@@ -205,6 +205,11 @@
 	function login(){
 		//登录页面跳转
 		window.location.href="/webvLoginController/toLogin.do";
+	}
+
+	function selectPro(){
+		//页面跳转
+		window.location.href="/webvSelectProvinceController/toSelectProvince.do";
 	}
 </script>
 

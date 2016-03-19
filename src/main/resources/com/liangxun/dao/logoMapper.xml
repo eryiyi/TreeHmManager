@@ -20,6 +20,10 @@
     <select id="listRecordVo" resultMap="logo_vo">
         SELECT sn.* ,lemp.mm_manager_nickname as mm_manager_nickname from mm_logo sn
         LEFT JOIN mm_manager lemp ON sn.mm_manager_id=lemp.mm_manager_id
+        WHERE 1 = 1
+        <if test="keyword != null and keyword != ''">
+            AND  (sn.mm_logo_content like CONCAT('%',#{keyword},'%') OR  lemp.mm_manager_nickname like CONCAT('%',#{keyword},'%'))
+        </if>
         ORDER BY sn.dateline DESC limit #{index},#{size}
     </select>
 
@@ -32,5 +36,9 @@
         INSERT INTO mm_logo(mm_logo_id, mm_logo_content, mm_manager_id, dateline)
         VALUES (#{mm_logo_id}, #{mm_logo_content}, #{mm_manager_id}, #{dateline})
     </insert>
+
+    <delete id="delete" parameterType="String">
+        DELETE FROM mm_logo where mm_logo_id = #{mm_logo_id}
+    </delete>
 
 </mapper>

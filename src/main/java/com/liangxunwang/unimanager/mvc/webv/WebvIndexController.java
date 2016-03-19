@@ -70,12 +70,10 @@ public class WebvIndexController extends ControllerConstants {
                 query.setIs_see_all("");
             }
 
-//            //是否是选择的县区
-//            if(!StringUtil.isNullOrEmpty(query.getCountryid())){
-//                query.setIs_select_countryId(query.getIs_select_countryId());
-//            }else {
-//                params.put("is_select_countryId", "");
-//            }
+            //是否是选择的县区
+            if(!StringUtil.isNullOrEmpty(query.getCountryid())){
+                query.setIs_select_countryId(query.getIs_select_countryId());
+            }
 
         }else{
             //说明没有登陆

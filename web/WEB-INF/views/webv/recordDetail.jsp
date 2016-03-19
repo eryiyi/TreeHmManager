@@ -40,10 +40,10 @@
 	<div class="content">
 		<input type="hidden" id="is_login" name="is_login" value="${is_login}">
 		<input type="hidden" id="accessToken" name="accessToken" value="${emp.access_token}">
-		<input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${emp.mm_emp_id}">
+		<input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${recordVO.mm_emp_id}">
 		<div class="item">
 			<div class="item-heading">
-				<a href="/webvProfile/toProfile.do?mm_emp_id=${emp.mm_emp_id}"  class="left clearfix">
+				<a href="/webvProfile/toProfile.do?mm_emp_id=${recordVO.mm_emp_id}"  class="left clearfix">
 					<img src="${recordVO.mm_emp_cover}" alt="" class="head-pic">
 					<div class="detail">
 						<h1 class="company">${recordVO.mm_emp_company} &nbsp;&nbsp;${recordVO.mm_emp_nickname}</h1>

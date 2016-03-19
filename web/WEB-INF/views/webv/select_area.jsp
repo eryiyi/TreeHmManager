@@ -42,9 +42,9 @@
 		<ul class="location-list clearfix">
 			<c:forEach items="${list}" var="e" varStatus="st">
 				<li>
-					<a href="/webvSelectProvinceController/toSelectCity.do?father=${e.provinceID}">
-						<span class="list-name">${e.province}</span>
-						<span class="list-num">${e.msgNum}</span>
+					<a href="/webv/toIndex.do?is_select_countryId=${e.areaID}">
+						<span class="list-name">${e.area}</span>
+						<span class="list-num"></span>
 					</a>
 				</li>
 			</c:forEach>

@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>花木通个人主页</title>
+	<title>${emp.mm_emp_nickname}个人主页</title>
 	<meta name="Keywords" content="花木通,花木,花草,苗联通,白蜡,园林,惠民皂户李镇,苗木协会" />
 	<meta name="Description" content="花木通是最优秀的花木信息软件，为客户提供最优质的服务" />
 	<meta property="og:title" content="花木通_求购信息"  />
@@ -46,7 +46,7 @@
 		<div id="Glide" class="glide">
 
 			<div class="panel clearfix">
-				<img src="${emp.mm_emp_cover}" alt="${e.mm_emp_nickname}" class="head-pic">
+				<img src="${emp.mm_emp_cover}" alt="${emp.mm_emp_nickname}" class="head-pic">
 				<div class="user-info">
 					<h2 class="name">${emp.mm_emp_nickname}</h2>
 					<c:if test="${emp.mm_emp_type==0}"><h3 class="type">苗木经营户</h3></c:if>
@@ -86,7 +86,7 @@
 		<!-- user-info -->
 		<div class="content regist">
 			<div class="user-info w85">
-				<a href="${emp.mm_emp_company_url}" target="_blank" class="btn w85">公司微网站</a>
+
 				<%--<div class="input-group-regist"><span>手机号</span><a href="tel:18366883986">18366883986</a></div>--%>
 				<%--<div class="input-group-regist"><span>姓名</span><input disabled="ture" placeholder="请输入真实姓名" type="text"></div>--%>
 				<%--<div class="select-group mt1"><span>注册类型</span>--%>
@@ -97,6 +97,7 @@
 					<%--</select>--%>
 				<%--</div>--%>
 				<div class="input-group-regist"><span>公司名称</span><input disabled="ture" type="text" value="${emp.mm_emp_company}"></div>
+				<a href="${emp.mm_emp_company_url}" target="_blank" class="btn w85">公司微网站</a>
 				<%--<div class="input-group-regist"><span>公司官网</span><input disabled="ture" type="text" placeholder="http://"></div>--%>
 				<%--<div disabled="ture" class="select-group mt1"><span>公司类型</span>--%>
 					<%--<select name="" id="" class="bg-f2" disabled="ture">--%>

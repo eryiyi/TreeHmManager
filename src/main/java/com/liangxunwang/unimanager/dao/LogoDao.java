@@ -24,6 +24,7 @@ public interface LogoDao {
 
     //保存
     void save(LogoObj level);
-
+    //删除
+    void delete(String mm_logo_id);
 
 }
