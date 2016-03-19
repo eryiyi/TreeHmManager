@@ -53,7 +53,7 @@ public class AdminController extends ControllerConstants {
      */
     @RequestMapping("/changePass")
     @ResponseBody
-    public String changePass(HttpSession session, String mm_manager_password, String mm_manager_id){
+    public String changePass(HttpSession session, String mm_manager_password, String mm_manager_id) throws Exception {
         try {
             Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
             Object[] params = new Object[]{mm_manager_id, mm_manager_password};

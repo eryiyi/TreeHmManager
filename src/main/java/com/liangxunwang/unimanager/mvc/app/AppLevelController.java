@@ -30,7 +30,7 @@ public class AppLevelController extends ControllerConstants {
     //vip列表
     @RequestMapping(value = "/getLevelById", produces = "text/plain;charset=UTF-8")
     @ResponseBody
-    public String getVipList(String mm_level_id){
+    public String getVipList(String mm_level_id) throws Exception {
         try {
             Level level = (Level) levelServiceSave.execute(mm_level_id);
             DataTip tip = new DataTip();

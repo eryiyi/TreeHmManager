@@ -37,7 +37,7 @@ public class AdminEditController extends ControllerConstants {
     private SaveService logoService;
 
     @RequestMapping("/admin/detail")
-    public String toUpdateType(HttpSession session,ModelMap map, String id){
+    public String toUpdateType(HttpSession session,ModelMap map, String id) throws Exception {
         Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         Object[] results = (Object[]) adminEditService.execute(id);
         AdminVO admin = (AdminVO) results[0];

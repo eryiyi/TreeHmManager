@@ -102,5 +102,6 @@
     <orderEntry type="library" name="Maven: cz.msebera.android:httpclient:4.3.6" level="project" />
     <orderEntry type="library" name="Maven: com.qiniu:happy-dns:0.2.5" level="project" />
     <orderEntry type="library" name="MySQL2" level="project" />
+    <orderEntry type="library" name="jxl" level="project" />
   </component>
 </module>

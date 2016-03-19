@@ -4,6 +4,7 @@ import com.liangxunwang.unimanager.model.Admin;
 import com.liangxunwang.unimanager.model.LogoObj;
 import com.liangxunwang.unimanager.model.Record;
 import com.liangxunwang.unimanager.model.ReportObj;
+import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.mvc.vo.RecordVO;
 import com.liangxunwang.unimanager.mvc.vo.ReportVO;
 import com.liangxunwang.unimanager.query.RecordQuery;
@@ -62,7 +63,7 @@ public class ReportController extends ControllerConstants {
 
 
     @RequestMapping("detail")
-    public String add(ModelMap map, String id){
+    public String add(ModelMap map, String id) throws Exception {
         ReportVO reportVO = (ReportVO) reportServiceExecute.execute(id);
         map.put("reportVO", reportVO);
         return "/report/detail";
@@ -84,6 +85,27 @@ public class ReportController extends ControllerConstants {
         }catch (ServiceException e){
             return toJSONString(ERROR_1);
         }
+    }
+
+
+
+    @Autowired
+    @Qualifier("reportExcelService")
+    private ExecuteService reportExcelService;
+
+    @RequestMapping("daochuAll")
+    @ResponseBody
+    public String daochuAll(HttpSession session,String ids) {
+        try {
+            String fileName = (String) reportExcelService.execute(ids);
+            DataTip tip = new DataTip();
+            tip.setData(fileName);
+            return toJSONString(tip);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return toJSONString(ERROR_1);
+
     }
 
 }

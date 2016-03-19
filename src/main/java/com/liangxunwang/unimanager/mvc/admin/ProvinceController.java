@@ -52,7 +52,7 @@ public class ProvinceController extends ControllerConstants {
     }
 
     @RequestMapping("/edit")
-    public String toUpdateType(HttpSession session,ModelMap map, String id){
+    public String toUpdateType(HttpSession session,ModelMap map, String id) throws Exception {
         Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         ProvinceObj provinceObj = (ProvinceObj) provinceServiceExe.execute(id);
         map.put("provinceObj", provinceObj);

@@ -99,7 +99,7 @@ public class KefuController extends ControllerConstants {
 
 
     @RequestMapping("/edit")
-    public String toUpdateType(HttpSession session,ModelMap map, String typeId){
+    public String toUpdateType(HttpSession session,ModelMap map, String typeId) throws Exception {
         Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         KefuVO level = (KefuVO) levelServiceSaveExe.execute(typeId);
         map.put("levelObj", level);

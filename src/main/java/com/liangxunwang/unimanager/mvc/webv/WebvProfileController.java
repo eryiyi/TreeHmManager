@@ -40,7 +40,7 @@ public class WebvProfileController extends ControllerConstants {
 
 
     @RequestMapping("toProfile")
-    public String add(ModelMap map,RecordQuery query, Page page){
+    public String add(ModelMap map,RecordQuery query, Page page) throws Exception {
         if(!StringUtil.isNullOrEmpty(query.getMm_emp_id())){
             EmpVO empVO = (EmpVO) empService.execute(query.getMm_emp_id());
             map.put("emp", empVO);

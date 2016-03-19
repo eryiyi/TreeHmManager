@@ -52,9 +52,11 @@
           </div>
           <button type="submit" onclick="searchOrder('1')" class="btn btn-default btn-sm">查找</button>
         </form>
+        <button type="submit" onclick="deleteSelect()" class="btn btn-default btn-sm">批量删除</button>
         <table class="table">
           <thead>
           <tr>
+            <th>全选<input type="checkbox" name="allmails" onclick="checkAll()"></th>
             <th>操作者</th>
             <th>日志内容</th>
             <th>日期</th>
@@ -65,6 +67,7 @@
           <tbody>
           <c:forEach items="${list}" var="e" varStatus="st">
             <tr>
+              <td><input type="checkbox" id="${e.mm_logo_id}" name="checkbox_one"></td>
               <td>${e.mm_manager_nickname}</td>
               <td>${e.mm_logo_content}</td>
               <td>${e.dateline}</td>
@@ -173,6 +176,52 @@
     }
   }
 
+  function checkAll() {
+    var all = document.getElementsByName("allmails")[0];
+    var select = document.getElementsByName("checkbox_one");
+    if (all.checked) {
+      for (var i = 0; i < select.length; i++) {
+        select[i].checked = true;
+      }
+    } else {
+      for (var i = 0; i < select.length; i++) {
+        select[i].checked = false;
+      }
+    }
+  }
+
+  function deleteSelect(){
+    var select_id = '';
+    var select = document.getElementsByName("checkbox_one");
+    for (var i = 0; i < select.length; i++) {
+      if(select[i].checked == true){
+        select_id = select_id+select[i].id +',';
+      }
+    }
+    if(select_id == ''){
+      alert('请选择数据！');
+      return
+    }else{
+      if(confirm("确定要删除所选择的日志吗？")){
+        $.ajax({
+          url:"/logo/deleteAll.do",
+          data:{"ids":select_id},
+          type:"POST",
+          success:function(_data){
+            var data = $.parseJSON(_data);
+            if(data.success){
+              alert("删除成功");
+              window.location.href="#module="+"logo/list"+"&page=1";
+            }else{
+              var _case = {1:"删除失败"};
+              alert(_case[data.code])
+            }
+          }
+        });
+      }
+    }
+
+  }
 
 </script>
 

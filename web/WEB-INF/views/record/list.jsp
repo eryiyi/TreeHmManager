@@ -52,11 +52,12 @@
           </div>
           <button type="submit" onclick="searchOrder('1')" class="btn btn-default btn-sm">查找</button>
         </form>
+        <button type="submit" onclick="deleteSelect()" class="btn btn-default btn-sm">批量导出</button>
         <%--<p>For basic styling add the base class <code>.table</code> to any <code>&lt;table&gt;</code>.</p>--%>
         <table class="table">
           <thead>
           <tr>
-
+            <th>全选<input type="checkbox" name="allmails" onclick="checkAll()"></th>
             <th>信息类型</th>
             <th>信息标题</th>
             <th>发布时间</th>
@@ -72,7 +73,7 @@
           <tbody>
           <c:forEach items="${list}" var="e" varStatus="st">
             <tr>
-
+              <td><input type="checkbox" id="${e.mm_msg_id}" name="checkbox_one"></td>
               <td>
                 <c:if test="${e.mm_msg_type=='0'}">求购</c:if>
                 <c:if test="${e.mm_msg_type=='1'}">供应</c:if>
@@ -207,6 +208,53 @@
     }
   }
 
+
+
+  function checkAll() {
+    var all = document.getElementsByName("allmails")[0];
+    var select = document.getElementsByName("checkbox_one");
+    if (all.checked) {
+      for (var i = 0; i < select.length; i++) {
+        select[i].checked = true;
+      }
+    } else {
+      for (var i = 0; i < select.length; i++) {
+        select[i].checked = false;
+      }
+    }
+  }
+
+  function deleteSelect(){
+    var select_id = '';
+    var select = document.getElementsByName("checkbox_one");
+    for (var i = 0; i < select.length; i++) {
+      if(select[i].checked == true){
+        select_id = select_id+select[i].id +',';
+      }
+    }
+    if(select_id == ''){
+      alert('请选择数据！');
+      return
+    }else{
+      if(confirm("确定要导出所选择的信息吗？")){
+        $.ajax({
+          url:"/record/daochuAll.do",
+          data:{"ids":select_id},
+          type:"POST",
+          success:function(_data){
+            var data = $.parseJSON(_data);
+            if(data.success){
+              alert("导出成功:E://" + data.data);
+            }else{
+              var _case = {1:"导出失败"};
+              alert(_case[data.code])
+            }
+          }
+        });
+      }
+    }
+
+  }
 
 </script>
 

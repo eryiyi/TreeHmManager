@@ -86,7 +86,7 @@ public class AppFavourController extends ControllerConstants {
     //查询收藏数量
     @RequestMapping(value = "/getFavourCount", produces = "text/plain;charset=UTF-8")
     @ResponseBody
-    public String getFavourCount(String mm_emp_id){
+    public String getFavourCount(String mm_emp_id) throws Exception {
         try {
             String count = (String) appFavourCountService.execute(mm_emp_id);
             DataTip tip = new DataTip();
@@ -109,7 +109,7 @@ public class AppFavourController extends ControllerConstants {
     //删除收藏
     @RequestMapping(value = "/deleteFavour", produces = "text/plain;charset=UTF-8")
     @ResponseBody
-    public String deleteFavour(String mm_record_favour_id){
+    public String deleteFavour(String mm_record_favour_id) throws Exception {
         try {
             appFavourDelService.execute(mm_record_favour_id);
             return toJSONString(SUCCESS);

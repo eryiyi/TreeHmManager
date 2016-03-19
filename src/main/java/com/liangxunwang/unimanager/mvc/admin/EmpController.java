@@ -1,6 +1,7 @@
 package com.liangxunwang.unimanager.mvc.admin;
 
 import com.liangxunwang.unimanager.model.*;
+import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.mvc.vo.EmpVO;
 import com.liangxunwang.unimanager.query.*;
 import com.liangxunwang.unimanager.service.*;
@@ -183,7 +184,7 @@ public class EmpController extends ControllerConstants {
 //    }
 
     @RequestMapping("/detail")
-    public String updateType(ModelMap map, HttpSession session, String mm_emp_id){
+    public String updateType(ModelMap map, HttpSession session, String mm_emp_id) throws Exception {
         Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         //查看该会员信息
         EmpVO empVO = (EmpVO) empServiceExecute.execute(mm_emp_id);
@@ -270,7 +271,7 @@ public class EmpController extends ControllerConstants {
 
     //管理员--添加管理员-搜索会员详情
     @RequestMapping("/listAddManager/detail")
-    public String listAddManagerDetail(ModelMap map, HttpSession session, String mm_emp_id){
+    public String listAddManagerDetail(ModelMap map, HttpSession session, String mm_emp_id) throws Exception {
         Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         //查看该会员信息
         EmpVO empVO = (EmpVO) empServiceExecute.execute(mm_emp_id);
@@ -375,7 +376,7 @@ public class EmpController extends ControllerConstants {
 
 
     @RequestMapping("/toUpdatePwr")
-    public String toUpdatePwr(ModelMap map, HttpSession session, String mm_emp_id){
+    public String toUpdatePwr(ModelMap map, HttpSession session, String mm_emp_id) throws Exception {
         Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         //查看该会员信息
         EmpVO empVO = (EmpVO) empServiceExecute.execute(mm_emp_id);
@@ -398,5 +399,30 @@ public class EmpController extends ControllerConstants {
             return toJSONString(ERROR_1);
         }
     }
+
+
+
+
+    @Autowired
+    @Qualifier("empExcelService")
+    private ExecuteService empExcelService;
+
+
+    @RequestMapping("daochuAll")
+    @ResponseBody
+    public String daochuAll(HttpSession session,String ids) {
+        try {
+            String fileName = (String) empExcelService.execute(ids);
+            DataTip tip = new DataTip();
+            tip.setData(fileName);
+            return toJSONString(tip);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return toJSONString(ERROR_1);
+
+    }
+
+
 
 }

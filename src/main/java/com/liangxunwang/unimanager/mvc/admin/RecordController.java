@@ -1,6 +1,7 @@
 package com.liangxunwang.unimanager.mvc.admin;
 
 import com.liangxunwang.unimanager.model.*;
+import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.mvc.vo.RecordVO;
 import com.liangxunwang.unimanager.query.CityQuery;
 import com.liangxunwang.unimanager.query.CountryQuery;
@@ -143,7 +144,7 @@ public class RecordController extends ControllerConstants {
 
 
     @RequestMapping("toDetail")
-    public String add(ModelMap map, String mm_msg_id){
+    public String add(ModelMap map, String mm_msg_id) throws Exception {
         RecordVO recordVO = (RecordVO) recordServiceExer.execute(mm_msg_id);
         map.put("recordVO", recordVO);
         return "/record/detail";
@@ -162,5 +163,25 @@ public class RecordController extends ControllerConstants {
         }catch (ServiceException e){
             return toJSONString(ERROR_1);
         }
+    }
+
+
+    @Autowired
+    @Qualifier("recordExcelService")
+    private ExecuteService recordExcelService;
+
+    @RequestMapping("daochuAll")
+    @ResponseBody
+    public String daochuAll(HttpSession session,String ids) {
+        try {
+            String fileName = (String) recordExcelService.execute(ids);
+            DataTip tip = new DataTip();
+            tip.setData(fileName);
+            return toJSONString(tip);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return toJSONString(ERROR_1);
+
     }
 }

@@ -93,7 +93,7 @@ public class FeiyongController extends ControllerConstants {
     }
 
     @RequestMapping("/edit")
-    public String toUpdateType(HttpSession session,ModelMap map, String typeId){
+    public String toUpdateType(HttpSession session,ModelMap map, String typeId) throws Exception {
         Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         FeiyongObj feiyong = (FeiyongObj) feiyongServiceExe.execute(typeId);
         map.put("feiyong", feiyong);

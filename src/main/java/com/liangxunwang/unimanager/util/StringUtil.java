@@ -1,7 +1,14 @@
 package com.liangxunwang.unimanager.util;
 
 
+import jxl.Workbook;
+import jxl.format.CellFormat;
+import jxl.write.*;
+
 import java.io.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -250,4 +257,154 @@ public class StringUtil {
         }
         return sNum;
     }
+
+//    public static void JXLExample(){
+//        // 准备设置excel工作表的标题
+//        String[] title = {"编号","产品名称","产品价格","产品数量","生产日期","产地","是否出口"};
+//        try {
+//            // 获得开始时间
+//            long start = System.currentTimeMillis();
+//            // 输出的excel的路径
+//            String filePath = "e://testJXL.xls";
+//            // 创建Excel工作薄
+//            WritableWorkbook wwb;
+//            // 新建立一个jxl文件,即在e盘下生成testJXL.xls
+//            OutputStream os = new FileOutputStream(filePath);
+//            wwb= Workbook.createWorkbook(os);
+//            // 添加第一个工作表并设置第一个Sheet的名字
+//            WritableSheet sheet = wwb.createSheet("用户表", 0);
+//            Label label;
+//            for(int i=0;i<title.length;i++){
+//                // Label(x,y,z) 代表单元格的第x+1列，第y+1行, 内容z
+//                // 在Label对象的子对象中指明单元格的位置和内容
+//                label = new Label(i,0,title[i]);
+//                // 将定义好的单元格添加到工作表中
+//                sheet.addCell(label);
+//            }
+//            // 下面是填充数据
+//                             /*
+// 53              * 保存数字到单元格，需要使用jxl.write.Number
+// 54              * 必须使用其完整路径，否则会出现错误
+// 55              * */
+//            // 填充产品编号
+//            jxl.write.Number number = new jxl.write.Number(0,1,20071001);
+//            sheet.addCell(number);
+//            // 填充产品名称
+//            label = new Label(1,1,"金鸽瓜子");
+//            sheet.addCell(label);
+//                            /*
+// 63              * 定义对于显示金额的公共格式
+// 64              * jxl会自动实现四舍五入
+// 65              * 例如 2.456会被格式化为2.46,2.454会被格式化为2.45
+// 66              * */
+//            jxl.write.NumberFormat nf = new jxl.write.NumberFormat("#.##");
+//            jxl.write.WritableCellFormat wcf = new jxl.write.WritableCellFormat(nf);
+//            // 填充产品价格
+//            jxl.write.Number nb = new jxl.write.Number(2,1,2.45,wcf);
+//            sheet.addCell(nb);
+//            // 填充产品数量
+//            jxl.write.Number numb = new jxl.write.Number(3,1,200);
+//            sheet.addCell(numb);
+//                            /*
+// 76              * 定义显示日期的公共格式
+// 77              * 如:yyyy-MM-dd hh:mm
+// 78              * */
+//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//            String newdate = sdf.format(new Date());
+//            // 填充出产日期
+//            label = new Label(4,1,newdate);
+//            sheet.addCell(label);
+//            // 填充产地
+//            label = new Label(5,1,"陕西西安");
+//            sheet.addCell(label);
+//                             /*
+// 88              * 显示布尔值
+// 89              * */
+//            jxl.write.Boolean bool = new jxl.write.Boolean(6,1,true);
+//            sheet.addCell(bool);
+//                           /*
+// 93              * 合并单元格
+// 94              * 通过writablesheet.mergeCells(int x,int y,int m,int n);来实现的
+// 95              * 表示将从第x+1列，y+1行到m+1列，n+1行合并
+// 96              *
+// 97              * */
+//            sheet.mergeCells(0,3,2,3);
+//            label = new Label(0,3,"合并了三个单元格");
+//            sheet.addCell(label);
+//
+///*
+//103              * 定义公共字体格式
+//104              * 通过获取一个字体的样式来作为模板
+//105              * 首先通过web.getSheet(0)获得第一个sheet
+//106              * 然后取得第一个sheet的第二列，第一行也就是"产品名称"的字体
+//107              * */
+//            CellFormat cf = wwb.getSheet(0).getCell(1, 0).getCellFormat();
+//            WritableCellFormat wc = new WritableCellFormat();
+//            // 设置居中
+//            wc.setAlignment(Alignment.CENTRE);
+//            // 设置边框线
+//            wc.setBorder(Border.ALL, BorderLineStyle.THIN);
+//            // 设置单元格的背景颜色
+//            wc.setBackground(jxl.format.Colour.RED);
+//            label = new Label(1,5,"字体",wc);
+//            sheet.addCell(label);
+//
+//            // 设置字体
+//            jxl.write.WritableFont wfont = new jxl.write.WritableFont(WritableFont.createFont("隶书"),20);
+//            WritableCellFormat font = new WritableCellFormat(wfont);
+//            label = new Label(2,6,"隶书",font);
+//            sheet.addCell(label);
+//
+//            // 写入数据
+//            wwb.write();
+//            // 关闭文件
+//            wwb.close();
+//            long end = System.currentTimeMillis();
+//            System.out.println("----完成该操作共用的时间是:"+(end-start)/1000);
+//        } catch (Exception e) {
+//            System.out.println("---出现异常---");
+//            e.printStackTrace();
+//        }
+//
+//    }
+
+//    public static String excle(String ttype,List list,String url,String filename) {
+//        String ttypename = ttype+".xls";
+////  String exclepath = "D:\\Program Files\\Apache Software Foundation\\Tomcat 6.0\\webapps\\cga\\upload\\"+ttypename;
+//        String exclepath = url+ttypename;
+//        try
+//        {
+////  打开文件
+//            WritableWorkbook book=Workbook.createWorkbook(new File(exclepath));
+////  生成名为“第一页”的工作表，参数0表示这是第一页
+//            WritableSheet sheet=book.createSheet(ttype,0);
+////  在Label对象的构造子中指名单元格位置是第一列第一行(0,0)
+////  以及单元格内容为test
+//            for(int i=0;i<list.size();i++){
+//                String[] cell = (String[])list.get(i);
+//                for(int j=0;j<cell.length;j++){
+//                    if(j==0||i==0){
+//                        Label label=new Label(j,i,cell[j]);
+////   将定义好的单元格添加到工作表中
+//                        sheet.addCell(label);
+//                    }else{
+//                        //生成一个保存数字的单元格
+//                        //必须使用Number的完整包路径，否则有语法歧义
+//                        jxl.write.Number number = new jxl.write.Number(j,i,Double.parseDouble(cell[j]));
+//                        sheet.addCell(number);
+//                    }
+//                }
+//            }
+//  /*生成一个保存数字的单元格
+//  必须使用Number的完整包路径，否则有语法歧义*/
+////  写入数据并关闭文件
+//            book.write();
+//            book.close();
+//        }catch(Exception e)
+//        {
+//            System.out.println(e);
+//        }
+//        return filename;
+//    }
+
 }

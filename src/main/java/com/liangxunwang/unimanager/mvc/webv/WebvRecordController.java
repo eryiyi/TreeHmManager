@@ -26,7 +26,7 @@ public class WebvRecordController extends ControllerConstants {
     private ExecuteService webVRecordService;
 
     @RequestMapping("toDetail")
-    public String toDetail(HttpSession session,String mm_msg_id,ModelMap map){
+    public String toDetail(HttpSession session,String mm_msg_id,ModelMap map) throws Exception {
         EmpVO emp = (EmpVO) session.getAttribute(MEMBER_KEY);
         RecordVO recordVO = (RecordVO) webVRecordService.execute(mm_msg_id);
         String[] pics = new String[]{};

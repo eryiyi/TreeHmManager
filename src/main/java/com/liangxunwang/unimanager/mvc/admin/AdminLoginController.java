@@ -32,7 +32,7 @@ public class AdminLoginController extends ControllerConstants {
 
     @RequestMapping("/adminLogin")
     @ResponseBody
-    public String adminLogin(HttpSession session,HttpServletRequest request, @Param(value = "username")String username,@Param(value = "password") String password){
+    public String adminLogin(HttpSession session,HttpServletRequest request, @Param(value = "username")String username,@Param(value = "password") String password) throws Exception {
         if (StringUtil.isNullOrEmpty(username)){
             return toJSONString(ERROR_1);
         }

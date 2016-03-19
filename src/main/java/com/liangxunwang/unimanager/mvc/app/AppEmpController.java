@@ -34,7 +34,7 @@ public class AppEmpController extends ControllerConstants {
 
     @RequestMapping(value = "/getMemberInfoById", produces = "text/plain;charset=UTF-8;")
     @ResponseBody
-    public String getMemberInfoById(String id){
+    public String getMemberInfoById(String id) throws Exception {
         try {
             //查看该会员信息
             EmpVO empVO = (EmpVO) empServiceExecute.execute(id);

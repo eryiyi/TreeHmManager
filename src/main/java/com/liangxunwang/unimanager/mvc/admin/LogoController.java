@@ -9,6 +9,7 @@ import com.liangxunwang.unimanager.service.DeleteService;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.Page;
+import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -55,4 +56,19 @@ public class LogoController extends ControllerConstants {
         logoServiceDel.delete(mm_logo_id);
         return toJSONString(SUCCESS);
     }
+
+    @RequestMapping("deleteAll")
+    @ResponseBody
+    public String deleteAll(HttpSession session,String ids){
+        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
+        if(!StringUtil.isNullOrEmpty(ids)){
+            String[] arrs = ids.split(",");
+            for(int i=0;i<arrs.length;i++){
+                logoServiceDel.delete(arrs[i]);
+            }
+        }
+        return toJSONString(SUCCESS);
+    }
+
+
 }
