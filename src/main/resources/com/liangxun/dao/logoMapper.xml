@@ -24,6 +24,10 @@
         <if test="keyword != null and keyword != ''">
             AND  (sn.mm_logo_content like CONCAT('%',#{keyword},'%') OR  lemp.mm_manager_nickname like CONCAT('%',#{keyword},'%'))
         </if>
+
+        <if test="mm_manager_id != null and mm_manager_id != ''">
+            AND sn.mm_manager_id = #{mm_manager_id}
+        </if>
         ORDER BY sn.dateline DESC limit #{index},#{size}
     </select>
 

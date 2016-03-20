@@ -44,16 +44,35 @@
       </div>
       <div class="box-content">
         <form class="form-inline">
-          <input type="hidden"  value="${mm_msg_type}"  id="mm_msg_type">
           <div class="form-group">
             <div class="col-sm-4">
               <input type="text" placeholder="关键词" id="keywords" class="form-control"  data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
-          <button type="submit" onclick="searchOrder('1')" class="btn btn-default btn-sm">查找</button>
+
+          <div class="form-group">
+            <div class="col-sm-4 col-md-2 col-lg-2">
+              <select class="form-control" id="mm_manager_id">
+                <option value="">--选择操作者--</option>
+                <c:forEach items="${listsManager}" var="e" varStatus="st">
+                  <option value="${e.mm_manager_id}" >${e.mm_manager_nickname}</option>
+                </c:forEach>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" onclick="searchOrder('1')" class="btn form-control btn-warning btn-sm btn-block">查找</button>
         </form>
-        <button type="submit" onclick="deleteSelect()" class="btn btn-default btn-sm">批量删除</button>
-        <table class="table">
+
+        <form action="" class="form">
+          <div class="form-group">
+            <div class="col-md-2 col-lg-2">
+               <button type="button" onclick="deleteSelect()" class="btn w12 form-control btn-block btn-danger btn-sm">批量删除</button>
+            </div>
+          </div>
+        </form>
+
+              <table class="table">
           <thead>
           <tr>
             <th>全选<input type="checkbox" name="allmails" onclick="checkAll()"></th>
@@ -125,8 +144,9 @@
     var _index = $("#index").val();
     var size = getCookie("contract_size");
     var keywords = $("#keywords").val();
+    var mm_manager_id = $("#mm_manager_id").val();
     if(_index <= ${page.pageCount} && _index >= 1){
-      window.location.href="#module=/logo/list&page="+page+"&size="+size+"&keyword="+keywords;
+      window.location.href="#module=/logo/list&page="+page+"&size="+size+"&keyword="+keywords+"&mm_manager_id="+mm_manager_id;
     }else{
       alert("请输入1-${page.pageCount}的页码数");
     }
@@ -135,9 +155,10 @@
     var page = parseInt(_page);
     var size = $("#size").val();
     var keywords = $("#keywords").val();
+    var mm_manager_id = $("#mm_manager_id").val();
     addCookie("contract_size", size, 36);
     if ((page <= ${page.pageCount} && page >= 1)) {
-      window.location.href="#module=/logo/list&page="+page+"&size="+size+"&keyword="+keywords;
+      window.location.href="#module=/logo/list&page="+page+"&size="+size+"&keyword="+keywords+"&mm_manager_id="+mm_manager_id;
     } else {
       alert("请输入1-${page.pageCount}的页码数");
     }
@@ -147,10 +168,10 @@
     var page = parseInt(_page);
     var size = $("#size").val();
     var keywords = $("#keywords").val();
-    var mm_msg_type = $("#mm_msg_type").val();
+    var mm_manager_id = $("#mm_manager_id").val();
     addCookie("contract_size", size, 36);
     if ((page <= ${page.pageCount} && page >= 1)) {
-      window.location.href="#module=/logo/list&page="+page+"&size="+size+"&keyword="+keywords;
+      window.location.href="#module=/logo/list&page="+page+"&size="+size+"&keyword="+keywords+"&mm_manager_id="+mm_manager_id;
     } else {
       alert("请输入1-${page.pageCount}的页码数");
     }
@@ -211,7 +232,7 @@
             var data = $.parseJSON(_data);
             if(data.success){
               alert("删除成功");
-              window.location.href="#module="+"logo/list"+"&page=1";
+              window.location.href="#module=logo/list&page=1";
             }else{
               var _case = {1:"删除失败"};
               alert(_case[data.code])

@@ -2,6 +2,7 @@ package com.liangxunwang.unimanager.mvc.admin;
 
 import com.liangxunwang.unimanager.model.Admin;
 import com.liangxunwang.unimanager.model.LogoObj;
+import com.liangxunwang.unimanager.mvc.vo.AdminVO;
 import com.liangxunwang.unimanager.mvc.vo.LogoVO;
 import com.liangxunwang.unimanager.query.LogoQuery;
 import com.liangxunwang.unimanager.query.MemberQuery;
@@ -35,6 +36,10 @@ public class LogoController extends ControllerConstants {
     @Qualifier("logoService")
     private DeleteService logoServiceDel;
 
+    @Autowired
+    @Qualifier("adminAllService")
+    private ListService adminAllService;
+
     @RequestMapping("list")
     public String list(HttpSession session,ModelMap map, LogoQuery query, Page page){
         query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
@@ -46,6 +51,9 @@ public class LogoController extends ControllerConstants {
         page.setPageCount(calculatePageCount(query.getSize(), count));
         map.addAttribute("page", page);
         map.addAttribute("query", query);
+        //选择管理员
+        List<AdminVO> listsManager = (List<AdminVO>) adminAllService.list("");
+        map.put("listsManager", listsManager);
         return "logo/list";
     }
 

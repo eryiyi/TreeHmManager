@@ -50,10 +50,17 @@
               <input type="text" placeholder="企业名称、联系人、手机号、标题" id="keywords" class="form-control"  data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
-          <button type="submit" onclick="searchOrder('1')" class="btn btn-default btn-sm">查找</button>
+          <button type="submit" onclick="searchOrder('1')" class="btn form-control btn-warning btn-sm btn-block">查找</button>
         </form>
-        <button type="submit" onclick="deleteSelect()" class="btn btn-default btn-sm">批量导出</button>
-        <%--<p>For basic styling add the base class <code>.table</code> to any <code>&lt;table&gt;</code>.</p>--%>
+
+        <form action="" class="form">
+          <div class="form-group">
+            <div class="col-md-2 col-lg-2">
+              <button type="button" onclick="Daochu_Select()" class="btn w12 form-control btn-block btn-danger btn-sm">批量导出Excel</button>
+            </div>
+          </div>
+        </form>
+
         <table class="table">
           <thead>
           <tr>
@@ -224,7 +231,7 @@
     }
   }
 
-  function deleteSelect(){
+  function Daochu_Select(){
     var select_id = '';
     var select = document.getElementsByName("checkbox_one");
     for (var i = 0; i < select.length; i++) {
@@ -244,7 +251,7 @@
           success:function(_data){
             var data = $.parseJSON(_data);
             if(data.success){
-              alert("导出成功:E://" + data.data);
+              window.location.href = "/upload"+data.data ;//这样就可以弹出下载对话框了
             }else{
               var _case = {1:"导出失败"};
               alert(_case[data.code])

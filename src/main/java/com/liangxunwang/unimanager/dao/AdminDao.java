@@ -34,6 +34,9 @@ public interface AdminDao {
      * 查询所有的后台管理员信息
      */
     List<AdminVO> lists(Map<String, Object> map);
+
+    List<AdminVO> listsAll(Map<String, Object> map);
+
     long count(Map<String,Object> map);
 
     AdminVO findById(String id);

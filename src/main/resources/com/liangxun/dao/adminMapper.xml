@@ -79,6 +79,21 @@
         limit #{index},#{size}
     </select>
 
+    <select id="listsAll" resultMap="my_admin_vo">
+        SELECT sn.*
+         ,larea.area as countryName
+         ,lcity.city as cityName
+         ,lpro.province as provinceName
+        from mm_manager sn
+            LEFT JOIN hat_area larea ON sn.mm_manager_area_uuid=larea.areaID
+            LEFT JOIN hat_city lcity ON sn.mm_manager_area_uuid=lcity.cityID
+            LEFT JOIN hat_province lpro ON sn.mm_manager_area_uuid=lpro.provinceID
+        WHERE 1=1
+        <if test="mm_manager_is_use != null and mm_manager_is_use != ''">
+            AND sn.mm_manager_is_use = #{mm_manager_is_use}
+        </if>
+    </select>
+
     <select id="count" resultType="Long">
         SELECT count(sn.mm_manager_id) FROM mm_manager sn
         WHERE 1=1

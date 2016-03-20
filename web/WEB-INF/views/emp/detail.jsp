@@ -531,7 +531,8 @@
         var data = $.parseJSON(_data);
         if(data.success){
           alert("修改成功");
-          window.location.href = "#module=emp/detail&mm_emp_id=" + mm_emp_id;
+//          window.location.href = "#module=emp/detail&mm_emp_id=" + mm_emp_id;
+            history.go(-1);
         }else{
           var _case = {1:"修改失败"};
           alert(_case[data.code])

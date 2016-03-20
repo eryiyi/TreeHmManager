@@ -6,8 +6,8 @@ package com.liangxunwang.unimanager.util;
 public class Constants {
 //        public static final String URL = "http://114.215.121.7:7777/";
 //        public static final String URL = "http://139.129.13.47:7777/";
-//                public static final String URL = "http://192.168.1.103:8080/";
-        public static final String URL = "http://xhmt.sdhmmm.cn:7777/";
+                public static final String URL = "http://192.168.1.103:8080/";
+//        public static final String URL = "http://xhmt.sdhmmm.cn:7777/";
 
         public static final String QINIU_URL = "http://7xqzj9.com1.z0.glb.clouddn.com/";
 

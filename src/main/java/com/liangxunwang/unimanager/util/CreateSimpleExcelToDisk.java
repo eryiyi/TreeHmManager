@@ -6,10 +6,12 @@ import com.liangxunwang.unimanager.mvc.vo.RecordVO;
 import com.liangxunwang.unimanager.mvc.vo.ReportVO;
 import org.apache.poi.hssf.usermodel.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.FileOutputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 /**
@@ -22,7 +24,7 @@ public class CreateSimpleExcelToDisk {
 
 
 
-    public static String toExcelEmp(List<EmpVO> empVOs) throws Exception
+    public static String toExcelEmp(List<EmpVO> empVOs, HttpServletRequest request) throws Exception
     {
         // 第一步，创建一个webbook，对应一个Excel文件
         HSSFWorkbook wb = new HSSFWorkbook();
@@ -214,10 +216,11 @@ public class CreateSimpleExcelToDisk {
         {
             SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");//设置日期格式
             String fileName = String.valueOf(df.format(new Date()));
-            FileOutputStream fout = new FileOutputStream("D:/huiyuan_"+fileName+".xls");
+            String path = request.getSession().getServletContext().getRealPath("upload");
+            FileOutputStream fout = new FileOutputStream(path+"/huiyuan_"+fileName+".xls");
             wb.write(fout);
             fout.close();
-            return fileName;
+            return "/huiyuan_"+fileName+".xls";
         }
         catch (Exception e)
         {
@@ -227,12 +230,12 @@ public class CreateSimpleExcelToDisk {
     }
 
 
-    public static String toExcelRecord(List<RecordVO> empVOs) throws Exception
+    public static String toExcelRecord(List<RecordVO> empVOs, HttpServletRequest request) throws Exception
     {
         // 第一步，创建一个webbook，对应一个Excel文件
         HSSFWorkbook wb = new HSSFWorkbook();
         // 第二步，在webbook中添加一个sheet,对应Excel文件中的sheet
-        HSSFSheet sheet = wb.createSheet("会员表");
+        HSSFSheet sheet = wb.createSheet("信息表");
         // 第三步，在sheet中添加表头第0行,注意老版本poi对Excel的行数列数有限制short
         HSSFRow row = sheet.createRow((int) 0);
         // 第四步，创建单元格，并设置值表头 设置表头居中
@@ -240,33 +243,36 @@ public class CreateSimpleExcelToDisk {
         style.setAlignment(HSSFCellStyle.ALIGN_CENTER); // 创建一个居中格式
 
         HSSFCell cell = row.createCell((short) 0);
-        cell.setCellValue("发布者");
+        cell.setCellValue("信息类型");
         cell.setCellStyle(style);
         cell = row.createCell((short) 1);
-        cell.setCellValue("发布者手机号");
+        cell.setCellValue("发布者");
         cell.setCellStyle(style);
         cell = row.createCell((short) 2);
-        cell.setCellValue("发布者类型");
+        cell.setCellValue("发布者手机号");
         cell.setCellStyle(style);
         cell = row.createCell((short) 3);
-        cell.setCellValue("公司");
+        cell.setCellValue("发布者类型");
         cell.setCellStyle(style);
         cell = row.createCell((short) 4);
-        cell.setCellValue("信息标题");
+        cell.setCellValue("公司");
         cell.setCellStyle(style);
         cell = row.createCell((short) 5);
-        cell.setCellValue("信息内容");
+        cell.setCellValue("信息标题");
         cell.setCellStyle(style);
         cell = row.createCell((short) 6);
-        cell.setCellValue("信息归属地");
+        cell.setCellValue("信息内容");
         cell.setCellStyle(style);
         cell = row.createCell((short) 7);
-        cell.setCellValue("时间");
+        cell.setCellValue("信息归属地");
         cell.setCellStyle(style);
         cell = row.createCell((short) 8);
-        cell.setCellValue("是否置顶");
+        cell.setCellValue("时间");
         cell.setCellStyle(style);
         cell = row.createCell((short) 9);
+        cell.setCellValue("是否置顶");
+        cell.setCellStyle(style);
+        cell = row.createCell((short) 10);
         cell.setCellValue("置顶数字");
         cell.setCellStyle(style);
 
@@ -278,36 +284,60 @@ public class CreateSimpleExcelToDisk {
             row = sheet.createRow((int) i + 1);
             RecordVO stu = (RecordVO) empVOs.get(i);
             // 第四步，创建单元格，并设置值
-//            row.createCell((short) 0).setCellValue((double) stu.getId());
-            row.createCell((short) 0).setCellValue(stu.getMm_emp_nickname());
-            row.createCell((short) 1).setCellValue(stu.getMm_emp_mobile());
+            if("0".equals(stu.getMm_msg_type())){
+                row.createCell((short) 0).setCellValue("求购");
+            }else {
+                row.createCell((short) 0).setCellValue("供应");
+            }
+            row.createCell((short) 1).setCellValue(stu.getMm_emp_nickname());
+            row.createCell((short) 2).setCellValue(stu.getMm_emp_mobile());
             if("0".equals(stu.getMm_emp_type())){
-                row.createCell((short) 2).setCellValue("苗木经营");
+                row.createCell((short) 3).setCellValue("苗木经营");
             }else {
-                row.createCell((short) 2).setCellValue("苗木会员");
+                row.createCell((short) 3).setCellValue("苗木会员");
             }
-            row.createCell((short) 3).setCellValue(stu.getMm_emp_company());
-            row.createCell((short) 4).setCellValue(stu.getMm_msg_title());
-            row.createCell((short) 5).setCellValue(stu.getMm_msg_content()==null?"":stu.getMm_msg_content());
-            row.createCell((short) 6).setCellValue(stu.getArea());
-            row.createCell((short) 7).setCellValue(RelativeDateFormat.format(Long.parseLong(stu.getDateline())));
+            row.createCell((short) 4).setCellValue(stu.getMm_emp_company());
+            row.createCell((short) 5).setCellValue(stu.getMm_msg_title());
+            row.createCell((short) 6).setCellValue(stu.getMm_msg_content()==null?"":stu.getMm_msg_content());
+            row.createCell((short) 7).setCellValue(stu.getArea());
+
+            if(!StringUtil.isNullOrEmpty(stu.getDateline())){
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+                Date date =  new Date(Long.valueOf(stu.getDateline()));
+                GregorianCalendar gc = new GregorianCalendar();
+                gc.setTime(date);
+                String timeDateline = format.format(gc.getTime());
+                row.createCell((short) 8).setCellValue(timeDateline);
+            }else {
+                row.createCell((short) 8).setCellValue("");
+            }
+
             if("0".equals(stu.getIs_top())){
-                row.createCell((short) 8).setCellValue("否");
+                row.createCell((short) 9).setCellValue("否");
             }else {
-                row.createCell((short) 8).setCellValue("是");
+                row.createCell((short) 9).setCellValue("是");
             }
-            row.createCell((short) 9).setCellValue(stu.getTop_num()==null?"":stu.getTop_num());
+            row.createCell((short) 10).setCellValue(stu.getTop_num()==null?"":stu.getTop_num());
 
         }
         // 第六步，将文件存到指定位置
         try
         {
+//            SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");//设置日期格式
+//            String fileName = String.valueOf(df.format(new Date()));
+//            FileOutputStream fout = new FileOutputStream("D:/xinxi_"+fileName+".xls");
+//            wb.write(fout);
+//            fout.close();
+//            return fileName;
+
             SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");//设置日期格式
             String fileName = String.valueOf(df.format(new Date()));
-            FileOutputStream fout = new FileOutputStream("D:/xinxi_"+fileName+".xls");
+            String path = request.getSession().getServletContext().getRealPath("upload");
+            FileOutputStream fout = new FileOutputStream(path+"/xinxi_"+fileName+".xls");
             wb.write(fout);
             fout.close();
-            return fileName;
+            return "/xinxi_"+fileName+".xls";
+
         }
         catch (Exception e)
         {
@@ -317,12 +347,12 @@ public class CreateSimpleExcelToDisk {
     }
 
 
-    public static String toExcelReport(List<ReportVO> empVOs) throws Exception
+    public static String toExcelReport(List<ReportVO> empVOs, HttpServletRequest request) throws Exception
     {
         // 第一步，创建一个webbook，对应一个Excel文件
         HSSFWorkbook wb = new HSSFWorkbook();
         // 第二步，在webbook中添加一个sheet,对应Excel文件中的sheet
-        HSSFSheet sheet = wb.createSheet("会员表");
+        HSSFSheet sheet = wb.createSheet("举报表");
         // 第三步，在sheet中添加表头第0行,注意老版本poi对Excel的行数列数有限制short
         HSSFRow row = sheet.createRow((int) 0);
         // 第四步，创建单元格，并设置值表头 设置表头居中
@@ -387,12 +417,19 @@ public class CreateSimpleExcelToDisk {
         // 第六步，将文件存到指定位置
         try
         {
+//            SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");//设置日期格式
+//            String fileName = String.valueOf(df.format(new Date()));
+//            FileOutputStream fout = new FileOutputStream("D:/jubao_"+fileName+".xls");
+//            wb.write(fout);
+//            fout.close();
+//            return fileName;
             SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");//设置日期格式
             String fileName = String.valueOf(df.format(new Date()));
-            FileOutputStream fout = new FileOutputStream("D:/jubao_"+fileName+".xls");
+            String path = request.getSession().getServletContext().getRealPath("upload");
+            FileOutputStream fout = new FileOutputStream(path+"/jubao_"+fileName+".xls");
             wb.write(fout);
             fout.close();
-            return fileName;
+            return "/jubao_"+fileName+".xls";
         }
         catch (Exception e)
         {

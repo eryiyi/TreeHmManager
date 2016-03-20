@@ -44,43 +44,44 @@
         <div class="no-move"></div>
       </div>
       <div class="box-content">
+      <!-- style -->
+      <style>
+          .w12{
+              max-width: 12rem;
+          }
+      </style>
+      <!-- style -->
         <form class="form-inline">
-          <input type="hidden" id="mm_emp_type" value="${mm_emp_type}" >
+          <input type="hidden" id="mm_emp_type" value="${mm_emp_type}" >        
           <c:if test="${is_manager=='0'}">
             <div class="form-group">
-              <div class="col-sm-4">
-                <select class="form-control" id="mm_emp_provinceId" onchange="selectCitys()">
-                  <option value="">--选择省份--</option>
-                  <c:forEach items="${listProvinces}" var="e" varStatus="st">
-                    <option value="${e.provinceID}" >${e.province}</option>
-                  </c:forEach>
-                </select>
-              </div>
+              <select class="form-control w12" id="mm_emp_provinceId" onchange="selectCitys()">
+                <option value="">--选择省份--</option>
+                <c:forEach items="${listProvinces}" var="e" varStatus="st">
+                  <option value="${e.provinceID}" >${e.province}</option>
+                </c:forEach>
+              </select>
             </div>
             <div class="form-group">
-              <div class="col-sm-4">
-                <select class="form-control" id="mm_emp_cityId" onchange="selectCountrys()">
-                  <option value="">--选择城市--</option>
-                  <c:forEach items="${listCitys}" var="e" varStatus="st">
-                    <option value="${e.cityID}" >${e.city}</option>
-                  </c:forEach>
-                </select>
-              </div>
+              <select class="form-control w12" id="mm_emp_cityId" onchange="selectCountrys()">
+                <option value="">--选择城市--</option>
+                <c:forEach items="${listCitys}" var="e" varStatus="st">
+                  <option value="${e.cityID}" >${e.city}</option>
+                </c:forEach>
+              </select>
             </div>
             <div class="form-group">
-              <div class="col-sm-4">
-                <select class="form-control" id="mm_emp_countryId" onchange="selectArea()">
-                  <option value="">--选择县区--</option>
-                  <c:forEach items="${listsCountry}" var="e" varStatus="st">
-                    <option value="${e.areaID}" >${e.area}</option>
-                  </c:forEach>
-                </select>
-              </div>
+              <select class="form-control w12" id="mm_emp_countryId" onchange="selectArea()">
+                <option value="">--选择县区--</option>
+                <c:forEach items="${listsCountry}" var="e" varStatus="st">
+                  <option value="${e.areaID}" >${e.area}</option>
+                </c:forEach>
+              </select>
             </div>
           </c:if>
 
           <div class="form-group">
-            <select class="form-control" id="ischeck">
+            <select class="form-control w12" id="ischeck">
               <option value="">--审核状态--</option>
               <option value="0" ${query.ischeck=='0'?'selected':''}>未审核</option>
               <option value="1" ${query.ischeck=='1'?'selected':''}>已审核</option>
@@ -88,14 +89,14 @@
             </select>
           </div>
           <%--<div class="form-group">--%>
-            <%--<select class="form-control" id="mm_emp_type">--%>
+            <%--<select class="form-control w12" id="mm_emp_type">--%>
               <%--<option value="">--注册类型--</option>--%>
               <%--<option value="0" ${query.mm_emp_type=='0'?'selected':''}>苗木经营</option>--%>
               <%--<option value="1" ${query.mm_emp_type=='1'?'selected':''}>苗木会员</option>--%>
             <%--</select>--%>
           <%--</div>--%>
           <div class="form-group">
-            <select class="form-control" id="mm_emp_company_type">
+            <select class="form-control w12" id="mm_emp_company_type">
               <option value="">--公司类型--</option>
               <option value="0" ${query.mm_emp_company_type=='0'?'selected':''}>苗木</option>
               <option value="1" ${query.mm_emp_company_type=='1'?'selected':''}>园林</option>
@@ -103,17 +104,65 @@
           </div>
 
           <div class="form-group">
-            <select class="form-control" id="mm_level_id">
+            <select class="form-control w12" id="mm_level_id">
               <option value="">--VIP星级--</option>
               <c:forEach items="${listLevels}" var="e" varStatus="st">
                 <option value="${e.mm_level_id}" ${query.mm_level_id=='0'?'selected':''}>${e.mm_level_name}</option>
               </c:forEach>
             </select>
           </div>
-
-          <button type="submit" onclick="searchOrder('1')" class="btn btn-default btn-sm">查找</button>
+          <div class="form-group">
+            <button type="submit" onclick="searchOrder('1')" class="btn form-control btn-warning btn-sm btn-block">查找</button>
+          </div>
+          </form>
+          <form action="" class="form">
+          <div class="form-group">
+            <div class="col-md-2 col-lg-2">
+              <button type="button" onclick="Daochu_Select()" class="btn w12 form-control btn-block btn-danger btn-sm">批量导出Excel</button>
+            </div>
+            <div class="col-md-2 col-lg-2">
+              <button type="button" onclick="P_Weishen_Select('0')" class="btn w12 form-control btn-block btn-danger btn-sm">批量未审</button>
+            </div>
+            <div class="col-md-2 col-lg-2">
+              <button type="button" onclick="P_Weishen_Select('1')" class="btn w12 form-control btn-block btn-danger btn-sm">批量审核</button>
+            </div>
+            <div class="col-md-2 col-lg-2">
+              <button type="button" onclick="P_Weishen_Select('2')" class="btn w12 form-control btn-block btn-danger btn-sm">批量不通过</button>
+            </div>
+          </div>
+          </form>
+        <form action="" class="form">
+          <div class="form-group">
+            <div class="col-md-2 col-lg-2">
+              <button type="button" onclick="P_Login_Select('1')" class="btn w12 form-control btn-block btn-danger btn-sm">批量禁止登陆</button>
+            </div>
+            <div class="col-md-2 col-lg-2">
+              <button type="button" onclick="P_Login_Select('0')" class="btn w12 form-control btn-block btn-danger btn-sm">批量允许登陆</button>
+            </div>
+          </div>
         </form>
-        <button type="submit" onclick="deleteSelect()" class="btn btn-default btn-sm">批量导出</button>
+
+        <form action="" class="form">
+          <div class="form-group">
+            <div class="col-md-2 col-lg-2">
+              <button type="button" onclick="P_fabugy_Select('0')" class="btn w12 form-control btn-block btn-danger btn-sm">批量禁止发布供应</button>
+            </div>
+            <div class="col-md-2 col-lg-2">
+              <button type="button" onclick="P_fabugy_Select('1')" class="btn w12 form-control btn-block btn-danger btn-sm">批量允许发布供应</button>
+            </div>
+          </div>
+        </form>
+
+        <form action="" class="form">
+          <div class="form-group">
+            <div class="col-md-2 col-lg-2">
+              <button type="button" onclick="P_fabuqg_Select('0')" class="btn w12 form-control btn-block btn-danger btn-sm">批量禁止发布求购</button>
+            </div>
+            <div class="col-md-2 col-lg-2">
+              <button type="button" onclick="P_fabuqg_Select('1')" class="btn w12 form-control btn-block btn-danger btn-sm">批量允许发布求购</button>
+            </div>
+          </div>
+        </form>
         <%--<p>For basic styling add the base class <code>.table</code> to any <code>&lt;table&gt;</code>.</p>--%>
         <table class="table">
           <thead>
@@ -129,6 +178,9 @@
             <th>协会</th>
             <th>星级</th>
             <th>到期时间</th>
+            <th>允许登陆</th>
+            <th>发布供应</th>
+            <th>发布求购</th>
             <th>审核状态</th>
             <th>操作</th>
             <c:if test="${is_manager=='0'}">
@@ -164,6 +216,18 @@
               </td>
               <td>${e.levelName}</td>
               <td>${e.mm_emp_endtime}</td>
+              <td>
+                <c:if test="${e.is_login=='0'}">是</c:if>
+                <c:if test="${e.is_login=='1'}">否</c:if>
+              </td>
+              <td>
+                <c:if test="${e.is_fabugongying=='0'}">不允许</c:if>
+                <c:if test="${e.is_fabugongying=='1'}">允许</c:if>
+              </td>
+              <td>
+                <c:if test="${e.is_fabuqiugou=='0'}">不允许</c:if>
+                <c:if test="${e.is_fabuqiugou=='1'}">允许</c:if>
+              </td>
               <td>
                 <c:if test="${e.ischeck=='0'}">未审核</c:if>
                 <c:if test="${e.ischeck=='1'}">已审核</c:if>
@@ -336,7 +400,7 @@
     }
   }
 
-  function deleteSelect(){
+  function Daochu_Select(){
     var select_id = '';
     var select = document.getElementsByName("checkbox_one");
     for (var i = 0; i < select.length; i++) {
@@ -356,7 +420,7 @@
           success:function(_data){
             var data = $.parseJSON(_data);
             if(data.success){
-              alert("导出成功:E://" + data.data);
+              window.location.href = "/upload"+data.data ;//这样就可以弹出下载对话框了
             }else{
               var _case = {1:"导出失败"};
               alert(_case[data.code])
@@ -365,8 +429,170 @@
         });
       }
     }
-
   }
+
+  function P_Weishen_Select(_type){
+    //
+    var select_id = '';
+    var select = document.getElementsByName("checkbox_one");
+    for (var i = 0; i < select.length; i++) {
+      if(select[i].checked == true){
+        select_id = select_id+select[i].id +',';
+      }
+    }
+    if(select_id == ''){
+      alert('请选择数据！');
+      return
+    }else{
+      if(confirm("确定要批量处理所选择的用户吗？")){
+        $.ajax({
+          url:"/emp/pShenheAction.do",
+          data:{"ids":select_id,"type":_type},
+          type:"POST",
+          success:function(_data){
+            var data = $.parseJSON(_data);
+            if(data.success){
+              if(_type == '0'){
+                alert("批量未审成功！");
+              }
+              if(_type == '1'){
+                alert("批量审核成功！");
+              }
+              if(_type == '2'){
+                alert("批量不通过成功！");
+              }
+              //刷新当前页
+              window.location.reload();
+            }else{
+              var _case = {1:"批量处理失败"};
+              alert(_case[data.code])
+            }
+          }
+        });
+      }
+    }
+  }
+
+
+  function P_Login_Select(_type){
+    //登陆
+    var select_id = '';
+    var select = document.getElementsByName("checkbox_one");
+    for (var i = 0; i < select.length; i++) {
+      if(select[i].checked == true){
+        select_id = select_id+select[i].id +',';
+      }
+    }
+    if(select_id == ''){
+      alert('请选择数据！');
+      return
+    }else{
+      if(confirm("确定要批量处理所选择的用户吗？")){
+        $.ajax({
+          url:"/emp/pLoginAction.do",
+          data:{"ids":select_id,"type":_type},
+          type:"POST",
+          success:function(_data){
+            var data = $.parseJSON(_data);
+            if(data.success){
+              if(_type == '0'){
+                alert("批量处理用户-允许登陆成功！");
+              }
+              if(_type == '1'){
+                alert("批量处理用户-禁止登陆成功！");
+              }
+              //刷新当前页
+              window.location.reload();
+            }else{
+              var _case = {1:"批量处理失败"};
+              alert(_case[data.code])
+            }
+          }
+        });
+      }
+    }
+  }
+
+  function P_fabugy_Select(_type){
+    //发布供应
+    var select_id = '';
+    var select = document.getElementsByName("checkbox_one");
+    for (var i = 0; i < select.length; i++) {
+      if(select[i].checked == true){
+        select_id = select_id+select[i].id +',';
+      }
+    }
+    if(select_id == ''){
+      alert('请选择数据！');
+      return
+    }else{
+      if(confirm("确定要批量处理所选择的用户吗？")){
+        $.ajax({
+          url:"/emp/pFabugyAction.do",
+          data:{"ids":select_id,"type":_type},
+          type:"POST",
+          success:function(_data){
+            var data = $.parseJSON(_data);
+            if(data.success){
+              if(_type == '0'){
+                alert("批量处理用户-禁止发布供应成功！");
+              }
+              if(_type == '1'){
+                alert("批量处理用户-允许发布供应成功！");
+              }
+              //刷新当前页
+              window.location.reload();
+            }else{
+              var _case = {1:"批量处理失败"};
+              alert(_case[data.code])
+            }
+          }
+        });
+      }
+    }
+  }
+
+
+  function P_fabuqg_Select(_type){
+    //发布求购
+    var select_id = '';
+    var select = document.getElementsByName("checkbox_one");
+    for (var i = 0; i < select.length; i++) {
+      if(select[i].checked == true){
+        select_id = select_id+select[i].id +',';
+      }
+    }
+    if(select_id == ''){
+      alert('请选择数据！');
+      return
+    }else{
+      if(confirm("确定要批量处理所选择的用户吗？")){
+        $.ajax({
+          url:"/emp/pFabuqgAction.do",
+          data:{"ids":select_id,"type":_type},
+          type:"POST",
+          success:function(_data){
+            var data = $.parseJSON(_data);
+            if(data.success){
+              if(_type == '0'){
+                alert("批量处理用户-禁止发布求购成功！");
+              }
+              if(_type == '1'){
+                alert("批量处理用户-允许发布求购成功！");
+              }
+              //刷新当前页
+              window.location.reload();
+            }else{
+              var _case = {1:"批量处理失败"};
+              alert(_case[data.code])
+            }
+          }
+        });
+      }
+    }
+  }
+
+
 
 </script>
 

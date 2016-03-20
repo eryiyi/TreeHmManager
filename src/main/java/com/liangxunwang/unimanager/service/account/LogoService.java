@@ -46,6 +46,9 @@ public class LogoService implements ListService,SaveService,DeleteService {
         if(!StringUtil.isNullOrEmpty(query.getKeyword())){
             map.put("keyword", query.getKeyword());
         }
+        if(!StringUtil.isNullOrEmpty(query.getMm_manager_id())){
+            map.put("mm_manager_id", query.getMm_manager_id());
+        }
 
         List<LogoVO> lists = logoDao.listRecordVo(map);
         long count = logoDao.count(map);

@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,7 +25,9 @@ public class RecordExcelService implements ExecuteService{
 
     @Override
     public Object execute(Object object) throws Exception {
-        String ids = (String) object;
+        Object[] objects = (Object[]) object;
+        String ids = (String) objects[0];
+        HttpServletRequest request = (HttpServletRequest) objects[1];
         if(!StringUtil.isNullOrEmpty(ids)){
             String[] arrs = ids.split(",");
             //查询这些用户的数据
@@ -35,7 +38,7 @@ public class RecordExcelService implements ExecuteService{
                     empVOs.add(empVO);
                 }
             }
-            String fileName = CreateSimpleExcelToDisk.toExcelRecord(empVOs);
+            String fileName = CreateSimpleExcelToDisk.toExcelRecord(empVOs,request);
             return fileName;
         }
         return null;

@@ -16,8 +16,10 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by liuzh on 2015/8/12.
@@ -402,17 +404,25 @@ public class EmpController extends ControllerConstants {
 
 
 
-
     @Autowired
     @Qualifier("empExcelService")
     private ExecuteService empExcelService;
 
 
+    //导出Excel表格数据
     @RequestMapping("daochuAll")
     @ResponseBody
-    public String daochuAll(HttpSession session,String ids) {
+    public String daochuAll(HttpSession session,String ids, HttpServletRequest request) {
         try {
-            String fileName = (String) empExcelService.execute(ids);
+            Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
+            Object[] objects = new Object[2];
+            objects[0]=ids;
+            objects[1]=request;
+            String fileName = (String) empExcelService.execute(objects);
+
+            //日志记录
+            logoService.save(new LogoObj("导出excel用户表", manager.getMm_manager_id()));
+
             DataTip tip = new DataTip();
             tip.setData(fileName);
             return toJSONString(tip);
@@ -420,9 +430,98 @@ public class EmpController extends ControllerConstants {
             e.printStackTrace();
         }
         return toJSONString(ERROR_1);
+    }
 
+    @Autowired
+    @Qualifier("empPshenheService")
+    private ExecuteService empPshenheService;
+
+    //批量处理用户--未审0 审核1 未通过2
+    @RequestMapping("pShenheAction")
+    @ResponseBody
+    public String pShenheAction(HttpSession session,String ids,String type) {
+        try {
+            Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
+            Object[] objectses = new Object[2];
+            objectses[0]=ids;
+            objectses[1]=type;
+            empPshenheService.execute(objectses);
+            //日志记录
+            logoService.save(new LogoObj("批量处理用户数据_审核权限："+ids, manager.getMm_manager_id()));
+            return toJSONString(SUCCESS);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return toJSONString(ERROR_1);
     }
 
 
+    @Autowired
+    @Qualifier("empPLoginService")
+    private ExecuteService empPLoginService;
+    //批量处理用户--允许登陆0 不允许登陆1
+    @RequestMapping("pLoginAction")
+    @ResponseBody
+    public String pLoginAction(HttpSession session,String ids,String type) {
+        try {
+            Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
+            Object[] objectses = new Object[2];
+            objectses[0]=ids;
+            objectses[1]=type;
+            empPLoginService.execute(objectses);
+            //日志记录
+            logoService.save(new LogoObj("批量处理用户数据_登陆权限："+ids, manager.getMm_manager_id()));
+            return toJSONString(SUCCESS);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return toJSONString(ERROR_1);
+    }
+
+    @Autowired
+    @Qualifier("empFabugyService")
+    private ExecuteService empFabugyService;
+
+    //批量处理用户--不允许发布供应0 允许发布供应1
+    @RequestMapping("pFabugyAction")
+    @ResponseBody
+    public String pFabugyAction(HttpSession session,String ids,String type) {
+        try {
+            Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
+            Object[] objectses = new Object[2];
+            objectses[0]=ids;
+            objectses[1]=type;
+            empFabugyService.execute(objectses);
+            //日志记录
+            logoService.save(new LogoObj("批量处理用户数据_发布供应权限："+ids, manager.getMm_manager_id()));
+            return toJSONString(SUCCESS);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return toJSONString(ERROR_1);
+    }
+
+    @Autowired
+    @Qualifier("empFabuqgService")
+    private ExecuteService empFabuqgService;
+
+    //批量处理用户--不允许发布求购0 允许发布求购1
+    @RequestMapping("pFabuqgAction")
+    @ResponseBody
+    public String pFabuqgAction(HttpSession session,String ids,String type) {
+        try {
+            Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
+            Object[] objectses = new Object[2];
+            objectses[0]=ids;
+            objectses[1]=type;
+            empFabuqgService.execute(objectses);
+            //日志记录
+            logoService.save(new LogoObj("批量处理用户数据_发布求购权限："+ids, manager.getMm_manager_id()));
+            return toJSONString(SUCCESS);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return toJSONString(ERROR_1);
+    }
 
 }

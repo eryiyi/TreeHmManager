@@ -13,12 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import java.io.*;
+import java.security.Principal;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  */
@@ -30,7 +30,9 @@ public class EmpExcelService implements ExecuteService{
 
     @Override
     public Object execute(Object object) throws Exception {
-        String ids = (String) object;
+        Object[] objects = (Object[]) object;
+        String ids = (String) objects[0];
+        HttpServletRequest request = (HttpServletRequest) objects[1];
         if(!StringUtil.isNullOrEmpty(ids)){
             String[] arrs = ids.split(",");
             //查询这些用户的数据
@@ -41,7 +43,7 @@ public class EmpExcelService implements ExecuteService{
                     empVOs.add(empVO);
                 }
             }
-            String fileName = CreateSimpleExcelToDisk.toExcelEmp(empVOs);
+            String fileName = CreateSimpleExcelToDisk.toExcelEmp(empVOs,request);
             return fileName;
         }
         return null;

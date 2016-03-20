@@ -22,6 +22,7 @@ public interface EmpDao {
 
     //更新会员数据
     void update(Emp emp);
+
     //更新头像
     void updateCover(Emp emp);
 
@@ -40,8 +41,12 @@ public interface EmpDao {
 
     //更新会员数据--经纬度
     void updateLoacation(Emp emp);
+
     //修改用户密码
     void updatePwr(Emp emp);
+
+    //审核用户
+    void updateCheck(Map<String,Object> map);
 
     /**
      * 查询附近商家
@@ -54,4 +59,12 @@ public interface EmpDao {
      */
     EmpVO findByMobileAndCard(Map<String, Object> map);
 
+    //用户登陆状态修改
+    void updateLogin(Map<String,Object> map);
+
+    //用户发布供应权限
+    void updateFabugy(Map<String,Object> map);
+
+    //发布求购权限
+    void updateFabuqg(Map<String,Object> map);
 }

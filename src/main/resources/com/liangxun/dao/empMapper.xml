@@ -248,4 +248,29 @@
         </if>
     </select>
 
+
+    <update id="updateCheck">
+        UPDATE mm_emp SET
+        ischeck=#{ischeck}
+        WHERE mm_emp_id=#{mm_emp_id}
+    </update>
+
+    <update id="updateLogin">
+        UPDATE mm_emp SET
+        is_login=#{is_login}
+        WHERE mm_emp_id=#{mm_emp_id}
+    </update>
+
+    <update id="updateFabugy">
+        UPDATE mm_emp SET
+        is_fabugongying=#{is_fabugongying}
+        WHERE mm_emp_id=#{mm_emp_id}
+    </update>
+
+    <update id="updateFabuqg">
+        UPDATE mm_emp SET
+        is_fabuqiugou=#{is_fabuqiugou}
+        WHERE mm_emp_id=#{mm_emp_id}
+    </update>
+
 </mapper>

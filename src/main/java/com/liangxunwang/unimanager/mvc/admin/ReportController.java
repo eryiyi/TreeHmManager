@@ -19,6 +19,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -95,9 +96,12 @@ public class ReportController extends ControllerConstants {
 
     @RequestMapping("daochuAll")
     @ResponseBody
-    public String daochuAll(HttpSession session,String ids) {
+    public String daochuAll(HttpSession session,String ids, HttpServletRequest request) {
         try {
-            String fileName = (String) reportExcelService.execute(ids);
+            Object[] objects = new Object[2];
+            objects[0]=ids;
+            objects[1]=request;
+            String fileName = (String) reportExcelService.execute(objects);
             DataTip tip = new DataTip();
             tip.setData(fileName);
             return toJSONString(tip);

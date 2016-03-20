@@ -46,11 +46,6 @@ public class AdminController extends ControllerConstants {
     @Qualifier("adminService")
     private SaveService adminServiceSave;
 
-    /**
-     * �޸�����
-     * @param session
-     * @return
-     */
     @RequestMapping("/changePass")
     @ResponseBody
     public String changePass(HttpSession session, String mm_manager_password, String mm_manager_id) throws Exception {
@@ -107,6 +102,5 @@ public class AdminController extends ControllerConstants {
         }
         return toJSONString(SUCCESS);
     }
-
 
 }

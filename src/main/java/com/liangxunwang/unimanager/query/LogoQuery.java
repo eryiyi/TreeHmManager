@@ -7,6 +7,15 @@ public class LogoQuery  extends BaseAreaQuery{
     private int index;
     private int size;
     private String keyword;
+    private String mm_manager_id;
+
+    public String getMm_manager_id() {
+        return mm_manager_id;
+    }
+
+    public void setMm_manager_id(String mm_manager_id) {
+        this.mm_manager_id = mm_manager_id;
+    }
 
     public String getKeyword() {
         return keyword;

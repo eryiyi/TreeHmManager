@@ -53,7 +53,7 @@
           </div>
           <button type="submit" onclick="searchOrder('1')" class="btn btn-default btn-sm">查找</button>
         </form>
-        <button type="submit" onclick="deleteSelect()" class="btn btn-default btn-sm">批量导出</button>
+        <button type="submit" onclick="Daochu_Select()" class="btn btn-default btn-sm">批量导出Excel</button>
         <table class="table">
           <thead>
           <tr>
@@ -183,7 +183,7 @@
     }
   }
 
-  function deleteSelect(){
+  function Daochu_Select(){
     var select_id = '';
     var select = document.getElementsByName("checkbox_one");
     for (var i = 0; i < select.length; i++) {
@@ -203,7 +203,7 @@
           success:function(_data){
             var data = $.parseJSON(_data);
             if(data.success){
-              alert("导出成功:E://" + data.data);
+              window.location.href = "/upload"+data.data ;//这样就可以弹出下载对话框了
             }else{
               var _case = {1:"导出失败"};
               alert(_case[data.code])
