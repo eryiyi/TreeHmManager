@@ -11,6 +11,7 @@ import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.MD5Util;
 import com.liangxunwang.unimanager.util.Page;
+import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -76,8 +77,12 @@ public class AppEmpController extends ControllerConstants {
             //修改用户密码
             Emp emp = new Emp();
             emp.setMm_emp_mobile(mm_emp_mobile);
-            emp.setMm_emp_password(newpass);
-            emp.setMm_emp_card(mm_emp_card);
+            if(!StringUtil.isNullOrEmpty(newpass)){
+                emp.setMm_emp_password(newpass);
+            }
+            if(!StringUtil.isNullOrEmpty(mm_emp_card)){
+                emp.setMm_emp_card(mm_emp_card);
+            }
             appEmpService.update(emp);
             DataTip tip = new DataTip();
             tip.setData(tip);
@@ -104,5 +109,29 @@ public class AppEmpController extends ControllerConstants {
             return toJSONString(ERROR_1);
         }
     }
+
+    @Autowired
+    @Qualifier("appEmpPwrService")
+    private UpdateService appEmpPwrService;
+
+    @RequestMapping(value = "/updatePwrApp", produces = "text/plain;charset=UTF-8;")
+    @ResponseBody
+    public String updatePwr(String mm_emp_mobile,String newpass){
+        try {
+            //修改用户密码
+            Emp emp = new Emp();
+            emp.setMm_emp_mobile(mm_emp_mobile);
+            if(!StringUtil.isNullOrEmpty(newpass)){
+                emp.setMm_emp_password(newpass);
+            }
+            appEmpPwrService.update(emp);
+            DataTip tip = new DataTip();
+            tip.setData(tip);
+            return toJSONString(tip);
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+        }
+    }
+
 
 }

@@ -52,7 +52,7 @@
             </select>
           </div>
 
-          <button type="submit" onclick="searchOrder('1')" class="btn btn-default btn-sm">查找</button>
+          <button type="submit" onclick="searchOrder('1')" class="btn form-control btn-warning btn-sm btn-block">查找</button>
         </form>
 
         <table class="table">

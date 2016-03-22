@@ -85,7 +85,7 @@
               <option value="">--审核状态--</option>
               <option value="0" ${query.ischeck=='0'?'selected':''}>未审核</option>
               <option value="1" ${query.ischeck=='1'?'selected':''}>已审核</option>
-              <option value="1" ${query.ischeck=='2'?'selected':''}>未通过</option>
+              <option value="2" ${query.ischeck=='2'?'selected':''}>未通过</option>
             </select>
           </div>
           <%--<div class="form-group">--%>

@@ -18,6 +18,7 @@ public interface ReportDao {
      * 查询举报
      */
     List<ReportVO> lists(Map<String, Object> map);
+
     long count(Map<String, Object> map);
 
     //删除
@@ -38,4 +39,7 @@ public interface ReportDao {
 
     //保存
     void save(ReportObj reportObj);
+
+    //查询未处理的举报数量
+    long countAll(Map<String, Object> map);
 }

@@ -12,6 +12,7 @@ public class Emp {
     private String mm_emp_cover;
     private String mm_emp_type;
     private String mm_emp_company;
+    private String mm_emp_company_pic;
     private String mm_emp_company_type;
     private String mm_emp_company_address;
     private String mm_emp_company_detail;
@@ -38,6 +39,14 @@ public class Emp {
     private String lng;
     private String ischeck;
     private String access_token;
+
+    public String getMm_emp_company_pic() {
+        return mm_emp_company_pic;
+    }
+
+    public void setMm_emp_company_pic(String mm_emp_company_pic) {
+        this.mm_emp_company_pic = mm_emp_company_pic;
+    }
 
     public String getMm_emp_company_url() {
         return mm_emp_company_url;

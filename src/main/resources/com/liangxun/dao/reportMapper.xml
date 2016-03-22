@@ -54,6 +54,11 @@
         </if>
     </select>
 
+    <select id="countAll" resultType="Long">
+        SELECT count(sn.mm_report_id) FROM mm_report sn
+        WHERE 1=1 AND sn.is_use='0'
+    </select>
+
     <select id="findById" parameterType="String" resultMap="report_vo">
         SELECT sn.*,lemp.mm_emp_nickname as empName,lempR.mm_emp_nickname as empNameReport ,lmsg.mm_msg_content as msgCont,lmanager.mm_manager_nickname as managerName  from mm_report sn
         LEFT JOIN mm_emp lemp ON sn.mm_emp_id=lemp.mm_emp_id

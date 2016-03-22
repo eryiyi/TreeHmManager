@@ -72,7 +72,7 @@ public class IndexService implements ListService {
 
         //查询举报数量
         Map<String, Object> mapReport = new HashMap<String, Object>();
-        long countReport = reportDao.count(mapReport);
+        long countReport = reportDao.countAll(mapReport);
 
         List<Long> list = new ArrayList<Long>();
         list.add(memberCount);

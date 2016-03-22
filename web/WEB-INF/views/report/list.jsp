@@ -51,9 +51,15 @@
               <option value="1" ${query.is_use=='1'?'selected':''}>已处理</option>
             </select>
           </div>
-          <button type="submit" onclick="searchOrder('1')" class="btn btn-default btn-sm">查找</button>
+          <button type="submit" onclick="searchOrder('1')" class="btn form-control btn-warning btn-sm btn-block">查找</button>
         </form>
-        <button type="submit" onclick="Daochu_Select()" class="btn btn-default btn-sm">批量导出Excel</button>
+        <form action="" class="form">
+          <div class="form-group">
+            <div class="col-md-2 col-lg-2">
+              <button type="button" onclick="Daochu_Select()" class="btn w12 form-control btn-block btn-danger btn-sm">批量导出Excel</button>
+            </div>
+          </div>
+        </form>
         <table class="table">
           <thead>
           <tr>

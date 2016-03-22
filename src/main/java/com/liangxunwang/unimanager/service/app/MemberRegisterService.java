@@ -35,7 +35,11 @@ public class MemberRegisterService implements SaveService {
         }
         member.setMm_emp_id(UUIDFactory.random());//设置ID
         member.setMm_emp_regtime(DateUtil.getDateAndTime());//时间戳
-        member.setMm_emp_cover(Constants.COVER_DEFAULT);//头像
+        if(!StringUtil.isNullOrEmpty(member.getMm_emp_cover())){
+            //
+        }else{
+            member.setMm_emp_cover(Constants.COVER_DEFAULT);//头像
+        }
         member.setMm_emp_password(new MD5Util().getMD5ofStr(member.getMm_emp_password()));//密码加密
 //        member.setMm_level_id("184fcbc89d8d4e8684cb17b0e3569778");//默认VIP1
         member.setMm_emp_msg_num("0");//允许发布信息数量  默认0
@@ -49,7 +53,7 @@ public class MemberRegisterService implements SaveService {
         member.setIs_chengxin("0");//诚信单位 0默认否
         member.setIs_miaomu("0");//苗木协会  0默认否
         member.setIs_use("0");//是否禁用 0默认否
-        member.setIscheck("0");//是否审核  0默认否
+        member.setIscheck("1");//是否审核  0默认否  1已审核
         member.setMm_emp_beizhu("");
         member.setMm_emp_company_detail("");
         try {
