@@ -98,6 +98,13 @@ public class EmpService implements ListService , UpdateService , ExecuteService{
                 empVO.setMm_emp_cover(Constants.QINIU_URL + empVO.getMm_emp_cover());
             }
         }
+        if(empVO != null && !StringUtil.isNullOrEmpty(empVO.getMm_emp_company_pic())){
+            if(empVO.getMm_emp_company_pic().startsWith("upload")){
+                empVO.setMm_emp_company_pic(Constants.URL + empVO.getMm_emp_company_pic());
+            }else{
+                empVO.setMm_emp_company_pic(Constants.QINIU_URL + empVO.getMm_emp_company_pic());
+            }
+        }
         return empVO;
     }
 

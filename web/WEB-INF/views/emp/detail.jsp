@@ -66,6 +66,13 @@
                     <input type="button" value="上传" onclick="uploadImage()" style="float: left;"/><br/><br/>
                 </div>
             </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" >营业执照或公司门头</label>
+            <div class="col-sm-10 col-md-2">
+              <img class="img-thumbnail" name="mm_emp_company_pic" id="mm_emp_company_pic"   style="cursor: pointer"  src="${empVO.mm_emp_company_pic}"/>
+            </div>
+          </div>
           <%--<div class="form-group">--%>
             <%--<label class="col-sm-2 control-label">用户密码</label>--%>
             <%--<div class="col-sm-4">--%>

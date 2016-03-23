@@ -2,11 +2,10 @@ package com.liangxunwang.unimanager.service.app;
 
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.liangxunwang.unimanager.dao.EmpDao;
+import com.liangxunwang.unimanager.dao.ShenheTypeDao;
 import com.liangxunwang.unimanager.model.Emp;
-import com.liangxunwang.unimanager.service.ExecuteService;
-import com.liangxunwang.unimanager.service.SaveService;
-import com.liangxunwang.unimanager.service.ServiceException;
-import com.liangxunwang.unimanager.service.UpdateService;
+import com.liangxunwang.unimanager.model.ShenheTypeObj;
+import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +14,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -26,6 +26,10 @@ public class MemberRegisterService implements SaveService,UpdateService{
     @Autowired
     @Qualifier("empDao")
     private EmpDao memberDao;
+
+    @Autowired
+    @Qualifier("shenheTypeDao")
+    private ShenheTypeDao shenheTypeDao;
 
     @Override
     public Object save(Object object) {
@@ -54,10 +58,30 @@ public class MemberRegisterService implements SaveService,UpdateService{
         member.setIs_chengxin("0");//诚信单位 0默认否
         member.setIs_miaomu("0");//苗木协会  0默认否
         member.setIs_use("0");//是否禁用 0默认否
-        member.setIscheck("1");//是否审核  0默认否  1已审核
         member.setMm_emp_beizhu("");
         member.setMm_emp_company_detail("");
         member.setIs_upate_profile("0");//是否补充资料 默认否
+
+
+        //判断审核方式
+        Map<String, Object> map = new HashMap<String, Object>();
+        List<ShenheTypeObj> listsShenheType = shenheTypeDao.lists(map);
+        if(listsShenheType != null && listsShenheType.size()>0){
+            ShenheTypeObj shenheTypeObj = listsShenheType.get(0);
+            if(shenheTypeObj != null){
+                if("0".equals(shenheTypeObj.getMm_shenhe_type())){
+                    //自动审核
+                    member.setIscheck("1");//是否审核  0默认否  1已审核
+                }else{
+                    //需要管理员手动审核
+                    member.setIscheck("0");//是否审核  0默认否  1已审核
+                }
+            }
+
+        }else {
+            member.setIscheck("1");//是否审核  0默认否  1已审核
+        }
+
         try {
             memberDao.save(member);
         }catch (Exception e){
