@@ -1,14 +1,10 @@
 package com.liangxunwang.unimanager.mvc.app;
 
-import com.liangxunwang.unimanager.model.Favour;
-import com.liangxunwang.unimanager.model.KefuTel;
+import com.liangxunwang.unimanager.model.WeixinObj;
 import com.liangxunwang.unimanager.model.tip.DataTip;
-import com.liangxunwang.unimanager.mvc.vo.FavourVO;
 import com.liangxunwang.unimanager.mvc.vo.KefuVO;
-import com.liangxunwang.unimanager.query.FavourQuery;
 import com.liangxunwang.unimanager.query.KefuQuery;
 import com.liangxunwang.unimanager.service.ListService;
-import com.liangxunwang.unimanager.service.SaveService;
 import com.liangxunwang.unimanager.service.ServiceException;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,18 +18,18 @@ import java.util.List;
 /**
  */
 @Controller
-public class AppKefuController extends ControllerConstants {
+public class AppWeixinController extends ControllerConstants {
 
     @Autowired
-    @Qualifier("kefuTelService")
-    private ListService kefuTelService;
+    @Qualifier("weixinService")
+    private ListService levelService;
 
     //列表
-    @RequestMapping(value = "/getKefuTel", produces = "text/plain;charset=UTF-8")
+    @RequestMapping(value = "/getKefuWeixin", produces = "text/plain;charset=UTF-8")
     @ResponseBody
-    public String getKefuTel(KefuQuery query){
+    public String getKefuWeixin(KefuQuery query){
         try {
-            List<KefuVO> list = (List<KefuVO>) kefuTelService.list(query);
+            List<WeixinObj> list = (List<WeixinObj>) levelService.list(query);
             DataTip tip = new DataTip();
             tip.setData(list);
             return toJSONString(tip);

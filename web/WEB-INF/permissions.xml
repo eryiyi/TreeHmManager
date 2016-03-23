@@ -64,4 +64,8 @@
     <group id="SHENHE_MANAGE" name="审核方式">
         <permission id="SHNEHE_TYPE_MANAGE" name="审核方式"/>
     </group>
+    <group id="TEL_MANAGE" name="微信客服">
+        <permission id="ADD_WEIXIN_KEFU_MANAGE" name="添加微信"/>
+        <permission id="WEIXIN_KEFU_MANAGE" name="微信列表"/>
+    </group>
 </permissions>

@@ -386,6 +386,23 @@
 					</li>
 				</c:if>
 
+				<c:if test="${um:permission('ADD_WEIXIN_KEFU_MANAGE', sessionScope.powers)||um:permission('WEIXIN_KEFU_MANAGE', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="javascript:void (0);" class="dropdown-toggle">
+							<i class="fa fa-phone"></i>
+							<span class="hidden-xs">微信客服</span>
+						</a>
+						<ul class="dropdown-menu">
+							<c:if test="${um:permission('ADD_WEIXIN_KEFU_MANAGE', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('/weixin/add','')">添加微信</a></li>
+							</c:if>
+							<c:if test="${um:permission('WEIXIN_KEFU_MANAGE', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('/weixin/list','')">微信列表</a></li>
+							</c:if>
+						</ul>
+					</li>
+				</c:if>
+
 			</ul>
 		</div>
 		<!--Start Content-->

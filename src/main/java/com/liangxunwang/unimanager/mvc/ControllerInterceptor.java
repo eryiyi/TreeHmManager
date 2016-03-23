@@ -79,6 +79,7 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/deleteFavour\\.do$)"+
                         "|(^/getLoginAd\\.do$)"+
                         "|(^/memberUpdateProfile\\.do$)"+
+                        "|(^/getKefuWeixin\\.do$)"+
 
                         "|(^/memberLogin\\.do$)"
 
