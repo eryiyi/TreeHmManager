@@ -38,11 +38,20 @@ public class MemberLoginService implements ExecuteService {
         if (!"1".equals(member.getIscheck())){
             throw new ServiceException("NotCheck");//未审核
         }
-        if (!StringUtil.isNullOrEmpty(member.getMm_emp_cover())) {
+
+        if(!StringUtil.isNullOrEmpty(member.getMm_emp_cover())){
             if (member.getMm_emp_cover().startsWith("upload")) {
                 member.setMm_emp_cover(Constants.URL + member.getMm_emp_cover());
             }else {
                 member.setMm_emp_cover(Constants.QINIU_URL + member.getMm_emp_cover());
+            }
+        }
+
+        if(!StringUtil.isNullOrEmpty(member.getMm_emp_company_pic())){
+            if (member.getMm_emp_company_pic().startsWith("upload")) {
+                member.setMm_emp_company_pic(Constants.URL + member.getMm_emp_company_pic());
+            }else {
+                member.setMm_emp_company_pic(Constants.QINIU_URL + member.getMm_emp_company_pic());
             }
         }
         return member;

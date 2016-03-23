@@ -39,6 +39,15 @@ public class Emp {
     private String lng;
     private String ischeck;
     private String access_token;
+    private String is_upate_profile;
+
+    public String getIs_upate_profile() {
+        return is_upate_profile;
+    }
+
+    public void setIs_upate_profile(String is_upate_profile) {
+        this.is_upate_profile = is_upate_profile;
+    }
 
     public String getMm_emp_company_pic() {
         return mm_emp_company_pic;

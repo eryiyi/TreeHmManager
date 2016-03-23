@@ -6,6 +6,7 @@ import com.liangxunwang.unimanager.model.Emp;
 import com.liangxunwang.unimanager.service.ExecuteService;
 import com.liangxunwang.unimanager.service.SaveService;
 import com.liangxunwang.unimanager.service.ServiceException;
+import com.liangxunwang.unimanager.service.UpdateService;
 import com.liangxunwang.unimanager.util.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,7 +22,7 @@ import java.util.Random;
  * Created by liuzwei on 2015/1/29.
  */
 @Service("memberRegisterService")
-public class MemberRegisterService implements SaveService {
+public class MemberRegisterService implements SaveService,UpdateService{
     @Autowired
     @Qualifier("empDao")
     private EmpDao memberDao;
@@ -56,6 +57,7 @@ public class MemberRegisterService implements SaveService {
         member.setIscheck("1");//是否审核  0默认否  1已审核
         member.setMm_emp_beizhu("");
         member.setMm_emp_company_detail("");
+        member.setIs_upate_profile("0");//是否补充资料 默认否
         try {
             memberDao.save(member);
         }catch (Exception e){
@@ -65,5 +67,16 @@ public class MemberRegisterService implements SaveService {
     }
 
 
-
+    //完善个人资料 app
+    @Override
+    public Object update(Object object) {
+        Emp member = (Emp) object;
+        member.setIs_upate_profile("1");
+        try {
+            memberDao.updateProfileMember(member);
+        }catch (Exception e){
+            throw new ServiceException(Constants.SAVE_ERROR);
+        }
+        return member;
+    }
 }

@@ -67,4 +67,7 @@ public interface EmpDao {
 
     //发布求购权限
     void updateFabuqg(Map<String,Object> map);
+
+    //补充资料
+    void updateProfileMember(Emp emp);
 }

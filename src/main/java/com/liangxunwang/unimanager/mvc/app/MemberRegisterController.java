@@ -8,10 +8,7 @@ import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.mvc.vo.CityVO;
 import com.liangxunwang.unimanager.query.CityQuery;
 import com.liangxunwang.unimanager.query.CountryQuery;
-import com.liangxunwang.unimanager.service.ExecuteService;
-import com.liangxunwang.unimanager.service.ListService;
-import com.liangxunwang.unimanager.service.SaveService;
-import com.liangxunwang.unimanager.service.ServiceException;
+import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.Constants;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,13 +26,13 @@ import java.util.List;
  */
 @Controller
 public class MemberRegisterController extends ControllerConstants {
-
-    /**
-     */
-
     @Autowired
     @Qualifier("memberRegisterService")
     private SaveService memberRegisterService;
+
+    @Autowired
+    @Qualifier("memberRegisterService")
+    private UpdateService memberUpdateService;
 
     @Autowired
     @Qualifier("provinceService")
@@ -72,6 +69,27 @@ public class MemberRegisterController extends ControllerConstants {
         }
         return toJSONString(SUCCESS);
     }
+
+    /**
+     * 完善个人资料
+     * @param member  会员对象
+     * @return
+     */
+    @RequestMapping("/memberUpdateProfile")
+    @ResponseBody
+    public String updateProfile(Emp member){
+        try {
+            memberUpdateService.update(member);
+        }catch (ServiceException e){
+            String msg = e.getMessage();
+            if (msg.equals(Constants.SAVE_ERROR)){
+                //更新失败
+                return toJSONString(ERROR_1);
+            }
+        }
+        return toJSONString(SUCCESS);
+    }
+
 
 //    /**
 //     * 获得所有的省份

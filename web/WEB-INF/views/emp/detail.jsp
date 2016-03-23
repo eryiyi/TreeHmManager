@@ -389,18 +389,18 @@
       alert("请选择用户类型");
       return;
     }
-    if(mm_emp_company.replace(/\s/g, '') == ''){
-      alert("请填写公司名称");
-      return;
-    }
-    if(mm_emp_company_type.replace(/\s/g, '') == ''){
-      alert("请选择公司类型");
-      return;
-    }
-    if(mm_emp_company_address.replace(/\s/g, '') == ''){
-      alert("请填写公司地址");
-      return;
-    }
+//    if(mm_emp_company.replace(/\s/g, '') == ''){
+//      alert("请填写公司名称");
+//      return;
+//    }
+//    if(mm_emp_company_type.replace(/\s/g, '') == ''){
+//      alert("请选择公司类型");
+//      return;
+//    }
+//    if(mm_emp_company_address.replace(/\s/g, '') == ''){
+//      alert("请填写公司地址");
+//      return;
+//    }
 //    if(mm_emp_company_detail.replace(/\s/g, '') == ''){
 //      alert("请填写公司简介");
 //      return;
@@ -418,10 +418,10 @@
       return;
     }
 
-    if(mm_level_id.replace(/\s/g, '') == ''){
-      alert("请选择VIP星级");
-      return;
-    }
+//    if(mm_level_id.replace(/\s/g, '') == ''){
+//      alert("请选择VIP星级");
+//      return;
+//    }
 
 //    if(mm_emp_endtime.replace(/\s/g, '') == ''){
 //      alert("请选择VIP到期日期");
