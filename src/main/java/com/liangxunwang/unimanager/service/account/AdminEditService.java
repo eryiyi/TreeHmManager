@@ -37,25 +37,29 @@ public class AdminEditService implements ExecuteService,UpdateService{
     public Object execute(Object object) throws ServiceException {
         String userId = (String) object;
         AdminVO admin = adminDao.findById(userId);
-        String permission = null;
-        //查询权限
-        if ("all".equals(admin.getPermissions())){
-            permission = "all";
-        }
-        else {
-            if (!StringUtil.isNullOrEmpty(admin.getPermissions())){
-                Role role = roleDao.find(admin.getPermissions());
-                permission = role.getPermissions();
+        if(admin != null){
+            String permission = null;
+            //查询权限
+            if ("all".equals(admin.getPermissions())){
+                permission = "all";
             }
-        }
-        //查询角色
-        Role role = null;
-        if("all".equals(admin.getPermissions())){
-            //是全部权限
+            else {
+                if (!StringUtil.isNullOrEmpty(admin.getPermissions())){
+                    Role role = roleDao.find(admin.getPermissions());
+                    permission = role.getPermissions();
+                }
+            }
+            //查询角色
+            Role role = null;
+            if("all".equals(admin.getPermissions())){
+                //是全部权限
+            }else {
+                role = roleDao.find(admin.getPermissions());
+            }
+            return new Object[]{admin, permission, role};
         }else {
-            role = roleDao.find(admin.getPermissions());
+            return null;
         }
-        return new Object[]{admin, permission, role};
     }
 
 

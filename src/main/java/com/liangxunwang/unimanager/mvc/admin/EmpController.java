@@ -234,7 +234,7 @@ public class EmpController extends ControllerConstants {
         try {
             empServiceUpdate.update(emp);
             //日志记录
-            logoService.save(new LogoObj("更新会员:："+emp.getMm_emp_nickname()+"的信息", manager.getMm_manager_id()));
+            logoService.save(new LogoObj("更新会员:："+emp.getMm_emp_mobile()+"的信息", manager.getMm_manager_id()));
             return toJSONString(SUCCESS);
         }catch (ServiceException e){
             return toJSONString(ERROR_1);

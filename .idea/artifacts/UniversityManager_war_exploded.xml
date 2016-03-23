@@ -72,6 +72,11 @@
           <element id="library" level="project" name="Maven: com.qiniu:qiniu-java-sdk:7.0.8" />
           <element id="library" level="project" name="Maven: com.squareup.okhttp:okhttp:2.7.1" />
           <element id="library" level="project" name="Maven: com.squareup.okio:okio:1.6.0" />
+          <element id="library" level="project" name="Maven: com.qiniu:qiniu-android-sdk:7.0.10" />
+          <element id="library" level="project" name="Maven: com.loopj.android:android-async-http:1.4.9" />
+          <element id="library" level="project" name="Maven: cz.msebera.android:httpclient:4.3.6" />
+          <element id="library" level="project" name="Maven: com.qiniu:happy-dns:0.2.5" />
+          <element id="library" level="project" name="jxl" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="UniversityManager/web/Web" />

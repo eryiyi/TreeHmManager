@@ -40,19 +40,21 @@ public class AdminEditController extends ControllerConstants {
     public String toUpdateType(HttpSession session,ModelMap map, String id) throws Exception {
         Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         Object[] results = (Object[]) adminEditService.execute(id);
-        AdminVO admin = (AdminVO) results[0];
-        String permissions = (String) results[1];
-        Role role  = (Role) results[2];
+        if(results != null){
+            AdminVO admin = (AdminVO) results[0];
+            String permissions = (String) results[1];
+            Role role  = (Role) results[2];
 
-        map.put("admin", admin);
-        if(role != null){
-            map.put("role", role);
-        }else {
-            map.put("roleRname", "最高管理员");
+            map.put("admin", admin);
+            if(role != null){
+                map.put("role", role);
+            }else {
+                map.put("roleRname", "最高管理员");
+            }
+            map.put("permissions_admin", permissions);
+            //日志记录
+            logoService.save(new LogoObj("查看管理员:"+admin.getMm_manager_nickname()+"的个人信息", manager.getMm_manager_id()));
         }
-        map.put("permissions_admin", permissions);
-        //日志记录
-        logoService.save(new LogoObj("查看管理员:"+admin.getMm_manager_nickname()+"的个人信息", manager.getMm_manager_id()));
         return "/admin/detail";
     }
 
