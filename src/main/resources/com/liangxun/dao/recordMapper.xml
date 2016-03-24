@@ -113,10 +113,6 @@
         ) m
     </select>
 
-    <delete id="" >
-        DELETE FROM mm_msg WHERE  = #{id}
-    </delete>
-
     <update id="deleteById" parameterType="String">
         UPDATE mm_msg SET is_del=1 WHERE mm_msg_id=#{mm_msg_id}
     </update>

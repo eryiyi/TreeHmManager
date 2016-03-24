@@ -68,4 +68,7 @@
         <permission id="ADD_WEIXIN_KEFU_MANAGE" name="添加微信"/>
         <permission id="WEIXIN_KEFU_MANAGE" name="微信列表"/>
     </group>
+    <group id="PAIHANG_MANAGE" name="排行榜">
+        <permission id="PAIHANG_SHANGHU_MANAGE" name="商户列表"/>
+    </group>
 </permissions>

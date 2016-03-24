@@ -2,6 +2,7 @@ package com.liangxunwang.unimanager.util;
 
 import com.liangxunwang.unimanager.model.Student;
 import com.liangxunwang.unimanager.mvc.vo.EmpVO;
+import com.liangxunwang.unimanager.mvc.vo.PaihangObjVO;
 import com.liangxunwang.unimanager.mvc.vo.RecordVO;
 import com.liangxunwang.unimanager.mvc.vo.ReportVO;
 import org.apache.poi.hssf.usermodel.*;
@@ -438,5 +439,99 @@ public class CreateSimpleExcelToDisk {
         }
     }
 
+
+
+    public static String toExcelPaihang(List<PaihangObjVO> empVOs, HttpServletRequest request) throws Exception
+    {
+        // 第一步，创建一个webbook，对应一个Excel文件
+        HSSFWorkbook wb = new HSSFWorkbook();
+        // 第二步，在webbook中添加一个sheet,对应Excel文件中的sheet
+        HSSFSheet sheet = wb.createSheet("金牌商家排行榜");
+        // 第三步，在sheet中添加表头第0行,注意老版本poi对Excel的行数列数有限制short
+        HSSFRow row = sheet.createRow((int) 0);
+        // 第四步，创建单元格，并设置值表头 设置表头居中
+        HSSFCellStyle style = wb.createCellStyle();
+        style.setAlignment(HSSFCellStyle.ALIGN_CENTER); // 创建一个居中格式
+
+        HSSFCell cell = row.createCell((short) 0);
+        cell.setCellValue("商家姓名");
+        cell.setCellStyle(style);
+        cell = row.createCell((short) 1);
+        cell.setCellValue("商家手机号");
+        cell.setCellStyle(style);
+        cell = row.createCell((short) 2);
+        cell.setCellValue("商家类型");
+        cell.setCellStyle(style);
+        cell = row.createCell((short) 3);
+        cell.setCellValue("公司名称");
+        cell.setCellStyle(style);
+        cell = row.createCell((short) 4);
+        cell.setCellValue("公司地址");
+        cell.setCellStyle(style);
+        cell = row.createCell((short) 5);
+        cell.setCellValue("是否上榜");
+        cell.setCellStyle(style);
+        cell = row.createCell((short) 6);
+        cell.setCellValue("置顶数字");
+        cell.setCellStyle(style);
+        cell = row.createCell((short) 7);
+        cell.setCellValue("退榜时间");
+        cell.setCellStyle(style);
+
+        // 第五步，写入实体数据 实际应用中这些数据从数据库得到，
+//        List list = CreateSimpleExcelToDisk.getStudent();
+
+        for (int i = 0; i < empVOs.size(); i++)
+        {
+            row = sheet.createRow((int) i + 1);
+            PaihangObjVO stu = (PaihangObjVO) empVOs.get(i);
+            // 第四步，创建单元格，并设置值
+            row.createCell((short) 0).setCellValue(stu.getMm_emp_nickname());
+            row.createCell((short) 1).setCellValue(stu.getMm_emp_mobile());
+            if("0".equals(stu.getMm_emp_type())){
+                row.createCell((short) 2).setCellValue("苗木经营");
+            }else {
+                row.createCell((short) 2).setCellValue("苗木会员");
+            }
+
+            row.createCell((short) 3).setCellValue(stu.getMm_emp_company());
+            row.createCell((short) 4).setCellValue(stu.getMm_emp_company_address()==null?"":stu.getMm_emp_company_address());
+
+            if("0".equals(stu.getIs_del())){
+                row.createCell((short) 5).setCellValue("是");
+            }else {
+                row.createCell((short) 5).setCellValue("否");
+            }
+            row.createCell((short) 6).setCellValue(stu.getTop_num()==null?"":stu.getTop_num());
+            if(!StringUtil.isNullOrEmpty(stu.getEnd_time())){
+                row.createCell((short) 7).setCellValue(stu.getEnd_time());
+            }else {
+                row.createCell((short) 7).setCellValue("无");
+            }
+
+        }
+        // 第六步，将文件存到指定位置
+        try
+        {
+//            SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");//设置日期格式
+//            String fileName = String.valueOf(df.format(new Date()));
+//            FileOutputStream fout = new FileOutputStream("D:/jubao_"+fileName+".xls");
+//            wb.write(fout);
+//            fout.close();
+//            return fileName;
+            SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");//设置日期格式
+            String fileName = String.valueOf(df.format(new Date()));
+            String path = request.getSession().getServletContext().getRealPath("upload");
+            FileOutputStream fout = new FileOutputStream(path+"/paihang_"+fileName+".xls");
+            wb.write(fout);
+            fout.close();
+            return "/paihang_"+fileName+".xls";
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
 }

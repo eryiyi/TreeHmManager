@@ -331,6 +331,7 @@
           <div class="form-group">
             <div class="col-sm-9 col-sm-offset-3">
               <button type="button" class="btn btn-primary" onclick="saveRole('${empVO.mm_emp_id}')">确定修改</button>
+              <button type="button" class="btn btn-primary" onclick="javascript :history.back(-1)">返回</button>
             </div>
           </div>
         </form>

@@ -184,155 +184,15 @@
 					</li>
 				</c:if>
 
-				<c:if test="${um:permission('ADD_NOTICE', sessionScope.powers)||um:permission('NOTICE_LIST', sessionScope.powers)}">
-				<li class="dropdown">
-					<a href="javascript:void (0);" class="dropdown-toggle">
-						<i class="fa fa-bullhorn"></i>
-						<span class="hidden-xs">公告管理</span>
-					</a>
-					<ul class="dropdown-menu">
-						<c:if test="${um:permission('ADD_NOTICE', sessionScope.powers)}">
-							<li><a href="javascript:void(0);" onclick="toPage('role/addPiao','1')">添加公告</a></li>
-						</c:if>
-						<c:if test="${um:permission('NOTICE_LIST', sessionScope.powers)}">
-							<li><a href="javascript:void(0);" onclick="toPage('role/addPiao','1')">公告列表</a></li>
-						</c:if>
-
-					</ul>
-				</li>
-				</c:if>
-
-				<c:if test="${um:permission('PROVINCE_LIST', sessionScope.powers)||um:permission('CITY_LIST', sessionScope.powers)||um:permission('COUNTY_LIST', sessionScope.powers)}">
-				<li class="dropdown">
-					<a href="javascript:void (0);" class="dropdown-toggle">
-						<i class="fa fa-globe"></i>
-						<span class="hidden-xs">地区管理</span>
-					</a>
-					<ul class="dropdown-menu">
-						<c:if test="${um:permission('PROVINCE_LIST', sessionScope.powers)}">
-							<li><a href="javascript:void(0);" onclick="toPage('province/list','1')">省份列表</a></li>
-						</c:if>
-						<c:if test="${um:permission('CITY_LIST', sessionScope.powers)}">
-							<li><a href="javascript:void(0);" onclick="toPage('city/list','1')">城市列表</a></li>
-						</c:if>
-						<c:if test="${um:permission('COUNTY_LIST', sessionScope.powers)}">
-							<li><a href="javascript:void(0);" onclick="toPage('country/list','1')">地区列表</a></li>
-						</c:if>
-					</ul>
-				</li>
-				</c:if>
-
-					<c:if test="${um:permission('LOGO_LIST', sessionScope.powers)}">
-						<li class="dropdown">
-							<a href="javascript:void (0);" class="dropdown-toggle">
-								<i class="fa fa-reorder"></i>
-								<span class="hidden-xs">日志管理</span>
-							</a>
-							<ul class="dropdown-menu">
-								<c:if test="${um:permission('LOGO_LIST', sessionScope.powers)}">
-									<li><a href="javascript:void(0);" onclick="toPage('/logo/list','1')">日志列表</a></li>
-								</c:if>
-							</ul>
-						</li>
-					</c:if>
-
-					<c:if test="${um:permission('REPORT_LIST', sessionScope.powers)}">
-						<li class="dropdown">
-							<a href="javascript:void (0);" class="dropdown-toggle">
-								<i class="fa fa-envelope"></i>
-								<span class="hidden-xs">举报管理</span>
-							</a>
-							<ul class="dropdown-menu">
-								<li><a href="javascript:void(0);" onclick="toPage('/report/list','1')">举报列表</a></li>
-							</ul>
-						</li>
-					</c:if>
-
-					<c:if test="${um:permission('ADD_LEVEL', sessionScope.powers)||um:permission('LEVEL_LIST', sessionScope.powers)}">
-						<li class="dropdown">
-							<a href="javascript:void (0);" class="dropdown-toggle">
-								<i class="fa fa-sitemap"></i>
-								<span class="hidden-xs">等级管理</span>
-							</a>
-							<ul class="dropdown-menu">
-								<c:if test="${um:permission('ADD_LEVEL', sessionScope.powers)}">
-									<li><a href="javascript:void(0);" onclick="toPage('/level/add','')">添加等级</a></li>
-								</c:if>
-								<c:if test="${um:permission('LEVEL_LIST', sessionScope.powers)}">
-									<li><a href="javascript:void(0);" onclick="toPage('/level/list','1')">等级列表</a></li>
-								</c:if>
-							</ul>
-						</li>
-					</c:if>
-
-					<c:if test="${um:permission('ADD_FEIYONG', sessionScope.powers)||um:permission('FEIYONG_LIST', sessionScope.powers)}">
-						<li class="dropdown">
-							<a href="javascript:void (0);" class="dropdown-toggle">
-								<i class="fa fa-credit-card"></i>
-								<span class="hidden-xs">会费管理</span>
-							</a>
-							<ul class="dropdown-menu">
-								<c:if test="${um:permission('ADD_FEIYONG', sessionScope.powers)}">
-									<li><a href="javascript:void(0);" onclick="toPage('feiyong/add','')">会费添加</a></li>
-								</c:if>
-								<c:if test="${um:permission('FEIYONG_LIST', sessionScope.powers)}">
-									<li><a href="javascript:void(0);" onclick="toPage('feiyong/list','1')">会费列表</a></li>
-								</c:if>
-							</ul>
-						</li>
-					</c:if>
-
-					<c:if test="${um:permission('ORDER_LIST', sessionScope.powers)}">
-						<li class="dropdown">
-							<a href="javascript:void (0);" class="dropdown-toggle">
-								<i class="fa fa-shopping-cart"></i>
-								<span class="hidden-xs">订单管理</span>
-							</a>
-							<ul class="dropdown-menu">
-								<c:if test="${um:permission('ORDER_LIST', sessionScope.powers)}">
-									<li><a href="javascript:void(0);" onclick="toPage('order/list','1')">订单列表</a></li>
-								</c:if>
-							</ul>
-						</li>
-					</c:if>
-				<c:if test="${um:permission('FUWU_LIST', sessionScope.powers)||um:permission('FUWU_ADD', sessionScope.powers)}">
+				<c:if test="${um:permission('PAIHANG_SHANGHU_MANAGE', sessionScope.powers)}">
 					<li class="dropdown">
 						<a href="javascript:void (0);" class="dropdown-toggle">
-							<i class="fa fa-leaf"></i>
-							<span class="hidden-xs">服务管理</span>
+							<i class="fa fa-reorder"></i>
+							<span class="hidden-xs">排行榜</span>
 						</a>
 						<ul class="dropdown-menu">
-							<c:if test="${um:permission('FUWU_ADD', sessionScope.powers)}">
-								<li><a href="javascript:void(0);" onclick="toPage('fuwu/add','')">服务添加</a></li>
-							</c:if>
-							<c:if test="${um:permission('FUWU_LIST', sessionScope.powers)}">
-								<li><a href="javascript:void(0);" onclick="toPage('fuwu/list','1')">服务列表</a></li>
-							</c:if>
-						</ul>
-					</li>
-				</c:if>
-				<c:if test="${um:permission('ABOUT_US_MANA', sessionScope.powers)}">
-					<li class="dropdown">
-						<a href="javascript:void (0);" class="dropdown-toggle">
-							<i class="fa fa-info"></i>
-							<span class="hidden-xs">关于我们</span>
-						</a>
-						<ul class="dropdown-menu">
-							<c:if test="${um:permission('ABOUT_US_MANA', sessionScope.powers)}">
-								<li><a href="javascript:void(0);" onclick="toPage('aboutUs/add','')">关于我们</a></li>
-							</c:if>
-						</ul>
-					</li>
-				</c:if>
-				<c:if test="${um:permission('SUGGEST_MANAGE', sessionScope.powers)}">
-					<li class="dropdown">
-						<a href="javascript:void (0);" class="dropdown-toggle">
-							<i class="fa fa-envelope"></i>
-							<span class="hidden-xs">意见反馈</span>
-						</a>
-						<ul class="dropdown-menu">
-							<c:if test="${um:permission('SUGGEST_MANAGE', sessionScope.powers)}">
-								<li><a href="javascript:void(0);" onclick="toPage('/suggest/list','')">意见反馈</a></li>
+							<c:if test="${um:permission('PAIHANG_SHANGHU_MANAGE', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('/paihang/list','')">商户列表</a></li>
 							</c:if>
 						</ul>
 					</li>
@@ -358,7 +218,7 @@
 				<c:if test="${um:permission('ADD_AD_MANAGE', sessionScope.powers)||um:permission('AD_LISTMANAGE', sessionScope.powers)}">
 					<li class="dropdown">
 						<a href="javascript:void (0);" class="dropdown-toggle">
-							<i class="fa fa-phone"></i>
+							<i class="fa fa-credit-card"></i>
 							<span class="hidden-xs">广告管理</span>
 						</a>
 						<ul class="dropdown-menu">
@@ -389,7 +249,7 @@
 				<c:if test="${um:permission('ADD_WEIXIN_KEFU_MANAGE', sessionScope.powers)||um:permission('WEIXIN_KEFU_MANAGE', sessionScope.powers)}">
 					<li class="dropdown">
 						<a href="javascript:void (0);" class="dropdown-toggle">
-							<i class="fa fa-phone"></i>
+							<i class="fa fa-shopping-cart"></i>
 							<span class="hidden-xs">微信客服</span>
 						</a>
 						<ul class="dropdown-menu">
@@ -398,6 +258,162 @@
 							</c:if>
 							<c:if test="${um:permission('WEIXIN_KEFU_MANAGE', sessionScope.powers)}">
 								<li><a href="javascript:void(0);" onclick="toPage('/weixin/list','')">微信列表</a></li>
+							</c:if>
+						</ul>
+					</li>
+				</c:if>
+
+				<c:if test="${um:permission('REPORT_LIST', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="javascript:void (0);" class="dropdown-toggle">
+							<i class="fa fa-envelope"></i>
+							<span class="hidden-xs">举报管理</span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="javascript:void(0);" onclick="toPage('/report/list','1')">举报列表</a></li>
+						</ul>
+					</li>
+				</c:if>
+
+				<c:if test="${um:permission('ADD_LEVEL', sessionScope.powers)||um:permission('LEVEL_LIST', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="javascript:void (0);" class="dropdown-toggle">
+							<i class="fa fa-sitemap"></i>
+							<span class="hidden-xs">等级管理</span>
+						</a>
+						<ul class="dropdown-menu">
+							<c:if test="${um:permission('ADD_LEVEL', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('/level/add','')">添加等级</a></li>
+							</c:if>
+							<c:if test="${um:permission('LEVEL_LIST', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('/level/list','1')">等级列表</a></li>
+							</c:if>
+						</ul>
+					</li>
+				</c:if>
+
+				<c:if test="${um:permission('ADD_FEIYONG', sessionScope.powers)||um:permission('FEIYONG_LIST', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="javascript:void (0);" class="dropdown-toggle">
+							<i class="fa fa-credit-card"></i>
+							<span class="hidden-xs">会费管理</span>
+						</a>
+						<ul class="dropdown-menu">
+							<c:if test="${um:permission('ADD_FEIYONG', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('feiyong/add','')">会费添加</a></li>
+							</c:if>
+							<c:if test="${um:permission('FEIYONG_LIST', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('feiyong/list','1')">会费列表</a></li>
+							</c:if>
+						</ul>
+					</li>
+				</c:if>
+
+				<c:if test="${um:permission('ORDER_LIST', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="javascript:void (0);" class="dropdown-toggle">
+							<i class="fa fa-shopping-cart"></i>
+							<span class="hidden-xs">订单管理</span>
+						</a>
+						<ul class="dropdown-menu">
+							<c:if test="${um:permission('ORDER_LIST', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('order/list','1')">订单列表</a></li>
+							</c:if>
+						</ul>
+					</li>
+				</c:if>
+				<c:if test="${um:permission('FUWU_LIST', sessionScope.powers)||um:permission('FUWU_ADD', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="javascript:void (0);" class="dropdown-toggle">
+							<i class="fa fa-leaf"></i>
+							<span class="hidden-xs">服务管理</span>
+						</a>
+						<ul class="dropdown-menu">
+							<c:if test="${um:permission('FUWU_ADD', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('fuwu/add','')">服务添加</a></li>
+							</c:if>
+							<c:if test="${um:permission('FUWU_LIST', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('fuwu/list','1')">服务列表</a></li>
+							</c:if>
+						</ul>
+					</li>
+				</c:if>
+
+				<c:if test="${um:permission('SUGGEST_MANAGE', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="javascript:void (0);" class="dropdown-toggle">
+							<i class="fa fa-envelope"></i>
+							<span class="hidden-xs">意见反馈</span>
+						</a>
+						<ul class="dropdown-menu">
+							<c:if test="${um:permission('SUGGEST_MANAGE', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('/suggest/list','')">意见反馈</a></li>
+							</c:if>
+						</ul>
+					</li>
+				</c:if>
+
+				<c:if test="${um:permission('ADD_NOTICE', sessionScope.powers)||um:permission('NOTICE_LIST', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="javascript:void (0);" class="dropdown-toggle">
+							<i class="fa fa-bullhorn"></i>
+							<span class="hidden-xs">公告管理</span>
+						</a>
+						<ul class="dropdown-menu">
+							<c:if test="${um:permission('ADD_NOTICE', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('role/addPiao','1')">添加公告</a></li>
+							</c:if>
+							<c:if test="${um:permission('NOTICE_LIST', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('role/addPiao','1')">公告列表</a></li>
+							</c:if>
+
+						</ul>
+					</li>
+				</c:if>
+
+				<c:if test="${um:permission('PROVINCE_LIST', sessionScope.powers)||um:permission('CITY_LIST', sessionScope.powers)||um:permission('COUNTY_LIST', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="javascript:void (0);" class="dropdown-toggle">
+							<i class="fa fa-globe"></i>
+							<span class="hidden-xs">地区管理</span>
+						</a>
+						<ul class="dropdown-menu">
+							<c:if test="${um:permission('PROVINCE_LIST', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('province/list','1')">省份列表</a></li>
+							</c:if>
+							<c:if test="${um:permission('CITY_LIST', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('city/list','1')">城市列表</a></li>
+							</c:if>
+							<c:if test="${um:permission('COUNTY_LIST', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('country/list','1')">地区列表</a></li>
+							</c:if>
+						</ul>
+					</li>
+				</c:if>
+
+				<c:if test="${um:permission('LOGO_LIST', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="javascript:void (0);" class="dropdown-toggle">
+							<i class="fa fa-reorder"></i>
+							<span class="hidden-xs">日志管理</span>
+						</a>
+						<ul class="dropdown-menu">
+							<c:if test="${um:permission('LOGO_LIST', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('/logo/list','1')">日志列表</a></li>
+							</c:if>
+						</ul>
+					</li>
+				</c:if>
+
+				<c:if test="${um:permission('ABOUT_US_MANA', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="javascript:void (0);" class="dropdown-toggle">
+							<i class="fa fa-info"></i>
+							<span class="hidden-xs">关于我们</span>
+						</a>
+						<ul class="dropdown-menu">
+							<c:if test="${um:permission('ABOUT_US_MANA', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('aboutUs/add','')">关于我们</a></li>
 							</c:if>
 						</ul>
 					</li>
@@ -433,10 +449,7 @@
 <script src="/plugins/tinymce/jquery.tinymce.min.js"></script>
 <script src="/js/devoops.js"></script>
 <script src="/js/china2.js"></script>
-<script type="text/javascript" src="/js/md5.js"></script>
 <script type="text/javascript" src="/js/cookie.js"></script>
-<script type="text/javascript" src="/js/ajaxfileupload.js"></script>
-<script type="text/javascript" src="/js/Util.js"></script>
 
 </body>
 <script type="text/javascript">

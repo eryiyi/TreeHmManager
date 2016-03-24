@@ -77,6 +77,7 @@
           <div class="form-group">
             <div class="col-sm-9 col-sm-offset-3">
               <button type="button" class="btn btn-primary" onclick="saveP()">添加</button>
+              <button type="button" class="btn btn-primary" onclick="javascript :history.back(-1)">返回</button>
             </div>
           </div>
         </form>

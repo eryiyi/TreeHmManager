@@ -81,6 +81,7 @@
               <button type="button" class="btn btn-primary" onclick="saveRole('${admin.mm_manager_id}')">确定修改</button>
               <button type="button" class="btn btn-primary" onclick="manageEmp('${admin.mm_manager_id}','1')">启用</button>
               <button type="button" class="btn btn-primary" onclick="manageEmp('${admin.mm_manager_id}','0')">禁用</button>
+              <button type="button" class="btn btn-primary" onclick="javascript :history.back(-1)">返回</button>
             </div>
           </div>
         </form>

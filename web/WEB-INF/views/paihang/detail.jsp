@@ -8,8 +8,8 @@
     </a>
     <ol class="breadcrumb pull-left">
       <li><a href="javascript:void(0)"  onclick="toPage('mainPage','')">主页</a></li>
-      <li><a href="javascript:void (0);">信息管理</a></li>
-      <li><a href="javascript:void (0);">信息详情</a></li>
+      <li><a href="javascript:void (0);">排行榜</a></li>
+      <li><a href="javascript:void (0);">商户详情</a></li>
     </ol>
     <div id="social" class="pull-right">
       <a href="javascript:void(0)"><i class="fa fa-google-plus"></i></a>
@@ -33,48 +33,41 @@
       <div class="box-content">
         <%--<h4 class="page-header">会员详情</h4>--%>
         <form class="form-horizontal" role="form">
-          <input type="hidden" value="${recordVO.mm_msg_id}" id="mm_msg_id">
+          <input type="hidden" value="${recordVO.mm_paihang_id}" id="mm_paihang_id">
+
             <div class="form-group">
-                <label class="col-sm-2 control-label">信息类型</label>
+                <label class="col-sm-2 control-label">商户名称</label>
                 <div class="col-lg-8">
-                    <c:if test="${mm_msg_type == 0}"><div id="mm_msg_type">求购</div></c:if>
-                    <c:if test="${mm_msg_type != 1}"><div id="mm_msg_type">供应</div></c:if>
+                  <div id="mm_emp_nickname">${recordVO.mm_emp_nickname}</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">商户电话</label>
+                <div class="col-lg-8">
+                    <div id="mm_emp_mobile">${recordVO.mm_emp_mobile}</div>
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-sm-2 control-label">标题</label>
+                <label class="col-sm-2 control-label">商户公司</label>
                 <div class="col-lg-8">
-                  <div id="mm_msg_title">${recordVO.mm_msg_title}</div>
+                    <div id="mm_emp_company">${recordVO.mm_emp_company}</div>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-2 control-label">内容</label>
+                <label class="col-sm-2 control-label">商户地址</label>
                 <div class="col-lg-8">
-                    <div id="mm_msg_content">${recordVO.mm_msg_content}</div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">信息图片</label>
-                <div class="col-lg-8">
-                    <div id="mm_msg_picurl">${recordVO.mm_msg_picurl}</div>
+                    <div id="mm_emp_company_address">${recordVO.mm_emp_company_address}</div>
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-sm-2 control-label">时间戳</label>
-                <div class="col-lg-8">
-                    <div id="dateline">${um:format(recordVO.dateline, "yyyy-MM-dd HH:mm:ss")}</div>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-sm-2 control-label">是否置顶</label>
+                <label class="col-sm-2 control-label">是否显示</label>
                 <div class="col-sm-4">
-                    <select class="form-control" id="is_top">
+                    <select class="form-control" id="is_del">
                         <option value="">--请选择--</option>
-                        <option value="0" ${recordVO.is_top=='0'?'selected':''}>否</option>
-                        <option value="1" ${recordVO.is_top=='1'?'selected':''}>是</option>
+                        <option value="0" ${recordVO.is_del=='0'?'selected':''}>是</option>
+                        <option value="1" ${recordVO.is_del=='1'?'selected':''}>否</option>
                     </select>
                 </div>
             </div>
@@ -86,10 +79,17 @@
                 </div>
             </div>
 
-          <div class="form-group">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">时间戳</label>
+                <div class="col-lg-8">
+                    <div id="dateline">${um:format(recordVO.end_time, "yyyy-MM-dd HH:mm:ss")}</div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
             <div class="col-sm-9 col-sm-offset-3">
-              <button type="button" class="btn btn-primary" onclick="saveRole('${recordVO.mm_msg_id}')">修改</button>
-                <button type="button" class="btn btn-primary" onclick="javascript :history.back(-1)">返回</button>
+              <button type="button" class="btn btn-primary" onclick="saveRole('${recordVO.mm_paihang_id}')">修改</button>
             </div>
           </div>
         </form>
@@ -99,19 +99,17 @@
 </div>
 
 <script type="text/javascript">
-
   function saveRole(mm_emp_id){
-    var mm_msg_id = $("#mm_msg_id").val();
-    var is_top = $("#is_top").val();
+    var mm_paihang_id = $("#mm_paihang_id").val();
+    var is_del = $("#is_del").val();
     var top_num = $("#top_num").val();
-
     $.ajax({
       cache: true,
       type: "POST",
-      url:"/record/update.do",
+      url:"/paihang/update.do",
       data:{
-        "mm_msg_id":mm_msg_id,
-        "is_top":is_top,
+        "mm_paihang_id":mm_paihang_id,
+        "is_del":is_del,
         "top_num":top_num
       },
       async: false,
@@ -119,7 +117,7 @@
         var data = $.parseJSON(_data);
         if(data.success){
           alert("修改成功");
-          window.location.href = "#module=record/listQiugou";
+          window.location.href = "#module=paihang/list";
         }else{
           var _case = {1:"修改失败"};
           alert(_case[data.code])
@@ -127,19 +125,6 @@
       }
     });
   };
-
-  <%--function selectColleges(){--%>
-    <%--var citys =${listCitysAll};--%>
-    <%--var province = $("#mm_emp_provinceId").val();--%>
-    <%--var ret = '';--%>
-    <%--for(var i= citys.length-1; i>=0; i-- ){--%>
-      <%--if(citys[i].father==province){--%>
-        <%--ret += "<option value='"+citys[i].cityID+"'>"+citys[i].city+"</option>";--%>
-      <%--}--%>
-    <%--}--%>
-    <%--$("#mm_emp_cityId").html(ret);--%>
-  <%--};--%>
-
 </script>
 
 
