@@ -4,11 +4,9 @@ import com.liangxunwang.unimanager.model.*;
 import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.mvc.vo.PaihangObjVO;
 import com.liangxunwang.unimanager.mvc.vo.RecordVO;
-import com.liangxunwang.unimanager.query.CityQuery;
-import com.liangxunwang.unimanager.query.CountryQuery;
-import com.liangxunwang.unimanager.query.PaihangQuery;
-import com.liangxunwang.unimanager.query.RecordQuery;
+import com.liangxunwang.unimanager.query.*;
 import com.liangxunwang.unimanager.service.*;
+import com.liangxunwang.unimanager.util.Constants;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +44,10 @@ public class PaihangController extends ControllerConstants {
     @Autowired
     @Qualifier("paihangService")
     private UpdateService recordServiceUpdate;
+
+    @Autowired
+    @Qualifier("paihangService")
+    private SaveService paihangServiceSave;
 
     @RequestMapping("list")
     public String list(HttpSession session,ModelMap map, PaihangQuery query, Page page){
@@ -117,5 +119,27 @@ public class PaihangController extends ControllerConstants {
             e.printStackTrace();
         }
         return toJSONString(ERROR_1);
+    }
+
+
+    /**
+     * 添加排行榜
+     */
+    @RequestMapping("/add")
+    @ResponseBody
+    public String add(PaihangObj paihangObj){
+        try {
+            paihangServiceSave.save(paihangObj);
+        }catch (ServiceException e){
+            String msg = e.getMessage();
+            if (msg.equals("Has_exist")){
+                //该用户已经添加到排行榜不能重复添加
+                return toJSONString(ERROR_2);
+            }
+            if (msg.equals(Constants.SAVE_ERROR)){
+                return toJSONString(ERROR_1);
+            }
+        }
+        return toJSONString(SUCCESS);
     }
 }

@@ -115,54 +115,57 @@
             <button type="submit" onclick="searchOrder('1')" class="btn form-control btn-warning btn-sm btn-block">查找</button>
           </div>
           </form>
+
+          <c:if test="${is_manager=='0'}">
+            <form action="" class="form">
+            <div class="form-group">
+              <div class="col-md-2 col-lg-2">
+                <button type="button" onclick="Daochu_Select()" class="btn w12 form-control btn-block btn-danger btn-sm">批量导出Excel</button>
+              </div>
+              <div class="col-md-2 col-lg-2">
+                <button type="button" onclick="P_Weishen_Select('0')" class="btn w12 form-control btn-block btn-danger btn-sm">批量未审</button>
+              </div>
+              <div class="col-md-2 col-lg-2">
+                <button type="button" onclick="P_Weishen_Select('1')" class="btn w12 form-control btn-block btn-danger btn-sm">批量审核</button>
+              </div>
+              <div class="col-md-2 col-lg-2">
+                <button type="button" onclick="P_Weishen_Select('2')" class="btn w12 form-control btn-block btn-danger btn-sm">批量不通过</button>
+              </div>
+            </div>
+            </form>
           <form action="" class="form">
-          <div class="form-group">
-            <div class="col-md-2 col-lg-2">
-              <button type="button" onclick="Daochu_Select()" class="btn w12 form-control btn-block btn-danger btn-sm">批量导出Excel</button>
+            <div class="form-group">
+              <div class="col-md-2 col-lg-2">
+                <button type="button" onclick="P_Login_Select('1')" class="btn w12 form-control btn-block btn-danger btn-sm">批量禁止登陆</button>
+              </div>
+              <div class="col-md-2 col-lg-2">
+                <button type="button" onclick="P_Login_Select('0')" class="btn w12 form-control btn-block btn-danger btn-sm">批量允许登陆</button>
+              </div>
             </div>
-            <div class="col-md-2 col-lg-2">
-              <button type="button" onclick="P_Weishen_Select('0')" class="btn w12 form-control btn-block btn-danger btn-sm">批量未审</button>
-            </div>
-            <div class="col-md-2 col-lg-2">
-              <button type="button" onclick="P_Weishen_Select('1')" class="btn w12 form-control btn-block btn-danger btn-sm">批量审核</button>
-            </div>
-            <div class="col-md-2 col-lg-2">
-              <button type="button" onclick="P_Weishen_Select('2')" class="btn w12 form-control btn-block btn-danger btn-sm">批量不通过</button>
-            </div>
-          </div>
           </form>
-        <form action="" class="form">
-          <div class="form-group">
-            <div class="col-md-2 col-lg-2">
-              <button type="button" onclick="P_Login_Select('1')" class="btn w12 form-control btn-block btn-danger btn-sm">批量禁止登陆</button>
-            </div>
-            <div class="col-md-2 col-lg-2">
-              <button type="button" onclick="P_Login_Select('0')" class="btn w12 form-control btn-block btn-danger btn-sm">批量允许登陆</button>
-            </div>
-          </div>
-        </form>
 
-        <form action="" class="form">
-          <div class="form-group">
-            <div class="col-md-2 col-lg-2">
-              <button type="button" onclick="P_fabugy_Select('0')" class="btn w12 form-control btn-block btn-danger btn-sm">批量禁止发布供应</button>
+          <form action="" class="form">
+            <div class="form-group">
+              <div class="col-md-2 col-lg-2">
+                <button type="button" onclick="P_fabugy_Select('0')" class="btn w12 form-control btn-block btn-danger btn-sm">批量禁止发布供应</button>
+              </div>
+              <div class="col-md-2 col-lg-2">
+                <button type="button" onclick="P_fabugy_Select('1')" class="btn w12 form-control btn-block btn-danger btn-sm">批量允许发布供应</button>
+              </div>
             </div>
-            <div class="col-md-2 col-lg-2">
-              <button type="button" onclick="P_fabugy_Select('1')" class="btn w12 form-control btn-block btn-danger btn-sm">批量允许发布供应</button>
-            </div>
-          </div>
-        </form>
+          </form>
 
-        <form action="" class="form">
-          <div class="form-group">
-            <div class="col-md-2 col-lg-2">
-              <button type="button" onclick="P_fabuqg_Select('0')" class="btn w12 form-control btn-block btn-danger btn-sm">批量禁止发布求购</button>
+          <form action="" class="form">
+            <div class="form-group">
+              <div class="col-md-2 col-lg-2">
+                <button type="button" onclick="P_fabuqg_Select('0')" class="btn w12 form-control btn-block btn-danger btn-sm">批量禁止发布求购</button>
+              </div>
+              <div class="col-md-2 col-lg-2">
+                <button type="button" onclick="P_fabuqg_Select('1')" class="btn w12 form-control btn-block btn-danger btn-sm">批量允许发布求购</button>
+              </div>
             </div>
-            <div class="col-md-2 col-lg-2">
-              <button type="button" onclick="P_fabuqg_Select('1')" class="btn w12 form-control btn-block btn-danger btn-sm">批量允许发布求购</button>
-            </div>
-          </div>
-        </form>
+          </form>
+        </c:if>
         <%--<p>For basic styling add the base class <code>.table</code> to any <code>&lt;table&gt;</code>.</p>--%>
         <table class="table">
           <thead>
@@ -184,6 +187,7 @@
             <th>审核状态</th>
             <th>操作</th>
             <c:if test="${is_manager=='0'}">
+              <th>操作</th>
               <th>操作</th>
               <th>操作</th>
             </c:if>
@@ -239,6 +243,9 @@
               <c:if test="${is_manager=='0'}">
                 <td>
                   <a class="btn btn-default btn-sm" href="#module=/empAd/list&mm_emp_id=${e.mm_emp_id}" role="button">轮播图</a>
+                </td>
+                <td>
+                  <a class="btn btn-default btn-sm" href="#module=/emp/toPaihang&mm_emp_id=${e.mm_emp_id}" role="button">上榜</a>
                 </td>
                 <td>
                   <a class="btn btn-default btn-sm" href="#module=/emp/detail&mm_emp_id=${e.mm_emp_id}" role="button">编辑</a>
@@ -591,7 +598,6 @@
       }
     }
   }
-
 
 
 </script>

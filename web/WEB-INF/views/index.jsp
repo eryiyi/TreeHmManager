@@ -449,7 +449,10 @@
 <script src="/plugins/tinymce/jquery.tinymce.min.js"></script>
 <script src="/js/devoops.js"></script>
 <script src="/js/china2.js"></script>
+<script type="text/javascript" src="/js/md5.js"></script>
 <script type="text/javascript" src="/js/cookie.js"></script>
+<script type="text/javascript" src="/js/ajaxfileupload.js"></script>
+<script type="text/javascript" src="/js/Util.js"></script>
 
 </body>
 <script type="text/javascript">

@@ -59,7 +59,7 @@
     </select>
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.PaihangObj">
-        INSERT INTO mm_paihang( mm_paihang_id, mm_emp_id,top_num, is_del, end_time)
+        INSERT INTO mm_paihang( mm_paihang_id, mm_emp_id, top_num, is_del, end_time)
         VALUES ( #{mm_paihang_id},#{mm_emp_id}, #{top_num}, #{is_del}, #{end_time, jdbcType=VARCHAR})
     </insert>
 
@@ -67,8 +67,9 @@
         UPDATE mm_paihang SET is_del=1 WHERE mm_paihang_id=#{mm_paihang_id}
     </update>
 
-    <update id="updateTop" parameterType="String">
-        UPDATE mm_paihang SET top_num = #{top_num}, is_del = #{is_del}  WHERE mm_paihang_id=#{mm_paihang_id}
+    <update id="updateTop"  parameterType="com.liangxunwang.unimanager.model.PaihangObj">
+        UPDATE mm_paihang SET top_num = #{top_num}, is_del = #{is_del}, end_time = #{end_time}
+        WHERE mm_paihang_id=#{mm_paihang_id}
     </update>
 
 
@@ -79,7 +80,16 @@
         lemp.mm_emp_company_detail as mm_emp_company_detail, lemp.mm_level_id as mm_level_id, lemp.is_chengxin as is_chengxin ,
         lemp.is_miaomu as is_miaomu from mm_paihang sn
         LEFT JOIN mm_emp lemp ON sn.mm_emp_id=lemp.mm_emp_id
-         where mm_paihang_id=#{mm_paihang_id}
+         where sn.mm_paihang_id=#{mm_paihang_id}
+    </select>
+    <select id="findByEmpId" parameterType="String" resultMap="paihang_vo">
+        SELECT sn.*,lemp.mm_emp_mobile as mm_emp_mobile, lemp.mm_emp_nickname as mm_emp_nickname,
+        lemp.mm_emp_type as mm_emp_type,lemp.mm_emp_cover as mm_emp_cover, lemp.mm_emp_company_type as mm_emp_company_type
+        , lemp.mm_emp_company as mm_emp_company, lemp.mm_emp_company_address as mm_emp_company_address,
+        lemp.mm_emp_company_detail as mm_emp_company_detail, lemp.mm_level_id as mm_level_id, lemp.is_chengxin as is_chengxin ,
+        lemp.is_miaomu as is_miaomu from mm_paihang sn
+        LEFT JOIN mm_emp lemp ON sn.mm_emp_id=lemp.mm_emp_id
+         where sn.mm_emp_id=#{mm_emp_id}
     </select>
 
 

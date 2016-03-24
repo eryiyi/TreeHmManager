@@ -74,10 +74,9 @@
             <th>商家类型</th>
             <th>公司名称</th>
             <th>公司地址</th>
-            <th>是否上榜</th>
+            <th>是否显示</th>
             <th>置顶数字</th>
             <th>退榜时间</th>
-            <th>操作</th>
             <th>操作</th>
           </tr>
           </thead>
@@ -98,14 +97,11 @@
                 <c:if test="${e.is_del=='1'}">否</c:if>
               </td>
               <td>${e.top_num}</td>
-              <td>${um:format(e.end_time, 'yyyy-MM-dd')}</td>
+              <td>${e.end_time}</td>
+              <%--<td>${um:format(e.end_time, 'yyyy-MM-dd')}</td>--%>
 
               <td>
-                <a class="btn btn-default btn-sm"  onclick="deleteRole('${e.mm_paihang_id}')" role="button">删除</a>
-              </td>
-
-              <td>
-                <a class="btn btn-default btn-sm"  href="#module=/paihang/toDetail&mm_msg_id=${e.mm_paihang_id}" role="button">管理</a>
+                <a class="btn btn-default btn-sm"  href="#module=/paihang/toDetail&mm_paihang_id=${e.mm_paihang_id}" role="button">管理</a>
               </td>
 
             </tr>
@@ -160,12 +156,7 @@
     var is_del = $("#is_del").val();
 
     if(_index <= ${page.pageCount} && _index >= 1){
-      if(mm_msg_type == 0){
         window.location.href="#module=/paihang/list&page="+page+"&size="+size+"&is_del="+is_del;
-      }else{
-        window.location.href="#module=/paihang/list&page="+page+"&size="+size+"&is_del="+is_del;
-      }
-
     }else{
       alert("请输入1-${page.pageCount}的页码数");
     }
@@ -176,7 +167,7 @@
     var is_del = $("#is_del").val();
     addCookie("contract_size", size, 36);
     if ((page <= ${page.pageCount} && page >= 1)) {
-        window.location.href="#module=/paihang/listQiugou&page="+page+"&size="+size+"&is_del="+is_del;
+        window.location.href="#module=/paihang/list&page="+page+"&size="+size+"&is_del="+is_del;
     } else {
       alert("请输入1-${page.pageCount}的页码数");
     }

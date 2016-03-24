@@ -36,4 +36,7 @@ public interface PaihangObjDao {
     //根据id查询
     PaihangObjVO findById(String mm_paihang_id);
 
+
+    //根据id查询根据用户id
+    PaihangObjVO findByEmpId(String mm_emp_id);
 }

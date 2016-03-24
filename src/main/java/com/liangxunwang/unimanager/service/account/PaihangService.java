@@ -11,6 +11,7 @@ import com.liangxunwang.unimanager.query.RecordQuery;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.Constants;
 import com.liangxunwang.unimanager.util.StringUtil;
+import com.liangxunwang.unimanager.util.UUIDFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -23,7 +24,7 @@ import java.util.Map;
  * Created by liuzwei on 2015/3/3.
  */
 @Service("paihangService")
-public class PaihangService implements ListService,DeleteService,ExecuteService,UpdateService {
+public class PaihangService implements ListService,DeleteService,ExecuteService,UpdateService,SaveService {
     @Autowired
     @Qualifier("paihangObjDao")
     private PaihangObjDao paihangObjDao;
@@ -74,9 +75,27 @@ public class PaihangService implements ListService,DeleteService,ExecuteService,
 
     @Override
     public Object update(Object object) {
-        if (object instanceof Record){
+        if (object instanceof PaihangObj){
             PaihangObj paihangObj = (PaihangObj) object;
             paihangObjDao.updateTop(paihangObj);
+        }
+        return null;
+    }
+
+    @Override
+    public Object save(Object object) throws ServiceException {
+        PaihangObj paihangObj = (PaihangObj) object;
+        //先查询是否存在该用户 根据用户id
+        PaihangObjVO paihangObjVO = paihangObjDao.findByEmpId(paihangObj.getMm_emp_id());
+        if(paihangObjVO != null && !StringUtil.isNullOrEmpty(paihangObjVO.getMm_paihang_id())){
+            //该用户已经添加到排行榜不能重复添加
+            throw new ServiceException("Has_exist");
+        }
+        try {
+            paihangObj.setMm_paihang_id(UUIDFactory.random());
+            paihangObjDao.save(paihangObj);
+        }catch (Exception e){
+            throw new ServiceException(Constants.SAVE_ERROR);
         }
         return null;
     }

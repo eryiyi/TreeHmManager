@@ -27,11 +27,10 @@
       <div class="box-header">
         <div class="box-name">
           <i class="fa fa-search"></i>
-          <span>信息详情</span>
+          <span>商户详情</span>
         </div>
       </div>
       <div class="box-content">
-        <%--<h4 class="page-header">会员详情</h4>--%>
         <form class="form-horizontal" role="form">
           <input type="hidden" value="${recordVO.mm_paihang_id}" id="mm_paihang_id">
 
@@ -79,13 +78,19 @@
                 </div>
             </div>
 
+            <%--<div class="form-group">--%>
+                <%--<label class="col-sm-2 control-label">时间戳</label>--%>
+                <%--<div class="col-lg-8">--%>
+                    <%--<div id="dateline">${um:format(recordVO.end_time, "yyyy-MM-dd HH:mm:ss")}</div>--%>
+                <%--</div>--%>
+            <%--</div>--%>
+
             <div class="form-group">
-                <label class="col-sm-2 control-label">时间戳</label>
-                <div class="col-lg-8">
-                    <div id="dateline">${um:format(recordVO.end_time, "yyyy-MM-dd HH:mm:ss")}</div>
+                <label class="col-sm-2 control-label">Vip到期日期</label>
+                <div class="col-sm-2">
+                    <input type="date" id="end_time" class="form-control" value="${recordVO.end_time}">
                 </div>
             </div>
-
 
             <div class="form-group">
             <div class="col-sm-9 col-sm-offset-3">
@@ -103,6 +108,7 @@
     var mm_paihang_id = $("#mm_paihang_id").val();
     var is_del = $("#is_del").val();
     var top_num = $("#top_num").val();
+    var end_time = $("#end_time").val();
     $.ajax({
       cache: true,
       type: "POST",
@@ -110,6 +116,7 @@
       data:{
         "mm_paihang_id":mm_paihang_id,
         "is_del":is_del,
+        "end_time":end_time,
         "top_num":top_num
       },
       async: false,

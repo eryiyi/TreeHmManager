@@ -402,12 +402,9 @@ public class EmpController extends ControllerConstants {
         }
     }
 
-
-
     @Autowired
     @Qualifier("empExcelService")
     private ExecuteService empExcelService;
-
 
     //导出Excel表格数据
     @RequestMapping("daochuAll")
@@ -522,6 +519,16 @@ public class EmpController extends ControllerConstants {
             e.printStackTrace();
         }
         return toJSONString(ERROR_1);
+    }
+
+
+    @RequestMapping("/toPaihang")
+    public String toPaihang(ModelMap map, HttpSession session, String mm_emp_id) throws Exception {
+        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
+        //查看该会员信息
+        EmpVO empVO = (EmpVO) empServiceExecute.execute(mm_emp_id);
+        map.put("empVO", empVO);
+        return "/paihang/addpaihang";
     }
 
 }
