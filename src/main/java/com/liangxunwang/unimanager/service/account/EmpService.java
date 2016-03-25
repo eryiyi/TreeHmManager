@@ -10,6 +10,7 @@ import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.ServiceException;
 import com.liangxunwang.unimanager.service.UpdateService;
 import com.liangxunwang.unimanager.util.Constants;
+import com.liangxunwang.unimanager.util.DateUtil;
 import com.liangxunwang.unimanager.util.MD5Util;
 import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,6 +82,9 @@ public class EmpService implements ListService , UpdateService , ExecuteService{
                 if(emp != null && !StringUtil.isNullOrEmpty(emp.getMm_emp_cover()) && !emp.getMm_emp_cover().startsWith("http://")){
                     empDao.updateCover(emp);
                 }
+                if(!StringUtil.isNullOrEmpty(emp.getMm_emp_endtime())){
+                    emp.setMm_emp_endtime(DateUtil.getMs(emp.getMm_emp_endtime(), "yyyy-MM-dd") + "");
+                }
                 empDao.update(emp);
             }
         }
@@ -104,6 +108,10 @@ public class EmpService implements ListService , UpdateService , ExecuteService{
             }else{
                 empVO.setMm_emp_company_pic(Constants.QINIU_URL + empVO.getMm_emp_company_pic());
             }
+        }
+        if(empVO != null && !StringUtil.isNullOrEmpty(empVO.getMm_emp_endtime())){
+            //vip到期日期不为空
+            empVO.setMm_emp_endtime(DateUtil.getDate( empVO.getMm_emp_endtime(), "yyyy-MM-dd"));
         }
         return empVO;
     }

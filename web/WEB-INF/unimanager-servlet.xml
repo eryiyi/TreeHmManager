@@ -64,4 +64,14 @@
               <bean class="com.liangxunwang.unimanager.mvc.ControllerInterceptor"/>
        </mvc:interceptors>
 
+       <task:annotation-driven/>
+
+
+
+       <!-- 每天凌晨1点执行查看-->
+       <task:scheduled-tasks>
+              <task:scheduled ref="empController" method="update" cron="0 1 0 * * ?"/>
+       </task:scheduled-tasks>
+
+
 </beans>

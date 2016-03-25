@@ -232,6 +232,20 @@
 					</li>
 				</c:if>
 
+				<c:if test="${um:permission('GUANZHU_LIST_MANAGE', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="javascript:void (0);" class="dropdown-toggle">
+							<i class="fa fa-credit-card"></i>
+							<span class="hidden-xs">关注管理</span>
+						</a>
+						<ul class="dropdown-menu">
+							<c:if test="${um:permission('GUANZHU_LIST_MANAGE', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('/guanzhu/list','1')">关注列表</a></li>
+							</c:if>
+						</ul>
+					</li>
+				</c:if>
+
 				<c:if test="${um:permission('SHNEHE_TYPE_MANAGE', sessionScope.powers)}">
 					<li class="dropdown">
 						<a href="javascript:void (0);" class="dropdown-toggle">

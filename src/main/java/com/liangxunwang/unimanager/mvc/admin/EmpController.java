@@ -21,9 +21,6 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Objects;
 
-/**
- * Created by liuzh on 2015/8/12.
- */
 @Controller
 @RequestMapping("/emp")
 public class EmpController extends ControllerConstants {
@@ -224,8 +221,6 @@ public class EmpController extends ControllerConstants {
         return "/emp/detail";
     }
 
-
-
     //更改会员数据
     @RequestMapping("/updateEmp")
     @ResponseBody
@@ -240,7 +235,6 @@ public class EmpController extends ControllerConstants {
             return toJSONString(ERROR_1);
         }
     }
-
 
     //管理员--添加管理员-搜索会员
     @RequestMapping("listAddManager")
@@ -530,5 +524,28 @@ public class EmpController extends ControllerConstants {
         map.put("empVO", empVO);
         return "/paihang/addpaihang";
     }
+
+
+    //-------------------每天凌晨执行，查询是否有过期的vip会员--------------------------
+    public String update(){
+        updateEmpVipGuoqi();
+        return null;
+    }
+
+    @Autowired
+    @Qualifier("empUpdateVipService")
+    private UpdateService empUpdateVipService;
+
+    @RequestMapping("/updateEmpVipGuoqi")
+    @ResponseBody
+    public String updateEmpVipGuoqi(){
+        try {
+            empUpdateVipService.update("");
+            return toJSONString(SUCCESS);
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+        }
+    }
+    //-------------------------------------------------
 
 }

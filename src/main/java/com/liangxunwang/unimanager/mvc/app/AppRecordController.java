@@ -43,11 +43,6 @@ public class AppRecordController extends ControllerConstants {
     @Autowired
     @Qualifier("appRecordService")
     private FindService findRecordService;
-//
-//    @Autowired
-//    @Qualifier("appRecordService")
-//    private DeleteService deleteRecordService;
-
 
     //首页获得求购供应信息
     @RequestMapping(value = "/recordList", produces = "text/plain;charset=UTF-8")

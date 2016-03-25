@@ -15,6 +15,15 @@ public class RecordQuery  extends BaseAreaQuery{
     private String mm_level_num;//等级 分等级查看省市区信息
     private String is_see_all;//查看全部信息权限
     private String is_select_countryId;//是否选择的县区
+    private String is_guanzhu;//是否查询的是关注的区域，1是  其他否；如果是关注的区域 countryid就是一个数组
+
+    public String getIs_guanzhu() {
+        return is_guanzhu;
+    }
+
+    public void setIs_guanzhu(String is_guanzhu) {
+        this.is_guanzhu = is_guanzhu;
+    }
 
     public String getIs_select_countryId() {
         return is_select_countryId;

@@ -71,4 +71,7 @@
     <group id="PAIHANG_MANAGE" name="排行榜">
         <permission id="PAIHANG_SHANGHU_MANAGE" name="商户列表"/>
     </group>
+    <group id="GUANZHU_MANAGE" name="关注管理">
+        <permission id="GUANZHU_LIST_MANAGE" name="关注列表"/>
+    </group>
 </permissions>

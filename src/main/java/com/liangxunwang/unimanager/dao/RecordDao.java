@@ -19,6 +19,10 @@ public interface RecordDao {
      * 查询求购、供应信息
      */
     List<RecordVO> listRecordVo(Map<String, Object> map);
+
+    //查询关注区域的信息
+    List<RecordVO> listRecordVoArea(Map<String, Object> map);
+
     //竞价排名
     List<RecordVO> listRecordVoTop(Map<String, Object> map);
 
