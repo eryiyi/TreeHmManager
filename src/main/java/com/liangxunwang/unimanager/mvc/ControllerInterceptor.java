@@ -80,6 +80,9 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/getLoginAd\\.do$)"+
                         "|(^/memberUpdateProfile\\.do$)"+
                         "|(^/getKefuWeixin\\.do$)"+
+                        "|(^/getPaihangs\\.do$)"+
+                        "|(^/saveGuanzhuArea\\.do$)"+
+                        "|(^/getGuanzhuArea\\.do$)"+
 
                         "|(^/memberLogin\\.do$)"
 

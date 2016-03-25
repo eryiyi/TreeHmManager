@@ -59,7 +59,11 @@
               <input type="button" value="上传" onclick="uploadImage()" style="float: left;"/><br/><br/>
             </div>
           </div>
-
+          <div class="form-group">
+            <div class="col-sm-10 col-sm-offset-3">
+              <font color="red">*为了实现最佳的展现效果，图片最佳尺寸：1000（宽）*360（高）</font>
+            </div>
+          </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">链接</label>
             <div class="col-sm-4">
@@ -78,6 +82,7 @@
               <button type="button" class="btn btn-primary" onclick="javascript :history.back(-1)">返回</button>
             </div>
           </div>
+
         </form>
       </div>
     </div>

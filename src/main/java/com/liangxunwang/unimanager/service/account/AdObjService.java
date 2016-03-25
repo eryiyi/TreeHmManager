@@ -7,6 +7,8 @@ import com.liangxunwang.unimanager.model.Level;
 import com.liangxunwang.unimanager.query.AdQuery;
 import com.liangxunwang.unimanager.query.LevelQuery;
 import com.liangxunwang.unimanager.service.*;
+import com.liangxunwang.unimanager.util.Constants;
+import com.liangxunwang.unimanager.util.StringUtil;
 import com.liangxunwang.unimanager.util.UUIDFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -30,6 +32,17 @@ public class AdObjService implements ListService,SaveService ,DeleteService,Exec
         AdQuery query = (AdQuery) object;
         Map<String, Object> map = new HashMap<String, Object>();
         List<AdObj> lists = leveldDao.lists(map);
+        if(lists != null){
+            for(AdObj adObj:lists){
+                if(!StringUtil.isNullOrEmpty(adObj.getMm_ad_pic())){
+                    if(adObj.getMm_ad_pic().startsWith("upload")){
+                        adObj.setMm_ad_pic(Constants.URL + adObj.getMm_ad_pic());
+                    }else {
+                        adObj.setMm_ad_pic(Constants.QINIU_URL + adObj.getMm_ad_pic());
+                    }
+                }
+            }
+        }
         return lists;
     }
 

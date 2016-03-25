@@ -29,6 +29,7 @@ public class PaihangController extends ControllerConstants {
     @Autowired
     @Qualifier("paihangService")
     private ListService recordService;
+
     @Autowired
     @Qualifier("logoService")
     private SaveService logoService;
@@ -106,14 +107,18 @@ public class PaihangController extends ControllerConstants {
     @RequestMapping("daochuAll")
     @ResponseBody
     public String daochuAll(HttpSession session,String ids, HttpServletRequest request) {
+        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         try {
             Object[] objects = new Object[2];
             objects[0]=ids;
             objects[1]=request;
 
             String fileName = (String) paihangExcelService.execute(objects);
+            //日志记录
+            logoService.save(new LogoObj("到处排行榜数据", manager.getMm_manager_id()));
             DataTip tip = new DataTip();
             tip.setData(fileName);
+
             return toJSONString(tip);
         } catch (Exception e) {
             e.printStackTrace();
@@ -127,9 +132,12 @@ public class PaihangController extends ControllerConstants {
      */
     @RequestMapping("/add")
     @ResponseBody
-    public String add(PaihangObj paihangObj){
+    public String add(HttpSession session, PaihangObj paihangObj){
+        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         try {
             paihangServiceSave.save(paihangObj);
+            //日志记录
+            logoService.save(new LogoObj("添加排行榜", manager.getMm_manager_id()));
         }catch (ServiceException e){
             String msg = e.getMessage();
             if (msg.equals("Has_exist")){

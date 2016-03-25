@@ -19,9 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-/**
- * Created by liuzh on 2015/8/12.
- */
 @Controller
 @RequestMapping("/level")
 public class LevelController extends ControllerConstants {
