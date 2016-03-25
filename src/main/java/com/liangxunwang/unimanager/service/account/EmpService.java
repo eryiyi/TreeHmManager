@@ -65,6 +65,14 @@ public class EmpService implements ListService , UpdateService , ExecuteService{
         }
 
         List<EmpVO> lists = empDao.listMemberByName(map);
+        if(lists != null){
+            for(EmpVO empVO:lists){
+                if(empVO != null && !StringUtil.isNullOrEmpty(empVO.getMm_emp_endtime())){
+                    //vip到期日期不为空
+                    empVO.setMm_emp_endtime(DateUtil.getDate( empVO.getMm_emp_endtime(), "yyyy-MM-dd"));
+                }
+            }
+        }
         long count = empDao.count(map);
 
 

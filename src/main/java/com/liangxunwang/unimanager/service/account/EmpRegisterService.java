@@ -4,10 +4,7 @@ import com.liangxunwang.unimanager.dao.EmpDao;
 import com.liangxunwang.unimanager.model.Emp;
 import com.liangxunwang.unimanager.service.SaveService;
 import com.liangxunwang.unimanager.service.ServiceException;
-import com.liangxunwang.unimanager.util.Constants;
-import com.liangxunwang.unimanager.util.DateUtil;
-import com.liangxunwang.unimanager.util.MD5Util;
-import com.liangxunwang.unimanager.util.UUIDFactory;
+import com.liangxunwang.unimanager.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -32,6 +29,9 @@ public class EmpRegisterService implements SaveService {
         member.setMm_emp_regtime(DateUtil.getDateAndTime());//时间戳
         member.setMm_emp_cover(Constants.COVER_DEFAULT);//头像
         member.setMm_emp_password(new MD5Util().getMD5ofStr(member.getMm_emp_password()));//密码加密
+        if(!StringUtil.isNullOrEmpty(member.getMm_emp_endtime())){
+            member.setMm_emp_endtime(DateUtil.getMs(member.getMm_emp_endtime(), "yyyy-MM-dd") + "");
+        }
         try {
             memberDao.save(member);
         }catch (Exception e){

@@ -101,6 +101,9 @@ public class PaihangService implements ListService,DeleteService,ExecuteService,
         }
         try {
             paihangObj.setMm_paihang_id(UUIDFactory.random());
+            if(!StringUtil.isNullOrEmpty(paihangObj.getEnd_time())){
+                paihangObj.setEnd_time(DateUtil.getMs(paihangObj.getEnd_time(), "yyyy-MM-dd") + "");
+            }
             paihangObjDao.save(paihangObj);
         }catch (Exception e){
             throw new ServiceException(Constants.SAVE_ERROR);
