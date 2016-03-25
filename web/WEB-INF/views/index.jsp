@@ -250,7 +250,7 @@
 					<li class="dropdown">
 						<a href="javascript:void (0);" class="dropdown-toggle">
 							<i class="fa fa-phone"></i>
-							<span class="hidden-xs">审核方式</span>
+							<span class="hidden-xs">注册审核方式</span>
 						</a>
 						<ul class="dropdown-menu">
 							<c:if test="${um:permission('SHNEHE_TYPE_MANAGE', sessionScope.powers)}">

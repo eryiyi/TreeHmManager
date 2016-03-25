@@ -9,9 +9,7 @@ import com.liangxunwang.unimanager.mvc.vo.RecordVO;
 import com.liangxunwang.unimanager.query.PaihangQuery;
 import com.liangxunwang.unimanager.query.RecordQuery;
 import com.liangxunwang.unimanager.service.*;
-import com.liangxunwang.unimanager.util.Constants;
-import com.liangxunwang.unimanager.util.StringUtil;
-import com.liangxunwang.unimanager.util.UUIDFactory;
+import com.liangxunwang.unimanager.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -52,7 +50,11 @@ public class PaihangService implements ListService,DeleteService,ExecuteService,
                     record.setMm_emp_cover(Constants.QINIU_URL + record.getMm_emp_cover());
                 }
             }
-//            record.setDateline(RelativeDateFormat.format(Long.parseLong(record.getDateline())));
+//            record.setEnd_time(RelativeDateFormat.format(Long.parseLong(record.getEnd_time())));
+            if(!StringUtil.isNullOrEmpty(record.getEnd_time())){
+                record.setEnd_time(DateUtil.getDate(record.getEnd_time() , "yyyy-MM-dd"));
+            }
+
         }
         long count = paihangObjDao.count(map);
         return new Object[]{lists, count};
@@ -70,6 +72,9 @@ public class PaihangService implements ListService,DeleteService,ExecuteService,
     public Object execute(Object object) throws ServiceException {
         String mm_msg_id = (String) object;
         PaihangObj paihangObj = paihangObjDao.findById(mm_msg_id);
+        if(!StringUtil.isNullOrEmpty(paihangObj.getEnd_time())){
+            paihangObj.setEnd_time(DateUtil.getDate(paihangObj.getEnd_time() , "yyyy-MM-dd"));
+        }
         return paihangObj;
     }
 
@@ -77,6 +82,9 @@ public class PaihangService implements ListService,DeleteService,ExecuteService,
     public Object update(Object object) {
         if (object instanceof PaihangObj){
             PaihangObj paihangObj = (PaihangObj) object;
+            if(!StringUtil.isNullOrEmpty(paihangObj.getEnd_time())){
+                paihangObj.setEnd_time(DateUtil.getMs(paihangObj.getEnd_time(), "yyyy-MM-dd") + "");
+            }
             paihangObjDao.updateTop(paihangObj);
         }
         return null;

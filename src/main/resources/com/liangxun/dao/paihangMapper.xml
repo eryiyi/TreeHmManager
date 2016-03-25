@@ -92,5 +92,8 @@
          where sn.mm_emp_id=#{mm_emp_id}
     </select>
 
+    <update id="updateOverTime">
+        UPDATE mm_paihang SET is_del='1' WHERE end_time &lt; #{nowTime}
+    </update>
 
 </mapper>

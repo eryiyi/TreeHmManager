@@ -72,6 +72,9 @@
        <task:scheduled-tasks>
               <task:scheduled ref="empController" method="update" cron="0 1 0 * * ?"/>
        </task:scheduled-tasks>
+       <task:scheduled-tasks>
+              <task:scheduled ref="paihangController" method="update" cron="0 1 0 * * ?"/>
+       </task:scheduled-tasks>
 
 
 </beans>

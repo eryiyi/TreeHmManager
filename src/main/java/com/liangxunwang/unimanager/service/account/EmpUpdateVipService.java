@@ -30,21 +30,7 @@ public class EmpUpdateVipService implements UpdateService {
 
     @Override
     public Object update(Object object) {
-        if (object instanceof Emp){
-            Emp emp = (Emp) object;
-            if(emp != null && !StringUtil.isNullOrEmpty(emp.getMm_emp_password())){
-                emp.setMm_emp_password(new MD5Util().getMD5ofStr(emp.getMm_emp_password()));//密码加密
-                empDao.updatePwr(emp);
-            }else {
-                if(emp != null && !StringUtil.isNullOrEmpty(emp.getMm_emp_cover()) && !emp.getMm_emp_cover().startsWith("http://")){
-                    empDao.updateCover(emp);
-                }
-                if(!StringUtil.isNullOrEmpty(emp.getMm_emp_endtime())){
-                    emp.setMm_emp_endtime(DateUtil.getMs(emp.getMm_emp_endtime(), "yyyy-MM-dd") + "");
-                }
-                empDao.update(emp);
-            }
-        }
+        empDao.updateOverTime(System.currentTimeMillis()+"");
         return null;
     }
 

@@ -150,4 +150,27 @@ public class PaihangController extends ControllerConstants {
         }
         return toJSONString(SUCCESS);
     }
+
+
+    //-------------------每天凌晨执行，查询是否有过期的排行商户--------------------------
+    public String update(){
+        updatePaihangVip();
+        return null;
+    }
+
+    @Autowired
+    @Qualifier("paihangUpdateVipService")
+    private UpdateService paihangUpdateVipService;
+
+    @RequestMapping("/updatePaihangVip")
+    @ResponseBody
+    public String updatePaihangVip(){
+        try {
+            paihangUpdateVipService.update("");
+            return toJSONString(SUCCESS);
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+        }
+    }
+    //-------------------------------------------------
 }

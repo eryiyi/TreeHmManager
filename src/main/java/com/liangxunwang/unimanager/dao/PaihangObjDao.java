@@ -39,4 +39,10 @@ public interface PaihangObjDao {
 
     //根据id查询根据用户id
     PaihangObjVO findByEmpId(String mm_emp_id);
+
+    /**
+     * 根据过期时间去禁用VIP
+     * @param nowTime
+     */
+    public void updateOverTime(String nowTime);
 }

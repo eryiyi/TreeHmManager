@@ -288,6 +288,8 @@
         WHERE mm_emp_id=#{mm_emp_id}
     </update>
 
-
+    <update id="updateOverTime">
+        UPDATE mm_emp SET mm_level_id='c5567ce9094a4ffeb763ec707552d411' WHERE mm_emp_endtime &lt; #{nowTime}
+    </update>
 
 </mapper>

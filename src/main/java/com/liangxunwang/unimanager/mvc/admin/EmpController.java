@@ -515,7 +515,6 @@ public class EmpController extends ControllerConstants {
         return toJSONString(ERROR_1);
     }
 
-
     @RequestMapping("/toPaihang")
     public String toPaihang(ModelMap map, HttpSession session, String mm_emp_id) throws Exception {
         Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
@@ -524,7 +523,6 @@ public class EmpController extends ControllerConstants {
         map.put("empVO", empVO);
         return "/paihang/addpaihang";
     }
-
 
     //-------------------每天凌晨执行，查询是否有过期的vip会员--------------------------
     public String update(){

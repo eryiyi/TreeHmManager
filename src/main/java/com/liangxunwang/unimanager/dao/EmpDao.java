@@ -70,4 +70,10 @@ public interface EmpDao {
 
     //补充资料
     void updateProfileMember(Emp emp);
+
+    /**
+     * 根据过期时间去禁用VIP
+     * @param nowTime
+     */
+    public void updateOverTime(String nowTime);
 }
