@@ -32,6 +32,8 @@ public class EmpRegisterService implements SaveService {
         if(!StringUtil.isNullOrEmpty(member.getMm_emp_endtime())){
             member.setMm_emp_endtime(DateUtil.getMs(member.getMm_emp_endtime(), "yyyy-MM-dd") + "");
         }
+        member.setMm_level_id("358b1e94e2274685b0badf41e22b85c8");//默认VIP1
+
         try {
             memberDao.save(member);
         }catch (Exception e){

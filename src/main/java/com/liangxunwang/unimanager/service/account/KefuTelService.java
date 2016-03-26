@@ -20,9 +20,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by liuzwei on 2015/3/3.
- */
 @Service("kefuTelService")
 public class KefuTelService implements ListService,SaveService , UpdateService, ExecuteService{
 

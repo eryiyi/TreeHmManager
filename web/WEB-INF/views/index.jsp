@@ -375,10 +375,10 @@
 						</a>
 						<ul class="dropdown-menu">
 							<c:if test="${um:permission('ADD_NOTICE', sessionScope.powers)}">
-								<li><a href="javascript:void(0);" onclick="toPage('role/addPiao','1')">添加公告</a></li>
+								<li><a href="javascript:void(0);" onclick="toPage('noticeController/toAdd','')">添加公告</a></li>
 							</c:if>
 							<c:if test="${um:permission('NOTICE_LIST', sessionScope.powers)}">
-								<li><a href="javascript:void(0);" onclick="toPage('role/addPiao','1')">公告列表</a></li>
+								<li><a href="javascript:void(0);" onclick="toPage('noticeController/list','1')">公告列表</a></li>
 							</c:if>
 
 						</ul>

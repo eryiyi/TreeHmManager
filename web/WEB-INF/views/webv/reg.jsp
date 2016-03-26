@@ -52,20 +52,20 @@
 		<%--</div>--%>
 		<div class="input-group-regist"><span>姓名</span><input placeholder="请输入真实姓名" type="text" id="mm_emp_nickname" name="mm_emp_nickname"></div>
 		<div class="input-group-regist"><span>身份证号</span><input placeholder="请输入身份证号" type="number" id="mm_emp_card" name="mm_emp_card"></div>
-		<div class="select-group mt2 mb2"><span>注册类型</span>
-			<select name="mm_emp_type" id="mm_emp_type" class="bg-f2">
-				<option value="0">苗木经营户</option>
-				<option value="1">苗木会员</option>
-			</select>
-		</div>
-		<div class="input-group-regist"><span>公司名称</span><input type="text" placeholder="请输入公司名称，20字以内" id="mm_emp_company" name="mm_emp_company"></div>
-		<div class="select-group mt2 mb2"><span>公司类型</span>
-			<select name="mm_emp_company_type" id="mm_emp_company_type" class="bg-f2" >
-				<option value="0">苗木</option>
-				<option value="1">园林</option>
-			</select>
-		</div>
-		<div class="input-group-regist"><span>公司地址</span><input  placeholder="请输入公司地址"  type="text" id="mm_emp_company_address" name="mm_emp_company_address"></div>
+		<%--<div class="select-group mt2 mb2"><span>注册类型</span>--%>
+			<%--<select name="mm_emp_type" id="mm_emp_type" class="bg-f2">--%>
+				<%--<option value="0">苗木经营户</option>--%>
+				<%--<option value="1">苗木会员</option>--%>
+			<%--</select>--%>
+		<%--</div>--%>
+		<%--<div class="input-group-regist"><span>公司名称</span><input type="text" placeholder="请输入公司名称，20字以内" id="mm_emp_company" name="mm_emp_company"></div>--%>
+		<%--<div class="select-group mt2 mb2"><span>公司类型</span>--%>
+			<%--<select name="mm_emp_company_type" id="mm_emp_company_type" class="bg-f2" >--%>
+				<%--<option value="0">苗木</option>--%>
+				<%--<option value="1">园林</option>--%>
+			<%--</select>--%>
+		<%--</div>--%>
+		<%--<div class="input-group-regist"><span>公司地址</span><input  placeholder="请输入公司地址"  type="text" id="mm_emp_company_address" name="mm_emp_company_address"></div>--%>
 		<div class="select-group mt2 mb2"><span>-（省）</span>
 
 			<select class="bg-f2" name="mm_emp_provinceId" id="mm_emp_provinceId" onchange="selectCitys()">
@@ -119,12 +119,12 @@
 		var mm_emp_nickname = $("#mm_emp_nickname").val();
 		var mm_emp_password = $("#mm_emp_password").val();
 		var mm_emp_surepwr = $("#mm_emp_surepwr").val();
-		var mm_emp_type = $("#mm_emp_type").val();
-		var mm_emp_company = $("#mm_emp_company").val();
-		var mm_emp_company_type = $("#mm_emp_company_type").val();
-		var mm_emp_company_address = $("#mm_emp_company_address").val();
-		var mm_emp_company_detail = $("#mm_emp_company_detail").val();
-		var mm_emp_company_url = $("#mm_emp_company_url").val();
+//		var mm_emp_type = $("#mm_emp_type").val();
+//		var mm_emp_company = $("#mm_emp_company").val();
+//		var mm_emp_company_type = $("#mm_emp_company_type").val();
+//		var mm_emp_company_address = $("#mm_emp_company_address").val();
+//		var mm_emp_company_detail = $("#mm_emp_company_detail").val();
+//		var mm_emp_company_url = $("#mm_emp_company_url").val();
 		var mm_emp_provinceId = $("#mm_emp_provinceId").val();
 		var mm_emp_cityId = $("#mm_emp_cityId").val();
 		var mm_emp_countryId = $("#mm_emp_countryId").val();
@@ -170,30 +170,30 @@
 			alert("身份证号格式不正确");
 			return;
 		}
-		if(mm_emp_type.replace(/\s/g, '') == ''){
-			alert("请选择注册类型");
-			return;
-		}
-		if(mm_emp_company.replace(/\s/g, '') == ''){
-			alert("公司名称不能为空");
-			return;
-		}
-		if(mm_emp_company.length > 20){
-			alert("公司名称20字以内");
-			return;
-		}
-		if(mm_emp_company_type.replace(/\s/g, '') == ''){
-			alert("请选择公司类型");
-			return;
-		}
-		if(mm_emp_company_address.replace(/\s/g, '') == ''){
-			alert("请输入公司地址");
-			return;
-		}
-		if(mm_emp_company_address.length > 30){
-			alert("公司地址30字以内");
-			return;
-		}
+//		if(mm_emp_type.replace(/\s/g, '') == ''){
+//			alert("请选择注册类型");
+//			return;
+//		}
+//		if(mm_emp_company.replace(/\s/g, '') == ''){
+//			alert("公司名称不能为空");
+//			return;
+//		}
+//		if(mm_emp_company.length > 20){
+//			alert("公司名称20字以内");
+//			return;
+//		}
+//		if(mm_emp_company_type.replace(/\s/g, '') == ''){
+//			alert("请选择公司类型");
+//			return;
+//		}
+//		if(mm_emp_company_address.replace(/\s/g, '') == ''){
+//			alert("请输入公司地址");
+//			return;
+//		}
+//		if(mm_emp_company_address.length > 30){
+//			alert("公司地址30字以内");
+//			return;
+//		}
 		if(mm_emp_provinceId.replace(/\s/g, '') == ''){
 			alert("请选择省份");
 			return;
@@ -214,11 +214,11 @@
 				"mm_emp_mobile":mm_emp_mobile,
 				"mm_emp_nickname":mm_emp_nickname,
 				"mm_emp_card":mm_emp_card,
-				"mm_emp_type":mm_emp_type,
+				"mm_emp_type":"1",
 				"mm_emp_password":mm_emp_password,
-				"mm_emp_company":mm_emp_company,
-				"mm_emp_company_type":mm_emp_company_type,
-				"mm_emp_company_address":mm_emp_company_address,
+				"mm_emp_company":"",
+				"mm_emp_company_type":"0",
+				"mm_emp_company_address":"",
 				"mm_emp_company_detail":"",
 				"mm_emp_company_url":"",
 				"mm_emp_provinceId":mm_emp_provinceId,

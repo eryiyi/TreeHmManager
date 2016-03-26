@@ -6,8 +6,8 @@ package com.liangxunwang.unimanager.util;
 public class Constants {
 //        public static final String URL = "http://114.215.121.7:7777/";
 //        public static final String URL = "http://139.129.13.47:7777/";
-//                public static final String URL = "http://192.168.0.224:8080/";
-        public static final String URL = "http://xhmt.sdhmmm.cn:7777/";
+                public static final String URL = "http://192.168.0.224:8080/";
+//        public static final String URL = "http://xhmt.sdhmmm.cn:7777/";
 
 //        public static final String URL = "http://192.168.0.224:8080/";
 //      public static final String URL = "http://xhmt.sdhmmm.cn:7777/";
@@ -17,8 +17,8 @@ public class Constants {
         public static final String COVER_DEFAULT = "default_avatar.png";
         public static final String FILE_PATH = "D://recordfile";
 
-        public static final String API_KEY = "3aGjhyGfpiAdYkpO0Y8wvtBQ";
-        public static final String SECRET_KEY = "0jgiwHnMWlVIOUFV3HeMN6VlaOrbkEY9";
+        public static final String API_KEY = "py440oPABt8q01nVMRfbMZkq";
+        public static final String SECRET_KEY = "ZHLqAqchldIpI4BlEMQRNmbUOeo5Dqd8";
         public static final String IOS_API_KEY = "W38xecAXVYDY955Shv0GGc8f";
         public static final String IOS_SECRET_KEY = "ZrhZicrOHvexKhRoKWFIdyaEsCTrUeom";
 

@@ -50,7 +50,7 @@
             <th>等级名称</th>
             <th>等级描述</th>
             <th>操作</th>
-            <th>操作</th>
+            <%--<th>操作</th>--%>
           </tr>
           </thead>
           <tbody>
@@ -61,9 +61,9 @@
               <td>
                 <a class="btn btn-default btn-sm" href="javascript:void (0)" onclick="editRole('${e.mm_level_id}')" role="button">编辑</a>
               </td>
-              <td>
-                <a class="btn btn-default btn-sm" href="javascript:void (0)" onclick="deleteRole('${e.mm_level_id}')" role="button">删除</a>
-              </td>
+              <%--<td>--%>
+                <%--<a class="btn btn-default btn-sm" href="javascript:void (0)" onclick="deleteRole('${e.mm_level_id}')" role="button">删除</a>--%>
+              <%--</td>--%>
             </tr>
           </c:forEach>
           </tbody>

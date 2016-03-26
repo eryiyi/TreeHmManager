@@ -44,7 +44,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">用户手机号</label>
             <div class="col-sm-4">
-              <input type="text" id="mm_emp_mobile" class="form-control" value="${empVO.mm_emp_mobile}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+              <input type="text" id="mm_emp_mobile" readonly="true" class="form-control" value="${empVO.mm_emp_mobile}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
             <div class="form-group">

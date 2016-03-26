@@ -24,7 +24,33 @@
 	<script type="text/javascript" src="/js/ajaxfileupload.js"></script>
 	<script type="text/javascript" src="/js/Util.js"></script>
 	<script type="text/javascript" src="/js/validation.js"></script>
+	<script language="javascript" src="/js/jquery.js"></script>
+	<style type="text/css">
+		.hide{
+			display:none;
+		}
+		.show{
+			display:inline-block;
+		}
+	</style>
+	<script type="text/javascript">
+		$(function(){
+			$("#rightpic").click(function(){
+				var isshow=$("#menu").attr("class");
+				if(isshow=="imgboxtxt hide")
+				{
 
+					$("#menu").removeClass("hide");
+					$("#menu").addClass("show");
+				}
+				else
+				{
+					$("#menu").removeClass("show");
+					$("#menu").addClass("hide");
+				}
+			})
+		})
+	</script>
 </head>
 <body>
 <div class="container">
@@ -40,6 +66,13 @@
 			<button onclick="searchIndex(event)">搜索</button>
 		</form>
 		<button class="new"></button>
+		<div class="imgbox">
+			<img  id="rightpic" src="/img/fabu.png">
+			<div  id="menu" class="imgboxtxt hide" >
+				<a href="">茹园科技</a>
+				<a href="">茹园科技</a>
+			</div>
+		</div>
 	</div>
 	<!-- CONTENT -->
 	<div class="content">

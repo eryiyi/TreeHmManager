@@ -83,6 +83,8 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/getPaihangs\\.do$)"+
                         "|(^/saveGuanzhuArea\\.do$)"+
                         "|(^/getGuanzhuArea\\.do$)"+
+                        "|(^/getNotices\\.do$)"+
+                        "|(^/getNoticesDetail\\.do$)"+
 
                         "|(^/memberLogin\\.do$)"
 
@@ -96,6 +98,7 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
             out.close();
         } else {
             request.getRequestDispatcher("/WEB-INF/session.jsp").forward(request, response);
+            return false;
         }
         return true;
     }
