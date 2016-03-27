@@ -51,6 +51,9 @@ public class EmpService implements ListService , UpdateService , ExecuteService{
         if (!StringUtil.isNullOrEmpty(query.getIscheck())) {
             map.put("ischeck", query.getIscheck());
         }
+        if (!StringUtil.isNullOrEmpty(query.getKeyword())) {
+            map.put("keyword", query.getKeyword());
+        }
 
 
         //分地区管理
@@ -62,6 +65,16 @@ public class EmpService implements ListService , UpdateService , ExecuteService{
         }
         if(!StringUtil.isNullOrEmpty(query.getMm_emp_countryId())){
             map.put("mm_emp_countryId", query.getMm_emp_countryId());
+        }
+
+        //判断是否今日注册量
+        if(!StringUtil.isNullOrEmpty(query.getMm_emp_regtime())){
+            if("0".equals(query.getMm_emp_regtime())){
+                //不限时间
+                map.put("mm_emp_regtime", "");
+            }else if("1".equals(query.getMm_emp_regtime())){
+                map.put("mm_emp_regtime", DateUtil.getDateAndTimeTwo());
+            }
         }
 
         List<EmpVO> lists = empDao.listMemberByName(map);

@@ -19,6 +19,8 @@ public interface EmpDao {
     List<EmpVO> listMemberByName(Map<String, Object> map);
 
     long count(Map<String,Object> map);
+    //今日注册会员数量
+    long countDay(Map<String,Object> map);
 
     //更新会员数据
     void update(Emp emp);
@@ -76,4 +78,8 @@ public interface EmpDao {
      * @param nowTime
      */
     public void updateOverTime(String nowTime);
+
+
+    //删除用户
+    void deleteEmp(String mm_emp_id);
 }

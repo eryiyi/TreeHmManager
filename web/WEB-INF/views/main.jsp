@@ -21,7 +21,15 @@
                 </a>
             </div>
         </div>
-
+        <div class="row">
+            <div class="col-md-4 col-sm-6">
+                <a href="javascript:void(0);" onclick="toPage('/emp/list','1')" class="cat-item bg-blue" >
+                    <span >今日注册会员</span>
+                    <i>${countEmpDay}</i>
+                    <input type="button" class="btn-export" value="导出">
+                </a>
+            </div>
+        </div>
         <div class="row">
             <h3 class="col-md-12 cat-title">资讯管理</h3>
         </div>

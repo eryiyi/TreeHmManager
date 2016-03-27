@@ -47,7 +47,7 @@
           <input type="hidden"  value="${mm_msg_type}"  id="mm_msg_type">
           <div class="form-group">
             <div class="col-sm-4">
-              <input type="text" placeholder="企业名称、联系人、手机号、标题" id="keywords" class="form-control"  data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+              <input type="text"  value="${query.keyword}" placeholder="用户名、手机号、标题、公司名称" id="keywords" class="form-control"  data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
           <button type="submit" onclick="searchOrder('1')" class="btn form-control btn-warning btn-sm btn-block">查找</button>

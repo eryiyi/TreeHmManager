@@ -7,12 +7,31 @@ public class EmpQuery  extends BaseAreaQuery{
     private int index;
     private int size;
     private String mm_emp_type;
+    private String keyword;
     private String mm_emp_company_type;
     private String mm_level_id;
     private String ischeck;
 
     private String lat;
     private String lng;
+
+    private String mm_emp_regtime;
+
+    public String getMm_emp_regtime() {
+        return mm_emp_regtime;
+    }
+
+    public void setMm_emp_regtime(String mm_emp_regtime) {
+        this.mm_emp_regtime = mm_emp_regtime;
+    }
+
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
 
     public String getLat() {
         return lat;

@@ -5,6 +5,7 @@ import com.liangxunwang.unimanager.mvc.vo.EmpVO;
 import com.liangxunwang.unimanager.service.ExecuteService;
 import com.liangxunwang.unimanager.service.ServiceException;
 import com.liangxunwang.unimanager.util.CreateSimpleExcelToDisk;
+import com.liangxunwang.unimanager.util.DateUtil;
 import com.liangxunwang.unimanager.util.StringUtil;
 import jxl.Workbook;
 import jxl.format.CellFormat;
@@ -40,6 +41,10 @@ public class EmpExcelService implements ExecuteService{
             for(int i=0;i<arrs.length;i++){
                 EmpVO empVO = empDao.findById(arrs[i]);
                 if(empVO != null && !StringUtil.isNullOrEmpty(empVO.getMm_emp_id())){
+                    if(empVO != null && !StringUtil.isNullOrEmpty(empVO.getMm_emp_endtime())){
+                        //vip到期日期不为空
+                        empVO.setMm_emp_endtime(DateUtil.getDate(empVO.getMm_emp_endtime(), "yyyy-MM-dd"));
+                    }
                     empVOs.add(empVO);
                 }
             }

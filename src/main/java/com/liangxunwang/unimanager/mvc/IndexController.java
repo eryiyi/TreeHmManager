@@ -85,7 +85,7 @@ public class IndexController extends ControllerConstants {
             Long countReport = (Long) list.get(4);
             map.put("countReport", countReport);
         }
-
+        map.put("countEmpDay", (Long) list.get(5));
         return "/main";
     }
 

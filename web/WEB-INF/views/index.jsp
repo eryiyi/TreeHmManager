@@ -21,14 +21,20 @@
 	<link href="/plugins/justified-gallery/justifiedGallery.css" rel="stylesheet">
 	<link href="/css/style_v2.css" rel="stylesheet">
 	<link href="/plugins/chartist/chartist.min.css" rel="stylesheet">
-	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!--[if lt IE 9]>
-	<script src="/js/jquery.min.js"></script>
-	<script src="/js/Util.js"></script>
 	<script src="/js/validation.js"></script>
-	<script src="/js/md5.js"></script>
-	<script src="/js/ajaxfileupload.js"></script>
-	<![endif]-->
+
+	<script type="text/javascript" src="/plugins/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/plugins/jquery-ui/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/plugins/bootstrap/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/plugins/justified-gallery/jquery.justifiedGallery.min.js"></script>
+	<script type="text/javascript" src="/plugins/tinymce/tinymce.min.js"></script>
+	<script type="text/javascript" src="/plugins/tinymce/jquery.tinymce.min.js"></script>
+	<script type="text/javascript" src="/js/devoops.js"></script>
+	<script type="text/javascript" src="/js/china2.js"></script>
+	<script type="text/javascript" src="/js/md5.js"></script>
+	<script type="text/javascript" src="/js/cookie.js"></script>
+	<script type="text/javascript" src="/js/ajaxfileupload.js"></script>
+	<script type="text/javascript" src="/js/Util.js"></script>
 
 </head>
 <body>
@@ -455,18 +461,7 @@
 		<!--End Content-->
 	</div>
 </div>
-<script src="/plugins/jquery/jquery.min.js"></script>
-<script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
-<script src="/plugins/bootstrap/bootstrap.min.js"></script>
-<script src="/plugins/justified-gallery/jquery.justifiedGallery.min.js"></script>
-<script src="/plugins/tinymce/tinymce.min.js"></script>
-<script src="/plugins/tinymce/jquery.tinymce.min.js"></script>
-<script src="/js/devoops.js"></script>
-<script src="/js/china2.js"></script>
-<script type="text/javascript" src="/js/md5.js"></script>
-<script type="text/javascript" src="/js/cookie.js"></script>
-<script type="text/javascript" src="/js/ajaxfileupload.js"></script>
-<script type="text/javascript" src="/js/Util.js"></script>
+
 
 </body>
 <script type="text/javascript">

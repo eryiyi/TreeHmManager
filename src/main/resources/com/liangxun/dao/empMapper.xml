@@ -113,7 +113,13 @@
         <if test="mm_emp_countryId != null and mm_emp_countryId != ''">
             AND sn.mm_emp_countryId = #{mm_emp_countryId}
         </if>
+        <if test="mm_emp_regtime != null and mm_emp_regtime != ''">
+            AND sn.mm_emp_regtime = #{mm_emp_regtime}
+        </if>
 
+        <if test="keyword != null and keyword != ''">
+            AND  (sn.mm_emp_mobile = #{keyword} OR sn.mm_emp_nickname like CONCAT('%',#{keyword},'%') OR  sn.mm_emp_company like CONCAT('%',#{keyword},'%'))
+        </if>
         ORDER BY sn.mm_emp_regtime DESC limit #{index},#{size}
     </select>
 
@@ -147,8 +153,22 @@
             AND sn.mm_emp_countryId = #{mm_emp_countryId}
         </if>
 
+        <if test="mm_emp_regtime != null and mm_emp_regtime != ''">
+            AND sn.mm_emp_regtime = #{mm_emp_regtime}
+        </if>
+
+        <if test="keyword != null and keyword != ''">
+            AND  (sn.mm_emp_mobile = #{keyword} OR sn.mm_emp_nickname like CONCAT('%',#{keyword},'%') OR  sn.mm_emp_company like CONCAT('%',#{keyword},'%'))
+        </if>
     </select>
 
+    <select id="countDay" resultType="Long">
+        SELECT count(sn.mm_emp_id) FROM mm_emp sn
+        WHERE 1=1
+        <if test="mm_emp_regtime != null and mm_emp_regtime != ''">
+            AND sn.mm_emp_regtime = #{mm_emp_regtime}
+        </if>
+    </select>
 
     <update id="update" parameterType="com.liangxunwang.unimanager.model.Emp">
         UPDATE mm_emp SET mm_emp_nickname=#{mm_emp_nickname},
@@ -291,5 +311,10 @@
     <update id="updateOverTime">
         UPDATE mm_emp SET mm_level_id='358b1e94e2274685b0badf41e22b85c8' WHERE mm_emp_endtime &lt; #{nowTime}
     </update>
+
+    <update id="deleteEmp">
+        DELETE FROM mm_emp WHERE mm_emp_id=#{mm_emp_id}
+    </update>
+
 
 </mapper>

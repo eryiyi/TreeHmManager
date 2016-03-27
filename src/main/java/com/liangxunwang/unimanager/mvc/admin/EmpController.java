@@ -242,7 +242,6 @@ public class EmpController extends ControllerConstants {
         Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
         query.setSize(query.getSize() == 0 ? page.getDefaultSize() : query.getSize());
-        query.setMm_emp_type("0");//苗木经营户
         Object[] results = (Object[]) empServiceList.list(query);
         map.put("list", results[0]);
         long count = (Long) results[1];
@@ -546,4 +545,22 @@ public class EmpController extends ControllerConstants {
     }
     //-------------------------------------------------
 
+    @Autowired
+    @Qualifier("empPDeleteEmpService")
+    private ExecuteService empPDeleteEmpService;
+    //批量删除用户
+    @RequestMapping("pDeleteEmpAction")
+    @ResponseBody
+    public String pDeleteEmpAction(HttpSession session,String ids) {
+        try {
+            Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
+            empPDeleteEmpService.execute(ids);
+            //日志记录
+            logoService.save(new LogoObj("批量删除用户："+ids, manager.getMm_manager_id()));
+            return toJSONString(SUCCESS);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return toJSONString(ERROR_1);
+    }
 }
