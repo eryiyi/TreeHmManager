@@ -91,7 +91,6 @@ public class AppRecordController extends ControllerConstants {
     public String save(Record record, HttpSession session){
         try {
             RecordVO recordAdd = (RecordVO) recordSaveService.save(record);//保存信息
-//             = (RecordVO) findRecordService.findById(recordId);//查询保存的信息
             DataTip tip = new DataTip();
             tip.setData(recordAdd);
             return toJSONString(tip);

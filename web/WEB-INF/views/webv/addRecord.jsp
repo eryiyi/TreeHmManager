@@ -5,11 +5,11 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>花木通找回密码</title>
+	<title>花木通发布信息</title>
 	<meta name="Keywords" content="花木通,花木,花草,苗联通,白蜡,园林,惠民皂户李镇,苗木协会" />
 	<meta name="Description" content="花木通是最优秀的花木信息软件，为客户提供最优质的服务" />
-	<meta property="og:title" content="花木通_找回密码"  />
-	<meta property="og:description" content="花木通_找回密码" />
+	<meta property="og:title" content="花木通_发布信息"  />
+	<meta property="og:description" content="花木通_发布信息" />
 	<meta name="author" content="花木通" />
 	<meta name="Copyright" content="花木通版权所有" />
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -17,6 +17,7 @@
 	<link rel="stylesheet" href="/css/reset.css">
 	<link rel="stylesheet" href="/css/common.css">
 	<link rel="stylesheet" href="/css/common_2.css">
+	<link rel="stylesheet" href="/css/report.css">
 
 	<script type="text/javascript" src="/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/md5.js"></script>
@@ -26,28 +27,30 @@
 	<script type="text/javascript" src="/js/validation.js"></script>
 
 </head>
-<body>
 <div class="container">
 	<!-- HEADING -->
 	<div class="heading clearfix">
 		<!-- HEADING -->
 		<div class="heading clearfix">
 			<a href="javascript:history.back()" class="back"><img src="/img/tree_icons_back.png" alt=""></a>
-			<h1 class="head-title">找回密码</h1>
+			<h1 class="head-title" >发布信息</h1>
 		</div>
 	</div>
 	<!-- CONTENT -->
-	<div class="content w85">
-		<div class="input-group-regist"><span>手机号</span><input type="text" placeholder="请输入手机号" id="mm_emp_mobile" ></div>
-		<div class="input-group-regist"><span>身份证号</span><input type="text" placeholder="请输入身份证号" id="mm_emp_card" ></div>
-		<%--<div class="input-group-regist verify">--%>
-			<%--<span>验证码</span>--%>
-			<%--<a class="fill-orange radius">获取验证码</a>--%>
-			<%--<input type="number">--%>
-		<%--</div>--%>
-		<div class="input-group-regist"><span>新密码</span><input type="password" placeholder="请输入密码" id="mm_emp_password"></div>
-		<div class="input-group-regist"><span>确认密码</span><input type="password" placeholder="请输入确认密码" id="mm_emp_surepwr"></div>
-		<button class="button fill-green mt6 w10 mb5 t-sh" onclick="findPwr()">提交</button>
+	<div class="content regist w85">
+		<div class="select-group mt2 mb2"><span>信息类型</span>
+		<select name="mm_msg_type" id="mm_msg_type" class="bg-f2">
+		<option value="0">苗木求购</option>
+		<option value="1">苗木供应</option>
+		</select>
+		</div>
+		<span>信息标题：</span>
+		<input class="report-reason" placeholder="信息标题" type="text" id="mm_msg_title" name="mm_msg_title">
+		<span>信息内容：</span>
+		<textarea  class="report-reason" name="mm_msg_content"
+				   id="mm_msg_content" style="width: 30%;margin:0;padding:0;"  cols="30" rows="10">
+		</textarea>
+		<button class="button fill-orange mt3 w10 t-sh mb4" onclick="addRecord()">提交</button>
 	</div>
 	<!-- TOOLBAR -->
 	<div class="toolbar">
@@ -68,58 +71,59 @@
 		}
 	}
 
-	function findPwr(){
-		var mm_emp_mobile = $("#mm_emp_mobile").val();
-		var mm_emp_card = $("#mm_emp_card").val();
-		var mm_emp_password = $("#mm_emp_password").val();
-		var mm_emp_surepwr = $("#mm_emp_surepwr").val();
-		if(mm_emp_mobile.replace(/\s/g, '') == ''){
-			alert("手机号不能为空");
+	function addRecord(){
+		var mm_msg_type = $("#mm_msg_type").val();
+		var mm_msg_title = $("#mm_msg_title").val();
+		var mm_msg_content = $("#mm_msg_content").val();
+		if(mm_msg_type.replace(/\s/g, '') == ''){
+			alert("请选择信息类型");
 			return ;
 		}
-		if(mm_emp_mobile.length != 11){
-			alert("手机号格式不正确");
+		if(mm_msg_title.replace(/\s/g, '') == ''){
+			alert("请输入信息标题");
 			return ;
 		}
-		if(mm_emp_card.replace(/\s/g, '') == ''){
-			alert("身份证号不能为空");
+		if(mm_msg_title.length>100 || mm_msg_title.length<2){
+			alert("请输入信息标题，内容在2到100个字之间");
 			return ;
 		}
-		if(mm_emp_password.replace(/\s/g, '') == ''){
-			alert("密码不能为空");
+		if(mm_msg_content.replace(/\s/g, '') == ''){
+			alert("请输入信息内容");
 			return ;
 		}
-		if(mm_emp_password.length>18 || mm_emp_password.length<6){
-			alert("密码长度在6到18为之间");
+		if(mm_msg_content.length>200 || mm_msg_content.length<2){
+			alert("请输入信息内容，内容在2到200个字之间");
 			return ;
 		}
-		if(mm_emp_surepwr.replace(/\s/g, '') == ''){
-			alert("确认密码不能为空");
-			return ;
-		}
-		if(mm_emp_password != mm_emp_surepwr){
-			alert("两次输入密码不一致，请重新输入");
+		if('${emp.is_fabugongying}' == '0' && mm_msg_type=='1'){
+			alert("您暂无权限发布苗木供应信息，请联系客服！");
 			return;
 		}
+		if('${emp.is_fabuqiugou}' == '0' && mm_msg_type=='0'){
+			alert("您暂无权限发布苗木求购信息，请联系客服！");
+			return;
+		}
+
+		<%--if('${emp.is_pic}' == '0'){--%>
+			<%--alert("您暂无权限发布图片，请联系客服！");--%>
+			<%--return;--%>
+		<%--}--%>
 		$.ajax({
 			cache: true,
 			type: "POST",
-			url:"/webvFindPwrController/findPwr.do",
+			url:"/webvAddRecordController/addRecord.do",
 			data:{
-				"mm_emp_mobile":mm_emp_mobile,
-				"mm_emp_card":mm_emp_card,
-				"mm_emp_password":mm_emp_password
-
+				"mm_msg_type":mm_msg_type,
+				"mm_msg_title":mm_msg_title,
+				"mm_msg_content":mm_msg_content
 			},
 			async: false,
 			success: function(_data) {
 				var data = $.parseJSON(_data);
 				if(data.success){
-					alert("找回密码成功");
-					//登录页面跳转
-					window.location.href="/webvLoginController/toLogin.do";
+					alert("发布信息成功！");
 				}else{
-					var _case = {1:"找回密码失败",2:"手机号和身份证号不匹配，找回密码失败！"};
+					var _case = {1:"发布信息失败",2:"已经发布该信息，不能重复发布！",3:"发布信息数量超出限制，您每天最多发布"+"3"+"条",9:"您的账号在其它设备上登录，请重新登录"};
 					alert(_case[data.code])
 				}
 			}

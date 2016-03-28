@@ -5,11 +5,11 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>花木通竞价排名信息</title>
+	<title>花木通金牌榜</title>
 	<meta name="Keywords" content="花木通,花木,花草,苗联通,白蜡,园林,惠民皂户李镇,苗木协会" />
 	<meta name="Description" content="花木通是最优秀的花木信息软件，为客户提供最优质的服务" />
-	<meta property="og:title" content="花木通_竞价排名"  />
-	<meta property="og:description" content="花木通_竞价排名" />
+	<meta property="og:title" content="花木通_金牌榜"  />
+	<meta property="og:description" content="花木通_金牌榜" />
 	<meta name="author" content="花木通" />
 	<meta name="Copyright" content="花木通版权所有" />
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -30,30 +30,22 @@
 <div class="container">
 	<!-- HEADING -->
 	<div class="heading clearfix">
-		<div class="icon-group">
-			<i class="icon"></i>
-			<c:if test="${is_login=='1'}"><span class="location" onclick="selectPro()">${emp.areaName}</span></c:if>
-			<c:if test="${is_login=='0'}"><a href="javaScript:void(0)"><span class="location" onclick="login()">登录</span></a></c:if>
-		</div>
-		<form action="" class="search-bar clearfix">
-			<input type="text" id="keyword" name="keyword" placeholder="关键词:信息标题/手机号/公司名称/联系人">
-			<button onclick="searchIndex(event)">搜索</button>
-		</form>
-		<button class="new"></button>
+		<a href="javascript:history.back()()" class="back"><img src="/img/tree_icons_back.png" alt=""></a>
+		<h1 class="head-title">金牌榜</h1>
 	</div>
 	<!-- CONTENT -->
 	<div class="content">
 		<input type="hidden" id="is_login" name="is_login" value="${is_login}">
 		<input type="hidden" id="accessToken" name="accessToken" value="${emp.access_token}">
 		<input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${emp.mm_emp_id}">
+
 		<c:forEach items="${list}" var="e" varStatus="st">
 			<div href="javaScript:void(0)"  class="item">
 				<div class="item-heading clearfix">
-					<a href="javaScript:void(0)" onclick="showDetail('${e.mm_msg_id}')" class="left clearfix">
+					<a href="/webvProfile/toProfile.do?mm_emp_id=${e.mm_emp_id}"  class="left clearfix">
 						<img src="${e.mm_emp_cover}" alt="" class="head-pic">
 						<div class="detail">
-							<h1 class="company">${e.mm_emp_company}&nbsp;${e.mm_emp_nickname}</h1>
-							<h3 class="time">${e.dateline} &nbsp;&nbsp; ${e.area}</h3>
+							<h1 class="company">${e.mm_emp_nickname}</h1>
 						</div>
 					</a>
 					<div class="right">
@@ -70,25 +62,12 @@
 						</div>
 					</div>
 				</div>
-				<a class="item-content" href="javaScript:void(0)" onclick="showDetail('${e.mm_msg_id}')">
-						${e.mm_msg_title}
-						${e.mm_msg_content}
+				<a class="item-content" href="/webvProfile/toProfile.do?mm_emp_id=${e.mm_emp_id}">
+						${e.mm_emp_company}
+						${e.mm_emp_company_detail}
 				</a>
 				<div class="item-footer clearfix">
-					<%--<button class="read-status-unread"></button>--%>
-					<%--<div  class="share-left">--%>
-						<%--<div class="bdsharebuttonbox" >--%>
-							<%--<a class="bds_mshare" data-cmd="mshare"></a>--%>
-							<%--<a class="bds_qzone" data-cmd="qzone" href="javaScript:void(0)"></a>--%>
-							<%--<a class="bds_tsina" data-cmd="tsina"></a>--%>
-							<%--<a class="bds_tqq" data-cmd="tqq"></a>--%>
-							<%--<a class="bds_more" data-cmd="more">更多</a>--%>
-							<%--<a class="bds_count" data-cmd="count"></a>--%>
-						<%--</div>--%>
-					<%--</div>--%>
 					<a type="button" href="javaScript:void(0)" onclick="telClick(${e.mm_emp_mobile})" class="button-phone"></a>
-					<a type="button" href="javaScript:void(0)" onclick="favourClick('${e.mm_msg_id}')" class="button-fav"></a>
-					<c:if test="${e.mm_msg_picurl !='' && e.mm_msg_picurl != null}"><a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-pic"></a></c:if>
 
 				</div>
 			</div>
@@ -157,34 +136,6 @@
 			window.location.href=_url;
 		}
 	}
-	function favourClick(_mm_msg_id){
-		//先判断是否登录
-		var is_login = $("#is_login").val();
-		if(is_login == 1){
-			//登陆了
-			var mm_emp_id = $("#mm_emp_id").val();
-			var accessToken = $("#accessToken").val();
-			$.ajax({
-				cache: true,
-				type:"POST",
-				url:"/saveFavour.do",
-				data:{"mm_msg_id":_mm_msg_id, "accessToken":accessToken, "mm_emp_id":mm_emp_id},
-				async: false,
-				success:function(_data){
-					var data = $.parseJSON(_data);
-					if(data.success){
-						alert("收藏成功");
-					}else{
-						var _case = {1:"收藏失败", 2:"已经收藏，不能重复收藏！",9:"账号过期，请重新登录！"};
-						alert(_case[data.code])
-					}
-				}
-			});
-		}else{
-			//没登陆
-			alert("请先登录");
-		}
-	}
 
 	function showDetail(_mm_msg_id){
 		window.location.href="/webvRecordController/toDetail.do?mm_msg_id="+_mm_msg_id;
@@ -207,10 +158,6 @@
 		window.location.href="/webvLoginController/toLogin.do";
 	}
 
-	function selectPro(){
-		//页面跳转
-		window.location.href="/webvSelectProvinceController/toSelectProvince.do";
-	}
 </script>
 
 <script type="text/javascript" charset="UTF-8">
@@ -220,9 +167,8 @@
 		var _index = $("#index").val();
 		var page = parseInt(_page);
 		var size = $("#size").val();
-		var keyword = $("#keyword").val();
 		if(_index <= ${page.pageCount} && _index >= 1){
-			window.location.href="/webvRecommend/toRecommend.do?page="+page+"&size="+size+"&keyword="+keyword;
+			window.location.href="/webvTopController/toTop.do?page="+page+"&size="+size;
 		}else{
 			alert("请输入1-${page.pageCount}的页码数");
 		}
@@ -231,10 +177,9 @@
 	function nextPage(_page) {
 		var page = parseInt(_page);
 		var size = $("#size").val();
-		var keyword = $("#keyword").val();
 		addCookie("contract_size", size, 36);
 		if ((page <= ${page.pageCount} && page >= 1)) {
-			window.location.href="/webvRecommend/toRecommend.do?page="+page+"&size="+size+"&keyword="+keyword;
+			window.location.href="/webvTopController/toTop.do?page="+page+"&size="+size;
 		} else {
 			alert("请输入1-${page.pageCount}的页码数");
 		}
@@ -285,35 +230,5 @@
 
 
 </script>
-
-<%--<script>--%>
-	<%--window._bd_share_config = {--%>
-		<%--common : {--%>
-			<%--bdText : '自定义分享内容',--%>
-			<%--bdDesc : '自定义分享摘要',--%>
-			<%--bdUrl : '自定义分享url地址',--%>
-			<%--bdPic : '自定义分享图片'--%>
-		<%--},--%>
-		<%--share : [{--%>
-			<%--"bdSize" : 16--%>
-		<%--}],--%>
-		<%--slide : [{--%>
-			<%--bdImg : 0,--%>
-			<%--bdPos : "right",--%>
-			<%--bdTop : 100--%>
-		<%--}],--%>
-		<%--image : [{--%>
-			<%--viewType : 'list',--%>
-			<%--viewPos : 'top',--%>
-			<%--viewColor : 'black',--%>
-			<%--viewSize : '16',--%>
-			<%--viewList : ['qzone','tsina','huaban','tqq','renren']--%>
-		<%--}],--%>
-		<%--selectShare : [{--%>
-			<%--"bdselectMiniList" : ['qzone','tqq','kaixin001','bdxc','tqf']--%>
-		<%--}]--%>
-	<%--}--%>
-	<%--with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];--%>
-<%--</script>--%>
 
 </html>

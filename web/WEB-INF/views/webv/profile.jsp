@@ -39,7 +39,7 @@
 	<div class="heading clearfix">
 		<div class="heading clearfix">
 			<a href="javascript:history.back()" class="back"><img src="/img/tree_icons_back.png" alt=""></a>
-			<h1 class="head-title">个人资料</h1>
+			<h1 class="head-title">${emp.mm_emp_nickname}</h1>
 		</div>
 	</div>
 	<div class="content" style="width: 100%">
@@ -188,7 +188,7 @@
 	<div class="toolbar">
 		<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell"></a>
-		<a href="javaScript:void(0)" onclick="toPage('/webvRecommend/toRecommend.do','1')" class="recommend"></a>
+		<a href="javaScript:void(0)" onclick="toPage('/webvTopController/toTop.do','1')" class="recommend"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')" class="mine"></a>
 	</div>
 	<!-- TOOLBAR -->

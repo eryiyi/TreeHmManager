@@ -85,6 +85,12 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/getGuanzhuArea\\.do$)"+
                         "|(^/getNotices\\.do$)"+
                         "|(^/getNoticesDetail\\.do$)"+
+                        "|(^/webvWeixinController/toKefu\\.do$)"+
+                        "|(^/webvNoticeController/list\\.do$)"+
+                        "|(^/webvNoticeController/toDetail\\.do$)"+
+                        "|(^/webvAddRecordController/toAddRecord\\.do$)"+
+                        "|(^/webvAddRecordController/addRecord\\.do$)"+
+                        "|(^/webvTopController/toTop\\.do$)"+
 
                         "|(^/memberLogin\\.do$)"
 

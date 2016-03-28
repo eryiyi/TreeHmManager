@@ -69,8 +69,8 @@
 		<div class="imgbox">
 			<img  id="rightpic" src="/img/fabu.png">
 			<div  id="menu" class="imgboxtxt hide" >
-				<a href="">茹园科技</a>
-				<a href="">茹园科技</a>
+				<a href="javaScript:void(0)" onclick="addMsg()">发布信息</a>
+				<a href="javaScript:void(0)" onclick="guanzhuArea()">关注区域</a>
 			</div>
 		</div>
 	</div>
@@ -121,7 +121,7 @@
 						<%--</div>--%>
 					<a type="button" href="javaScript:void(0)" onclick="telClick(${e.mm_emp_mobile})" class="button-phone"></a>
 					<a type="button" href="javaScript:void(0)" onclick="favourClick('${e.mm_msg_id}')" class="button-fav"></a>
-					<c:if test="${e.mm_msg_picurl !=''}"><a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-pic"></a></c:if>
+					<c:if test="${e.mm_msg_picurl !='' && e.mm_msg_picurl != nul}"><a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-pic"></a></c:if>
 
 				</div>
 			</div>
@@ -173,7 +173,7 @@
 	<div class="toolbar">
 		<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy buy-active"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell"></a>
-		<a href="javaScript:void(0)" onclick="toPage('/webvRecommend/toRecommend.do','1')" class="recommend"></a>
+		<a href="javaScript:void(0)" onclick="toPage('/webvTopController/toTop.do','1')" class="recommend"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')" class="mine"></a>
 	</div>
 	<!-- TOOLBAR -->
@@ -242,6 +242,29 @@
 		//页面跳转
 		window.location.href="/webvSelectProvinceController/toSelectProvince.do";
 	}
+
+	function addMsg(){
+		var is_login = $("#is_login").val();
+		if(is_login == 1) {
+			//登陆了
+			window.location.href="/webvAddRecordController/toAddRecord.do";
+		}else{
+			//登录页面跳转
+			window.location.href="/webvLoginController/toLogin.do";
+		}
+	}
+
+	function guanzhuArea(){
+		var is_login = $("#is_login").val();
+		if(is_login == 1) {
+			//登陆了
+			window.location.href="/webvAddRecordController/addRecord.do";
+		}else{
+			//登录页面跳转
+			window.location.href="/webvLoginController/toLogin.do";
+		}
+	}
+
 </script>
 
 <script type="text/javascript" charset="UTF-8">

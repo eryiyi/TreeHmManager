@@ -95,20 +95,14 @@
 				<div class="icon-pic"><img src="/img/tree_user_changepw.png" alt=""></div>
 				<h5 class="icon-name">修改密码</h5>
 			</a>
-			<a href="/webvSuggestController/toSuggest.do" class="icon">
-				<div class="icon-pic"><img src="/img/tree_user_report.png" alt=""></div>
-				<h5 class="icon-name">意见反馈</h5>
+			<a href="contact.html" class="icon">
+				<div class="icon-pic"><img src="/img/tree_user_see.png" alt=""></div>
+				<h5 class="icon-name">设置关注区域</h5>
 			</a>
-			<%--<a href="contact.html" class="icon">--%>
-				<%--<div class="icon-pic"><img src="/img/tree_user_setup.png" alt=""></div>--%>
-				<%--<h5 class="icon-name">设置</h5>--%>
-			<%--</a>--%>
-
 			<a href="javaScript:void(0)" onclick="vipClick()" class="icon">
 				<div class="icon-pic"><img src="/img/tree_user_VIP.png" alt=""></div>
 				<h5 class="icon-name">升级VIP</h5>
 			</a>
-
 			<a href="/webvNearbyController/nearby.do" class="icon">
 				<div class="icon-pic"><img src="/img/tree_user_nearby.png" alt=""></div>
 				<h5 class="icon-name">附近商家</h5>
@@ -121,7 +115,22 @@
 				<div class="icon-pic"><img src="/img/tree_user_crs.png" alt=""></div>
 				<h5 class="icon-name">客服中心</h5>
 			</a>
-
+			<a href="/webvSuggestController/toSuggest.do" class="icon">
+				<div class="icon-pic"><img src="/img/tree_user_report.png" alt=""></div>
+				<h5 class="icon-name">意见反馈</h5>
+			</a>
+			<a href="/webvWeixinController/toKefu.do" class="icon">
+				<div class="icon-pic"><img src="/img/tree_user_weixin.png" alt=""></div>
+				<h5 class="icon-name">微信客服</h5>
+			</a>
+			<a href="javaScript:void(0)" class="icon" onclick="noClick()">
+				<div class="icon-pic"><img src="/img/tree_user_zhaoshang.png" alt=""></div>
+				<h5 class="icon-name">全国招商合作伙伴</h5>
+			</a>
+			<a href="/webvNoticeController/list.do?page=1" class="icon">
+				<div class="icon-pic"><img src="/img/tree_user_notice.png" alt=""></div>
+				<h5 class="icon-name">公告</h5>
+			</a>
 		</div>
 
 		<!-- services -->
@@ -166,7 +175,7 @@
 	<div class="toolbar">
 		<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell"></a>
-		<a href="javaScript:void(0)" onclick="toPage('/webvRecommend/toRecommend.do','1')" class="recommend"></a>
+		<a href="javaScript:void(0)" onclick="toPage('/webvTopController/toTop.do','1')" class="recommend"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')" class="mine mine-active"></a>
 	</div>
 	<!-- TOOLBAR -->
@@ -231,6 +240,9 @@
 	}
 	function vipClick(){
 		alert("暂未开通在线支付功能，升级vip请联系客服");
+	}
+	function noClick(){
+		alert("该功能暂未开通");
 	}
 </script>
 

@@ -86,7 +86,7 @@
             <%--</div>--%>
 
             <div class="form-group">
-                <label class="col-sm-2 control-label">Vip到期日期</label>
+                <label class="col-sm-2 control-label">上榜到期日期</label>
                 <div class="col-sm-2">
                     <input type="date" id="end_time" class="form-control" value="${recordVO.end_time}">
                 </div>
