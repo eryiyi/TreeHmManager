@@ -49,4 +49,13 @@ public class CountryObj {
     public void setFather(String father) {
         this.father = father;
     }
+
+    public CountryObj() {
+    }
+
+
+    public CountryObj(String areaID, String area) {
+        this.areaID = areaID;
+        this.area = area;
+    }
 }

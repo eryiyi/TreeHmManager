@@ -60,7 +60,7 @@
 .heading .search-bar {
   display: block;
   margin-right: 5%;
-  width: 45%;
+  width: 65%;
   float: left;
   margin: 5px 0;
   background-color: #F2F2F2;
@@ -116,47 +116,47 @@
   height: 60px;
 }
 .toolbar .buy {
-  background: url("/img/tree_toolbar_wanted.png") no-repeat center center;
+  background: url("../pics/tree_toolbar_wanted.png") no-repeat center center;
   background-size: 50px;
 }
 .toolbar .buy:active {
   background-color: #cccccc;
 }
 .toolbar .buy-active {
-  background: url("/img/tree_toolbar_wanted_p.png") no-repeat center center;
+  background: url("../pics/tree_toolbar_wanted_p.png") no-repeat center center;
   background-size: 50px;
 }
 .toolbar .sell {
-  background: url("/img/tree_toolbar_sell.png") no-repeat center center;
+  background: url("../pics/tree_toolbar_sell.png") no-repeat center center;
   background-size: 50px;
 }
 .toolbar .sell:active {
   background-color: #cccccc;
 }
 .toolbar .sell-active {
-  background: url("/img/tree_toolbar_sell_p.png") no-repeat center center;
+  background: url("../pics/tree_toolbar_sell_p.png") no-repeat center center;
   background-size: 50px;
 }
 .toolbar .recommend {
-  background: url("/img/tree_toolbar_star.png") no-repeat center center;
+  background: url("../pics/tree_toolbar_star.png") no-repeat center center;
   background-size: 50px;
 }
 .toolbar .recommend:active {
   background-color: #cccccc;
 }
 .toolbar .recommend-active {
-  background: url("/img/tree_toolbar_star_p.png") no-repeat center center;
+  background: url("../pics/tree_toolbar_star_p.png") no-repeat center center;
   background-size: 50px;
 }
 .toolbar .mine {
-  background: url("/img/tree_toolbar_user.png") no-repeat center center;
+  background: url("../pics/tree_toolbar_user.png") no-repeat center center;
   background-size: 50px;
 }
 .toolbar .mine:active {
   background-color: #cccccc;
 }
 .toolbar .mine-active {
-  background: url("/img/tree_toolbar_user_p.png") no-repeat center center;
+  background: url("../pics/tree_toolbar_user_p.png") no-repeat center center;
   background-size: 50px;
 }
 .toolbar-2 {
@@ -181,47 +181,47 @@
   height: 60px;
 }
 .toolbar-2 .buy {
-  background: url("/img/tree_toolbar_wanted.png") no-repeat center center;
+  background: url("../pics/tree_toolbar_wanted.png") no-repeat center center;
   background-size: 50px;
 }
 .toolbar-2 .buy:active {
   background-color: #cccccc;
 }
 .toolbar-2 .buy-active {
-  background: url("/img/tree_toolbar_wanted_p.png") no-repeat center center;
+  background: url("../pics/tree_toolbar_wanted_p.png") no-repeat center center;
   background-size: 50px;
 }
 .toolbar-2 .sell {
-  background: url("/img/tree_toolbar_sell.png") no-repeat center center;
+  background: url("../pics/tree_toolbar_sell.png") no-repeat center center;
   background-size: 50px;
 }
 .toolbar-2 .sell:active {
   background-color: #cccccc;
 }
 .toolbar-2 .sell-active {
-  background: url("/img/tree_toolbar_sell_p.png") no-repeat center center;
+  background: url("../pics/tree_toolbar_sell_p.png") no-repeat center center;
   background-size: 50px;
 }
 .toolbar-2 .recommend {
-  background: url("/img/tree_toolbar_star.png") no-repeat center center;
+  background: url("../pics/tree_toolbar_star.png") no-repeat center center;
   background-size: 50px;
 }
 .toolbar-2 .recommend:active {
   background-color: #cccccc;
 }
 .toolbar-2 .recommend-active {
-  background: url("/img/tree_toolbar_star_p.png") no-repeat center center;
+  background: url("../pics/tree_toolbar_star_p.png") no-repeat center center;
   background-size: 50px;
 }
 .toolbar-2 .mine {
-  background: url("/img/tree_toolbar_user.png") no-repeat center center;
+  background: url("../pics/tree_toolbar_user.png") no-repeat center center;
   background-size: 50px;
 }
 .toolbar-2 .mine:active {
   background-color: #cccccc;
 }
 .toolbar-2 .mine-active {
-  background: url("/img/tree_toolbar_user_p.png") no-repeat center center;
+  background: url("../pics/tree_toolbar_user_p.png") no-repeat center center;
   background-size: 50px;
 }
 .button-phone-big {

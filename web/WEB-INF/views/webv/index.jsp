@@ -108,17 +108,6 @@
 						${e.mm_msg_content}
 				</a>
 				<div class="item-footer clearfix">
-					<%--<button class="read-status-unread"></button>--%>
-						<%--<div  class="share-left">--%>
-							<%--<div class="bdsharebuttonbox" >--%>
-								<%--<a class="bds_mshare" data-cmd="mshare"></a>--%>
-								<%--<a class="bds_qzone" data-cmd="qzone" href="javaScript:void(0)"></a>--%>
-								<%--<a class="bds_tsina" data-cmd="tsina"></a>--%>
-								<%--<a class="bds_tqq" data-cmd="tqq"></a>--%>
-								<%--<a class="bds_more" data-cmd="more">更多</a>--%>
-								<%--<a class="bds_count" data-cmd="count"></a>--%>
-							<%--</div>--%>
-						<%--</div>--%>
 					<a type="button" href="javaScript:void(0)" onclick="telClick(${e.mm_emp_mobile})" class="button-phone"></a>
 					<a type="button" href="javaScript:void(0)" onclick="favourClick('${e.mm_msg_id}')" class="button-fav"></a>
 					<c:if test="${e.mm_msg_picurl !='' && e.mm_msg_picurl != nul}"><a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-pic"></a></c:if>
@@ -131,8 +120,9 @@
 		<c:if test="${is_login=='0'}"><a href="/webvLoginController/toLogin.do" class="warning">请先登录...</a></c:if>
 		<c:if test="${is_login=='1'}">
 
-			<div class="page-num clearfix">
-				<div class="brief hide-phone">
+			<!--分页信息，页面跳转-->
+			<div class="page clearfix">
+				<div class="left hide-phone">
 					<a><span>共${page.count}条/${page.pageCount}页</span></a>
 					<a>每页显示
 						<select name="size" id="size" onchange="nextPage('1')">
@@ -143,7 +133,7 @@
 						</select>条
 					</a>
 				</div>
-				<div class="page-nav fr-screen clearfix">
+				<div class="right">
 					<c:choose >
 						<c:when test="${page.page == 1}">
 							<a href="javascript:void(0)">首页</a>
@@ -168,6 +158,8 @@
 				</div>
 			</div>
 		</c:if>
+
+
 	</div>
 	<!-- TOOLBAR -->
 	<div class="toolbar">
@@ -257,8 +249,32 @@
 	function guanzhuArea(){
 		var is_login = $("#is_login").val();
 		if(is_login == 1) {
-			//登陆了
-			window.location.href="/webvAddRecordController/addRecord.do";
+			//查询是否关注了区域
+			var mm_emp_id = $("#mm_emp_id").val();
+			$.ajax({
+				cache: true,
+				type:"POST",
+				url:"/webvGuanzhuController/webvGetGuanzhu.do",
+				data:{"index":"1", "size":"10", "mm_emp_id":mm_emp_id},
+				async: false,
+				success:function(_data){
+					var data = $.parseJSON(_data);
+					if(data.success){
+						window.location.href="/webvGuanzhuController/guanzhuArea.do?page=1";
+					}else{
+						var _case = {1:"操作失败，请稍后重试！",
+							2:"您尚未申请关注区域，请设置关注区域！",
+							3:"您已经申请了关注区域！请等待管理员审核",
+							4:"您申请的关注区域未通过审核，请联系客服！",
+							9:"账号过期，请重新登录！"};
+						alert(_case[data.code])
+						if(data.code == 2){
+							//跳转到设置关注区域页面
+							window.location.href="/webvGuanzhuController/toGuanzhu.do";
+						}
+					}
+				}
+			});
 		}else{
 			//登录页面跳转
 			window.location.href="/webvLoginController/toLogin.do";
@@ -339,35 +355,5 @@
 
 
 </script>
-
-<%--<script>--%>
-	<%--window._bd_share_config = {--%>
-		<%--common : {--%>
-			<%--bdText : '自定义分享内容',--%>
-			<%--bdDesc : '自定义分享摘要',--%>
-			<%--bdUrl : '自定义分享url地址',--%>
-			<%--bdPic : '自定义分享图片'--%>
-		<%--},--%>
-		<%--share : [{--%>
-			<%--"bdSize" : 16--%>
-		<%--}],--%>
-		<%--slide : [{--%>
-			<%--bdImg : 0,--%>
-			<%--bdPos : "right",--%>
-			<%--bdTop : 100--%>
-		<%--}],--%>
-		<%--image : [{--%>
-			<%--viewType : 'list',--%>
-			<%--viewPos : 'top',--%>
-			<%--viewColor : 'black',--%>
-			<%--viewSize : '16',--%>
-			<%--viewList : ['qzone','tsina','huaban','tqq','renren']--%>
-		<%--}],--%>
-		<%--selectShare : [{--%>
-			<%--"bdselectMiniList" : ['qzone','tqq','kaixin001','bdxc','tqf']--%>
-		<%--}]--%>
-	<%--}--%>
-	<%--with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];--%>
-<%--</script>--%>
 
 </html>

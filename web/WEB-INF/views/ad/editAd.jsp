@@ -47,7 +47,7 @@
 
         <form class="form-horizontal" role="form">
           <input type="hidden" value="${adObj.mm_ad_id}" id="mm_ad_id">
-          <input type="hidden" value="${adObj.mm_ad_type}" id="mm_ad_type">
+
           <div class="form-group">
             <label class="col-sm-2 control-label" >广告图片</label>
             <div class="col-sm-10 col-md-2">
@@ -74,6 +74,17 @@
               <input type="text" id="mm_ad_num"  value="${adObj.mm_ad_num}" class="form-control" placeholder="排序 数字" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">选择广告类型</label>
+            <div class="col-sm-4">
+              <select class="form-control" id="mm_ad_type">
+                <option value="">--请选择广告展示位置--</option>
+                <option value="0" ${adObj.mm_ad_type=='0'?'selected':''}>首页，求购页面展示</option>
+                <option value="1" ${adObj.mm_ad_type=='1'?'selected':''}>排行榜页面展示</option>
+              </select>
+            </div>
+          </div>
+
           <div class="form-group">
             <div class="col-sm-9 col-sm-offset-3">
               <button type="button" class="btn btn-primary" onclick="saveP()">添加</button>

@@ -98,8 +98,9 @@
 		<c:if test="${is_login=='0'}"><a href="/webvLoginController/toLogin.do" class="warning">请先登录...</a></c:if>
 
 		<c:if test="${is_login=='1'}">
-			<div class="page-num clearfix">
-				<div class="brief hide-phone">
+			<!--分页信息，页面跳转-->
+			<div class="page clearfix">
+				<div class="left hide-phone">
 					<a><span>共${page.count}条/${page.pageCount}页</span></a>
 					<a>每页显示
 						<select name="size" id="size" onchange="nextPage('1')">
@@ -110,7 +111,7 @@
 						</select>条
 					</a>
 				</div>
-				<div class="page-nav fr-screen clearfix">
+				<div class="right">
 					<c:choose >
 						<c:when test="${page.page == 1}">
 							<a href="javascript:void(0)">首页</a>

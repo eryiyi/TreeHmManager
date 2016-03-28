@@ -5,6 +5,15 @@ package com.liangxunwang.unimanager.query;
  */
 public class AdQuery extends BaseAreaQuery{
     private String mm_ad_id;
+    private String mm_ad_type;
+
+    public String getMm_ad_type() {
+        return mm_ad_type;
+    }
+
+    public void setMm_ad_type(String mm_ad_type) {
+        this.mm_ad_type = mm_ad_type;
+    }
 
     public String getMm_ad_id() {
         return mm_ad_id;

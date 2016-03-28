@@ -42,11 +42,10 @@
 					<li>
 						<div class="contact clearfix">
 							<div class="left">
-								<%--<h1 class="name">微信客服</h1>--%>
-								<h3 class="company">微信名：${e.mm_weixin_name}</h3>
+								<h3 class="phone-number">微信名：${e.mm_weixin_name}</h3>
 							</div>
 							<div class="right">
-									<h2 class="phone-number">微信号：${e.mm_weixin}</h2>
+								<h2 class="phone-number">微信号：${e.mm_weixin}</h2>
 							</div>
 						</div>
 						<div class="duty"></div>

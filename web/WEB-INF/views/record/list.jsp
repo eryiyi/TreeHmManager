@@ -72,6 +72,7 @@
             <th>姓名</th>
             <th>公司名称</th>
             <th>电话</th>
+            <th>所属地区</th>
 
             <th>操作</th>
             <th>操作</th>
@@ -90,6 +91,7 @@
               <td>${e.mm_emp_nickname}</td>
               <td>${e.mm_emp_company}</td>
               <td>${e.mm_emp_mobile}</td>
+              <td>${e.area}</td>
 
               <td>
                 <a class="btn btn-default btn-sm"  onclick="deleteRole('${e.mm_msg_id}')" role="button">删除</a>

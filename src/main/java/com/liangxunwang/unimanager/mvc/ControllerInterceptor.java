@@ -91,6 +91,12 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/webvAddRecordController/toAddRecord\\.do$)"+
                         "|(^/webvAddRecordController/addRecord\\.do$)"+
                         "|(^/webvTopController/toTop\\.do$)"+
+                        "|(^/webvLoginController/toQuite\\.do$)"+
+                        "|(^/webvGuanzhuController/toGuanzhu\\.do$)"+
+                        "|(^/webvGuanzhuController/guanzhu\\.do$)"+
+                        "|(^/webvGuanzhuController/webvGetGuanzhu\\.do$)"+
+                        "|(^/webvGuanzhuController/guanzhuArea\\.do$)"+
+                        "|(^/webvGuanzhuController/saveGuanzhuArea\\.do$)"+
 
                         "|(^/memberLogin\\.do$)"
 

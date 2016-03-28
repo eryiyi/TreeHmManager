@@ -5,11 +5,11 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>花木通供应信息</title>
+	<title>花木通关注区域求购信息</title>
 	<meta name="Keywords" content="花木通,花木,花草,苗联通,白蜡,园林,惠民皂户李镇,苗木协会" />
 	<meta name="Description" content="花木通是最优秀的花木信息软件，为客户提供最优质的服务" />
-	<meta property="og:title" content="花木通_供应"  />
-	<meta property="og:description" content="花木通_供应" />
+	<meta property="og:title" content="花木通_关注区域求购信息"  />
+	<meta property="og:description" content="花木通_关注区域求购信息" />
 	<meta name="author" content="花木通" />
 	<meta name="Copyright" content="花木通版权所有" />
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -24,30 +24,43 @@
 	<script type="text/javascript" src="/js/ajaxfileupload.js"></script>
 	<script type="text/javascript" src="/js/Util.js"></script>
 	<script type="text/javascript" src="/js/validation.js"></script>
+	<script language="javascript" src="/js/jquery.js"></script>
+	<style type="text/css">
+		.hide{
+			display:none;
+		}
+		.show{
+			display:inline-block;
+		}
+	</style>
 
 </head>
 <body>
 <div class="container">
 	<!-- HEADING -->
 	<div class="heading clearfix">
-		<div class="icon-group">
-			<i class="icon"></i>
-			<c:if test="${is_login=='1'}"><span class="location" onclick="selectPro()">${emp.areaName}</span></c:if>
-			<c:if test="${is_login=='0'}"><a href="javaScript:void(0)"><span class="location" onclick="login()">登录</span></a></c:if>
+		<!-- HEADING -->
+		<div class="heading clearfix">
+			<a href="javascript:history.back()" class="back"><img src="/img/tree_icons_back.png" alt=""></a>
+			<h1 class="head-title" >关注区域</h1>
 		</div>
-		<form action="" class="search-bar clearfix">
-			<input type="text" id="keyword" name="keyword" placeholder="关键词:信息标题/手机号/公司名称/联系人">
-			<button onclick="searchIndex(event)">搜索</button>
-		</form>
-		<button class="new"></button>
 	</div>
 	<!-- CONTENT -->
 	<div class="content">
+		<ul class="category clearfix">
+			<c:forEach items="${listArea}" var="e" varStatus="st">
+				<c:if test="${countryid == e.areaID}"><li><a class="active" href="javaScript:void(0)" onclick="gzClickArea('${e.areaID}')">${e.area}</a></li></c:if>
+				<c:if test="${countryid != e.areaID}"><li><a href="javaScript:void(0)" onclick="gzClickArea('${e.areaID}')">${e.area}</a></li></c:if>
+			</c:forEach>
+		</ul>
+
+		<input type="hidden" id="mm_msg_type" name="mm_msg_type" value="${query.mm_msg_type}">
+		<input type="hidden" id="countryid" name="countryid" value="${countryid}">
 		<input type="hidden" id="is_login" name="is_login" value="${is_login}">
 		<input type="hidden" id="accessToken" name="accessToken" value="${emp.access_token}">
 		<input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${emp.mm_emp_id}">
 		<c:forEach items="${list}" var="e" varStatus="st">
-			<div  class="item">
+			<div class="item">
 				<div class="item-heading clearfix">
 					<a href="javaScript:void(0)" onclick="showDetail('${e.mm_msg_id}')" class="left clearfix">
 						<img src="${e.mm_emp_cover}" alt="" class="head-pic">
@@ -75,30 +88,18 @@
 						${e.mm_msg_content}
 				</a>
 				<div class="item-footer clearfix">
-					<%--<button class="read-status-unread"></button>--%>
-					<%--<div  class="share-left">--%>
-						<%--<div class="bdsharebuttonbox" >--%>
-							<%--<a class="bds_mshare" data-cmd="mshare"></a>--%>
-							<%--<a class="bds_qzone" data-cmd="qzone" href="javaScript:void(0)"></a>--%>
-							<%--<a class="bds_tsina" data-cmd="tsina"></a>--%>
-							<%--<a class="bds_tqq" data-cmd="tqq"></a>--%>
-							<%--<a class="bds_more" data-cmd="more">更多</a>--%>
-							<%--<a class="bds_count" data-cmd="count"></a>--%>
-						<%--</div>--%>
-					<%--</div>--%>
 					<a type="button" href="javaScript:void(0)" onclick="telClick(${e.mm_emp_mobile})" class="button-phone"></a>
 					<a type="button" href="javaScript:void(0)" onclick="favourClick('${e.mm_msg_id}')" class="button-fav"></a>
-					<c:if test="${e.mm_msg_picurl !='' && e.mm_msg_picurl != null}"><a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-pic"></a></c:if>
-
+					<c:if test="${e.mm_msg_picurl !='' && e.mm_msg_picurl != nul}"><a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-pic"></a></c:if>
 				</div>
 			</div>
 		</c:forEach>
 
 		<c:if test="${is_login=='1'}"><a href="/html/download.html" class="warning" target="_blank">下载客户端以查看更多内容...</a></c:if>
 		<c:if test="${is_login=='0'}"><a href="/webvLoginController/toLogin.do" class="warning">请先登录...</a></c:if>
-
 		<c:if test="${is_login=='1'}">
-			<!--分页信息，页面跳转-->
+
+ <!--分页信息，页面跳转-->
 			<div class="page clearfix">
 				<div class="left hide-phone">
 					<a><span>共${page.count}条/${page.pageCount}页</span></a>
@@ -139,11 +140,16 @@
 
 	</div>
 	<!-- TOOLBAR -->
-	<div class="toolbar">
-		<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy"></a>
-		<a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell sell-active"></a>
-		<a href="javaScript:void(0)" onclick="toPage('/webvTopController/toTop.do','1')" class="recommend"></a>
-		<a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')" class="mine"></a>
+	<div class="toolbar-2">
+
+		<c:if test="${query.mm_msg_type =='0'}">
+			<a href="javaScript:void(0)" onclick="toPage('/webvGuanzhuController/guanzhuArea.do','1','0')" class="buy buy-active"></a>
+			<a href="javaScript:void(0)" onclick="toPage('/webvGuanzhuController/guanzhuArea.do','1','1')" class="sell"></a>
+		</c:if>
+		<c:if test="${query.mm_msg_type =='1'}">
+			<a href="javaScript:void(0)" onclick="toPage('/webvGuanzhuController/guanzhuArea.do','1','0')" class="buy"></a>
+			<a href="javaScript:void(0)" onclick="toPage('/webvGuanzhuController/guanzhuArea.do','1','1')" class="sell sell-active"></a>
+		</c:if>
 	</div>
 	<!-- TOOLBAR -->
 </div>
@@ -151,11 +157,9 @@
 </body>
 
 <script>
-	function toPage(_url, _page){
+	function toPage(_url, _page,_type){
 		if(_page != ''){
-			window.location.href=_url+"?page="+_page;
-		}else{
-			window.location.href=_url;
+			window.location.href=_url+"?page="+_page +"&mm_msg_type="+_type;
 		}
 	}
 	function favourClick(_mm_msg_id){
@@ -208,10 +212,6 @@
 		window.location.href="/webvLoginController/toLogin.do";
 	}
 
-	function selectPro(){
-		//页面跳转
-		window.location.href="/webvSelectProvinceController/toSelectProvince.do";
-	}
 </script>
 
 <script type="text/javascript" charset="UTF-8">
@@ -221,9 +221,10 @@
 		var _index = $("#index").val();
 		var page = parseInt(_page);
 		var size = $("#size").val();
-		var keyword = $("#keyword").val();
+		var mm_msg_type = $("#mm_msg_type").val();
+		var countryid = $("#countryid").val();
 		if(_index <= ${page.pageCount} && _index >= 1){
-			window.location.href="/webvSell/toSell.do?page="+page+"&size="+size+"&keyword="+keyword;
+			window.location.href="/webvGuanzhuController/guanzhuArea.do?page="+page+"&size="+size+"&countryid="+countryid+"mm_msg_type"+mm_msg_type;
 		}else{
 			alert("请输入1-${page.pageCount}的页码数");
 		}
@@ -232,13 +233,20 @@
 	function nextPage(_page) {
 		var page = parseInt(_page);
 		var size = $("#size").val();
-		var keyword = $("#keyword").val();
+		var mm_msg_type = $("#mm_msg_type").val();
+		var countryid = $("#countryid").val();
 		addCookie("contract_size", size, 36);
 		if ((page <= ${page.pageCount} && page >= 1)) {
-			window.location.href="/webvSell/toSell.do?page="+page+"&size="+size+"&keyword="+keyword;
+			window.location.href="/webvGuanzhuController/guanzhuArea.do?page="+page+"&size="+size+"&countryid="+countryid+"&mm_msg_type="+mm_msg_type;
 		} else {
 			alert("请输入1-${page.pageCount}的页码数");
 		}
+	}
+
+	function gzClickArea(_countryid){
+		var size = $("#size").val();
+		var mm_msg_type = $("#mm_msg_type").val();
+		window.location.href="/webvGuanzhuController/guanzhuArea.do?page=1"+"&size="+size+"&countryid="+_countryid+"&mm_msg_type="+mm_msg_type;
 	}
 
 </script>
@@ -286,35 +294,5 @@
 
 
 </script>
-
-<%--<script>--%>
-	<%--window._bd_share_config = {--%>
-		<%--common : {--%>
-			<%--bdText : '自定义分享内容',--%>
-			<%--bdDesc : '自定义分享摘要',--%>
-			<%--bdUrl : '自定义分享url地址',--%>
-			<%--bdPic : '自定义分享图片'--%>
-		<%--},--%>
-		<%--share : [{--%>
-			<%--"bdSize" : 16--%>
-		<%--}],--%>
-		<%--slide : [{--%>
-			<%--bdImg : 0,--%>
-			<%--bdPos : "right",--%>
-			<%--bdTop : 100--%>
-		<%--}],--%>
-		<%--image : [{--%>
-			<%--viewType : 'list',--%>
-			<%--viewPos : 'top',--%>
-			<%--viewColor : 'black',--%>
-			<%--viewSize : '16',--%>
-			<%--viewList : ['qzone','tsina','huaban','tqq','renren']--%>
-		<%--}],--%>
-		<%--selectShare : [{--%>
-			<%--"bdselectMiniList" : ['qzone','tqq','kaixin001','bdxc','tqf']--%>
-		<%--}]--%>
-	<%--}--%>
-	<%--with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];--%>
-<%--</script>--%>
 
 </html>

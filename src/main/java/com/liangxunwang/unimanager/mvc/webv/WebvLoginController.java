@@ -23,9 +23,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-/**
- * Created by liuzh on 2015/8/12.
- */
 @Controller
 @RequestMapping("/webvLoginController")
 public class WebvLoginController extends ControllerConstants {
@@ -100,7 +97,17 @@ public class WebvLoginController extends ControllerConstants {
                 return toJSONString(ERROR_7);
             }
         }
+    }
 
+    @RequestMapping("/toQuite")
+    @ResponseBody
+    public String toQuite(HttpSession session){
+        try {
+            session.setAttribute(ControllerConstants.MEMBER_KEY, null);
+            return toJSONString(SUCCESS);
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+        }
     }
 
 }

@@ -26,10 +26,9 @@ import java.util.List;
 @Controller
 @RequestMapping("/webvRegController")
 public class WebvRegController extends ControllerConstants {
-
     @Autowired
-    @Qualifier("provinceService")
-    private ListService provinceService;
+    @Qualifier("appProvinceService")
+    private ListService appProvinceService;
 
     @Autowired
     @Qualifier("cityService")
@@ -41,7 +40,7 @@ public class WebvRegController extends ControllerConstants {
     @RequestMapping("toReg")
     public String toReg(ModelMap map){
         //查询省份
-        List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list("");
+        List<ProvinceObj> listProvinces = (List<ProvinceObj>) appProvinceService.list("");
         //查询地市
         CityQuery cityQuery = new CityQuery();
         List<CityObj> listCitys = (List<CityObj>) cityService.list(cityQuery);

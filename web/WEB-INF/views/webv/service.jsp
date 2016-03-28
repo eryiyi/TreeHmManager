@@ -99,6 +99,10 @@
 				<div class="icon-pic"><img src="/img/tree_user_see.png" alt=""></div>
 				<h5 class="icon-name">设置关注区域</h5>
 			</a>
+			<a href="javaScript:void(0)" onclick="quiteClick()" class="icon">
+				<div class="icon-pic"><img src="/img/tree_user_setup.png" alt=""></div>
+				<h5 class="icon-name">退出</h5>
+			</a>
 			<a href="javaScript:void(0)" onclick="vipClick()" class="icon">
 				<div class="icon-pic"><img src="/img/tree_user_VIP.png" alt=""></div>
 				<h5 class="icon-name">升级VIP</h5>
@@ -243,6 +247,27 @@
 	}
 	function noClick(){
 		alert("该功能暂未开通");
+	}
+
+	function quiteClick(){
+		//退出
+		$.ajax({
+			cache: true,
+			type:"POST",
+			url:"/webvLoginController/toQuite.do",
+			data:{},
+			async: false,
+			success:function(_data){
+				var data = $.parseJSON(_data);
+				if(data.success){
+					alert("您已退出账号，请重新登录！");
+					window.location.href="/webvLoginController/toLogin.do";
+				}else{
+					var _case = {1:"退出账号失败！", 9:"账号过期，请重新登录！"};
+					alert(_case[data.code])
+				}
+			}
+		});
 	}
 </script>
 

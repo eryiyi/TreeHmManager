@@ -12,12 +12,17 @@
     </resultMap>
 
     <select id="lists" resultMap="adObj">
-        SELECT * from mm_ad ORDER BY mm_ad_num asc
+        SELECT * from mm_ad
+        WHERE 1=1
+        <if test="mm_ad_type != null and mm_ad_type != ''">
+            AND mm_ad_type = #{mm_ad_type}
+        </if>
+        ORDER BY mm_ad_num asc
     </select>
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.AdObj">
         INSERT INTO mm_ad(mm_ad_id, mm_ad_url, mm_ad_pic, mm_ad_type, mm_ad_num)
-        VALUES (#{mm_ad_id}, #{mm_ad_url}, #{mm_ad_pic}, #{mm_ad_type}, #{mm_ad_num,jdbcType=VARCHAR})
+        VALUES (#{mm_ad_id}, #{mm_ad_url}, #{mm_ad_pic}, #{mm_ad_type,jdbcType=VARCHAR}, #{mm_ad_num,jdbcType=VARCHAR})
     </insert>
 
 
@@ -30,6 +35,10 @@
     </select>
 
     <update id="update" parameterType="com.liangxunwang.unimanager.model.AdObj">
-        UPDATE mm_ad SET mm_ad_url=#{mm_ad_url}, mm_ad_pic=#{mm_ad_pic} , mm_ad_num=#{mm_ad_num,jdbcType=VARCHAR} WHERE mm_ad_id=#{mm_ad_id}
+        UPDATE mm_ad SET mm_ad_url=#{mm_ad_url},
+        mm_ad_pic=#{mm_ad_pic} ,
+         mm_ad_num=#{mm_ad_num,jdbcType=VARCHAR},
+         mm_ad_type=#{mm_ad_type,jdbcType=VARCHAR}
+         WHERE mm_ad_id=#{mm_ad_id}
     </update>
 </mapper>

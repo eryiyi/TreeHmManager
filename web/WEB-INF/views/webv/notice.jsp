@@ -64,42 +64,43 @@
 
 		<a href="/html/download.html" class="warning" target="_blank">下载客户端以查看更多内容...</a>
 
-			<div class="page-num clearfix">
-				<div class="brief hide-phone">
-					<a><span>共${page.count}条/${page.pageCount}页</span></a>
-					<a>每页显示
-						<select name="size" id="size" onchange="nextPage('1')">
-							<option value="10" ${query.size==10?'selected':''}>10</option>
-							<option value="20" ${query.size==20?'selected':''}>20</option>
-							<option value="30" ${query.size==30?'selected':''}>30</option>
-							<option value="100" ${query.size==100?'selected':''}>100</option>
-						</select>条
-					</a>
-				</div>
-				<div class="page-nav fr-screen clearfix">
-					<c:choose >
-						<c:when test="${page.page == 1}">
-							<a href="javascript:void(0)">首页</a>
-							<a href="javascript:void(0)">《</a>
-						</c:when>
-						<c:otherwise>
-							<a href="javascript:void(0);" onclick="nextPage('1')">首页</a>
-							<a href="javascript:void(0);" onclick="nextPage('${page.page-1}')">《</a>
-						</c:otherwise>
-					</c:choose>
-					<a>第<input type="text" id="index" name="index" onkeyup="searchIndex(event)" value="${page.page}">页</a>
-					<c:choose>
-						<c:when test="${page.page == page.pageCount}">
-							<a href="javascript:void(0)">》</a>
-							<a href="javascript:void(0)">末页</a>
-						</c:when>
-						<c:otherwise>
-							<a href="javascript:void(0);" onclick="nextPage('${page.page+1}')">》</a>
-							<a href="javascript:void(0);" onclick="nextPage('${page.pageCount}')">末页</a>
-						</c:otherwise>
-					</c:choose>
-				</div>
+		<!--分页信息，页面跳转-->
+		<div class="page clearfix">
+			<div class="left hide-phone">
+				<a><span>共${page.count}条/${page.pageCount}页</span></a>
+				<a>每页显示
+					<select name="size" id="size" onchange="nextPage('1')">
+						<option value="10" ${query.size==10?'selected':''}>10</option>
+						<option value="20" ${query.size==20?'selected':''}>20</option>
+						<option value="30" ${query.size==30?'selected':''}>30</option>
+						<option value="100" ${query.size==100?'selected':''}>100</option>
+					</select>条
+				</a>
 			</div>
+			<div class="right">
+				<c:choose >
+					<c:when test="${page.page == 1}">
+						<a href="javascript:void(0)">首页</a>
+						<a href="javascript:void(0)">《</a>
+					</c:when>
+					<c:otherwise>
+						<a href="javascript:void(0);" onclick="nextPage('1')">首页</a>
+						<a href="javascript:void(0);" onclick="nextPage('${page.page-1}')">《</a>
+					</c:otherwise>
+				</c:choose>
+				<a>第<input type="text" id="index" name="index" onkeyup="searchIndex(event)" value="${page.page}">页</a>
+				<c:choose>
+					<c:when test="${page.page == page.pageCount}">
+						<a href="javascript:void(0)">》</a>
+						<a href="javascript:void(0)">末页</a>
+					</c:when>
+					<c:otherwise>
+						<a href="javascript:void(0);" onclick="nextPage('${page.page+1}')">》</a>
+						<a href="javascript:void(0);" onclick="nextPage('${page.pageCount}')">末页</a>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</div>
 	</div>
 	<!-- TOOLBAR -->
 	<div class="toolbar">

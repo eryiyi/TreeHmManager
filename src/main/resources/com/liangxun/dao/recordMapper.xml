@@ -56,21 +56,21 @@
         <if test="mm_msg_type != null and mm_msg_type != ''">
             AND sn.mm_msg_type = #{mm_msg_type}
         </if>
-        <if test="provinceid != null and provinceid != ''">
-            AND sn.provinceid = #{provinceid}
-        </if>
-        <if test="cityid != null and cityid != ''">
-            AND sn.cityid = #{cityid}
-        </if>
 
-
-        <if test="is_guanzhu == '1'">
-            AND sn.countryid in (#{countryid})
-        </if>
         <if test="is_guanzhu == '0'">
+
+            <if test="provinceid != null and provinceid != ''">
+                AND sn.provinceid = #{provinceid}
+            </if>
+            <if test="cityid != null and cityid != ''">
+                AND sn.cityid = #{cityid}
+            </if>
+
+        </if>
+
+        <if test="countryid != null and countryid != ''" >
             AND sn.countryid = #{countryid}
         </if>
-
 
         <if test="mm_emp_id != null and mm_emp_id != ''">
             AND sn.mm_emp_id = #{mm_emp_id}
@@ -89,20 +89,24 @@
         <if test="mm_msg_type != null and mm_msg_type != ''">
             AND sn.mm_msg_type = #{mm_msg_type}
         </if>
-        <if test="provinceid != null and provinceid != ''">
-            AND sn.provinceid = #{provinceid}
-        </if>
-        <if test="cityid != null and cityid != ''">
-            AND sn.cityid = #{cityid}
+
+        <if test="is_guanzhu == '0'">
+
+            <if test="provinceid != null and provinceid != ''">
+                AND sn.provinceid = #{provinceid}
+            </if>
+            <if test="cityid != null and cityid != ''">
+                AND sn.cityid = #{cityid}
+            </if>
+
         </if>
 
-        <if test="is_guanzhu == '1'">
-            AND sn.countryid in (#{countryid})
-        </if>
-        <if test="is_guanzhu == '0'">
+        <if test="countryid != null and countryid != ''" >
             AND sn.countryid = #{countryid}
         </if>
-
+        <if test="mm_emp_id != null and mm_emp_id != ''">
+            AND sn.mm_emp_id = #{mm_emp_id}
+        </if>
         <if test="keyword != null and keyword != ''">
             AND  (sn.mm_msg_title like CONCAT('%',#{keyword},'%') OR  lemp.mm_emp_mobile = #{keyword} OR lemp.mm_emp_nickname like CONCAT('%',#{keyword},'%') OR  lemp.mm_emp_company like CONCAT('%',#{keyword},'%'))
         </if>

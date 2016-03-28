@@ -77,6 +77,17 @@
             </div>
           </div>
           <div class="form-group">
+            <label class="col-sm-2 control-label">选择广告类型</label>
+            <div class="col-sm-4">
+              <select class="form-control" id="mm_ad_type">
+                <option value="">--请选择广告展示位置--</option>
+                <option value="0"  selected="selected">首页，求购页面展示</option>
+                <option value="1" >排行榜页面展示</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
             <div class="col-sm-9 col-sm-offset-3">
               <button type="button" class="btn btn-primary" onclick="saveP()">添加</button>
               <button type="button" class="btn btn-primary" onclick="javascript :history.back(-1)">返回</button>
@@ -94,6 +105,7 @@
 
     var mm_ad_url = $("#mm_ad_url").val();
     var mm_ad_num = $("#mm_ad_num").val();
+    var mm_ad_type = $("#mm_ad_type").val();
 
     var imagePath = $("img[name='imagePath']").attr("src");
 
@@ -106,12 +118,16 @@
       alert("请输入链接");
       return;
     }
+    if(mm_ad_type.replace(/\s/g, '')==''){
+      alert("请选择广告类型");
+      return;
+    }
 
     $.ajax({
       cache: true,
       type: "POST",
       url:"/adObj/addAd.do",
-      data:{"mm_ad_pic":imagePath, "mm_ad_url":mm_ad_url,"mm_ad_num":mm_ad_num},
+      data:{"mm_ad_pic":imagePath, "mm_ad_url":mm_ad_url,"mm_ad_num":mm_ad_num,"mm_ad_type":mm_ad_type},
       async: false,
       success: function(_data) {
         var data = $.parseJSON(_data);
