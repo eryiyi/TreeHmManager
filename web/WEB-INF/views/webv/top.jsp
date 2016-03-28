@@ -18,12 +18,18 @@
 	<link rel="stylesheet" href="/css/common.css">
 	<link rel="stylesheet" href="/css/index.css">
 
+	<link rel="stylesheet" href="/css/glide.core.min.css">
+	<link rel="stylesheet" href="/css/glide.theme.min.css">
+
 	<script type="text/javascript" src="/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/md5.js"></script>
 	<script type="text/javascript" src="/js/cookie.js"></script>
 	<script type="text/javascript" src="/js/ajaxfileupload.js"></script>
 	<script type="text/javascript" src="/js/Util.js"></script>
 	<script type="text/javascript" src="/js/validation.js"></script>
+	<script language="javascript" src="/js/jquery.js"></script>
+	<script type="text/javascript" src="/js/jquery_latest.js"></script>
+	<script type="text/javascript" src="/js/glide.min.js"></script>
 
 </head>
 <body>
@@ -35,6 +41,37 @@
 	</div>
 	<!-- CONTENT -->
 	<div class="content">
+		<c:if test="${listAd !=null && listAd.size() > 0}">
+			<div id="Glide" class="glide">
+				<div class="glide__wrapper">
+					<ul class="glide__track">
+						<c:forEach items="${listAd}" var="e" varStatus="st">
+							<a href="${e.mm_ad_url}" target="_blank"><li class="glide__slide"><img src="${e.mm_ad_pic}" alt="${e.mm_ad_url}"></li></a>
+						</c:forEach>
+					</ul>
+				</div>
+				<div class="glide__bullets"></div>
+			</div>
+			<script>
+				$(function(){
+					$('.glide').glide({
+						mode:'horizontal',     // 幻灯片走向
+						autoplay:5000,         // 自动播放，false为关闭自动播放
+						startAt:0,             // 开始于哪个幻灯片
+						// paddings:'1rem',       // 幻灯片左右的padding 可以是单位，%
+						centered:true,         // 当前幻灯片在slides的中间
+						hoverpause:true,       // 鼠标悬停的时候暂停播放
+						autoheight:false,      // 设置包裹的slider为当前幻灯片的高度
+						keyboard:true,         // 光标方向键使幻灯片左右滑动
+						touchDistance:80,      // 最小手指滑动距离，以触发滑动操作
+						dragDistance:120,      // 最小鼠标拖动距离，以触发滑动操作
+						animationDuration:400 // 动画时间 ms
+					});
+				})
+			</script>
+			<!-- GLIDE SLIDE END -->
+		</c:if>
+
 		<input type="hidden" id="is_login" name="is_login" value="${is_login}">
 		<input type="hidden" id="accessToken" name="accessToken" value="${emp.access_token}">
 		<input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${emp.mm_emp_id}">

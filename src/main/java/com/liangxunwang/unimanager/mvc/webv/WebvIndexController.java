@@ -2,6 +2,7 @@ package com.liangxunwang.unimanager.mvc.webv;
 
 import com.liangxunwang.unimanager.model.*;
 import com.liangxunwang.unimanager.mvc.vo.EmpVO;
+import com.liangxunwang.unimanager.query.AdQuery;
 import com.liangxunwang.unimanager.query.CityQuery;
 import com.liangxunwang.unimanager.query.CountryQuery;
 import com.liangxunwang.unimanager.query.RecordQuery;
@@ -40,6 +41,11 @@ public class WebvIndexController extends ControllerConstants {
     @Autowired
     @Qualifier("countryService")
     private ListService countryService;
+
+    @Autowired
+    @Qualifier("adObjService")
+    private ListService adObjService;
+
 
     @RequestMapping("toIndex")
     public String add(HttpSession session, ModelMap map, RecordQuery query, Page page) {
@@ -118,6 +124,12 @@ public class WebvIndexController extends ControllerConstants {
             //说明没有登陆
             map.put("is_login", "0");
         }
+
+        //查询广告
+        AdQuery queryad = new AdQuery();
+        queryad.setMm_ad_type("0");
+        List<AdObj> listAd = (List<AdObj>) adObjService.list(queryad);
+        map.put("listAd", listAd);
         return "/webv/index";
     }
 

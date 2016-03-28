@@ -1,15 +1,10 @@
-package com.liangxunwang.unimanager.service.account;
+package com.liangxunwang.unimanager.service.app;
 
-import com.liangxunwang.unimanager.dao.AccessTokenDao;
-import com.liangxunwang.unimanager.dao.FuwuDao;
 import com.liangxunwang.unimanager.dao.KefuTelDao;
-import com.liangxunwang.unimanager.model.FuwuObj;
 import com.liangxunwang.unimanager.model.KefuTel;
 import com.liangxunwang.unimanager.mvc.vo.KefuVO;
-import com.liangxunwang.unimanager.query.FuwuQuery;
 import com.liangxunwang.unimanager.query.KefuQuery;
 import com.liangxunwang.unimanager.service.*;
-import com.liangxunwang.unimanager.util.DateUtil;
 import com.liangxunwang.unimanager.util.StringUtil;
 import com.liangxunwang.unimanager.util.UUIDFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +15,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Service("kefuTelService")
-public class KefuTelService implements ListService,SaveService , UpdateService, ExecuteService{
+@Service("appKefuTelService")
+public class AppKefuTelService implements ListService{
 
     @Autowired
     @Qualifier("kefuTelDao")
@@ -34,28 +29,8 @@ public class KefuTelService implements ListService,SaveService , UpdateService, 
         if(!StringUtil.isNullOrEmpty(query.getMm_emp_countryId())){
             map.put("mm_emp_countryId", query.getMm_emp_countryId());
         }
-        List<KefuVO> lists = fuwuDao.lists(map);
+        List<KefuVO> lists = fuwuDao.listsAll(map);
         return lists;
-    }
-
-    @Override
-    public Object save(Object object) throws ServiceException {
-        KefuTel level = (KefuTel) object;
-        level.setMm_tel_id(UUIDFactory.random());
-        fuwuDao.save(level);
-        return null;
-    }
-
-    @Override
-    public Object update(Object object) {
-        KefuTel level = (KefuTel) object;
-        fuwuDao.update(level);
-        return null;
-    }
-
-    @Override
-    public Object execute(Object object) throws ServiceException {
-        return fuwuDao.findById((String) object);
     }
 
 }

@@ -7,6 +7,8 @@ public class KefuQuery extends BaseAreaQuery{
     private String mm_tel_id;
     private String mm_tel;
 
+
+
     public String getMm_tel_id() {
         return mm_tel_id;
     }

@@ -1,14 +1,12 @@
 package com.liangxunwang.unimanager.mvc.webv;
 
+import com.liangxunwang.unimanager.model.AdObj;
 import com.liangxunwang.unimanager.model.CityObj;
 import com.liangxunwang.unimanager.model.CountryObj;
 import com.liangxunwang.unimanager.model.ProvinceObj;
 import com.liangxunwang.unimanager.mvc.vo.EmpVO;
 import com.liangxunwang.unimanager.mvc.vo.RecordVO;
-import com.liangxunwang.unimanager.query.CityQuery;
-import com.liangxunwang.unimanager.query.CountryQuery;
-import com.liangxunwang.unimanager.query.PaihangQuery;
-import com.liangxunwang.unimanager.query.RecordQuery;
+import com.liangxunwang.unimanager.query.*;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.ServiceException;
 import com.liangxunwang.unimanager.util.ControllerConstants;
@@ -34,6 +32,10 @@ public class WebvTopController extends ControllerConstants {
     @Qualifier("paihangService")
     private ListService paihangService;
 
+    @Autowired
+    @Qualifier("adObjService")
+    private ListService adObjService;
+
     @RequestMapping("toTop")
     public String toTop(HttpSession session, ModelMap map, PaihangQuery query, Page page){
         EmpVO emp = (EmpVO) session.getAttribute(MEMBER_KEY);
@@ -57,6 +59,12 @@ public class WebvTopController extends ControllerConstants {
                 //说明没有登陆
                 map.put("is_login", "0");
             }
+            //查询广告
+            AdQuery queryad = new AdQuery();
+            queryad.setMm_ad_type("1");
+            List<AdObj> listAd = (List<AdObj>) adObjService.list(queryad);
+            map.put("listAd", listAd);
+
             return "/webv/top";
         }catch (ServiceException e){
             String msg = e.getMessage();
