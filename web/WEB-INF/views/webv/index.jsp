@@ -274,7 +274,13 @@
 		var is_login = $("#is_login").val();
 		if(is_login == 1) {
 			//登陆了
-			window.location.href="/webvAddRecordController/toAddRecord.do";
+			if(${emp.is_upate_profile == '1'} ){
+				window.location.href="/webvAddRecordController/toAddRecord.do";
+			}else{
+				alert("请先完善资料！");
+
+			}
+
 		}else{
 			//登录页面跳转
 			window.location.href="/webvLoginController/toLogin.do";

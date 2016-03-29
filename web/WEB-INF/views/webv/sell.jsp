@@ -18,13 +18,44 @@
 	<link rel="stylesheet" href="/css/common.css">
 	<link rel="stylesheet" href="/css/index.css">
 
+	<link rel="stylesheet" href="/css/glide.core.min.css">
+	<link rel="stylesheet" href="/css/glide.theme.min.css">
+
 	<script type="text/javascript" src="/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/md5.js"></script>
 	<script type="text/javascript" src="/js/cookie.js"></script>
 	<script type="text/javascript" src="/js/ajaxfileupload.js"></script>
 	<script type="text/javascript" src="/js/Util.js"></script>
 	<script type="text/javascript" src="/js/validation.js"></script>
+	<script language="javascript" src="/js/jquery.js"></script>
+	<script type="text/javascript" src="/js/jquery_latest.js"></script>
+	<script type="text/javascript" src="/js/glide.min.js"></script>
+	<style type="text/css">
+		.hide{
+			display:none;
+		}
+		.show{
+			display:inline-block;
+		}
+	</style>
+	<script type="text/javascript">
+		$(function(){
+			$("#rightpic").click(function(){
+				var isshow=$("#menu").attr("class");
+				if(isshow=="imgboxtxt hide")
+				{
 
+					$("#menu").removeClass("hide");
+					$("#menu").addClass("show");
+				}
+				else
+				{
+					$("#menu").removeClass("show");
+					$("#menu").addClass("hide");
+				}
+			})
+		})
+	</script>
 </head>
 <body>
 <div class="container">
@@ -40,9 +71,47 @@
 			<button onclick="searchIndex(event)">搜索</button>
 		</form>
 		<button class="new"></button>
+		<div class="imgbox">
+			<img  id="rightpic" src="/img/fabu.png">
+			<div  id="menu" class="imgboxtxt hide" >
+				<a href="javaScript:void(0)" onclick="addMsg()">发布信息</a>
+				<a href="javaScript:void(0)" onclick="guanzhuArea()">关注区域</a>
+			</div>
+		</div>
 	</div>
 	<!-- CONTENT -->
 	<div class="content">
+		<c:if test="${listAd !=null && listAd.size() > 0}">
+			<div id="Glide" class="glide">
+				<div class="glide__wrapper">
+					<ul class="glide__track">
+						<c:forEach items="${listAd}" var="e" varStatus="st">
+							<a href="${e.mm_ad_url}" target="_blank"><li class="glide__slide"><img src="${e.mm_ad_pic}" alt="${e.mm_ad_url}"></li></a>
+						</c:forEach>
+					</ul>
+				</div>
+				<div class="glide__bullets"></div>
+			</div>
+			<script>
+				$(function(){
+					$('.glide').glide({
+						mode:'horizontal',     // 幻灯片走向
+						autoplay:5000,         // 自动播放，false为关闭自动播放
+						startAt:0,             // 开始于哪个幻灯片
+						// paddings:'1rem',       // 幻灯片左右的padding 可以是单位，%
+						centered:true,         // 当前幻灯片在slides的中间
+						hoverpause:true,       // 鼠标悬停的时候暂停播放
+						autoheight:false,      // 设置包裹的slider为当前幻灯片的高度
+						keyboard:true,         // 光标方向键使幻灯片左右滑动
+						touchDistance:80,      // 最小手指滑动距离，以触发滑动操作
+						dragDistance:120,      // 最小鼠标拖动距离，以触发滑动操作
+						animationDuration:400 // 动画时间 ms
+					});
+				})
+			</script>
+			<!-- GLIDE SLIDE END -->
+		</c:if>
+
 		<input type="hidden" id="is_login" name="is_login" value="${is_login}">
 		<input type="hidden" id="accessToken" name="accessToken" value="${emp.access_token}">
 		<input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${emp.mm_emp_id}">
@@ -75,21 +144,9 @@
 						${e.mm_msg_content}
 				</a>
 				<div class="item-footer clearfix">
-					<%--<button class="read-status-unread"></button>--%>
-					<%--<div  class="share-left">--%>
-						<%--<div class="bdsharebuttonbox" >--%>
-							<%--<a class="bds_mshare" data-cmd="mshare"></a>--%>
-							<%--<a class="bds_qzone" data-cmd="qzone" href="javaScript:void(0)"></a>--%>
-							<%--<a class="bds_tsina" data-cmd="tsina"></a>--%>
-							<%--<a class="bds_tqq" data-cmd="tqq"></a>--%>
-							<%--<a class="bds_more" data-cmd="more">更多</a>--%>
-							<%--<a class="bds_count" data-cmd="count"></a>--%>
-						<%--</div>--%>
-					<%--</div>--%>
 					<a type="button" href="javaScript:void(0)" onclick="telClick(${e.mm_emp_mobile})" class="button-phone"></a>
 					<a type="button" href="javaScript:void(0)" onclick="favourClick('${e.mm_msg_id}')" class="button-fav"></a>
 					<c:if test="${e.mm_msg_picurl !='' && e.mm_msg_picurl != null}"><a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-pic"></a></c:if>
-
 				</div>
 			</div>
 		</c:forEach>
@@ -212,6 +269,52 @@
 		//页面跳转
 		window.location.href="/webvSelectProvinceController/toSelectProvince.do";
 	}
+	function addMsg(){
+		var is_login = $("#is_login").val();
+		if(is_login == 1) {
+			//登陆了
+			window.location.href="/webvAddRecordController/toAddRecord.do";
+		}else{
+			//登录页面跳转
+			window.location.href="/webvLoginController/toLogin.do";
+		}
+	}
+
+	function guanzhuArea(){
+		var is_login = $("#is_login").val();
+		if(is_login == 1) {
+			//查询是否关注了区域
+			var mm_emp_id = $("#mm_emp_id").val();
+			$.ajax({
+				cache: true,
+				type:"POST",
+				url:"/webvGuanzhuController/webvGetGuanzhu.do",
+				data:{"index":"1", "size":"10", "mm_emp_id":mm_emp_id},
+				async: false,
+				success:function(_data){
+					var data = $.parseJSON(_data);
+					if(data.success){
+						window.location.href="/webvGuanzhuController/guanzhuArea.do?page=1";
+					}else{
+						var _case = {1:"操作失败，请稍后重试！",
+							2:"您尚未申请关注区域，请设置关注区域！",
+							3:"您已经申请了关注区域！请等待管理员审核",
+							4:"您申请的关注区域未通过审核，请联系客服！",
+							9:"账号过期，请重新登录！"};
+						alert(_case[data.code])
+						if(data.code == 2){
+							//跳转到设置关注区域页面
+							window.location.href="/webvGuanzhuController/toGuanzhu.do";
+						}
+					}
+				}
+			});
+		}else{
+			//登录页面跳转
+			window.location.href="/webvLoginController/toLogin.do";
+		}
+	}
+
 </script>
 
 <script type="text/javascript" charset="UTF-8">

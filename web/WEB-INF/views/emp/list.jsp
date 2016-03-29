@@ -196,6 +196,7 @@
             <th>允许登陆</th>
             <th>发布供应</th>
             <th>发布求购</th>
+            <th>已完善资料</th>
             <th>审核状态</th>
             <th>操作</th>
             <c:if test="${is_manager=='0'}">
@@ -243,6 +244,10 @@
               <td>
                 <c:if test="${e.is_fabuqiugou=='0'}">不允许</c:if>
                 <c:if test="${e.is_fabuqiugou=='1'}">允许</c:if>
+              </td>
+              <td>
+                <c:if test="${e.is_upate_profile=='0'}">否</c:if>
+                <c:if test="${e.is_upate_profile=='1'}">是</c:if>
               </td>
               <td>
                 <c:if test="${e.ischeck=='0'}">未审核</c:if>

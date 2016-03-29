@@ -258,6 +258,7 @@
   margin-right: 22px;
 }
 .imgboxtxt {
+  z-index: 1000;
   border-radius: 8px;
   position: absolute;
   right: 0;
