@@ -51,11 +51,11 @@
 					</div>
 				</a>
 				<div class="right">
-					<div class="top">
+					<div class="top clearfix">
 						<c:if test="${recordVO.is_miaomu=='1'}"><img src="/img/tree_icons_trust.png" alt=""></c:if>
 						<c:if test="${recordVO.is_chengxin=='1'}"><img src="/img/tree_icons_group.png" alt=""></c:if>
 					</div>
-					<div class="botton">
+					<div class="botton clearfix">
 						<c:if test="${recordVO.mm_level_num=='0'}"><img src="/img/tree_icons_star_1.png" alt=""></c:if>
 						<c:if test="${recordVO.mm_level_num=='1'}"><img src="/img/tree_icons_star_2.png" alt=""></c:if>
 						<c:if test="${recordVO.mm_level_num=='2'}"><img src="/img/tree_icons_star_3.png" alt=""></c:if>
@@ -80,8 +80,8 @@
 				<a href="javaScript:void(0)" onclick="reportClick('${recordVO.mm_emp_id}','${recordVO.mm_msg_id}')" class="button-report"></a>
 			</div>
 			<a href="javaScript:void(0)" onclick="telClick(${recordVO.mm_emp_mobile})" class="button-phone-big clearfix">
-				<img src="/img/tree_button_icon_phone.png" alt="" class="phone-icon">
-				<h2 class="phone-number">${recordVO.mm_emp_mobile}</h2>
+				<%--<img src="/img/tree_button_icon_phone.png" alt="" class="phone-icon">--%>
+				<h2 class="phone-number">${recordVO.mm_emp_nickname} ${recordVO.mm_emp_mobile}</h2>
 			</a>
 		</div>
 	</div>
