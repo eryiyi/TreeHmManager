@@ -75,7 +75,7 @@ hr.gray { }
 .input-group-icon::after { content: ''; display: block; height: 0; visibility: hidden; clear: both; }
 .input-group-icon input { border-radius: 5px; display: block; height: 50px; float: left; width: calc(100% - 50px); font-size: 1.3rem; padding: 5px; box-sizing: border-box; transition: all 0.5s ease-in-out; }
 .input-group-icon input:focus { -webkit-box-shadow: 0 0 5px rgba(63, 169, 245, .8); box-shadow: 0 0 5px rgba(63, 169, 245, .8); transition: all 0.5s ease-in-out; }
-.input-group-icon img { box-sizing: border-box; padding: 5px; width: 50px; float: left; display: block; }
+.input-group-icon img { box-sizing: border-box; padding: 5px; width: 35px; float: left; display: block; }
 
 /*--input-group-word*/
 .input-group-words { box-sizing: border-box; font-size: 1.1rem; margin-top: .5rem; }

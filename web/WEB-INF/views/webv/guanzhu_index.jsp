@@ -95,7 +95,7 @@
 			</div>
 		</c:forEach>
 
-		<c:if test="${is_login=='1'}"><a href="/html/download.html" class="warning" target="_blank">下载客户端以查看更多内容...</a></c:if>
+		<c:if test="${is_login=='1'}"><a href="/html/download.html" class="warning" target="_blank">下载安卓APP可以查看更多内容...</a></c:if>
 		<c:if test="${is_login=='0'}"><a href="/webvLoginController/toLogin.do" class="warning">请先登录...</a></c:if>
 		<c:if test="${is_login=='1'}">
 

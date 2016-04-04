@@ -31,10 +31,7 @@ public class WebvKefuController extends ControllerConstants {
 
     @RequestMapping("toKefu")
     public String toLogin(HttpSession session,ModelMap map,KefuQuery query){
-        EmpVO emp = (EmpVO) session.getAttribute(MEMBER_KEY);
-        if(emp == null){
-            return "/webv/login";
-        }else
+//        EmpVO emp = (EmpVO) session.getAttribute(MEMBER_KEY);
         try {
             List<KefuTel> list = (List<KefuTel>) kefuTelService.list(query);
             map.put("list", list);

@@ -7,8 +7,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.File;
+import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by liuzwei on 2015/2/4.
@@ -43,5 +48,94 @@ public class UploadFileController extends ControllerConstants {
         DataTip dataTip = new DataTip();
         dataTip.setData("upload/" + newFileName);
         return toJSONString(dataTip);
+    }
+
+    /**
+     * 通过上下文来取工程路径
+     *
+     * @return
+     * @throws Exception
+     */
+    private String getAbsolutePathByContext(HttpSession session) throws Exception {
+
+        String webPath = session.getServletContext().getRealPath("/upload/"+getDatePath());
+
+        webPath = webPath.replaceAll("[\\\\\\/]WEB-INF[\\\\\\/]classes[\\\\\\/]?", "/");
+        webPath = webPath.replaceAll("[\\\\\\/]+", "/");
+        webPath = webPath.replaceAll("%20", " ");
+
+        if (webPath.matches("^[a-zA-Z]:.*?$")) {
+
+        } else {
+            webPath = "/" + webPath;
+        }
+
+        webPath += "/";
+        webPath = webPath.replaceAll("[\\\\\\/]+", "/");
+        return webPath;
+
+    }
+
+    /**
+     * 通过类路径来取工程路径
+     *
+     * @return
+     * @throws Exception
+     */
+    private String getAbsolutePathByClass(HttpSession session) throws Exception {
+        String webPath = this.getClass().getResource("/upload").getPath().replaceAll("^\\/", "");
+        webPath = webPath.replaceAll("[\\\\\\/]WEB-INF[\\\\\\/]classes[\\\\\\/]?", "/");
+        webPath = webPath.replaceAll("[\\\\\\/]+", "/");
+        webPath = webPath.replaceAll("%20", " ");
+
+        if (webPath.matches("^[a-zA-Z]:.*?$")) {
+
+        } else {
+            webPath = "/" + webPath;
+        }
+
+        webPath += "/";
+        webPath = webPath.replaceAll("[\\\\\\/]+", "/");
+
+        return webPath;
+    }
+    private String getAbsolutePathByResource(HttpSession session) throws Exception {
+        URL url = session.getServletContext().getResource("/upload");
+        String path = new File(url.toURI()).getAbsolutePath();
+        if (!path.endsWith("\\") && !path.endsWith("/")) {
+            path += File.separator;
+        }
+        return path;
+    }
+
+    public String init(HttpSession session) throws ServletException {
+        String webPath = null;
+        try {
+            webPath = getAbsolutePathByContext(session);
+        } catch (Exception e) {
+        }
+
+        // 在weblogic 11g 上可能无法从上下文取到工程物理路径，所以改为下面的
+        if (webPath == null) {
+            try {
+                webPath = getAbsolutePathByClass(session);
+            } catch (Exception e) {
+            }
+        }
+
+        if (webPath == null) {
+            try {
+                webPath = getAbsolutePathByResource(session);
+            } catch (Exception e) {
+            }
+        }
+
+//        System.out.println(webPath);
+        return webPath;
+    }
+
+    private String getDatePath(){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+        return sdf.format(new Date());
     }
 }

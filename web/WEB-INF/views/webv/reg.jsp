@@ -92,7 +92,8 @@
 				</c:forEach>
 			</select>
 		</div>
-		<button class="button fill-blue mt3 w10 t-sh mb4" type="submit" onclick="reg()">注册</button>
+		<%--<button class="button fill-blue mt3 w10 t-sh mb4" type="submit" onclick="reg()">注册</button>--%>
+		<button class="mt4 w10 fill-green" type="submit" onclick="reg()">注册</button>
 		</div>
 	<!-- TOOLBAR -->
 	<div class="toolbar">

@@ -129,10 +129,10 @@ public class WebvSellController extends ControllerConstants {
             map.put("is_login", "0");
         }
         //查询广告
-//        AdQuery queryad = new AdQuery();
-//        queryad.setMm_ad_type("0");
-//        List<AdObj> listAd = (List<AdObj>) adObjService.list(queryad);
-//        map.put("listAd", listAd);
+        AdQuery queryad = new AdQuery();
+        queryad.setMm_ad_type("2");
+        List<AdObj> listAd = (List<AdObj>) adObjService.list(queryad);
+        map.put("listAd", listAd);
         return "/webv/sell";
     }
 

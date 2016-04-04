@@ -51,6 +51,7 @@
             <th>省</th>
             <th>市</th>
             <th>县</th>
+            <th>是否全国</th>
             <th>操作</th>
           </tr>
           </thead>
@@ -61,6 +62,10 @@
               <td>${e.provinceName}</td>
               <td>${e.cityName}</td>
               <td>${e.areaName}</td>
+              <td>
+                <c:if test="${e.mm_tel_type=='0'}">否</c:if>
+                <c:if test="${e.mm_tel_type=='1'}">是</c:if>
+              </td>
               <td>
                 <a class="btn btn-default btn-sm" href="javascript:void (0)" onclick="editRole('${e.mm_tel_id}')" role="button">编辑</a>
               </td>

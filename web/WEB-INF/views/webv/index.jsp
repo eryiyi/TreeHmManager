@@ -151,8 +151,8 @@
 			</div>
 		</c:forEach>
 
-		<c:if test="${is_login=='1'}"><a href="/html/download.html" class="warning" target="_blank">下载客户端以查看更多内容...</a></c:if>
-		<c:if test="${is_login=='0'}"><a href="/webvLoginController/toLogin.do" class="warning">请先登录...</a></c:if>
+		<c:if test="${is_login=='1'}"><a href="/html/download.html" class="warning" target="_blank">下载安卓APP可以查看更多内容...</a></c:if>
+		<c:if test="${is_login=='0'}"><a href="/webvLoginController/toLogin.do" class="warning">查看更多信息，请先注册并登录账号...</a></c:if>
 		<c:if test="${is_login=='1'}">
 
 			<!--分页信息，页面跳转-->
@@ -198,17 +198,46 @@
 	</div>
 	<!-- TOOLBAR -->
 	<div class="toolbar">
-		<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy buy-active"></a>
-		<a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell"></a>
-		<a href="javaScript:void(0)" onclick="toPage('/webvTopController/toTop.do','1')" class="recommend"></a>
-		<a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')" class="mine"></a>
+		<c:if test="${is_login=='1'}">
+			<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy buy-active"></a>
+			<a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell"></a>
+			<a href="javaScript:void(0)" onclick="toPage('/webvTopController/toTop.do','1')" class="recommend"></a>
+			<a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')" class="mine"></a>
+		</c:if>
+		<c:if test="${is_login=='0'}">
+			<a href="javaScript:void(0)" id="cd-popup-trigger1" class="buy buy-active"></a>
+			<a href="javaScript:void(0)" id="cd-popup-trigger2" class="sell"></a>
+			<a href="javaScript:void(0)" id="cd-popup-trigger3" class="recommend"></a>
+			<a href="javaScript:void(0)" id="cd-popup-trigger4" class="mine"></a>
+		</c:if>
+
 	</div>
 	<!-- TOOLBAR -->
 </div>
 
+<link rel="stylesheet" href="/css/dialog_reset.css"> <!-- CSS reset -->
+<link rel="stylesheet" href="/css/dialog_style.css"> <!-- Resource style -->
+<script src="/js/dialog_main.js"></script> <!-- Resource jQuery -->
+
+<div class="cd-popup" role="alert">
+	<div class="cd-popup-container">
+		<p>请先注册或联系管理员</p>
+		<ul class="cd-buttons">
+			<li><a href="javaScript:void(0)" onclick="reg()">注册</a></li>
+			<li><a href="javaScript:void(0)" onclick="login()">登录</a></li>
+		</ul>
+		<a href="javaScript:void(0)" class="cd-popup-close img-replace">关闭</a>
+	</div> <!-- cd-popup-container -->
+</div> <!-- cd-popup -->
+
+
 </body>
 
 <script>
+	function reg(){
+		//注册页面跳转
+		window.location.href="/webvRegController/toReg.do";
+	}
 	function toPage(_url, _page){
 		if(_page != ''){
 			window.location.href=_url+"?page="+_page;

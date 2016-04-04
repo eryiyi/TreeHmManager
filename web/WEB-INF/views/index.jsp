@@ -255,7 +255,7 @@
 				<c:if test="${um:permission('SHNEHE_TYPE_MANAGE', sessionScope.powers)}">
 					<li class="dropdown">
 						<a href="javascript:void (0);" class="dropdown-toggle">
-							<i class="fa fa-phone"></i>
+							<i class="fa fa-credit-card"></i>
 							<span class="hidden-xs">注册审核方式</span>
 						</a>
 						<ul class="dropdown-menu">

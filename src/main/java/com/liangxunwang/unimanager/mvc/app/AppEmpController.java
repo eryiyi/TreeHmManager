@@ -133,5 +133,28 @@ public class AppEmpController extends ControllerConstants {
         }
     }
 
+    @Autowired
+    @Qualifier("appEmpService")
+    private ExecuteService appEmpServiceExe;
+
+    @RequestMapping(value = "/getMemberByMobile", produces = "text/plain;charset=UTF-8;")
+    @ResponseBody
+    public String getMemberByMobile(String mm_emp_mobile) throws Exception {
+        try {
+            //查看该会员信息
+            EmpVO empVO = (EmpVO) appEmpServiceExe.execute(mm_emp_mobile);
+            if(empVO != null){
+                //说明该手机号已经注册了
+                DataTip tip = new DataTip();
+                tip.setData(empVO);
+                return toJSONString(tip);
+            }else {
+                return toJSONString(ERROR_1);
+            }
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+        }
+    }
+
 
 }

@@ -62,7 +62,7 @@
 			</div>
 		</c:forEach>
 
-		<a href="/html/download.html" class="warning" target="_blank">下载客户端以查看更多内容...</a>
+		<a href="/html/download.html" class="warning" target="_blank">下载安卓APP可以查看更多内容...</a>
 
 		<!--分页信息，页面跳转-->
 		<div class="page clearfix">

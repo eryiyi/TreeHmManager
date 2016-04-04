@@ -6,6 +6,15 @@ public class PaihangQuery{
     private int index;
     private int size;
     private String is_del;
+    private String keyword;
+
+    public String getKeyword() {
+        return keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
 
     public int getIndex() {
         return index;

@@ -40,14 +40,7 @@ public class AppKefuController extends ControllerConstants {
     public String getKefuTel(KefuQuery query){
         try {
             List<KefuVO> list = new ArrayList<KefuVO>();
-            if(!StringUtil.isNullOrEmpty(query.getMm_emp_countryId())){
-                //本地客服
-                list = (List<KefuVO>) kefuTelService.list(query);
-            }else {
-                //全国客服
-                list = (List<KefuVO>) appKefuTelService.list(query);
-            }
-
+            list = (List<KefuVO>) appKefuTelService.list(query);
             DataTip tip = new DataTip();
             tip.setData(list);
             return toJSONString(tip);

@@ -22,15 +22,15 @@ import java.util.List;
 @Controller
 public class AppAdController extends ControllerConstants {
     @Autowired
-    @Qualifier("adObjService")
-    private ListService adObjService;
+    @Qualifier("appAdObjService")
+    private ListService appAdObjService;
 
     //列表
     @RequestMapping(value = "/getLoginAd", produces = "text/plain;charset=UTF-8")
     @ResponseBody
     public String getLoginAd(AdQuery query){
         try {
-            List<AdObj> list = (List<AdObj>) adObjService.list(query);
+            List<AdObj> list = (List<AdObj>) appAdObjService.list(query);
             DataTip tip = new DataTip();
             tip.setData(list);
             return toJSONString(tip);

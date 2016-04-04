@@ -46,6 +46,9 @@
         <if test="is_del != null and is_del != ''">
             AND sn.is_del = #{is_del}
         </if>
+        <if test="keyword != null and keyword != ''">
+            AND  (mm_emp_nickname like CONCAT('%',#{keyword},'%') OR  mm_emp_mobile = #{keyword} OR mm_emp_company like CONCAT('%',#{keyword},'%'))
+        </if>
         ) m
         ORDER  BY  m.top_num DESC limit #{index},#{size}
     </select>

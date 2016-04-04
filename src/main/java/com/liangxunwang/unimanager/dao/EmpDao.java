@@ -7,11 +7,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by liuzwei on 2015/1/29.
- */
 @Repository("empDao")
 public interface EmpDao {
+    /**
+     * @param list
+     */
+    void saveList(List<Emp> list);
 
     /**
      * 查询所有的会员信息

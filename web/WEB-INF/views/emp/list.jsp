@@ -175,8 +175,12 @@
               <div class="col-md-2 col-lg-2">
                 <button type="button" onclick="P_delete_Select('1')" class="btn w12 form-control btn-block btn-danger btn-sm">批量删除用户</button>
               </div>
+              <div class="col-md-2 col-lg-2">
+                <button type="button" onclick="P_daoru_Select('1')" class="btn w12 form-control btn-block btn-danger btn-sm">批量导入</button>
+              </div>
             </div>
           </form>
+
         </c:if>
         <%--<p>For basic styling add the base class <code>.table</code> to any <code>&lt;table&gt;</code>.</p>--%>
         <table class="table">
@@ -673,6 +677,10 @@
         });
       }
     }
+  }
+
+  function P_daoru_Select(_type){
+    window.location.href="#module=/data/toAdd";
   }
 
 </script>

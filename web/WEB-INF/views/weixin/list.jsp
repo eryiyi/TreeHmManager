@@ -47,8 +47,9 @@
         <table class="table">
           <thead>
           <tr>
-            <th>微信名</th>
-            <th>微信号</th>
+            <th>微信名/qq昵称</th>
+            <th>微信号/qq号</th>
+            <th>类型</th>
             <th>操作</th>
           </tr>
           </thead>
@@ -57,6 +58,10 @@
             <tr>
               <td>${e.mm_weixin_name}</td>
               <td>${e.mm_weixin}</td>
+              <td>
+                <c:if test="${e.mm_weixin_type=='0'}">微信</c:if>
+                <c:if test="${e.mm_weixin_type=='1'}">QQ</c:if>
+              </td>
               <td>
                 <a class="btn btn-default btn-sm" href="javascript:void (0)" onclick="editRole('${e.mm_weixin_id}')" role="button">编辑</a>
               </td>

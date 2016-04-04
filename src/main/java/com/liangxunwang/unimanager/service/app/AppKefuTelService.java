@@ -29,6 +29,9 @@ public class AppKefuTelService implements ListService{
         if(!StringUtil.isNullOrEmpty(query.getMm_emp_countryId())){
             map.put("mm_emp_countryId", query.getMm_emp_countryId());
         }
+        if(!StringUtil.isNullOrEmpty(query.getMm_tel_type())){
+            map.put("mm_tel_type", query.getMm_tel_type());
+        }
         List<KefuVO> lists = fuwuDao.listsAll(map);
         return lists;
     }
