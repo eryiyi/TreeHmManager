@@ -127,8 +127,6 @@
             AND  (sn.mm_emp_mobile = #{keyword} OR sn.mm_emp_nickname like CONCAT('%',#{keyword},'%') OR  sn.mm_emp_company like CONCAT('%',#{keyword},'%'))
         </if>
 
-        WHERE sn.mm_emp_endtime &lt; #{nowTime}
-
         ORDER BY sn.mm_emp_regtime DESC limit #{index},#{size}
     </select>
 
@@ -239,48 +237,43 @@
 
     <insert id="saveList" parameterType="java.util.List">
         INSERT INTO mm_emp(mm_emp_id,
-        mm_emp_mobile, mm_emp_nickname,mm_emp_password, mm_emp_card,mm_emp_cover,
-        mm_emp_type, mm_emp_company, mm_emp_company_pic, mm_emp_company_type, mm_emp_company_url,mm_emp_company_address,
+        mm_emp_mobile, mm_emp_nickname,mm_emp_password,mm_emp_cover,
+        mm_emp_type, mm_emp_company, mm_emp_company_type, mm_emp_company_url,mm_emp_company_address,
         mm_emp_company_detail, mm_emp_provinceId, mm_emp_cityId, mm_emp_countryId,
-        mm_emp_regtime, mm_emp_endtime, mm_level_id, mm_emp_beizhu, mm_emp_msg_num,
+        mm_emp_regtime, mm_level_id, mm_emp_beizhu, mm_emp_msg_num,
         is_login, is_fabugongying, is_fabuqiugou, is_fabuqiugou_see, is_fabugongying_see,
-        is_see_all, is_use, is_pic, is_chengxin, is_miaomu, lat, lng, ischeck)
+        is_see_all, is_use, is_pic, is_chengxin, is_miaomu, ischeck)
         VALUES
         <foreach  collection="list" item="item" index="index" separator=",">
-            (#{item.mm_emp_id,jdbcType=VARCHAR},
-            #{item.mm_emp_mobile,jdbcType=VARCHAR},
-            #{item.mm_emp_nickname,jdbcType=VARCHAR},
-            #{item.mm_emp_password,jdbcType=VARCHAR},
-            #{item.mm_emp_card,jdbcType=VARCHAR},
-            #{item.mm_emp_cover,jdbcType=VARCHAR},
-            #{item.mm_emp_type,jdbcType=VARCHAR},
+            (#{item.mm_emp_id},
+            #{item.mm_emp_mobile},
+            #{item.mm_emp_nickname},
+            #{item.mm_emp_password},
+            #{item.mm_emp_cover},
+            #{item.mm_emp_type},
             #{item.mm_emp_company,jdbcType=VARCHAR},
-            #{item.mm_emp_company_pic,jdbcType=VARCHAR},
             #{item.mm_emp_company_type,jdbcType=VARCHAR},
             #{item.mm_emp_company_url,jdbcType=VARCHAR},
             #{item.mm_emp_company_address,jdbcType=VARCHAR},
             #{item.mm_emp_company_detail,jdbcType=VARCHAR},
-            #{item.mm_emp_provinceId,jdbcType=VARCHAR},
-            #{item.mm_emp_cityId,jdbcType=VARCHAR},
-            #{item.mm_emp_countryId,jdbcType=VARCHAR},
-            #{item.mm_emp_regtime,jdbcType=VARCHAR},
-            #{item.mm_emp_endtime,jdbcType=VARCHAR},
-            #{item.mm_level_id,jdbcType=VARCHAR},
+            #{item.mm_emp_provinceId},
+            #{item.mm_emp_cityId},
+            #{item.mm_emp_countryId},
+            #{item.mm_emp_regtime},
+            #{item.mm_level_id},
             #{item.mm_emp_beizhu,jdbcType=VARCHAR},
-            #{item.mm_emp_msg_num,jdbcType=VARCHAR},
-            #{item.is_login,jdbcType=VARCHAR},
-            #{item.is_fabugongying,jdbcType=VARCHAR},
-            #{item.is_fabuqiugou,jdbcType=VARCHAR},
-            #{item.is_fabuqiugou_see,jdbcType=VARCHAR}),
-            #{item.is_fabugongying_see,jdbcType=VARCHAR}),
-            #{item.is_see_all,jdbcType=VARCHAR}),
-            #{item.is_use,jdbcType=VARCHAR}),
-            #{item.is_pic,jdbcType=VARCHAR}),
-            #{item.is_chengxin,jdbcType=VARCHAR}),
-            #{item.is_miaomu,jdbcType=VARCHAR}),
-            #{item.lat,jdbcType=VARCHAR}),
-            #{item.lng,jdbcType=VARCHAR}),
-            #{item.ischeck,jdbcType=VARCHAR})
+            #{item.mm_emp_msg_num},
+            #{item.is_login},
+            #{item.is_fabugongying},
+            #{item.is_fabuqiugou},
+            #{item.is_fabuqiugou_see},
+            #{item.is_fabugongying_see},
+            #{item.is_see_all},
+            #{item.is_use},
+            #{item.is_pic},
+            #{item.is_chengxin},
+            #{item.is_miaomu},
+            #{item.ischeck})
         </foreach>
     </insert>
 

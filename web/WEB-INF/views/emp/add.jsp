@@ -116,6 +116,7 @@
           var data = $.parseJSON(_data);
           if(data.success){
             alert("导入数据成功");
+            history.go(-1);
           }else{
             var _case = {1:"导入数据失败",2:"导入数据失败"};
             alert(_case[data.code])
