@@ -62,6 +62,7 @@
               <td>
                 <c:if test="${e.mm_ad_type=='0'}">求购页展示</c:if>
                 <c:if test="${e.mm_ad_type=='1'}">排行榜页展示</c:if>
+                <c:if test="${e.mm_ad_type=='2'}">供应页面展示</c:if>
               </td>
               <td>
                 <a class="btn btn-default btn-sm" href="javascript:void (0)" onclick="editRole('${e.mm_ad_id}')" role="button">编辑</a>

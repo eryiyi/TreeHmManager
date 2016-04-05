@@ -56,7 +56,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">详情</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" value="${notice.mm_notice_content}" readonly="true"  data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+              <textarea  cols="10" rows="10" class="form-control" value="${notice.mm_notice_content}" readonly="true"  data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">${notice.mm_notice_content}</textarea>
             </div>
           </div>
           <div class="form-group">

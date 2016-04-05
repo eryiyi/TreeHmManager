@@ -82,7 +82,7 @@
               <select class="form-control" id="mm_ad_type">
                 <option value="">--请选择广告展示位置--</option>
                 <option value="0"  selected="selected">求购页面展示</option>
-                <option value="2"  selected="selected">供应页面展示</option>
+                <option value="2" >供应页面展示</option>
                 <option value="1" >金牌榜页面展示</option>
               </select>
             </div>

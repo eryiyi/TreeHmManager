@@ -79,7 +79,8 @@
             <div class="col-sm-4">
               <select class="form-control" id="mm_ad_type">
                 <option value="">--请选择广告展示位置--</option>
-                <option value="0" ${adObj.mm_ad_type=='0'?'selected':''}>首页，求购页面展示</option>
+                <option value="0" ${adObj.mm_ad_type=='0'?'selected':''}>求购页面展示</option>
+                <option value="2" ${adObj.mm_ad_type=='2'?'selected':''}>供应页面展示</option>
                 <option value="1" ${adObj.mm_ad_type=='1'?'selected':''}>排行榜页面展示</option>
               </select>
             </div>

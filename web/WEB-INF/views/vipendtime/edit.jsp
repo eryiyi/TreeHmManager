@@ -43,7 +43,7 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label">内容</label>
                         <div class="col-sm-4">
-                            <input type="text" value="${vipEndTime.mm_endtime_vip_content}" id="mm_endtime_vip_content" class="form-control" placeholder="内容" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+                            <textarea  value="${vipEndTime.mm_endtime_vip_content}" cols="10" rows="10" id="mm_endtime_vip_content" class="form-control" placeholder="内容" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">${vipEndTime.mm_endtime_vip_content}</textarea>
                         </div>
                     </div>
                     <div class="form-group">

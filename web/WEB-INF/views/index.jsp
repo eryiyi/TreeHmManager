@@ -442,7 +442,7 @@
 					<li class="dropdown">
 						<a href="javascript:void (0);" class="dropdown-toggle">
 							<i class="fa fa-info"></i>
-							<span class="hidden-xs">vip到期提醒</span>
+							<span class="hidden-xs">提醒语句</span>
 						</a>
 						<ul class="dropdown-menu">
 							<c:if test="${um:permission('VIP_END_TIME_NOTICE_MANA', sessionScope.powers)}">

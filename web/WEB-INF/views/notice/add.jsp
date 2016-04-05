@@ -55,7 +55,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">公告内容</label>
             <div class="col-sm-4">
-              <input type="text" id="mm_notice_content"  class="form-control" placeholder="公告内容" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+              <textarea id="mm_notice_content" cols="10" rows="10" class="form-control" placeholder="公告内容" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name"></textarea>
             </div>
           </div>
 
