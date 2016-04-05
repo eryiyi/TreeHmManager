@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
@@ -155,6 +156,28 @@ public class AppEmpController extends ControllerConstants {
             return toJSONString(ERROR_1);
         }
     }
+
+
+    @Autowired
+    @Qualifier("appEmpBaiduService")
+    private UpdateService appEmpBaiduService;
+
+    @RequestMapping("/updatePushId")
+    @ResponseBody
+    public String updatePushId(@RequestParam String id, @RequestParam String userId, @RequestParam String channelId, @RequestParam String type){
+        if (StringUtil.isNullOrEmpty(id) || StringUtil.isNullOrEmpty(userId) || StringUtil.isNullOrEmpty(channelId)|| StringUtil.isNullOrEmpty(type)){
+            return toJSONString(ERROR_1);
+        }
+        Object[] params = new Object[]{id, userId, channelId, type};
+        try {
+            appEmpBaiduService.update(params);
+            return toJSONString(SUCCESS);
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+
+        }
+    }
+
 
 
 }

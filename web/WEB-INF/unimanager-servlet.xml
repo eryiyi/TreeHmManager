@@ -69,9 +69,11 @@
 
 
        <!-- 每天凌晨1点执行查看-->
+       <!--会员到期-->
        <task:scheduled-tasks>
               <task:scheduled ref="empController" method="update" cron="0 1 0 * * ?"/>
        </task:scheduled-tasks>
+       <!--排行榜到期-->
        <task:scheduled-tasks>
               <task:scheduled ref="paihangController" method="update" cron="0 1 0 * * ?"/>
        </task:scheduled-tasks>

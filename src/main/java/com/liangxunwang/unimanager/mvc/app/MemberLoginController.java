@@ -92,4 +92,5 @@ public class MemberLoginController extends ControllerConstants {
         tip.setData(member);
         return toJSONString(tip);
     }
+
 }

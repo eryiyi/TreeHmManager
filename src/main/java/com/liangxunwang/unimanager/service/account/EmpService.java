@@ -54,7 +54,11 @@ public class EmpService implements ListService , UpdateService , ExecuteService{
         if (!StringUtil.isNullOrEmpty(query.getKeyword())) {
             map.put("keyword", query.getKeyword());
         }
+        if (!StringUtil.isNullOrEmpty(query.getIs_daoqi())) {
+            map.put("is_daoqi", query.getIs_daoqi());
+            //判断三天之内的即将到期的，需要传递当前日期的毫秒值和三天之后的毫秒值
 
+        }
 
         //分地区管理
         if(!StringUtil.isNullOrEmpty(query.getMm_emp_provinceId())){

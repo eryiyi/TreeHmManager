@@ -120,6 +120,15 @@
               </c:forEach>
             </select>
           </div>
+
+          <div class="form-group">
+            <select class="form-control w12" id="is_daoqi">
+              <option value="">--是否到期--</option>
+              <option value="0" ${query.is_daoqi=='0'?'selected':''}>否</option>
+              <option value="1" ${query.is_daoqi=='1'?'selected':''}>是</option>
+            </select>
+          </div>
+
           <div class="form-group">
             <button type="submit" onclick="searchOrder('1')" class="btn form-control btn-warning btn-sm btn-block">查找</button>
           </div>
@@ -177,6 +186,9 @@
               </div>
               <div class="col-md-2 col-lg-2">
                 <button type="button" onclick="P_daoru_Select('1')" class="btn w12 form-control btn-block btn-danger btn-sm">批量导入</button>
+              </div>
+              <div class="col-md-2 col-lg-2">
+                <button type="button" onclick="P_daoqinotice_Select('1')" class="btn w12 form-control btn-block btn-danger btn-sm">批量发布到期通知</button>
               </div>
             </div>
           </form>
@@ -330,6 +342,7 @@
     var city = $("#mm_emp_cityId").val();
     var mm_emp_countryId = $("#mm_emp_countryId").val();
     var mm_emp_regtime = $("#mm_emp_regtime").val();
+    var is_daoqi = $("#is_daoqi").val();
     if(_index <= ${page.pageCount} && _index >= 1){
       alert("searchIndex");
       window.location.href="#module=/emp/list&page="+_index+"&size="+size+"&mm_emp_type="+mm_emp_type+"&keyword="+keywords
@@ -339,6 +352,7 @@
       +"&mm_emp_cityId="+city
       +"&mm_emp_countryId="+mm_emp_countryId
       +"&mm_emp_regtime="+mm_emp_regtime
+      +"&is_daoqi="+is_daoqi
       +"&ischeck="+ischeck;
     }else{
       alert("请输入1-${page.pageCount}的页码数");
@@ -356,6 +370,7 @@
     var city = $("#mm_emp_cityId").val();
     var mm_emp_countryId = $("#mm_emp_countryId").val();
     var mm_emp_regtime = $("#mm_emp_regtime").val();
+    var is_daoqi = $("#is_daoqi").val();
 
     addCookie("contract_size", size, 36);
     if ((page <= ${page.pageCount} && page >= 1)) {
@@ -367,6 +382,7 @@
       +"&mm_emp_cityId="+city
       +"&mm_emp_countryId="+mm_emp_countryId
       +"&mm_emp_regtime="+mm_emp_regtime
+      +"&is_daoqi="+is_daoqi
       +"&ischeck="+ischeck;
     } else {
       alert("请输入1-${page.pageCount}的页码数");
@@ -385,6 +401,7 @@
     var city = $("#mm_emp_cityId").val();
     var mm_emp_countryId = $("#mm_emp_countryId").val();
     var mm_emp_regtime = $("#mm_emp_regtime").val();
+    var is_daoqi = $("#is_daoqi").val();
 
     addCookie("contract_size", size, 36);
     if ((page <= ${page.pageCount} && page >= 1)) {
@@ -396,6 +413,7 @@
       +"&mm_emp_cityId="+city
       +"&mm_emp_countryId="+mm_emp_countryId
       +"&mm_emp_regtime="+mm_emp_regtime
+      +"&is_daoqi="+is_daoqi
       +"&ischeck="+ischeck;
     } else {
       alert("请输入1-${page.pageCount}的页码数");
@@ -605,7 +623,6 @@
     }
   }
 
-
   function P_fabuqg_Select(_type){
     //发布求购
     var select_id = '';
@@ -683,6 +700,41 @@
     window.location.href="#module=/data/toAdd";
   }
 
+  function P_daoqinotice_Select(){
+    var select_id = '';
+    var select = document.getElementsByName("checkbox_one");
+    for (var i = 0; i < select.length; i++) {
+      if(select[i].checked == true){
+        select_id = select_id+select[i].id +',';
+      }
+    }
+    if(select_id == ''){
+      alert('请选择数据！');
+      return
+    }else{
+      if(confirm("确定要给选中的用户发布到期VIP通知吗？")){
+        $.ajax({
+          url:"/emp/pFabuNoticeAction.do",
+          data:{"ids":select_id},
+          type:"POST",
+          success:function(_data){
+            var data = $.parseJSON(_data);
+            if(data.success){
+              if(_type == '0'){
+                alert("批量发布VIP到期通知成功！");
+              }
+              if(_type == '1'){
+                alert("批量发布VIP到期通知！");
+              }
+            }else{
+              var _case = {1:"批批量发布VIP到期通知失败"};
+              alert(_case[data.code])
+            }
+          }
+        });
+      }
+    }
+  }
 </script>
 
 

@@ -10,6 +10,15 @@ public class Notice {
     private String mm_notice_content;
     private String dateline;
     private String is_del;
+    private String mm_emp_id;//给某个用户单独推送的时候用
+
+    public String getMm_emp_id() {
+        return mm_emp_id;
+    }
+
+    public void setMm_emp_id(String mm_emp_id) {
+        this.mm_emp_id = mm_emp_id;
+    }
 
     public String getMm_notice_id() {
         return mm_notice_id;
@@ -58,4 +67,5 @@ public class Notice {
     public void setIs_del(String is_del) {
         this.is_del = is_del;
     }
+
 }

@@ -2,6 +2,7 @@ package com.liangxunwang.unimanager.dao;
 
 import com.liangxunwang.unimanager.model.Emp;
 import com.liangxunwang.unimanager.mvc.vo.EmpVO;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -83,4 +84,11 @@ public interface EmpDao {
 
     //删除用户
     void deleteEmp(String mm_emp_id);
+
+    /**
+     * 根据ID更新pushId
+     * {id, userId, channelId, type}
+     */
+    void updatePushId(@Param(value = "id") String id, @Param(value = "userId") String userId, @Param(value = "channelId") String channelId, @Param(value = "type")String type);
+
 }

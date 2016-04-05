@@ -39,6 +39,9 @@
         <result column="lng" property="lng"/>
         <result column="ischeck" property="ischeck"/>
         <result column="is_upate_profile" property="is_upate_profile"/>
+        <result column="userId" property="userId"/>
+        <result column="channelId" property="channelId"/>
+        <result column="deviceType" property="deviceType"/>
     </resultMap>
     <resultMap id="emp_vo" type="com.liangxunwang.unimanager.mvc.vo.EmpVO">
         <id column="mm_emp_id" property="mm_emp_id"/>
@@ -76,6 +79,9 @@
         <result column="lng" property="lng"/>
         <result column="ischeck" property="ischeck"/>
         <result column="is_upate_profile" property="is_upate_profile"/>
+        <result column="userId" property="userId"/>
+        <result column="channelId" property="channelId"/>
+        <result column="deviceType" property="deviceType"/>
 
         <result column="levelName" property="levelName"/>
         <result column="mm_level_num" property="mm_level_num"/>
@@ -120,6 +126,9 @@
         <if test="keyword != null and keyword != ''">
             AND  (sn.mm_emp_mobile = #{keyword} OR sn.mm_emp_nickname like CONCAT('%',#{keyword},'%') OR  sn.mm_emp_company like CONCAT('%',#{keyword},'%'))
         </if>
+
+        WHERE sn.mm_emp_endtime &lt; #{nowTime}
+
         ORDER BY sn.mm_emp_regtime DESC limit #{index},#{size}
     </select>
 
@@ -363,5 +372,8 @@
         DELETE FROM mm_emp WHERE mm_emp_id=#{mm_emp_id}
     </update>
 
+    <update id="updatePushId" parameterType="String">
+        UPDATE mm_emp set userId=#{userId}, channelId=#{channelId}, deviceType=#{type} WHERE mm_emp_id=#{id}
+    </update>
 
 </mapper>

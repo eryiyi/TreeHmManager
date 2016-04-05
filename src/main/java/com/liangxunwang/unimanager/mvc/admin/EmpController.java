@@ -563,4 +563,33 @@ public class EmpController extends ControllerConstants {
         }
         return toJSONString(ERROR_1);
     }
+
+
+    @Autowired
+    @Qualifier("empFabuNoticeService")
+    private ExecuteService empFabuNoticeService;
+    //批量给用户发布到期通知
+    @RequestMapping("pFabuNoticeAction")
+    @ResponseBody
+    public String pFabuNoticeAction(HttpSession session,String ids) {
+        try {
+            Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
+            if(manager != null){
+                Object[] objects = new Object[2];
+                objects[0]=ids;
+                objects[1]= manager.getMm_manager_id();
+                empFabuNoticeService.execute(objects);
+                //日志记录
+                logoService.save(new LogoObj("批量发布到期通知："+ids, manager.getMm_manager_id()));
+                return toJSONString(SUCCESS);
+            }else {
+                return toJSONString(ERROR_1);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return toJSONString(ERROR_1);
+    }
+
 }

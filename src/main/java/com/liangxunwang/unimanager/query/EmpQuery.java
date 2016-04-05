@@ -16,6 +16,15 @@ public class EmpQuery  extends BaseAreaQuery{
     private String lng;
 
     private String mm_emp_regtime;
+    private String is_daoqi;
+
+    public String getIs_daoqi() {
+        return is_daoqi;
+    }
+
+    public void setIs_daoqi(String is_daoqi) {
+        this.is_daoqi = is_daoqi;
+    }
 
     public String getMm_emp_regtime() {
         return mm_emp_regtime;

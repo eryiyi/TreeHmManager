@@ -438,7 +438,19 @@
 						</ul>
 					</li>
 				</c:if>
-
+				<c:if test="${um:permission('VIP_END_TIME_NOTICE_MANA', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="javascript:void (0);" class="dropdown-toggle">
+							<i class="fa fa-info"></i>
+							<span class="hidden-xs">vip到期提醒</span>
+						</a>
+						<ul class="dropdown-menu">
+							<c:if test="${um:permission('VIP_END_TIME_NOTICE_MANA', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('vipEndTimeController/list','')">提醒语句</a></li>
+							</c:if>
+						</ul>
+					</li>
+				</c:if>
 			</ul>
 		</div>
 		<!--Start Content-->
