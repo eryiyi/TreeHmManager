@@ -81,6 +81,7 @@ public class AdController extends ControllerConstants {
         List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);
         map.put("listProvinces", listProvinces);
         map.put("listCitys", listCitys);
+
         map.put("listsCountry", listsCountry);
         //查询地市all
         CityQuery cityQueryAll = new CityQuery();
