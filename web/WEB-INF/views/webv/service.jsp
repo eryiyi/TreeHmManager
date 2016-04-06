@@ -89,19 +89,19 @@
 		<div class="icons clearfix">
 			<a href="/webvProfile/toProfile.do?mm_emp_id=${emp.mm_emp_id}" class="icon">
 				<div class="icon-pic"><img src="/img/tree_user_profile.png" alt=""></div>
-				<h5 class="icon-name">用户资料</h5>
+				<h5 class="icon-name">个人主页</h5>
 			</a>
-			<a href="/webvUpdatePwrController/toFindPwr.do" class="icon">
-				<div class="icon-pic"><img src="/img/tree_user_changepw.png" alt=""></div>
-				<h5 class="icon-name">修改密码</h5>
+			<a href="http://hmt.sdhmmm.cn/loginFront.aspx" target="_blank" class="icon">
+				<div class="icon-pic"><img src="/img/tree_user_massage.png" alt=""></div>
+				<h5 class="icon-name">短信平台</h5>
 			</a>
 			<a href="contact.html" class="icon">
 				<div class="icon-pic"><img src="/img/tree_user_see.png" alt=""></div>
 				<h5 class="icon-name">设置关注区域</h5>
 			</a>
-			<a href="javaScript:void(0)" onclick="quiteClick()" class="icon">
-				<div class="icon-pic"><img src="/img/tree_user_setup.png" alt=""></div>
-				<h5 class="icon-name">退出</h5>
+			<a href="/webvNoticeController/list.do?page=1" class="icon">
+				<div class="icon-pic"><img src="/img/tree_user_notice.png" alt=""></div>
+				<h5 class="icon-name">公告</h5>
 			</a>
 			<a href="javaScript:void(0)" onclick="vipClick()" class="icon">
 				<div class="icon-pic"><img src="/img/tree_user_VIP.png" alt=""></div>
@@ -119,21 +119,22 @@
 				<div class="icon-pic"><img src="/img/tree_user_crs.png" alt=""></div>
 				<h5 class="icon-name">客服中心</h5>
 			</a>
-			<a href="/webvSuggestController/toSuggest.do" class="icon">
-				<div class="icon-pic"><img src="/img/tree_user_report.png" alt=""></div>
-				<h5 class="icon-name">意见反馈</h5>
-			</a>
-			<a href="/webvWeixinController/toKefu.do" class="icon">
-				<div class="icon-pic"><img src="/img/tree_user_weixin.png" alt=""></div>
-				<h5 class="icon-name">微信客服</h5>
-			</a>
 			<a href="javaScript:void(0)" class="icon" onclick="noClick()">
 				<div class="icon-pic"><img src="/img/tree_user_zhaoshang.png" alt=""></div>
 				<h5 class="icon-name">全国招商合作伙伴</h5>
 			</a>
-			<a href="/webvNoticeController/list.do?page=1" class="icon">
-				<div class="icon-pic"><img src="/img/tree_user_notice.png" alt=""></div>
-				<h5 class="icon-name">公告</h5>
+
+			<a href="/webvWeixinController/toKefu.do" class="icon">
+				<div class="icon-pic"><img src="/img/tree_user_weixin.png" alt=""></div>
+				<h5 class="icon-name">微信客服</h5>
+			</a>
+			<a href="http://xhmt.sdhmmm.cn:7777/html/download.html" class="icon">
+				<div class="icon-pic"><img src="/img/btn_erweima_n.png" alt=""></div>
+				<h5 class="icon-name">二维码下载</h5>
+			</a>
+			<a href="http://map.baidu.com/mobile/webapp/index/index" class="icon">
+				<div class="icon-pic"><img src="/img/btn_map_n.png" alt=""></div>
+				<h5 class="icon-name">地图导航</h5>
 			</a>
 		</div>
 
@@ -161,10 +162,6 @@
 				<div class="icon-pic"><img src="/img/tree_user_graft.png" alt=""></div>
 				<h5 class="icon-name">嫁接团队</h5>
 			</a>
-			<a href="http://hmt.sdhmmm.cn/loginFront.aspx" target="_blank" class="icon">
-				<div class="icon-pic"><img src="/img/tree_user_massage.png" alt=""></div>
-				<h5 class="icon-name">短信平台</h5>
-			</a>
 			<a href="/webvFuwuCenterController/toCenter.do?mm_fuwu_type=4" class="icon">
 				<div class="icon-pic"><img src="/img/tree_user_crane.png" alt=""></div>
 				<h5 class="icon-name">吊车服务</h5>
@@ -172,6 +169,22 @@
 			<a href="/webvAboutUsController/toAboutUs.do" class="icon">
 				<div class="icon-pic"><img src="/img/tree_user_aboutus.png" alt=""></div>
 				<h5 class="icon-name">关于我们</h5>
+			</a>
+			<a href="/webvSuggestController/toSuggest.do" class="icon">
+				<div class="icon-pic"><img src="/img/tree_user_report.png" alt=""></div>
+				<h5 class="icon-name">意见反馈</h5>
+			</a>
+			<a href="/webvUpdatePwrController/toFindPwr.do" class="icon">
+				<div class="icon-pic"><img src="/img/tree_user_changepw.png" alt=""></div>
+				<h5 class="icon-name">修改密码</h5>
+			</a>
+			<a href="javaScript:void(0)" onclick="quiteClick()" class="icon">
+				<div class="icon-pic"><img src="/img/tree_user_setup.png" alt=""></div>
+				<h5 class="icon-name">设置</h5>
+			</a>
+			<a href="http://m.ctrip.com/html5" class="icon">
+				<div class="icon-pic"><img src="/img/btn_car_n.png" alt=""></div>
+				<h5 class="icon-name">汽火飞时刻表</h5>
 			</a>
 		</div>
 	</div>
