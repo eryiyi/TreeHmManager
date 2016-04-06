@@ -25,6 +25,11 @@
 	<script type="text/javascript" src="/js/ajaxfileupload.js"></script>
 	<script type="text/javascript" src="/js/Util.js"></script>
 	<script type="text/javascript" src="/js/validation.js"></script>
+	<style type="text/css">
+		.green {
+			color: #008000;
+		}
+	</style>
 
 </head>
 <body>
@@ -36,23 +41,68 @@
 	</div>
 	<!-- CONTENT -->
 	<div class="content">
-		<ul class="contact-list">
+		<!--修改微信客服样式-->
 
-				<c:forEach items="${list}" var="e" varStatus="st">
-					<li>
-						<div class="contact clearfix">
-							<div class="left">
-								<h3 class="phone-number">微信名：${e.mm_weixin_name}</h3>
-							</div>
-							<div class="right">
-								<h2 class="phone-number">微信号：${e.mm_weixin}</h2>
-							</div>
+			<ul class="contact-list">
+				<li>
+					<div class="contact clearfix">
+						<div class="left green">
+							<h3 class="phone-number">微信名</h3>
 						</div>
-						<div class="duty"></div>
-					</li>
+						<div class="right green ">
+							<h2 class="phone-number">微信号</h2>
+						</div>
+					</div>
+					<div class="duty"></div>
+				</li>
+				<div style=" height:150px; overflow:auto">
+				<c:forEach items="${list}" var="e" varStatus="st">
+				<li>
+					<div class="contact clearfix">
+						<div class="left">
+							<h3 class="phone-number">${e.mm_weixin_name}</h3>
+						</div>
+						<div class="right">
+							<h2 class="phone-number">${e.mm_weixin}</h2>
+						</div>
+					</div>
+					<div class="duty"></div>
+				</li>
 				</c:forEach>
+				</div>
+				</ul>
 
+			<ul class="contact-list" style="margin-top: 20px">
+				<li>
+					<div class="contact clearfix">
+						<div class="left green">
+							<h3 class="phone-number">QQ昵称</h3>
+						</div>
+						<div class="right green">
+							<h2 class="phone-number">QQ号</h2>
+						</div>
+					</div>
+					<div class="duty"></div>
+				</li>
+				<div style=" height:150px; overflow:auto;">
+				<c:forEach items="${list}" var="e" varStatus="st">
+				<li>
+					<div class="contact clearfix">
+						<div class="left">
+							<h3 class="phone-number">${e.mm_weixin_name}</h3>
+						</div>
+						<div class="right">
+							<h2 class="phone-number"><a href="tencent://message/?uin=${e.mm_weixin}&Site=&Menu=yes">${e.mm_weixin}</a></h2>
+						</div>
+					</div>
+					<div class="duty"></div>
+				</li>
+				</c:forEach>
+		</div>
 		</ul>
+		<div>
+			<p style="color: red">*点击QQ号码就能聊天</p>
+		</div>
 	</div>
 	<!-- TOOLBAR -->
 	<div class="toolbar">
