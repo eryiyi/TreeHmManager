@@ -45,7 +45,7 @@
 
 		</div>
 		<div class="contact-us">
-			<h5>电话：<a href="javaScript:void(0)">${aboutUs.mm_about_tel}</a></h5>
+			<h5>电话：<a href="tel:${aboutUs.mm_about_tel}">${aboutUs.mm_about_tel}</a></h5>
 			<h5>地址：${aboutUs.mm_abou_address}</h5>
 		</div>
 	</div>

@@ -63,7 +63,7 @@
 								<h3 class="company">${e.mm_fuwu_content}</h3>
 							</div>
 							<div class="right">
-								<a href="javaScript:void(0)" class="button-phone-big clearfix">
+								<a href="tel:${e.mm_fuwu_tel}" class="button-phone-big clearfix">
 									<img src="/img/tree_button_icon_phone.png" alt="" class="phone-icon">
 									<h2 class="phone-number">${e.mm_fuwu_tel}</h2>
 								</a>

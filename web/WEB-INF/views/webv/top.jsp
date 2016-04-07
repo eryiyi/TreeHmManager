@@ -104,7 +104,7 @@
 						${e.mm_emp_company_detail}
 				</a>
 				<div class="item-footer clearfix">
-					<a type="button" href="javaScript:void(0)" onclick="telClick(${e.mm_emp_mobile})" class="button-phone"></a>
+					<a s href="tel:${e.mm_emp_mobile}"  class="button-phone"></a>
 
 				</div>
 			</div>
