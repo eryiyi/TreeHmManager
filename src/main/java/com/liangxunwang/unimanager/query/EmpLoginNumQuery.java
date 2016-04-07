@@ -3,7 +3,7 @@ package com.liangxunwang.unimanager.query;
 /**
  * Created by zhl on 2015/1/31.
  */
-public class LogoQuery  extends BaseAreaQuery{
+public class EmpLoginNumQuery extends BaseAreaQuery{
     private int index;
     private int size;
     private String keyword;

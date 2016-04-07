@@ -1,7 +1,7 @@
 package com.liangxunwang.unimanager.util;
 
 /**
- * Created by liuzwei on 2015/1/29.
+ * Created by zhl on 2015/1/29.
  */
 public class Constants {
 //        public static final String URL = "http://114.215.121.7:7777/";

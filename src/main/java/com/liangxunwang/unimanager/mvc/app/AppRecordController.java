@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by liuzwei on 2015/2/2.
+ * Created by zhl on 2015/2/2.
  */
 @Controller
 public class AppRecordController extends ControllerConstants {
@@ -49,7 +49,7 @@ public class AppRecordController extends ControllerConstants {
     @ResponseBody
     public String getRecord(RecordQuery query, Page page){
         query.setIndex(page.getIndex()==0?1:page.getIndex());
-        query.setSize(query.getSize()==0?page.getDefaultSize():query.getSize());
+        query.setSize(page.getDefaultSize());
 
         try {
             Object[] results = (Object[]) recordListService.list(query);

@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by liuzwei on 2015/3/3.
+ * Created by zhl on 2015/3/3.
  */
 @Service("appFavourDelService")
 public class AppFavourDelService implements ExecuteService{

@@ -1,7 +1,7 @@
 package com.liangxunwang.unimanager.query;
 
 /**
- * Created by liuzwei on 2015/1/31.
+ * Created by zhl on 2015/1/31.
  */
 public class KefuQuery extends BaseAreaQuery{
     private String mm_tel_id;

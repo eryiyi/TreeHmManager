@@ -16,7 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by liuzwei on 2015/2/4.
+ * Created by zhl on 2015/2/4.
  */
 public class UploadFileController extends ControllerConstants {
     @RequestMapping("/uploadFile")
