@@ -71,14 +71,15 @@
 			<input type="text" id="keyword" name="keyword" placeholder="关键词:信息标题/手机号/公司名称/联系人">
 			<button onclick="searchIndex(event)" style="float:right ">搜索</button>
 		</form>
-		<button class="new"></button>
-		<div class="imgbox" >
-			<img  id="rightpic" src="/img/fabu.png">
-			<div  id="menu" class="imgboxtxt hide" >
-				<a href="javaScript:void(0)" onclick="addMsg()">发布信息</a>
-				<a href="javaScript:void(0)" onclick="guanzhuArea()">关注区域</a>
-			</div>
-		</div>
+		<%--<button class="new"></button>--%>
+		<%--<div class="imgbox" >--%>
+			<%--<img  id="rightpic" src="/img/fabu.png">--%>
+			<%--<div  id="menu" class="imgboxtxt hide" >--%>
+				<%--<a href="javaScript:void(0)" onclick="addMsg()">发布信息</a>--%>
+				<%--<a href="javaScript:void(0)" onclick="guanzhuArea()">关注区域</a>--%>
+			<%--</div>--%>
+		<%--</div>--%>
+		<div class="icon-add"><a href="javaScript:void(0)" onclick="addMsg()">发布</a></div>
 	</div>
 	<!-- CONTENT -->
 	<div class="content">

@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>${recordVO.mm_emp_company}${recordVO.mm_msg_title}${recordVO.mm_msg_title}</title>
+	<title>详情</title>
 	<meta name="Keywords" content="花木通,花木,花草,苗联通,白蜡,园林,惠民皂户李镇,苗木协会" />
 	<meta name="Description" content="花木通是最优秀的花木信息软件，为客户提供最优质的服务" />
 	<meta property="og:title" content="花木通_详细信息"  />
@@ -33,7 +33,7 @@
 		<!-- HEADING -->
 		<div class="heading clearfix">
 			<a href="javascript:history.back()" class="back"><img src="/img/tree_icons_back.png" alt=""></a>
-			<h1 class="head-title">${recordVO.mm_emp_company}&nbsp;&nbsp;${recordVO.mm_emp_nickname}</h1>
+			<h1 class="head-title">详情</h1>
 		</div>
 	</div>
 	<!-- CONTENT -->
@@ -46,7 +46,7 @@
 				<a href="/webvProfile/toProfile.do?mm_emp_id=${recordVO.mm_emp_id}"  class="left clearfix">
 					<img src="${recordVO.mm_emp_cover}" alt="" class="head-pic">
 					<div class="detail">
-						<h1 class="company">${recordVO.mm_emp_company} &nbsp;&nbsp;${recordVO.mm_emp_nickname}</h1>
+						<h1 class="company">${recordVO.mm_emp_company} &nbsp;${recordVO.mm_emp_nickname}</h1>
 						<h3 class="time">${recordVO.dateline}</h3>
 					</div>
 				</a>

@@ -62,22 +62,22 @@
 	<!-- HEADING -->
 	<div class="heading clearfix">
 		<div class="icon-group">
-			<i class="icon"></i>
 			<c:if test="${is_login=='1'}"><span class="location" onclick="selectPro()">${emp.areaName}</span></c:if>
 			<c:if test="${is_login=='0'}"><a href="javaScript:void(0)"><span class="location" onclick="login()">登录</span></a></c:if>
 		</div>
 		<form action="" class="search-bar clearfix">
-			<input type="text" id="keyword" name="keyword" placeholder="关键词:信息标题/手机号/公司名称/联系人">
+			<input type="text" id="keyword" name="keyword" placeholder="手机号/公司/联系人">
 			<button onclick="searchIndex(event)" style="float:right ">搜索</button>
 		</form>
 		<%--<button class="new"></button>--%>
-		<div class="imgbox" >
-		<img  id="rightpic" src="/img/fabu.png">
-			<div  id="menu" class="imgboxtxt hide" >
-				<a href="javaScript:void(0)" onclick="addMsg()">发布信息</a>
-				<a href="javaScript:void(0)" onclick="guanzhuArea()">关注区域</a>
-			</div>
-		</div>
+		<%--<div class="imgbox" >--%>
+		<%--<img id="rightpic" src="/img/fabu.png">--%>
+			<%--&lt;%&ndash;<div  id="menu" class="imgboxtxt hide" >&ndash;%&gt;--%>
+				<%--&lt;%&ndash;<a href="javaScript:void(0)" onclick="addMsg()">发布信息</a>&ndash;%&gt;--%>
+				<%--&lt;%&ndash;<a href="javaScript:void(0)" onclick="guanzhuArea()">关注区域</a>&ndash;%&gt;--%>
+			<%--&lt;%&ndash;</div>&ndash;%&gt;--%>
+		<%--</div>--%>
+		<div class="icon-add"><a href="javaScript:void(0)" onclick="addMsg()">发布</a></div>
 	</div>
 	<!-- CONTENT -->
 	<div class="content">
@@ -307,8 +307,7 @@
 			if(${emp.is_upate_profile == '1'} ){
 				window.location.href="/webvAddRecordController/toAddRecord.do";
 			}else{
-				alert("请先完善资料！");
-
+//				alert("请先完善资料！");
 			}
 
 		}else{

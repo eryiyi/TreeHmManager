@@ -6,6 +6,7 @@ import com.liangxunwang.unimanager.query.EmpAdQuery;
 import com.liangxunwang.unimanager.query.RecordQuery;
 import com.liangxunwang.unimanager.service.ExecuteService;
 import com.liangxunwang.unimanager.service.ListService;
+import com.liangxunwang.unimanager.util.Constants;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.Page;
 import com.liangxunwang.unimanager.util.StringUtil;
@@ -48,6 +49,13 @@ public class WebvProfileController extends ControllerConstants {
             EmpAdQuery queryad = new EmpAdQuery();
             queryad.setMm_emp_id(empVO.getMm_emp_id());
             List<EmpAdVO> list = (List<EmpAdVO>) empAdService.list(queryad);
+            if(list != null && list.size() == 0){
+                //说明没有广告图，添加一个默认的
+                EmpAdVO adVO = new EmpAdVO();
+                adVO.setMm_emp_ad_pic(Constants.URL + Constants.DEFAULT_SERVICE_TOP_BG);
+                adVO.setMm_emp_ad_url(Constants.URL + Constants.DEFAULT_DOWNLOAD_URL);
+                list.add(adVO);
+            }
             map.put("empAdVO", list);
             //查询用户动态
 

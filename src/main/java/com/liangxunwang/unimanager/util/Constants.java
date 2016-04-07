@@ -23,6 +23,8 @@ public class Constants {
         public static final String IOS_SECRET_KEY = "ZrhZicrOHvexKhRoKWFIdyaEsCTrUeom";
 
         public static final String SAVE_ERROR = "save_error";
+        public static final String DEFAULT_SERVICE_TOP_BG = "img/user_bg.jpg";//默认背景图--顶部的
+        public static final String DEFAULT_DOWNLOAD_URL = "html/download.html";//默认下载地址
 
         public static final String HAS_ZAN = "has_zan";
 

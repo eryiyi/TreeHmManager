@@ -35,17 +35,11 @@
 </head>
 <body>
 <div class="container">
-	<!-- HEADING -->
 	<div class="heading clearfix">
 		<h1 class="head-title">用户中心</h1>
 	</div>
 
-	<!-- user-info -->
 	<div id="Glide" class="glide">
-		<!-- 	    <div class="glide__arrows">
-                    <button class="glide__arrow prev" data-glide-dir="<">prev</button>
-                    <button class="glide__arrow next" data-glide-dir=">">next</button>
-                </div> -->
 		<div class="panel clearfix">
 			<img src="${emp.mm_emp_cover}" alt="${emp.mm_emp_nickname}" class="head-pic">
 			<div class="user-info">
@@ -81,8 +75,6 @@
 			});
 		})
 	</script>
-	<!-- GLIDE SLIDE END -->
-	<!-- CONTENT -->
 	<div class="content">
 		<!-- mine -->
 		<h4 class="title">我的</h4>
@@ -97,7 +89,7 @@
 			</a>
 			<a href="contact.html" class="icon">
 				<div class="icon-pic"><img src="/img/tree_user_see.png" alt=""></div>
-				<h5 class="icon-name">设置关注区域</h5>
+				<h5 class="icon-name">关注区域</h5>
 			</a>
 			<a href="/webvNoticeController/list.do?page=1" class="icon">
 				<div class="icon-pic"><img src="/img/tree_user_notice.png" alt=""></div>
@@ -121,7 +113,7 @@
 			</a>
 			<a href="javaScript:void(0)" class="icon" onclick="noClick()">
 				<div class="icon-pic"><img src="/img/tree_user_zhaoshang.png" alt=""></div>
-				<h5 class="icon-name">全国招商合作伙伴</h5>
+				<h5 class="icon-name">全国招商</h5>
 			</a>
 
 			<a href="/webvWeixinController/toKefu.do" class="icon">
@@ -130,7 +122,7 @@
 			</a>
 			<a href="http://xhmt.sdhmmm.cn:7777/html/download.html" target="_blank" class="icon">
 				<div class="icon-pic"><img src="/img/btn_erweima_n.png" alt=""></div>
-				<h5 class="icon-name">二维码下载</h5>
+				<h5 class="icon-name">二维码</h5>
 			</a>
 			<a href="http://map.baidu.com/mobile/webapp/index/index" target="_blank" class="icon">
 				<div class="icon-pic"><img src="/img/btn_map_n.png" alt=""></div>
@@ -143,7 +135,7 @@
 		<div class="icons clearfix">
 			<a href="javaScript:void(0)" class="icon">
 				<div class="icon-pic"><img src="/img/tree_user_bank.png" alt=""></div>
-				<h5 class="icon-name">农村商业银行</h5>
+				<h5 class="icon-name">商业银行</h5>
 			</a>
 			<a href="/webvFuwuCenterController/toCenter.do?mm_fuwu_type=0" class="icon">
 				<div class="icon-pic"><img src="/img/tree_user_shop.png" alt=""></div>
@@ -184,7 +176,7 @@
 			</a>
 			<a href="http://m.ctrip.com/html5" target="_blank" class="icon">
 				<div class="icon-pic"><img src="/img/btn_car_n.png" alt=""></div>
-				<h5 class="icon-name">汽火飞时刻表</h5>
+				<h5 class="icon-name">汽火飞</h5>
 			</a>
 		</div>
 	</div>
