@@ -29,9 +29,8 @@ body {
 }
 .item {
   display: block;
-  margin-top: 7px;
-  margin-bottom: 6px;
-  border-radius: 8px;
+  margin-top: 3px;
+  margin-bottom: 3px;
   background-color: #fff;
 }
 .item a:link,
@@ -46,27 +45,27 @@ body {
   border-bottom: 1px solid #ECECEC;
 }
 .item .item-footer {
-  padding: 5px;
+  padding: 0px;
 }
 .item .item-footer .read-status-unread {
   float: left;
-  width: 60px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   margin-left: 5px;
   background: url("/img/tree_icons_read_0.png") no-repeat center center;
   background-size: 60px;
 }
 .item .item-footer .read-status-readed {
   float: left;
-  width: 60px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
   margin-left: 5px;
   background: url("/img/tree_icons_read_1.png") no-repeat center center;
   background-size: 60px;
 }
 .item .item-footer .button-pic {
   float: right;
-  height: 70px;
+  height: 50px;
   width: 50px;
   margin: 0 5px;
   background: url("/img/tree_button_pic.png") no-repeat center center;
@@ -78,7 +77,7 @@ body {
 }
 .item .item-footer .button-phone {
   float: right;
-  height: 70px;
+  height: 50px;
   width: 50px;
   margin: 0 5px;
   background: url("/img/tree_button_call.png") no-repeat center center;
@@ -90,7 +89,7 @@ body {
 }
 .item .item-footer .button-share {
   float: right;
-  height: 70px;
+  height: 50px;
   width: 50px;
   margin: 0 5px;
   background: url("/img/tree_button_share.png") no-repeat center center;
@@ -102,7 +101,7 @@ body {
 }
 .item .item-footer .button-report {
   float: right;
-  height: 70px;
+  height: 50px;
   width: 50px;
   margin: 0 5px;
   background: url("/img/tree_button_report.png") no-repeat center center;
@@ -114,7 +113,7 @@ body {
 }
 .item .item-footer .button-fav {
   float: right;
-  height: 70px;
+  height: 50px;
   width: 50px;
   margin: 0 5px;
   background: url("/img/tree_button_fav.png") no-repeat center center;
