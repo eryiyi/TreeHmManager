@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.liangxunwang.unimanager.service.webv.WebMobileService;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Enumeration;
@@ -15,14 +16,15 @@ import java.util.Enumeration;
  *微信打电话控制
  */
 @Controller
-@RequestMapping("webMobileController")
+@RequestMapping("/webMobileController")
 public class WebMobileController  extends ControllerConstants {
 //    @Autowired
 //    @Qualifier("webMobileService")
 //    private WebMobileService webMobileService;
 
-    @RequestMapping("callMobiles")
-    public  String CallMobiles(String  mobile,HttpServletRequest request){
+    @RequestMapping("/callMobiles")
+    @ResponseBody
+    public String CallMobiles(String  mobile,HttpServletRequest request){
         System.out.print("mobile:"+mobile);
         Enumeration names = request.getHeaderNames();
         while(names.hasMoreElements()){

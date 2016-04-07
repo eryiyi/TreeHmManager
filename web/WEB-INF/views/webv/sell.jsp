@@ -289,7 +289,7 @@
 			$.ajax({
 				cache: true,
 				type:"POST",
-				url:"webMobileController/callMobiles.do",
+				url:"/webMobileController/callMobiles.do",
 				data:{"mobile":_mobile},
 				async: false,
 				success:function(_data){
