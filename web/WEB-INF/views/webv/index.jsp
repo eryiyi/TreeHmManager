@@ -39,7 +39,7 @@
 	</style>
 	<script type="text/javascript">
 		/*发布下拉列表*/
-	/*	$(function(){
+		$(function(){
 			$("#rightpic").click(function(){
 				var isshow=$("#menu").attr("class");
 				if(isshow=="imgboxtxt hide")
@@ -54,7 +54,7 @@
 					$("#menu").addClass("hide");
 				}
 			})
-		})*/
+		})
 	</script>
 </head>
 <body>
@@ -144,7 +144,7 @@
 						${e.mm_msg_content}
 				</a>
 				<div class="item-footer clearfix">
-					<a type="button" href="javaScript:void(0)" onclick="telClick(${e.mm_emp_mobile})" class="button-phone"></a>
+					<a  href="tel:${e.mm_emp_mobile}"  class="button-phone"></a>
 					<a type="button" href="javaScript:void(0)" onclick="favourClick('${e.mm_msg_id}')" class="button-fav"></a>
 					<c:if test="${e.mm_msg_picurl !='' && e.mm_msg_picurl != nul}"><a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-pic"></a></c:if>
 
