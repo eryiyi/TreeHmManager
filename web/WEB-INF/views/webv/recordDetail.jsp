@@ -79,7 +79,7 @@
 				<a class="button-fav" href="javaScript:void(0)" onclick="favourClick('${recordVO.mm_msg_id}')"></a>
 				<a href="javaScript:void(0)" onclick="reportClick('${recordVO.mm_emp_id}','${recordVO.mm_msg_id}')" class="button-report"></a>
 			</div>
-			<a href="javaScript:void(0)" onclick="telClick(${recordVO.mm_emp_mobile})" class="button-phone-big clearfix">
+			<a href="tel:(${recordVO.mm_emp_mobile}"  class="button-phone-big clearfix">
 				<%--<img src="/img/tree_button_icon_phone.png" alt="" class="phone-icon">--%>
 				<h2 class="phone-number">${recordVO.mm_emp_nickname} ${recordVO.mm_emp_mobile}</h2>
 			</a>
