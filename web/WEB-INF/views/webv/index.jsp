@@ -38,7 +38,8 @@
 		}
 	</style>
 	<script type="text/javascript">
-		$(function(){
+		/*发布下拉列表*/
+	/*	$(function(){
 			$("#rightpic").click(function(){
 				var isshow=$("#menu").attr("class");
 				if(isshow=="imgboxtxt hide")
@@ -53,7 +54,7 @@
 					$("#menu").addClass("hide");
 				}
 			})
-		})
+		})*/
 	</script>
 </head>
 <body>
@@ -67,11 +68,11 @@
 		</div>
 		<form action="" class="search-bar clearfix">
 			<input type="text" id="keyword" name="keyword" placeholder="关键词:信息标题/手机号/公司名称/联系人">
-			<button onclick="searchIndex(event)">搜索</button>
+			<button onclick="searchIndex(event)" style="float:right ">搜索</button>
 		</form>
-		<button class="new"></button>
-		<div class="imgbox">
-			<img  id="rightpic" src="/img/fabu.png">
+		<%--<button class="new"></button>--%>
+		<div class="imgbox" >
+		<img  id="rightpic" src="/img/fabu.png">
 			<div  id="menu" class="imgboxtxt hide" >
 				<a href="javaScript:void(0)" onclick="addMsg()">发布信息</a>
 				<a href="javaScript:void(0)" onclick="guanzhuArea()">关注区域</a>

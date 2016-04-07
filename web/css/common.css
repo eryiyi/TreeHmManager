@@ -37,7 +37,7 @@
 .heading .icon-group {
   text-align: center;
   box-sizing: border-box;
-  width: 30%;
+  width: 26%;
   float: left;
   padding: 15px 10px;
   height: 20px;
@@ -60,11 +60,11 @@
 .heading .search-bar {
   display: block;
   margin-right: 5%;
-  width: 45%;
+  width: 46%;
   float: left;
   margin: 5px 0;
   background-color: #F2F2F2;
-  border-radius: 30px;
+  border-radius: 5px;
 }
 .heading .search-bar input {
   font-size: 1em;
@@ -83,8 +83,8 @@
   font-weight: bold;
   float: left;
   font-size: 14px;
-  border-radius: 30px;
-  width: 20%;
+  border-radius: 5px;
+  width: 25%;
   height: 40px;
 }
 .heading .search-bar button:active {
@@ -262,8 +262,9 @@
   border-radius: 8px;
   position: absolute;
   right: 0;
-  width: 120px;
+  width: 80px;
   padding: 10px 0;
+  /*margin-top: 40px;*/
   margin-top: -9px;
   text-align: center;
   background-color: #7CD43A;
