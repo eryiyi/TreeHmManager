@@ -128,11 +128,11 @@
 				<div class="icon-pic"><img src="/img/tree_user_weixin.png" alt=""></div>
 				<h5 class="icon-name">微信客服</h5>
 			</a>
-			<a href="http://xhmt.sdhmmm.cn:7777/html/download.html" class="icon">
+			<a href="http://xhmt.sdhmmm.cn:7777/html/download.html" target="_blank" class="icon">
 				<div class="icon-pic"><img src="/img/btn_erweima_n.png" alt=""></div>
 				<h5 class="icon-name">二维码下载</h5>
 			</a>
-			<a href="http://map.baidu.com/mobile/webapp/index/index" class="icon">
+			<a href="http://map.baidu.com/mobile/webapp/index/index" target="_blank" class="icon">
 				<div class="icon-pic"><img src="/img/btn_map_n.png" alt=""></div>
 				<h5 class="icon-name">地图导航</h5>
 			</a>
@@ -182,7 +182,7 @@
 				<div class="icon-pic"><img src="/img/tree_user_setup.png" alt=""></div>
 				<h5 class="icon-name">设置</h5>
 			</a>
-			<a href="http://m.ctrip.com/html5" class="icon">
+			<a href="http://m.ctrip.com/html5" target="_blank" class="icon">
 				<div class="icon-pic"><img src="/img/btn_car_n.png" alt=""></div>
 				<h5 class="icon-name">汽火飞时刻表</h5>
 			</a>
