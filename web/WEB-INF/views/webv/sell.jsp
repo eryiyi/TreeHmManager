@@ -39,7 +39,8 @@
 		}
 	</style>
 	<script type="text/javascript">
-		$(function(){
+		/*注释发布下拉类别*/
+	/*	$(function(){
 			$("#rightpic").click(function(){
 				var isshow=$("#menu").attr("class");
 				if(isshow=="imgboxtxt hide")
@@ -54,7 +55,7 @@
 					$("#menu").addClass("hide");
 				}
 			})
-		})
+		})*/
 	</script>
 </head>
 <body>
@@ -68,10 +69,10 @@
 		</div>
 		<form action="" class="search-bar clearfix">
 			<input type="text" id="keyword" name="keyword" placeholder="关键词:信息标题/手机号/公司名称/联系人">
-			<button onclick="searchIndex(event)">搜索</button>
+			<button onclick="searchIndex(event)" style="float:right ">搜索</button>
 		</form>
 		<button class="new"></button>
-		<div class="imgbox">
+		<div class="imgbox" >
 			<img  id="rightpic" src="/img/fabu.png">
 			<div  id="menu" class="imgboxtxt hide" >
 				<a href="javaScript:void(0)" onclick="addMsg()">发布信息</a>
@@ -144,7 +145,7 @@
 						${e.mm_msg_content}
 				</a>
 				<div class="item-footer clearfix">
-					<a type="button" href="javaScript:void(0)" onclick="telClick(${e.mm_emp_mobile})" class="button-phone"></a>
+					<a type="button" href="javaScript:void(0)" onclick="telClick('${e.mm_emp_mobile}')" class="button-phone"></a>
 					<a type="button" href="javaScript:void(0)" onclick="favourClick('${e.mm_msg_id}')" class="button-fav"></a>
 					<c:if test="${e.mm_msg_picurl !='' && e.mm_msg_picurl != null}"><a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-pic"></a></c:if>
 				</div>
@@ -274,9 +275,34 @@
 	function telClick(_mobile){
 		//先判断是否登录
 		var is_login = $("#is_login").val();
+//		var param={
+//			mobile:_mobile
+//		}
+
 		if(is_login == 1){
 			//登陆了
+//			$.post("/webMobileController/callMobiles.do",param,function(_data){
+//				var data = $.parseJSON(_data);
+//				alert(data);
+//			}
 			alert(_mobile);
+			$.ajax({
+				cache: true,
+				type:"POST",
+				url:"webMobileController/callMobiles.do",
+				data:{"mobile":_mobile},
+				async: false,
+				success:function(_data){
+					var data = $.parseJSON(_data);
+					if(data.success){
+//						alert("收藏成功");
+					}else{
+//						var _case = {1:"收藏失败", 2:"已经收藏，不能重复收藏！",9:"账号过期，请重新登录！"};
+//						alert(_case[data.code])
+					}
+				}
+			});
+
 		}else{
 			//没登陆
 			alert("请先登录");
