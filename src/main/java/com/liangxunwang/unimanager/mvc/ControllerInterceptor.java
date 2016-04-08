@@ -100,7 +100,6 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/webvGuanzhuController/webvGetGuanzhu\\.do$)"+
                         "|(^/webvGuanzhuController/guanzhuArea\\.do$)"+
                         "|(^/webvGuanzhuController/saveGuanzhuArea\\.do$)"+
-                        "|(^/webMobileController/callMobiles\\.do$)"+
 
                         "|(^/memberLogin\\.do$)"
 
