@@ -46,7 +46,7 @@
 				<a href="/webvProfile/toProfile.do?mm_emp_id=${recordVO.mm_emp_id}"  class="left clearfix">
 					<img src="${recordVO.mm_emp_cover}" alt="" class="head-pic">
 					<div class="detail">
-						<h1 class="company">${recordVO.mm_emp_company} &nbsp;${recordVO.mm_emp_nickname}</h1>
+						<h1 class="company" >${recordVO.mm_emp_company} &nbsp;${recordVO.mm_emp_nickname}</h1>
 						<h3 class="time">${recordVO.dateline}</h3>
 					</div>
 				</a>
