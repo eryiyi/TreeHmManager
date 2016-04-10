@@ -3,8 +3,6 @@ package com.liangxunwang.unimanager.mvc.webv;
 import com.liangxunwang.unimanager.data.PictureData;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.UUIDFactory;
-import jdk.nashorn.internal.ir.RuntimeNode;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import sun.misc.BASE64Decoder;
@@ -12,12 +10,12 @@ import sun.misc.BASE64Decoder;
 import javax.servlet.http.HttpServletRequest;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+
 /**
- * Created by Administrator on 2016/4/9 0009.
+ * Created by Administrator on 2016/4/10 0010.
  */
-@Controller
 @RequestMapping(value = "/pictureUploadController")
-class PictureUploadController extends ControllerConstants {
+public class PictureUploadController extends ControllerConstants {
 
     private boolean message = false;     //要返回的操作结果
     private String path = "";    //要返回的文件名称
@@ -40,7 +38,7 @@ class PictureUploadController extends ControllerConstants {
 
     @RequestMapping("uploadPic")
     @ResponseBody
-    public String uploadPic(HttpServletRequest  request){
+    public String uploadPic(HttpServletRequest request){
         try{
             message = true;   //返回的消息
             /*HttpServletRequest request = ServletActionContext.getRequest();*/

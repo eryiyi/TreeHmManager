@@ -48,6 +48,7 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/getVipList\\.do$)"+
                         "|(^/getLevelById\\.do$)"+
                         "|(^/saveReport\\.do$)"+
+                        "|(^/getNearbyDistance\\.do$)"+
                         "|(^/webv/toIndex\\.do$)"+
                         "|(^/webvSell/toSell\\.do$)"+
                         "|(^/webvRecommend/toRecommend\\.do$)"+
@@ -56,7 +57,6 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/getFavourById\\.do$)"+
                         "|(^/getKefuTel\\.do$)"+
                         "|(^/updatePushId\\.do$)"+
-                        "|(^/getNearbyDistance\\.do$)"+
                         "|(^/webvLoginController/toLogin\\.do$)"+
                         "|(^/webvRegController/toReg\\.do$)"+
                         "|(^/webvFindPwrController/toFindPwr\\.do$)"+
@@ -102,6 +102,8 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/webvGuanzhuController/guanzhuArea\\.do$)"+
                         "|(^/webvGuanzhuController/saveGuanzhuArea\\.do$)"+
                         "|(^/pictureUploadController/uploadPic\\.do$)"+
+                        "|(^/webvProfile/webMemberUpdateProfile\\.do$)"+
+                        "|(^/webvProfile/toUpdateProfile\\.do$)"+
 
                         "|(^/memberLogin\\.do$)"
 

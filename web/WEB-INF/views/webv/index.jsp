@@ -307,7 +307,7 @@
 			if(${emp.is_upate_profile == '1'} ){
 				window.location.href="/webvAddRecordController/toAddRecord.do";
 			}else{
-//				alert("请先完善资料！");
+				window.location.href="/webvProfile/toUpdateProfile.do";
 			}
 
 		}else{

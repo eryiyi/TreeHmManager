@@ -327,7 +327,12 @@
 		var is_login = $("#is_login").val();
 		if(is_login == 1) {
 			//登陆了
-			window.location.href="/webvAddRecordController/toAddRecord.do";
+//			window.location.href="/webvAddRecordController/toAddRecord.do";
+			if(${emp.is_upate_profile == '1'} ){
+				window.location.href="/webvAddRecordController/toAddRecord.do";
+			}else{
+				window.location.href="/webvProfile/toUpdateProfile.do";
+			}
 		}else{
 			//登录页面跳转
 			window.location.href="/webvLoginController/toLogin.do";
