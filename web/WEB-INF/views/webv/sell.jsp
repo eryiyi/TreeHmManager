@@ -68,7 +68,7 @@
 			<c:if test="${is_login=='0'}"><a href="javaScript:void(0)"><span class="location" onclick="login()">登录</span></a></c:if>
 		</div>
 		<form action="" class="search-bar clearfix">
-			<input type="text" id="keyword" name="keyword" placeholder="关键词:信息标题/手机号/公司名称/联系人">
+			<input type="text" id="keyword" name="keyword" placeholder="标题|手机号|公司名称|联系人">
 			<button onclick="searchIndex(event)" style="float:right ">搜索</button>
 		</form>
 		<%--<button class="new"></button>--%>

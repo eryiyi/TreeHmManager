@@ -66,7 +66,7 @@
 			<c:if test="${is_login=='0'}"><a href="javaScript:void(0)"><span class="location" onclick="login()">登录</span></a></c:if>
 		</div>
 		<form action="" class="search-bar clearfix">
-			<input type="text" id="keyword" name="keyword" placeholder="手机号/公司/联系人">
+			<input type="text" id="keyword" name="keyword" placeholder="标题|手机号|公司名称|联系人">
 			<button onclick="searchIndex(event)" style="float:right ">搜索</button>
 		</form>
 		<div class="icon-add"><a href="javaScript:void(0)" onclick="addMsg()">发布</a></div>
@@ -292,41 +292,6 @@
 				window.location.href="/webvProfile/toUpdateProfile.do";
 			}
 
-		}else{
-			//登录页面跳转
-			window.location.href="/webvLoginController/toLogin.do";
-		}
-	}
-
-	function guanzhuArea(){
-		var is_login = $("#is_login").val();
-		if(is_login == 1) {
-			//查询是否关注了区域
-			var mm_emp_id = $("#mm_emp_id").val();
-			$.ajax({
-				cache: true,
-				type:"POST",
-				url:"/webvGuanzhuController/webvGetGuanzhu.do",
-				data:{"index":"1", "size":"10", "mm_emp_id":mm_emp_id},
-				async: false,
-				success:function(_data){
-					var data = $.parseJSON(_data);
-					if(data.success){
-						window.location.href="/webvGuanzhuController/guanzhuArea.do?page=1";
-					}else{
-						var _case = {1:"操作失败，请稍后重试！",
-							2:"您尚未申请关注区域，请设置关注区域！",
-							3:"您已经申请了关注区域！请等待管理员审核",
-							4:"您申请的关注区域未通过审核，请联系客服！",
-							9:"账号过期，请重新登录！"};
-						alert(_case[data.code])
-						if(data.code == 2){
-							//跳转到设置关注区域页面
-							window.location.href="/webvGuanzhuController/toGuanzhu.do";
-						}
-					}
-				}
-			});
 		}else{
 			//登录页面跳转
 			window.location.href="/webvLoginController/toLogin.do";

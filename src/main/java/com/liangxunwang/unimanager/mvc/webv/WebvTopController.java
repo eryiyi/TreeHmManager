@@ -39,6 +39,7 @@ public class WebvTopController extends ControllerConstants {
     @RequestMapping("toTop")
     public String toTop(HttpSession session, ModelMap map, PaihangQuery query, Page page){
         EmpVO emp = (EmpVO) session.getAttribute(MEMBER_KEY);
+        query.setIs_del("0");
         query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
         query.setSize(query.getSize() == 0 ? page.getDefaultSize() : query.getSize());
 

@@ -36,7 +36,15 @@
 <div class="container">
 	<!-- HEADING -->
 	<div class="heading clearfix">
-		<h1 class="head-title">金牌榜</h1>
+		<div class="icon-group">
+			<c:if test="${is_login=='1'}"><span class="location" onclick="selectPro()">${emp.areaName}</span></c:if>
+			<c:if test="${is_login=='0'}"><a href="javaScript:void(0)"><span class="location" onclick="login()">登录</span></a></c:if>
+		</div>
+		<form action="" class="search-bar clearfix">
+			<input type="text" id="keyword" name="keyword" placeholder="标题|手机号|公司名称|联系人">
+			<button onclick="searchIndex(event)" style="float:right ">搜索</button>
+		</form>
+		<div class="icon-add"><a href="javaScript:void(0)" onclick="addMsg()">发布</a></div>
 	</div>
 	<!-- CONTENT -->
 	<div class="content">
@@ -195,6 +203,27 @@
 </body>
 
 <script>
+	function selectPro(){
+		//页面跳转
+		window.location.href="/webvSelectProvinceController/toSelectProvince.do";
+	}
+
+	function addMsg(){
+		var is_login = $("#is_login").val();
+		if(is_login == 1) {
+			//登陆了
+			if(${emp.is_upate_profile == '1'} ){
+				window.location.href="/webvAddRecordController/toAddRecord.do";
+			}else{
+				window.location.href="/webvProfile/toUpdateProfile.do";
+			}
+
+		}else{
+			//登录页面跳转
+			window.location.href="/webvLoginController/toLogin.do";
+		}
+	}
+
 	function toPage(_url, _page){
 		if(_page != ''){
 			window.location.href=_url+"?page="+_page;
@@ -225,8 +254,9 @@
 		var _index = $("#index").val();
 		var page = parseInt(_page);
 		var size = $("#size").val();
+		var keyword = $("#keyword").val();
 		if(_index <= ${page.pageCount} && _index >= 1){
-			window.location.href="/webvTopController/toTop.do?page="+page+"&size="+size;
+			window.location.href="/webvTopController/toTop.do?page="+page+"&size="+size+"&keyword="+keyword;
 		}else{
 			alert("请输入1-${page.pageCount}的页码数");
 		}
@@ -235,9 +265,10 @@
 	function nextPage(_page) {
 		var page = parseInt(_page);
 		var size = $("#size").val();
+		var keyword = $("#keyword").val();
 		addCookie("contract_size", size, 36);
 		if ((page <= ${page.pageCount} && page >= 1)) {
-			window.location.href="/webvTopController/toTop.do?page="+page+"&size="+size;
+			window.location.href="/webvTopController/toTop.do?page="+page+"&size="+size+"&keyword="+keyword;
 		} else {
 			alert("请输入1-${page.pageCount}的页码数");
 		}
