@@ -32,6 +32,9 @@
         <if test="mm_emp_countryId != null and mm_emp_countryId != ''">
             AND mm_emp_countryId = #{mm_emp_countryId}
         </if>
+        <if test="mm_tel_type != null and mm_tel_type != ''">
+            AND mm_tel_type = #{mm_tel_type}
+        </if>
     </select>
 
     <select id="listsAll" resultMap="kefu_vo">

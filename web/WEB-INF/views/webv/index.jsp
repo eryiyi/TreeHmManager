@@ -219,6 +219,9 @@
 			<li><a href="javaScript:void(0)" onclick="reg()">注册</a></li>
 			<li><a href="javaScript:void(0)" onclick="login()">登录</a></li>
 		</ul>
+		<ul style="background: #ffffff;line-height: 45px;">
+			<li><a href="/webvKefuController/toKefu.do">客服中心</a></li>
+		</ul>
 		<a href="javaScript:void(0)" class="cd-popup-close img-replace">关闭</a>
 	</div> <!-- cd-popup-container -->
 </div> <!-- cd-popup -->

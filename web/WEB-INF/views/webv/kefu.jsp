@@ -131,26 +131,58 @@
 	<div class="content">
 		<div class="Menubox">
 		<ul>
-			<li id ="one1"onclick="setTab('one',1,2)" class="hover" style="width: 50%">
-				本地
-			</li>
+			<li id ="one1"onclick="setTab('one',1,2)" class="hover" style="width: 50%">本地</li>
 			<li id="one2" onclick="setTab('one',2,2)"  style="width: 49%">全国</li>
-
 		</ul>
 		</div>
 		<div class="Contentbox">
-			<div id="con_one_1" class="hover"><h3>www.865171.cn</h3>
+			<div id="con_one_1" class="hover">
+				<c:forEach items="${list}" var="e" varStatus="st">
+					<li>
+						<div class="contact clearfix">
+							<div class="left">
+								<h1 class="name">本地客服</h1>
+								<%--&lt;%&ndash;<h3 class="company">${e.mm_fuwu_content}</h3>&ndash;%&gt;--%>
+							</div>
+							<div class="right">
+								<a href="tel:${e.mm_tel}" class="button-phone-big clearfix">
+									<img src="/img/tree_button_icon_phone.png" alt="" class="phone-icon">
+									<h2 class="phone-number">${e.mm_tel}</h2>
+								</a>
+							</div>
+						</div>
+						<div class="duty"></div>
+					</li>
+				</c:forEach>
 			</div>
-			<div id="con_one_2" style="display:none"><h3>ww.cn</h3></div>
+			<div id="con_one_2" style="display:none">
+				<c:forEach items="${listAll}" var="e" varStatus="st">
+					<li>
+						<div class="contact clearfix">
+							<div class="left">
+								<h1 class="name">全国客服</h1>
+								<%--&lt;%&ndash;<h3 class="company">${e.mm_fuwu_content}</h3>&ndash;%&gt;--%>
+							</div>
+							<div class="right">
+								<a href="tel:${e.mm_tel}" class="button-phone-big clearfix">
+									<img src="/img/tree_button_icon_phone.png" alt="" class="phone-icon">
+									<h2 class="phone-number">${e.mm_tel}</h2>
+								</a>
+							</div>
+						</div>
+						<div class="duty"></div>
+					</li>
+				</c:forEach>
+			</div>
 		</div>
-		<div class="head-b">
-			<input name="gimage_lb" id="gimage_lb" type="hidden">
-			<img src="" alt="头像" id="gimage_pic">
-		</div>
-		<div id="upload_head_image_action" style="display: block">
-			<input id="choose" name="choose" capture="camera" type="file" style="display: block">
-		</div>
-		<div class="clear"></div>
+		<%--<div class="head-b">--%>
+			<%--<input name="gimage_lb" id="gimage_lb" type="hidden">--%>
+			<%--<img src="" alt="头像" id="gimage_pic">--%>
+		<%--</div>--%>
+		<%--<div id="upload_head_image_action" style="display: block">--%>
+			<%--<input id="choose" name="choose" capture="camera" type="file" style="display: block">--%>
+		<%--</div>--%>
+		<%--<div class="clear"></div>--%>
 		<!-- TOOLBAR -->
 	<div class="toolbar">
 		<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy"></a>
