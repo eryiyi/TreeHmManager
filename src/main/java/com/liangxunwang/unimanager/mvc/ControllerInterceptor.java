@@ -56,6 +56,7 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/getFavourById\\.do$)"+
                         "|(^/getKefuTel\\.do$)"+
                         "|(^/updatePushId\\.do$)"+
+                        "|(^/getNearbyDistance\\.do$)"+
                         "|(^/webvLoginController/toLogin\\.do$)"+
                         "|(^/webvRegController/toReg\\.do$)"+
                         "|(^/webvFindPwrController/toFindPwr\\.do$)"+

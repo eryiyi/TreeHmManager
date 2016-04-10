@@ -64,14 +64,14 @@ public class WebvRegController extends ControllerConstants {
     }
 
     @Autowired
-    @Qualifier("empRegisterService")
-    private SaveService empRegisterService;
+    @Qualifier("webProfileService")
+    private SaveService webProfileService;
 
     @RequestMapping("/empReg")
     @ResponseBody
     public String empReg(Emp member){
         try {
-            empRegisterService.save(member);
+            webProfileService.save(member);
             return toJSONString(SUCCESS);
         }catch (ServiceException e){
             String msg = e.getMessage();
