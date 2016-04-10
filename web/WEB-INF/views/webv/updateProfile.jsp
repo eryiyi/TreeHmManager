@@ -84,6 +84,10 @@
 			alert("公司地址不能为空");
 			return ;
 		}
+		if(mm_emp_company_address.length > 20){
+			alert("公司名称超出字段限制，最多20个字");
+			return ;
+		}
 		$.ajax({
 			cache: true,
 			type: "POST",

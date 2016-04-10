@@ -132,19 +132,6 @@
 		}
 	}
 
-
-	function telClick(_mobile){
-		//先判断是否登录
-		var is_login = $("#is_login").val();
-		if(is_login == 1){
-			//登陆了
-			alert(_mobile);
-		}else{
-			//没登陆
-			alert("请先登录");
-		}
-	}
-
 	function login(){
 		//登录页面跳转
 		window.location.href="/webvLoginController/toLogin.do";

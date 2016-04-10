@@ -86,7 +86,7 @@
 							<%--<a class="bds_count" data-cmd="count"></a>--%>
 						<%--</div>--%>
 					<%--</div>--%>
-					<a type="button" href="javaScript:void(0)" onclick="telClick(${e.mm_emp_mobile})" class="button-phone"></a>
+					<a type="button" href="tel:${e.mm_emp_mobile}"  class="button-phone"></a>
 					<a type="button" href="javaScript:void(0)" onclick="favourClick('${e.mm_msg_id}')" class="button-fav"></a>
 					<c:if test="${e.mm_msg_picurl !='' && e.mm_msg_picurl != null}"><a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-pic"></a></c:if>
 
@@ -189,18 +189,6 @@
 
 	function showDetail(_mm_msg_id){
 		window.location.href="/webvRecordController/toDetail.do?mm_msg_id="+_mm_msg_id;
-	}
-
-	function telClick(_mobile){
-		//先判断是否登录
-		var is_login = $("#is_login").val();
-		if(is_login == 1){
-			//登陆了
-			alert(_mobile);
-		}else{
-			//没登陆
-			alert("请先登录");
-		}
 	}
 
 	function login(){

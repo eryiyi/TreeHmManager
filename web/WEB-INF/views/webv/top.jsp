@@ -204,11 +204,6 @@
 		window.location.href="/webvRecordController/toDetail.do?mm_msg_id="+_mm_msg_id;
 	}
 
-	function telClick(_mobile){
-		//先判断是否登录
-		alert(_mobile);
-	}
-
 	function login(){
 		//登录页面跳转
 		window.location.href="/webvLoginController/toLogin.do";

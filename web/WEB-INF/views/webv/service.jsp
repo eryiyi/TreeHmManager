@@ -38,7 +38,9 @@
 	<div class="heading clearfix">
 		<h1 class="head-title">用户中心</h1>
 	</div>
-
+	<input type="hidden" id="is_login" name="is_login" value="${is_login}">
+	<input type="hidden" id="accessToken" name="accessToken" value="${emp.access_token}">
+	<input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${emp.mm_emp_id}">
 	<div id="Glide" class="glide">
 		<div class="panel clearfix">
 			<img src="${emp.mm_emp_cover}" alt="${emp.mm_emp_nickname}" class="head-pic">
@@ -87,7 +89,7 @@
 				<div class="icon-pic"><img src="/img/tree_user_massage.png" alt=""></div>
 				<h5 class="icon-name">短信平台</h5>
 			</a>
-			<a href="contact.html" class="icon">
+			<a href="javaScript:void(0)" onclick="guanzhuArea()" class="icon">
 				<div class="icon-pic"><img src="/img/tree_user_see.png" alt=""></div>
 				<h5 class="icon-name">关注区域</h5>
 			</a>
@@ -231,18 +233,6 @@
 		window.location.href="/webvRecordController/toDetail.do?mm_msg_id="+_mm_msg_id;
 	}
 
-	function telClick(_mobile){
-		//先判断是否登录
-		var is_login = $("#is_login").val();
-		if(is_login == 1){
-			//登陆了
-			alert(_mobile);
-		}else{
-			//没登陆
-			alert("请先登录");
-		}
-	}
-
 	function login(){
 		//登录页面跳转
 		window.location.href="/webvLoginController/toLogin.do";
@@ -274,6 +264,38 @@
 			}
 		});
 	}
+
+	function guanzhuArea() {
+		//查询是否关注了区域
+		var mm_emp_id = $("#mm_emp_id").val();
+		$.ajax({
+			cache: true,
+			type: "POST",
+			url: "/webvGuanzhuController/webvGetGuanzhu.do",
+			data: {"index": "1", "size": "10", "mm_emp_id": mm_emp_id},
+			async: false,
+			success: function (_data) {
+				var data = $.parseJSON(_data);
+				if (data.success) {
+					window.location.href = "/webvGuanzhuController/guanzhuArea.do?page=1";
+				} else {
+					var _case = {
+						1: "操作失败，请稍后重试！",
+						2: "您尚未申请关注区域，请设置关注区域！",
+						3: "您已经申请了关注区域！请等待管理员审核",
+						4: "您申请的关注区域未通过审核，请联系客服！",
+						9: "账号过期，请重新登录！"
+					};
+					alert(_case[data.code])
+					if (data.code == 2) {
+						//跳转到设置关注区域页面
+						window.location.href = "/webvGuanzhuController/toGuanzhu.do";
+					}
+				}
+			}
+		});
+	}
+
 </script>
 
 </html>

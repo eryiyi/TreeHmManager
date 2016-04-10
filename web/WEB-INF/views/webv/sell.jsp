@@ -273,43 +273,6 @@
 		window.location.href="/webvRecordController/toDetail.do?mm_msg_id="+_mm_msg_id;
 	}
 
-	function telClick(_mobile){
-		//先判断是否登录
-		var is_login = $("#is_login").val();
-//		var param={
-//			mobile:_mobile
-//		}
-
-		if(is_login == 1){
-			//登陆了
-//			$.post("/webMobileController/callMobiles.do",param,function(_data){
-//				var data = $.parseJSON(_data);
-//				alert(data);
-//			}
-			alert(_mobile);
-			$.ajax({
-				cache: true,
-				type:"POST",
-				url:"/webMobileController/callMobiles.do",
-				data:{"mobile":_mobile},
-				async: false,
-				success:function(_data){
-					var data = $.parseJSON(_data);
-					if(data.success){
-//						alert("收藏成功");
-					}else{
-//						var _case = {1:"收藏失败", 2:"已经收藏，不能重复收藏！",9:"账号过期，请重新登录！"};
-//						alert(_case[data.code])
-					}
-				}
-			});
-
-		}else{
-			//没登陆
-			alert("请先登录");
-		}
-	}
-
 	function login(){
 		//登录页面跳转
 		window.location.href="/webvLoginController/toLogin.do";
@@ -327,7 +290,6 @@
 		var is_login = $("#is_login").val();
 		if(is_login == 1) {
 			//登陆了
-//			window.location.href="/webvAddRecordController/toAddRecord.do";
 			if(${emp.is_upate_profile == '1'} ){
 				window.location.href="/webvAddRecordController/toAddRecord.do";
 			}else{
@@ -445,38 +407,5 @@
 		}
 		window.setInterval(checkHash, 100);
 	})(window);
-
-
 </script>
-
-<%--<script>--%>
-	<%--window._bd_share_config = {--%>
-		<%--common : {--%>
-			<%--bdText : '自定义分享内容',--%>
-			<%--bdDesc : '自定义分享摘要',--%>
-			<%--bdUrl : '自定义分享url地址',--%>
-			<%--bdPic : '自定义分享图片'--%>
-		<%--},--%>
-		<%--share : [{--%>
-			<%--"bdSize" : 16--%>
-		<%--}],--%>
-		<%--slide : [{--%>
-			<%--bdImg : 0,--%>
-			<%--bdPos : "right",--%>
-			<%--bdTop : 100--%>
-		<%--}],--%>
-		<%--image : [{--%>
-			<%--viewType : 'list',--%>
-			<%--viewPos : 'top',--%>
-			<%--viewColor : 'black',--%>
-			<%--viewSize : '16',--%>
-			<%--viewList : ['qzone','tsina','huaban','tqq','renren']--%>
-		<%--}],--%>
-		<%--selectShare : [{--%>
-			<%--"bdselectMiniList" : ['qzone','tqq','kaixin001','bdxc','tqf']--%>
-		<%--}]--%>
-	<%--}--%>
-	<%--with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];--%>
-<%--</script>--%>
-
 </html>

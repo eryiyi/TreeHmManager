@@ -69,14 +69,6 @@
 			<input type="text" id="keyword" name="keyword" placeholder="手机号/公司/联系人">
 			<button onclick="searchIndex(event)" style="float:right ">搜索</button>
 		</form>
-		<%--<button class="new"></button>--%>
-		<%--<div class="imgbox" >--%>
-		<%--<img id="rightpic" src="/img/fabu.png">--%>
-			<%--&lt;%&ndash;<div  id="menu" class="imgboxtxt hide" >&ndash;%&gt;--%>
-				<%--&lt;%&ndash;<a href="javaScript:void(0)" onclick="addMsg()">发布信息</a>&ndash;%&gt;--%>
-				<%--&lt;%&ndash;<a href="javaScript:void(0)" onclick="guanzhuArea()">关注区域</a>&ndash;%&gt;--%>
-			<%--&lt;%&ndash;</div>&ndash;%&gt;--%>
-		<%--</div>--%>
 		<div class="icon-add"><a href="javaScript:void(0)" onclick="addMsg()">发布</a></div>
 	</div>
 	<!-- CONTENT -->
@@ -231,7 +223,6 @@
 	</div> <!-- cd-popup-container -->
 </div> <!-- cd-popup -->
 
-
 </body>
 
 <script>
@@ -277,18 +268,6 @@
 
 	function showDetail(_mm_msg_id){
 		window.location.href="/webvRecordController/toDetail.do?mm_msg_id="+_mm_msg_id;
-	}
-
-	function telClick(_mobile){
-		//先判断是否登录
-		var is_login = $("#is_login").val();
-		if(is_login == 1){
-			//登陆了
-			alert(_mobile);
-		}else{
-			//没登陆
-			alert("请先登录");
-		}
 	}
 
 	function login(){
@@ -350,11 +329,9 @@
 			window.location.href="/webvLoginController/toLogin.do";
 		}
 	}
-
 </script>
 
 <script type="text/javascript" charset="UTF-8">
-
 	function searchIndex(e){
 		if(e.keyCode != 13) return;
 		var _index = $("#index").val();
@@ -379,7 +356,6 @@
 			alert("请输入1-${page.pageCount}的页码数");
 		}
 	}
-
 </script>
 <script type="text/javascript">
 	(function (window, undefined){
@@ -422,8 +398,6 @@
 		}
 		window.setInterval(checkHash, 100);
 	})(window);
-
-
 </script>
 
 </html>
