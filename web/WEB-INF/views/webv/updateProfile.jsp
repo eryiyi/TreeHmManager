@@ -41,14 +41,29 @@
 	</div>
 	<!-- CONTENT -->
 	<div class="content regist w85">
-		<div class="input-group-regist"><span>公司名称</span>
-			<input type="text" placeholder="公司名称" id="mm_emp_company">
-		</div>
-		<div class="input-group-regist"><span>公司地址</span>
-			<input  placeholder="公司地址" type="text" id="mm_emp_company_address">
-		</div>
+		<form class="form-horizontal" role="form">
+			<div class="input-group-regist"><span>公司名称</span>
+				<input type="text" placeholder="公司名称" id="mm_emp_company">
+			</div>
+			<div class="input-group-regist"><span>公司地址</span>
+				<input  placeholder="公司地址" type="text" id="mm_emp_company_address">
+			</div>
+			<div class="input-group-regist"><span>头像</span>
+				<input type="hidden" id="mm_emp_cover">
+				<img class="img-thumbnail"  name="imagePath" id="imageDiv"  style="cursor: pointer;width: 80px;height: 80px;" />
+				<input type="file" name="file" id="fileUpload" style="float: left;" />
+				<input type="button" value="上传" onclick="uploadImage()" style="float: left;"/><br/><br/>
+			</div>
+			<div class="input-group-regist"><span>营业执照或公司门头</span>
+				<input type="hidden" id="mm_emp_company_pic">
+				<img class="img-thumbnail" name="imageDiv1" id="imageDiv1" style="cursor: pointer;width: 80px;height: 80px;"  />
+				<input type="file" name="file" id="fileUpload1" style="float: left;" />
+				<input type="button" value="上传" onclick="uploadImage1()" style="float: left;"/><br/><br/>
+			</div>
 
-		<button class="mt4 w10 fill-green" type="submit" onclick="reg()">提交</button>
+
+			<button class="mt4 w10 fill-green" type="button" onclick="reg()">提交</button>
+			</form>
 		</div>
 	<!-- TOOLBAR -->
 	<div class="toolbar">
@@ -72,6 +87,8 @@
 	function reg(){
 		var mm_emp_company = $("#mm_emp_company").val();
 		var mm_emp_company_address = $("#mm_emp_company_address").val();
+		var mm_emp_cover = $("#mm_emp_cover").val();
+		var mm_emp_company_pic = $("#mm_emp_company_pic").val();
 		if(mm_emp_company.replace(/\s/g, '') == ''){
 			alert("公司名称不能为空");
 			return ;
@@ -88,12 +105,22 @@
 			alert("公司名称超出字段限制，最多20个字");
 			return ;
 		}
+		if(mm_emp_cover.replace(/\s/g, '') == ''){
+			alert("请选择头像");
+			return ;
+		}
+		if(mm_emp_company_pic.replace(/\s/g, '') == ''){
+			alert("请选择营业执照");
+			return ;
+		}
 		$.ajax({
 			cache: true,
 			type: "POST",
 			url:"/webvProfile/webMemberUpdateProfile.do",
 			data:{
 				"mm_emp_company":mm_emp_company,
+				"mm_emp_company_pic":mm_emp_company_pic,
+				"mm_emp_cover":mm_emp_cover,
 				"mm_emp_company_address":mm_emp_company_address
 			},
 			async: false,
@@ -110,6 +137,70 @@
 			}
 		});
 	}
+
+	function uploadImage() {
+		$.ajaxFileUpload(
+				{
+					url:"/uploadUnCompressImage.do?_t=" + new Date().getTime(),            //需要链接到服务器地址
+					secureuri:false,//是否启用安全提交，默认为false
+					fileElementId:'fileUpload',                        //文件选择框的id属性
+					dataType: 'json',                                     //服务器返回的格式，可以是json, xml
+					success: function (data, status)  //服务器成功响应处理函数
+					{
+						if(data.success) {
+							document.getElementById('mm_emp_cover').value=  data.data;
+							document.getElementById('imageDiv').src= "http://192.168.0.224:8080/" +  data.data;
+						} else {
+							if(data.code == 1) {
+								alert("上传图片失败");
+							} else if(data.code == 2) {
+								alert("上传图片格式只能为：jpg、png、gif、bmp、jpeg");
+							} else if(data.code == 3) {
+								alert("请选择上传图片");
+							}else {
+								alert("上传失败");
+							}
+						}
+					}
+				}
+		);
+	}
+
+	function uploadImage1() {
+		$.ajaxFileUpload(
+				{
+					url:"/uploadUnCompressImage.do?_t=" + new Date().getTime(),            //需要链接到服务器地址
+					secureuri:false,//是否启用安全提交，默认为false
+					fileElementId:'fileUpload1',                        //文件选择框的id属性
+					dataType: 'json',                                     //服务器返回的格式，可以是json, xml
+					success: function (data, status)  //服务器成功响应处理函数
+					{
+						if(data.success) {
+							document.getElementById('mm_emp_company_pic').value=  data.data;
+							document.getElementById('imageDiv1').src=  "http://192.168.0.224:8080/" + data.data;
+						} else {
+							if(data.code == 1) {
+								alert("上传图片失败");
+							} else if(data.code == 2) {
+								alert("上传图片格式只能为：jpg、png、gif、bmp、jpeg");
+							} else if(data.code == 3) {
+								alert("请选择上传图片");
+							}else {
+								alert("上传失败");
+							}
+						}
+					}
+				}
+		);
+	}
+
+	function deleteImage(e, node) {
+		if(e.button == 2) {
+			if(confirm("确定移除该图片吗？")) {
+				$(node).remove();
+			}
+		}
+	};
 
 </script>
 </html>
