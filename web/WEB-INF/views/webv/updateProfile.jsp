@@ -149,7 +149,7 @@
 					{
 						if(data.success) {
 							document.getElementById('mm_emp_cover').value=  data.data;
-							document.getElementById('imageDiv').src= "http://192.168.0.224:8080/" +  data.data;
+							document.getElementById('imageDiv').src= "http://xhmt.sdhmmm.cn:7777/" +  data.data;
 						} else {
 							if(data.code == 1) {
 								alert("上传图片失败");
@@ -177,7 +177,7 @@
 					{
 						if(data.success) {
 							document.getElementById('mm_emp_company_pic').value=  data.data;
-							document.getElementById('imageDiv1').src=  "http://192.168.0.224:8080/" + data.data;
+							document.getElementById('imageDiv1').src=  "http://xhmt.sdhmmm.cn:7777/" + data.data;
 						} else {
 							if(data.code == 1) {
 								alert("上传图片失败");

@@ -165,7 +165,6 @@
 						<div class="contact clearfix">
 							<div class="left">
 								<h1 class="name">全国客服</h1>
-								<%--&lt;%&ndash;<h3 class="company">${e.mm_fuwu_content}</h3>&ndash;%&gt;--%>
 							</div>
 							<div class="right">
 								<a href="tel:${e.mm_tel}" class="button-phone-big clearfix">
@@ -180,15 +179,7 @@
 			</div>
 			</ul>
 		</div>
-		<%--<div class="head-b">--%>
-			<%--<input name="gimage_lb" id="gimage_lb" type="hidden">--%>
-			<%--<img src="" alt="头像" id="gimage_pic">--%>
-		<%--</div>--%>
-		<%--<div id="upload_head_image_action" style="display: block">--%>
-			<%--<input id="choose" name="choose" capture="camera" type="file" style="display: block">--%>
-		<%--</div>--%>
-		<%--<div class="clear"></div>--%>
-		<!-- TOOLBAR -->
+
 	<div class="toolbar">
 		<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell"></a>
