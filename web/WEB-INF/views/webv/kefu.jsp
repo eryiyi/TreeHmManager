@@ -35,6 +35,9 @@
 			padding:0px;
 			margin:0 auto;}*/
 		/*菜单class*/
+		ul{
+			list-style:none;
+		}
 		.Menubox {
 			width:100%;
 		/*	background:url(3.gif);*/
@@ -136,6 +139,7 @@
 		</ul>
 		</div>
 		<div class="Contentbox">
+			<ul>
 			<div id="con_one_1" class="hover">
 				<c:forEach items="${list}" var="e" varStatus="st">
 					<li>
@@ -173,6 +177,7 @@
 					</li>
 				</c:forEach>
 			</div>
+			</ul>
 		</div>
 
 	<div class="toolbar">
