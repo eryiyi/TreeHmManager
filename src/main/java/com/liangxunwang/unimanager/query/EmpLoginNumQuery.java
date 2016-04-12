@@ -8,6 +8,15 @@ public class EmpLoginNumQuery extends BaseAreaQuery{
     private int size;
     private String keyword;
     private String mm_manager_id;
+    private String mm_emp_id;
+
+    public String getMm_emp_id() {
+        return mm_emp_id;
+    }
+
+    public void setMm_emp_id(String mm_emp_id) {
+        this.mm_emp_id = mm_emp_id;
+    }
 
     public String getMm_manager_id() {
         return mm_manager_id;

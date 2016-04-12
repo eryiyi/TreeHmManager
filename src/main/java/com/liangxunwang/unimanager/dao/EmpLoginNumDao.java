@@ -2,6 +2,7 @@ package com.liangxunwang.unimanager.dao;
 
 import com.liangxunwang.unimanager.model.EmpLoginNum;
 import com.liangxunwang.unimanager.model.LogoObj;
+import com.liangxunwang.unimanager.mvc.vo.EmpLoginNumVO;
 import com.liangxunwang.unimanager.mvc.vo.LogoVO;
 import org.springframework.stereotype.Repository;
 
@@ -17,7 +18,7 @@ public interface EmpLoginNumDao {
     /**
      * 查询信息
      */
-    List<EmpLoginNum> listRecordVo(Map<String, Object> map);
+    List<EmpLoginNumVO> listRecordVo(Map<String, Object> map);
     long count(Map<String, Object> map);
 
     //保存

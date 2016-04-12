@@ -592,4 +592,22 @@ public class EmpController extends ControllerConstants {
         return toJSONString(ERROR_1);
     }
 
+    @Autowired
+    @Qualifier("empLoginNumService")
+    private ListService empLoginNumService;
+    //查询用户活跃度
+    @RequestMapping("/getEmpLoginNumber")
+    public String getEmpLoginNumber(ModelMap map, HttpSession session, EmpLoginNumQuery query, Page page) throws Exception {
+        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
+        query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
+        query.setSize(query.getSize() == 0 ? page.getDefaultSize() : query.getSize());
+        Object[] results = (Object[]) empLoginNumService.list(query);
+        map.put("list", results[0]);
+        long count = (Long) results[1];
+        page.setCount(count);
+        page.setPageCount(calculatePageCount(query.getSize(), count));
+        map.addAttribute("page", page);
+        map.addAttribute("query", query);
+        return "/loginNum/list";
+    }
 }

@@ -4,7 +4,9 @@ import com.liangxunwang.unimanager.dao.EmpLoginNumDao;
 import com.liangxunwang.unimanager.dao.LogoDao;
 import com.liangxunwang.unimanager.model.EmpLoginNum;
 import com.liangxunwang.unimanager.model.LogoObj;
+import com.liangxunwang.unimanager.mvc.vo.EmpLoginNumVO;
 import com.liangxunwang.unimanager.mvc.vo.LogoVO;
+import com.liangxunwang.unimanager.query.EmpLoginNumQuery;
 import com.liangxunwang.unimanager.query.LogoQuery;
 import com.liangxunwang.unimanager.service.DeleteService;
 import com.liangxunwang.unimanager.service.ListService;
@@ -32,7 +34,7 @@ public class EmpLoginNumService implements ListService,SaveService {
 
     @Override
     public Object list(Object object) throws ServiceException {
-        LogoQuery query = (LogoQuery) object;
+        EmpLoginNumQuery query = (EmpLoginNumQuery) object;
         Map<String, Object> map = new HashMap<String, Object>();
         int index = (query.getIndex() - 1) * query.getSize();
         int size = query.getIndex() * query.getSize();
@@ -43,11 +45,11 @@ public class EmpLoginNumService implements ListService,SaveService {
         if(!StringUtil.isNullOrEmpty(query.getKeyword())){
             map.put("keyword", query.getKeyword());
         }
-        if(!StringUtil.isNullOrEmpty(query.getMm_manager_id())){
-            map.put("mm_manager_id", query.getMm_manager_id());
+        if(!StringUtil.isNullOrEmpty(query.getMm_emp_id())){
+            map.put("mm_emp_id", query.getMm_emp_id());
         }
 
-        List<EmpLoginNum> lists = empLoginNumDao.listRecordVo(map);
+        List<EmpLoginNumVO> lists = empLoginNumDao.listRecordVo(map);
         long count = empLoginNumDao.count(map);
 
         return new Object[]{lists, count};

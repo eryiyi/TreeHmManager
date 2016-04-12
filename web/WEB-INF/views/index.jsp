@@ -451,6 +451,19 @@
 						</ul>
 					</li>
 				</c:if>
+				<c:if test="${um:permission('EMP_LOGIN_NUMBER_MANA', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="javascript:void (0);" class="dropdown-toggle">
+							<i class="fa fa-info"></i>
+							<span class="hidden-xs">活跃度</span>
+						</a>
+						<ul class="dropdown-menu">
+							<c:if test="${um:permission('EMP_LOGIN_NUMBER_MANA', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('/emp/getEmpLoginNumber','')">活跃度</a></li>
+							</c:if>
+						</ul>
+					</li>
+				</c:if>
 				<c:if test="${um:permission('NEARBY_DISTANCE_MANA', sessionScope.powers)}">
 					<li class="dropdown">
 						<a href="javascript:void (0);" class="dropdown-toggle">
