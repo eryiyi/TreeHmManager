@@ -57,17 +57,19 @@
 				</li>
 				<div style=" height:150px; overflow:auto">
 				<c:forEach items="${list}" var="e" varStatus="st">
-				<li>
-					<div class="contact clearfix">
-						<div class="left">
-							<h3 class="phone-number">${e.mm_weixin_name}</h3>
-						</div>
-						<div class="right">
-							<h2 class="phone-number">${e.mm_weixin}</h2>
-						</div>
-					</div>
-					<div class="duty"></div>
-				</li>
+					<c:if test="${e.mm_weixin_type=='0'}">
+						<li>
+							<div class="contact clearfix">
+								<div class="left">
+									<h3 class="phone-number">${e.mm_weixin_name}</h3>
+								</div>
+								<div class="right">
+									<h2 class="phone-number">${e.mm_weixin}</h2>
+								</div>
+							</div>
+							<div class="duty"></div>
+						</li>
+					</c:if>
 				</c:forEach>
 				</div>
 				</ul>
@@ -86,17 +88,19 @@
 				</li>
 				<div style=" height:150px; overflow:auto;">
 				<c:forEach items="${list}" var="e" varStatus="st">
-				<li>
-					<div class="contact clearfix">
-						<div class="left">
-							<h3 class="phone-number">${e.mm_weixin_name}</h3>
-						</div>
-						<div class="right">
-							<h2 class="phone-number"><a href="tencent://message/?uin=${e.mm_weixin}&Site=&Menu=yes">${e.mm_weixin}</a></h2>
-						</div>
-					</div>
-					<div class="duty"></div>
-				</li>
+					<c:if test="${e.mm_weixin_type=='1'}">
+						<li>
+							<div class="contact clearfix">
+								<div class="left">
+									<h3 class="phone-number">${e.mm_weixin_name}</h3>
+								</div>
+								<div class="right">
+									<h2 class="phone-number"><a href="tencent://message/?uin=${e.mm_weixin}&Site=&Menu=yes">${e.mm_weixin}</a></h2>
+								</div>
+							</div>
+							<div class="duty"></div>
+						</li>
+					</c:if>
 				</c:forEach>
 		</div>
 		</ul>

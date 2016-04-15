@@ -174,7 +174,7 @@
 			</a>
 			<a href="javaScript:void(0)" onclick="quiteClick()" class="icon">
 				<div class="icon-pic"><img src="/img/tree_user_setup.png" alt=""></div>
-				<h5 class="icon-name">设置</h5>
+				<h5 class="icon-name">切换账号</h5>
 			</a>
 			<a href="http://m.ctrip.com/html5" target="_blank" class="icon">
 				<div class="icon-pic"><img src="/img/btn_car_n.png" alt=""></div>
