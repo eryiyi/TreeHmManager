@@ -69,7 +69,7 @@
 				<div class="img-holder clearfix">
 
 					<c:forEach items="${pics}" var="e" varStatus="st">
-						<a href="javaScript:void(0)"><img src="${e}" alt=""></a>
+						<a href="${e}" target="_blank"><img src="${e}" alt=""></a>
 					</c:forEach>
 
 				</div>

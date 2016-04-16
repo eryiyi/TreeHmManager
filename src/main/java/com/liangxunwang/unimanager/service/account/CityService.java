@@ -33,6 +33,9 @@ public class CityService implements ListService,SaveService{
         if(!StringUtil.isNullOrEmpty(query.getFather())){
             map.put("father", query.getFather());
         }
+        if(!StringUtil.isNullOrEmpty(query.getIs_use())){
+            map.put("is_use", query.getIs_use());
+        }
         List<CityObj> lists = cityDao.lists(map);
         return lists;
     }

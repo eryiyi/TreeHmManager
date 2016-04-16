@@ -25,5 +25,13 @@ public interface CountryDao {
     //保存
     void save(CountryObj countryObj);
 
+    //
+    CountryObj findById(Map<String,Object> map);
 
+
+    /**
+     * 更新
+     * @param countryObj
+     */
+    public void update(CountryObj countryObj);
 }

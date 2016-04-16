@@ -34,6 +34,9 @@ public class CountryService implements ListService,SaveService{
         if(!StringUtil.isNullOrEmpty(query.getFather())){
             map.put("father", query.getFather());
         }
+        if(!StringUtil.isNullOrEmpty(query.getIs_use())){
+            map.put("is_use", query.getIs_use());
+        }
         List<CountryObj> lists = countryDao.lists(map);
         return lists;
     }

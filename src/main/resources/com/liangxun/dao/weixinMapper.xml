@@ -29,4 +29,8 @@
           where sn.mm_weixin_id=#{mm_weixin_id}
     </select>
 
+    <delete id="delete" parameterType="String">
+        DELETE FROM mm_weixin where mm_weixin_id = #{mm_weixin_id}
+    </delete>
+
 </mapper>

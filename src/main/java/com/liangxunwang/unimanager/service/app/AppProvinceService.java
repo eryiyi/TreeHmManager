@@ -7,6 +7,7 @@ import com.liangxunwang.unimanager.model.AccessToken;
 import com.liangxunwang.unimanager.model.FuwuObj;
 import com.liangxunwang.unimanager.model.ProvinceObj;
 import com.liangxunwang.unimanager.query.FuwuQuery;
+import com.liangxunwang.unimanager.query.ProvinceQuery;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.DateUtil;
 import com.liangxunwang.unimanager.util.StringUtil;
@@ -30,8 +31,11 @@ public class AppProvinceService implements ListService{
 
     @Override
     public Object list(Object object) throws ServiceException {
-//        ProvinceQuery query = (ProvinceQuery) object;
+        ProvinceQuery query = (ProvinceQuery) object;
         Map<String, Object> map = new HashMap<String, Object>();
+        if(!StringUtil.isNullOrEmpty(query.getIs_use())){
+            map.put("is_use", query.getIs_use());
+        }
         List<ProvinceObj> lists = provinceDao.listsApp(map);
 
         return lists;

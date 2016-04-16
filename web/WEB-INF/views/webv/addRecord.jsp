@@ -105,6 +105,7 @@
 			<%--</c:if>--%>
 		</div>
 		<button class="button fill-orange mt3 w10 t-sh mb4" onclick="addRecord()">提交</button>
+		<button class="button fill-orange mt3 w10 t-sh mb4" onclick="kefu()">客服中心</button>
 	</div>
 	<!-- TOOLBAR -->
 	<div class="toolbar">
@@ -117,6 +118,10 @@
 </div>
 </body>
 <script>
+	function kefu(){
+		window.location.href="/webvKefuController/toKefu.do";
+	}
+
 	function toPage(_url, _page){
 		if(_page != ''){
 			window.location.href=_url+"?page="+_page;
@@ -177,7 +182,7 @@
 					alert("发布信息成功！");
 					window.history.go(-1);
 				}else{
-					var _case = {1:"发布信息失败",2:"已经发布该信息，不能重复发布！",3:"发布信息数量超出限制，您每天最多发布"+"3"+"条",9:"您的账号在其它设备上登录，请重新登录"};
+					var _case = {1:"发布信息失败",2:"已经发布该信息，不能重复发布！",3:"发布信息数量超出限制，要发布更多信息，请联系客服！",9:"您的账号在其它设备上登录，请重新登录"};
 					alert(_case[data.code])
 				}
 			}

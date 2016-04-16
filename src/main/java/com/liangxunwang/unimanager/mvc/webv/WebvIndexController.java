@@ -2,10 +2,7 @@ package com.liangxunwang.unimanager.mvc.webv;
 
 import com.liangxunwang.unimanager.model.*;
 import com.liangxunwang.unimanager.mvc.vo.EmpVO;
-import com.liangxunwang.unimanager.query.AdQuery;
-import com.liangxunwang.unimanager.query.CityQuery;
-import com.liangxunwang.unimanager.query.CountryQuery;
-import com.liangxunwang.unimanager.query.RecordQuery;
+import com.liangxunwang.unimanager.query.*;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.Page;
@@ -104,12 +101,16 @@ public class WebvIndexController extends ControllerConstants {
         }
 
         //查询省份
-        List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list("");
+        ProvinceQuery provinceQuery = new ProvinceQuery();
+        provinceQuery.setIs_use("1");
+        List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list(provinceQuery);
         //查询地市all
         CityQuery cityQueryAll = new CityQuery();
+        cityQueryAll.setIs_use("1");
         List<CityObj> listCitysAll = (List<CityObj>) cityService.list(cityQueryAll);
         //查询县区all
         CountryQuery countryQueryAll = new CountryQuery();
+        countryQueryAll.setIs_use("1");
         List<CountryObj> listsCountryAll = (List<CountryObj>) countryService.list(countryQueryAll);
 
         map.put("listProvinces", listProvinces);

@@ -4,6 +4,7 @@ import com.liangxunwang.unimanager.model.FuwuObj;
 import com.liangxunwang.unimanager.model.ProvinceObj;
 import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.query.FuwuQuery;
+import com.liangxunwang.unimanager.query.ProvinceQuery;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.ServiceException;
 import com.liangxunwang.unimanager.util.ControllerConstants;
@@ -28,9 +29,10 @@ public class AppProvinceController extends ControllerConstants {
     //省份列表
     @RequestMapping(value = "/getProvince", produces = "text/plain;charset=UTF-8")
     @ResponseBody
-    public String getProvince(){
+    public String getProvince(ProvinceQuery query){
         try {
-            List<ProvinceObj> list = (List<ProvinceObj>) appProvinceService.list(null);
+            query.setIs_use("1");
+            List<ProvinceObj> list = (List<ProvinceObj>) appProvinceService.list(query);
             DataTip tip = new DataTip();
             tip.setData(list);
             return toJSONString(tip);

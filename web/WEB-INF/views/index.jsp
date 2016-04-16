@@ -67,6 +67,7 @@
 			<div id="logo" class="col-xs-12 col-sm-2">
 				<a href="javascript:void(0);">花木通后台管理系统</a>
 			</div>
+
 			<div id="top-panel" class="col-xs-12 col-sm-10">
 				<div class="row">
 					<div class="col-xs-8 col-sm-4">

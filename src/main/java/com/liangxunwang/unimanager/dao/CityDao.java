@@ -27,5 +27,14 @@ public interface CityDao {
     //保存
     void save(CityObj level);
 
+    //
+    CityObj findById(Map<String,Object> map);
+
+
+    /**
+     * 更新
+     * @param cityObj
+     */
+    public void update(CityObj cityObj);
 
 }

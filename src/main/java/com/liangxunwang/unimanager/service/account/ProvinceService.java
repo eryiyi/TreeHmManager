@@ -7,6 +7,7 @@ import com.liangxunwang.unimanager.model.ProvinceObj;
 import com.liangxunwang.unimanager.query.LevelQuery;
 import com.liangxunwang.unimanager.query.ProvinceQuery;
 import com.liangxunwang.unimanager.service.*;
+import com.liangxunwang.unimanager.util.StringUtil;
 import com.liangxunwang.unimanager.util.UUIDFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -27,8 +28,11 @@ public class ProvinceService implements ListService,SaveService,ExecuteService,U
 
     @Override
     public Object list(Object object) throws ServiceException {
-//        ProvinceQuery query = (ProvinceQuery) object;
+        ProvinceQuery query = (ProvinceQuery) object;
         Map<String, Object> map = new HashMap<String, Object>();
+        if(!StringUtil.isNullOrEmpty(query.getIs_use())){
+            map.put("is_use", query.getIs_use());
+        }
         List<ProvinceObj> lists = provinceDao.lists(map);
 
         return lists;

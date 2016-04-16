@@ -43,6 +43,17 @@
         <div class="no-move"></div>
       </div>
       <div class="box-content">
+        <%--<form class="form-inline">--%>
+          <%--<div class="form-group">--%>
+            <%--<select class="form-control w12" id="is_use">--%>
+              <%--<option value="">--显示隐藏状态--</option>--%>
+              <%--<option value="0" ${query.is_use=='0'?'selected':''}>隐藏</option>--%>
+              <%--<option value="1" ${query.is_use=='1'?'selected':''}>显示</option>--%>
+            <%--</select>--%>
+          <%--</div>--%>
+          <%--<button type="submit" onclick="searchOrder()" class="btn form-control btn-warning btn-sm btn-block">查找</button>--%>
+        <%--</form>--%>
+
         <table class="table">
           <thead>
           <tr>
@@ -74,3 +85,9 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  function searchOrder(){
+    var is_use = $("#is_use").val();
+      window.location.href="#module=/province/list&is_use="+is_use;
+  }
+</script>

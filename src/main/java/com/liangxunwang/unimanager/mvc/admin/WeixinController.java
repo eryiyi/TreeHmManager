@@ -34,6 +34,10 @@ public class WeixinController extends ControllerConstants {
 
     @Autowired
     @Qualifier("weixinService")
+    private DeleteService levelServiceSaveDel;
+
+    @Autowired
+    @Qualifier("weixinService")
     private ExecuteService levelServiceSaveExe;
 
     @Autowired
@@ -96,6 +100,16 @@ public class WeixinController extends ControllerConstants {
         }catch (ServiceException e){
             return toJSONString(ERROR_1);
         }
+    }
+
+    @RequestMapping("delete")
+    @ResponseBody
+    public String delete(HttpSession session,String mm_weixin_id){
+        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
+        levelServiceSaveDel.delete(mm_weixin_id);
+        //日志记录
+        logoService.save(new LogoObj("删除客服："+mm_weixin_id, manager.getMm_manager_id()));
+        return toJSONString(SUCCESS);
     }
 
 }
