@@ -46,7 +46,7 @@
 		<div class="input-group-regist"><span>密码</span><input  placeholder="密码" type="password" id="mm_emp_password" name="mm_emp_password"></div>
 		<div class="input-group-regist"><span>确认密码</span><input type="password" placeholder="确认密码" id="mm_emp_surepwr" name="mm_emp_surepwr"></div>
 		<div class="input-group-regist"><span>姓名</span><input placeholder="请输入真实姓名" type="text" id="mm_emp_nickname" name="mm_emp_nickname"></div>
-		<div class="input-group-regist"><span>身份证号</span><input placeholder="请输入身份证号" type="number" id="mm_emp_card" name="mm_emp_card"></div>
+		<div class="input-group-regist"><span>身份证号</span><input placeholder="请输入身份证号" id="mm_emp_card" name="mm_emp_card"></div>
 		<div class="select-group mt2 mb2"><span>-（省）</span>
 			<select class="bg-f2" name="mm_emp_provinceId" id="mm_emp_provinceId" onchange="selectCitys()">
 				<option value="">--选择省份--</option>
