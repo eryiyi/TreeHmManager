@@ -198,7 +198,9 @@ public class WebVRecordService implements ListService,DeleteService,ExecuteServi
             }
             recordVO.setMm_msg_picurl(buffer.toString());
         }
-        recordVO.setDateline(RelativeDateFormat.format(Long.parseLong(recordVO.getDateline())));
+        if(!StringUtil.isNullOrEmpty(recordVO.getDateline())){
+            recordVO.setDateline(RelativeDateFormat.format(Long.parseLong(recordVO.getDateline())));
+        }
         return recordVO;
     }
 

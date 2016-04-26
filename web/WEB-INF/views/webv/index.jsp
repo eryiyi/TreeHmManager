@@ -1,3 +1,6 @@
+<%@ page import="sun.rmi.runtime.Log" %>
+<%@ page import="com.liangxunwang.unimanager.mvc.vo.RecordVO" %>
+<%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="um" uri="/unimanager-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" trimDirectiveWhitespaces="true" %>
@@ -58,6 +61,19 @@
 	</script>
 </head>
 <body>
+<%
+	Cookie cookies[]=request.getCookies(); //读出用户硬盘上的Cookie，并将所有的Cookie放到一个cookie对象数组
+	String cookieName="Sender";
+	Cookie cookie=new Cookie(cookieName, "Test_Content");
+	cookie.setMaxAge(365*24*60*60);
+	response.addCookie(cookie);
+	List<RecordVO> lists = (List<RecordVO>) request.getAttribute("list");
+	for(int i=0;i<lists.size();i++){
+		System.out.print("----------------lists---------------------"+lists.get(i).getMm_emp_nickname());
+	}
+
+
+%>
 <div class="container">
 	<!-- HEADING -->
 	<div class="heading clearfix">

@@ -197,7 +197,9 @@ public class EmpController extends ControllerConstants {
         LevelQuery query = new LevelQuery();
         List<Level> list = (List<Level>) levelService.list(query);
         //查询省份
-        List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list("");
+        ProvinceQuery provinceQuery = new ProvinceQuery();
+        provinceQuery.setIs_use("1");
+        List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list(provinceQuery);
         //查询地市
         CityQuery cityQuery = new CityQuery();
         cityQuery.setFather(empVO.getMm_emp_provinceId());

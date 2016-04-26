@@ -92,6 +92,13 @@
           </div>
 
           <div class="form-group">
+            <label class="col-sm-2 control-label">允许发布信息的长度</label>
+            <div class="col-sm-4">
+              <input type="text" id="mm_msg_length" class="form-control" value="${empVO.mm_msg_length}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+            </div>
+          </div>
+
+          <div class="form-group">
             <label class="col-sm-2 control-label">公司名称</label>
             <div class="col-sm-4">
               <input type="text" id="mm_emp_company" class="form-control" value="${empVO.mm_emp_company}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
@@ -345,6 +352,7 @@
   function saveRole(mm_emp_id){
     var mm_emp_id = $("#mm_emp_id").val();
     var mm_emp_mobile = $("#mm_emp_mobile").val();
+    var mm_msg_length = $("#mm_msg_length").val();
     var mm_emp_nickname = $("#mm_emp_nickname").val();
     var mm_emp_card = $("#mm_emp_card").val();
 //    var mm_emp_password = $("#mm_emp_password").val();
@@ -502,6 +510,7 @@
       data:{
 //        "mm_emp_password":mm_emp_password,
         "mm_emp_id":mm_emp_id,
+        "mm_msg_length":mm_msg_length,
         "mm_emp_card":mm_emp_card,
         "mm_emp_cover":imagePath,
         "mm_emp_mobile":mm_emp_mobile,

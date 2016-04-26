@@ -7,6 +7,7 @@ import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.Page;
 import com.liangxunwang.unimanager.util.StringUtil;
+import cz.msebera.android.httpclient.HttpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -45,7 +46,7 @@ public class WebvIndexController extends ControllerConstants {
 
 
     @RequestMapping("toIndex")
-    public String add(HttpSession session, ModelMap map, RecordQuery query, Page page) {
+    public String add(HttpSession session, ModelMap map, RecordQuery query, Page page,HttpServletRequest request) {
         EmpVO emp = (EmpVO) session.getAttribute(MEMBER_KEY);
 
         query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
@@ -91,6 +92,7 @@ public class WebvIndexController extends ControllerConstants {
             map.addAttribute("page", page);
             map.addAttribute("query", query);
             map.addAttribute("mm_msg_type", "0");
+            request.setAttribute("list", results[0]);
         }catch (ServiceException e){
             String msg = e.getMessage();
             if (msg.equals("accessTokenNull")){

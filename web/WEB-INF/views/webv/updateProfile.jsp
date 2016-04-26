@@ -41,7 +41,6 @@
 	</div>
 	<!-- CONTENT -->
 	<div class="content regist w85">
-		<form class="form-horizontal" role="form">
 			<div class="input-group-regist"><span>公司名称</span>
 				<input type="text" placeholder="公司名称" id="mm_emp_company">
 			</div>
@@ -60,10 +59,7 @@
 				<input type="file" name="file" id="fileUpload1" style="float: left;" />
 				<input type="button" value="上传" onclick="uploadImage1()" style="float: left;"/><br/><br/>
 			</div>
-
-
 			<button class="mt4 w10 fill-green" type="button" onclick="reg()">提交</button>
-			</form>
 		</div>
 	<!-- TOOLBAR -->
 	<div class="toolbar">
