@@ -61,7 +61,6 @@
         <if test="mm_emp_id != null and mm_emp_id != ''">
             AND sn.mm_emp_id = #{mm_emp_id}
         </if>
-
         ) m
         ORDER  BY  m.dateline DESC
     </select>
@@ -74,6 +73,10 @@
 
     <delete id="delete" parameterType="String">
         DELETE FROM mm_record_favour where mm_record_favour_id = #{mm_record_favour_id}
+    </delete>
+
+    <delete id="deleteByMsgId" parameterType="String">
+        DELETE FROM mm_record_favour where mm_msg_id = #{mm_msg_id}
     </delete>
 
     <select id="findById" parameterType="String" resultMap="favour">

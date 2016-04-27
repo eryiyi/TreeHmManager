@@ -363,7 +363,9 @@
     </update>
 
     <update id="deleteEmp">
-        DELETE FROM mm_emp WHERE mm_emp_id=#{mm_emp_id}
+        delete lemp,lmsg from mm_emp lemp
+          inner JOIN mm_msg lmsg on lemp.mm_emp_id = lmsg.mm_emp_id
+        WHERE lemp.mm_emp_id=#{mm_emp_id}
     </update>
 
     <update id="updatePushId" parameterType="String">

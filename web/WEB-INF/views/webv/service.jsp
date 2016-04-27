@@ -103,7 +103,7 @@
 			</a>
 			<a href="/webvNearbyController/nearby.do" class="icon">
 				<div class="icon-pic"><img src="/img/tree_user_nearby.png" alt=""></div>
-				<h5 class="icon-name">附近商家</h5>
+				<h5 class="icon-name">附近经纪人</h5>
 			</a>
 			<a href="/webvMineFavourController/favour.do?mm_emp_id=${emp.mm_emp_id}" class="icon">
 				<div class="icon-pic"><img src="/img/tree_user_fav.png" alt=""></div>

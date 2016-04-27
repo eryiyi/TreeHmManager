@@ -145,7 +145,8 @@ public class AppRecordService implements ListService ,SaveService, FindService{
                 }
                 record.setMm_msg_picurl(buffer.toString());
             }
-            record.setDateline(RelativeDateFormat.format(Long.parseLong(record.getDateline())));
+//            record.setDateline(RelativeDateFormat.format(Long.parseLong(record.getDateline())));
+            record.setDateline(DateUtil.getDate(record.getDateline(), "yy-MM-dd HH:mm"));
         }
 
         return new Object[]{list, count};

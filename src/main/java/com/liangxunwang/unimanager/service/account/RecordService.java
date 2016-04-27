@@ -1,5 +1,6 @@
 package com.liangxunwang.unimanager.service.account;
 
+import com.liangxunwang.unimanager.dao.FavourDao;
 import com.liangxunwang.unimanager.dao.RecordDao;
 import com.liangxunwang.unimanager.model.Emp;
 import com.liangxunwang.unimanager.model.Record;
@@ -107,11 +108,16 @@ public class RecordService implements ListService,DeleteService,ExecuteService,U
         return new Object[]{lists, count};
     }
 
+    @Autowired
+    @Qualifier("favourDao")
+    private FavourDao favourDao;
 
     @Override
     public Object delete(Object object) throws ServiceException {
         String mm_msg_id = (String) object;
         recordDao.deleteById(mm_msg_id);
+        //删除信息  要删除收藏的该信息
+        favourDao.deleteByMsgId(mm_msg_id);
         return null;
     }
 
