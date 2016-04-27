@@ -77,15 +77,15 @@
 <div class="container">
 	<!-- HEADING -->
 	<div class="heading clearfix">
-		<div class="icon-group">
-			<c:if test="${is_login=='1'}"><span class="location" onclick="selectPro()">${emp.areaName}</span></c:if>
-			<c:if test="${is_login=='0'}"><a href="javaScript:void(0)"><span class="location" onclick="login()">登录</span></a></c:if>
+		<div class="left">
+			<c:if test="${is_login=='1'}"><a class="location" onclick="selectPro()">${emp.areaName}-点击查看更多</a></c:if>
+			<c:if test="${is_login=='0'}"><a class="login" href="javaScript:void(0)" onclick="login()">登录</a></c:if>
 		</div>
 		<form action="" class="search-bar clearfix">
 			<input type="text" id="keyword" name="keyword" placeholder="标题|手机号|公司名称|联系人">
 			<button onclick="searchIndex(event)" style="float:right ">搜索</button>
 		</form>
-		<div class="icon-add"><a href="javaScript:void(0)" onclick="addMsg()">发布</a></div>
+		<div class="right"><a class="publish" href="javaScript:void(0)" onclick="addMsg()">发布</a></div>
 	</div>
 	<!-- CONTENT -->
 	<div class="content">
@@ -130,7 +130,8 @@
 						<img src="${e.mm_emp_cover}" alt="" class="head-pic">
 						<div class="detail">
 							<h1 class="company">${e.mm_emp_company}&nbsp;${e.mm_emp_nickname}</h1>
-							<h3 class="time">${e.dateline} &nbsp;&nbsp; ${e.area}</h3>
+							<%--<h3 class="time">${e.dateline}&nbsp;${e.area}</h3>--%>
+							<h3 class="time">${e.area}&nbsp;${e.dateline}</h3>
 						</div>
 					</a>
 					<div class="right">
@@ -152,6 +153,9 @@
 						${e.mm_msg_content}
 				</a>
 				<div class="item-footer clearfix">
+
+					<%--<a href="" class="read-status-unread"></a>--%>
+
 					<a  href="tel:${e.mm_emp_mobile}"  class="button-phone"></a>
 					<a type="button" href="javaScript:void(0)" onclick="favourClick('${e.mm_msg_id}')" class="button-fav"></a>
 					<c:if test="${e.mm_msg_picurl !='' && e.mm_msg_picurl != nul}"><a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-pic"></a></c:if>

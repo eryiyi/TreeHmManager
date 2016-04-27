@@ -42,7 +42,7 @@
 		<input type="hidden" id="accessToken" name="accessToken" value="${emp.access_token}">
 		<input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${recordVO.mm_emp_id}">
 		<div class="item">
-			<div class="item-heading">
+			<div class="item-heading clearfix">
 				<a href="/webvProfile/toProfile.do?mm_emp_id=${recordVO.mm_emp_id}"  class="left clearfix">
 					<img src="${recordVO.mm_emp_cover}" alt="" class="head-pic">
 					<div class="detail">

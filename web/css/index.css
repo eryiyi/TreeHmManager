@@ -1,8 +1,7 @@
 body {
-  background-color: #ececec;
+  background-color: #dedede;
 }
 .content {
-  width: 95%;
 }
 .category {
   padding: 10px;
@@ -29,8 +28,8 @@ body {
 }
 .item {
   display: block;
-  margin-top: 3px;
-  margin-bottom: 3px;
+  margin-top: 1px;
+  margin-bottom: 1px;
   background-color: #fff;
 }
 .item a:link,
@@ -40,88 +39,94 @@ body {
 .item .item-content {
   display: block;
   box-sizing: border-box;
-  padding: 10px;
-  line-height: 140%;
-  border-bottom: 1px solid #ECECEC;
+  padding: 5px;
+  line-height: 120%;
 }
 .item .item-footer {
   padding: 0px;
 }
 .item .item-footer .read-status-unread {
   float: left;
+  display: block;
   width: 50px;
   height: 50px;
   margin-left: 5px;
   background: url("/img/tree_icons_read_0.png") no-repeat center center;
-  background-size: 60px;
+  background-size: 50px;
 }
 .item .item-footer .read-status-readed {
   float: left;
+  display: block;
   width: 50px;
   height: 50px;
   margin-left: 5px;
   background: url("/img/tree_icons_read_1.png") no-repeat center center;
-  background-size: 60px;
+  background-size: 50px;
 }
 .item .item-footer .button-pic {
   float: right;
+  display: block;
   height: 50px;
   width: 50px;
   margin: 0 5px;
   background: url("/img/tree_button_pic.png") no-repeat center center;
-  background-size: 40px;
+  background-size: 50px;
 }
 .item .item-footer .button-pic:active {
   background: url("/img/tree_button_pic.png") no-repeat center center;
-  background-size: 40px;
+  background-size: 50px;
 }
 .item .item-footer .button-phone {
   float: right;
+  display: block;
   height: 50px;
   width: 50px;
   margin: 0 5px;
   background: url("/img/tree_button_call.png") no-repeat center center;
-  background-size: 40px;
+  background-size: 50px;
 }
 .item .item-footer .button-phone:active {
   background: url("/img/tree_button_call_p.png") no-repeat center center;
-  background-size: 40px;
+  background-size: 50px;
 }
 .item .item-footer .button-share {
   float: right;
   height: 50px;
+  display: block;
   width: 50px;
   margin: 0 5px;
   background: url("/img/tree_button_share.png") no-repeat center center;
-  background-size: 40px;
+  background-size: 50px;
 }
 .item .item-footer .button-share:active {
   background: url("/img/tree_button_share_p.png") no-repeat center center;
-  background-size: 40px;
+  background-size: 50px;
 }
 .item .item-footer .button-report {
   float: right;
+  display: block;
   height: 50px;
   width: 50px;
   margin: 0 5px;
   background: url("/img/tree_button_report.png") no-repeat center center;
-  background-size: 40px;
+  background-size: 50px;
 }
 .item .item-footer .button-report:active {
   background: url("/img/tree_button_report_p.png") no-repeat center center;
-  background-size: 40px;
+  background-size: 50px;
 }
 .item .item-footer .button-fav {
   float: right;
   height: 50px;
   width: 50px;
+  display: block;
   margin: 0 5px;
   background: url("/img/tree_button_fav.png") no-repeat center center;
-  background-size: 40px;
+  background-size: 50px;
 }
 .item .item-footer .button-fav:active {
   background: url("/img/tree_button_fav_p.png") no-repeat center center;
-  background-size: 40px;
+  background-size: 50px;
 }
 .item .button-phone-big {
   display: block;
@@ -147,47 +152,42 @@ body {
   width: 95%;
 }
 .item-heading {
-  border-bottom: 1px solid #ECECEC;
-  padding: 5px;
-  height: 65px;
+  padding: 2px;
 }
 .item-heading .left {
   display: block;
   overflow: hidden;
   float: left;
-  width: 70%;
+  width: 73%;
 }
 .item-heading .left .head-pic {
-  max-width: 30% !important;
+  max-width: 23% !important;
   float: left;
   width: 40px;
   height: 40px;
-  margin: 5px 0;
+  margin: 5px 0 5px 5px;
   border-radius: 8px;
 }
 .item-heading .left .detail {
-  width: 60%;
+  width: 75%;
   float: left;
-  margin: 5px 0 5px 10px;
+  margin: 5px 0 5px 8px;
 }
 .item-heading .left .detail .company {
-  line-height: 20px;
-  height: 20px;
+  color: #333;
   font-size: .9rem;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  line-height: 20px;
 }
 .item-heading .left .detail .time {
-  line-height: 20px;
-  height: 20px;
-  font-size: .9rem;
+  font-size: .8rem;
+  color: #808080;
+  line-height: 18px;
 }
 .item-heading .right {
-  width: 25%;
+  width: 23%;
   overflow: hidden;
   float: right;
-  margin-right: 5px;
+  padding-right:5px;
 }
 .item-heading .right .top img {
   float: right;
@@ -203,13 +203,21 @@ body {
   width: 55px;
 }
 .warning {
+  -webkit-box-shadow:  1px 1px 3px rgba(0,0,0,0.3);
+  -moz-box-shadow:  1px 1px 3px rgba(0,0,0,0.3);
+  box-shadow:  1px 1px 3px rgba(0,0,0,0.3);
   display: block;
-  color: #555555;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  background-color: #02B17D;
+  margin: 13px auto 13px auto;
+  color: #fff;
+  width: 80%;
   text-align: center;
   font-size: 1.2rem;
   line-height: 200%;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-  margin-bottom: 13px;
+  /*text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);*/
 }
 .warning:hover,
 .warning:active {
