@@ -64,36 +64,36 @@
           <button type="submit" onclick="searchOrder('1')" class="btn form-control btn-warning btn-sm btn-block">查找</button>
         </form>
 
-        <form action="" class="form">
-          <div class="form-group">
-            <div class="col-md-2 col-lg-2">
-               <button type="button" onclick="deleteSelect()" class="btn w12 form-control btn-block btn-danger btn-sm">批量删除</button>
-            </div>
-          </div>
-        </form>
+        <%--<form action="" class="form">--%>
+          <%--<div class="form-group">--%>
+            <%--<div class="col-md-2 col-lg-2">--%>
+               <%--<button type="button" onclick="deleteSelect()" class="btn w12 form-control btn-block btn-danger btn-sm">批量删除</button>--%>
+            <%--</div>--%>
+          <%--</div>--%>
+        <%--</form>--%>
 
               <table class="table">
           <thead>
           <tr>
-            <th>全选<input type="checkbox" name="allmails" onclick="checkAll()"></th>
+            <%--<th>全选<input type="checkbox" name="allmails" onclick="checkAll()"></th>--%>
             <th>操作者</th>
             <th>日志内容</th>
             <th>日期</th>
             <th>操作者</th>
-            <th>操作</th>
+            <%--<th>操作</th>--%>
           </tr>
           </thead>
           <tbody>
           <c:forEach items="${list}" var="e" varStatus="st">
             <tr>
-              <td><input type="checkbox" id="${e.mm_logo_id}" name="checkbox_one"></td>
+              <%--<td><input type="checkbox" id="${e.mm_logo_id}" name="checkbox_one"></td>--%>
               <td>${e.mm_manager_nickname}</td>
               <td>${e.mm_logo_content}</td>
               <td>${e.dateline}</td>
               <td>${e.mm_manager_nickname}</td>
-              <td>
-                <a class="btn btn-default btn-sm"  onclick="deleteRole('${e.mm_logo_id}')" role="button">删除</a>
-              </td>
+              <%--<td>--%>
+                <%--<a class="btn btn-default btn-sm"  onclick="deleteRole('${e.mm_logo_id}')" role="button">删除</a>--%>
+              <%--</td>--%>
             </tr>
           </c:forEach>
           </tbody>

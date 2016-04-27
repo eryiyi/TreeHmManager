@@ -7,7 +7,7 @@
 		<meta name="description" content="description">
 		<meta name="author" content="Evgeniya">
 		<meta name="keyword" content="keywords">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<%--<meta name="viewport" content="width=device-width, initial-scale=1">--%>
 		<link href="/plugins/bootstrap/bootstrap.css" rel="stylesheet">
 		<%--<link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">--%>
 		<%--<link href="/css/style_v2.css" rel="stylesheet">--%>

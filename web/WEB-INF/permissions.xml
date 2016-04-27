@@ -27,7 +27,8 @@
         <permission id="COUNTY_LIST" name="地区列表"/>
     </group>
     <group id="LOGO_MANAGE" name="日志管理">
-        <permission id="LOGO_LIST" name="日志列表"/>
+        <permission id="LOGO_LIST" name="查看全部日志"/>
+        <permission id="LOGO_MINE_LIST" name="查看自己日志"/>
     </group>
     <group id="REPORT_MANAGE" name="举报管理">
         <permission id="REPORT_LIST" name="举报列表"/>
@@ -55,6 +56,7 @@
     </group>
     <group id="TEL_MANAGE" name="客服电话">
         <permission id="ADD_TEL_KEFU_MANAGE" name="添加客服"/>
+        <permission id="ADD_TEL_KEFU_MANAGE_AREA" name="地区管理员添加客服"/>
         <permission id="TEL_KEFU_MANAGE" name="客服列表"/>
     </group>
     <group id="AD_MANAGE" name="广告管理">
@@ -64,12 +66,12 @@
     <group id="SHENHE_MANAGE" name="审核方式">
         <permission id="SHNEHE_TYPE_MANAGE" name="审核方式"/>
     </group>
-    <group id="TEL_MANAGE" name="微信客服">
+    <group id="WEIXIN_MANAGE" name="微信客服">
         <permission id="ADD_WEIXIN_KEFU_MANAGE" name="添加微信"/>
         <permission id="WEIXIN_KEFU_MANAGE" name="微信列表"/>
     </group>
-    <group id="PAIHANG_MANAGE" name="排行榜">
-        <permission id="PAIHANG_SHANGHU_MANAGE" name="商户列表"/>
+    <group id="PAIHANG_MANAGE" name="金牌榜">
+        <permission id="PAIHANG_SHANGHU_MANAGE" name="金牌榜列表"/>
     </group>
     <group id="GUANZHU_MANAGE" name="关注管理">
         <permission id="GUANZHU_LIST_MANAGE" name="关注列表"/>

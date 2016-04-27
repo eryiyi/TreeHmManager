@@ -6,10 +6,7 @@ import com.liangxunwang.unimanager.model.Admin;
 import com.liangxunwang.unimanager.model.Role;
 import com.liangxunwang.unimanager.mvc.vo.AdminVO;
 import com.liangxunwang.unimanager.query.AdminQuery;
-import com.liangxunwang.unimanager.service.ExecuteService;
-import com.liangxunwang.unimanager.service.ListService;
-import com.liangxunwang.unimanager.service.ServiceException;
-import com.liangxunwang.unimanager.service.UpdateService;
+import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,7 +20,7 @@ import java.util.Map;
  * Created by zhl on 2015/8/12.
  */
 @Service("adminEditService")
-public class AdminEditService implements ExecuteService,UpdateService{
+public class AdminEditService implements ExecuteService,UpdateService,DeleteService{
 
     @Autowired
     @Qualifier("adminDao")
@@ -71,6 +68,13 @@ public class AdminEditService implements ExecuteService,UpdateService{
             String mm_manager_is_use = (String) params[1];
             adminDao.updateStatus(mm_manager_id, mm_manager_is_use);
         }
+        return null;
+    }
+
+    @Override
+    public Object delete(Object object) throws ServiceException {
+        String mm_manager_id = (String) object;
+        adminDao.delete(mm_manager_id);
         return null;
     }
 }

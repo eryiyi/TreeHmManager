@@ -10,6 +10,7 @@ import com.liangxunwang.unimanager.query.RecordQuery;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.Page;
+import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -66,15 +67,25 @@ public class RecordController extends ControllerConstants {
         query.setSize(query.getSize() == 0 ? page.getDefaultSize() : query.getSize());
         query.setMm_msg_type("0");
 
-        //分地区管理
-        if("1".equals(manager.getMm_manager_type())){
-            query.setMm_emp_countryId(manager.getMm_manager_area_uuid());
-        }
-        if("2".equals(manager.getMm_manager_type())){
-            query.setMm_emp_cityId(manager.getMm_manager_area_uuid());
-        }
-        if("3".equals(manager.getMm_manager_type())){
-            query.setMm_emp_provinceId(manager.getMm_manager_area_uuid());
+        //根据后台管理者类别定义查询范围
+//        默认0顶级管理员
+//        1是县级
+//        2是市级
+//        3是省级
+//        4是全国
+        switch (Integer.parseInt(manager.getMm_manager_type())){
+            case 1:
+                    query.setMm_emp_countryId(manager.getMm_manager_area_uuid());
+                break;
+            case 2:
+                    query.setMm_emp_cityId(manager.getMm_manager_area_uuid());
+                break;
+            case 3:
+                    query.setMm_emp_provinceId(manager.getMm_manager_area_uuid());
+                break;
+            case 0:
+            case 4:
+                break;
         }
 
         Object[] results = (Object[]) recordService.list(query);
@@ -153,6 +164,11 @@ public class RecordController extends ControllerConstants {
     public String add(ModelMap map, String mm_msg_id) throws Exception {
         RecordVO recordVO = (RecordVO) recordServiceExer.execute(mm_msg_id);
         map.put("recordVO", recordVO);
+        //处理图片
+        if(!StringUtil.isNullOrEmpty(recordVO.getMm_msg_picurl())){
+            String[] arrPics = recordVO.getMm_msg_picurl().split(",");
+            map.put("arrPics", arrPics);
+        }
         return "/record/detail";
     }
 

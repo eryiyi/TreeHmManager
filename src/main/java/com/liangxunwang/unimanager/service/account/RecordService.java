@@ -57,9 +57,18 @@ public class RecordService implements ListService,DeleteService,ExecuteService,U
         if(!StringUtil.isNullOrEmpty(query.getMm_emp_countryId())){
             map.put("countryid", query.getMm_emp_countryId());
         }
-        map.put("is_guanzhu", "0");
-        List<RecordVO> lists = recordDao.listRecordVo(map);
+
+        List<RecordVO> lists = recordDao.listRecordVoManager(map);
         for (RecordVO record : lists){
+            //处理内容-文字超出限制
+            if(!StringUtil.isNullOrEmpty(record.getMm_msg_content())){
+                if(record.getMm_msg_content().length() > 20){
+                    record.setMm_msg_title(record.getMm_msg_content().substring(0,19)+"...");
+                }else {
+                    record.setMm_msg_title(record.getMm_msg_content());
+                }
+            }
+            //处理头像
             if (!StringUtil.isNullOrEmpty(record.getMm_emp_cover())){
                 if (record.getMm_emp_cover().startsWith("upload")){
                     record.setMm_emp_cover(Constants.URL+record.getMm_emp_cover());
@@ -67,6 +76,7 @@ public class RecordService implements ListService,DeleteService,ExecuteService,U
                     record.setMm_emp_cover(Constants.QINIU_URL + record.getMm_emp_cover());
                 }
             }
+            //处理图片链接URL
             if(!StringUtil.isNullOrEmpty(record.getMm_msg_picurl())){
                 //处理图片URL链接
                 StringBuffer buffer = new StringBuffer();
@@ -109,6 +119,29 @@ public class RecordService implements ListService,DeleteService,ExecuteService,U
     public Object execute(Object object) throws ServiceException {
         String mm_msg_id = (String) object;
         RecordVO recordVO = recordDao.findById(mm_msg_id);
+        //处理图片链接URL
+        if(!StringUtil.isNullOrEmpty(recordVO.getMm_msg_picurl())){
+            //处理图片URL链接
+            StringBuffer buffer = new StringBuffer();
+            String[] pics = new String[]{};
+            if(recordVO!=null && recordVO.getMm_msg_picurl()!=null){
+                pics = recordVO.getMm_msg_picurl().split(",");
+            }
+            for (int i=0; i<pics.length; i++){
+                if (pics[i].startsWith("upload")) {
+                    buffer.append(Constants.URL + pics[i]);
+                    if (i < pics.length - 1) {
+                        buffer.append(",");
+                    }
+                }else {
+                    buffer.append(Constants.QINIU_URL + pics[i]);
+                    if (i < pics.length - 1) {
+                        buffer.append(",");
+                    }
+                }
+            }
+            recordVO.setMm_msg_picurl(buffer.toString());
+        }
         return recordVO;
     }
 

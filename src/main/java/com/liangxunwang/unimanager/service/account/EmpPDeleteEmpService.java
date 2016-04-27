@@ -24,6 +24,7 @@ public class EmpPDeleteEmpService implements ExecuteService{
         String ids = (String) object;
         if(!StringUtil.isNullOrEmpty(ids)){
             String[] arrs = ids.split(",");
+            //批量删除
             for(int i=0;i<arrs.length;i++){
                 if(!StringUtil.isNullOrEmpty(arrs[i])){
                     empDao.deleteEmp(arrs[i]);

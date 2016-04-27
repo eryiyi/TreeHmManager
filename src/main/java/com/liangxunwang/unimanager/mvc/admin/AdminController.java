@@ -48,14 +48,17 @@ public class AdminController extends ControllerConstants {
 
     @RequestMapping("/changePass")
     @ResponseBody
-    public String changePass(HttpSession session, String mm_manager_password, String mm_manager_id) throws Exception {
+    public String changePass(HttpSession session, String mm_manager_password, String mm_manager_id,String mm_manager_nickname) throws Exception {
         try {
             Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
             Object[] params = new Object[]{mm_manager_id, mm_manager_password};
             adminExecuteService.execute(params);
             //日志记录
-            logoService.save(new LogoObj("修改密码", manager.getMm_manager_id()));
-            session.removeAttribute(ACCOUNT_KEY);
+            logoService.save(new LogoObj("修改管理员"+mm_manager_nickname+"的密码", manager.getMm_manager_id()));
+            if(mm_manager_id.equals(manager.getMm_manager_id())){
+                //如果修改当前用户自己的密码，需要重新登录
+                session.removeAttribute(ACCOUNT_KEY);
+            }
             return toJSONString(SUCCESS);
         }catch (ServiceException e){
             return toJSONString(ERROR_1);
@@ -79,8 +82,6 @@ public class AdminController extends ControllerConstants {
         page.setPageCount(calculatePageCount(query.getSize(), count));
         map.addAttribute("page", page);
         map.addAttribute("query", query);
-        //日志记录
-        logoService.save(new LogoObj("查询管理员列表", manager.getMm_manager_id()));
         return "/admin/list";
     }
 
@@ -93,7 +94,7 @@ public class AdminController extends ControllerConstants {
         try {
             adminServiceSave.save(admin);
             //日志记录
-            logoService.save(new LogoObj("添加管理员："+admin.getMm_manager_nickname(), manager.getMm_manager_id()));
+            logoService.save(new LogoObj("添加用户"+admin.getMm_manager_nickname()+"为管理员", manager.getMm_manager_id()));
         }catch (ServiceException e){
             String msg = e.getMessage();
             if (msg.equals("MobileIsUse")){

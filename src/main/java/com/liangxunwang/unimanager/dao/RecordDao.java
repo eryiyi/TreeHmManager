@@ -20,6 +20,9 @@ public interface RecordDao {
      */
     List<RecordVO> listRecordVo(Map<String, Object> map);
 
+    //查询信息列表--后台
+    List<RecordVO> listRecordVoManager(Map<String, Object> map);
+
     //查询关注区域的信息
     List<RecordVO> listRecordVoArea(Map<String, Object> map);
 
@@ -27,6 +30,8 @@ public interface RecordDao {
     List<RecordVO> listRecordVoTop(Map<String, Object> map);
 
     long count(Map<String, Object> map);
+    //查询信息列表--后台
+    long countManager(Map<String, Object> map);
 
     /**
      * 保存一条信息

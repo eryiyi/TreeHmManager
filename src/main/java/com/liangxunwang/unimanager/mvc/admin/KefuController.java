@@ -38,6 +38,10 @@ public class KefuController extends ControllerConstants {
     private ExecuteService levelServiceSaveExe;
 
     @Autowired
+    @Qualifier("kefuTelService")
+    private DeleteService levelServiceDelete;
+
+    @Autowired
     @Qualifier("logoService")
     private SaveService logoService;
 
@@ -62,6 +66,7 @@ public class KefuController extends ControllerConstants {
         return "/kefu/list";
     }
 
+    //添加客服(总管理员)
     @RequestMapping("add")
     public String add(ModelMap map, KefuQuery query){
         //查询省份
@@ -103,6 +108,26 @@ public class KefuController extends ControllerConstants {
         logoService.save(new LogoObj("添加客服", manager.getMm_manager_id()));
         return toJSONString(SUCCESS);
     }
+
+    //添加客服(地区管理员)
+    @RequestMapping("addArea")
+    public String addArea(ModelMap map, KefuQuery query){
+
+        return "/kefu/addkefuArea";
+    }
+
+    @RequestMapping("addKefuArea")
+    @ResponseBody
+    public String addKefuArea(HttpSession session,KefuTel level){
+        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
+        //只有电话和类别，需要省市县
+
+        levelServiceSave.save(level);
+        //日志记录
+        logoService.save(new LogoObj("添加客服", manager.getMm_manager_id()));
+        return toJSONString(SUCCESS);
+    }
+
 
 
     @RequestMapping("/edit")
@@ -159,6 +184,16 @@ public class KefuController extends ControllerConstants {
         }catch (ServiceException e){
             return toJSONString(ERROR_1);
         }
+    }
+
+    @RequestMapping("delete")
+    @ResponseBody
+    public String delete(HttpSession session,String mm_tel_id, String mm_tel){
+        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
+        levelServiceDelete.delete(mm_tel_id);
+        //日志记录
+        logoService.save(new LogoObj("删除客服："+ mm_tel, manager.getMm_manager_id()));
+        return toJSONString(SUCCESS);
     }
 
 }

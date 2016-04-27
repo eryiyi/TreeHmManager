@@ -53,6 +53,7 @@
             <th>县</th>
             <th>是否全国</th>
             <th>操作</th>
+            <th>操作</th>
           </tr>
           </thead>
           <tbody>
@@ -67,7 +68,10 @@
                 <c:if test="${e.mm_tel_type=='1'}">是</c:if>
               </td>
               <td>
-                <a class="btn btn-default btn-sm" href="javascript:void (0)" onclick="editRole('${e.mm_tel_id}')" role="button">编辑</a>
+                <a class="btn btn-default btn-sm" href="javascript:void (0)" onclick="editKefu('${e.mm_tel_id}')" role="button">编辑</a>
+              </td>
+              <td>
+                <a class="btn btn-default btn-sm" href="javascript:void (0)" onclick="deleteKefu('${e.mm_tel_id}','${e.mm_tel}')" role="button">删除</a>
               </td>
             </tr>
           </c:forEach>
@@ -79,7 +83,7 @@
 </div>
 <script type="text/javascript">
 
-  function editRole(_id){
+  function editKefu(_id){
     if(confirm("确定要编辑该客服电话么？")){
       $.ajax({
         type: "GET",
@@ -87,6 +91,25 @@
         url: "/kefu/edit.do",
         success: function(response){
           $("#content").html(response);
+        }
+      });
+    }
+  }
+  function deleteKefu(_id,_mm_tel){
+    if(confirm("确定要删除该客服电话么？")){
+      $.ajax({
+        type: "GET",
+        data:{"mm_tel_id":_id, "mm_tel":_mm_tel},
+        url: "/kefu/delete.do",
+        success: function(_data){
+          var data = $.parseJSON(_data);
+          if(data.success){
+            alert("删除成功");
+            window.location.reload();
+          }else{
+            var _case = {1:"删除失败"};
+            alert(_case[data.code])
+          }
         }
       });
     }

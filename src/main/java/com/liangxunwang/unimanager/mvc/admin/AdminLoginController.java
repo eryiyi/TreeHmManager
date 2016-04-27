@@ -52,7 +52,7 @@ public class AdminLoginController extends ControllerConstants {
             }
             session.setAttribute(ControllerConstants.PERMISSIONS, permissions);
             //日志记录
-            logoService.save(new LogoObj("管理员:"+admin.getMm_manager_nickname()+"登陆", admin.getMm_manager_id()));
+            logoService.save(new LogoObj("管理员:"+admin.getMm_manager_nickname()+"登陆成功", admin.getMm_manager_id()));
             return toJSONString(SUCCESS);
         }catch (ServiceException e){
             String msg = e.getMessage();

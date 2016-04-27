@@ -17,6 +17,15 @@ public class RecordVO extends Record {
     private String is_miaomu;
     private String mm_level_num;
     private String area;//县区名称
+    private String cityName;//城市名字
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
 
     public String getArea() {
         return area;

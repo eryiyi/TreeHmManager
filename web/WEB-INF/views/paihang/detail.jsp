@@ -8,8 +8,8 @@
     </a>
     <ol class="breadcrumb pull-left">
       <li><a href="javascript:void(0)"  onclick="toPage('mainPage','')">主页</a></li>
-      <li><a href="javascript:void (0);">排行榜</a></li>
-      <li><a href="javascript:void (0);">商户详情</a></li>
+      <li><a href="javascript:void (0);">金牌榜</a></li>
+      <li><a href="javascript:void (0);">上榜商户详情</a></li>
     </ol>
     <div id="social" class="pull-right">
       <a href="javascript:void(0)"><i class="fa fa-google-plus"></i></a>
@@ -27,7 +27,7 @@
       <div class="box-header">
         <div class="box-name">
           <i class="fa fa-search"></i>
-          <span>商户详情</span>
+          <span>上榜商户详情</span>
         </div>
       </div>
       <div class="box-content">

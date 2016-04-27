@@ -45,7 +45,7 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">用户密码</label>
             <div class="col-sm-4">
-              <input type="text" id="mm_emp_password" class="form-control" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+              <input type="text" id="mm_emp_password" class="form-control" placeholder="输入新密码" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
 

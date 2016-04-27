@@ -20,6 +20,15 @@ public class Record {
     private String accessToken;
 
     private String mm_emp_msg_num;//允许会员发布的信息数量
+    private String is_read;
+
+    public String getIs_read() {
+        return is_read;
+    }
+
+    public void setIs_read(String is_read) {
+        this.is_read = is_read;
+    }
 
     public String getMm_msg_title() {
         return mm_msg_title;

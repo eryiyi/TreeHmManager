@@ -124,7 +124,7 @@
         </if>
 
         <if test="keyword != null and keyword != ''">
-            AND  (sn.mm_emp_mobile = #{keyword} OR sn.mm_emp_nickname like CONCAT('%',#{keyword},'%') OR  sn.mm_emp_company like CONCAT('%',#{keyword},'%'))
+            AND  (sn.mm_emp_mobile like CONCAT('%',#{keyword},'%') OR sn.mm_emp_nickname like CONCAT('%',#{keyword},'%') OR  sn.mm_emp_company like CONCAT('%',#{keyword},'%'))
         </if>
 
         ORDER BY sn.mm_emp_regtime DESC limit #{index},#{size}
@@ -165,7 +165,7 @@
         </if>
 
         <if test="keyword != null and keyword != ''">
-            AND  (sn.mm_emp_mobile = #{keyword} OR sn.mm_emp_nickname like CONCAT('%',#{keyword},'%') OR  sn.mm_emp_company like CONCAT('%',#{keyword},'%'))
+            AND  (sn.mm_emp_mobile like CONCAT('%',#{keyword},'%') OR sn.mm_emp_nickname like CONCAT('%',#{keyword},'%') OR  sn.mm_emp_company like CONCAT('%',#{keyword},'%'))
         </if>
     </select>
 
