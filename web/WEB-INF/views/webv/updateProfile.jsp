@@ -14,7 +14,6 @@
 	<meta name="Copyright" content="花木通版权所有" />
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="shortcut icon" type="image/png" href="/img/logo.png">
-	<link rel="shortcut icon" type="image/png" href="/img/logo.png">
 	<link rel="stylesheet" href="/css/reset.css">
 	<link rel="stylesheet" href="/css/common.css">
 	<link rel="stylesheet" href="/css/common_2.css">
@@ -26,7 +25,27 @@
 	<script type="text/javascript" src="/js/ajaxfileupload.js"></script>
 	<script type="text/javascript" src="/js/Util.js"></script>
 	<script type="text/javascript" src="/js/validation.js"></script>
+	<style>
+		.pic-upload{
+			height: auto !important;
+			width: 35% !important;
+			margin: 0 auto;
+			float: left !important;
+			display: block;
+		}
+		.pic-upload input{
+			display: none;
+		}
+		.pic-upload input label{
+			display: block;
 
+		}
+		.pic-upload input label img{
+			display: block;
+			width: 100%;
+		}
+
+	</style>
 
 </head>
 <body>
@@ -48,16 +67,28 @@
 				<input  placeholder="公司地址" type="text" id="mm_emp_company_address">
 			</div>
 			<div class="input-group-regist"><span>头像</span>
-				<input type="hidden" id="mm_emp_cover">
-				<img class="img-thumbnail"  name="imagePath" id="imageDiv"  style="cursor: pointer;width: 80px;height: 80px;" />
-				<input type="file" name="file" id="fileUpload" style="float: left;" />
-				<input type="button" value="上传" onclick="uploadImage()" style="float: left;"/><br/><br/>
+				<a href="" class="pic-upload">
+					<input id="fileUpload_1" type="file" onchange="change('adpic_1','fileUpload_1')">
+					<label for="fileUpload_1">
+						<img id="adpic_1" src="/img/pic_add.svg" alt="">
+					</label>
+				</a>
+				<%--<input type="hidden" id="mm_emp_cover">--%>
+				<%--<img class="img-thumbnail"  name="imagePath" id="imageDiv"  style="cursor: pointer;width: 80px;height: 80px;" />--%>
+				<%--<input type="file" name="file" id="fileUpload" style="float: left;" />--%>
+				<%--<input type="button" value="上传" onclick="uploadImage()" style="float: left;"/><br/><br/>--%>
 			</div>
 			<div class="input-group-regist"><span>营业执照或公司门头</span>
-				<input type="hidden" id="mm_emp_company_pic">
-				<img class="img-thumbnail" name="imageDiv1" id="imageDiv1" style="cursor: pointer;width: 80px;height: 80px;"  />
-				<input type="file" name="file" id="fileUpload1" style="float: left;" />
-				<input type="button" value="上传" onclick="uploadImage1()" style="float: left;"/><br/><br/>
+				<a href="" class="pic-upload">
+					<input id="fileUpload_2" type="file" onchange="change('adpic_2','fileUpload_2')">
+					<label for="fileUpload_2">
+						<img id="adpic_2" src="/img/pic_add.svg" alt="">
+					</label>
+				</a>
+				<%--<input type="hidden" id="mm_emp_company_pic">--%>
+				<%--<img class="img-thumbnail" name="imageDiv1" id="imageDiv1" style="cursor: pointer;width: 80px;height: 80px;"  />--%>
+				<%--<input type="file" name="file" id="fileUpload1" style="float: left;" />--%>
+				<%--<input type="button" value="上传" onclick="uploadImage1()" style="float: left;"/><br/><br/>--%>
 			</div>
 			<button class="mt4 w10 fill-green" type="button" onclick="reg()">提交</button>
 		</div>
@@ -197,6 +228,34 @@
 			}
 		}
 	};
-
+	//2016-04-27 17:46
+	//即时显示图片代码
+	//使用IE条件注释来判断是否IE6，通过判断userAgent不一定准确
+	if (document.all) document.write('<!--[if lte IE 6]><script type="text/javascript">window.ie6= true<\/script><![endif]-->');
+	// var ie6 = /msie 6/i.test(navigator.userAgent);//不推荐，有些系统的ie6 userAgent会是IE7或者IE8
+	function change(picId,fileId) {
+		var pic = document.getElementById(picId);
+		var file = document.getElementById(fileId);
+		if(window.FileReader){//chrome,firefox7+,opera,IE10,IE9，IE9也可以用滤镜来实现
+			oFReader = new FileReader();
+			oFReader.readAsDataURL(file.files[0]);
+			oFReader.onload = function (oFREvent) {pic.src = oFREvent.target.result;};
+		}
+		else if (document.all) {//IE8-
+			file.select();
+			var reallocalpath = document.selection.createRange().text//IE下获取实际的本地文件路径
+			if (window.ie6) pic.src = reallocalpath; //IE6浏览器设置img的src为本地路径可以直接显示图片
+			else { //非IE6版本的IE由于安全问题直接设置img的src无法显示本地图片，但是可以通过滤镜来实现，IE10浏览器不支持滤镜，需要用FileReader来实现，所以注意判断FileReader先
+				pic.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='image',src=\"" + reallocalpath + "\")";
+				pic.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';//设置img的src为base64编码的透明图片，要不会显示红xx
+			}
+		}
+		else if (file.files) {//firefox6-
+			if (file.files.item(0)) {
+				url = file.files.item(0).getAsDataURL();
+				pic.src = url;
+			}
+		}
+	}
 </script>
 </html>

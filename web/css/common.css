@@ -16,6 +16,7 @@
   }
 }
 .heading {
+  padding: 0 5px;
   position: relative;
   height: 50px;
   background-color: #fff;
@@ -34,33 +35,56 @@
   line-height: 50px;
   font-size: 1.3rem;
 }
-.heading .icon-group {
-  text-align: center;
-  box-sizing: border-box;
-  width: 20%;
-  float: left;
-  padding: 15px 10px;
-  height: 20px;
-}
-.heading .icon-add {
-  text-align: center;
-  box-sizing: border-box;
+.heading>.left{
   width: 15%;
-  float: right;
-  margin: 3px 0;
-  padding: 15px 10px;
-  height: 20px;
-  font-size: 14px;
+  float: left;
 }
-
-/*.heading .icon-group i {*/
-  /*float: left;*/
-  /*height: 20px;*/
-  /*width: 20px;*/
-  /*background: url("/img/tree_icons_location.png") no-repeat;*/
-  /*background-size: contain;*/
-  /*background-position: center;*/
-/*}*/
+.heading>.right{
+  float: right;
+  width: 15%;
+}
+.heading .login{
+  
+  display: block;
+  text-align: center;
+  line-height: 50px;
+  font-size: 1rem;
+  color: #7CD43A;
+}
+.heading .location {
+  display: block;
+  margin: 5px auto;
+  line-height: 20px;
+  font-size: 10px;
+  color: #7CD43A;
+}
+.heading .location:active{
+  background-color: #ccc;
+}
+.heading .publish{
+  color: #7CD43A;
+  line-height: 50px;
+  display: block;
+  font-size: 1.1rem;
+  text-align: center;
+}
+.heading .publish:active{
+  background-color: #ccc;
+}
+.heading .search{
+  color: #7CD43A;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  display: block;
+  text-align: center;
+  line-height: 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.heading .search:hover{
+  background-color: #eee;
+}
 
 .heading .icon-group span {
   float: left;
@@ -71,10 +95,12 @@
 }
 .heading .search-bar {
   display: block;
-  margin-right: 5%;
-  width: 65%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 66%;
   float: left;
-  margin: 5px 0;
+  margin: 5px 2%;
   background-color: #F2F2F2;
   border-radius: 5px;
 }
@@ -94,7 +120,7 @@
   color: #fff;
   font-weight: bold;
   float: left;
-  font-size: 14px;
+  font-size: 1rem;
   border-radius: 5px;
   width: 25%;
   height: 40px;
