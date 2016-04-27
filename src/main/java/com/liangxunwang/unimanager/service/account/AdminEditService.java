@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by liuzh on 2015/8/12.
+ * Created by zhl on 2015/8/12.
  */
 @Service("adminEditService")
 public class AdminEditService implements ExecuteService,UpdateService{

@@ -23,8 +23,10 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
 
         if(uri.matches("(^/$)|(^/index\\.do$)|(^/adminLogin\\.do$)|(^/logout\\.do$)" +
                         "|(^/uploadImage\\.do$)" +
+                        "|(^/uploadFileXls\\.do$)" +
                         "|(^/uploadUnCompressImage\\.do$)" +
                         "|(^/getMemberInfoById\\.do$)"+
+                        "|(^/getMemberByMobile\\.do$)"+
                         "|(^/getCity\\.do$)"+
                         "|(^/getCountry\\.do$)"+
                         "|(^/getProvince\\.do$)"+
@@ -46,6 +48,7 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/getVipList\\.do$)"+
                         "|(^/getLevelById\\.do$)"+
                         "|(^/saveReport\\.do$)"+
+                        "|(^/getNearbyDistance\\.do$)"+
                         "|(^/webv/toIndex\\.do$)"+
                         "|(^/webvSell/toSell\\.do$)"+
                         "|(^/webvRecommend/toRecommend\\.do$)"+
@@ -53,6 +56,7 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/saveFavour\\.do$)"+
                         "|(^/getFavourById\\.do$)"+
                         "|(^/getKefuTel\\.do$)"+
+                        "|(^/updatePushId\\.do$)"+
                         "|(^/webvLoginController/toLogin\\.do$)"+
                         "|(^/webvRegController/toReg\\.do$)"+
                         "|(^/webvFindPwrController/toFindPwr\\.do$)"+
@@ -83,6 +87,23 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/getPaihangs\\.do$)"+
                         "|(^/saveGuanzhuArea\\.do$)"+
                         "|(^/getGuanzhuArea\\.do$)"+
+                        "|(^/getNotices\\.do$)"+
+                        "|(^/getNoticesDetail\\.do$)"+
+                        "|(^/webvWeixinController/toKefu\\.do$)"+
+                        "|(^/webvNoticeController/list\\.do$)"+
+                        "|(^/webvNoticeController/toDetail\\.do$)"+
+                        "|(^/webvAddRecordController/toAddRecord\\.do$)"+
+                        "|(^/webvAddRecordController/addRecord\\.do$)"+
+                        "|(^/webvTopController/toTop\\.do$)"+
+                        "|(^/webvLoginController/toQuite\\.do$)"+
+                        "|(^/webvGuanzhuController/toGuanzhu\\.do$)"+
+                        "|(^/webvGuanzhuController/guanzhu\\.do$)"+
+                        "|(^/webvGuanzhuController/webvGetGuanzhu\\.do$)"+
+                        "|(^/webvGuanzhuController/guanzhuArea\\.do$)"+
+                        "|(^/webvGuanzhuController/saveGuanzhuArea\\.do$)"+
+                        "|(^/pictureUploadController/uploadPic\\.do$)"+
+                        "|(^/webvProfile/webMemberUpdateProfile\\.do$)"+
+                        "|(^/webvProfile/toUpdateProfile\\.do$)"+
 
                         "|(^/memberLogin\\.do$)"
 
@@ -96,6 +117,7 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
             out.close();
         } else {
             request.getRequestDispatcher("/WEB-INF/session.jsp").forward(request, response);
+            return false;
         }
         return true;
     }

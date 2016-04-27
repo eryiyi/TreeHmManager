@@ -22,6 +22,7 @@
         </if>
     </select>
 
+
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.FuwuObj">
         INSERT INTO mm_fuwu(mm_fuwu_id, mm_fuwu_nickname, mm_fuwu_tel, mm_fuwu_content, mm_fuwu_type,dateline,lat,lng,mm_fuwu_url)
         VALUES (#{mm_fuwu_id}, #{mm_fuwu_nickname}, #{mm_fuwu_tel}, #{mm_fuwu_content,jdbcType=VARCHAR}, #{mm_fuwu_type}, #{dateline}, #{lat,jdbcType=VARCHAR}, #{lng,jdbcType=VARCHAR}, #{mm_fuwu_url,jdbcType=VARCHAR})

@@ -5,6 +5,7 @@ import com.liangxunwang.unimanager.mvc.vo.EmpVO;
 import com.liangxunwang.unimanager.query.CityQuery;
 import com.liangxunwang.unimanager.query.CountryQuery;
 import com.liangxunwang.unimanager.query.EmpQuery;
+import com.liangxunwang.unimanager.query.ProvinceQuery;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.SaveService;
 import com.liangxunwang.unimanager.service.ServiceException;
@@ -21,15 +22,14 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
- * Created by liuzh on 2015/8/12.
+ * Created by zhl on 2015/8/12.
  */
 @Controller
 @RequestMapping("/webvRegController")
 public class WebvRegController extends ControllerConstants {
-
     @Autowired
-    @Qualifier("provinceService")
-    private ListService provinceService;
+    @Qualifier("appProvinceService")
+    private ListService appProvinceService;
 
     @Autowired
     @Qualifier("cityService")
@@ -41,21 +41,27 @@ public class WebvRegController extends ControllerConstants {
     @RequestMapping("toReg")
     public String toReg(ModelMap map){
         //查询省份
-        List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list("");
+        ProvinceQuery provinceQuery = new ProvinceQuery();
+        provinceQuery.setIs_use("1");
+        List<ProvinceObj> listProvinces = (List<ProvinceObj>) appProvinceService.list(provinceQuery);
         //查询地市
         CityQuery cityQuery = new CityQuery();
+        cityQuery.setIs_use("1");
         List<CityObj> listCitys = (List<CityObj>) cityService.list(cityQuery);
         //查询县区
         CountryQuery countryQuery = new CountryQuery();
+        countryQuery.setIs_use("1");
         List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);
         map.put("listProvinces", listProvinces);
         map.put("listCitys", listCitys);
         map.put("listsCountry", listsCountry);
         //查询地市all
         CityQuery cityQueryAll = new CityQuery();
+        cityQueryAll.setIs_use("1");
         List<CityObj> listCitysAll = (List<CityObj>) cityService.list(cityQueryAll);
         //查询县区all
         CountryQuery countryQueryAll = new CountryQuery();
+        countryQueryAll.setIs_use("1");
         List<CountryObj> listsCountryAll = (List<CountryObj>) countryService.list(countryQueryAll);
 
         map.put("listCitysAll", toJSONString(listCitysAll));
@@ -65,14 +71,14 @@ public class WebvRegController extends ControllerConstants {
     }
 
     @Autowired
-    @Qualifier("empRegisterService")
-    private SaveService empRegisterService;
+    @Qualifier("webProfileService")
+    private SaveService webProfileService;
 
     @RequestMapping("/empReg")
     @ResponseBody
     public String empReg(Emp member){
         try {
-            empRegisterService.save(member);
+            webProfileService.save(member);
             return toJSONString(SUCCESS);
         }catch (ServiceException e){
             String msg = e.getMessage();

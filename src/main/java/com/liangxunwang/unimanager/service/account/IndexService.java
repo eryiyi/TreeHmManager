@@ -6,18 +6,16 @@ import com.liangxunwang.unimanager.dao.ReportDao;
 import com.liangxunwang.unimanager.query.BaseAreaQuery;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.ServiceException;
+import com.liangxunwang.unimanager.util.DateUtil;
 import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
- * Created by liuzwei on 2015/3/3.
+ * Created by zhl on 2015/3/3.
  */
 @Service("indexService")
 public class IndexService implements ListService {
@@ -51,6 +49,10 @@ public class IndexService implements ListService {
         //待审核的数量
         map.put("ischeck", "0");
         long memberCountNo = empDao.count(map);
+        //今日注册会员数量
+
+        map.put("mm_emp_regtime", DateUtil.getDateAndTimeTwo());
+        long memberCountNoDay = empDao.countDay(map);
 
         //资讯管理
         Map<String, Object> mapR = new HashMap<String, Object>();
@@ -80,6 +82,7 @@ public class IndexService implements ListService {
         list.add(countQiugou);
         list.add(countGongying);
         list.add(countReport);
+        list.add(memberCountNoDay);
         return list;
     }
 }

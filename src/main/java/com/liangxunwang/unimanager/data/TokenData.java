@@ -1,7 +1,7 @@
 package com.liangxunwang.unimanager.data;
 
 /**
- * Created by liuzh on 2015/9/23.
+ * Created by zhl on 2015/9/23.
  */
 public class TokenData {
     private String data;

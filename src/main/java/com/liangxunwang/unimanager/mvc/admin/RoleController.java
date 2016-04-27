@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 /**
- * Created by liuzh on 2015/8/6.
+ * Created by zhl on 2015/8/6.
  * ��ɫ���ƣ���ɾ�Ĳ�
  */
 @Controller

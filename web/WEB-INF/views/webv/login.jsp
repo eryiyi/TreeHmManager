@@ -48,17 +48,20 @@
 			<input placeholder="密码" type="password" id="pwr" name="pwr">
 		</div>
 
-		<button class="mt4 w10 fill-green" type="submit" onclick="login()">登录</button>
-		<div class="regist clearfix">
-			<a href="javaScript:void(0)" onclick="reg()">注册</a>
-			<a href="javaScript:void(0)" onclick="findpwr()">找回密码</a>
-		</div>
+		<button class="mt4 w10 fill-green" type="button" onclick="login()">登录</button>
+		<button class="mt4 w10 fill-green" type="button" onclick="reg()">新用户注册</button>
+
+		<button class="mt4 w10 fill-green" type="button" onclick="kefu()">客服咨询中心</button>
+		<button class="mt4 w10 fill-green" type="button" onclick="findpwr()">忘记密码</button>
+
+
+
 	</div>
 	<!-- TOOLBAR -->
 	<div class="toolbar">
 		<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell"></a>
-		<a href="javaScript:void(0)" onclick="toPage('/webvRecommend/toRecommend.do','1')" class="recommend"></a>
+		<a href="javaScript:void(0)" onclick="toPage('/webvTopController/toTop.do','1')" class="recommend"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')" class="mine"></a>
 	</div>
 	<!-- TOOLBAR -->
@@ -81,6 +84,10 @@
 	function findpwr(){
 		//找回密码页面跳转
 		window.location.href="/webvFindPwrController/toFindPwr.do";
+	}
+
+	function kefu(){
+		window.location.href="/webvKefuController/toKefu.do";
 	}
 
 	function login(){

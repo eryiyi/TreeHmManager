@@ -2,6 +2,7 @@ package com.liangxunwang.unimanager.mvc.webv;
 
 import com.liangxunwang.unimanager.model.AccessToken;
 import com.liangxunwang.unimanager.model.Admin;
+import com.liangxunwang.unimanager.model.EmpLoginNum;
 import com.liangxunwang.unimanager.model.LogoObj;
 import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.mvc.vo.EmpVO;
@@ -23,9 +24,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-/**
- * Created by liuzh on 2015/8/12.
- */
 @Controller
 @RequestMapping("/webvLoginController")
 public class WebvLoginController extends ControllerConstants {
@@ -44,6 +42,10 @@ public class WebvLoginController extends ControllerConstants {
     @Autowired
     @Qualifier("appAccessTokenService")
     private UpdateService appAccessTokenServiceUpdate;
+
+    @Autowired
+    @Qualifier("empLoginNumService")
+    private SaveService empLoginNumService;
 
 
     @RequestMapping("toLogin")
@@ -82,6 +84,11 @@ public class WebvLoginController extends ControllerConstants {
             //获得accesstoken
             member.setAccess_token(accessToken.getAccess_token());
             session.setAttribute(ControllerConstants.MEMBER_KEY, member);
+            //保存登录记录
+            EmpLoginNum empLoginNum = new EmpLoginNum();
+            empLoginNum.setMm_emp_id(member.getMm_emp_id());
+            empLoginNumService.save(empLoginNum);
+
             return toJSONString(SUCCESS);
         }catch (ServiceException e){
             String emsg = e.getMessage();
@@ -100,7 +107,17 @@ public class WebvLoginController extends ControllerConstants {
                 return toJSONString(ERROR_7);
             }
         }
+    }
 
+    @RequestMapping("/toQuite")
+    @ResponseBody
+    public String toQuite(HttpSession session){
+        try {
+            session.setAttribute(ControllerConstants.MEMBER_KEY, null);
+            return toJSONString(SUCCESS);
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+        }
     }
 
 }

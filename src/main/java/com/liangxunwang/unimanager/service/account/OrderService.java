@@ -1,11 +1,8 @@
 package com.liangxunwang.unimanager.service.account;
 
 import com.liangxunwang.unimanager.dao.OrderDao;
-import com.liangxunwang.unimanager.dao.ReportDao;
 import com.liangxunwang.unimanager.mvc.vo.OrderVO;
-import com.liangxunwang.unimanager.mvc.vo.ReportVO;
 import com.liangxunwang.unimanager.query.OrderQuery;
-import com.liangxunwang.unimanager.query.ReportQuery;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.ServiceException;
 import com.liangxunwang.unimanager.util.StringUtil;
@@ -18,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by liuzwei on 2015/3/3.
+ * Created by zhl on 2015/3/3.
  */
 @Service("orderService")
 public class OrderService implements ListService {
@@ -45,7 +42,5 @@ public class OrderService implements ListService {
 
         return new Object[]{lists, count};
     }
-
-
 
 }

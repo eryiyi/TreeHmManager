@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by liuzwei on 2015/3/3.
+ * Created by zhl on 2015/3/3.
  */
 @Service("recordService")
 public class RecordService implements ListService,DeleteService,ExecuteService,UpdateService {
@@ -57,7 +57,7 @@ public class RecordService implements ListService,DeleteService,ExecuteService,U
         if(!StringUtil.isNullOrEmpty(query.getMm_emp_countryId())){
             map.put("countryid", query.getMm_emp_countryId());
         }
-
+        map.put("is_guanzhu", "0");
         List<RecordVO> lists = recordDao.listRecordVo(map);
         for (RecordVO record : lists){
             if (!StringUtil.isNullOrEmpty(record.getMm_emp_cover())){

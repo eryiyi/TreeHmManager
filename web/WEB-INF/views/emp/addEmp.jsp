@@ -59,6 +59,12 @@
               <input type="text" id="mm_emp_card" placeholder="身份证号" class="form-control" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">允许发布信息的长度</label>
+            <div class="col-sm-4">
+              <input type="text" id="mm_msg_length" value="120" placeholder="允许发布信息的长度，填整数" class="form-control" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+            </div>
+          </div>
 
           <div class="form-group">
             <label class="col-sm-2 control-label">用户类型</label>
@@ -312,6 +318,7 @@
   function saveRole(mm_emp_id){
     var mm_emp_mobile = $("#mm_emp_mobile").val();
     var mm_emp_card = $("#mm_emp_card").val();
+    var mm_msg_length = $("#mm_msg_length").val();
     var mm_emp_nickname = $("#mm_emp_nickname").val();
     var mm_emp_password = $("#mm_emp_password").val();
     var mm_emp_type = $("#mm_emp_type").val();
@@ -457,6 +464,7 @@
       data:{
         "mm_emp_mobile":mm_emp_mobile,
         "mm_emp_nickname":mm_emp_nickname,
+        "mm_msg_length":mm_msg_length,
         "mm_emp_card":mm_emp_card,
         "mm_emp_type":mm_emp_type,
         "mm_emp_password":mm_emp_password,

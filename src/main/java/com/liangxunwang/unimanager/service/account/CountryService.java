@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by liuzwei on 2015/3/3.
+ * Created by zhl on 2015/3/3.
  */
 @Service("countryService")
 public class CountryService implements ListService,SaveService{
@@ -33,6 +33,9 @@ public class CountryService implements ListService,SaveService{
         Map<String, Object> map = new HashMap<String, Object>();
         if(!StringUtil.isNullOrEmpty(query.getFather())){
             map.put("father", query.getFather());
+        }
+        if(!StringUtil.isNullOrEmpty(query.getIs_use())){
+            map.put("is_use", query.getIs_use());
         }
         List<CountryObj> lists = countryDao.lists(map);
         return lists;

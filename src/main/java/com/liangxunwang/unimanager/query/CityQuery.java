@@ -1,9 +1,9 @@
 package com.liangxunwang.unimanager.query;
 
 /**
- * Created by liuzwei on 2015/1/31.
+ * Created by zhl on 2015/1/31.
  */
-public class CityQuery {
+public class CityQuery extends BaseAreaQuery{
     private String father;
     private String city;
 

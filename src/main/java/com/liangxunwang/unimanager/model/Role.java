@@ -1,8 +1,8 @@
 package com.liangxunwang.unimanager.model;
 
 /**
- * Created by liuzh on 2015/8/6.
- * ╫ги╚
+ * Created by zhl on 2015/8/6.
+ * О©╫О©╫и╚
  */
 public class Role {
     private String id;

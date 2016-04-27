@@ -47,8 +47,10 @@
         <table class="table">
           <thead>
           <tr>
-            <th>微信名</th>
-            <th>微信号</th>
+            <th>微信名/qq昵称</th>
+            <th>微信号/qq号</th>
+            <th>类型</th>
+            <th>操作</th>
             <th>操作</th>
           </tr>
           </thead>
@@ -58,7 +60,14 @@
               <td>${e.mm_weixin_name}</td>
               <td>${e.mm_weixin}</td>
               <td>
+                <c:if test="${e.mm_weixin_type=='0'}">微信</c:if>
+                <c:if test="${e.mm_weixin_type=='1'}">QQ</c:if>
+              </td>
+              <td>
                 <a class="btn btn-default btn-sm" href="javascript:void (0)" onclick="editRole('${e.mm_weixin_id}')" role="button">编辑</a>
+              </td>
+              <td>
+                <a class="btn btn-default btn-sm" href="javascript:void (0)" onclick="deleteRole('${e.mm_weixin_id}')" role="button">删除</a>
               </td>
             </tr>
           </c:forEach>
@@ -78,6 +87,26 @@
         url: "/weixin/edit.do",
         success: function(response){
           $("#content").html(response);
+        }
+      });
+    }
+  }
+
+  function deleteRole(_id){
+    if(confirm("确定要删除该客服么？")){
+      $.ajax({
+        url:"/weixin/delete.do",
+        data:{"mm_weixin_id":_id},
+        type:"POST",
+        success:function(_data){
+          var data = $.parseJSON(_data);
+          if(data.success){
+            alert("删除成功");
+            window.location.href = "#module=weixin/list";
+          }else{
+            var _case = {1:"删除失败"};
+            alert(_case[data.code])
+          }
         }
       });
     }

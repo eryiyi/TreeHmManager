@@ -3,6 +3,7 @@ package com.liangxunwang.unimanager.mvc.webv;
 import com.liangxunwang.unimanager.model.FuwuObj;
 import com.liangxunwang.unimanager.model.KefuTel;
 import com.liangxunwang.unimanager.mvc.vo.EmpVO;
+import com.liangxunwang.unimanager.mvc.vo.KefuVO;
 import com.liangxunwang.unimanager.query.FuwuQuery;
 import com.liangxunwang.unimanager.query.KefuQuery;
 import com.liangxunwang.unimanager.service.ListService;
@@ -18,7 +19,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
- * Created by liuzh on 2015/8/12.
+ * Created by zhl on 2015/8/12.
  */
 @Controller
 @RequestMapping("/webvKefuController")
@@ -26,18 +27,18 @@ public class WebvKefuController extends ControllerConstants {
 
 
     @Autowired
-    @Qualifier("kefuTelService")
-    private ListService kefuTelService;
+    @Qualifier("appKefuTelService")
+    private ListService appKefuTelService;
 
     @RequestMapping("toKefu")
     public String toLogin(HttpSession session,ModelMap map,KefuQuery query){
-        EmpVO emp = (EmpVO) session.getAttribute(MEMBER_KEY);
-        if(emp == null){
-            return "/webv/login";
-        }else
         try {
-            List<KefuTel> list = (List<KefuTel>) kefuTelService.list(query);
-            map.put("list", list);
+            query.setMm_tel_type("0");
+            List<KefuVO> list = (List<KefuVO>) appKefuTelService.list(query);
+            map.put("list", list);//本地的
+            query.setMm_tel_type("1");
+            List<KefuVO> listAll = (List<KefuVO>) appKefuTelService.list(query);
+            map.put("listAll", listAll);//全国的
             return "/webv/kefu";
 
         }catch (ServiceException e){

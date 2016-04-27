@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by liuzwei on 2015/3/3.
+ * Created by zhl on 2015/3/3.
  */
 @Service("paihangService")
 public class PaihangService implements ListService,DeleteService,ExecuteService,UpdateService,SaveService {
@@ -39,6 +39,10 @@ public class PaihangService implements ListService,DeleteService,ExecuteService,
 
         if (!StringUtil.isNullOrEmpty(query.getIs_del())) {
             map.put("is_del", query.getIs_del());
+        }
+
+        if (!StringUtil.isNullOrEmpty(query.getKeyword())) {
+            map.put("keyword", query.getKeyword());
         }
 
         List<PaihangObjVO> lists = paihangObjDao.listRecordVo(map);

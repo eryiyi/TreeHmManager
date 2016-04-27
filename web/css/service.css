@@ -15,7 +15,7 @@ body {
   float: left;
   height: 50px;
   width: 50px;
-  border-radius: 50px;
+  border-radius: 8px;
   border: 1px solid #fff;
 }
 .glide .panel .user-info {
@@ -56,8 +56,8 @@ body {
 }
 .content .icons .icon .icon-pic > img {
   display: block;
-  width: 90%;
-  max-width: 100px;
+  width: 50%;
+  max-width: 50px;
   margin: 0 auto;
 }
 .content .icons .icon .icon-name {

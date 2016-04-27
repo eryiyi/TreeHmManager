@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpSession;
 
 /**
- * Created by liuzh on 2015/8/12.
+ * Created by zhl on 2015/8/12.
  */
 @Controller
 @RequestMapping("/webvRecordController")

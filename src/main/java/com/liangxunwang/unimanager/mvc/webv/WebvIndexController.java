@@ -2,13 +2,12 @@ package com.liangxunwang.unimanager.mvc.webv;
 
 import com.liangxunwang.unimanager.model.*;
 import com.liangxunwang.unimanager.mvc.vo.EmpVO;
-import com.liangxunwang.unimanager.query.CityQuery;
-import com.liangxunwang.unimanager.query.CountryQuery;
-import com.liangxunwang.unimanager.query.RecordQuery;
+import com.liangxunwang.unimanager.query.*;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.Page;
 import com.liangxunwang.unimanager.util.StringUtil;
+import cz.msebera.android.httpclient.HttpRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -41,8 +40,13 @@ public class WebvIndexController extends ControllerConstants {
     @Qualifier("countryService")
     private ListService countryService;
 
+    @Autowired
+    @Qualifier("adObjService")
+    private ListService adObjService;
+
+
     @RequestMapping("toIndex")
-    public String add(HttpSession session, ModelMap map, RecordQuery query, Page page) {
+    public String add(HttpSession session, ModelMap map, RecordQuery query, Page page,HttpServletRequest request) {
         EmpVO emp = (EmpVO) session.getAttribute(MEMBER_KEY);
 
         query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
@@ -88,6 +92,7 @@ public class WebvIndexController extends ControllerConstants {
             map.addAttribute("page", page);
             map.addAttribute("query", query);
             map.addAttribute("mm_msg_type", "0");
+            request.setAttribute("list", results[0]);
         }catch (ServiceException e){
             String msg = e.getMessage();
             if (msg.equals("accessTokenNull")){
@@ -98,12 +103,16 @@ public class WebvIndexController extends ControllerConstants {
         }
 
         //查询省份
-        List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list("");
+        ProvinceQuery provinceQuery = new ProvinceQuery();
+        provinceQuery.setIs_use("1");
+        List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list(provinceQuery);
         //查询地市all
         CityQuery cityQueryAll = new CityQuery();
+        cityQueryAll.setIs_use("1");
         List<CityObj> listCitysAll = (List<CityObj>) cityService.list(cityQueryAll);
         //查询县区all
         CountryQuery countryQueryAll = new CountryQuery();
+        countryQueryAll.setIs_use("1");
         List<CountryObj> listsCountryAll = (List<CountryObj>) countryService.list(countryQueryAll);
 
         map.put("listProvinces", listProvinces);
@@ -118,6 +127,12 @@ public class WebvIndexController extends ControllerConstants {
             //说明没有登陆
             map.put("is_login", "0");
         }
+
+        //查询广告
+        AdQuery queryad = new AdQuery();
+        queryad.setMm_ad_type("0");
+        List<AdObj> listAd = (List<AdObj>) adObjService.list(queryad);
+        map.put("listAd", listAd);
         return "/webv/index";
     }
 

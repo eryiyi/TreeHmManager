@@ -74,4 +74,15 @@
     <group id="GUANZHU_MANAGE" name="关注管理">
         <permission id="GUANZHU_LIST_MANAGE" name="关注列表"/>
     </group>
+    <group id="VIP_END_TIME_MANAGE" name="提醒语句">
+        <permission id="VIP_END_TIME_NOTICE_MANA" name="提醒语句"/>
+    </group>
+    <group id="EMP_LOGIN_NUMBER_MANAGE" name="活跃度">
+        <permission id="EMP_LOGIN_NUMBER_MANA" name="活跃度"/>
+    </group>
+    <group id="NEARBY_DISTANCE_MANAGE" name="附近距离">
+        <permission id="NEARBY_DISTANCE_MANA" name="附近距离"/>
+    </group>
+
+
 </permissions>

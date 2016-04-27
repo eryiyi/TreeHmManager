@@ -1,11 +1,7 @@
 package com.liangxunwang.unimanager.mvc.admin;
 
-import com.liangxunwang.unimanager.model.AdObj;
-import com.liangxunwang.unimanager.model.Admin;
-import com.liangxunwang.unimanager.model.Level;
-import com.liangxunwang.unimanager.model.LogoObj;
-import com.liangxunwang.unimanager.query.AdQuery;
-import com.liangxunwang.unimanager.query.LevelQuery;
+import com.liangxunwang.unimanager.model.*;
+import com.liangxunwang.unimanager.query.*;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,6 +44,18 @@ public class AdController extends ControllerConstants {
     @Qualifier("logoService")
     private SaveService logoService;
 
+    @Autowired
+    @Qualifier("provinceService")
+    private ListService provinceService;
+
+    @Autowired
+    @Qualifier("cityService")
+    private ListService cityService;
+    @Autowired
+    @Qualifier("countryService")
+    private ListService countryService;
+
+
     @RequestMapping("list")
     public String list(HttpSession session,ModelMap map, AdQuery query){
         Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
@@ -60,6 +68,33 @@ public class AdController extends ControllerConstants {
 
     @RequestMapping("add")
     public String add(ModelMap map, LevelQuery query){
+        //查询省份
+        ProvinceQuery provinceQuery = new ProvinceQuery();
+        provinceQuery.setIs_use("1");
+        List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list(provinceQuery);
+        //查询地市
+        CityQuery cityQuery = new CityQuery();
+        cityQuery.setIs_use("1");
+        List<CityObj> listCitys = (List<CityObj>) cityService.list(cityQuery);
+        //查询县区
+        CountryQuery countryQuery = new CountryQuery();
+        countryQuery.setIs_use("1");
+        List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);
+        map.put("listProvinces", listProvinces);
+        map.put("listCitys", listCitys);
+
+        map.put("listsCountry", listsCountry);
+        //查询地市all
+        CityQuery cityQueryAll = new CityQuery();
+        cityQueryAll.setIs_use("1");
+        List<CityObj> listCitysAll = (List<CityObj>) cityService.list(cityQueryAll);
+        //查询县区all
+        CountryQuery countryQueryAll = new CountryQuery();
+        countryQueryAll.setIs_use("1");
+        List<CountryObj> listsCountryAll = (List<CountryObj>) countryService.list(countryQueryAll);
+
+        map.put("listCitysAll", toJSONString(listCitysAll));
+        map.put("listsCountryAll", toJSONString(listsCountryAll));
         return "/ad/addAd";
     }
 

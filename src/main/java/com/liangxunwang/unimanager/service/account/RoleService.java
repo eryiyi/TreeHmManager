@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 /**
- * Created by liuzh on 2015/8/8.
+ * Created by zhl on 2015/8/8.
  */
 @Service("roleService")
 public class RoleService implements SaveService, ListService, DeleteService, FindService, UpdateService {

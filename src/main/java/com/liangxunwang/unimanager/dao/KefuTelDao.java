@@ -17,6 +17,7 @@ public interface KefuTelDao {
      * 查询客服
      */
     List<KefuVO> lists(Map<String, Object> map);
+    List<KefuVO> listsAll(Map<String, Object> map);
 //    long count(Map<String, Object> map);
 
 

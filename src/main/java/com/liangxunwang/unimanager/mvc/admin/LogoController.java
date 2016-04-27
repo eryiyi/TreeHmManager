@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
- * Created by liuzh on 2015/8/12.
+ * Created by zhl on 2015/8/12.
  */
 @Controller
 @RequestMapping("/logo")
@@ -44,6 +44,7 @@ public class LogoController extends ControllerConstants {
     public String list(HttpSession session,ModelMap map, LogoQuery query, Page page){
         query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
         query.setSize(query.getSize() == 0 ? page.getDefaultSize() : query.getSize());
+
         Object[] results = (Object[]) logoService.list(query);
         map.put("list", results[0]);
         long count = (Long) results[1];

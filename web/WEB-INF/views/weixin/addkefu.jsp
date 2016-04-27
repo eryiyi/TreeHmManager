@@ -48,15 +48,27 @@
         <form class="form-horizontal" role="form">
 
           <div class="form-group">
-            <label class="col-sm-2 control-label">微信名</label>
+            <label class="col-sm-2 control-label">微信名/QQ昵称</label>
             <div class="col-sm-4">
-              <input type="text" id="mm_weixin_name"  class="form-control" placeholder="微信名" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+              <input type="text" id="mm_weixin_name"  class="form-control" placeholder="微信名/QQ昵称" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
           <div class="form-group">
-            <label class="col-sm-2 control-label">微信号</label>
+            <label class="col-sm-2 control-label">微信号/QQ号</label>
             <div class="col-sm-4">
-              <input type="text" id="mm_weixin"  class="form-control" placeholder="微信号" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+              <input type="text" id="mm_weixin"  class="form-control" placeholder="微信号/QQ号" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">客服类型</label>
+            <div class="col-sm-4">
+              <select class="form-control" id="mm_weixin_type">
+                <option value="">--选择客服类型--</option>
+                <option value="0" selected="selected">微信</option>
+                <option value="1" >QQ</option>
+              </select>
             </div>
           </div>
 
@@ -76,6 +88,7 @@
   function saveP(){
     var mm_weixin_name = $("#mm_weixin_name").val();
     var mm_weixin = $("#mm_weixin").val();
+    var mm_weixin_type = $("#mm_weixin_type").val();
 
     if(mm_weixin_name.replace(/\s/g, '')==''){
       alert("请输入正确的客服微信名");
@@ -85,12 +98,16 @@
       alert("请输入正确的客服微信号");
       return;
     }
+    if(mm_weixin_type.replace(/\s/g, '')==''){
+      alert("请选择客服类型");
+      return;
+    }
 
     $.ajax({
       cache: true,
       type: "POST",
       url:"/weixin/addKefu.do",
-      data:{"mm_weixin":mm_weixin,"mm_weixin_name":mm_weixin_name},
+      data:{"mm_weixin":mm_weixin,"mm_weixin_name":mm_weixin_name,"mm_weixin_type":mm_weixin_type},
       async: false,
       success: function(_data) {
         var data = $.parseJSON(_data);

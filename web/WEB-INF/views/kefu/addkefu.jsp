@@ -89,6 +89,17 @@
           </div>
 
           <div class="form-group">
+            <label class="col-sm-2 control-label">是否全国</label>
+            <div class="col-sm-4">
+              <select class="form-control" id="mm_tel_type">
+                <option value="">--选择是否全国--</option>
+                <option value="0" selected="selected">否</option>
+                <option value="1" >是</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
             <div class="col-sm-9 col-sm-offset-3">
               <button type="button" class="btn btn-primary" onclick="saveP()">确定</button>
               <button type="button" class="btn btn-primary" onclick="javascript :history.back(-1)">返回</button>
@@ -106,9 +117,14 @@
     var mm_emp_cityId = $("#mm_emp_cityId").val();
     var mm_emp_countryId = $("#mm_emp_countryId").val();
     var mm_tel = $("#mm_tel").val();
+    var mm_tel_type = $("#mm_tel_type").val();
 
     if(mm_tel.replace(/\s/g, '')==''){
       alert("请输入正确的客服电话");
+      return;
+    }
+    if(mm_tel_type.replace(/\s/g, '')==''){
+      alert("请输入是否全国电话");
       return;
     }
 //    if(mm_emp_provinceId.replace(/\s/g, '')==''){
@@ -126,7 +142,7 @@
       cache: true,
       type: "POST",
       url:"/kefu/addKefu.do",
-      data:{"mm_emp_provinceId":mm_emp_provinceId, "mm_emp_cityId":mm_emp_cityId, "mm_emp_countryId":mm_emp_countryId, "mm_tel":mm_tel},
+      data:{"mm_emp_provinceId":mm_emp_provinceId, "mm_emp_cityId":mm_emp_cityId, "mm_emp_countryId":mm_emp_countryId, "mm_tel":mm_tel, "mm_tel_type":mm_tel_type},
       async: false,
       success: function(_data) {
         var data = $.parseJSON(_data);

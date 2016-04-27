@@ -3,7 +3,7 @@ package com.liangxunwang.unimanager.model;
 import java.util.List;
 
 /**
- * Created by liuzh on 2015/8/6.
+ * Created by zhl on 2015/8/6.
  */
 public class Permission {
     private String id;

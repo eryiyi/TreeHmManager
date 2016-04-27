@@ -39,6 +39,9 @@
         <result column="lng" property="lng"/>
         <result column="ischeck" property="ischeck"/>
         <result column="is_upate_profile" property="is_upate_profile"/>
+        <result column="userId" property="userId"/>
+        <result column="channelId" property="channelId"/>
+        <result column="deviceType" property="deviceType"/>
     </resultMap>
     <resultMap id="emp_vo" type="com.liangxunwang.unimanager.mvc.vo.EmpVO">
         <id column="mm_emp_id" property="mm_emp_id"/>
@@ -76,6 +79,9 @@
         <result column="lng" property="lng"/>
         <result column="ischeck" property="ischeck"/>
         <result column="is_upate_profile" property="is_upate_profile"/>
+        <result column="userId" property="userId"/>
+        <result column="channelId" property="channelId"/>
+        <result column="deviceType" property="deviceType"/>
 
         <result column="levelName" property="levelName"/>
         <result column="mm_level_num" property="mm_level_num"/>
@@ -113,6 +119,13 @@
         <if test="mm_emp_countryId != null and mm_emp_countryId != ''">
             AND sn.mm_emp_countryId = #{mm_emp_countryId}
         </if>
+        <if test="mm_emp_regtime != null and mm_emp_regtime != ''">
+            AND sn.mm_emp_regtime = #{mm_emp_regtime}
+        </if>
+
+        <if test="keyword != null and keyword != ''">
+            AND  (sn.mm_emp_mobile = #{keyword} OR sn.mm_emp_nickname like CONCAT('%',#{keyword},'%') OR  sn.mm_emp_company like CONCAT('%',#{keyword},'%'))
+        </if>
 
         ORDER BY sn.mm_emp_regtime DESC limit #{index},#{size}
     </select>
@@ -147,8 +160,22 @@
             AND sn.mm_emp_countryId = #{mm_emp_countryId}
         </if>
 
+        <if test="mm_emp_regtime != null and mm_emp_regtime != ''">
+            AND sn.mm_emp_regtime = #{mm_emp_regtime}
+        </if>
+
+        <if test="keyword != null and keyword != ''">
+            AND  (sn.mm_emp_mobile = #{keyword} OR sn.mm_emp_nickname like CONCAT('%',#{keyword},'%') OR  sn.mm_emp_company like CONCAT('%',#{keyword},'%'))
+        </if>
     </select>
 
+    <select id="countDay" resultType="Long">
+        SELECT count(sn.mm_emp_id) FROM mm_emp sn
+        WHERE 1=1
+        <if test="mm_emp_regtime != null and mm_emp_regtime != ''">
+            AND sn.mm_emp_regtime = #{mm_emp_regtime}
+        </if>
+    </select>
 
     <update id="update" parameterType="com.liangxunwang.unimanager.model.Emp">
         UPDATE mm_emp SET mm_emp_nickname=#{mm_emp_nickname},
@@ -180,6 +207,7 @@
         is_use=#{is_use},
         lat=#{lat},
         lng=#{lng},
+        mm_msg_length=#{mm_msg_length},
         ischeck=#{ischeck}
         WHERE mm_emp_id=#{mm_emp_id}
     </update>
@@ -204,8 +232,50 @@
     </select>
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.Emp">
-        INSERT INTO mm_emp(mm_emp_cover,mm_emp_company_pic,mm_emp_company_url,mm_emp_id, mm_emp_mobile, mm_emp_nickname,mm_emp_card, mm_emp_password, mm_emp_type, mm_emp_company, mm_emp_company_type, mm_emp_company_address, mm_emp_company_detail, mm_emp_provinceId, mm_emp_cityId, mm_emp_countryId, mm_emp_regtime, mm_emp_endtime, mm_level_id, mm_emp_beizhu, mm_emp_msg_num, is_login, is_fabugongying, is_fabuqiugou, is_fabuqiugou_see, is_fabugongying_see, is_see_all, is_use, is_pic, is_chengxin, is_miaomu, lat, lng, ischeck,is_upate_profile)
-        VALUES (#{mm_emp_cover,jdbcType=VARCHAR},#{mm_emp_company_pic,jdbcType=VARCHAR},#{mm_emp_company_url,jdbcType=VARCHAR},#{mm_emp_id}, #{mm_emp_mobile},#{mm_emp_nickname}, #{mm_emp_card,jdbcType=VARCHAR}, #{mm_emp_password},#{mm_emp_type},#{mm_emp_company,jdbcType=VARCHAR},#{mm_emp_company_type},#{mm_emp_company_address,jdbcType=VARCHAR},#{mm_emp_company_detail,jdbcType=VARCHAR},#{mm_emp_provinceId},#{mm_emp_cityId},#{mm_emp_countryId},#{mm_emp_regtime},#{mm_emp_endtime,jdbcType=VARCHAR},#{mm_level_id,jdbcType=VARCHAR},#{mm_emp_beizhu,jdbcType=VARCHAR},#{mm_emp_msg_num,jdbcType=VARCHAR},#{is_login},#{is_fabugongying},#{is_fabuqiugou},#{is_fabuqiugou_see},#{is_fabugongying_see},#{is_see_all},#{is_use},#{is_pic},#{is_chengxin},#{is_miaomu},#{lat},#{lng},#{ischeck},#{is_upate_profile})
+        INSERT INTO mm_emp(mm_emp_cover,mm_emp_company_pic,mm_emp_company_url,mm_emp_id, mm_emp_mobile, mm_emp_nickname,mm_emp_card, mm_emp_password, mm_emp_type, mm_emp_company, mm_emp_company_type, mm_emp_company_address, mm_emp_company_detail, mm_emp_provinceId, mm_emp_cityId, mm_emp_countryId, mm_emp_regtime, mm_emp_endtime, mm_level_id, mm_emp_beizhu, mm_emp_msg_num, is_login, is_fabugongying, is_fabuqiugou, is_fabuqiugou_see, is_fabugongying_see, is_see_all, is_use, is_pic, is_chengxin, is_miaomu, lat, lng, ischeck,is_upate_profile,mm_msg_length)
+        VALUES (#{mm_emp_cover,jdbcType=VARCHAR},#{mm_emp_company_pic,jdbcType=VARCHAR},#{mm_emp_company_url,jdbcType=VARCHAR},#{mm_emp_id}, #{mm_emp_mobile},#{mm_emp_nickname}, #{mm_emp_card,jdbcType=VARCHAR}, #{mm_emp_password},#{mm_emp_type},#{mm_emp_company,jdbcType=VARCHAR},#{mm_emp_company_type},#{mm_emp_company_address,jdbcType=VARCHAR},#{mm_emp_company_detail,jdbcType=VARCHAR},#{mm_emp_provinceId},#{mm_emp_cityId},#{mm_emp_countryId},#{mm_emp_regtime},#{mm_emp_endtime,jdbcType=VARCHAR},#{mm_level_id,jdbcType=VARCHAR},#{mm_emp_beizhu,jdbcType=VARCHAR},#{mm_emp_msg_num,jdbcType=VARCHAR},#{is_login},#{is_fabugongying},#{is_fabuqiugou},#{is_fabuqiugou_see},#{is_fabugongying_see},#{is_see_all},#{is_use},#{is_pic},#{is_chengxin},#{is_miaomu},#{lat},#{lng},#{ischeck},#{is_upate_profile},#{mm_msg_length,jdbcType=VARCHAR})
+    </insert>
+
+    <insert id="saveList" parameterType="java.util.List">
+        INSERT INTO mm_emp(mm_emp_id,
+        mm_emp_mobile, mm_emp_nickname,mm_emp_password,mm_emp_cover,
+        mm_emp_type, mm_emp_company, mm_emp_company_type, mm_emp_company_url,mm_emp_company_address,
+        mm_emp_company_detail, mm_emp_provinceId, mm_emp_cityId, mm_emp_countryId,
+        mm_emp_regtime, mm_level_id, mm_emp_beizhu, mm_emp_msg_num,
+        is_login, is_fabugongying, is_fabuqiugou, is_fabuqiugou_see, is_fabugongying_see,
+        is_see_all, is_use, is_pic, is_chengxin, is_miaomu, ischeck)
+        VALUES
+        <foreach  collection="list" item="item" index="index" separator=",">
+            (#{item.mm_emp_id},
+            #{item.mm_emp_mobile},
+            #{item.mm_emp_nickname},
+            #{item.mm_emp_password},
+            #{item.mm_emp_cover},
+            #{item.mm_emp_type},
+            #{item.mm_emp_company,jdbcType=VARCHAR},
+            #{item.mm_emp_company_type,jdbcType=VARCHAR},
+            #{item.mm_emp_company_url,jdbcType=VARCHAR},
+            #{item.mm_emp_company_address,jdbcType=VARCHAR},
+            #{item.mm_emp_company_detail,jdbcType=VARCHAR},
+            #{item.mm_emp_provinceId},
+            #{item.mm_emp_cityId},
+            #{item.mm_emp_countryId},
+            #{item.mm_emp_regtime},
+            #{item.mm_level_id},
+            #{item.mm_emp_beizhu,jdbcType=VARCHAR},
+            #{item.mm_emp_msg_num},
+            #{item.is_login},
+            #{item.is_fabugongying},
+            #{item.is_fabuqiugou},
+            #{item.is_fabuqiugou_see},
+            #{item.is_fabugongying_see},
+            #{item.is_see_all},
+            #{item.is_use},
+            #{item.is_pic},
+            #{item.is_chengxin},
+            #{item.is_miaomu},
+            #{item.ischeck})
+        </foreach>
     </insert>
 
     <update id="updateLoacation" parameterType="com.liangxunwang.unimanager.model.Emp">
@@ -289,7 +359,15 @@
     </update>
 
     <update id="updateOverTime">
-        UPDATE mm_emp SET mm_level_id='c5567ce9094a4ffeb763ec707552d411' WHERE mm_emp_endtime &lt; #{nowTime}
+        UPDATE mm_emp SET mm_level_id='358b1e94e2274685b0badf41e22b85c8' WHERE mm_emp_endtime &lt; #{nowTime}
+    </update>
+
+    <update id="deleteEmp">
+        DELETE FROM mm_emp WHERE mm_emp_id=#{mm_emp_id}
+    </update>
+
+    <update id="updatePushId" parameterType="String">
+        UPDATE mm_emp set userId=#{userId}, channelId=#{channelId}, deviceType=#{type} WHERE mm_emp_id=#{id}
     </update>
 
 </mapper>

@@ -21,14 +21,20 @@
 	<link href="/plugins/justified-gallery/justifiedGallery.css" rel="stylesheet">
 	<link href="/css/style_v2.css" rel="stylesheet">
 	<link href="/plugins/chartist/chartist.min.css" rel="stylesheet">
-	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-	<!--[if lt IE 9]>
-	<script src="/js/jquery.min.js"></script>
-	<script src="/js/Util.js"></script>
 	<script src="/js/validation.js"></script>
-	<script src="/js/md5.js"></script>
-	<script src="/js/ajaxfileupload.js"></script>
-	<![endif]-->
+
+	<script type="text/javascript" src="/plugins/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/plugins/jquery-ui/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/plugins/bootstrap/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/plugins/justified-gallery/jquery.justifiedGallery.min.js"></script>
+	<script type="text/javascript" src="/plugins/tinymce/tinymce.min.js"></script>
+	<script type="text/javascript" src="/plugins/tinymce/jquery.tinymce.min.js"></script>
+	<script type="text/javascript" src="/js/devoops.js"></script>
+	<script type="text/javascript" src="/js/china2.js"></script>
+	<script type="text/javascript" src="/js/md5.js"></script>
+	<script type="text/javascript" src="/js/cookie.js"></script>
+	<script type="text/javascript" src="/js/ajaxfileupload.js"></script>
+	<script type="text/javascript" src="/js/Util.js"></script>
 
 </head>
 <body>
@@ -61,6 +67,7 @@
 			<div id="logo" class="col-xs-12 col-sm-2">
 				<a href="javascript:void(0);">花木通后台管理系统</a>
 			</div>
+
 			<div id="top-panel" class="col-xs-12 col-sm-10">
 				<div class="row">
 					<div class="col-xs-8 col-sm-4">
@@ -249,7 +256,7 @@
 				<c:if test="${um:permission('SHNEHE_TYPE_MANAGE', sessionScope.powers)}">
 					<li class="dropdown">
 						<a href="javascript:void (0);" class="dropdown-toggle">
-							<i class="fa fa-phone"></i>
+							<i class="fa fa-credit-card"></i>
 							<span class="hidden-xs">注册审核方式</span>
 						</a>
 						<ul class="dropdown-menu">
@@ -375,10 +382,10 @@
 						</a>
 						<ul class="dropdown-menu">
 							<c:if test="${um:permission('ADD_NOTICE', sessionScope.powers)}">
-								<li><a href="javascript:void(0);" onclick="toPage('role/addPiao','1')">添加公告</a></li>
+								<li><a href="javascript:void(0);" onclick="toPage('noticeController/toAdd','')">添加公告</a></li>
 							</c:if>
 							<c:if test="${um:permission('NOTICE_LIST', sessionScope.powers)}">
-								<li><a href="javascript:void(0);" onclick="toPage('role/addPiao','1')">公告列表</a></li>
+								<li><a href="javascript:void(0);" onclick="toPage('noticeController/list','1')">公告列表</a></li>
 							</c:if>
 
 						</ul>
@@ -432,7 +439,45 @@
 						</ul>
 					</li>
 				</c:if>
-
+				<c:if test="${um:permission('VIP_END_TIME_NOTICE_MANA', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="javascript:void (0);" class="dropdown-toggle">
+							<i class="fa fa-info"></i>
+							<span class="hidden-xs">提醒语句</span>
+						</a>
+						<ul class="dropdown-menu">
+							<c:if test="${um:permission('VIP_END_TIME_NOTICE_MANA', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('vipEndTimeController/list','')">提醒语句</a></li>
+							</c:if>
+						</ul>
+					</li>
+				</c:if>
+				<c:if test="${um:permission('EMP_LOGIN_NUMBER_MANA', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="javascript:void (0);" class="dropdown-toggle">
+							<i class="fa fa-info"></i>
+							<span class="hidden-xs">活跃度</span>
+						</a>
+						<ul class="dropdown-menu">
+							<c:if test="${um:permission('EMP_LOGIN_NUMBER_MANA', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('/emp/getEmpLoginNumber','')">活跃度</a></li>
+							</c:if>
+						</ul>
+					</li>
+				</c:if>
+				<c:if test="${um:permission('NEARBY_DISTANCE_MANA', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="javascript:void (0);" class="dropdown-toggle">
+							<i class="fa fa-info"></i>
+							<span class="hidden-xs">附近距离</span>
+						</a>
+						<ul class="dropdown-menu">
+							<c:if test="${um:permission('NEARBY_DISTANCE_MANA', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('/nearbyDistanceController/toUpdate','')">附近距离</a></li>
+							</c:if>
+						</ul>
+					</li>
+				</c:if>
 			</ul>
 		</div>
 		<!--Start Content-->
@@ -455,18 +500,7 @@
 		<!--End Content-->
 	</div>
 </div>
-<script src="/plugins/jquery/jquery.min.js"></script>
-<script src="/plugins/jquery-ui/jquery-ui.min.js"></script>
-<script src="/plugins/bootstrap/bootstrap.min.js"></script>
-<script src="/plugins/justified-gallery/jquery.justifiedGallery.min.js"></script>
-<script src="/plugins/tinymce/tinymce.min.js"></script>
-<script src="/plugins/tinymce/jquery.tinymce.min.js"></script>
-<script src="/js/devoops.js"></script>
-<script src="/js/china2.js"></script>
-<script type="text/javascript" src="/js/md5.js"></script>
-<script type="text/javascript" src="/js/cookie.js"></script>
-<script type="text/javascript" src="/js/ajaxfileupload.js"></script>
-<script type="text/javascript" src="/js/Util.js"></script>
+
 
 </body>
 <script type="text/javascript">

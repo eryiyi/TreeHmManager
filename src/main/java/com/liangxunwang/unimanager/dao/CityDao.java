@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * Created by liuzwei on 2015/1/29.
+ * Created by zhl on 2015/1/29.
  */
 @Repository("cityDao")
 public interface CityDao {
@@ -27,5 +27,14 @@ public interface CityDao {
     //保存
     void save(CityObj level);
 
+    //
+    CityObj findById(Map<String,Object> map);
+
+
+    /**
+     * 更新
+     * @param cityObj
+     */
+    public void update(CityObj cityObj);
 
 }

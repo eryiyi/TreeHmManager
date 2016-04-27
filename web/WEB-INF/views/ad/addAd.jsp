@@ -77,6 +77,52 @@
             </div>
           </div>
           <div class="form-group">
+            <label class="col-sm-2 control-label">选择广告类型</label>
+            <div class="col-sm-4">
+              <select class="form-control" id="mm_ad_type">
+                <option value="">--请选择广告展示位置--</option>
+                <option value="0"  selected="selected">求购页面展示</option>
+                <option value="2" >供应页面展示</option>
+                <option value="1" >金牌榜页面展示</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">省份</label>
+            <div class="col-sm-4">
+              <select class="form-control" id="mm_emp_provinceId" onchange="selectCitys()">
+                <option value="">--选择省份--</option>
+                <c:forEach items="${listProvinces}" var="e" varStatus="st">
+                  <option value="${e.provinceID}" >${e.province}</option>
+                </c:forEach>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">城市</label>
+            <div class="col-sm-4">
+              <select class="form-control" id="mm_emp_cityId" onchange="selectCountrys()">
+                <option value="">--选择城市--</option>
+                <c:forEach items="${listCitys}" var="e" varStatus="st">
+                  <option value="${e.cityID}" >${e.city}</option>
+                </c:forEach>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">县区</label>
+            <div class="col-sm-4">
+              <select class="form-control" id="mm_emp_countryId" >
+                <option value="">--选择县区--</option>
+                <c:forEach items="${listsCountry}" var="e" varStatus="st">
+                  <option value="${e.areaID}" >${e.area}</option>
+                </c:forEach>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
             <div class="col-sm-9 col-sm-offset-3">
               <button type="button" class="btn btn-primary" onclick="saveP()">添加</button>
               <button type="button" class="btn btn-primary" onclick="javascript :history.back(-1)">返回</button>
@@ -94,8 +140,14 @@
 
     var mm_ad_url = $("#mm_ad_url").val();
     var mm_ad_num = $("#mm_ad_num").val();
+    var mm_ad_type = $("#mm_ad_type").val();
 
     var imagePath = $("img[name='imagePath']").attr("src");
+
+    var mm_emp_provinceId = $("#mm_emp_provinceId").val();
+    var mm_emp_cityId = $("#mm_emp_cityId").val();
+    var mm_emp_countryId = $("#mm_emp_countryId").val();
+
 
     if(imagePath.replace(/\s/g, '')==''){
       alert("请选择图片文件");
@@ -106,12 +158,36 @@
       alert("请输入链接");
       return;
     }
+    if(mm_ad_type.replace(/\s/g, '')==''){
+      alert("请选择广告类型");
+      return;
+    }
+
+//    if(mm_emp_provinceId.replace(/\s/g, '') == ''){
+//      alert("请选择省份");
+//      return;
+//    }
+//    if(mm_emp_cityId.replace(/\s/g, '') == ''){
+//      alert("请选择城市");
+//      return;
+//    }
+//    if(mm_emp_countryId.replace(/\s/g, '') == ''){
+//      alert("请选择县区");
+//      return;
+//    }
 
     $.ajax({
       cache: true,
       type: "POST",
       url:"/adObj/addAd.do",
-      data:{"mm_ad_pic":imagePath, "mm_ad_url":mm_ad_url,"mm_ad_num":mm_ad_num},
+      data:{"mm_ad_pic":imagePath,
+        "mm_emp_provinceId":mm_emp_provinceId,
+        "mm_emp_cityId":mm_emp_cityId,
+        "mm_emp_countryId":mm_emp_countryId,
+        "mm_ad_url":mm_ad_url,
+        "mm_ad_num":mm_ad_num,
+        "mm_ad_type":mm_ad_type
+      },
       async: false,
       success: function(_data) {
         var data = $.parseJSON(_data);
@@ -159,6 +235,30 @@
         $(node).remove();
       }
     }
+  };
+
+  function selectCitys(){
+    var citys = ${listCitysAll};
+    var province = $("#mm_emp_provinceId").val();
+    var ret = '';
+    for(var i= citys.length-1; i>=0; i-- ){
+      if(citys[i].father==province){
+        ret += "<option value='"+citys[i].cityID+"'>"+citys[i].city+"</option>";
+      }
+    }
+    $("#mm_emp_cityId").html(ret);
+  };
+
+  function selectCountrys(){
+    var countrys = ${listsCountryAll};
+    var city = $("#mm_emp_cityId").val();
+    var ret = '';
+    for(var i= countrys.length-1; i>=0; i-- ){
+      if(countrys[i].father==city){
+        ret += "<option value='"+countrys[i].areaID+"'>"+countrys[i].area+"</option>";
+      }
+    }
+    $("#mm_emp_countryId").html(ret);
   };
 
 

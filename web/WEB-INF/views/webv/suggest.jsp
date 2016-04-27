@@ -38,17 +38,16 @@
 	</div>
 	<!-- CONTENT -->
 	<div class="content regist w85">
+		<span>请描述您的建议：</span>
 		<textarea class="report-reason" name="mm_suggest_cont"
-				  id="mm_suggest_cont" cols="30" rows="10" placeholder="请描述您的建议">
-
-		</textarea>
+				  id="mm_suggest_cont" cols="30" rows="10" placeholder="请描述您的建议，我们会根据您的提议进行修改"></textarea>
 		<button class="button fill-orange mt3 w10 t-sh mb4" onclick="addSuggest()">提交</button>
 	</div>
 	<!-- TOOLBAR -->
 	<div class="toolbar">
 		<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell"></a>
-		<a href="javaScript:void(0)" onclick="toPage('/webvRecommend/toRecommend.do','1')" class="recommend"></a>
+		<a href="javaScript:void(0)" onclick="toPage('/webvTopController/toTop.do','1')" class="recommend"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')" class="mine mine-active"></a>
 	</div>
 	<!-- TOOLBAR -->
@@ -86,6 +85,7 @@
 				var data = $.parseJSON(_data);
 				if(data.success){
 					alert("提交成功，感谢您的建议反馈");
+					window.history.go(-1);
 				}else{
 					var _case = {1:"提交建议失败"};
 					alert(_case[data.code])

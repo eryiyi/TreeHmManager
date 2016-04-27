@@ -23,8 +23,6 @@ public class CreateSimpleExcelToDisk {
      * @功能：手工构建一个简单格式的Excel
      */
 
-
-
     public static String toExcelEmp(List<EmpVO> empVOs, HttpServletRequest request) throws Exception
     {
         // 第一步，创建一个webbook，对应一个Excel文件

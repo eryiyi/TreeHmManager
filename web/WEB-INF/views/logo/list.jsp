@@ -46,7 +46,7 @@
         <form class="form-inline">
           <div class="form-group">
             <div class="col-sm-4">
-              <input type="text" placeholder="关键词" id="keywords" class="form-control"  data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+              <input type="text" placeholder="关键词" value="${query.keyword}" id="keywords" class="form-control"  data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
 
@@ -55,7 +55,7 @@
               <select class="form-control" id="mm_manager_id">
                 <option value="">--选择操作者--</option>
                 <c:forEach items="${listsManager}" var="e" varStatus="st">
-                  <option value="${e.mm_manager_id}" >${e.mm_manager_nickname}</option>
+                  <option value="${e.mm_manager_id}" ${query.mm_manager_id == e.mm_manager_id?'selected':''} >${e.mm_manager_nickname}</option>
                 </c:forEach>
               </select>
             </div>
@@ -108,6 +108,7 @@
                   <option value="20" ${query.size==20?'selected':''}>20</option>
                   <option value="30" ${query.size==30?'selected':''}>30</option>
                   <option value="100" ${query.size==100?'selected':''}>100</option>
+                  <option value="1000" ${query.size==1000?'selected':''}>1000</option>
                 </select>&nbsp;条</a>
               </li>
               <c:choose >
@@ -146,7 +147,7 @@
     var keywords = $("#keywords").val();
     var mm_manager_id = $("#mm_manager_id").val();
     if(_index <= ${page.pageCount} && _index >= 1){
-      window.location.href="#module=/logo/list&page="+page+"&size="+size+"&keyword="+keywords+"&mm_manager_id="+mm_manager_id;
+      window.location.href="#module=/logo/list&page="+_index+"&size="+size+"&keyword="+keywords+"&mm_manager_id="+mm_manager_id;
     }else{
       alert("请输入1-${page.pageCount}的页码数");
     }
@@ -187,7 +188,7 @@
           var data = $.parseJSON(_data);
           if(data.success){
             alert("删除成功");
-            window.location.href="#module="+"logo/list"+"&page=1";
+            window.location.reload();
           }else{
             var _case = {1:"删除失败"};
             alert(_case[data.code])
@@ -232,7 +233,7 @@
             var data = $.parseJSON(_data);
             if(data.success){
               alert("删除成功");
-              window.location.href="#module=logo/list&page=1";
+              window.location.reload();
             }else{
               var _case = {1:"删除失败"};
               alert(_case[data.code])

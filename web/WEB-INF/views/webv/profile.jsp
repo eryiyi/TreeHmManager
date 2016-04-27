@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>${emp.mm_emp_nickname}个人主页</title>
+	<title>个人主页</title>
 	<meta name="Keywords" content="花木通,花木,花草,苗联通,白蜡,园林,惠民皂户李镇,苗木协会" />
 	<meta name="Description" content="花木通是最优秀的花木信息软件，为客户提供最优质的服务" />
 	<meta property="og:title" content="花木通_求购信息"  />
@@ -38,8 +38,8 @@
 <div class="container">
 	<div class="heading clearfix">
 		<div class="heading clearfix">
-			<a href="javascript:history.back()" class="back"><img src="/img/tree_icons_back.png" alt=""></a>
-			<h1 class="head-title">个人资料</h1>
+			<a href="javascript:history.back()" class="back"><img src="/img/tree_icons_back.png"></a>
+			<h1 class="head-title">${emp.mm_emp_nickname}</h1>
 		</div>
 	</div>
 	<div class="content" style="width: 100%">
@@ -173,7 +173,7 @@
 								<%--<a class="bds_count" data-cmd="count"></a>--%>
 							<%--</div>--%>
 						<%--</div>--%>
-						<a type="button" href="javaScript:void(0)" onclick="telClick(${e.mm_emp_mobile})" class="button-phone"></a>
+						<a type="button" href="tel:${e.mm_emp_mobile}"  class="button-phone"></a>
 						<a type="button" href="javaScript:void(0)" onclick="favourClick('${e.mm_msg_id}')" class="button-fav"></a>
 						<c:if test="${e.mm_msg_picurl !=''}"><a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-pic"></a></c:if>
 
@@ -188,7 +188,7 @@
 	<div class="toolbar">
 		<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell"></a>
-		<a href="javaScript:void(0)" onclick="toPage('/webvRecommend/toRecommend.do','1')" class="recommend"></a>
+		<a href="javaScript:void(0)" onclick="toPage('/webvTopController/toTop.do','1')" class="recommend"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')" class="mine"></a>
 	</div>
 	<!-- TOOLBAR -->
@@ -234,18 +234,6 @@
 
 	function showDetail(_mm_msg_id){
 		window.location.href="/webvRecordController/toDetail.do?mm_msg_id="+_mm_msg_id;
-	}
-
-	function telClick(_mobile){
-		//先判断是否登录
-		var is_login = $("#is_login").val();
-		if(is_login == 1){
-			//登陆了
-			alert(_mobile);
-		}else{
-			//没登陆
-			alert("请先登录");
-		}
 	}
 
 	function login(){

@@ -49,6 +49,7 @@
           <tr>
             <th>广告图片</th>
             <th>广告链接</th>
+            <th>展示位置</th>
             <th>操作</th>
             <th>操作</th>
           </tr>
@@ -58,6 +59,11 @@
             <tr>
               <td>${e.mm_ad_pic}</td>
               <td>${e.mm_ad_url}</td>
+              <td>
+                <c:if test="${e.mm_ad_type=='0'}">求购页展示</c:if>
+                <c:if test="${e.mm_ad_type=='1'}">排行榜页展示</c:if>
+                <c:if test="${e.mm_ad_type=='2'}">供应页面展示</c:if>
+              </td>
               <td>
                 <a class="btn btn-default btn-sm" href="javascript:void (0)" onclick="editRole('${e.mm_ad_id}')" role="button">编辑</a>
               </td>

@@ -77,6 +77,7 @@
           <element id="library" level="project" name="Maven: cz.msebera.android:httpclient:4.3.6" />
           <element id="library" level="project" name="Maven: com.qiniu:happy-dns:0.2.5" />
           <element id="library" level="project" name="jxl" />
+          <element id="library" level="project" name="json-lib-2.4-jdk15" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="UniversityManager/web/Web" />

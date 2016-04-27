@@ -9,7 +9,7 @@
     <ol class="breadcrumb pull-left">
       <li><a href="javascript:void(0)"  onclick="toPage('mainPage','')">主页</a></li>
       <li><a href="javascript:void(0)">会员管理</a></li>
-      <li><a href="javascript:void(0)">经营户列表</a></li>
+      <li><a href="javascript:void(0)">会员列表</a></li>
     </ol>
     <div id="social" class="pull-right">
       <a href="javascript:void(0)"><i class="fa fa-google-plus"></i></a>
@@ -52,13 +52,20 @@
       </style>
       <!-- style -->
         <form class="form-inline">
-          <input type="hidden" id="mm_emp_type" value="${mm_emp_type}" >        
+          <input type="hidden" id="mm_emp_type" value="${mm_emp_type}" >
+
+          <div class="form-group">
+            <div class="col-sm-4">
+              <input type="text" id="keywords" placeholder="用户名 手机号" value="${query.keyword}" id="keywords" class="form-control"  data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+            </div>
+          </div>
+
           <c:if test="${is_manager=='0'}">
             <div class="form-group">
               <select class="form-control w12" id="mm_emp_provinceId" onchange="selectCitys()">
                 <option value="">--选择省份--</option>
                 <c:forEach items="${listProvinces}" var="e" varStatus="st">
-                  <option value="${e.provinceID}" >${e.province}</option>
+                  <option value="${e.provinceID}" ${query.mm_emp_provinceId == e.provinceID?'selected':''}>${e.province}</option>
                 </c:forEach>
               </select>
             </div>
@@ -66,7 +73,7 @@
               <select class="form-control w12" id="mm_emp_cityId" onchange="selectCountrys()">
                 <option value="">--选择城市--</option>
                 <c:forEach items="${listCitys}" var="e" varStatus="st">
-                  <option value="${e.cityID}" >${e.city}</option>
+                  <option value="${e.cityID}" ${query.mm_emp_cityId == e.cityID?'selected':''}>${e.city}</option>
                 </c:forEach>
               </select>
             </div>
@@ -74,7 +81,7 @@
               <select class="form-control w12" id="mm_emp_countryId" onchange="selectArea()">
                 <option value="">--选择县区--</option>
                 <c:forEach items="${listsCountry}" var="e" varStatus="st">
-                  <option value="${e.areaID}" >${e.area}</option>
+                  <option value="${e.areaID}" ${query.mm_emp_countryId == e.areaID?'selected':''}>${e.area}</option>
                 </c:forEach>
               </select>
             </div>
@@ -88,13 +95,15 @@
               <option value="2" ${query.ischeck=='2'?'selected':''}>未通过</option>
             </select>
           </div>
-          <%--<div class="form-group">--%>
-            <%--<select class="form-control w12" id="mm_emp_type">--%>
-              <%--<option value="">--注册类型--</option>--%>
-              <%--<option value="0" ${query.mm_emp_type=='0'?'selected':''}>苗木经营</option>--%>
-              <%--<option value="1" ${query.mm_emp_type=='1'?'selected':''}>苗木会员</option>--%>
-            <%--</select>--%>
-          <%--</div>--%>
+
+          <div class="form-group">
+            <select class="form-control w12" id="mm_emp_regtime">
+              <option value="">--注册时间--</option>
+              <option value="0" ${query.mm_emp_regtime=='0'?'selected':''}>不限</option>
+              <option value="1" ${query.mm_emp_regtime=='1'?'selected':''}>今日注册</option>
+            </select>
+          </div>
+
           <div class="form-group">
             <select class="form-control w12" id="mm_emp_company_type">
               <option value="">--公司类型--</option>
@@ -107,10 +116,19 @@
             <select class="form-control w12" id="mm_level_id">
               <option value="">--VIP星级--</option>
               <c:forEach items="${listLevels}" var="e" varStatus="st">
-                <option value="${e.mm_level_id}" ${query.mm_level_id=='0'?'selected':''}>${e.mm_level_name}</option>
+                <option value="${e.mm_level_id}" ${query.mm_level_id==e.mm_level_id?'selected':''}>${e.mm_level_name}</option>
               </c:forEach>
             </select>
           </div>
+
+          <div class="form-group">
+            <select class="form-control w12" id="is_daoqi">
+              <option value="">--是否到期--</option>
+              <option value="0" ${query.is_daoqi=='0'?'selected':''}>否</option>
+              <option value="1" ${query.is_daoqi=='1'?'selected':''}>是</option>
+            </select>
+          </div>
+
           <div class="form-group">
             <button type="submit" onclick="searchOrder('1')" class="btn form-control btn-warning btn-sm btn-block">查找</button>
           </div>
@@ -163,8 +181,18 @@
               <div class="col-md-2 col-lg-2">
                 <button type="button" onclick="P_fabuqg_Select('1')" class="btn w12 form-control btn-block btn-danger btn-sm">批量允许发布求购</button>
               </div>
+              <div class="col-md-2 col-lg-2">
+                <button type="button" onclick="P_delete_Select('1')" class="btn w12 form-control btn-block btn-danger btn-sm">批量删除用户</button>
+              </div>
+              <div class="col-md-2 col-lg-2">
+                <button type="button" onclick="P_daoru_Select('1')" class="btn w12 form-control btn-block btn-danger btn-sm">批量导入</button>
+              </div>
+              <div class="col-md-2 col-lg-2">
+                <button type="button" onclick="P_daoqinotice_Select('1')" class="btn w12 form-control btn-block btn-danger btn-sm">批量发布到期通知</button>
+              </div>
             </div>
           </form>
+
         </c:if>
         <%--<p>For basic styling add the base class <code>.table</code> to any <code>&lt;table&gt;</code>.</p>--%>
         <table class="table">
@@ -184,6 +212,7 @@
             <th>允许登陆</th>
             <th>发布供应</th>
             <th>发布求购</th>
+            <th>已完善资料</th>
             <th>审核状态</th>
             <th>操作</th>
             <c:if test="${is_manager=='0'}">
@@ -231,6 +260,10 @@
               <td>
                 <c:if test="${e.is_fabuqiugou=='0'}">不允许</c:if>
                 <c:if test="${e.is_fabuqiugou=='1'}">允许</c:if>
+              </td>
+              <td>
+                <c:if test="${e.is_upate_profile=='0'}">否</c:if>
+                <c:if test="${e.is_upate_profile=='1'}">是</c:if>
               </td>
               <td>
                 <c:if test="${e.ischeck=='0'}">未审核</c:if>
@@ -300,14 +333,26 @@
     if(e.keyCode != 13) return;
     var _index = $("#index").val();
     var size = getCookie("contract_size");
+    var keywords = $("#keywords").val();
     var mm_emp_type = $("#mm_emp_type").val();
     var mm_emp_company_type = $("#mm_emp_company_type").val();
     var mm_level_id = $("#mm_level_id").val();
     var ischeck = $("#ischeck").val();
+    var province = $("#mm_emp_provinceId").val();
+    var city = $("#mm_emp_cityId").val();
+    var mm_emp_countryId = $("#mm_emp_countryId").val();
+    var mm_emp_regtime = $("#mm_emp_regtime").val();
+    var is_daoqi = $("#is_daoqi").val();
     if(_index <= ${page.pageCount} && _index >= 1){
-      window.location.href="#module=/emp/list&page="+page+"&size="+size+"&mm_emp_type="+mm_emp_type
+      alert("searchIndex");
+      window.location.href="#module=/emp/list&page="+_index+"&size="+size+"&mm_emp_type="+mm_emp_type+"&keyword="+keywords
       +"&mm_emp_company_type="+mm_emp_company_type
       +"&mm_level_id="+mm_level_id
+      +"&mm_emp_provinceId="+province
+      +"&mm_emp_cityId="+city
+      +"&mm_emp_countryId="+mm_emp_countryId
+      +"&mm_emp_regtime="+mm_emp_regtime
+      +"&is_daoqi="+is_daoqi
       +"&ischeck="+ischeck;
     }else{
       alert("请输入1-${page.pageCount}的页码数");
@@ -316,16 +361,28 @@
   function nextPage(_page) {
     var page = parseInt(_page);
     var size = $("#size").val();
+    var keywords = $("#keywords").val();
     var mm_emp_type = $("#mm_emp_type").val();
     var mm_emp_company_type = $("#mm_emp_company_type").val();
     var mm_level_id = $("#mm_level_id").val();
     var ischeck = $("#ischeck").val();
+    var province = $("#mm_emp_provinceId").val();
+    var city = $("#mm_emp_cityId").val();
+    var mm_emp_countryId = $("#mm_emp_countryId").val();
+    var mm_emp_regtime = $("#mm_emp_regtime").val();
+    var is_daoqi = $("#is_daoqi").val();
+
     addCookie("contract_size", size, 36);
     if ((page <= ${page.pageCount} && page >= 1)) {
-      window.location.href="#module=/emp/list&page="+page+"&size="+size
+      window.location.href="#module=/emp/list&page="+page+"&size="+size+"&keyword="+keywords
       +"&mm_emp_type="+mm_emp_type
       +"&mm_emp_company_type="+mm_emp_company_type
       +"&mm_level_id="+mm_level_id
+      +"&mm_emp_provinceId="+province
+      +"&mm_emp_cityId="+city
+      +"&mm_emp_countryId="+mm_emp_countryId
+      +"&mm_emp_regtime="+mm_emp_regtime
+      +"&is_daoqi="+is_daoqi
       +"&ischeck="+ischeck;
     } else {
       alert("请输入1-${page.pageCount}的页码数");
@@ -335,23 +392,33 @@
   function searchOrder(_page){
     var page = parseInt(_page);
     var size = $("#size").val();
+    var keywords = $("#keywords").val();
     var mm_emp_type = $("#mm_emp_type").val();
     var mm_emp_company_type = $("#mm_emp_company_type").val();
     var mm_level_id = $("#mm_level_id").val();
     var ischeck = $("#ischeck").val();
+    var province = $("#mm_emp_provinceId").val();
+    var city = $("#mm_emp_cityId").val();
+    var mm_emp_countryId = $("#mm_emp_countryId").val();
+    var mm_emp_regtime = $("#mm_emp_regtime").val();
+    var is_daoqi = $("#is_daoqi").val();
+
     addCookie("contract_size", size, 36);
     if ((page <= ${page.pageCount} && page >= 1)) {
-      window.location.href="#module=/emp/list&page="+page+"&size="+size
+      window.location.href="#module=/emp/list&page="+page+"&size="+size+"&keyword="+keywords
       +"&mm_emp_type="+mm_emp_type
       +"&mm_emp_company_type="+mm_emp_company_type
       +"&mm_level_id="+mm_level_id
+      +"&mm_emp_provinceId="+province
+      +"&mm_emp_cityId="+city
+      +"&mm_emp_countryId="+mm_emp_countryId
+      +"&mm_emp_regtime="+mm_emp_regtime
+      +"&is_daoqi="+is_daoqi
       +"&ischeck="+ischeck;
     } else {
       alert("请输入1-${page.pageCount}的页码数");
     }
   }
-
-
 
   function selectCitys(){
     var citys = ${listCitysAll};
@@ -390,8 +457,6 @@
     var mm_emp_countryId = $("#mm_emp_countryId").val();
 
   };
-
-
 
   function checkAll() {
     var all = document.getElementsByName("allmails")[0];
@@ -480,7 +545,6 @@
     }
   }
 
-
   function P_Login_Select(_type){
     //登陆
     var select_id = '';
@@ -559,7 +623,6 @@
     }
   }
 
-
   function P_fabuqg_Select(_type){
     //发布求购
     var select_id = '';
@@ -599,7 +662,79 @@
     }
   }
 
+  function P_delete_Select(_type){
+    //批量删除用户
+    var select_id = '';
+    var select = document.getElementsByName("checkbox_one");
+    for (var i = 0; i < select.length; i++) {
+      if(select[i].checked == true){
+        select_id = select_id+select[i].id +',';
+      }
+    }
+    if(select_id == ''){
+      alert('请选择数据！');
+      return
+    }else{
+      if(confirm("确定要批量删除所选择的用户吗？")){
+        $.ajax({
+          url:"/emp/pDeleteEmpAction.do",
+          data:{"ids":select_id},
+          type:"POST",
+          success:function(_data){
+            var data = $.parseJSON(_data);
+            if(data.success){
+                alert("批量删除用户成功！");
+              //刷新当前页
+              window.location.reload();
+            }else{
+              var _case = {1:"批量处理失败"};
+              alert(_case[data.code])
+            }
+          }
+        });
+      }
+    }
+  }
 
+  function P_daoru_Select(_type){
+    window.location.href="#module=/data/toAdd";
+  }
+
+  function P_daoqinotice_Select(){
+    var select_id = '';
+    var select = document.getElementsByName("checkbox_one");
+    for (var i = 0; i < select.length; i++) {
+      if(select[i].checked == true){
+        select_id = select_id+select[i].id +',';
+      }
+    }
+    if(select_id == ''){
+      alert('请选择数据！');
+      return
+    }else{
+      if(confirm("确定要给选中的用户发布到期VIP通知吗？")){
+        $.ajax({
+          url:"/emp/pFabuNoticeAction.do",
+          data:{"ids":select_id},
+          type:"POST",
+          success:function(_data){
+            var data = $.parseJSON(_data);
+            if(data.success){
+              if(_type == '0'){
+                alert("批量发布VIP到期通知成功！");
+              }
+              if(_type == '1'){
+                alert("批量发布VIP到期通知！");
+              }
+            }else{
+              var _case = {1:"批批量发布VIP到期通知失败"};
+              alert(_case[data.code])
+            }
+          }
+        });
+      }
+    }
+  }
 </script>
 
 

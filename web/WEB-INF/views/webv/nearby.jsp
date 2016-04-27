@@ -65,8 +65,6 @@
 						</div>
 					</div>
 				</div>
-
-
 			</div>
 		</c:forEach>
 
@@ -116,7 +114,7 @@
 	<div class="toolbar">
 		<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell"></a>
-		<a href="javaScript:void(0)" onclick="toPage('/webvRecommend/toRecommend.do','1')" class="recommend"></a>
+		<a href="javaScript:void(0)" onclick="toPage('/webvTopController/toTop.do','1')" class="recommend"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')" class="mine mine-active"></a>
 	</div>
 	<!-- TOOLBAR -->
@@ -165,17 +163,6 @@
 		window.location.href="/webvRecordController/toDetail.do?mm_msg_id="+_mm_msg_id;
 	}
 
-	function telClick(_mobile){
-		//先判断是否登录
-		var is_login = $("#is_login").val();
-		if(is_login == 1){
-			//登陆了
-			alert(_mobile);
-		}else{
-			//没登陆
-			alert("请先登录");
-		}
-	}
 
 	function login(){
 		//登录页面跳转

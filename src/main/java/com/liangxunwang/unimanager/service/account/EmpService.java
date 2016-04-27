@@ -51,7 +51,14 @@ public class EmpService implements ListService , UpdateService , ExecuteService{
         if (!StringUtil.isNullOrEmpty(query.getIscheck())) {
             map.put("ischeck", query.getIscheck());
         }
+        if (!StringUtil.isNullOrEmpty(query.getKeyword())) {
+            map.put("keyword", query.getKeyword());
+        }
+        if (!StringUtil.isNullOrEmpty(query.getIs_daoqi())) {
+            map.put("is_daoqi", query.getIs_daoqi());
+            //判断三天之内的即将到期的，需要传递当前日期的毫秒值和三天之后的毫秒值
 
+        }
 
         //分地区管理
         if(!StringUtil.isNullOrEmpty(query.getMm_emp_provinceId())){
@@ -62,6 +69,16 @@ public class EmpService implements ListService , UpdateService , ExecuteService{
         }
         if(!StringUtil.isNullOrEmpty(query.getMm_emp_countryId())){
             map.put("mm_emp_countryId", query.getMm_emp_countryId());
+        }
+
+        //判断是否今日注册量
+        if(!StringUtil.isNullOrEmpty(query.getMm_emp_regtime())){
+            if("0".equals(query.getMm_emp_regtime())){
+                //不限时间
+                map.put("mm_emp_regtime", "");
+            }else if("1".equals(query.getMm_emp_regtime())){
+                map.put("mm_emp_regtime", DateUtil.getDateAndTimeTwo());
+            }
         }
 
         List<EmpVO> lists = empDao.listMemberByName(map);

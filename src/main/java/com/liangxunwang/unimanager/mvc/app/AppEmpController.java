@@ -17,13 +17,14 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
- * Created by liuzh on 2015/8/12.
+ * Created by zhl on 2015/8/12.
  */
 @Controller
 public class AppEmpController extends ControllerConstants {
@@ -132,6 +133,51 @@ public class AppEmpController extends ControllerConstants {
             return toJSONString(ERROR_1);
         }
     }
+
+    @Autowired
+    @Qualifier("appEmpService")
+    private ExecuteService appEmpServiceExe;
+
+    @RequestMapping(value = "/getMemberByMobile", produces = "text/plain;charset=UTF-8;")
+    @ResponseBody
+    public String getMemberByMobile(String mm_emp_mobile) throws Exception {
+        try {
+            //查看该会员信息
+            EmpVO empVO = (EmpVO) appEmpServiceExe.execute(mm_emp_mobile);
+            if(empVO != null){
+                //说明该手机号已经注册了
+                DataTip tip = new DataTip();
+                tip.setData(empVO);
+                return toJSONString(tip);
+            }else {
+                return toJSONString(ERROR_1);
+            }
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+        }
+    }
+
+
+    @Autowired
+    @Qualifier("appEmpBaiduService")
+    private UpdateService appEmpBaiduService;
+
+    @RequestMapping("/updatePushId")
+    @ResponseBody
+    public String updatePushId(@RequestParam String id, @RequestParam String userId, @RequestParam String channelId, @RequestParam String type){
+        if (StringUtil.isNullOrEmpty(id) || StringUtil.isNullOrEmpty(userId) || StringUtil.isNullOrEmpty(channelId)|| StringUtil.isNullOrEmpty(type)){
+            return toJSONString(ERROR_1);
+        }
+        Object[] params = new Object[]{id, userId, channelId, type};
+        try {
+            appEmpBaiduService.update(params);
+            return toJSONString(SUCCESS);
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+
+        }
+    }
+
 
 
 }

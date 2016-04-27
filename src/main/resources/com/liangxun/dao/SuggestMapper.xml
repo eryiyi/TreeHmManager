@@ -25,7 +25,7 @@
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.SuggestObj">
         INSERT INTO mm_suggest(mm_suggest_id, mm_suggest_cont, mm_emp_id, dateline)
-        VALUES (#{mm_suggest_id}, #{mm_suggest_cont}, #{mm_emp_id}, #{dateline})
+        VALUES (#{mm_suggest_id}, #{mm_suggest_cont ,jdbcType=VARCHAR}, #{mm_emp_id}, #{dateline})
     </insert>
 
 

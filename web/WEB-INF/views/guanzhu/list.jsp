@@ -47,7 +47,7 @@
           <input type="hidden"  value="${mm_msg_type}"  id="mm_msg_type">
           <div class="form-group">
             <div class="col-sm-4">
-              <input type="text" placeholder="姓名" id="keywords" class="form-control"  data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+              <input type="text" placeholder="用户名" value="${query.keyword}" id="keywords" class="form-control"  data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
           <div class="form-group">
@@ -91,7 +91,7 @@
               <td>
                 <c:if test="${e.ischeck=='0'}">未审核</c:if>
                 <c:if test="${e.ischeck=='1'}">已审核</c:if>
-                <c:if test="${e.ischeck=='1'}">不通过</c:if>
+                <c:if test="${e.ischeck=='2'}">不通过</c:if>
               </td>
               <td>
                 <a class="btn btn-default btn-sm"  href="#module=/guanzhu/edit&mm_guanzhu_id=${e.mm_guanzhu_id}" role="button">管理</a>

@@ -1,12 +1,21 @@
 package com.liangxunwang.unimanager.query;
 
 /**
- * Created by liuzwei on 2015/1/31.
+ * Created by zhl on 2015/1/31.
  */
 public class BaseAreaQuery {
     private String mm_emp_provinceId;
     private String mm_emp_cityId;
     private String mm_emp_countryId;
+    private String is_use;
+
+    public String getIs_use() {
+        return is_use;
+    }
+
+    public void setIs_use(String is_use) {
+        this.is_use = is_use;
+    }
 
     public String getMm_emp_provinceId() {
         return mm_emp_provinceId;

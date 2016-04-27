@@ -38,4 +38,6 @@ public interface WeixinDao {
      */
     public WeixinObj findById(String mm_tel_id);
 
+    //删除
+    void delete(String mm_weixin_id);
 }

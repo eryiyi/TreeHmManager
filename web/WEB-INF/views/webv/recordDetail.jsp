@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>${recordVO.mm_emp_company}${recordVO.mm_msg_title}${recordVO.mm_msg_title}</title>
+	<title>详情</title>
 	<meta name="Keywords" content="花木通,花木,花草,苗联通,白蜡,园林,惠民皂户李镇,苗木协会" />
 	<meta name="Description" content="花木通是最优秀的花木信息软件，为客户提供最优质的服务" />
 	<meta property="og:title" content="花木通_详细信息"  />
@@ -33,7 +33,7 @@
 		<!-- HEADING -->
 		<div class="heading clearfix">
 			<a href="javascript:history.back()" class="back"><img src="/img/tree_icons_back.png" alt=""></a>
-			<h1 class="head-title">${recordVO.mm_emp_company}&nbsp;&nbsp;${recordVO.mm_emp_nickname}</h1>
+			<h1 class="head-title">详情</h1>
 		</div>
 	</div>
 	<!-- CONTENT -->
@@ -46,16 +46,16 @@
 				<a href="/webvProfile/toProfile.do?mm_emp_id=${recordVO.mm_emp_id}"  class="left clearfix">
 					<img src="${recordVO.mm_emp_cover}" alt="" class="head-pic">
 					<div class="detail">
-						<h1 class="company">${recordVO.mm_emp_company} &nbsp;&nbsp;${recordVO.mm_emp_nickname}</h1>
+						<h1 class="company" >${recordVO.mm_emp_company} &nbsp;${recordVO.mm_emp_nickname}</h1>
 						<h3 class="time">${recordVO.dateline}</h3>
 					</div>
 				</a>
 				<div class="right">
-					<div class="top">
+					<div class="top clearfix">
 						<c:if test="${recordVO.is_miaomu=='1'}"><img src="/img/tree_icons_trust.png" alt=""></c:if>
 						<c:if test="${recordVO.is_chengxin=='1'}"><img src="/img/tree_icons_group.png" alt=""></c:if>
 					</div>
-					<div class="botton">
+					<div class="botton clearfix">
 						<c:if test="${recordVO.mm_level_num=='0'}"><img src="/img/tree_icons_star_1.png" alt=""></c:if>
 						<c:if test="${recordVO.mm_level_num=='1'}"><img src="/img/tree_icons_star_2.png" alt=""></c:if>
 						<c:if test="${recordVO.mm_level_num=='2'}"><img src="/img/tree_icons_star_3.png" alt=""></c:if>
@@ -69,7 +69,7 @@
 				<div class="img-holder clearfix">
 
 					<c:forEach items="${pics}" var="e" varStatus="st">
-						<a href="javaScript:void(0)"><img src="${e}" alt=""></a>
+						<a href="${e}" target="_blank"><img src="${e}" alt=""></a>
 					</c:forEach>
 
 				</div>
@@ -79,17 +79,17 @@
 				<a class="button-fav" href="javaScript:void(0)" onclick="favourClick('${recordVO.mm_msg_id}')"></a>
 				<a href="javaScript:void(0)" onclick="reportClick('${recordVO.mm_emp_id}','${recordVO.mm_msg_id}')" class="button-report"></a>
 			</div>
-			<a href="javaScript:void(0)" onclick="telClick(${recordVO.mm_emp_mobile})" class="button-phone-big clearfix">
-				<img src="/img/tree_button_icon_phone.png" alt="" class="phone-icon">
-				<h2 class="phone-number">${recordVO.mm_emp_mobile}</h2>
+			<a href="tel:(${recordVO.mm_emp_mobile}"  class="button-phone-big clearfix">
+				<%--<img src="/img/tree_button_icon_phone.png" alt="" class="phone-icon">--%>
+				<h2 class="phone-number">${recordVO.mm_emp_nickname} ${recordVO.mm_emp_mobile}</h2>
 			</a>
 		</div>
 	</div>
 	<!-- TOOLBAR -->
 	<div class="toolbar">
-		<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy buy-active"></a>
+		<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell"></a>
-		<a href="javaScript:void(0)" onclick="toPage('/webvRecommend/toRecommend.do','1')" class="recommend"></a>
+		<a href="javaScript:void(0)" onclick="toPage('/webvTopController/toTop.do','1')" class="recommend"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')" class="mine"></a>
 	</div>
 	<!-- TOOLBAR -->
@@ -126,19 +126,6 @@
 					}
 				}
 			});
-		}else{
-			//没登陆
-			alert("请先登录");
-		}
-	}
-
-
-	function telClick(_mobile){
-		//先判断是否登录
-		var is_login = $("#is_login").val();
-		if(is_login == 1){
-			//登陆了
-			alert(_mobile);
 		}else{
 			//没登陆
 			alert("请先登录");

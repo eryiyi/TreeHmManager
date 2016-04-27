@@ -17,7 +17,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by liuzwei on 2015/1/31.
+ * Created by zhl on 2015/1/31.
  */
 @Controller
 public class UploadUnCompressImageController extends ControllerConstants {
@@ -35,7 +35,7 @@ public class UploadUnCompressImageController extends ControllerConstants {
         if(fileName != null && !"".equals(fileName)) {
             String type = fileName.substring(fileName.lastIndexOf("."), fileName.length()); //上传文件类型
             //判断上传文件是否符合上传图片格式
-            if(!".jpg".equals(type) && !".png".equals(type) && !".gif".equals(type) && !".bmp".equals(type) && !".jpeg".equals(type)  && !".3gp".equals(type)  && !".mp4".equals(type)) {
+            if(!".xls".equals(type) && !".jpg".equals(type) && !".png".equals(type) && !".gif".equals(type) && !".bmp".equals(type) && !".jpeg".equals(type)  && !".3gp".equals(type)  && !".mp4".equals(type)) {
                 return toJSONString(ERROR_2);
             }
             newFileName = String.valueOf(System.currentTimeMillis()) + fileName.subSequence(fileName.lastIndexOf("."), fileName.length());

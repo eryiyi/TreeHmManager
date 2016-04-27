@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by liuzwei on 2015/3/3.
+ * Created by zhl on 2015/3/3.
  */
 @Service("webVRecordService")
 public class WebVRecordService implements ListService,DeleteService,ExecuteService,UpdateService {
@@ -42,7 +42,6 @@ public class WebVRecordService implements ListService,DeleteService,ExecuteServi
         map.put("index", index);
         map.put("size", size);
 
-
         if (!StringUtil.isNullOrEmpty(query.getMm_msg_type())) {
             map.put("mm_msg_type", query.getMm_msg_type());
         }
@@ -54,46 +53,55 @@ public class WebVRecordService implements ListService,DeleteService,ExecuteServi
             map.put("mm_emp_id", query.getMm_emp_id());
         }
 
-        if(!StringUtil.isNullOrEmpty(query.getIs_select_countryId())){
-            //说明要查看某一县区的信息
-            map.put("countryid", query.getIs_select_countryId());
-        }else{
-            //权限管理
-            if(!StringUtil.isNullOrEmpty(query.getMm_level_num())){
-                //存在等级
-                switch (Integer.parseInt(query.getMm_level_num())){
-                    case 0:
-                        if (!StringUtil.isNullOrEmpty(query.getCountryid())) {
-                            map.put("countryid", query.getCountryid());
-                        }
-                        break;
-                    case 1:
-                        if (!StringUtil.isNullOrEmpty(query.getCityid())) {
-                            map.put("cityid", query.getCityid());
-                        }
-                        break;
-                    case 2:
-                        if (!StringUtil.isNullOrEmpty(query.getProvinceid())) {
-                            map.put("provinceid", query.getProvinceid());
-                        }
-                        break;
-                    case 3:
-                        //全国
-                        break;
-                    case 4:
-                        //全国
-                        break;
+        if("1".equals(query.getIs_guanzhu())){
+            //如果是1 说明是关注的区域,要查询关注的那几个县区的信息
+            map.put("countryid", query.getCountryid());
+            map.put("is_guanzhu", "1");
+        }else {
+            if(!StringUtil.isNullOrEmpty(query.getIs_select_countryId())){
+                //说明要查看某一县区的信息
+                map.put("countryid", query.getIs_select_countryId());
+            }else{
+                //权限管理
+                if(!StringUtil.isNullOrEmpty(query.getMm_level_num())){
+                    //存在等级
+                    switch (Integer.parseInt(query.getMm_level_num())){
+                        case 0:
+                            if (!StringUtil.isNullOrEmpty(query.getCountryid())) {
+                                map.put("countryid", query.getCountryid());
+                                map.put("is_guanzhu", "0");
+                            }
+                            break;
+                        case 1:
+                            if (!StringUtil.isNullOrEmpty(query.getCityid())) {
+                                map.put("cityid", query.getCityid());
+                            }
+                            break;
+                        case 2:
+                            if (!StringUtil.isNullOrEmpty(query.getProvinceid())) {
+                                map.put("provinceid", query.getProvinceid());
+                            }
+                            break;
+                        case 3:
+                            //全国
+                            break;
+                        case 4:
+                            //全国
+                            break;
+                    }
+                }else {
+                    if (!StringUtil.isNullOrEmpty(query.getCountryid())) {
+                        map.put("countryid", query.getCountryid());
+                        map.put("is_guanzhu", "0");
+                    }
                 }
-            }else {
-                if (!StringUtil.isNullOrEmpty(query.getCountryid())) {
-                    map.put("countryid", query.getCountryid());
+                //查看所有信息权限	0默认不允许 1允许
+                if("1".equals(query.getIs_see_all())){
+                    map.put("countryid", "");
+                    map.put("cityid", "");
+                    map.put("provinceid", "");
+                    map.put("is_guanzhu", "0");
                 }
-            }
-            //查看所有信息权限	0默认不允许 1允许
-            if("1".equals(query.getIs_see_all())){
-                map.put("countryid", "");
-                map.put("cityid", "");
-                map.put("provinceid", "");
             }
         }
 
@@ -190,7 +198,9 @@ public class WebVRecordService implements ListService,DeleteService,ExecuteServi
             }
             recordVO.setMm_msg_picurl(buffer.toString());
         }
-        recordVO.setDateline(RelativeDateFormat.format(Long.parseLong(recordVO.getDateline())));
+        if(!StringUtil.isNullOrEmpty(recordVO.getDateline())){
+            recordVO.setDateline(RelativeDateFormat.format(Long.parseLong(recordVO.getDateline())));
+        }
         return recordVO;
     }
 

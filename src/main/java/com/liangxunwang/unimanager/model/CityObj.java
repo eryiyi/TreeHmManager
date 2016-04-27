@@ -10,6 +10,24 @@ public class CityObj {
     private String father;
     private String citynum;
     private String msgNum;
+    private String is_use;
+    private String topnum;
+
+    public String getTopnum() {
+        return topnum;
+    }
+
+    public void setTopnum(String topnum) {
+        this.topnum = topnum;
+    }
+
+    public String getIs_use() {
+        return is_use;
+    }
+
+    public void setIs_use(String is_use) {
+        this.is_use = is_use;
+    }
 
     public String getMsgNum() {
         return msgNum;

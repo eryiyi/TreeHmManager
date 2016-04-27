@@ -39,6 +39,26 @@
 	</div>
 	<!-- CONTENT -->
 	<div class="content w95">
+
+
+		<c:if test="${is_guanzhu=='0'}"><span>您已经申请了关注区域！请等待管理员审核</span></c:if>
+		<c:if test="${is_guanzhu=='1'}">
+			<ul class="location-list clearfix">
+				<c:forEach items="${areaNames}" var="e" varStatus="st">
+					<li>
+						<a href="/webvGuanzhuController/guanzhuArea.do?page=1">
+							<span class="list-name">${e}</span>
+						</a>
+					</li>
+				</c:forEach>
+			</ul>
+
+		</c:if>
+		<c:if test="${is_guanzhu=='2'}"><span>您申请的关注区域未通过审核，请联系客服！</span></c:if>
+		<c:if test="${is_guanzhu=='3'}"><span>您尚未申请关注区域，请设置关注区域！</span></c:if>
+
+
+
 		<ul class="location-list clearfix">
 			<c:forEach items="${list}" var="e" varStatus="st">
 				<li>
@@ -49,6 +69,8 @@
 				</li>
 			</c:forEach>
 		</ul>
+
+
 	</div>
 </div>
 </body>

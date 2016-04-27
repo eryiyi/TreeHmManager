@@ -16,6 +16,7 @@
   }
 }
 .heading {
+  position: relative;
   height: 50px;
   background-color: #fff;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
@@ -36,19 +37,31 @@
 .heading .icon-group {
   text-align: center;
   box-sizing: border-box;
-  width: 30%;
+  width: 20%;
   float: left;
   padding: 15px 10px;
   height: 20px;
 }
-.heading .icon-group i {
-  float: left;
+.heading .icon-add {
+  text-align: center;
+  box-sizing: border-box;
+  width: 15%;
+  float: right;
+  margin: 3px 0;
+  padding: 15px 10px;
   height: 20px;
-  width: 20px;
-  background: url("/img/tree_icons_location.png") no-repeat;
-  background-size: contain;
-  background-position: center;
+  font-size: 14px;
 }
+
+/*.heading .icon-group i {*/
+  /*float: left;*/
+  /*height: 20px;*/
+  /*width: 20px;*/
+  /*background: url("/img/tree_icons_location.png") no-repeat;*/
+  /*background-size: contain;*/
+  /*background-position: center;*/
+/*}*/
+
 .heading .icon-group span {
   float: left;
   height: 20px;
@@ -63,7 +76,7 @@
   float: left;
   margin: 5px 0;
   background-color: #F2F2F2;
-  border-radius: 30px;
+  border-radius: 5px;
 }
 .heading .search-bar input {
   font-size: 1em;
@@ -73,8 +86,8 @@
   padding: 5px 0 5px 5%;
   color: #444;
   background-color: transparent;
-  height: 30px;
-  line-height: 30px;
+  height: 40px;
+  line-height: 40px;
 }
 .heading .search-bar button {
   background-color: #7CD43A;
@@ -82,8 +95,8 @@
   font-weight: bold;
   float: left;
   font-size: 14px;
-  border-radius: 30px;
-  width: 20%;
+  border-radius: 5px;
+  width: 25%;
   height: 40px;
 }
 .heading .search-bar button:active {
@@ -158,6 +171,71 @@
   background: url("/img/tree_toolbar_user_p.png") no-repeat center center;
   background-size: 50px;
 }
+.toolbar-2 {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid #cccccc;
+  background-color: #fff;
+}
+.toolbar-2::after {
+  content: '';
+  display: block;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+.toolbar-2 a {
+  display: block;
+  float: left;
+  width: 50%;
+  height: 60px;
+}
+.toolbar-2 .buy {
+  background: url("/img/tree_toolbar_wanted.png") no-repeat center center;
+  background-size: 50px;
+}
+.toolbar-2 .buy:active {
+  background-color: #cccccc;
+}
+.toolbar-2 .buy-active {
+  background: url("/img/tree_toolbar_wanted_p.png") no-repeat center center;
+  background-size: 50px;
+}
+.toolbar-2 .sell {
+  background: url("/img/tree_toolbar_sell.png") no-repeat center center;
+  background-size: 50px;
+}
+.toolbar-2 .sell:active {
+  background-color: #cccccc;
+}
+.toolbar-2 .sell-active {
+  background: url("/img/tree_toolbar_sell_p.png") no-repeat center center;
+  background-size: 50px;
+}
+.toolbar-2 .recommend {
+  background: url("/img/tree_toolbar_star.png") no-repeat center center;
+  background-size: 50px;
+}
+.toolbar-2 .recommend:active {
+  background-color: #cccccc;
+}
+.toolbar-2 .recommend-active {
+  background: url("/img/tree_toolbar_star_p.png") no-repeat center center;
+  background-size: 50px;
+}
+.toolbar-2 .mine {
+  background: url("/img/tree_toolbar_user.png") no-repeat center center;
+  background-size: 50px;
+}
+.toolbar-2 .mine:active {
+  background-color: #cccccc;
+}
+.toolbar-2 .mine-active {
+  background: url("/img/tree_toolbar_user_p.png") no-repeat center center;
+  background-size: 50px;
+}
 .button-phone-big {
   display: inline-block;
   border-radius: 50px;
@@ -186,4 +264,32 @@
 .button-phone-big:active .phone-number {
   font-size: 1rem;
   color: #fff;
+}
+.imgbox {
+  float: right;
+  margin-right: 22px;
+}
+.imgboxtxt {
+  z-index: 1000;
+  border-radius: 8px;
+  position: absolute;
+  right: 0;
+  width: 80px;
+  padding: 10px 0;
+  /*margin-top: 40px;*/
+  margin-top: -9px;
+  text-align: center;
+  background-color: #7CD43A;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+}
+.imgboxtxt a {
+  padding: 8px 0;
+  display: block;
+  line-height: 200%;
+  font-size: 1rem;
+  color: #fff;
+}
+.imgboxtxt a:active {
+  background-color: #fff;
+  background-color: #00A072;
 }

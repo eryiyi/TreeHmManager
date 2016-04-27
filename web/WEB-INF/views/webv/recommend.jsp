@@ -86,20 +86,21 @@
 							<%--<a class="bds_count" data-cmd="count"></a>--%>
 						<%--</div>--%>
 					<%--</div>--%>
-					<a type="button" href="javaScript:void(0)" onclick="telClick(${e.mm_emp_mobile})" class="button-phone"></a>
+					<a type="button" href="tel:${e.mm_emp_mobile}"  class="button-phone"></a>
 					<a type="button" href="javaScript:void(0)" onclick="favourClick('${e.mm_msg_id}')" class="button-fav"></a>
-					<c:if test="${e.mm_msg_picurl !=''}"><a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-pic"></a></c:if>
+					<c:if test="${e.mm_msg_picurl !='' && e.mm_msg_picurl != null}"><a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-pic"></a></c:if>
 
 				</div>
 			</div>
 		</c:forEach>
 
-		<c:if test="${is_login=='1'}"><a href="/html/download.html" class="warning" target="_blank">下载客户端以查看更多内容...</a></c:if>
+		<c:if test="${is_login=='1'}"><a href="/html/download.html" class="warning" target="_blank">下载安卓APP可以查看更多内容...</a></c:if>
 		<c:if test="${is_login=='0'}"><a href="/webvLoginController/toLogin.do" class="warning">请先登录...</a></c:if>
 
 		<c:if test="${is_login=='1'}">
-			<div class="page-num clearfix">
-				<div class="brief hide-phone">
+			<!--分页信息，页面跳转-->
+			<div class="page clearfix">
+				<div class="left hide-phone">
 					<a><span>共${page.count}条/${page.pageCount}页</span></a>
 					<a>每页显示
 						<select name="size" id="size" onchange="nextPage('1')">
@@ -110,7 +111,7 @@
 						</select>条
 					</a>
 				</div>
-				<div class="page-nav fr-screen clearfix">
+				<div class="right">
 					<c:choose >
 						<c:when test="${page.page == 1}">
 							<a href="javascript:void(0)">首页</a>
@@ -141,7 +142,7 @@
 	<div class="toolbar">
 		<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell"></a>
-		<a href="javaScript:void(0)" onclick="toPage('/webvRecommend/toRecommend.do','1')" class="recommend recommend-active"></a>
+		<a href="javaScript:void(0)" onclick="toPage('/webvTopController/toTop.do','1')" class="recommend recommend-active"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')" class="mine"></a>
 	</div>
 	<!-- TOOLBAR -->
@@ -188,18 +189,6 @@
 
 	function showDetail(_mm_msg_id){
 		window.location.href="/webvRecordController/toDetail.do?mm_msg_id="+_mm_msg_id;
-	}
-
-	function telClick(_mobile){
-		//先判断是否登录
-		var is_login = $("#is_login").val();
-		if(is_login == 1){
-			//登陆了
-			alert(_mobile);
-		}else{
-			//没登陆
-			alert("请先登录");
-		}
 	}
 
 	function login(){

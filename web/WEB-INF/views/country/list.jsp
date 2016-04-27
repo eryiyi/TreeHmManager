@@ -43,6 +43,26 @@
         <div class="no-move"></div>
       </div>
       <div class="box-content">
+        <form class="form-inline">
+          <div class="form-group">
+            <select class="form-control w12" id="is_use">
+              <option value="">--显示隐藏状态--</option>
+              <option value="0" ${query.is_use=='0'?'selected':''}>隐藏</option>
+              <option value="1" ${query.is_use=='1'?'selected':''}>显示</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <select class="form-control w12" id="father">
+              <option value="">--选择城市--</option>
+              <c:forEach items="${listCitys}" var="e" varStatus="st">
+                <option value="${e.cityID}" ${query.father == e.cityID?'selected':''}>${e.city}</option>
+              </c:forEach>
+            </select>
+          </div>
+
+          <button type="submit" onclick="searchOrder()" class="btn form-control btn-warning btn-sm btn-block">查找</button>
+        </form>
+
         <table class="table">
           <thead>
           <tr>
@@ -50,6 +70,8 @@
             <th>县区</th>
             <th>所属城市</th>
             <th>信息数量</th>
+            <th>是否显示</th>
+            <th>操作</th>
           </tr>
           </thead>
           <tbody>
@@ -59,6 +81,11 @@
               <td>${e.area}</td>
               <td>${e.cityName}</td>
               <td>${e.msgNum}</td>
+              <c:if test="${e.is_use=='0'}"><td>隐藏</td></c:if>
+              <c:if test="${e.is_use=='1'}"><td>显示</td></c:if>
+              <td>
+                <a class="btn btn-default btn-sm" href="#module=/country/edit&id=${e.id}" role="button">设置</a>
+              </td>
             </tr>
           </c:forEach>
           </tbody>
@@ -67,3 +94,10 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  function searchOrder(){
+    var is_use = $("#is_use").val();
+    var father = $("#father").val();
+    window.location.href="#module=/country/list&is_use="+is_use +"&father="+father;
+  }
+</script>

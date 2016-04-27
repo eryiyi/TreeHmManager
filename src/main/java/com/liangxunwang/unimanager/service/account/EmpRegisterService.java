@@ -1,7 +1,9 @@
 package com.liangxunwang.unimanager.service.account;
 
 import com.liangxunwang.unimanager.dao.EmpDao;
+import com.liangxunwang.unimanager.dao.ShenheTypeDao;
 import com.liangxunwang.unimanager.model.Emp;
+import com.liangxunwang.unimanager.model.ShenheTypeObj;
 import com.liangxunwang.unimanager.service.SaveService;
 import com.liangxunwang.unimanager.service.ServiceException;
 import com.liangxunwang.unimanager.util.*;
@@ -9,14 +11,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-/**
- * Created by liuzwei on 2015/1/29.
- */
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 @Service("empRegisterService")
 public class EmpRegisterService implements SaveService {
     @Autowired
     @Qualifier("empDao")
     private EmpDao memberDao;
+
+    @Autowired
+    @Qualifier("shenheTypeDao")
+    private ShenheTypeDao shenheTypeDao;
 
     @Override
     public Object save(Object object) {
@@ -31,6 +38,24 @@ public class EmpRegisterService implements SaveService {
         member.setMm_emp_password(new MD5Util().getMD5ofStr(member.getMm_emp_password()));//密码加密
         if(!StringUtil.isNullOrEmpty(member.getMm_emp_endtime())){
             member.setMm_emp_endtime(DateUtil.getMs(member.getMm_emp_endtime(), "yyyy-MM-dd") + "");
+        }
+        member.setMm_level_id("358b1e94e2274685b0badf41e22b85c8");//默认VIP1
+        //判断审核方式
+        Map<String, Object> map = new HashMap<String, Object>();
+        List<ShenheTypeObj> listsShenheType = shenheTypeDao.lists(map);
+        if(listsShenheType != null && listsShenheType.size()>0){
+            ShenheTypeObj shenheTypeObj = listsShenheType.get(0);
+            if(shenheTypeObj != null){
+                if("0".equals(shenheTypeObj.getMm_shenhe_type())){
+                    //自动审核
+                    member.setIscheck("1");//是否审核  0默认否  1已审核
+                }else{
+                    //需要管理员手动审核
+                    member.setIscheck("0");//是否审核  0默认否  1已审核
+                }
+            }
+        }else {
+            member.setIscheck("1");//是否审核  0默认否  1已审核
         }
         try {
             memberDao.save(member);

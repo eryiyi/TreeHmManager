@@ -11,13 +11,12 @@ import com.liangxunwang.unimanager.service.ExecuteService;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.ServiceException;
 import com.liangxunwang.unimanager.service.UpdateService;
-import com.liangxunwang.unimanager.util.Constants;
-import com.liangxunwang.unimanager.util.MD5Util;
-import com.liangxunwang.unimanager.util.StringUtil;
+import com.liangxunwang.unimanager.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -26,12 +25,20 @@ import java.util.Map;
 /**
  */
 @Service("appEmpService")
-public class AppEmpService implements  UpdateService,ListService {
+public class AppEmpService implements  UpdateService,ListService ,ExecuteService{
     @Autowired
     @Qualifier("empDao")
     private EmpDao empDao;
 
-   //修改会员信息
+    @Override
+    public Object execute(Object object) throws Exception {
+        String mobile = (String) object;
+        EmpVO empVO = empDao.findByMobile(mobile);
+        return empVO;
+    }
+
+
+    //修改会员信息
     @Override
     public Object update(Object object) throws ServiceException {
         if (object instanceof Emp){

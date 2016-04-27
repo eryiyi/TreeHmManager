@@ -14,12 +14,19 @@
 
     <select id="lists" resultMap="province">
         SELECT sn.*,(SELECT COUNT(0) FROM mm_msg lmsg WHERE sn.provinceID=lmsg.provinceid ) as msgNum from hat_province sn
+        WHERE 1=1
+        <if test="is_use != null and is_use != ''">
+            AND sn.is_use = #{is_use}
+        </if>
         ORDER by sn.pronum DESC
     </select>
 
     <select id="listsApp" resultMap="province">
         SELECT sn.*,(SELECT COUNT(0) FROM mm_msg lmsg WHERE sn.provinceID=lmsg.provinceid ) as msgNum from hat_province sn
-        WHERE 1=1 AND sn.is_use = '1'
+        WHERE 1=1
+        <if test="is_use != null and is_use != ''">
+            AND sn.is_use = #{is_use}
+        </if>
         ORDER by sn.pronum DESC
     </select>
 

@@ -7,6 +7,7 @@
         <id column="mm_weixin_id" property="mm_weixin_id"/>
         <result column="mm_weixin" property="mm_weixin"/>
         <result column="mm_weixin_name" property="mm_weixin_name"/>
+        <result column="mm_weixin_type" property="mm_weixin_type"/>
     </resultMap>
 
     <select id="lists" resultMap="weixin">
@@ -14,8 +15,8 @@
     </select>
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.WeixinObj">
-        INSERT INTO mm_weixin(mm_weixin_id, mm_weixin, mm_weixin_name)
-        VALUES (#{mm_weixin_id}, #{mm_weixin}, #{mm_weixin_name})
+        INSERT INTO mm_weixin(mm_weixin_id, mm_weixin, mm_weixin_name, mm_weixin_type)
+        VALUES (#{mm_weixin_id}, #{mm_weixin}, #{mm_weixin_name}, #{mm_weixin_type})
     </insert>
 
     <update id="update" parameterType="com.liangxunwang.unimanager.model.WeixinObj">
@@ -27,5 +28,9 @@
         SELECT sn.* FROM mm_weixin sn
           where sn.mm_weixin_id=#{mm_weixin_id}
     </select>
+
+    <delete id="delete" parameterType="String">
+        DELETE FROM mm_weixin where mm_weixin_id = #{mm_weixin_id}
+    </delete>
 
 </mapper>

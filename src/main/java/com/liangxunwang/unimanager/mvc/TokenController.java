@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * Created by liuzh on 2015/9/22.
+ * Created by zhl on 2015/9/22.
  */
 @Controller
 public class TokenController extends ControllerConstants {

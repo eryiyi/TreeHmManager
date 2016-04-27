@@ -40,6 +40,42 @@ public class Emp {
     private String ischeck;
     private String access_token;
     private String is_upate_profile;
+    private String userId;
+    private String channelId;
+    private String deviceType;
+    private String mm_msg_length;
+
+    public String getMm_msg_length() {
+        return mm_msg_length;
+    }
+
+    public void setMm_msg_length(String mm_msg_length) {
+        this.mm_msg_length = mm_msg_length;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getDeviceType() {
+        return deviceType;
+    }
+
+    public void setDeviceType(String deviceType) {
+        this.deviceType = deviceType;
+    }
+
+    public String getChannelId() {
+        return channelId;
+    }
+
+    public void setChannelId(String channelId) {
+        this.channelId = channelId;
+    }
 
     public String getIs_upate_profile() {
         return is_upate_profile;

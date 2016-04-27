@@ -20,9 +20,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by liuzwei on 2015/3/3.
- */
 @Service("kefuTelService")
 public class KefuTelService implements ListService,SaveService , UpdateService, ExecuteService{
 
@@ -34,6 +31,9 @@ public class KefuTelService implements ListService,SaveService , UpdateService, 
     public Object list(Object object) throws ServiceException {
         KefuQuery query = (KefuQuery) object;
         Map<String, Object> map = new HashMap<String, Object>();
+        if(!StringUtil.isNullOrEmpty(query.getMm_emp_countryId())){
+            map.put("mm_emp_countryId", query.getMm_emp_countryId());
+        }
         List<KefuVO> lists = fuwuDao.lists(map);
         return lists;
     }

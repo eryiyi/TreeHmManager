@@ -9,7 +9,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
- * Created by liuzwei on 2015/2/1.
+ * Created by zhl on 2015/2/1.
  */
 public class DateUtil {
 
@@ -80,6 +80,11 @@ public class DateUtil {
        return hehe;
     }
 
-
+    public static String  getDateAndTimeTwo(){
+        Date now = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");//可以方便地修改日期格式
+        String hehe = dateFormat.format( now );
+        return hehe;
+    }
 
 }

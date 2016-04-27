@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by liuzwei on 2015/3/3.
+ * Created by zhl on 2015/3/3.
  */
 @Service("adObjService")
 public class AdObjService implements ListService,SaveService ,DeleteService,ExecuteService, UpdateService{
@@ -31,6 +31,9 @@ public class AdObjService implements ListService,SaveService ,DeleteService,Exec
     public Object list(Object object) throws ServiceException {
         AdQuery query = (AdQuery) object;
         Map<String, Object> map = new HashMap<String, Object>();
+        if(!StringUtil.isNullOrEmpty(query.getMm_ad_type())){
+            map.put("mm_ad_type", query.getMm_ad_type());
+        }
         List<AdObj> lists = leveldDao.lists(map);
         if(lists != null){
             for(AdObj adObj:lists){
@@ -50,7 +53,6 @@ public class AdObjService implements ListService,SaveService ,DeleteService,Exec
     public Object save(Object object) throws ServiceException {
         AdObj adObj = (AdObj) object;
         adObj.setMm_ad_id(UUIDFactory.random());
-        adObj.setMm_ad_type("0");
         leveldDao.save(adObj);
         return null;
     }

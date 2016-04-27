@@ -1,3 +1,6 @@
+<%@ page import="sun.rmi.runtime.Log" %>
+<%@ page import="com.liangxunwang.unimanager.mvc.vo.RecordVO" %>
+<%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="um" uri="/unimanager-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" trimDirectiveWhitespaces="true" %>
@@ -17,6 +20,8 @@
 	<link rel="stylesheet" href="/css/reset.css">
 	<link rel="stylesheet" href="/css/common.css">
 	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/glide.core.min.css">
+	<link rel="stylesheet" href="/css/glide.theme.min.css">
 
 	<script type="text/javascript" src="/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/md5.js"></script>
@@ -24,25 +29,97 @@
 	<script type="text/javascript" src="/js/ajaxfileupload.js"></script>
 	<script type="text/javascript" src="/js/Util.js"></script>
 	<script type="text/javascript" src="/js/validation.js"></script>
+	<script language="javascript" src="/js/jquery.js"></script>
+	<script type="text/javascript" src="/js/jquery_latest.js"></script>
+	<script type="text/javascript" src="/js/glide.min.js"></script>
+	<style type="text/css">
+		.hide{
+			display:none;
+		}
+		.show{
+			display:inline-block;
+		}
+	</style>
+	<script type="text/javascript">
+		/*发布下拉列表*/
+		$(function(){
+			$("#rightpic").click(function(){
+				var isshow=$("#menu").attr("class");
+				if(isshow=="imgboxtxt hide")
+				{
 
+					$("#menu").removeClass("hide");
+					$("#menu").addClass("show");
+				}
+				else
+				{
+					$("#menu").removeClass("show");
+					$("#menu").addClass("hide");
+				}
+			})
+		})
+	</script>
 </head>
 <body>
+<%
+	Cookie cookies[]=request.getCookies(); //读出用户硬盘上的Cookie，并将所有的Cookie放到一个cookie对象数组
+	String cookieName="Sender";
+	Cookie cookie=new Cookie(cookieName, "Test_Content");
+	cookie.setMaxAge(365*24*60*60);
+	response.addCookie(cookie);
+	List<RecordVO> lists = (List<RecordVO>) request.getAttribute("list");
+	for(int i=0;i<lists.size();i++){
+		System.out.print("----------------lists---------------------"+lists.get(i).getMm_emp_nickname());
+	}
+
+
+%>
 <div class="container">
 	<!-- HEADING -->
 	<div class="heading clearfix">
 		<div class="icon-group">
-			<i class="icon"></i>
 			<c:if test="${is_login=='1'}"><span class="location" onclick="selectPro()">${emp.areaName}</span></c:if>
 			<c:if test="${is_login=='0'}"><a href="javaScript:void(0)"><span class="location" onclick="login()">登录</span></a></c:if>
 		</div>
 		<form action="" class="search-bar clearfix">
-			<input type="text" id="keyword" name="keyword" placeholder="关键词:信息标题/手机号/公司名称/联系人">
-			<button onclick="searchIndex(event)">搜索</button>
+			<input type="text" id="keyword" name="keyword" placeholder="标题|手机号|公司名称|联系人">
+			<button onclick="searchIndex(event)" style="float:right ">搜索</button>
 		</form>
-		<button class="new"></button>
+		<div class="icon-add"><a href="javaScript:void(0)" onclick="addMsg()">发布</a></div>
 	</div>
 	<!-- CONTENT -->
 	<div class="content">
+		<c:if test="${listAd !=null && listAd.size() > 0}">
+			<div id="Glide" class="glide">
+				<div class="glide__wrapper">
+					<ul class="glide__track">
+						<c:forEach items="${listAd}" var="e" varStatus="st">
+							<a href="${e.mm_ad_url}" target="_blank"><li class="glide__slide"><img src="${e.mm_ad_pic}" alt="${e.mm_ad_url}"></li></a>
+						</c:forEach>
+					</ul>
+				</div>
+				<div class="glide__bullets"></div>
+			</div>
+			<script>
+				$(function(){
+					$('.glide').glide({
+						mode:'horizontal',     // 幻灯片走向
+						autoplay:5000,         // 自动播放，false为关闭自动播放
+						startAt:0,             // 开始于哪个幻灯片
+						// paddings:'1rem',       // 幻灯片左右的padding 可以是单位，%
+						centered:true,         // 当前幻灯片在slides的中间
+						hoverpause:true,       // 鼠标悬停的时候暂停播放
+						autoheight:false,      // 设置包裹的slider为当前幻灯片的高度
+						keyboard:true,         // 光标方向键使幻灯片左右滑动
+						touchDistance:80,      // 最小手指滑动距离，以触发滑动操作
+						dragDistance:120,      // 最小鼠标拖动距离，以触发滑动操作
+						animationDuration:400 // 动画时间 ms
+					});
+				})
+			</script>
+			<!-- GLIDE SLIDE END -->
+		</c:if>
+
 		<input type="hidden" id="is_login" name="is_login" value="${is_login}">
 		<input type="hidden" id="accessToken" name="accessToken" value="${emp.access_token}">
 		<input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${emp.mm_emp_id}">
@@ -75,31 +152,21 @@
 						${e.mm_msg_content}
 				</a>
 				<div class="item-footer clearfix">
-					<%--<button class="read-status-unread"></button>--%>
-						<%--<div  class="share-left">--%>
-							<%--<div class="bdsharebuttonbox" >--%>
-								<%--<a class="bds_mshare" data-cmd="mshare"></a>--%>
-								<%--<a class="bds_qzone" data-cmd="qzone" href="javaScript:void(0)"></a>--%>
-								<%--<a class="bds_tsina" data-cmd="tsina"></a>--%>
-								<%--<a class="bds_tqq" data-cmd="tqq"></a>--%>
-								<%--<a class="bds_more" data-cmd="more">更多</a>--%>
-								<%--<a class="bds_count" data-cmd="count"></a>--%>
-							<%--</div>--%>
-						<%--</div>--%>
-					<a type="button" href="javaScript:void(0)" onclick="telClick(${e.mm_emp_mobile})" class="button-phone"></a>
+					<a  href="tel:${e.mm_emp_mobile}"  class="button-phone"></a>
 					<a type="button" href="javaScript:void(0)" onclick="favourClick('${e.mm_msg_id}')" class="button-fav"></a>
-					<c:if test="${e.mm_msg_picurl !=''}"><a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-pic"></a></c:if>
+					<c:if test="${e.mm_msg_picurl !='' && e.mm_msg_picurl != nul}"><a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-pic"></a></c:if>
 
 				</div>
 			</div>
 		</c:forEach>
 
-		<c:if test="${is_login=='1'}"><a href="/html/download.html" class="warning" target="_blank">下载客户端以查看更多内容...</a></c:if>
-		<c:if test="${is_login=='0'}"><a href="/webvLoginController/toLogin.do" class="warning">请先登录...</a></c:if>
+		<c:if test="${is_login=='1'}"><a href="/html/download.html" class="warning" target="_blank">下载安卓APP可以查看更多内容...</a></c:if>
+		<c:if test="${is_login=='0'}"><a href="/webvLoginController/toLogin.do" class="warning">查看更多信息，请先注册并登录账号...</a></c:if>
 		<c:if test="${is_login=='1'}">
 
-			<div class="page-num clearfix">
-				<div class="brief hide-phone">
+			<!--分页信息，页面跳转-->
+			<div class="page clearfix">
+				<div class="left hide-phone">
 					<a><span>共${page.count}条/${page.pageCount}页</span></a>
 					<a>每页显示
 						<select name="size" id="size" onchange="nextPage('1')">
@@ -110,7 +177,7 @@
 						</select>条
 					</a>
 				</div>
-				<div class="page-nav fr-screen clearfix">
+				<div class="right">
 					<c:choose >
 						<c:when test="${page.page == 1}">
 							<a href="javascript:void(0)">首页</a>
@@ -135,20 +202,53 @@
 				</div>
 			</div>
 		</c:if>
+
+
 	</div>
 	<!-- TOOLBAR -->
 	<div class="toolbar">
-		<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy buy-active"></a>
-		<a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell"></a>
-		<a href="javaScript:void(0)" onclick="toPage('/webvRecommend/toRecommend.do','1')" class="recommend"></a>
-		<a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')" class="mine"></a>
+		<c:if test="${is_login=='1'}">
+			<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy buy-active"></a>
+			<a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell"></a>
+			<a href="javaScript:void(0)" onclick="toPage('/webvTopController/toTop.do','1')" class="recommend"></a>
+			<a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')" class="mine"></a>
+		</c:if>
+		<c:if test="${is_login=='0'}">
+			<a href="javaScript:void(0)" id="cd-popup-trigger1" class="buy buy-active"></a>
+			<a href="javaScript:void(0)" id="cd-popup-trigger2" class="sell"></a>
+			<a href="javaScript:void(0)" id="cd-popup-trigger3" class="recommend"></a>
+			<a href="javaScript:void(0)" id="cd-popup-trigger4" class="mine"></a>
+		</c:if>
+
 	</div>
 	<!-- TOOLBAR -->
 </div>
 
+<link rel="stylesheet" href="/css/dialog_reset.css"> <!-- CSS reset -->
+<link rel="stylesheet" href="/css/dialog_style.css"> <!-- Resource style -->
+<script src="/js/dialog_main.js"></script> <!-- Resource jQuery -->
+
+<div class="cd-popup" role="alert">
+	<div class="cd-popup-container">
+		<p>请先注册或联系管理员</p>
+		<ul class="cd-buttons">
+			<li><a href="javaScript:void(0)" onclick="reg()">注册</a></li>
+			<li><a href="javaScript:void(0)" onclick="login()">登录</a></li>
+		</ul>
+		<ul style="background: #ffffff;line-height: 45px;">
+			<li><a href="/webvKefuController/toKefu.do">客服中心</a></li>
+		</ul>
+		<a href="javaScript:void(0)" class="cd-popup-close img-replace">关闭</a>
+	</div> <!-- cd-popup-container -->
+</div> <!-- cd-popup -->
+
 </body>
 
 <script>
+	function reg(){
+		//注册页面跳转
+		window.location.href="/webvRegController/toReg.do";
+	}
 	function toPage(_url, _page){
 		if(_page != ''){
 			window.location.href=_url+"?page="+_page;
@@ -189,18 +289,6 @@
 		window.location.href="/webvRecordController/toDetail.do?mm_msg_id="+_mm_msg_id;
 	}
 
-	function telClick(_mobile){
-		//先判断是否登录
-		var is_login = $("#is_login").val();
-		if(is_login == 1){
-			//登陆了
-			alert(_mobile);
-		}else{
-			//没登陆
-			alert("请先登录");
-		}
-	}
-
 	function login(){
 		//登录页面跳转
 		window.location.href="/webvLoginController/toLogin.do";
@@ -209,10 +297,25 @@
 		//页面跳转
 		window.location.href="/webvSelectProvinceController/toSelectProvince.do";
 	}
+
+	function addMsg(){
+		var is_login = $("#is_login").val();
+		if(is_login == 1) {
+			//登陆了
+			if(${emp.is_upate_profile == '1'} ){
+				window.location.href="/webvAddRecordController/toAddRecord.do";
+			}else{
+				window.location.href="/webvProfile/toUpdateProfile.do";
+			}
+
+		}else{
+			//登录页面跳转
+			window.location.href="/webvLoginController/toLogin.do";
+		}
+	}
 </script>
 
 <script type="text/javascript" charset="UTF-8">
-
 	function searchIndex(e){
 		if(e.keyCode != 13) return;
 		var _index = $("#index").val();
@@ -237,7 +340,6 @@
 			alert("请输入1-${page.pageCount}的页码数");
 		}
 	}
-
 </script>
 <script type="text/javascript">
 	(function (window, undefined){
@@ -280,38 +382,6 @@
 		}
 		window.setInterval(checkHash, 100);
 	})(window);
-
-
 </script>
-
-<%--<script>--%>
-	<%--window._bd_share_config = {--%>
-		<%--common : {--%>
-			<%--bdText : '自定义分享内容',--%>
-			<%--bdDesc : '自定义分享摘要',--%>
-			<%--bdUrl : '自定义分享url地址',--%>
-			<%--bdPic : '自定义分享图片'--%>
-		<%--},--%>
-		<%--share : [{--%>
-			<%--"bdSize" : 16--%>
-		<%--}],--%>
-		<%--slide : [{--%>
-			<%--bdImg : 0,--%>
-			<%--bdPos : "right",--%>
-			<%--bdTop : 100--%>
-		<%--}],--%>
-		<%--image : [{--%>
-			<%--viewType : 'list',--%>
-			<%--viewPos : 'top',--%>
-			<%--viewColor : 'black',--%>
-			<%--viewSize : '16',--%>
-			<%--viewList : ['qzone','tsina','huaban','tqq','renren']--%>
-		<%--}],--%>
-		<%--selectShare : [{--%>
-			<%--"bdselectMiniList" : ['qzone','tqq','kaixin001','bdxc','tqf']--%>
-		<%--}]--%>
-	<%--}--%>
-	<%--with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];--%>
-<%--</script>--%>
 
 </html>

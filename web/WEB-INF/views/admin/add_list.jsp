@@ -45,11 +45,16 @@
       <div class="box-content">
         <form class="form-inline">
           <div class="form-group">
+            <div class="col-sm-4">
+              <input type="text" id="keywords" placeholder="用户名 手机号" value="${query.keyword}" id="keywords" class="form-control"  data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+            </div>
+          </div>
+          <div class="form-group">
             <select class="form-control" id="ischeck">
               <option value="">--选择审核状态--</option>
               <option value="0" ${query.ischeck=='0'?'selected':''}>未审核</option>
               <option value="1" ${query.ischeck=='1'?'selected':''}>已审核</option>
-              <option value="1" ${query.ischeck=='2'?'selected':''}>未通过</option>
+              <option value="2" ${query.ischeck=='2'?'selected':''}>未通过</option>
             </select>
           </div>
           <div class="form-group">
@@ -71,7 +76,7 @@
             <select class="form-control" id="mm_level_id">
               <option value="">--选择VIP星级--</option>
               <c:forEach items="${listLevels}" var="e" varStatus="st">
-                <option value="${e.mm_level_id}" ${query.mm_level_id=='0'?'selected':''}>${e.mm_level_name}</option>
+                <option value="${e.mm_level_id}" ${query.mm_level_id == e.mm_level_id?'selected':''}>${e.mm_level_name}</option>
               </c:forEach>
             </select>
           </div>
@@ -179,8 +184,9 @@
     var mm_emp_company_type = $("#mm_emp_company_type").val();
     var mm_level_id = $("#mm_level_id").val();
     var ischeck = $("#ischeck").val();
+    var keywords = $("#keywords").val();
     if(_index <= ${page.pageCount} && _index >= 1){
-      window.location.href="#module=/emp/listAddManager&page="+page+"&size="+size+"&mm_emp_type="+mm_emp_type
+      window.location.href="#module=/emp/listAddManager&page="+page+"&size="+size+"&mm_emp_type="+mm_emp_type+"&keyword="+keywords
       +"&mm_emp_company_type="+mm_emp_company_type
       +"&mm_level_id="+mm_level_id
       +"&ischeck="+ischeck;
@@ -195,9 +201,10 @@
     var mm_emp_company_type = $("#mm_emp_company_type").val();
     var mm_level_id = $("#mm_level_id").val();
     var ischeck = $("#ischeck").val();
+    var keywords = $("#keywords").val();
     addCookie("contract_size", size, 36);
     if ((page <= ${page.pageCount} && page >= 1)) {
-      window.location.href="#module=/emp/listAddManager&page="+page+"&size="+size
+      window.location.href="#module=/emp/listAddManager&page="+page+"&size="+size+"&keyword="+keywords
       +"&mm_emp_type="+mm_emp_type
       +"&mm_emp_company_type="+mm_emp_company_type
       +"&mm_level_id="+mm_level_id
@@ -214,9 +221,10 @@
     var mm_emp_company_type = $("#mm_emp_company_type").val();
     var mm_level_id = $("#mm_level_id").val();
     var ischeck = $("#ischeck").val();
+    var keywords = $("#keywords").val();
     addCookie("contract_size", size, 36);
     if ((page <= ${page.pageCount} && page >= 1)) {
-      window.location.href="#module=/emp/listAddManager&page="+page+"&size="+size
+      window.location.href="#module=/emp/listAddManager&page="+page+"&size="+size+"&keyword="+keywords
       +"&mm_emp_type="+mm_emp_type
       +"&mm_emp_company_type="+mm_emp_company_type
       +"&mm_level_id="+mm_level_id

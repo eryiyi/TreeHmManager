@@ -17,10 +17,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by liuzwei on 2015/3/3.
+ * Created by zhl on 2015/3/3.
  */
 @Service("weixinService")
-public class WeixinService implements ListService,SaveService , UpdateService, ExecuteService{
+public class WeixinService implements ListService,SaveService , UpdateService, ExecuteService,DeleteService{
 
     @Autowired
     @Qualifier("weixinDao")
@@ -53,4 +53,10 @@ public class WeixinService implements ListService,SaveService , UpdateService, E
         return weixinDao.findById((String) object);
     }
 
+    @Override
+    public Object delete(Object object) throws ServiceException {
+        String mm_weixin_id = (String) object;
+        weixinDao.delete(mm_weixin_id);
+        return null;
+    }
 }

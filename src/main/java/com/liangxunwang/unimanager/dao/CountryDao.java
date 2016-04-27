@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by liuzwei on 2015/1/29.
+ * Created by zhl on 2015/1/29.
  */
 @Repository("countryDao")
 public interface CountryDao {
@@ -25,5 +25,13 @@ public interface CountryDao {
     //保存
     void save(CountryObj countryObj);
 
+    //
+    CountryObj findById(Map<String,Object> map);
 
+
+    /**
+     * 更新
+     * @param countryObj
+     */
+    public void update(CountryObj countryObj);
 }

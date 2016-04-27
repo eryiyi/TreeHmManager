@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by liuzwei on 2015/3/3.
+ * Created by zhl on 2015/3/3.
  */
 @Service("appFavourService")
 public class AppFavourService implements ListService,SaveService ,DeleteService,ExecuteService{
@@ -86,7 +86,8 @@ public class AppFavourService implements ListService,SaveService ,DeleteService,
                 record.setMm_msg_picurl(buffer.toString());
             }
             if(!StringUtil.isNullOrEmpty(record.getDatelineRecord())){
-                record.setDatelineRecord(RelativeDateFormat.format(Long.parseLong(record.getDatelineRecord())));
+//                record.setDatelineRecord(RelativeDateFormat.format(Long.parseLong(record.getDatelineRecord())));
+                record.setDatelineRecord(DateUtil.getDate(record.getDatelineRecord(), "yyyy-MM-dd HH:mm"));
             }
 
         }

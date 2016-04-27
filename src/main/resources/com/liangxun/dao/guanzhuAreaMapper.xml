@@ -34,13 +34,14 @@
             AND sn.mm_emp_id = #{mm_emp_id}
         </if>
         <if test="keyword != null and keyword != ''">
-            AND mm_emp_nickname like CONCAT('%',#{keyword},'%')
+            AND lemp.mm_emp_nickname like CONCAT('%',#{keyword},'%')
         </if>
         ORDER BY sn.reg_time DESC limit #{index},#{size}
     </select>
 
     <select id="count" resultType="Long">
         SELECT count(sn.mm_guanzhu_id) FROM mm_guanzhu sn
+        LEFT JOIN mm_emp lemp ON sn.mm_emp_id = lemp.mm_emp_id
         WHERE 1=1
         <if test="ischeck != null and ischeck != ''">
             AND sn.ischeck = #{ischeck}
@@ -49,7 +50,7 @@
             AND sn.mm_emp_id = #{mm_emp_id}
         </if>
         <if test="keyword != null and keyword != ''">
-            AND mm_emp_nickname like CONCAT('%',#{keyword},'%')
+            AND lemp.mm_emp_nickname like CONCAT('%',#{keyword},'%')
         </if>
     </select>
 

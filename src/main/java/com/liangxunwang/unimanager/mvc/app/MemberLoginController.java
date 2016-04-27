@@ -1,6 +1,7 @@
 package com.liangxunwang.unimanager.mvc.app;
 
 import com.liangxunwang.unimanager.model.AccessToken;
+import com.liangxunwang.unimanager.model.EmpLoginNum;
 import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.mvc.vo.EmpVO;
 import com.liangxunwang.unimanager.service.ExecuteService;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
- * Created by liuzwei on 2015/1/29.
+ * Created by zhl on 2015/1/29.
  */
 @Controller
 public class MemberLoginController extends ControllerConstants {
@@ -38,6 +39,10 @@ public class MemberLoginController extends ControllerConstants {
     @Autowired
     @Qualifier("appAccessTokenService")
     private UpdateService appAccessTokenServiceUpdate;
+
+    @Autowired
+    @Qualifier("empLoginNumService")
+    private SaveService empLoginNumService;
     /**
      * 会员登录
      * @param username 用户名
@@ -73,6 +78,12 @@ public class MemberLoginController extends ControllerConstants {
             }
             //获得accesstoken
             member.setAccess_token(accessToken.getAccess_token());
+            //保存登录记录
+            EmpLoginNum empLoginNum = new EmpLoginNum();
+            empLoginNum.setMm_emp_id(member.getMm_emp_id());
+            empLoginNumService.save(empLoginNum);
+
+
         }catch (ServiceException e){
             String emsg = e.getMessage();
             if (emsg.equals("NotFound")){
@@ -92,4 +103,5 @@ public class MemberLoginController extends ControllerConstants {
         tip.setData(member);
         return toJSONString(tip);
     }
+
 }

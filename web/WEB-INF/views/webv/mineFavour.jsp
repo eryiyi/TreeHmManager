@@ -70,18 +70,18 @@
 						${e.mm_msg_content}
 				</a>
 				<div class="item-footer clearfix">
-					<button class="read-status-unread"></button>
-						<div  class="share-left">
-							<div class="bdsharebuttonbox" >
-								<a class="bds_mshare" data-cmd="mshare"></a>
-								<a class="bds_qzone" data-cmd="qzone" href="javaScript:void(0)"></a>
-								<a class="bds_tsina" data-cmd="tsina"></a>
-								<a class="bds_tqq" data-cmd="tqq"></a>
-								<a class="bds_more" data-cmd="more">更多</a>
-								<a class="bds_count" data-cmd="count"></a>
-							</div>
-						</div>
-					<a type="button" href="javaScript:void(0)" onclick="telClick(${e.mm_emp_mobile})" class="button-phone"></a>
+					<%--<button class="read-status-unread"></button>--%>
+						<%--<div  class="share-left">--%>
+							<%--<div class="bdsharebuttonbox" >--%>
+								<%--<a class="bds_mshare" data-cmd="mshare"></a>--%>
+								<%--<a class="bds_qzone" data-cmd="qzone" href="javaScript:void(0)"></a>--%>
+								<%--<a class="bds_tsina" data-cmd="tsina"></a>--%>
+								<%--<a class="bds_tqq" data-cmd="tqq"></a>--%>
+								<%--<a class="bds_more" data-cmd="more">更多</a>--%>
+								<%--<a class="bds_count" data-cmd="count"></a>--%>
+							<%--</div>--%>
+						<%--</div>--%>
+					<a type="button" href="tel:${e.mm_emp_mobile}"  class="button-phone"></a>
 					<c:if test="${e.mm_msg_picurl !=''}"><a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-pic"></a></c:if>
 
 				</div>
@@ -134,7 +134,7 @@
 	<div class="toolbar">
 		<a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell"></a>
-		<a href="javaScript:void(0)" onclick="toPage('/webvRecommend/toRecommend.do','1')" class="recommend"></a>
+		<a href="javaScript:void(0)" onclick="toPage('/webvTopController/toTop.do','1')" class="recommend"></a>
 		<a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')" class="mine mine-active"></a>
 	</div>
 	<!-- TOOLBAR -->
@@ -181,18 +181,6 @@
 
 	function showDetail(_mm_msg_id){
 		window.location.href="/webvRecordController/toDetail.do?mm_msg_id="+_mm_msg_id;
-	}
-
-	function telClick(_mobile){
-		//先判断是否登录
-		var is_login = $("#is_login").val();
-		if(is_login == 1){
-			//登陆了
-			alert(_mobile);
-		}else{
-			//没登陆
-			alert("请先登录");
-		}
 	}
 
 	function login(){
