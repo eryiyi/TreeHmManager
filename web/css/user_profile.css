@@ -30,6 +30,7 @@
   width: 100%;
   display: block;
 }
+/*On Screen*/
 @media screen and (min-width: 900px) {
   .ads > a {
     width: 23.5%;
@@ -42,12 +43,13 @@
     display: none;
   }
 }
+/*On Phone*/
 @media screen and (max-width: 900px) {
   .ads > a {
-    width: 48%;
-    margin-left: 4%;
+    width: 32%;
+    margin-left: 2%;
   }
-  .ads > a:nth-child(2n+1) {
+  .ads > a:nth-child(3n+1) {
     margin-left: 0;
   }
   .ads > a > input {
@@ -57,4 +59,19 @@
 .recent {
   padding: 1rem 0 2rem;
   background-color: #f2f2f2;
+}
+
+
+/*2016-04-28 08:27*/
+
+.switcher{
+  border-top: 1px solid #7BC942;
+}
+.area-head{
+  line-height: 250%;
+  font-size: 1.1rem;
+}
+.company-info{
+  line-height: 130%;
+  font-size: .9rem;
 }

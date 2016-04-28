@@ -58,54 +58,54 @@
 		<textarea  class="report-reason" name="mm_msg_content"
 				   id="mm_msg_content" cols="30" placeholder="请输入您要发布的信息内容，包括您要求的品种、规格、质量及联系方式。您将对您发布信息的真实性负法律责任，请谨慎填写！" rows="10"></textarea>
 		<div class="ads clearfix">
-			<%--<c:if test="${emp.is_pic !=null && emp.is_pic !='0'}">--%>
-				<%--<c:if test="${emp.is_pic =='1'}">--%>
-					<%--<a href="">--%>
-						<%--<input id="ad_1" type="file" onchange="change('adpic_1','ad_1')">--%>
-						<%--<label for="ad_1"><img id="adpic_1" src="/img/pic_add.svg" alt=""></label>--%>
-					<%--</a>--%>
-					<%--<a href="">--%>
-						<%--<input id="ad_2" type="file" onchange="change('adpic_2','ad_2')">--%>
-						<%--<label for="ad_2"><img id="adpic_2" src="/img/pic_add.svg" alt=""></label>--%>
-					<%--</a>--%>
-					<%--<a href="">--%>
-						<%--<input id="ad_3" type="file" onchange="change('adpic_3','ad_3')">--%>
-						<%--<label for="ad_3"><img id="adpic_3" src="/img/pic_add.svg" alt=""></label>--%>
-					<%--</a>--%>
+			<c:if test="${emp.is_pic !=null && emp.is_pic !='0'}">
+				<c:if test="${emp.is_pic =='1'}">
+					<a href="">
+						<input id="ad_1" type="file" onchange="change('adpic_1','ad_1')">
+						<label for="ad_1"><img id="adpic_1" src="/img/pic_add.svg" alt=""></label>
+					</a>
+					<a href="">
+						<input id="ad_2" type="file" onchange="change('adpic_2','ad_2')">
+						<label for="ad_2"><img id="adpic_2" src="/img/pic_add.svg" alt=""></label>
+					</a>
+					<a href="">
+						<input id="ad_3" type="file" onchange="change('adpic_3','ad_3')">
+						<label for="ad_3"><img id="adpic_3" src="/img/pic_add.svg" alt=""></label>
+					</a>
 
-				<%--</c:if>--%>
-				<%--<c:if test="${emp.is_pic =='2'}">--%>
-					<%--<a href="">--%>
-						<%--<input id="ad_4" type="file" onchange="change('adpic_4','ad_4')">--%>
-						<%--<label for="ad_4"><img id="adpic_4" src="/img/pic_add.svg" alt=""></label>--%>
-					<%--</a>--%>
-					<%--<a href="">--%>
-						<%--<input id="ad_5" type="file" onchange="change('adpic_5','ad_5')">--%>
-						<%--<label for="ad_5"><img id="adpic_5" src="/img/pic_add.svg" alt=""></label>--%>
-					<%--</a>--%>
-					<%--<a href="">--%>
-						<%--<input id="ad_6" type="file" onchange="change('adpic_6','ad_6')">--%>
-						<%--<label for="ad_6"><img id="adpic_6" src="/img/pic_add.svg" alt=""></label>--%>
-					<%--</a>--%>
-				<%--</c:if>--%>
-				<%--<c:if test="${emp.is_pic =='3'}">--%>
-					<%--<a href="">--%>
-						<%--<input id="ad_7" type="file" onchange="change('adpic_7','ad_7')">--%>
-						<%--<label for="ad_7"><img id="adpic_7" src="/img/pic_add.svg" alt=""></label>--%>
-					<%--</a>--%>
-					<%--<a href="">--%>
-						<%--<input id="ad_8" type="file" onchange="change('adpic_8','ad_8')">--%>
-						<%--<label for="ad_8"><img id="adpic_8" src="/img/pic_add.svg" alt=""></label>--%>
-					<%--</a>--%>
-					<%--<a href="">--%>
-						<%--<input id="ad_9" type="file" onchange="change('adpic_9','ad_9')">--%>
-						<%--<label for="ad_9"><img id="adpic_9" src="/img/pic_add.svg" alt=""></label>--%>
-					<%--</a>--%>
-				<%--</c:if>--%>
-			<%--</c:if>--%>
+				</c:if>
+				<c:if test="${emp.is_pic =='2'}">
+					<a href="">
+						<input id="ad_4" type="file" onchange="change('adpic_4','ad_4')">
+						<label for="ad_4"><img id="adpic_4" src="/img/pic_add.svg" alt=""></label>
+					</a>
+					<a href="">
+						<input id="ad_5" type="file" onchange="change('adpic_5','ad_5')">
+						<label for="ad_5"><img id="adpic_5" src="/img/pic_add.svg" alt=""></label>
+					</a>
+					<a href="">
+						<input id="ad_6" type="file" onchange="change('adpic_6','ad_6')">
+						<label for="ad_6"><img id="adpic_6" src="/img/pic_add.svg" alt=""></label>
+					</a>
+				</c:if>
+				<c:if test="${emp.is_pic =='3'}">
+					<a href="">
+						<input id="ad_7" type="file" onchange="change('adpic_7','ad_7')">
+						<label for="ad_7"><img id="adpic_7" src="/img/pic_add.svg" alt=""></label>
+					</a>
+					<a href="">
+						<input id="ad_8" type="file" onchange="change('adpic_8','ad_8')">
+						<label for="ad_8"><img id="adpic_8" src="/img/pic_add.svg" alt=""></label>
+					</a>
+					<a href="">
+						<input id="ad_9" type="file" onchange="change('adpic_9','ad_9')">
+						<label for="ad_9"><img id="adpic_9" src="/img/pic_add.svg" alt=""></label>
+					</a>
+				</c:if>
+			</c:if>
 		</div>
-		<button class="button fill-orange mt3 w10 t-sh mb4" onclick="addRecord()">提交</button>
-		<button class="button fill-orange mt3 w10 t-sh mb4" onclick="kefu()">客服中心</button>
+		<button class="button fill-orange mt2 w10 t-sh mb2" onclick="addRecord()">提交</button>
+		<button class="button fill-orange mt2 w10 t-sh mb4" onclick="kefu()">客服中心</button>
 	</div>
 	<!-- TOOLBAR -->
 	<div class="toolbar">

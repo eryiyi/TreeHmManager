@@ -84,55 +84,25 @@
 		<!-- GLIDE SLIDE END -->
 
 		<!-- user-info -->
-		<div class="content regist">
-			<div class="user-info w85">
+		<div class="content mb2">
+			<div class="user-info w9">
+				<h3 class="area-head">公司简介：</h3>
+				<p class="company-info mb1">${emp.mm_emp_company}</p>
+				<a class="button fill-green mb2" href="${emp.mm_emp_company_url}" target="_blank">公司微网站</a>
 
-				<%--<div class="input-group-regist"><span>手机号</span><a href="tel:18366883986">18366883986</a></div>--%>
-				<%--<div class="input-group-regist"><span>姓名</span><input disabled="ture" placeholder="请输入真实姓名" type="text"></div>--%>
-				<%--<div class="select-group mt1"><span>注册类型</span>--%>
-					<%--<select disabled="ture" name="" id="" class="bg-f2" disabled="ture">--%>
-						<%--<option value="">个人</option>--%>
-						<%--<option value="">公司</option>--%>
-						<%--<option value="">企业</option>--%>
-					<%--</select>--%>
-				<%--</div>--%>
-				<div class="input-group-regist"><span>公司名称</span><input disabled="ture" type="text" value="${emp.mm_emp_company}"></div>
-				<a href="${emp.mm_emp_company_url}" target="_blank" class="btn w85">公司微网站</a>
-				<%--<div class="input-group-regist"><span>公司官网</span><input disabled="ture" type="text" placeholder="http://"></div>--%>
-				<%--<div disabled="ture" class="select-group mt1"><span>公司类型</span>--%>
-					<%--<select name="" id="" class="bg-f2" disabled="ture">--%>
-						<%--<option value="">苗木</option>--%>
-						<%--<option value="">花卉</option>--%>
-						<%--<option value="">销售</option>--%>
-					<%--</select>--%>
-				<%--</div>--%>
-				<%--<div class="input-group-regist"><span>公司地址</span><input disabled="ture" value="山东滨州市" placeholder="20字以内"  type="text"></div>--%>
-				<%--<div class="select-group mt1"><span>-（省）</span>--%>
-					<%--<select disabled="ture" name="" id="" class="bg-f2">--%>
-						<%--<option value="">山东</option>--%>
-						<%--<option value="">河南</option>--%>
-						<%--<option value="">北京</option>--%>
-					<%--</select>--%>
-				<%--</div>--%>
-				<%--<div class="select-group mt1"><span>--（市）</span>--%>
-					<%--<select disabled="ture" name="" id="" class="bg-f2">--%>
-						<%--<option value="">滨州</option>--%>
-						<%--<option value="">济南</option>--%>
-						<%--<option value="">临沂</option>--%>
-					<%--</select>--%>
-				<%--</div>--%>
-				<%--<div class="select-group mt1"><span>---（县）</span>--%>
-					<%--<select disabled="ture" name="" id="" class="bg-f2">--%>
-						<%--<option value="">惠民</option>--%>
-						<%--<option value="">大王</option>--%>
-						<%--<option value="">沂水</option>--%>
-					<%--</select>--%>
-				<%--</div>--%>
 			</div>
-
+			<div class="switcher mt1">
+				<div class="w9">
+					<h2 class="area-head tac mb1">发布过的信息</h2>
+					<div class="button-group-x2">
+						<a class="button fill-green" href="">求购</a>
+						<a class="button fill-green" href="">供应</a>
+					</div>
+				</div>
+			</div>
 		</div>
+
 		<div class="recent">
-			<div class="w95">
 				<c:forEach items="${list}" var="e" varStatus="st">
 				<div class="item">
 					<div class="item-heading clearfix">
@@ -180,7 +150,6 @@
 					</div>
 				</div>
 				</c:forEach>
-			</div>
 		</div>
 	</div>
 

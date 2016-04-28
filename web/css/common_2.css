@@ -109,13 +109,16 @@ hr.gray { }
 .select-group select:active { -webkit-box-shadow: 0 0 3px #3FA9F5; box-shadow: 0 0 3px #3FA9F5; }
 
 /*==BUTTON*/
-button { display: block; font-size: 1.2rem; padding: 6px 0; text-align: center; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+button,.button { display: block; font-size: 1.2rem; padding: 6px 0; text-align: center; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 .button:active, button:active { transform: translateY(2px); opacity: 0.7; }
-.button-group-x2 { width: 100%; margin-top: 1.5rem; }
+.button-group-x2 { width: 100%; }
 .button-group-x2::after { content: ''; display: block; height: 0; visibility: hidden; clear: both; }
-.button-group-x2 button { padding: 3px 0; font-weight: normal; }
+.button-group-x2 button { padding: 5px 0; font-weight: normal; }
+.button-group-x2 .button { padding: 5px 0; font-weight: normal; }
 .button-group-x2 button:nth-child(1) { float: left; width: 45%; }
 .button-group-x2 button:nth-child(2) { float: right; width: 45%; }
+.button-group-x2 .button:nth-child(1) { float: left; width: 45%; }
+.button-group-x2 .button:nth-child(2) { float: right; width: 45%; }
 .button-big { display: block; font-size: 1.4rem; text-align: center; line-height: 250%; border-radius: 3px; margin: 10px 0; }
 .button-big:active { transform: translateY(2px); }
 .button-small { display: block; font-size: 1.1rem; line-height: 200%; margin: 10px 0; }
@@ -145,3 +148,10 @@ input[type=checkbox], input[type=radio] { display: none; }
 .d-n { display: none; }
 .d-b { display: block; }
 .d-ib { display: inline-block; }
+
+/*text align*/
+.tac{
+    text-align: center;}
+.tar{
+    text-align: right;
+}

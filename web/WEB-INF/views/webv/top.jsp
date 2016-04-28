@@ -36,15 +36,15 @@
 <div class="container">
 	<!-- HEADING -->
 	<div class="heading clearfix">
-		<div class="icon-group">
-			<c:if test="${is_login=='1'}"><span class="location" onclick="selectPro()">${emp.areaName}</span></c:if>
-			<c:if test="${is_login=='0'}"><a href="javaScript:void(0)"><span class="location" onclick="login()">登录</span></a></c:if>
+		<div class="left">
+			<c:if test="${is_login=='1'}"><a class="location" onclick="selectPro()">${emp.areaName}-点击查看更多</a></c:if>
+			<c:if test="${is_login=='0'}"><a class="login" href="javaScript:void(0)" onclick="login()">登录</a></c:if>
 		</div>
 		<form action="" class="search-bar clearfix">
 			<input type="text" id="keyword" name="keyword" placeholder="标题|手机号|公司名称|联系人">
 			<button onclick="searchIndex(event)" style="float:right ">搜索</button>
 		</form>
-		<div class="icon-add"><a href="javaScript:void(0)" onclick="addMsg()">发布</a></div>
+		<div class="right"><a class="publish" href="javaScript:void(0)" onclick="addMsg()">发布</a></div>
 	</div>
 	<!-- CONTENT -->
 	<div class="content">
