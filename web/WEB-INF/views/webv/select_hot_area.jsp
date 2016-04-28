@@ -19,6 +19,7 @@
 	<link rel="shortcut icon" type="image/png" href="/img/logo.png">
 	<link rel="stylesheet" href="/css/reset.css">
 	<link rel="stylesheet" href="/css/common.css">
+	<link rel="stylesheet" href="/css/common_2.css">
 	<link rel="stylesheet" href="/css/index.css">
 	<link rel="stylesheet" href="/css/glide.core.min.css">
 	<link rel="stylesheet" href="/css/glide.theme.min.css">
