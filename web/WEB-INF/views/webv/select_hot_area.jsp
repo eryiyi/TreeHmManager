@@ -19,7 +19,7 @@
 	<link rel="shortcut icon" type="image/png" href="/img/logo.png">
 	<link rel="stylesheet" href="/css/reset.css">
 	<link rel="stylesheet" href="/css/common.css">
-	<link rel="stylesheet" href="/css/common_2.css">
+	<%--<link rel="stylesheet" href="/css/common_2.css">--%>
 	<link rel="stylesheet" href="/css/index.css">
 	<link rel="stylesheet" href="/css/glide.core.min.css">
 	<link rel="stylesheet" href="/css/glide.theme.min.css">
@@ -45,12 +45,9 @@
 <body>
 <div class="container">
 	<!-- HEADING -->
-
 	<div class="heading clearfix">
-		<div class="heading clearfix">
-			<a href="javascript:void(0)" onclick="selectPro()" class="back"><img src="/img/tree_icons_back.png"></a>
-			<h1 class="head-title">热门区域</h1>
-		</div>
+		<a href="javascript:void(0)" onclick="selectPro()" class="back"><img src="/img/tree_icons_back.png"></a>
+		<h1 class="head-title">热门区域</h1>
 	</div>
 
 	<!-- CONTENT -->
@@ -146,7 +143,7 @@
 
 	</div>
 	<!-- TOOLBAR -->
-	<div class="toolbar">
+	<div class="toolbar-2">
 		<c:if test="${is_login=='1'}">
 			<a href="javaScript:void(0)" onclick="toPage('/webvHotController/toIndex.do','1')" class="buy buy-active"></a>
 			<a href="javaScript:void(0)" onclick="toPage('/webvHotSController/toSell.do','1')" class="sell"></a>
@@ -159,23 +156,23 @@
 	<!-- TOOLBAR -->
 </div>
 
-<link rel="stylesheet" href="/css/dialog_reset.css"> <!-- CSS reset -->
-<link rel="stylesheet" href="/css/dialog_style.css"> <!-- Resource style -->
-<script src="/js/dialog_main.js"></script> <!-- Resource jQuery -->
+<%--<link rel="stylesheet" href="/css/dialog_reset.css"> <!-- CSS reset -->--%>
+<%--<link rel="stylesheet" href="/css/dialog_style.css"> <!-- Resource style -->--%>
+<%--<script src="/js/dialog_main.js"></script> <!-- Resource jQuery -->--%>
 
-<div class="cd-popup" role="alert">
-	<div class="cd-popup-container">
-		<p>请先注册或联系管理员</p>
-		<ul class="cd-buttons">
-			<li><a href="javaScript:void(0)" onclick="reg()">注册</a></li>
-			<li><a href="javaScript:void(0)" onclick="login()">登录</a></li>
-		</ul>
-		<ul style="background: #ffffff;line-height: 45px;">
-			<li><a href="/webvKefuController/toKefu.do">客服中心</a></li>
-		</ul>
-		<a href="javaScript:void(0)" class="cd-popup-close img-replace">关闭</a>
-	</div> <!-- cd-popup-container -->
-</div> <!-- cd-popup -->
+<%--<div class="cd-popup" role="alert">--%>
+	<%--<div class="cd-popup-container">--%>
+		<%--<p>请先注册或联系管理员</p>--%>
+		<%--<ul class="cd-buttons">--%>
+			<%--<li><a href="javaScript:void(0)" onclick="reg()">注册</a></li>--%>
+			<%--<li><a href="javaScript:void(0)" onclick="login()">登录</a></li>--%>
+		<%--</ul>--%>
+		<%--<ul style="background: #ffffff;line-height: 45px;">--%>
+			<%--<li><a href="/webvKefuController/toKefu.do">客服中心</a></li>--%>
+		<%--</ul>--%>
+		<%--<a href="javaScript:void(0)" class="cd-popup-close img-replace">关闭</a>--%>
+	<%--</div> <!-- cd-popup-container -->--%>
+<%--</div> <!-- cd-popup -->--%>
 
 </body>
 
