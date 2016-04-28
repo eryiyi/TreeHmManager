@@ -125,7 +125,8 @@ public class WebvProfileController extends ControllerConstants {
     }
 
     @RequestMapping("toUpdateProfile")
-    public String add() {
+    public String add(ModelMap map) {
+        map.addAttribute("server_url", Constants.URL);
         return "/webv/updateProfile";
     }
 }

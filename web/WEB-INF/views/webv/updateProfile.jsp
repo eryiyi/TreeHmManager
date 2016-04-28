@@ -60,6 +60,7 @@
 	</div>
 	<!-- CONTENT -->
 	<div class="content regist w85">
+		<input type="hidden" id="server_url" name="server_url" value="${server_url}">
 			<div class="input-group-regist"><span>公司名称</span>
 				<input type="text" placeholder="公司名称" id="mm_emp_company">
 			</div>
@@ -67,28 +68,28 @@
 				<input  placeholder="公司地址" type="text" id="mm_emp_company_address">
 			</div>
 			<div class="input-group-regist"><span>头像</span>
-				<a href="" class="pic-upload">
-					<input id="fileUpload_1" type="file" onchange="change('adpic_1','fileUpload_1')">
-					<label for="fileUpload_1">
-						<img id="adpic_1" src="/img/pic_add.svg" alt="">
-					</label>
-				</a>
-				<%--<input type="hidden" id="mm_emp_cover">--%>
-				<%--<img class="img-thumbnail"  name="imagePath" id="imageDiv"  style="cursor: pointer;width: 80px;height: 80px;" />--%>
-				<%--<input type="file" name="file" id="fileUpload" style="float: left;" />--%>
-				<%--<input type="button" value="上传" onclick="uploadImage()" style="float: left;"/><br/><br/>--%>
+				<%--<a href="" class="pic-upload">--%>
+					<%--<input id="fileUpload_1" type="file" onchange="change('adpic_1','fileUpload_1')">--%>
+					<%--<label for="fileUpload_1">--%>
+						<%--<img id="adpic_1" src="/img/pic_add.svg" alt="">--%>
+					<%--</label>--%>
+				<%--</a>--%>
+				<input type="hidden" id="mm_emp_cover">
+				<img class="img-thumbnail"  name="imagePath" id="imageDiv"  style="cursor: pointer;width: 80px;height: 80px;" />
+				<input type="file" name="file" id="fileUpload" style="float: left;" />
+				<input type="button" value="上传" onclick="uploadImage()" style="float: left;"/><br/><br/>
 			</div>
 			<div class="input-group-regist"><span>营业执照或公司门头</span>
-				<a href="" class="pic-upload">
-					<input id="fileUpload_2" type="file" onchange="change('adpic_2','fileUpload_2')">
-					<label for="fileUpload_2">
-						<img id="adpic_2" src="/img/pic_add.svg" alt="">
-					</label>
-				</a>
-				<%--<input type="hidden" id="mm_emp_company_pic">--%>
-				<%--<img class="img-thumbnail" name="imageDiv1" id="imageDiv1" style="cursor: pointer;width: 80px;height: 80px;"  />--%>
-				<%--<input type="file" name="file" id="fileUpload1" style="float: left;" />--%>
-				<%--<input type="button" value="上传" onclick="uploadImage1()" style="float: left;"/><br/><br/>--%>
+				<%--<a href="" class="pic-upload">--%>
+					<%--<input id="fileUpload_2" type="file" onchange="change('adpic_2','fileUpload_2')">--%>
+					<%--<label for="fileUpload_2">--%>
+						<%--<img id="adpic_2" src="/img/pic_add.svg" alt="">--%>
+					<%--</label>--%>
+				<%--</a>--%>
+				<input type="hidden" id="mm_emp_company_pic">
+				<img class="img-thumbnail" name="imageDiv1" id="imageDiv1" style="cursor: pointer;width: 80px;height: 80px;"  />
+				<input type="file" name="file" id="fileUpload1" style="float: left;" />
+				<input type="button" value="上传" onclick="uploadImage1()" style="float: left;"/><br/><br/>
 			</div>
 			<button class="mt4 w10 fill-green" type="button" onclick="reg()">提交</button>
 		</div>
@@ -175,8 +176,9 @@
 					success: function (data, status)  //服务器成功响应处理函数
 					{
 						if(data.success) {
+							var server_url = $("#server_url").val();
 							document.getElementById('mm_emp_cover').value=  data.data;
-							document.getElementById('imageDiv').src= "http://xhmt.sdhmmm.cn:7777/" +  data.data;
+							document.getElementById('imageDiv').src = server_url +  data.data;
 						} else {
 							if(data.code == 1) {
 								alert("上传图片失败");
@@ -204,7 +206,8 @@
 					{
 						if(data.success) {
 							document.getElementById('mm_emp_company_pic').value=  data.data;
-							document.getElementById('imageDiv1').src=  "http://xhmt.sdhmmm.cn:7777/" + data.data;
+							var server_url = $("#server_url").val();
+							document.getElementById('imageDiv1').src = server_url + data.data;
 						} else {
 							if(data.code == 1) {
 								alert("上传图片失败");
