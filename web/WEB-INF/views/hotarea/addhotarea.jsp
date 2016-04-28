@@ -9,8 +9,8 @@
     </a>
     <ol class="breadcrumb pull-left">
       <li><a href="javascript:void(0)"  onclick="toPage('mainPage','')">主页</a></li>
-      <li><a href="javascript:void(0)">客服电话</a></li>
-      <li><a href="javascript:void(0)">添加客服</a></li>
+      <li><a href="javascript:void(0)">热门县区</a></li>
+      <li><a href="javascript:void(0)">添加热门县区</a></li>
     </ol>
     <div id="social" class="pull-right">
       <a href="javascript:void(0)"><i class="fa fa-google-plus"></i></a>
@@ -28,7 +28,7 @@
       <div class="box-header">
         <div class="box-name">
           <i class="fa fa-search"></i>
-          <span>添加客服</span>
+          <span>添加热门县区</span>
         </div>
         <div class="box-icons">
           <a class="collapse-link">
@@ -44,60 +44,37 @@
         <div class="no-move"></div>
       </div>
       <div class="box-content">
-        <h4 class="page-header">添加客服</h4>
+        <h4 class="page-header">添加热门县区</h4>
         <form class="form-horizontal" role="form">
 
           <div class="form-group">
-            <label class="col-sm-2 control-label">客服电话</label>
+            <label class="col-sm-2 control-label">热门城市</label>
             <div class="col-sm-4">
-              <input type="text" id="mm_tel"  class="form-control" placeholder="客服电话" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+              <select class="form-control" id="mm_emp_cityId"  onchange="selectCountrys()">
+                <option value="">--选择城市--</option>
+                <c:forEach items="${listCitys}" var="e" varStatus="st">
+                  <option value="${e.cityID}" >${e.city}</option>
+                </c:forEach>
+              </select>
             </div>
           </div>
-
-          <%--<div class="form-group">--%>
-            <%--<label class="col-sm-2 control-label">省份</label>--%>
-            <%--<div class="col-sm-4">--%>
-              <%--<select class="form-control" id="mm_emp_provinceId"  onchange="selectCitys()">--%>
-                <%--<option value="">--选择省份--</option>--%>
-                <%--<c:forEach items="${listProvinces}" var="e" varStatus="st">--%>
-                  <%--<option value="${e.provinceID}"  ${empVO.mm_emp_provinceId==e.provinceID?'selected':''}>${e.province}</option>--%>
-                <%--</c:forEach>--%>
-              <%--</select>--%>
-            <%--</div>--%>
-          <%--</div>--%>
-          <%--<div class="form-group">--%>
-            <%--<label class="col-sm-2 control-label">城市</label>--%>
-            <%--<div class="col-sm-4">--%>
-              <%--<select class="form-control" id="mm_emp_cityId" onchange="selectCountrys()">--%>
-                <%--<option value="">--选择城市--</option>--%>
-                <%--<c:forEach items="${listCitys}" var="e" varStatus="st">--%>
-                  <%--<option value="${e.cityID}"  ${empVO.mm_emp_cityId==e.cityID?'selected':''}>${e.city}</option>--%>
-                <%--</c:forEach>--%>
-              <%--</select>--%>
-            <%--</div>--%>
-          <%--</div>--%>
-          <%--<div class="form-group">--%>
-            <%--<label class="col-sm-2 control-label">县区</label>--%>
-            <%--<div class="col-sm-4">--%>
-              <%--<select class="form-control" id="mm_emp_countryId" >--%>
-                <%--<option value="">--选择县区--</option>--%>
-                <%--<c:forEach items="${listsCountry}" var="e" varStatus="st">--%>
-                  <%--<option value="${e.areaID}"  ${empVO.mm_emp_countryId==e.areaID?'selected':''}>${e.area}</option>--%>
-                <%--</c:forEach>--%>
-              <%--</select>--%>
-            <%--</div>--%>
-          <%--</div>--%>
-
-          <%--<div class="form-group">--%>
-            <%--<label class="col-sm-2 control-label">是否全国</label>--%>
-            <%--<div class="col-sm-4">--%>
-              <%--<select class="form-control" id="mm_tel_type">--%>
-                <%--<option value="">--选择是否全国--</option>--%>
-                <%--<option value="0" selected="selected">否</option>--%>
-                <%--<option value="1" >是</option>--%>
-              <%--</select>--%>
-            <%--</div>--%>
-          <%--</div>--%>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">热门县区</label>
+            <div class="col-sm-4">
+              <select class="form-control" id="mm_emp_countryId">
+                <option value="">--选择县区--</option>
+                <c:forEach items="${listsCountry}" var="e" varStatus="st">
+                  <option value="${e.areaID}">${e.area}</}</option>
+                </c:forEach>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">置顶数字</label>
+            <div class="col-sm-4">
+              <input type="text" id="topnum" placeholder="置顶数字" value="0" class="form-control" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+            </div>
+          </div>
 
           <div class="form-group">
             <div class="col-sm-9 col-sm-offset-3">
@@ -113,24 +90,34 @@
 
 <script type="text/javascript">
   function saveP(){
-    var mm_tel = $("#mm_tel").val();
+    var mm_emp_cityId = $("#mm_emp_cityId").val();
+    var mm_emp_countryId = $("#mm_emp_countryId").val();
+    var topnum = $("#topnum").val();
+
+    if(mm_emp_cityId.replace(/\s/g, '')==''){
+      alert("请选择热门城市");
+      return;
+    }
+    if(mm_emp_countryId.replace(/\s/g, '')=='') {
+      alert("请选择热门县区");
+      return;
+    }
     $.ajax({
       cache: true,
       type: "POST",
-      url:"/kefu/addKefuArea.do",
-      data:{"mm_emp_provinceId":"", "mm_emp_cityId":"", "mm_emp_countryId":"", "mm_tel":mm_tel, "mm_tel_type":"0"},
+      url:"/hotAreaController/addhotarea.do",
+      data:{"father":mm_emp_cityId, "areaID":mm_emp_countryId, "topnum":topnum},
       async: false,
       success: function(_data) {
         var data = $.parseJSON(_data);
         if(data.success){
           alert("执行成功");
-          window.location.href = "#module=kefu/list";
+          window.location.href = "#module=hotAreaController/list";
         }else{
           alert("执行失败，请检查")
         }
       }
     });
-
   }
 
 

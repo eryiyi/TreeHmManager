@@ -56,7 +56,6 @@
     </group>
     <group id="TEL_MANAGE" name="客服电话">
         <permission id="ADD_TEL_KEFU_MANAGE" name="添加客服"/>
-        <permission id="ADD_TEL_KEFU_MANAGE_AREA" name="地区管理员添加客服"/>
         <permission id="TEL_KEFU_MANAGE" name="客服列表"/>
     </group>
     <group id="AD_MANAGE" name="广告管理">
@@ -85,6 +84,16 @@
     <group id="NEARBY_DISTANCE_MANAGE" name="附近距离">
         <permission id="NEARBY_DISTANCE_MANA" name="附近距离"/>
     </group>
-
+    <group id="MSG_KONGZHI_MANAGE" name="控制信息显示的天数">
+        <permission id="MSG_KONGZHI_MANA" name="控制信息显示的天数"/>
+    </group>
+    <group id="HOT_CITY_MANAGE" name="热门城市">
+        <permission id="HOT_CITY_ADD_MANA" name="添加热门城市"/>
+        <permission id="HOT_CITY_LIST_MANA" name="热门城市列表"/>
+    </group>
+    <group id="HOT_AREA_MANAGE" name="热门县区">
+        <permission id="HOT_AREA_ADD_MANA" name="添加热门县区"/>
+        <permission id="HOT_AREA_LIST_MANA" name="热门城市县区"/>
+    </group>
 
 </permissions>

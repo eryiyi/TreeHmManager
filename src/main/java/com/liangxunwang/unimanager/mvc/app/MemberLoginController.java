@@ -51,14 +51,14 @@ public class MemberLoginController extends ControllerConstants {
      */
     @RequestMapping(value = "/memberLogin" ,produces="text/plain;charset=UTF-8")
     @ResponseBody
-    public String memberLogin(@RequestParam String username, @RequestParam String password, @RequestParam String userId) throws Exception {
+    public String memberLogin(@RequestParam String username, @RequestParam String password) throws Exception {
         if (StringUtil.isNullOrEmpty(username)){
             return toJSONString(ERROR_5);
         }
         if (StringUtil.isNullOrEmpty(password)){
             return toJSONString(ERROR_6);
         }
-        Object[] params = new Object[]{username, password, userId};
+        Object[] params = new Object[]{username, password};
         EmpVO member = null;
         try {
             member = (EmpVO) memberLoginService.execute(params);

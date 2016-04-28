@@ -61,8 +61,6 @@ public class KefuController extends ControllerConstants {
         Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         List<KefuVO> list = (List<KefuVO>) levelService.list(query);
         map.put("list", list);
-        //日志记录
-        logoService.save(new LogoObj("查看客服", manager.getMm_manager_id()));
         return "/kefu/list";
     }
 
@@ -104,8 +102,6 @@ public class KefuController extends ControllerConstants {
     public String addKefu(HttpSession session,KefuTel level){
         Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         levelServiceSave.save(level);
-        //日志记录
-        logoService.save(new LogoObj("添加客服", manager.getMm_manager_id()));
         return toJSONString(SUCCESS);
     }
 
@@ -162,8 +158,6 @@ public class KefuController extends ControllerConstants {
         map.put("listCitysAll", toJSONString(listCitysAll));
         map.put("listsCountryAll", toJSONString(listsCountryAll));
 
-        //日志记录
-        logoService.save(new LogoObj("编辑客服："+level.getMm_tel_id(), manager.getMm_manager_id()));
         return "/kefu/editkefu";
     }
 
