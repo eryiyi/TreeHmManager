@@ -61,19 +61,19 @@
 	</script>
 </head>
 <body>
-<%
-	Cookie cookies[]=request.getCookies(); //读出用户硬盘上的Cookie，并将所有的Cookie放到一个cookie对象数组
-	String cookieName="Sender";
-	Cookie cookie=new Cookie(cookieName, "Test_Content");
-	cookie.setMaxAge(365*24*60*60);
-	response.addCookie(cookie);
-	List<RecordVO> lists = (List<RecordVO>) request.getAttribute("list");
-	for(int i=0;i<lists.size();i++){
-		System.out.print("----------------lists---------------------"+lists.get(i).getMm_emp_nickname());
-	}
+<%--<%--%>
+	<%--Cookie cookies[]=request.getCookies(); //读出用户硬盘上的Cookie，并将所有的Cookie放到一个cookie对象数组--%>
+	<%--List<RecordVO> lists = (List<RecordVO>) request.getAttribute("list");--%>
+	<%--for(int i=0;i<lists.size();i++){--%>
+		<%--System.out.print("----------------lists---------------------"+lists.get(i).getMm_emp_nickname());--%>
+		<%--RecordVO recordVO = lists.get(i);--%>
+		<%--Cookie cookie=new Cookie(recordVO.getMm_msg_id(), recordVO.getMm_msg_id());--%>
+		<%--cookie.setMaxAge(365*24*60*60);--%>
+		<%--response.addCookie(cookie);--%>
+	<%--}--%>
 
 
-%>
+<%--%>--%>
 <div class="container">
 	<!-- HEADING -->
 	<div class="heading clearfix">

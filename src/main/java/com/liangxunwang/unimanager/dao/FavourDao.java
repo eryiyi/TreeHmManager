@@ -28,6 +28,9 @@ public interface FavourDao {
     //删除
     void delete(String mm_record_favour_id);
 
+    //删除  根据信息ID
+    void deleteByMsgId(String mm_msg_id);
+
     /**
      * 根据ID查找
      * @param mm_record_favour_id

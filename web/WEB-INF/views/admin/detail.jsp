@@ -36,20 +36,20 @@
           <div class="form-group">
             <label class="col-sm-2 control-label">用户名</label>
               <div class="col-sm-4">
-                  <input type="text" readonly="true" id="mm_manager_nickname" class="form-control" value="${admin.mm_manager_nickname}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+                  <input type="text" readonly="true" id="mm_manager_nickname" name="mm_manager_nickname" class="form-control" value="${admin.mm_manager_nickname}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
               </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label">用户手机号</label>
             <div class="col-sm-4">
-              <input type="text" readonly="true" id="mm_manager_mobile" class="form-control" value="${admin.mm_manager_mobile}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+              <input type="text" readonly="true" id="mm_manager_mobile" name="mm_manager_mobile" class="form-control" value="${admin.mm_manager_mobile}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-sm-2 control-label">用户密码</label>
             <div class="col-sm-4">
-              <input type="text" id="mm_manager_password" class="form-control"  placeholder="新密码" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+              <input type="text" id="mm_manager_password" name="mm_manager_password" class="form-control"  placeholder="新密码" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
             </div>
           </div>
 
@@ -78,9 +78,10 @@
 
           <div class="form-group">
             <div class="col-sm-9 col-sm-offset-3">
-              <button type="button" class="btn btn-primary" onclick="saveRole('${admin.mm_manager_id}')">确定修改</button>
+              <button type="button" class="btn btn-primary" onclick="updatePwr('${admin.mm_manager_id}')">确定修改</button>
               <button type="button" class="btn btn-primary" onclick="manageEmp('${admin.mm_manager_id}','1')">启用</button>
               <button type="button" class="btn btn-primary" onclick="manageEmp('${admin.mm_manager_id}','0')">禁用</button>
+              <button type="button" class="btn btn-primary" onclick="manageEmp('${admin.mm_manager_id}','2')">删除</button>
               <button type="button" class="btn btn-primary" onclick="javascript :history.back(-1)">返回</button>
             </div>
           </div>
@@ -91,36 +92,9 @@
 </div>
 
 <script type="text/javascript">
-  <%--$.ajax({--%>
-    <%--url: '/permission/list.do',--%>
-    <%--type: 'post',--%>
-    <%--success: function (_data) {--%>
-      <%--var data = $.parseJSON(_data);--%>
-      <%--if (data) {--%>
-        <%--var ownPermission = "${sessionScope.powers}";--%>
-        <%--var newNode = "";--%>
-        <%--for (var i = 0; i < data.length; i++) {--%>
-          <%--var per = data[i];--%>
-          <%--var childNode = "";--%>
-          <%--if (per.child) {--%>
-            <%--for (var j = 0; j < per.child.length; j++) {--%>
-              <%--if (ownPermission.indexOf(per.child[j].id) != -1 || ownPermission.replace("/\s/g", "") == "all") {--%>
-                <%--childNode += "<input type='checkbox' name='permissions' id='" + per.id + j + "' value='" + per.child[j].id + "'>" + per.child[j].name;--%>
-              <%--}--%>
-            <%--}--%>
-          <%--}--%>
-          <%--if (childNode != "") {--%>
-            <%--newNode += "<span><input name='permission' type='checkbox' id='" + per.id + "' onclick=\"checkChild(this)\" value='" + per.id + "'>" + per.name;--%>
-            <%--newNode += childNode;--%>
-            <%--newNode += "</span><br/>";--%>
-          <%--}--%>
-        <%--}--%>
-        <%--$("#permissions").append(newNode);--%>
-      <%--}--%>
-    <%--}--%>
-  <%--});--%>
-  function saveRole(mm_manager_id){
+  function updatePwr(mm_manager_id){
     var mm_manager_password = $("#mm_manager_password").val();
+    var mm_manager_nickname = $("#mm_manager_nickname").val();
     if(mm_manager_password.replace(/\s/g, '') == ''){
         alert("密码不能为空");
         return;
@@ -134,7 +108,7 @@
       cache: true,
       type: "POST",
       url:"/changePass.do",
-      data:{"mm_manager_password":mm_manager_password, "mm_manager_id":mm_manager_id},
+      data:{"mm_manager_password":mm_manager_password, "mm_manager_id":mm_manager_id, "mm_manager_nickname":mm_manager_nickname},
       async: false,
       success: function(_data) {
         var data = $.parseJSON(_data);
@@ -149,21 +123,21 @@
     });
   };
 
-
   function manageEmp(_id,_type){
+    var mm_manager_nickname = $("#mm_manager_nickname").val();
     $.ajax({
       cache: true,
       type: "POST",
       url:"/admin/updateType.do",
-      data:{"mm_manager_id":_id, "mm_manager_is_use":_type},
+      data:{"mm_manager_id":_id, "mm_manager_is_use":_type, "mm_manager_nickname":mm_manager_nickname},
       async: false,
       success: function(_data) {
         var data = $.parseJSON(_data);
         if(data.success){
-          alert("修改成功");
+          alert("操作成功");
           window.location.href = "#module=admin/list&page=1";
         }else{
-          var _case = {1:"修改失败"};
+          var _case = {1:"操作失败"};
           alert(_case[data.code])
         }
       }

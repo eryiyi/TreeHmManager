@@ -64,4 +64,8 @@
           where sn.mm_tel_id=#{mm_tel_id}
     </select>
 
+    <delete id="delete" parameterType="String">
+        DELETE FROM mm_tel where mm_tel_id = #{mm_tel_id}
+    </delete>
+
 </mapper>

@@ -33,6 +33,10 @@ public class AdminEditController extends ControllerConstants {
     private UpdateService adminUpdateService;
 
     @Autowired
+    @Qualifier("adminEditService")
+    private DeleteService adminServiceDelete;
+
+    @Autowired
     @Qualifier("logoService")
     private SaveService logoService;
 
@@ -44,7 +48,6 @@ public class AdminEditController extends ControllerConstants {
             AdminVO admin = (AdminVO) results[0];
             String permissions = (String) results[1];
             Role role  = (Role) results[2];
-
             map.put("admin", admin);
             if(role != null){
                 map.put("role", role);
@@ -52,21 +55,36 @@ public class AdminEditController extends ControllerConstants {
                 map.put("roleRname", "最高管理员");
             }
             map.put("permissions_admin", permissions);
-            //日志记录
-            logoService.save(new LogoObj("查看管理员:"+admin.getMm_manager_nickname()+"的个人信息", manager.getMm_manager_id()));
         }
         return "/admin/detail";
     }
 
     @RequestMapping("/admin/updateType")
     @ResponseBody
-    public String updateType(HttpSession session, String mm_manager_id, String mm_manager_is_use){
+    public String updateType(HttpSession session, String mm_manager_id, String mm_manager_is_use , String mm_manager_nickname){
         try {
             Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
             Object[] params = new Object[]{mm_manager_id, mm_manager_is_use};
-            adminUpdateService.update(params);
+            //mm_manager_is_use :0 1 是禁止和启动管理员 2是删除管理员
+            if("2".equals(mm_manager_is_use)){
+                //删除
+                adminServiceDelete.delete(mm_manager_id);
+            }else {
+                //更改管理员状态
+                adminUpdateService.update(params);
+            }
             //日志记录
-            logoService.save(new LogoObj("更新管理员:"+manager.getMm_manager_nickname()+"的状态", manager.getMm_manager_id()));
+            switch (Integer.parseInt(mm_manager_is_use)){
+                case 0:
+                    logoService.save(new LogoObj("禁用管理员:"+ mm_manager_nickname, manager.getMm_manager_id()));
+                    break;
+                case 1:
+                    logoService.save(new LogoObj("启用管理员:"+ mm_manager_nickname, manager.getMm_manager_id()));
+                    break;
+                case 2:
+                    logoService.save(new LogoObj("删除管理员:"+ mm_manager_nickname, manager.getMm_manager_id()));
+                    break;
+            }
             return toJSONString(SUCCESS);
         }catch (ServiceException e){
             return toJSONString(ERROR_1);

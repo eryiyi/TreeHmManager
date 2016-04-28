@@ -22,6 +22,7 @@ public class AppKefuTelService implements ListService{
     @Qualifier("kefuTelDao")
     private KefuTelDao fuwuDao;
 
+    //取客服电话  分地区和全国
     @Override
     public Object list(Object object) throws ServiceException {
         KefuQuery query = (KefuQuery) object;
@@ -32,7 +33,7 @@ public class AppKefuTelService implements ListService{
         if(!StringUtil.isNullOrEmpty(query.getMm_tel_type())){
             map.put("mm_tel_type", query.getMm_tel_type());
         }
-        List<KefuVO> lists = fuwuDao.listsAll(map);
+        List<KefuVO> lists = fuwuDao.lists(map);
         return lists;
     }
 

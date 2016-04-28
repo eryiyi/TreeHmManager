@@ -39,4 +39,7 @@ public interface KefuTelDao {
      */
     public KefuTel findById(String mm_tel_id);
 
+    //根据客服ID删除客服
+    void delete(String mm_tel_id);
+
 }

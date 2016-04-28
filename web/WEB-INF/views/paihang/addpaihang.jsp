@@ -8,7 +8,7 @@
     </a>
     <ol class="breadcrumb pull-left">
       <li><a href="javascript:void(0)"  onclick="toPage('mainPage','')">主页</a></li>
-      <li><a href="javascript:void (0);">排行榜</a></li>
+      <li><a href="javascript:void (0);">金牌榜</a></li>
       <li><a href="javascript:void (0);">添加商户</a></li>
     </ol>
     <div id="social" class="pull-right">

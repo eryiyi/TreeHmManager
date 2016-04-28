@@ -34,33 +34,44 @@
         <%--<h4 class="page-header">会员详情</h4>--%>
         <form class="form-horizontal" role="form">
           <input type="hidden" value="${recordVO.mm_msg_id}" id="mm_msg_id">
+
             <div class="form-group">
                 <label class="col-sm-2 control-label">信息类型</label>
-                <div class="col-lg-8">
-                    <c:if test="${mm_msg_type == 0}"><div id="mm_msg_type">求购</div></c:if>
-                    <c:if test="${mm_msg_type != 1}"><div id="mm_msg_type">供应</div></c:if>
+                <div class="col-sm-4">
+                    <select class="form-control" id="mm_msg_type">
+                        <option value="0" ${recordVO.mm_msg_type=='0'?'selected':''}>求购</option>
+                        <option value="1" ${recordVO.mm_msg_type=='1'?'selected':''}>供应</option>
+                    </select>
                 </div>
             </div>
 
-            <div class="form-group">
-                <label class="col-sm-2 control-label">标题</label>
-                <div class="col-lg-8">
-                  <div id="mm_msg_title">${recordVO.mm_msg_title}</div>
-                </div>
-            </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">内容</label>
+                <%--<div class="col-lg-8">--%>
+                    <%--<div id="mm_msg_content">${recordVO.mm_msg_content}</div>--%>
+                <%--</div>--%>
                 <div class="col-lg-8">
-                    <div id="mm_msg_content">${recordVO.mm_msg_content}</div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-2 control-label">信息图片</label>
-                <div class="col-lg-8">
-                    <div id="mm_msg_picurl">${recordVO.mm_msg_picurl}</div>
+                <textarea class="report-reason" name="mm_msg_content" content="${recordVO.mm_msg_content}"
+                          id="mm_msg_content" cols="70" rows="10" placeholder="内容">${recordVO.mm_msg_content}</textarea>
                 </div>
             </div>
 
+            <div class="form-group">
+                <label class="col-sm-2 control-label">信息图片</label>
+                    <%--<div id="mm_msg_picurl">${recordVO.mm_msg_picurl}</div>--%>
+                <div class="col-sm-10 col-md-2">
+                    <c:forEach items="${arrPics}" var="e" varStatus="st">
+                        <img class="img-thumbnail" style="cursor: pointer"  src="${e}"/>
+                    </c:forEach>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">所属地区</label>
+                <div class="col-lg-8">
+                    <div id="area">${recordVO.cityName}${recordVO.area}</div>
+                </div>
+            </div>
             <div class="form-group">
                 <label class="col-sm-2 control-label">时间戳</label>
                 <div class="col-lg-8">
@@ -88,7 +99,7 @@
 
           <div class="form-group">
             <div class="col-sm-9 col-sm-offset-3">
-              <button type="button" class="btn btn-primary" onclick="saveRole('${recordVO.mm_msg_id}')">修改</button>
+              <button type="button" class="btn btn-primary" onclick="updateMsg('${recordVO.mm_msg_id}')">修改</button>
                 <button type="button" class="btn btn-primary" onclick="javascript :history.back(-1)">返回</button>
             </div>
           </div>
@@ -100,17 +111,20 @@
 
 <script type="text/javascript">
 
-  function saveRole(mm_emp_id){
+  function updateMsg(mm_emp_id){
+    var mm_msg_type = $("#mm_msg_type").val();//信息ID
+    var mm_msg_content = $("#mm_msg_content").val();//信息内容
     var mm_msg_id = $("#mm_msg_id").val();
     var is_top = $("#is_top").val();
     var top_num = $("#top_num").val();
-
     $.ajax({
       cache: true,
       type: "POST",
       url:"/record/update.do",
       data:{
         "mm_msg_id":mm_msg_id,
+        "mm_msg_type":mm_msg_type,
+        "mm_msg_content":mm_msg_content,
         "is_top":is_top,
         "top_num":top_num
       },

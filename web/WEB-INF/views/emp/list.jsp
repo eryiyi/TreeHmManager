@@ -198,12 +198,10 @@
         <table class="table">
           <thead>
           <tr>
-            <th>全选<input type="checkbox" name="allmails" onclick="checkAll()"></th>
+            <th><input type="checkbox" name="allmails" onclick="checkAll()"></th>
             <th>姓名</th>
             <th>电话</th>
-            <th>用户类型</th>
             <th>公司名称</th>
-            <th>公司类型</th>
             <th>所属地区</th>
             <th>诚信</th>
             <th>协会</th>
@@ -214,9 +212,10 @@
             <th>发布求购</th>
             <th>已完善资料</th>
             <th>审核状态</th>
+            <th>备注</th>
+            <th>操作</th>
             <th>操作</th>
             <c:if test="${is_manager=='0'}">
-              <th>操作</th>
               <th>操作</th>
               <th>操作</th>
             </c:if>
@@ -227,17 +226,12 @@
           <c:forEach items="${list}" var="e" varStatus="st">
             <tr>
               <td><input type="checkbox" id="${e.mm_emp_id}" name="checkbox_one"></td>
-              <td>${e.mm_emp_nickname}</td>
+
+              <c:if test="${is_manager=='0'}"><td><a href="#module=/emp/detail&mm_emp_id=${e.mm_emp_id}">${e.mm_emp_nickname}</a></td></c:if>
+              <c:if test="${is_manager=='1'}"><td>${e.mm_emp_nickname}</td></c:if>
+
               <td>${e.mm_emp_mobile}</td>
-              <td>
-                <c:if test="${e.mm_emp_type=='0'}">苗木经营</c:if>
-                <c:if test="${e.mm_emp_type=='1'}">苗木会员</c:if>
-              </td>
               <td>${e.mm_emp_company}</td>
-              <td>
-                <c:if test="${e.mm_emp_company_type=='0'}">苗木</c:if>
-                <c:if test="${e.mm_emp_company_type=='1'}">园林</c:if>
-              </td>
               <td>${e.provinceName}${e.cityName}${e.areaName}</td>
               <td>
                 <c:if test="${e.is_chengxin=='0'}">否</c:if>
@@ -270,13 +264,14 @@
                 <c:if test="${e.ischeck=='1'}">已审核</c:if>
                 <c:if test="${e.ischeck=='2'}">未通过</c:if>
               </td>
+              <td>${e.mm_emp_beizhu}</td>
               <td>
                 <a class="btn btn-default btn-sm" href="#module=/emp/toUpdatePwr&mm_emp_id=${e.mm_emp_id}" role="button">修改密码</a>
               </td>
+              <td>
+                <a class="btn btn-default btn-sm" href="#module=/empAd/list&mm_emp_id=${e.mm_emp_id}" role="button">个人轮播</a>
+              </td>
               <c:if test="${is_manager=='0'}">
-                <td>
-                  <a class="btn btn-default btn-sm" href="#module=/empAd/list&mm_emp_id=${e.mm_emp_id}" role="button">轮播图</a>
-                </td>
                 <td>
                   <a class="btn btn-default btn-sm" href="#module=/emp/toPaihang&mm_emp_id=${e.mm_emp_id}" role="button">上榜</a>
                 </td>

@@ -33,6 +33,7 @@
         <result column="cityid" property="cityid"/>
         <result column="countryid" property="countryid"/>
         <result column="area" property="area"/>
+        <result column="cityName" property="cityName"/>
         <result column="mm_emp_mobile" property="mm_emp_mobile"/>
         <result column="mm_emp_nickname" property="mm_emp_nickname"/>
         <result column="mm_emp_type" property="mm_emp_type"/>
@@ -48,10 +49,11 @@
         SELECT m.*,
         (SELECT mm_level_num FROM mm_level ll WHERE m.mm_level_id = ll.mm_level_id ) as mm_level_num
         FROM (
-        SELECT sn.* ,larea.area as area,lemp.mm_emp_mobile as mm_emp_mobile, lemp.mm_emp_nickname as mm_emp_nickname, lemp.mm_emp_type as mm_emp_type,lemp.mm_emp_cover as mm_emp_cover, lemp.mm_emp_company_type as mm_emp_company_type
+        SELECT sn.* ,larea.area as area,lcity.city as cityName,lemp.mm_emp_mobile as mm_emp_mobile, lemp.mm_emp_nickname as mm_emp_nickname, lemp.mm_emp_type as mm_emp_type,lemp.mm_emp_cover as mm_emp_cover, lemp.mm_emp_company_type as mm_emp_company_type
         , lemp.mm_emp_company as mm_emp_company, lemp.mm_level_id as mm_level_id, lemp.is_chengxin as is_chengxin , lemp.is_miaomu as is_miaomu  from mm_msg sn
         LEFT JOIN mm_emp lemp ON sn.mm_emp_id=lemp.mm_emp_id
         LEFT JOIN hat_area larea ON sn.countryid=larea.areaID
+        LEFT JOIN hat_city lcity ON sn.cityid=lcity.cityid
         WHERE 1=1 AND sn.is_del = 0
         <if test="mm_msg_type != null and mm_msg_type != ''">
             AND sn.mm_msg_type = #{mm_msg_type}
@@ -76,10 +78,10 @@
             AND sn.mm_emp_id = #{mm_emp_id}
         </if>
         <if test="keyword != null and keyword != ''">
-            AND  (sn.mm_msg_title like CONCAT('%',#{keyword},'%') OR  lemp.mm_emp_mobile = #{keyword} OR lemp.mm_emp_nickname like CONCAT('%',#{keyword},'%') OR  lemp.mm_emp_company like CONCAT('%',#{keyword},'%'))
+            AND  (sn.mm_msg_title like CONCAT('%',#{keyword},'%') OR  lemp.mm_emp_mobile like CONCAT('%',#{keyword},'%') OR lemp.mm_emp_nickname like CONCAT('%',#{keyword},'%') OR  lemp.mm_emp_company like CONCAT('%',#{keyword},'%'))
         </if>
         ) m
-        ORDER  BY  m.dateline DESC  limit #{index},#{size}
+        ORDER  BY  m.top_num DESC ,m.dateline DESC  limit #{index},#{size}
     </select>
 
     <select id="count" resultType="Long">
@@ -108,7 +110,7 @@
             AND sn.mm_emp_id = #{mm_emp_id}
         </if>
         <if test="keyword != null and keyword != ''">
-            AND  (sn.mm_msg_title like CONCAT('%',#{keyword},'%') OR  lemp.mm_emp_mobile = #{keyword} OR lemp.mm_emp_nickname like CONCAT('%',#{keyword},'%') OR  lemp.mm_emp_company like CONCAT('%',#{keyword},'%'))
+            AND  (sn.mm_msg_title like CONCAT('%',#{keyword},'%') OR  lemp.mm_emp_mobile like CONCAT('%',#{keyword},'%') OR lemp.mm_emp_nickname like CONCAT('%',#{keyword},'%') OR  lemp.mm_emp_company like CONCAT('%',#{keyword},'%'))
         </if>
     </select>
 
@@ -134,19 +136,19 @@
     </update>
 
     <update id="updateTop" parameterType="String">
-        UPDATE mm_msg SET is_top = #{is_top}, top_num = #{top_num}  WHERE mm_msg_id=#{mm_msg_id}
+        UPDATE mm_msg SET is_top = #{is_top}, top_num = #{top_num}, mm_msg_type = #{mm_msg_type}, mm_msg_content = #{mm_msg_content}  WHERE mm_msg_id=#{mm_msg_id}
     </update>
 
     <select id="listRecordVoTop" resultMap="record_vo">
         SELECT m.*,
         (SELECT mm_level_num FROM mm_level ll WHERE m.mm_level_id = ll.mm_level_id ) as mm_level_num
         FROM (
-        SELECT sn.* ,larea.area as area,lemp.mm_emp_mobile as mm_emp_mobile, lemp.mm_emp_nickname as mm_emp_nickname, lemp.mm_emp_type as mm_emp_type,lemp.mm_emp_cover as mm_emp_cover, lemp.mm_emp_company_type as mm_emp_company_type
+        SELECT sn.* ,larea.area as area,lcity.city as cityName,lemp.mm_emp_mobile as mm_emp_mobile, lemp.mm_emp_nickname as mm_emp_nickname, lemp.mm_emp_type as mm_emp_type,lemp.mm_emp_cover as mm_emp_cover, lemp.mm_emp_company_type as mm_emp_company_type
         , lemp.mm_emp_company as mm_emp_company, lemp.mm_level_id as mm_level_id, lemp.is_chengxin as is_chengxin , lemp.is_miaomu as is_miaomu  from mm_msg sn
          LEFT JOIN mm_emp lemp ON sn.mm_emp_id=lemp.mm_emp_id
         LEFT JOIN hat_area larea ON sn.countryid=larea.areaID
+        LEFT JOIN hat_city lcity ON sn.cityid=lcity.cityid
         WHERE sn.is_del = 0 AND sn.is_top = 1
-
         ) m
         ORDER  BY  m.top_num DESC  limit #{index},#{size}
     </select>
@@ -166,5 +168,64 @@
         </if>
     </select>
 
+
+
+
+
+    <select id="listRecordVoManager" resultMap="record_vo">
+        SELECT m.*,
+        (SELECT mm_level_num FROM mm_level ll WHERE m.mm_level_id = ll.mm_level_id ) as mm_level_num
+        FROM (
+        SELECT sn.* ,larea.area as area,lcity.city as cityName,lemp.mm_emp_mobile as mm_emp_mobile, lemp.mm_emp_nickname as mm_emp_nickname, lemp.mm_emp_type as mm_emp_type,lemp.mm_emp_cover as mm_emp_cover, lemp.mm_emp_company_type as mm_emp_company_type
+        , lemp.mm_emp_company as mm_emp_company, lemp.mm_level_id as mm_level_id, lemp.is_chengxin as is_chengxin , lemp.is_miaomu as is_miaomu  from mm_msg sn
+        LEFT JOIN mm_emp lemp ON sn.mm_emp_id=lemp.mm_emp_id
+        LEFT JOIN hat_area larea ON sn.countryid=larea.areaID
+        LEFT JOIN hat_city lcity ON sn.cityid=lcity.cityid
+        WHERE 1=1 AND sn.is_del = 0
+        <if test="mm_msg_type != null and mm_msg_type != ''">
+            AND sn.mm_msg_type = #{mm_msg_type}
+        </if>
+
+        <if test="provinceid != null and provinceid != ''">
+            AND sn.provinceid = #{provinceid}
+        </if>
+        <if test="cityid != null and cityid != ''">
+            AND sn.cityid = #{cityid}
+        </if>
+
+        <if test="countryid != null and countryid != ''" >
+            AND sn.countryid = #{countryid}
+        </if>
+
+        <if test="keyword != null and keyword != ''">
+            AND  (sn.mm_msg_title like CONCAT('%',#{keyword},'%') OR  lemp.mm_emp_mobile like CONCAT('%',#{keyword},'%') OR lemp.mm_emp_nickname like CONCAT('%',#{keyword},'%') OR  lemp.mm_emp_company like CONCAT('%',#{keyword},'%'))
+        </if>
+        ) m
+        ORDER  BY  m.top_num DESC ,m.dateline DESC  limit #{index},#{size}
+    </select>
+
+    <select id="countManager" resultType="Long">
+        SELECT count(sn.mm_msg_id) FROM mm_msg sn
+        LEFT JOIN mm_emp lemp ON sn.mm_emp_id=lemp.mm_emp_id
+        WHERE 1=1 AND sn.is_del = 0
+        <if test="mm_msg_type != null and mm_msg_type != ''">
+            AND sn.mm_msg_type = #{mm_msg_type}
+        </if>
+
+        <if test="provinceid != null and provinceid != ''">
+            AND sn.provinceid = #{provinceid}
+        </if>
+        <if test="cityid != null and cityid != ''">
+            AND sn.cityid = #{cityid}
+        </if>
+
+        <if test="countryid != null and countryid != ''" >
+            AND sn.countryid = #{countryid}
+        </if>
+
+        <if test="keyword != null and keyword != ''">
+            AND  (sn.mm_msg_title like CONCAT('%',#{keyword},'%') OR  lemp.mm_emp_mobile like CONCAT('%',#{keyword},'%') OR lemp.mm_emp_nickname like CONCAT('%',#{keyword},'%') OR  lemp.mm_emp_company like CONCAT('%',#{keyword},'%'))
+        </if>
+    </select>
 
 </mapper>

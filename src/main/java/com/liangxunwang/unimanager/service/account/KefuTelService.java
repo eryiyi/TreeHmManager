@@ -21,7 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service("kefuTelService")
-public class KefuTelService implements ListService,SaveService , UpdateService, ExecuteService{
+public class KefuTelService implements ListService,SaveService , UpdateService, ExecuteService, DeleteService{
 
     @Autowired
     @Qualifier("kefuTelDao")
@@ -58,4 +58,9 @@ public class KefuTelService implements ListService,SaveService , UpdateService, 
         return fuwuDao.findById((String) object);
     }
 
+    @Override
+    public Object delete(Object object) throws ServiceException {
+        fuwuDao.delete((String) object);
+        return null;
+    }
 }

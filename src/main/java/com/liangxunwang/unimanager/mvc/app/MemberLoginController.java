@@ -51,14 +51,14 @@ public class MemberLoginController extends ControllerConstants {
      */
     @RequestMapping(value = "/memberLogin" ,produces="text/plain;charset=UTF-8")
     @ResponseBody
-    public String memberLogin(@RequestParam String username, @RequestParam String password) throws Exception {
+    public String memberLogin(@RequestParam String username, @RequestParam String password, @RequestParam String userId) throws Exception {
         if (StringUtil.isNullOrEmpty(username)){
             return toJSONString(ERROR_5);
         }
         if (StringUtil.isNullOrEmpty(password)){
             return toJSONString(ERROR_6);
         }
-        Object[] params = new Object[]{username, password};
+        Object[] params = new Object[]{username, password, userId};
         EmpVO member = null;
         try {
             member = (EmpVO) memberLoginService.execute(params);
@@ -97,6 +97,9 @@ public class MemberLoginController extends ControllerConstants {
             }
             if (emsg.equals("NotCheck")){
                 return toJSONString(ERROR_4);
+            }
+            if (emsg.equals("ChangeMobile")){
+                return toJSONString(ERROR_7);
             }
         }
         DataTip tip = new DataTip();

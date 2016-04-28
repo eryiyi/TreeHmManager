@@ -40,6 +40,7 @@ public class LogoController extends ControllerConstants {
     @Qualifier("adminAllService")
     private ListService adminAllService;
 
+    //查看全部的日志列表
     @RequestMapping("list")
     public String list(HttpSession session,ModelMap map, LogoQuery query, Page page){
         query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
@@ -56,6 +57,26 @@ public class LogoController extends ControllerConstants {
         List<AdminVO> listsManager = (List<AdminVO>) adminAllService.list("");
         map.put("listsManager", listsManager);
         return "logo/list";
+    }
+
+    //查看自己的日志列表
+    @RequestMapping("listMine")
+    public String listMine(HttpSession session,ModelMap map, LogoQuery query, Page page){
+        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
+
+        query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
+        query.setSize(query.getSize() == 0 ? page.getDefaultSize() : query.getSize());
+        if(manager != null){
+            query.setMm_manager_id(manager.getMm_manager_id());
+        }
+        Object[] results = (Object[]) logoService.list(query);
+        map.put("list", results[0]);
+        long count = (Long) results[1];
+        page.setCount(count);
+        page.setPageCount(calculatePageCount(query.getSize(), count));
+        map.addAttribute("page", page);
+        map.addAttribute("query", query);
+        return "logo/listMine";
     }
 
     @RequestMapping("delete")

@@ -195,17 +195,17 @@
 					<li class="dropdown">
 						<a href="javascript:void (0);" class="dropdown-toggle">
 							<i class="fa fa-reorder"></i>
-							<span class="hidden-xs">排行榜</span>
+							<span class="hidden-xs">金牌榜</span>
 						</a>
 						<ul class="dropdown-menu">
 							<c:if test="${um:permission('PAIHANG_SHANGHU_MANAGE', sessionScope.powers)}">
-								<li><a href="javascript:void(0);" onclick="toPage('/paihang/list','')">商户列表</a></li>
+								<li><a href="javascript:void(0);" onclick="toPage('/paihang/list','')">金牌榜列表</a></li>
 							</c:if>
 						</ul>
 					</li>
 				</c:if>
 
-				<c:if test="${um:permission('TEL_KEFU_MANAGE', sessionScope.powers)||um:permission('ADD_TEL_KEFU_MANAGE', sessionScope.powers)}">
+				<c:if test="${um:permission('TEL_KEFU_MANAGE', sessionScope.powers)||um:permission('ADD_TEL_KEFU_MANAGE', sessionScope.powers)||um:permission('ADD_TEL_KEFU_MANAGE_AREA', sessionScope.powers)}">
 					<li class="dropdown">
 						<a href="javascript:void (0);" class="dropdown-toggle">
 							<i class="fa fa-phone"></i>
@@ -213,7 +213,10 @@
 						</a>
 						<ul class="dropdown-menu">
 							<c:if test="${um:permission('ADD_TEL_KEFU_MANAGE', sessionScope.powers)}">
-								<li><a href="javascript:void(0);" onclick="toPage('/kefu/add','')">添加客服</a></li>
+								<li><a href="javascript:void(0);" onclick="toPage('/kefu/add','')">添加客服(总管理员)</a></li>
+							</c:if>
+							<c:if test="${um:permission('ADD_TEL_KEFU_MANAGE_AREA', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('/kefu/addArea','')">添加客服(地区管理员)</a></li>
 							</c:if>
 							<c:if test="${um:permission('TEL_KEFU_MANAGE', sessionScope.powers)}">
 								<li><a href="javascript:void(0);" onclick="toPage('/kefu/list','')">客服列表</a></li>
@@ -412,7 +415,7 @@
 					</li>
 				</c:if>
 
-				<c:if test="${um:permission('LOGO_LIST', sessionScope.powers)}">
+				<c:if test="${um:permission('LOGO_LIST', sessionScope.powers) || um:permission('LOGO_MINE_LIST', sessionScope.powers)}">
 					<li class="dropdown">
 						<a href="javascript:void (0);" class="dropdown-toggle">
 							<i class="fa fa-reorder"></i>
@@ -420,7 +423,10 @@
 						</a>
 						<ul class="dropdown-menu">
 							<c:if test="${um:permission('LOGO_LIST', sessionScope.powers)}">
-								<li><a href="javascript:void(0);" onclick="toPage('/logo/list','1')">日志列表</a></li>
+								<li><a href="javascript:void(0);" onclick="toPage('/logo/list','1')">查看全部日志</a></li>
+							</c:if>
+							<c:if test="${um:permission('LOGO_MINE_LIST', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('/logo/listMine','1')">查看自己日志</a></li>
 							</c:if>
 						</ul>
 					</li>
