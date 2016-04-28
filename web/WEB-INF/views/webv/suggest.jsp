@@ -38,7 +38,7 @@
 	</div>
 	<!-- CONTENT -->
 	<div class="content regist w85">
-		<span>请描述您的建议：</span>
+		<h2 class="title">请描述您的建议：</h2>
 		<textarea class="report-reason" name="mm_suggest_cont"
 				  id="mm_suggest_cont" cols="30" rows="10" placeholder="请描述您的建议，我们会根据您的提议进行修改"></textarea>
 		<button class="button fill-orange mt3 w10 t-sh mb4" onclick="addSuggest()">提交</button>

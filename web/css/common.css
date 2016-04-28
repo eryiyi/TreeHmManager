@@ -109,11 +109,19 @@
   float: left;
   display: block;
   width: 75%;
-  padding: 5px 0 5px 5%;
+  padding: 5px 0 5px 10px;
   color: #444;
   background-color: transparent;
   height: 40px;
+  border: 1px solid #ccc;
+  border-right: none;
+  -webkit-border-radius: 10px 0 0 10px;
+  -moz-border-radius: 10px 0 0 10px;
+  border-radius: 10px 0 0 10px;
   line-height: 40px;
+}
+.heading .search-bar input:focus {
+  background-color: #fff;
 }
 .heading .search-bar button {
   background-color: #7CD43A;
@@ -121,7 +129,7 @@
   font-weight: bold;
   float: left;
   font-size: 1rem;
-  border-radius: 5px;
+  border-radius: 0 5px 5px 0;
   width: 25%;
   height: 40px;
 }

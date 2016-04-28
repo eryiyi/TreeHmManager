@@ -29,12 +29,9 @@
 <body style="background-color: #fff;">
 <div class="container">
 	<!-- HEADING -->
-	<div class="heading">
-		<!-- HEADING -->
-		<div class="heading clearfix">
-			<a href="javascript:history.back()" class="back"><img src="/img/tree_icons_back.png" alt=""></a>
-			<h1 class="head-title">详情</h1>
-		</div>
+	<div class="heading clearfix">
+		<a href="javascript:history.back()" class="back"><img src="/img/tree_icons_back.png" alt=""></a>
+		<h1 class="head-title">详情</h1>
 	</div>
 	<!-- CONTENT -->
 	<div class="content">
