@@ -266,7 +266,7 @@ body {
   .hide-phone {
     display: none;
   }
-  .page .right {
+  .page>.right {
     text-align: center;
   }
 }
