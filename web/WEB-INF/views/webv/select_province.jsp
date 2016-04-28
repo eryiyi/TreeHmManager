@@ -31,19 +31,18 @@
 <div class="container">
 	<!-- HEADING -->
 	<div class="heading clearfix">
-		<!-- HEADING -->
-		<div class="heading clearfix">
-			<a href="javascript:history.back()" class="back"><img src="/img/tree_icons_back.png" alt=""></a>
-			<h1 class="head-title">地区选择</h1>
-		</div>
+		<a href="javascript:history.back()" class="back"><img src="/img/tree_icons_back.png" alt=""></a>
+		<h1 class="head-title">地区选择</h1>
 	</div>
+
 	<!-- CONTENT -->
 	<div class="content w95">
 
 
 		<c:if test="${is_guanzhu=='0'}"><span>您已经申请了关注区域！请等待管理员审核</span></c:if>
 		<c:if test="${is_guanzhu=='1'}">
-			<ul class="location-list clearfix">
+			<h2 class="label-title">我关注的区域</h2>
+			<ul class="location-list location-list-green clearfix">
 				<c:forEach items="${areaNames}" var="e" varStatus="st">
 					<li>
 						<a href="/webvGuanzhuController/guanzhuArea.do?page=1">
@@ -60,6 +59,7 @@
 
 
 		<ul class="location-list clearfix">
+			<h2 class="label-title">*热门区域</h2>
 			<c:forEach items="${list}" var="e" varStatus="st">
 				<li>
 					<a href="/webvSelectProvinceController/toSelectCity.do?father=${e.provinceID}">
