@@ -38,7 +38,6 @@
 	<!-- CONTENT -->
 	<div class="content w95">
 
-
 		<c:if test="${is_guanzhu=='0'}"><span>您已经申请了关注区域！请等待管理员审核</span></c:if>
 		<c:if test="${is_guanzhu=='1'}">
 			<h2 class="label-title">我关注的区域</h2>
@@ -56,20 +55,16 @@
 		<c:if test="${is_guanzhu=='2'}"><span>您申请的关注区域未通过审核，请联系客服！</span></c:if>
 		<c:if test="${is_guanzhu=='3'}"><span>您尚未申请关注区域，请设置关注区域！</span></c:if>
 
-
-
 		<ul class="location-list clearfix">
 			<h2 class="label-title">*热门区域</h2>
-			<c:forEach items="${list}" var="e" varStatus="st">
+			<c:forEach items="${listhot}" var="e" varStatus="st">
 				<li>
-					<a href="/webvSelectProvinceController/toSelectCity.do?father=${e.provinceID}">
-						<span class="list-name">${e.province}</span>
-						<span class="list-num">${e.msgNum}</span>
+					<a href="/webvHotController/toIndex.do?page=1&countryid=${e.areaID}&is_guanzhu='1'">
+					<span class="list-name">${e.cityName}${e.area}</span>
 					</a>
 				</li>
 			</c:forEach>
 		</ul>
-
 
 	</div>
 </div>

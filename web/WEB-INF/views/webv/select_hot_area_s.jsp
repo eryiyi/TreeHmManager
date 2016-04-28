@@ -1,3 +1,6 @@
+<%@ page import="sun.rmi.runtime.Log" %>
+<%@ page import="com.liangxunwang.unimanager.mvc.vo.RecordVO" %>
+<%@ page import="java.util.List" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="um" uri="/unimanager-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" trimDirectiveWhitespaces="true" %>
@@ -5,11 +8,11 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>花木通关注区域求购信息</title>
+	<title>花木通热门区域</title>
 	<meta name="Keywords" content="花木通,花木,花草,苗联通,白蜡,园林,惠民皂户李镇,苗木协会" />
 	<meta name="Description" content="花木通是最优秀的花木信息软件，为客户提供最优质的服务" />
-	<meta property="og:title" content="花木通_关注区域求购信息"  />
-	<meta property="og:description" content="花木通_关注区域求购信息" />
+	<meta property="og:title" content="花木通_求购信息"  />
+	<meta property="og:description" content="花木通_求购信息" />
 	<meta name="author" content="花木通" />
 	<meta name="Copyright" content="花木通版权所有" />
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -17,6 +20,8 @@
 	<link rel="stylesheet" href="/css/reset.css">
 	<link rel="stylesheet" href="/css/common.css">
 	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/glide.core.min.css">
+	<link rel="stylesheet" href="/css/glide.theme.min.css">
 
 	<script type="text/javascript" src="/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/md5.js"></script>
@@ -25,6 +30,8 @@
 	<script type="text/javascript" src="/js/Util.js"></script>
 	<script type="text/javascript" src="/js/validation.js"></script>
 	<script language="javascript" src="/js/jquery.js"></script>
+	<script type="text/javascript" src="/js/jquery_latest.js"></script>
+	<script type="text/javascript" src="/js/glide.min.js"></script>
 	<style type="text/css">
 		.hide{
 			display:none;
@@ -33,28 +40,18 @@
 			display:inline-block;
 		}
 	</style>
-
 </head>
 <body>
 <div class="container">
 	<!-- HEADING -->
 	<div class="heading clearfix">
-		<!-- HEADING -->
 		<div class="heading clearfix">
-			<a href="javascript:voi(0)" onclick="selectPro()" class="back"><img src="/img/tree_icons_back.png" alt=""></a>
-			<h1 class="head-title" >关注区域</h1>
+			<a href="javascript:void(0)" onclick="selectPro()" class="back"><img src="/img/tree_icons_back.png"></a>
+			<h1 class="head-title">热门区域</h1>
 		</div>
 	</div>
 	<!-- CONTENT -->
 	<div class="content">
-		<ul class="category clearfix">
-			<c:forEach items="${listArea}" var="e" varStatus="st">
-				<c:if test="${countryid == e.areaID}"><li><a class="active" href="javaScript:void(0)" onclick="gzClickArea('${e.areaID}')">${e.area}</a></li></c:if>
-				<c:if test="${countryid != e.areaID}"><li><a href="javaScript:void(0)" onclick="gzClickArea('${e.areaID}')">${e.area}</a></li></c:if>
-			</c:forEach>
-		</ul>
-
-		<input type="hidden" id="mm_msg_type" name="mm_msg_type" value="${query.mm_msg_type}">
 		<input type="hidden" id="countryid" name="countryid" value="${countryid}">
 		<input type="hidden" id="is_login" name="is_login" value="${is_login}">
 		<input type="hidden" id="accessToken" name="accessToken" value="${emp.access_token}">
@@ -66,7 +63,8 @@
 						<img src="${e.mm_emp_cover}" alt="" class="head-pic">
 						<div class="detail">
 							<h1 class="company">${e.mm_emp_company}&nbsp;${e.mm_emp_nickname}</h1>
-							<h3 class="time">${e.dateline} &nbsp;&nbsp; ${e.area}</h3>
+							<%--<h3 class="time">${e.dateline}&nbsp;${e.area}</h3>--%>
+							<h3 class="time">${e.area}&nbsp;${e.dateline}</h3>
 						</div>
 					</a>
 					<div class="right">
@@ -88,18 +86,22 @@
 						${e.mm_msg_content}
 				</a>
 				<div class="item-footer clearfix">
-					<a type="button" href="tel:${e.mm_emp_mobile}"  class="button-phone"></a>
+
+					<%--<a href="" class="read-status-unread"></a>--%>
+
+					<a  href="tel:${e.mm_emp_mobile}"  class="button-phone"></a>
 					<a type="button" href="javaScript:void(0)" onclick="favourClick('${e.mm_msg_id}')" class="button-fav"></a>
 					<c:if test="${e.mm_msg_picurl !='' && e.mm_msg_picurl != nul}"><a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-pic"></a></c:if>
+
 				</div>
 			</div>
 		</c:forEach>
 
 		<c:if test="${is_login=='1'}"><a href="/html/download.html" class="warning" target="_blank">下载安卓APP可以查看更多内容...</a></c:if>
-		<c:if test="${is_login=='0'}"><a href="/webvLoginController/toLogin.do" class="warning">请先登录...</a></c:if>
+		<c:if test="${is_login=='0'}"><a href="/webvLoginController/toLogin.do" class="warning">查看更多信息，请先注册并登录账号...</a></c:if>
 		<c:if test="${is_login=='1'}">
 
- <!--分页信息，页面跳转-->
+			<!--分页信息，页面跳转-->
 			<div class="page clearfix">
 				<div class="left hide-phone">
 					<a><span>共${page.count}条/${page.pageCount}页</span></a>
@@ -138,21 +140,39 @@
 			</div>
 		</c:if>
 
+
 	</div>
 	<!-- TOOLBAR -->
-	<div class="toolbar-2">
-
-		<c:if test="${query.mm_msg_type =='0'}">
-			<a href="javaScript:void(0)" onclick="toPage('/webvGuanzhuController/guanzhuArea.do','1','0')" class="buy buy-active"></a>
-			<a href="javaScript:void(0)" onclick="toPage('/webvGuanzhuController/guanzhuArea.do','1','1')" class="sell"></a>
+	<div class="toolbar">
+		<c:if test="${is_login=='1'}">
+			<a href="javaScript:void(0)" onclick="toPage('/webvHotController/toIndex.do','1')" class="buy"></a>
+			<a href="javaScript:void(0)" onclick="toPage('/webvHotSController/toSell.do','1')" class="sell sell-active"></a>
 		</c:if>
-		<c:if test="${query.mm_msg_type =='1'}">
-			<a href="javaScript:void(0)" onclick="toPage('/webvGuanzhuController/guanzhuArea.do','1','0')" class="buy"></a>
-			<a href="javaScript:void(0)" onclick="toPage('/webvGuanzhuController/guanzhuArea.do','1','1')" class="sell sell-active"></a>
+		<c:if test="${is_login=='0'}">
+			<a href="javaScript:void(0)" id="cd-popup-trigger1" class="buy"></a>
+			<a href="javaScript:void(0)" id="cd-popup-trigger2" class="sell sell-active"></a>
 		</c:if>
 	</div>
 	<!-- TOOLBAR -->
 </div>
+
+<link rel="stylesheet" href="/css/dialog_reset.css"> <!-- CSS reset -->
+<link rel="stylesheet" href="/css/dialog_style.css"> <!-- Resource style -->
+<script src="/js/dialog_main.js"></script> <!-- Resource jQuery -->
+
+<div class="cd-popup" role="alert">
+	<div class="cd-popup-container">
+		<p>请先注册或联系管理员</p>
+		<ul class="cd-buttons">
+			<li><a href="javaScript:void(0)" onclick="reg()">注册</a></li>
+			<li><a href="javaScript:void(0)" onclick="login()">登录</a></li>
+		</ul>
+		<ul style="background: #ffffff;line-height: 45px;">
+			<li><a href="/webvKefuController/toKefu.do">客服中心</a></li>
+		</ul>
+		<a href="javaScript:void(0)" class="cd-popup-close img-replace">关闭</a>
+	</div> <!-- cd-popup-container -->
+</div> <!-- cd-popup -->
 
 </body>
 
@@ -162,9 +182,16 @@
 		window.location.href="/webvSelectProvinceController/toSelectProvince.do";
 	}
 
-	function toPage(_url, _page,_type){
+	function reg(){
+		//注册页面跳转
+		window.location.href="/webvRegController/toReg.do";
+	}
+	function toPage(_url, _page){
 		if(_page != ''){
-			window.location.href=_url+"?page="+_page +"&mm_msg_type="+_type;
+			var countryid = $("#countryid").val();
+			window.location.href=_url+"?page="+_page+"&is_guanzhu='1'"+"&countryid="+countryid;
+		}else{
+			window.location.href=_url;
 		}
 	}
 	function favourClick(_mm_msg_id){
@@ -208,16 +235,14 @@
 </script>
 
 <script type="text/javascript" charset="UTF-8">
-
 	function searchIndex(e){
 		if(e.keyCode != 13) return;
 		var _index = $("#index").val();
+		var countryid = $("#countryid").val();
 		var page = parseInt(_page);
 		var size = $("#size").val();
-		var mm_msg_type = $("#mm_msg_type").val();
-		var countryid = $("#countryid").val();
 		if(_index <= ${page.pageCount} && _index >= 1){
-			window.location.href="/webvGuanzhuController/guanzhuArea.do?page="+page+"&size="+size+"&countryid="+countryid+"mm_msg_type"+mm_msg_type;
+			window.location.href="/webvHotSController/toIndex.do?page="+page+"&size="+size+"&is_guanzhu='1'"+"&countryid="+countryid;
 		}else{
 			alert("请输入1-${page.pageCount}的页码数");
 		}
@@ -226,22 +251,14 @@
 	function nextPage(_page) {
 		var page = parseInt(_page);
 		var size = $("#size").val();
-		var mm_msg_type = $("#mm_msg_type").val();
 		var countryid = $("#countryid").val();
 		addCookie("contract_size", size, 36);
 		if ((page <= ${page.pageCount} && page >= 1)) {
-			window.location.href="/webvGuanzhuController/guanzhuArea.do?page="+page+"&size="+size+"&countryid="+countryid+"&mm_msg_type="+mm_msg_type;
+			window.location.href="/webvHotSController/toIndex.do?page="+page+"&size="+size+"&is_guanzhu='1'"+"&countryid="+countryid;
 		} else {
 			alert("请输入1-${page.pageCount}的页码数");
 		}
 	}
-
-	function gzClickArea(_countryid){
-		var size = $("#size").val();
-		var mm_msg_type = $("#mm_msg_type").val();
-		window.location.href="/webvGuanzhuController/guanzhuArea.do?page=1"+"&size="+size+"&countryid="+_countryid+"&mm_msg_type="+mm_msg_type;
-	}
-
 </script>
 <script type="text/javascript">
 	(function (window, undefined){
@@ -284,8 +301,6 @@
 		}
 		window.setInterval(checkHash, 100);
 	})(window);
-
-
 </script>
 
 </html>

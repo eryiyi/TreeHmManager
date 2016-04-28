@@ -7,10 +7,7 @@ import com.liangxunwang.unimanager.mvc.vo.CityVO;
 import com.liangxunwang.unimanager.mvc.vo.CountryVO;
 import com.liangxunwang.unimanager.mvc.vo.EmpVO;
 import com.liangxunwang.unimanager.mvc.vo.GuanzhuAreaObjVO;
-import com.liangxunwang.unimanager.query.CityQuery;
-import com.liangxunwang.unimanager.query.CountryQuery;
-import com.liangxunwang.unimanager.query.GuanzhuAreaQuery;
-import com.liangxunwang.unimanager.query.ProvinceQuery;
+import com.liangxunwang.unimanager.query.*;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.StringUtil;
@@ -34,8 +31,8 @@ import java.util.List;
 @RequestMapping("/webvSelectProvinceController")
 public class WebvSelectProvinceController extends ControllerConstants {
     @Autowired
-    @Qualifier("appProvinceService")
-    private ListService appProvinceService;
+    @Qualifier("hotAreaService")
+    private ListService hotAreaService;
 
     @Autowired
     @Qualifier("guanzhuAreaService")
@@ -48,10 +45,10 @@ public class WebvSelectProvinceController extends ControllerConstants {
 
         EmpVO emp = (EmpVO) session.getAttribute(MEMBER_KEY);
         if(emp != null){
-            ProvinceQuery provinceQuery = new ProvinceQuery();
-            provinceQuery.setIs_use("1");
-            List<ProvinceObj> list = (List<ProvinceObj>) appProvinceService.list(provinceQuery);
-            map.put("list", list);
+//            ProvinceQuery provinceQuery = new ProvinceQuery();
+//            provinceQuery.setIs_use("1");
+//            List<ProvinceObj> list = (List<ProvinceObj>) appProvinceService.list(provinceQuery);
+//            map.put("list", list);
 
             GuanzhuAreaQuery query = new GuanzhuAreaQuery();
             query.setIndex(1);
@@ -68,9 +65,6 @@ public class WebvSelectProvinceController extends ControllerConstants {
                         map.put("is_guanzhu", "0");
                     }else
                     if("1".equals(guanzhuAreaObj.getIscheck())){
-//                                                    Intent intent = new Intent(SelectProvinceActivity.this, RecordGzActivity.class);
-//                                                    intent.putExtra("guanzhuAreaObj", guanzhuAreaObj);
-//                                                    startActivity(intent);
                         areaNames = guanzhuAreaObj.getArea_name().split(",");
                         areaIds = guanzhuAreaObj.getAreaid().split(",");
                         map.put("is_guanzhu", "1");
@@ -89,6 +83,10 @@ public class WebvSelectProvinceController extends ControllerConstants {
                 map.put("is_guanzhu", "3");
             }
 
+            //查询热门区域
+            HotCityQuery hotCityQuery = new HotCityQuery();
+            List<CountryVO> listhot = (List<CountryVO>) hotAreaService.list(hotCityQuery);
+            map.put("listhot", listhot);
             return "/webv/select_province";
         }else {
             return "/webv/login";
