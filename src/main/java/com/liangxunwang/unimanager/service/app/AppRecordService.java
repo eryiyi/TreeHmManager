@@ -129,31 +129,26 @@ public class AppRecordService implements ListService ,SaveService, FindService{
         if(dayValueObj != null){
             mm_day_value = dayValueObj.getMm_day_value();//天数
         }
-
-            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
-            DateTimeFormatter timeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm");
-            String start = String.valueOf(df.format(new Date())) +" 00:00";//今天
-            DateTime dateTime = DateTime.parse(start, timeFormatter);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
+        DateTimeFormatter timeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm");
+        String today = String.valueOf(df.format(new Date())) +" 23:59";//今天
+        DateTime dateTime = DateTime.parse(today, timeFormatter);
         if(!StringUtil.isNullOrEmpty(mm_day_value)){
             //如果设置了天数
             Object[] objects = DateUtil.getDayInterval(dateTime.getMillis(), Integer.parseInt(mm_day_value));
-//            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
-//            DateTimeFormatter timeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm");
-//            String start = String.valueOf(df.format(new Date())) +" 00:00";//今天
-//            String end = String.valueOf(df.format(new Date())) +" 23:59";//今天
-//            if (!StringUtil.isNullOrEmpty(start)){
-//                DateTime dateTime = DateTime.parse(start, timeFormatter);
-//                map.put("start", dateTime.getMillis());
-//            }
-//            if (!StringUtil.isNullOrEmpty(end)){
-//                DateTime dateTime = DateTime.parse(end, timeFormatter);
-//                map.put("end", dateTime.getMillis());
-//            }
-        }
+            String startDay = (String) objects[2];
 
+            DateTime dateTimeStart = DateTime.parse(startDay, timeFormatter);
+            if (!StringUtil.isNullOrEmpty(String.valueOf(dateTimeStart.getMillis()))){
+                map.put("start", String.valueOf(dateTimeStart.getMillis()));
+            }
+
+            if (!StringUtil.isNullOrEmpty(String.valueOf(dateTime.getMillis()))){
+                map.put("end", String.valueOf(dateTime.getMillis()));
+            }
+        }
         List<RecordVO> list = recordDao.listRecordVo(map);
         long count = recordDao.count(map);
-
         for (RecordVO record : list){
             if (!StringUtil.isNullOrEmpty(record.getMm_emp_cover())){
                 if (record.getMm_emp_cover().startsWith("upload")){
