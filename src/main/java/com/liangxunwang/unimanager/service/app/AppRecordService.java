@@ -1,8 +1,10 @@
 package com.liangxunwang.unimanager.service.app;
 
 import com.liangxunwang.unimanager.dao.AccessTokenDao;
+import com.liangxunwang.unimanager.dao.DayValueObjDao;
 import com.liangxunwang.unimanager.dao.RecordDao;
 import com.liangxunwang.unimanager.model.AccessToken;
+import com.liangxunwang.unimanager.model.DayValueObj;
 import com.liangxunwang.unimanager.model.Record;
 import com.liangxunwang.unimanager.mvc.vo.RecordVO;
 import com.liangxunwang.unimanager.query.RecordQuery;
@@ -33,6 +35,10 @@ public class AppRecordService implements ListService ,SaveService, FindService{
     @Autowired
     @Qualifier("accessTokenDao")
     private AccessTokenDao accessTokenDao;
+
+    @Autowired
+    @Qualifier("dayValueObjDao")
+    private DayValueObjDao dayValueObjDao;
 
     @Override
     public Object list(Object object) throws ServiceException {
@@ -110,6 +116,39 @@ public class AppRecordService implements ListService ,SaveService, FindService{
                     map.put("provinceid", "");
                 }
             }
+        }
+
+        //查询几天的数据
+        Map<String, Object> mapDay = new HashMap<String, Object>();
+        List<DayValueObj> listsDay = dayValueObjDao.lists(mapDay);//天数
+        DayValueObj dayValueObj = null;
+        if(listsDay != null && listsDay.size() > 0){
+            dayValueObj = listsDay.get(0);
+        }
+        String mm_day_value = "30";
+        if(dayValueObj != null){
+            mm_day_value = dayValueObj.getMm_day_value();//天数
+        }
+
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
+            DateTimeFormatter timeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm");
+            String start = String.valueOf(df.format(new Date())) +" 00:00";//今天
+            DateTime dateTime = DateTime.parse(start, timeFormatter);
+        if(!StringUtil.isNullOrEmpty(mm_day_value)){
+            //如果设置了天数
+            Object[] objects = DateUtil.getDayInterval(dateTime.getMillis(), Integer.parseInt(mm_day_value));
+//            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
+//            DateTimeFormatter timeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm");
+//            String start = String.valueOf(df.format(new Date())) +" 00:00";//今天
+//            String end = String.valueOf(df.format(new Date())) +" 23:59";//今天
+//            if (!StringUtil.isNullOrEmpty(start)){
+//                DateTime dateTime = DateTime.parse(start, timeFormatter);
+//                map.put("start", dateTime.getMillis());
+//            }
+//            if (!StringUtil.isNullOrEmpty(end)){
+//                DateTime dateTime = DateTime.parse(end, timeFormatter);
+//                map.put("end", dateTime.getMillis());
+//            }
         }
 
         List<RecordVO> list = recordDao.listRecordVo(map);

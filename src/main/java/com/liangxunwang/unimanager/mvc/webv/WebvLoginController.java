@@ -63,7 +63,7 @@ public class WebvLoginController extends ControllerConstants {
         if (StringUtil.isNullOrEmpty(password)){
             return toJSONString(ERROR_6);
         }
-        Object[] params = new Object[]{username, password};
+        Object[] params = new Object[]{username, password, username};//前台登录的话  保存的userid数据就是用户的手机号
         EmpVO member = null;
         try {
             member = (EmpVO) memberLoginService.execute(params);
@@ -103,7 +103,11 @@ public class WebvLoginController extends ControllerConstants {
             }else
             if (emsg.equals("NotCheck")){
                 return toJSONString(ERROR_4);
-            }else{
+            }
+            if (emsg.equals("ChangeMobile")){
+                return toJSONString(ERROR_8);
+            }
+            else{
                 return toJSONString(ERROR_7);
             }
         }

@@ -25,7 +25,6 @@ public class MemberLoginService implements ExecuteService {
         Object[] params = (Object[]) object;
         String username = (String) params[0];
         String password = (String) params[1];
-        String userId = (String) params[2];
 
         EmpVO member = dao.findByMobile(username);
         if (member == null){
@@ -34,19 +33,19 @@ public class MemberLoginService implements ExecuteService {
         if (!new MD5Util().getMD5ofStr(password).equals(member.getMm_emp_password())){
             throw new ServiceException("PassError");
         }
-        if(!StringUtil.isNullOrEmpty(member.getUserId())){
-            //说明有USERID
-            if(StringUtil.isNullOrEmpty(userId)){
-                //没有传userid,说明用户更换了手机号，登录失败
-                throw new ServiceException("ChangeMobile");
-            }else{
-                //userid不是空
-                if(!member.getUserId().equals(userId)){
-                    //两次传的userid不一样
-                    throw new ServiceException("ChangeMobile");
-                }
-            }
-        }
+//        if(!StringUtil.isNullOrEmpty(member.getUserId())){
+//            //说明有USERID
+//            if(StringUtil.isNullOrEmpty(userId)){
+//                //没有传userid,说明用户更换了手机号，登录失败
+//                throw new ServiceException("ChangeMobile");
+//            }else{
+//                //userid不是空
+//                if(!member.getUserId().equals(userId)){
+//                    //两次传的userid不一样
+//                    throw new ServiceException("ChangeMobile");
+//                }
+//            }
+//        }
 
         if ("1".equals(member.getIs_use())){
             throw new ServiceException("NotUse");//禁用

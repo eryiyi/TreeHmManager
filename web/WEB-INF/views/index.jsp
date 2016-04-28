@@ -205,7 +205,7 @@
 					</li>
 				</c:if>
 
-				<c:if test="${um:permission('TEL_KEFU_MANAGE', sessionScope.powers)||um:permission('ADD_TEL_KEFU_MANAGE', sessionScope.powers)||um:permission('ADD_TEL_KEFU_MANAGE_AREA', sessionScope.powers)}">
+				<c:if test="${um:permission('TEL_KEFU_MANAGE', sessionScope.powers)||um:permission('ADD_TEL_KEFU_MANAGE', sessionScope.powers)}">
 					<li class="dropdown">
 						<a href="javascript:void (0);" class="dropdown-toggle">
 							<i class="fa fa-phone"></i>
@@ -215,9 +215,9 @@
 							<c:if test="${um:permission('ADD_TEL_KEFU_MANAGE', sessionScope.powers)}">
 								<li><a href="javascript:void(0);" onclick="toPage('/kefu/add','')">添加客服(总管理员)</a></li>
 							</c:if>
-							<c:if test="${um:permission('ADD_TEL_KEFU_MANAGE_AREA', sessionScope.powers)}">
-								<li><a href="javascript:void(0);" onclick="toPage('/kefu/addArea','')">添加客服(地区管理员)</a></li>
-							</c:if>
+							<%--<c:if test="${um:permission('ADD_TEL_KEFU_MANAGE_AREA', sessionScope.powers)}">--%>
+								<%--<li><a href="javascript:void(0);" onclick="toPage('/kefu/addArea','')">添加客服(地区管理员)</a></li>--%>
+							<%--</c:if>--%>
 							<c:if test="${um:permission('TEL_KEFU_MANAGE', sessionScope.powers)}">
 								<li><a href="javascript:void(0);" onclick="toPage('/kefu/list','')">客服列表</a></li>
 							</c:if>
@@ -484,6 +484,56 @@
 						</ul>
 					</li>
 				</c:if>
+
+				<c:if test="${um:permission('MSG_KONGZHI_MANA', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="javascript:void (0);" class="dropdown-toggle">
+							<i class="fa fa-info"></i>
+							<span class="hidden-xs">控制信息显示的天数</span>
+						</a>
+						<ul class="dropdown-menu">
+							<c:if test="${um:permission('MSG_KONGZHI_MANA', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('/dayValueController/toUpdate','')">控制信息显示的天数</a></li>
+							</c:if>
+						</ul>
+					</li>
+				</c:if>
+
+				<c:if test="${um:permission('HOT_CITY_ADD_MANA', sessionScope.powers) || um:permission('HOT_CITY_LIST_MANA', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="javascript:void (0);" class="dropdown-toggle">
+							<i class="fa fa-reorder"></i>
+							<span class="hidden-xs">热门城市</span>
+						</a>
+						<ul class="dropdown-menu">
+							<c:if test="${um:permission('HOT_CITY_ADD_MANA', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('/hotCityController/toAdd','')">添加热门城市</a></li>
+							</c:if>
+							<c:if test="${um:permission('HOT_CITY_LIST_MANA', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('/hotCityController/list','1')">热门城市列表</a></li>
+							</c:if>
+						</ul>
+					</li>
+				</c:if>
+
+				<c:if test="${um:permission('HOT_AREA_ADD_MANA', sessionScope.powers) || um:permission('HOT_AREA_LIST_MANA', sessionScope.powers)}">
+					<li class="dropdown">
+						<a href="javascript:void (0);" class="dropdown-toggle">
+							<i class="fa fa-reorder"></i>
+							<span class="hidden-xs">热门县区</span>
+						</a>
+						<ul class="dropdown-menu">
+							<c:if test="${um:permission('HOT_AREA_ADD_MANA', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('/hotAreaController/toAdd','')">添加热门县区</a></li>
+							</c:if>
+							<c:if test="${um:permission('HOT_AREA_LIST_MANA', sessionScope.powers)}">
+								<li><a href="javascript:void(0);" onclick="toPage('/hotAreaController/list','1')">热门县区列表</a></li>
+							</c:if>
+						</ul>
+					</li>
+				</c:if>
+
+
 			</ul>
 		</div>
 		<!--Start Content-->
