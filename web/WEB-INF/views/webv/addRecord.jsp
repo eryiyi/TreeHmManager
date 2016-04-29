@@ -27,6 +27,33 @@
 	<script type="text/javascript" src="/js/ajaxfileupload.js"></script>
 	<script type="text/javascript" src="/js/Util.js"></script>
 	<script type="text/javascript" src="/js/validation.js"></script>
+	<style>
+		.hidden{
+			display: none !important;
+		}
+		.pic-holder{
+			margin-left: 1%;
+			width: 32%;
+			float: left;
+		}
+		.pic-holder>label{
+			background-color: #fff;
+			display: block;
+			border: 1px solid #ccc;
+		}
+		.pic-holder .img-thumbnail{
+			display: block;
+			width: 100%;
+			height: auto;
+
+		}
+		.upload-button{
+			font-size: 1rem;
+			line-height: 200%;
+			width: 100% !important;
+			display: block;
+		}
+	</style>
 
 </head>
 <div class="container">
@@ -41,11 +68,11 @@
 	<!-- CONTENT -->
 	<div class="content regist w85">
 		<div class="select-group mt2 mb2"><span>信息类型</span>
-		<input type="hidden" id="server_url" name="server_url" value="${server_url}">
-		<select name="mm_msg_type" id="mm_msg_type" class="bg-f2">
-		<option value="0">苗木求购</option>
-		<option value="1">苗木供应</option>
-		</select>
+			<input type="hidden" id="server_url" name="server_url" value="${server_url}">
+			<select name="mm_msg_type" id="mm_msg_type" class="bg-f2">
+				<option value="0">苗木求购</option>
+				<option value="1">苗木供应</option>
+			</select>
 		</div>
 		<%--<span>信息标题：</span>--%>
 		<%--<input class="report-reason" placeholder="信息标题" type="text" id="mm_msg_title" name="mm_msg_title">--%>
@@ -66,117 +93,173 @@
 
 			<c:if test="${emp.is_pic !=null && emp.is_pic !='0'}">
 				<c:if test="${emp.is_pic =='1'}">
-					<div class="input-group-regist">
-							<img class="img-thumbnail"  name="imagePath1" id="imagePath1"  style="cursor: pointer;width: 80px;height: 80px;" />
-							<input type="file" name="file" id="fileUpload1" style="float: left;" />
-							<input type="button" value="点此上传" onclick="uploadImage('ad_1','imagePath1','fileUpload1')" style="float: left;"/><br/><br/>
+					<div class="pic-holder">
+
+						<label for="fileUpload1">
+							<img class="img-thumbnail"  name="imagePath1" id="imagePath1" src="/img/pic_add.svg"  />
+						</label>
+						<input class="hidden" type="file" name="file" id="fileUpload1" style="float: left;" />
+						<input class="upload-button fill-green" type="button" value="上传" onclick="uploadImage('ad_1','imagePath1','fileUpload1')" style="float: left;"/>
 					</div>
 
-					<div class="input-group-regist">
-						<img class="img-thumbnail"  name="imagePath2" id="imagePath2"  style="cursor: pointer;width: 80px;height: 80px;" />
-						<input type="file" name="file" id="fileUpload2" style="float: left;" />
-						<input type="button" value="点此上传" onclick="uploadImage('ad_2','imagePath2','fileUpload2')" style="float: left;"/><br/><br/>
+					<div class="pic-holder">
+
+						<label for="fileUpload2">
+							<img class="img-thumbnail"  name="imagePath2" id="imagePath2" src="/img/pic_add.svg"  />
+						</label>
+						<input class="hidden" type="file" name="file" id="fileUpload2" style="float: left;" />
+						<input class="upload-button fill-green" type="button" value="上传" onclick="uploadImage('ad_2','imagePath2','fileUpload2')" style="float: left;"/>
 					</div>
 
-					<div class="input-group-regist">
-						<img class="img-thumbnail"  name="imagePath3" id="imagePath3"  style="cursor: pointer;width: 80px;height: 80px;" />
-						<input type="file" name="file" id="fileUpload3" style="float: left;" />
-						<input type="button" value="点此上传" onclick="uploadImage('ad_3','imagePath3','fileUpload3')" style="float: left;"/><br/><br/>
-					</div>
+					<div class="pic-holder">
 
+						<label for="fileUpload3">
+							<img class="img-thumbnail"  name="imagePath3" id="imagePath3" src="/img/pic_add.svg"  />
+						</label>
+						<input class="hidden" type="file" name="file" id="fileUpload3" style="float: left;" />
+						<input class="upload-button fill-green" type="button" value="上传" onclick="uploadImage('ad_3','imagePath3','fileUpload3')" style="float: left;"/>
+					</div>
 				</c:if>
 				<c:if test="${emp.is_pic =='2'}">
-					<div class="input-group-regist">
-						<img class="img-thumbnail"  name="imagePath4" id="imagePath4"  style="cursor: pointer;width: 80px;height: 80px;" />
-						<input type="file" name="file" id="fileUpload4" style="float: left;" />
-						<input type="button" value="点此上传" onclick="uploadImage('ad_1','imagePath4','fileUpload4')" style="float: left;"/><br/><br/>
+					<div class="pic-holder">
+
+						<label for="fileUpload4">
+							<img class="img-thumbnail"  name="imagePath4" id="imagePath4" src="/img/pic_add.svg"  />
+						</label>
+						<input class="hidden" type="file" name="file" id="fileUpload4" style="float: left;" />
+						<input class="upload-button fill-green" type="button" value="上传" onclick="uploadImage('ad_4','imagePath4','fileUpload4')" style="float: left;"/>
 					</div>
 
-					<div class="input-group-regist">
-						<img class="img-thumbnail"  name="imagePath5" id="imagePath5"  style="cursor: pointer;width: 80px;height: 80px;" />
-						<input type="file" name="file" id="fileUpload5" style="float: left;" />
-						<input type="button" value="点此上传" onclick="uploadImage('ad_2','imagePath5','fileUpload5')" style="float: left;"/><br/><br/>
+					<div class="pic-holder">
+
+						<label for="fileUpload5">
+							<img class="img-thumbnail"  name="imagePath5" id="imagePath5" src="/img/pic_add.svg"  />
+						</label>
+						<input class="hidden" type="file" name="file" id="fileUpload5" style="float: left;" />
+						<input class="upload-button fill-green" type="button" value="上传" onclick="uploadImage('ad_5','imagePath5','fileUpload5')" style="float: left;"/>
 					</div>
 
-					<div class="input-group-regist">
-						<img class="img-thumbnail"  name="imagePath6" id="imagePath6"  style="cursor: pointer;width: 80px;height: 80px;" />
-						<input type="file" name="file" id="fileUpload6" style="float: left;" />
-						<input type="button" value="点此上传" onclick="uploadImage('ad_3','imagePath6','fileUpload6')" style="float: left;"/><br/><br/>
+					<div class="pic-holder">
+
+						<label for="fileUpload6">
+							<img class="img-thumbnail"  name="imagePath6" id="imagePath6" src="/img/pic_add.svg"  />
+						</label>
+						<input class="hidden" type="file" name="file" id="fileUpload6" style="float: left;" />
+						<input class="upload-button fill-green" type="button" value="上传" onclick="uploadImage('ad_6','imagePath6','fileUpload6')" style="float: left;"/>
 					</div>
 
-					<div class="input-group-regist">
-						<img class="img-thumbnail"  name="imagePath7" id="imagePath7"  style="cursor: pointer;width: 80px;height: 80px;" />
-						<input type="file" name="file" id="fileUpload7" style="float: left;" />
-						<input type="button" value="点此上传" onclick="uploadImage('ad_4','imagePath7','fileUpload7')" style="float: left;"/><br/><br/>
+					<div class="pic-holder">
+
+						<label for="fileUpload7">
+							<img class="img-thumbnail"  name="imagePath7" id="imagePath7" src="/img/pic_add.svg"  />
+						</label>
+						<input class="hidden" type="file" name="file" id="fileUpload7" style="float: left;" />
+						<input class="upload-button fill-green" type="button" value="上传" onclick="uploadImage('ad_7','imagePath7','fileUpload7')" style="float: left;"/>
 					</div>
 
-					<div class="input-group-regist">
-						<img class="img-thumbnail"  name="imagePath8" id="imagePath8"  style="cursor: pointer;width: 80px;height: 80px;" />
-						<input type="file" name="file" id="fileUpload8" style="float: left;" />
-						<input type="button" value="点此上传" onclick="uploadImage('ad_5','imagePath8','fileUpload8')" style="float: left;"/><br/><br/>
+					<div class="pic-holder">
+
+						<label for="fileUpload8">
+							<img class="img-thumbnail"  name="imagePath8" id="imagePath8" src="/img/pic_add.svg"  />
+						</label>
+						<input class="hidden" type="file" name="file" id="fileUpload8" style="float: left;" />
+						<input class="upload-button fill-green" type="button" value="上传" onclick="uploadImage('ad_8','imagePath8','fileUpload8')" style="float: left;"/>
 					</div>
 
-					<div class="input-group-regist">
-						<img class="img-thumbnail"  name="imagePath9" id="imagePath9"  style="cursor: pointer;width: 80px;height: 80px;" />
-						<input type="file" name="file" id="fileUpload9" style="float: left;" />
-						<input type="button" value="点此上传" onclick="uploadImage('ad_6','imagePath9','fileUpload9')" style="float: left;"/><br/><br/>
+					<div class="pic-holder">
+
+						<label for="fileUpload9">
+							<img class="img-thumbnail"  name="imagePath9" id="imagePath9" src="/img/pic_add.svg"  />
+						</label>
+						<input class="hidden" type="file" name="file" id="fileUpload9" style="float: left;" />
+						<input class="upload-button fill-green" type="button" value="上传" onclick="uploadImage('ad_9','imagePath9','fileUpload9')" style="float: left;"/>
 					</div>
+
+
 				</c:if>
 
 				<c:if test="${emp.is_pic =='3'}">
-					<div class="input-group-regist">
-						<img class="img-thumbnail"  name="imagePath10" id="imagePath10"  style="cursor: pointer;width: 80px;height: 80px;" />
-						<input type="file" name="file" id="fileUpload10" style="float: left;" />
-						<input type="button" value="点此上传" onclick="uploadImage('ad_1','imagePath10','fileUpload10')" style="float: left;"/><br/><br/>
+					<div class="pic-holder">
+
+						<label for="fileUpload10">
+							<img class="img-thumbnail"  name="imagePath10" id="imagePath10" src="/img/pic_add.svg"  />
+						</label>
+						<input class="hidden" type="file" name="file" id="fileUpload10" style="float: left;" />
+						<input class="upload-button fill-green" type="button" value="上传" onclick="uploadImage('ad_10','imagePath10','fileUpload10')" style="float: left;"/>
 					</div>
 
-					<div class="input-group-regist">
-						<img class="img-thumbnail"  name="imagePath11" id="imagePath11"  style="cursor: pointer;width: 80px;height: 80px;" />
-						<input type="file" name="file" id="fileUpload11" style="float: left;" />
-						<input type="button" value="点此上传" onclick="uploadImage('ad_2','imagePath11','fileUpload11')" style="float: left;"/><br/><br/>
+					<div class="pic-holder">
+
+						<label for="fileUpload11">
+							<img class="img-thumbnail"  name="imagePath11" id="imagePath11" src="/img/pic_add.svg"  />
+						</label>
+						<input class="hidden" type="file" name="file" id="fileUpload11" style="float: left;" />
+						<input class="upload-button fill-green" type="button" value="上传" onclick="uploadImage('ad_11','imagePath11','fileUpload11')" style="float: left;"/>
 					</div>
 
-					<div class="input-group-regist">
-						<img class="img-thumbnail"  name="imagePath12" id="imagePath12"  style="cursor: pointer;width: 80px;height: 80px;" />
-						<input type="file" name="file" id="fileUpload12" style="float: left;" />
-						<input type="button" value="点此上传" onclick="uploadImage('ad_3','imagePath12','fileUpload12')" style="float: left;"/><br/><br/>
+					<div class="pic-holder">
+
+						<label for="fileUpload12">
+							<img class="img-thumbnail"  name="imagePath12" id="imagePath12" src="/img/pic_add.svg"  />
+						</label>
+						<input class="hidden" type="file" name="file" id="fileUpload12" style="float: left;" />
+						<input class="upload-button fill-green" type="button" value="上传" onclick="uploadImage('ad_12','imagePath12','fileUpload12')" style="float: left;"/>
 					</div>
 
-					<div class="input-group-regist">
-						<img class="img-thumbnail"  name="imagePath13" id="imagePath13"  style="cursor: pointer;width: 80px;height: 80px;" />
-						<input type="file" name="file" id="fileUpload13" style="float: left;" />
-						<input type="button" value="点此上传" onclick="uploadImage('ad_4','imagePath13','fileUpload13')" style="float: left;"/><br/><br/>
+					<div class="pic-holder">
+
+						<label for="fileUpload13">
+							<img class="img-thumbnail"  name="imagePath13" id="imagePath13" src="/img/pic_add.svg"  />
+						</label>
+						<input class="hidden" type="file" name="file" id="fileUpload13" style="float: left;" />
+						<input class="upload-button fill-green" type="button" value="上传" onclick="uploadImage('ad_13','imagePath13','fileUpload13')" style="float: left;"/>
 					</div>
 
-					<div class="input-group-regist">
-						<img class="img-thumbnail"  name="imagePath14" id="imagePath14"  style="cursor: pointer;width: 80px;height: 80px;" />
-						<input type="file" name="file" id="fileUpload14" style="float: left;" />
-						<input type="button" value="点此上传" onclick="uploadImage('ad_5','imagePath14','fileUpload14')" style="float: left;"/><br/><br/>
+					<div class="pic-holder">
+
+						<label for="fileUpload14">
+							<img class="img-thumbnail"  name="imagePath14" id="imagePath14" src="/img/pic_add.svg"  />
+						</label>
+						<input class="hidden" type="file" name="file" id="fileUpload14" style="float: left;" />
+						<input class="upload-button fill-green" type="button" value="上传" onclick="uploadImage('ad_14','imagePath14','fileUpload14')" style="float: left;"/>
 					</div>
 
-					<div class="input-group-regist">
-						<img class="img-thumbnail"  name="imagePath15" id="imagePath15"  style="cursor: pointer;width: 80px;height: 80px;" />
-						<input type="file" name="file" id="fileUpload15" style="float: left;" />
-						<input type="button" value="点此上传" onclick="uploadImage('ad_6','imagePath15','fileUpload15')" style="float: left;"/><br/><br/>
+					<div class="pic-holder">
+
+						<label for="fileUpload15">
+							<img class="img-thumbnail"  name="imagePath15" id="imagePath15" src="/img/pic_add.svg"  />
+						</label>
+						<input class="hidden" type="file" name="file" id="fileUpload15" style="float: left;" />
+						<input class="upload-button fill-green" type="button" value="上传" onclick="uploadImage('ad_15','imagePath15','fileUpload15')" style="float: left;"/>
 					</div>
 
-					<div class="input-group-regist">
-						<img class="img-thumbnail"  name="imagePath16" id="imagePath16"  style="cursor: pointer;width: 80px;height: 80px;" />
-						<input type="file" name="file" id="fileUpload16" style="float: left;" />
-						<input type="button" value="点此上传" onclick="uploadImage('ad_7','imagePath16','fileUpload16')" style="float: left;"/><br/><br/>
+					<div class="pic-holder">
+
+						<label for="fileUpload16">
+							<img class="img-thumbnail"  name="imagePath16" id="imagePath16" src="/img/pic_add.svg"  />
+						</label>
+						<input class="hidden" type="file" name="file" id="fileUpload16" style="float: left;" />
+						<input class="upload-button fill-green" type="button" value="上传" onclick="uploadImage('ad_16','imagePath16','fileUpload16')" style="float: left;"/>
 					</div>
 
-					<div class="input-group-regist">
-						<img class="img-thumbnail"  name="imagePath17" id="imagePath17"  style="cursor: pointer;width: 80px;height: 80px;" />
-						<input type="file" name="file" id="fileUpload17" style="float: left;" />
-						<input type="button" value="点此上传" onclick="uploadImage('ad_8','imagePath17','fileUpload17')" style="float: left;"/><br/><br/>
+					<div class="pic-holder">
+
+						<label for="fileUpload17">
+							<img class="img-thumbnail"  name="imagePath17" id="imagePath17" src="/img/pic_add.svg"  />
+						</label>
+						<input class="hidden" type="file" name="file" id="fileUpload17" style="float: left;" />
+						<input class="upload-button fill-green" type="button" value="上传" onclick="uploadImage('ad_17','imagePath17','fileUpload17')" style="float: left;"/>
 					</div>
 
-					<div class="input-group-regist">
-						<img class="img-thumbnail"  name="imagePath18" id="imagePath18"  style="cursor: pointer;width: 80px;height: 80px;" />
-						<input type="file" name="file" id="fileUpload18" style="float: left;" />
-						<input type="button" value="点此上传" onclick="uploadImage('ad_9','imagePath18','fileUpload18')" style="float: left;"/><br/><br/>
+					<div class="pic-holder">
+
+						<label for="fileUpload18">
+							<img class="img-thumbnail"  name="imagePath18" id="imagePath18" src="/img/pic_add.svg"  />
+						</label>
+						<input class="hidden" type="file" name="file" id="fileUpload18" style="float: left;" />
+						<input class="upload-button fill-green" type="button" value="上传" onclick="uploadImage('ad_18','imagePath18','fileUpload18')" style="float: left;"/>
 					</div>
+
 				</c:if>
 			</c:if>
 		</div>
