@@ -100,7 +100,6 @@
 		<c:if test="${is_login=='1'}"><a href="/html/download.html" class="warning" target="_blank">下载安卓APP可以查看更多内容...</a></c:if>
 		<c:if test="${is_login=='0'}"><a href="/webvLoginController/toLogin.do" class="warning">查看更多信息，请先注册并登录账号...</a></c:if>
 		<c:if test="${is_login=='1'}">
-
 			<!--分页信息，页面跳转-->
 			<div class="page clearfix">
 				<div class="left hide-phone">
@@ -139,8 +138,6 @@
 				</div>
 			</div>
 		</c:if>
-
-
 	</div>
 	<!-- TOOLBAR -->
 	<div class="toolbar-2">
@@ -175,14 +172,11 @@
 <%--</div> <!-- cd-popup -->--%>
 
 </body>
-
 <script>
-
 	function selectPro(){
 		//页面跳转
 		window.location.href="/webvSelectProvinceController/toSelectProvince.do";
 	}
-
 	function reg(){
 		//注册页面跳转
 		window.location.href="/webvRegController/toReg.do";

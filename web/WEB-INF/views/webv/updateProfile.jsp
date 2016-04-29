@@ -26,23 +26,27 @@
 	<script type="text/javascript" src="/js/Util.js"></script>
 	<script type="text/javascript" src="/js/validation.js"></script>
 	<style>
-		.pic-upload{
-			height: auto !important;
-			width: 35% !important;
-			margin: 0 auto;
-			float: left !important;
+		.hidden{
+			display: none !important;
+		}
+		.pic-holder{
+			width: 50%;
+			float: left;
+		}
+		.pic-holder>label{
+			background-color: #fff;
 			display: block;
+			border: 1px solid #ccc;
 		}
-		.pic-upload input{
-			display: none;
-		}
-		.pic-upload input label{
-			display: block;
-
-		}
-		.pic-upload input label img{
+		.pic-holder .img-thumbnail{
 			display: block;
 			width: 100%;
+			height: auto;
+
+		}
+		.upload-button{
+			width: 100% !important;
+			display: block;
 		}
 
 	</style>
@@ -67,17 +71,22 @@
 			<div class="input-group-regist"><span>公司地址</span>
 				<input  placeholder="公司地址" type="text" id="mm_emp_company_address">
 			</div>
-			<div class="input-group-regist"><span>头像</span>
+			<div class="input-group-regist">
+				<span>头像</span>
 				<%--<a href="" class="pic-upload">--%>
 					<%--<input id="fileUpload_1" type="file" onchange="change('adpic_1','fileUpload_1')">--%>
 					<%--<label for="fileUpload_1">--%>
 						<%--<img id="adpic_1" src="/img/pic_add.svg" alt="">--%>
 					<%--</label>--%>
 				<%--</a>--%>
-				<input type="hidden" id="mm_emp_cover">
-				<img class="img-thumbnail"  name="imagePath" id="imageDiv"  style="cursor: pointer;width: 80px;height: 80px;" />
-				<input type="file" name="file" id="fileUpload" style="float: left;" />
-				<input type="button" value="上传" onclick="uploadImage()" style="float: left;"/><br/><br/>
+				<div class="pic-holder">
+					<input type="hidden" id="mm_emp_cover">
+					<label for="fileUpload">
+						<img class="img-thumbnail"  name="imagePath" id="imageDiv" src="/img/pic_add.svg"/>
+					</label>
+					<input class="hidden" type="file" name="file" id="fileUpload" style="float: left;" />
+					<input class="upload-button fill-green" type="button" value="上传" onclick="uploadImage()" style="float: left;"/>
+				</div>
 			</div>
 			<div class="input-group-regist"><span>营业执照或公司门头</span>
 				<%--<a href="" class="pic-upload">--%>
@@ -86,10 +95,15 @@
 						<%--<img id="adpic_2" src="/img/pic_add.svg" alt="">--%>
 					<%--</label>--%>
 				<%--</a>--%>
-				<input type="hidden" id="mm_emp_company_pic">
-				<img class="img-thumbnail" name="imageDiv1" id="imageDiv1" style="cursor: pointer;width: 80px;height: 80px;"  />
-				<input type="file" name="file" id="fileUpload1" style="float: left;" />
-				<input type="button" value="上传" onclick="uploadImage1()" style="float: left;"/><br/><br/>
+
+				<div class="pic-holder">
+					<input type="hidden" id="mm_emp_company_pic">
+					<label for="fileUpload1">
+						<img class="img-thumbnail"  name="imageDiv1" id="imageDiv1" src="/img/pic_add.svg"/>
+					</label>
+					<input class="hidden" type="file" name="file" id="fileUpload1" style="float: left;" />
+					<input class="upload-button fill-green" type="button" value="上传" onclick="uploadImage1()" style="float: left;"/>
+				</div>
 			</div>
 			<button class="mt4 w10 fill-green" type="button" onclick="reg()">提交</button>
 		</div>
