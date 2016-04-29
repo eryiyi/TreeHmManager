@@ -91,15 +91,15 @@
 				<a class="button fill-green mb2" href="${emp.mm_emp_company_url}" target="_blank">公司微网站</a>
 
 			</div>
-			<div class="switcher mt1">
-				<div class="w9">
-					<h2 class="area-head tac mb1">发布过的信息</h2>
-					<div class="button-group-x2">
-						<a class="button fill-green" href="">求购</a>
-						<a class="button fill-green" href="">供应</a>
-					</div>
-				</div>
-			</div>
+			<%--<div class="switcher mt1">--%>
+				<%--<div class="w9">--%>
+					<%--<h2 class="area-head tac mb1">发布过的信息</h2>--%>
+					<%--<div class="button-group-x2">--%>
+						<%--<a class="button fill-green" href="javaScript:void(0)" onclick="searchProfile('0')">求购</a>--%>
+						<%--<a class="button fill-green" href="javaScript:void(0)" onclick="searchProfile('1')">供应</a>--%>
+					<%--</div>--%>
+				<%--</div>--%>
+			<%--</div>--%>
 		</div>
 
 		<div class="recent">
@@ -150,6 +150,52 @@
 					</div>
 				</div>
 				</c:forEach>
+
+
+			<c:if test="${is_login=='1'}"><a href="/html/download.html" class="warning" target="_blank">下载安卓APP可以查看更多内容...</a></c:if>
+			<c:if test="${is_login=='0'}"><a href="/webvLoginController/toLogin.do" class="warning">查看更多信息，请先注册并登录账号...</a></c:if>
+			<c:if test="${is_login=='1'}">
+				<input type="hidden" id="mm_msg_type" name="mm_msg_type" value="${query.mm_msg_type}">
+				<input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${query.mm_emp_id}">
+				<!--分页信息，页面跳转-->
+				<div class="page clearfix">
+					<div class="left hide-phone">
+						<a><span>共${page.count}条/${page.pageCount}页</span></a>
+						<a>每页显示
+							<select name="size" id="size" onchange="nextPage('1')">
+								<option value="10" ${query.size==10?'selected':''}>10</option>
+								<option value="20" ${query.size==20?'selected':''}>20</option>
+								<option value="30" ${query.size==30?'selected':''}>30</option>
+								<option value="100" ${query.size==100?'selected':''}>100</option>
+							</select>条
+						</a>
+					</div>
+					<div class="right">
+						<c:choose >
+							<c:when test="${page.page == 1}">
+								<a href="javascript:void(0)">首页</a>
+								<a href="javascript:void(0)">《</a>
+							</c:when>
+							<c:otherwise>
+								<a href="javascript:void(0);" onclick="nextPage('1')">首页</a>
+								<a href="javascript:void(0);" onclick="nextPage('${page.page-1}')">《</a>
+							</c:otherwise>
+						</c:choose>
+						<a>第<input type="text" id="index" name="index" onkeyup="searchIndex(event)" value="${page.page}">页</a>
+						<c:choose>
+							<c:when test="${page.page == page.pageCount}">
+								<a href="javascript:void(0)">》</a>
+								<a href="javascript:void(0)">末页</a>
+							</c:when>
+							<c:otherwise>
+								<a href="javascript:void(0);" onclick="nextPage('${page.page+1}')">》</a>
+								<a href="javascript:void(0);" onclick="nextPage('${page.pageCount}')">末页</a>
+							</c:otherwise>
+						</c:choose>
+					</div>
+				</div>
+			</c:if>
+
 		</div>
 	</div>
 
@@ -163,7 +209,38 @@
 	<!-- TOOLBAR -->
 </div>
 </body>
+<script type="text/javascript" charset="UTF-8">
+	function searchIndex(e){
+		if(e.keyCode != 13) return;
+		var _index = $("#index").val();
+		var page = parseInt(_page);
+		var mm_msg_type = $("#mm_msg_type").val();
+		var mm_emp_id = $("#mm_emp_id").val();
+		var size = $("#size").val();
+		if(_index <= ${page.pageCount} && _index >= 1){
+			window.location.href="/webvProfile/toProfile.do?page="+page+"&size="+size+"&mm_msg_type="+mm_msg_type+"&mm_emp_id="+mm_emp_id;
+		}else{
+			alert("请输入1-${page.pageCount}的页码数");
+		}
+	}
+	function searchProfile(_mm_msg_type){
+		var mm_emp_id = $("#mm_emp_id").val();
+		window.location.href="/webvProfile/toProfile.do?page=1"+"&size=10"+"&mm_msg_type="+_mm_msg_type+"&mm_emp_id="+mm_emp_id;
+	}
 
+	function nextPage(_page) {
+		var page = parseInt(_page);
+		var mm_msg_type = $("#mm_msg_type").val();
+		var size = $("#size").val();
+		var mm_emp_id = $("#mm_emp_id").val();
+		addCookie("contract_size", size, 36);
+		if ((page <= ${page.pageCount} && page >= 1)) {
+			window.location.href="/webvProfile/toProfile.do?page="+page+"&size="+size+"&mm_msg_type="+mm_msg_type+"&mm_emp_id="+mm_emp_id;
+		} else {
+			alert("请输入1-${page.pageCount}的页码数");
+		}
+	}
+</script>
 <script>
 	function toPage(_url, _page){
 		if(_page != ''){
