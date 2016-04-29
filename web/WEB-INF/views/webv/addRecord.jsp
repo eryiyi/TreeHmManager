@@ -28,12 +28,6 @@
 	<script type="text/javascript" src="/js/Util.js"></script>
 	<script type="text/javascript" src="/js/validation.js"></script>
 
-	<!-- GLIDE SLIDE -->
-	<script src="/js/jquery_latest.js"></script>
-	<script src="/js/glide.min.js"></script>
-	<link rel="stylesheet" href="/css/glide.core.min.css">
-	<link rel="stylesheet" href="/css/glide.theme.min.css">
-
 </head>
 <div class="container">
 	<!-- HEADING -->
@@ -47,6 +41,7 @@
 	<!-- CONTENT -->
 	<div class="content regist w85">
 		<div class="select-group mt2 mb2"><span>信息类型</span>
+		<input type="hidden" id="server_url" name="server_url" value="${server_url}">
 		<select name="mm_msg_type" id="mm_msg_type" class="bg-f2">
 		<option value="0">苗木求购</option>
 		<option value="1">苗木供应</option>
@@ -58,49 +53,130 @@
 		<textarea  class="report-reason" name="mm_msg_content"
 				   id="mm_msg_content" cols="30" placeholder="请输入您要发布的信息内容，包括您要求的品种、规格、质量及联系方式。您将对您发布信息的真实性负法律责任，请谨慎填写！" rows="10"></textarea>
 		<div class="ads clearfix">
+
+			<input type="hidden" id="ad_1">
+			<input type="hidden" id="ad_2">
+			<input type="hidden" id="ad_3">
+			<input type="hidden" id="ad_4">
+			<input type="hidden" id="ad_5">
+			<input type="hidden" id="ad_6">
+			<input type="hidden" id="ad_7">
+			<input type="hidden" id="ad_8">
+			<input type="hidden" id="ad_9">
+
 			<c:if test="${emp.is_pic !=null && emp.is_pic !='0'}">
 				<c:if test="${emp.is_pic =='1'}">
-					<a href="">
-						<input id="ad_1" type="file" onchange="change('adpic_1','ad_1')">
-						<label for="ad_1"><img id="adpic_1" src="/img/pic_add.svg" alt=""></label>
-					</a>
-					<a href="">
-						<input id="ad_2" type="file" onchange="change('adpic_2','ad_2')">
-						<label for="ad_2"><img id="adpic_2" src="/img/pic_add.svg" alt=""></label>
-					</a>
-					<a href="">
-						<input id="ad_3" type="file" onchange="change('adpic_3','ad_3')">
-						<label for="ad_3"><img id="adpic_3" src="/img/pic_add.svg" alt=""></label>
-					</a>
+					<div class="input-group-regist">
+							<img class="img-thumbnail"  name="imagePath1" id="imagePath1"  style="cursor: pointer;width: 80px;height: 80px;" />
+							<input type="file" name="file" id="fileUpload1" style="float: left;" />
+							<input type="button" value="点此上传" onclick="uploadImage('ad_1','imagePath1','fileUpload1')" style="float: left;"/><br/><br/>
+					</div>
+
+					<div class="input-group-regist">
+						<img class="img-thumbnail"  name="imagePath2" id="imagePath2"  style="cursor: pointer;width: 80px;height: 80px;" />
+						<input type="file" name="file" id="fileUpload2" style="float: left;" />
+						<input type="button" value="点此上传" onclick="uploadImage('ad_2','imagePath2','fileUpload2')" style="float: left;"/><br/><br/>
+					</div>
+
+					<div class="input-group-regist">
+						<img class="img-thumbnail"  name="imagePath3" id="imagePath3"  style="cursor: pointer;width: 80px;height: 80px;" />
+						<input type="file" name="file" id="fileUpload3" style="float: left;" />
+						<input type="button" value="点此上传" onclick="uploadImage('ad_3','imagePath3','fileUpload3')" style="float: left;"/><br/><br/>
+					</div>
 
 				</c:if>
 				<c:if test="${emp.is_pic =='2'}">
-					<a href="">
-						<input id="ad_4" type="file" onchange="change('adpic_4','ad_4')">
-						<label for="ad_4"><img id="adpic_4" src="/img/pic_add.svg" alt=""></label>
-					</a>
-					<a href="">
-						<input id="ad_5" type="file" onchange="change('adpic_5','ad_5')">
-						<label for="ad_5"><img id="adpic_5" src="/img/pic_add.svg" alt=""></label>
-					</a>
-					<a href="">
-						<input id="ad_6" type="file" onchange="change('adpic_6','ad_6')">
-						<label for="ad_6"><img id="adpic_6" src="/img/pic_add.svg" alt=""></label>
-					</a>
+					<div class="input-group-regist">
+						<img class="img-thumbnail"  name="imagePath4" id="imagePath4"  style="cursor: pointer;width: 80px;height: 80px;" />
+						<input type="file" name="file" id="fileUpload4" style="float: left;" />
+						<input type="button" value="点此上传" onclick="uploadImage('ad_1','imagePath4','fileUpload4')" style="float: left;"/><br/><br/>
+					</div>
+
+					<div class="input-group-regist">
+						<img class="img-thumbnail"  name="imagePath5" id="imagePath5"  style="cursor: pointer;width: 80px;height: 80px;" />
+						<input type="file" name="file" id="fileUpload5" style="float: left;" />
+						<input type="button" value="点此上传" onclick="uploadImage('ad_2','imagePath5','fileUpload5')" style="float: left;"/><br/><br/>
+					</div>
+
+					<div class="input-group-regist">
+						<img class="img-thumbnail"  name="imagePath6" id="imagePath6"  style="cursor: pointer;width: 80px;height: 80px;" />
+						<input type="file" name="file" id="fileUpload6" style="float: left;" />
+						<input type="button" value="点此上传" onclick="uploadImage('ad_3','imagePath6','fileUpload6')" style="float: left;"/><br/><br/>
+					</div>
+
+					<div class="input-group-regist">
+						<img class="img-thumbnail"  name="imagePath7" id="imagePath7"  style="cursor: pointer;width: 80px;height: 80px;" />
+						<input type="file" name="file" id="fileUpload7" style="float: left;" />
+						<input type="button" value="点此上传" onclick="uploadImage('ad_4','imagePath7','fileUpload7')" style="float: left;"/><br/><br/>
+					</div>
+
+					<div class="input-group-regist">
+						<img class="img-thumbnail"  name="imagePath8" id="imagePath8"  style="cursor: pointer;width: 80px;height: 80px;" />
+						<input type="file" name="file" id="fileUpload8" style="float: left;" />
+						<input type="button" value="点此上传" onclick="uploadImage('ad_5','imagePath8','fileUpload8')" style="float: left;"/><br/><br/>
+					</div>
+
+					<div class="input-group-regist">
+						<img class="img-thumbnail"  name="imagePath9" id="imagePath9"  style="cursor: pointer;width: 80px;height: 80px;" />
+						<input type="file" name="file" id="fileUpload9" style="float: left;" />
+						<input type="button" value="点此上传" onclick="uploadImage('ad_6','imagePath9','fileUpload9')" style="float: left;"/><br/><br/>
+					</div>
 				</c:if>
+
 				<c:if test="${emp.is_pic =='3'}">
-					<a href="">
-						<input id="ad_7" type="file" onchange="change('adpic_7','ad_7')">
-						<label for="ad_7"><img id="adpic_7" src="/img/pic_add.svg" alt=""></label>
-					</a>
-					<a href="">
-						<input id="ad_8" type="file" onchange="change('adpic_8','ad_8')">
-						<label for="ad_8"><img id="adpic_8" src="/img/pic_add.svg" alt=""></label>
-					</a>
-					<a href="">
-						<input id="ad_9" type="file" onchange="change('adpic_9','ad_9')">
-						<label for="ad_9"><img id="adpic_9" src="/img/pic_add.svg" alt=""></label>
-					</a>
+					<div class="input-group-regist">
+						<img class="img-thumbnail"  name="imagePath10" id="imagePath10"  style="cursor: pointer;width: 80px;height: 80px;" />
+						<input type="file" name="file" id="fileUpload10" style="float: left;" />
+						<input type="button" value="点此上传" onclick="uploadImage('ad_1','imagePath10','fileUpload10')" style="float: left;"/><br/><br/>
+					</div>
+
+					<div class="input-group-regist">
+						<img class="img-thumbnail"  name="imagePath11" id="imagePath11"  style="cursor: pointer;width: 80px;height: 80px;" />
+						<input type="file" name="file" id="fileUpload11" style="float: left;" />
+						<input type="button" value="点此上传" onclick="uploadImage('ad_2','imagePath11','fileUpload11')" style="float: left;"/><br/><br/>
+					</div>
+
+					<div class="input-group-regist">
+						<img class="img-thumbnail"  name="imagePath12" id="imagePath12"  style="cursor: pointer;width: 80px;height: 80px;" />
+						<input type="file" name="file" id="fileUpload12" style="float: left;" />
+						<input type="button" value="点此上传" onclick="uploadImage('ad_3','imagePath12','fileUpload12')" style="float: left;"/><br/><br/>
+					</div>
+
+					<div class="input-group-regist">
+						<img class="img-thumbnail"  name="imagePath13" id="imagePath13"  style="cursor: pointer;width: 80px;height: 80px;" />
+						<input type="file" name="file" id="fileUpload13" style="float: left;" />
+						<input type="button" value="点此上传" onclick="uploadImage('ad_4','imagePath13','fileUpload13')" style="float: left;"/><br/><br/>
+					</div>
+
+					<div class="input-group-regist">
+						<img class="img-thumbnail"  name="imagePath14" id="imagePath14"  style="cursor: pointer;width: 80px;height: 80px;" />
+						<input type="file" name="file" id="fileUpload14" style="float: left;" />
+						<input type="button" value="点此上传" onclick="uploadImage('ad_5','imagePath14','fileUpload14')" style="float: left;"/><br/><br/>
+					</div>
+
+					<div class="input-group-regist">
+						<img class="img-thumbnail"  name="imagePath15" id="imagePath15"  style="cursor: pointer;width: 80px;height: 80px;" />
+						<input type="file" name="file" id="fileUpload15" style="float: left;" />
+						<input type="button" value="点此上传" onclick="uploadImage('ad_6','imagePath15','fileUpload15')" style="float: left;"/><br/><br/>
+					</div>
+
+					<div class="input-group-regist">
+						<img class="img-thumbnail"  name="imagePath16" id="imagePath16"  style="cursor: pointer;width: 80px;height: 80px;" />
+						<input type="file" name="file" id="fileUpload16" style="float: left;" />
+						<input type="button" value="点此上传" onclick="uploadImage('ad_7','imagePath16','fileUpload16')" style="float: left;"/><br/><br/>
+					</div>
+
+					<div class="input-group-regist">
+						<img class="img-thumbnail"  name="imagePath17" id="imagePath17"  style="cursor: pointer;width: 80px;height: 80px;" />
+						<input type="file" name="file" id="fileUpload17" style="float: left;" />
+						<input type="button" value="点此上传" onclick="uploadImage('ad_8','imagePath17','fileUpload17')" style="float: left;"/><br/><br/>
+					</div>
+
+					<div class="input-group-regist">
+						<img class="img-thumbnail"  name="imagePath18" id="imagePath18"  style="cursor: pointer;width: 80px;height: 80px;" />
+						<input type="file" name="file" id="fileUpload18" style="float: left;" />
+						<input type="button" value="点此上传" onclick="uploadImage('ad_9','imagePath18','fileUpload18')" style="float: left;"/><br/><br/>
+					</div>
 				</c:if>
 			</c:if>
 		</div>
@@ -137,14 +213,6 @@
 			alert("请选择信息类型");
 			return ;
 		}
-//		if(mm_msg_title.replace(/\s/g, '') == ''){
-//			alert("请输入信息标题");
-//			return ;
-//		}
-//		if(mm_msg_title.length>100 || mm_msg_title.length<2){
-//			alert("请输入信息标题，内容在2到100个字之间");
-//			return ;
-//		}
 		if(mm_msg_content.replace(/\s/g, '') == ''){
 			alert("请输入您要发布的信息内容");
 			return ;
@@ -162,10 +230,16 @@
 			return;
 		}
 
-		<%--if('${emp.is_pic}' == '0'){--%>
-			<%--alert("您暂无权限发布图片，请联系客服！");--%>
-			<%--return;--%>
-		<%--}--%>
+		var ad_1 = $("#ad_1").val();
+		var ad_2 = $("#ad_2").val();
+		var ad_3 = $("#ad_3").val();
+		var ad_4 = $("#ad_4").val();
+		var ad_5 = $("#ad_5").val();
+		var ad_6 = $("#ad_6").val();
+		var ad_7 = $("#ad_7").val();
+		var ad_8 = $("#ad_8").val();
+		var ad_9 = $("#ad_9").val();
+
 		$.ajax({
 			cache: true,
 			type: "POST",
@@ -173,6 +247,15 @@
 			data:{
 				"mm_msg_type":mm_msg_type,
 				"mm_msg_title":"",
+				"ad_1":ad_1,
+				"ad_2":ad_2,
+				"ad_3":ad_3,
+				"ad_4":ad_4,
+				"ad_5":ad_5,
+				"ad_6":ad_6,
+				"ad_7":ad_7,
+				"ad_8":ad_8,
+				"ad_9":ad_9,
 				"mm_msg_content":mm_msg_content
 			},
 			async: false,
@@ -189,30 +272,34 @@
 		});
 	}
 
-
-	function change(picId,fileId) {
-		var pic = document.getElementById(picId);
-		var file = document.getElementById(fileId);
-		if(window.FileReader){//chrome,firefox7+,opera,IE10,IE9，IE9也可以用滤镜来实现
-			oFReader = new FileReader();
-			oFReader.readAsDataURL(file.files[0]);
-			oFReader.onload = function (oFREvent) {pic.src = oFREvent.target.result;};
-		}
-		else if (document.all) {//IE8-
-			file.select();
-			var reallocalpath = document.selection.createRange().text//IE下获取实际的本地文件路径
-			if (window.ie6) pic.src = reallocalpath; //IE6浏览器设置img的src为本地路径可以直接显示图片
-			else { //非IE6版本的IE由于安全问题直接设置img的src无法显示本地图片，但是可以通过滤镜来实现，IE10浏览器不支持滤镜，需要用FileReader来实现，所以注意判断FileReader先
-				pic.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='image',src=\"" + reallocalpath + "\")";
-				pic.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';//设置img的src为base64编码的透明图片，要不会显示红xx
-			}
-		}
-		else if (file.files) {//firefox6-
-			if (file.files.item(0)) {
-				var url = file.files.item(0).getAsDataURL();
-				pic.src = url;
-			}
-		}
+	function uploadImage(_ad, _imagePath, _fileUpload) {
+		$.ajaxFileUpload(
+				{
+					url:"/uploadUnCompressImage.do?_t=" + new Date().getTime(),            //需要链接到服务器地址
+					secureuri:false,//是否启用安全提交，默认为false
+					fileElementId:_fileUpload,                        //文件选择框的id属性
+					dataType: 'json',                                     //服务器返回的格式，可以是json, xml
+					success: function (data, status)  //服务器成功响应处理函数
+					{
+						if(data.success) {
+							var server_url = $("#server_url").val();
+							document.getElementById(_ad).value=  data.data;
+							document.getElementById(_imagePath).src = server_url +  data.data;
+						} else {
+							if(data.code == 1) {
+								alert("上传图片失败");
+							} else if(data.code == 2) {
+								alert("上传图片格式只能为：jpg、png、gif、bmp、jpeg");
+							} else if(data.code == 3) {
+								alert("请选择上传图片");
+							}else {
+								alert("上传失败");
+							}
+						}
+					}
+				}
+		);
 	}
+
 </script>
 </html>

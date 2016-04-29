@@ -7,6 +7,7 @@ import com.liangxunwang.unimanager.mvc.vo.EmpVO;
 import com.liangxunwang.unimanager.mvc.vo.RecordVO;
 import com.liangxunwang.unimanager.service.SaveService;
 import com.liangxunwang.unimanager.service.ServiceException;
+import com.liangxunwang.unimanager.util.Constants;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,7 @@ public class WebvAddRecordController extends ControllerConstants {
             return "/webv/login";
         }else{
             map.put("emp", emp);
+            map.addAttribute("server_url", Constants.URL);
             return "/webv/addRecord";
         }
     }
@@ -42,7 +44,7 @@ public class WebvAddRecordController extends ControllerConstants {
 
     @RequestMapping("/addRecord")
     @ResponseBody
-    public String addRecord(HttpSession session, Record record){
+    public String addRecord(HttpSession session, Record record, String ad_1,String ad_2,String ad_3,String ad_4,String ad_5,String ad_6,String ad_7,String ad_8,String ad_9){
         try {
             EmpVO emp = (EmpVO) session.getAttribute(MEMBER_KEY);
             if(emp != null && !StringUtil.isNullOrEmpty(emp.getMm_emp_id())){
@@ -52,6 +54,72 @@ public class WebvAddRecordController extends ControllerConstants {
                 record.setProvinceid(emp.getMm_emp_provinceId());
                 record.setCityid(emp.getMm_emp_cityId());
                 record.setCountryid(emp.getMm_emp_countryId());
+                String picurl = "";
+                if(!StringUtil.isNullOrEmpty(ad_1)){
+                    picurl += ad_1;
+                }
+                if(!StringUtil.isNullOrEmpty(ad_2)){
+                    if(picurl.endsWith(",")){
+                        picurl += ad_2;
+                    }else {
+                        picurl +="," + ad_2;
+                    }
+                }
+                if(!StringUtil.isNullOrEmpty(ad_3)){
+                    if(picurl.endsWith(",")){
+                        picurl += ad_3;
+                    }else {
+                        picurl +="," + ad_3;
+                    }
+                }
+                if(!StringUtil.isNullOrEmpty(ad_4)){
+                    if(picurl.endsWith(",")){
+                        picurl += ad_4;
+                    }else {
+                        picurl +="," + ad_4;
+                    }
+                }
+                if(!StringUtil.isNullOrEmpty(ad_5)){
+
+                    if(picurl.endsWith(",")){
+                        picurl += ad_5;
+                    }else {
+                        picurl +="," + ad_5;
+                    }
+                }
+                if(!StringUtil.isNullOrEmpty(ad_6)){
+
+                    if(picurl.endsWith(",")){
+                        picurl += ad_6;
+                    }else {
+                        picurl +="," + ad_6;
+                    }
+                }
+                if(!StringUtil.isNullOrEmpty(ad_7)){
+
+                    if(picurl.endsWith(",")){
+                        picurl += ad_7;
+                    }else {
+                        picurl +="," + ad_7;
+                    }
+                }
+                if(!StringUtil.isNullOrEmpty(ad_8)){
+
+                    if(picurl.endsWith(",")){
+                        picurl += ad_8;
+                    }else {
+                        picurl +="," + ad_8;
+                    }
+                }
+                if(!StringUtil.isNullOrEmpty(ad_9)){
+
+                    if(picurl.endsWith(",")){
+                        picurl += ad_9;
+                    }else {
+                        picurl +="," + ad_9;
+                    }
+                }
+                record.setMm_msg_picurl(picurl);
                 recordSaveService.save(record);//保存信息
                 return toJSONString(SUCCESS);
             }else {

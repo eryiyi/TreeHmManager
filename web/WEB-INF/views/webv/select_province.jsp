@@ -31,7 +31,7 @@
 <div class="container">
 	<!-- HEADING -->
 	<div class="heading clearfix">
-		<a href="javascript:history.back()" class="back"><img src="/img/tree_icons_back.png" alt=""></a>
+		<a href="javascript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="back"><img src="/img/tree_icons_back.png" alt=""></a>
 		<h1 class="head-title">地区选择</h1>
 	</div>
 
@@ -69,4 +69,13 @@
 	</div>
 </div>
 </body>
+<script>
+	function toPage(_url, _page){
+		if(_page != ''){
+			window.location.href=_url+"?page="+_page;
+		}else{
+			window.location.href=_url;
+		}
+	}
+</script>
 </html>
