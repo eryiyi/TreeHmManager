@@ -59,21 +59,22 @@ public class WebvAddRecordController extends ControllerConstants {
                     picurl += ad_1;
                 }
                 if(!StringUtil.isNullOrEmpty(ad_2)){
-                    if(picurl.endsWith(",")){
+                    if(StringUtil.isNullOrEmpty(picurl)){
+                        //如果picurl是空的
                         picurl += ad_2;
                     }else {
                         picurl +="," + ad_2;
                     }
                 }
                 if(!StringUtil.isNullOrEmpty(ad_3)){
-                    if(picurl.endsWith(",")){
+                    if(StringUtil.isNullOrEmpty(picurl)){
                         picurl += ad_3;
                     }else {
                         picurl +="," + ad_3;
                     }
                 }
                 if(!StringUtil.isNullOrEmpty(ad_4)){
-                    if(picurl.endsWith(",")){
+                    if(StringUtil.isNullOrEmpty(picurl)){
                         picurl += ad_4;
                     }else {
                         picurl +="," + ad_4;
@@ -81,15 +82,14 @@ public class WebvAddRecordController extends ControllerConstants {
                 }
                 if(!StringUtil.isNullOrEmpty(ad_5)){
 
-                    if(picurl.endsWith(",")){
+                    if(StringUtil.isNullOrEmpty(picurl)){
                         picurl += ad_5;
                     }else {
                         picurl +="," + ad_5;
                     }
                 }
                 if(!StringUtil.isNullOrEmpty(ad_6)){
-
-                    if(picurl.endsWith(",")){
+                    if(StringUtil.isNullOrEmpty(picurl)){
                         picurl += ad_6;
                     }else {
                         picurl +="," + ad_6;
@@ -97,23 +97,21 @@ public class WebvAddRecordController extends ControllerConstants {
                 }
                 if(!StringUtil.isNullOrEmpty(ad_7)){
 
-                    if(picurl.endsWith(",")){
+                    if(StringUtil.isNullOrEmpty(picurl)){
                         picurl += ad_7;
                     }else {
                         picurl +="," + ad_7;
                     }
                 }
                 if(!StringUtil.isNullOrEmpty(ad_8)){
-
-                    if(picurl.endsWith(",")){
+                    if(StringUtil.isNullOrEmpty(picurl)){
                         picurl += ad_8;
                     }else {
                         picurl +="," + ad_8;
                     }
                 }
                 if(!StringUtil.isNullOrEmpty(ad_9)){
-
-                    if(picurl.endsWith(",")){
+                    if(StringUtil.isNullOrEmpty(picurl)){
                         picurl += ad_9;
                     }else {
                         picurl +="," + ad_9;

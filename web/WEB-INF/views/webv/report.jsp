@@ -41,10 +41,7 @@
 		<input type="hidden" value="${mm_msg_id}" id="mm_msg_id">
 		<input type="hidden" value="${mm_emp_id}" id="mm_emp_id">
 		<input type="hidden" value="${mm_emp_id_t}" id="mm_emp_id_t">
-		<textarea class="report-reason" name="mm_report_content"
-				  id="mm_report_content" cols="30" rows="10" placeholder="请简要描述举报内容">
-
-		</textarea>
+		<textarea class="report-reason" name="mm_report_content" id="mm_report_content" cols="30" rows="10" placeholder="请简要描述举报内容"></textarea>
 		<button class="button fill-orange mt3 w10 t-sh mb4" onclick="addSuggest()">提交</button>
 	</div>
 	<!-- TOOLBAR -->
