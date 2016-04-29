@@ -20,6 +20,9 @@ public interface EmpDao {
      */
     List<EmpVO> listMemberByName(Map<String, Object> map);
 
+    //查询VIP 3天内到期的所有会员
+    List<Emp> listAllVipEndThree(Map<String, Object> map);
+
     long count(Map<String,Object> map);
     //今日注册会员数量
     long countDay(Map<String,Object> map);

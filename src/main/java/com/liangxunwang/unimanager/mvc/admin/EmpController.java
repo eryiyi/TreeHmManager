@@ -84,9 +84,6 @@ public class EmpController extends ControllerConstants {
         List<Level> list = (List<Level>) levelService.list(levelQuery);
         map.put("listLevels", list);
 
-        //日志记录
-        logoService.save(new LogoObj("查看经营户列表", manager.getMm_manager_id()));
-
         //是否是顶级管理员 0是  1不是  用于页面是否展示操作功能
         if("0".equals(manager.getMm_manager_type()) || "4".equals(manager.getMm_manager_type())){
             map.put("is_manager", "0");
@@ -127,67 +124,6 @@ public class EmpController extends ControllerConstants {
         return "/emp/list";
     }
 
-//    @RequestMapping("listEmp")
-//    public String listEmp(HttpSession session,ModelMap map, EmpQuery query, Page page){
-//        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
-//        query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
-//        query.setSize(query.getSize() == 0 ? page.getDefaultSize() : query.getSize());
-//        if(StringUtil.isNullOrEmpty(query.getMm_emp_type())){
-//            query.setMm_emp_type("1");//苗木会员
-//        }
-//
-//        //分地区管理
-//        if("1".equals(manager.getMm_manager_type())){
-//            query.setMm_emp_countryId(manager.getMm_manager_area_uuid());
-//        }
-//        if("2".equals(manager.getMm_manager_type())){
-//            query.setMm_emp_cityId(manager.getMm_manager_area_uuid());
-//        }
-//        if("3".equals(manager.getMm_manager_type())){
-//            query.setMm_emp_provinceId(manager.getMm_manager_area_uuid());
-//        }
-//
-//
-//        Object[] results = (Object[]) empServiceList.list(query);
-//        map.put("list", results[0]);
-//        long count = (Long) results[1];
-//        page.setCount(count);
-//        page.setPageCount(calculatePageCount(query.getSize(), count));
-//        map.addAttribute("page", page);
-//        map.addAttribute("query", query);
-//
-//        //日志记录
-//        logoService.save(new LogoObj("查看会员列表", manager.getMm_manager_id()));
-//        //是否是顶级管理员 0是  1不是  用于页面是否展示操作功能
-//        if("0".equals(manager.getMm_manager_type()) || "4".equals(manager.getMm_manager_type())){
-//            map.put("is_manager", "0");
-//        }else {
-//            map.put("is_manager", "1");
-//        }
-//
-//        //查询省份
-//        List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list("");
-//        //查询地市
-//        CityQuery cityQuery = new CityQuery();
-//        List<CityObj> listCitys = (List<CityObj>) cityService.list(cityQuery);
-//        //查询县区
-//        CountryQuery countryQuery = new CountryQuery();
-//        List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);
-//        map.put("listProvinces", listProvinces);
-//        map.put("listCitys", listCitys);
-//        map.put("listsCountry", listsCountry);
-//        //查询地市all
-//        CityQuery cityQueryAll = new CityQuery();
-//        List<CityObj> listCitysAll = (List<CityObj>) cityService.list(cityQueryAll);
-//        //查询县区all
-//        CountryQuery countryQueryAll = new CountryQuery();
-//        List<CountryObj> listsCountryAll = (List<CountryObj>) countryService.list(countryQueryAll);
-//
-//        map.put("listCitysAll", toJSONString(listCitysAll));
-//        map.put("listsCountryAll", toJSONString(listsCountryAll));
-//        return "/emp/list";
-//    }
-
     @RequestMapping("/detail")
     public String updateType(ModelMap map, HttpSession session, String mm_emp_id) throws Exception {
         Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
@@ -224,8 +160,6 @@ public class EmpController extends ControllerConstants {
         map.put("listCitysAll", toJSONString(listCitysAll));
         map.put("listsCountryAll", toJSONString(listsCountryAll));
 
-        //日志记录
-        logoService.save(new LogoObj("查看会员："+empVO.getMm_emp_nickname()+"的详情", manager.getMm_manager_id()));
         return "/emp/detail";
     }
 
@@ -262,8 +196,6 @@ public class EmpController extends ControllerConstants {
         List<Level> list = (List<Level>) levelService.list(levelQuery);
         map.put("listLevels", list);
 
-        //日志记录
-        logoService.save(new LogoObj("添加管理员-查看会员信息", manager.getMm_manager_id()));
         return "/admin/add_list";
     }
 
@@ -316,8 +248,6 @@ public class EmpController extends ControllerConstants {
         //角色
         List<Role> roles = (List<Role>) roleService.list("");
         map.put("roles", roles);
-        //日志记录
-        logoService.save(new LogoObj("查看会员："+empVO.getMm_emp_nickname()+"的详情", manager.getMm_manager_id()));
         return "/admin/add_detail";
     }
 
@@ -543,6 +473,11 @@ public class EmpController extends ControllerConstants {
         updateEmpVipGuoqi();
         return null;
     }
+    //--------每天凌晨执行，查询是否有即将到期的VIP会员-----------
+    public String noticeVipEndThree(){
+        updateEmpVipThree();
+        return null;
+    }
 
     @Autowired
     @Qualifier("empUpdateVipService")
@@ -553,6 +488,23 @@ public class EmpController extends ControllerConstants {
     public String updateEmpVipGuoqi(){
         try {
             empUpdateVipService.update("");
+            return toJSONString(SUCCESS);
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+        }
+    }
+
+
+    @Autowired
+    @Qualifier("empVipEndThreeService")
+    private ListService empVipEndThreeService;
+
+    @RequestMapping("/updateEmpVipThree")
+    @ResponseBody
+    public String updateEmpVipThree(){
+        try {
+            //查询即将到期的会员--3天之内的
+            empVipEndThreeService.list("");
             return toJSONString(SUCCESS);
         }catch (ServiceException e){
             return toJSONString(ERROR_1);

@@ -12,6 +12,16 @@ public class EmpVO extends Emp{
     private String cityName;
     private String areaName;
 
+    private String is_dq;//是否即将到期  1是  其他否
+
+    public String getIs_dq() {
+        return is_dq;
+    }
+
+    public void setIs_dq(String is_dq) {
+        this.is_dq = is_dq;
+    }
+
     public String getMm_level_num() {
         return mm_level_num;
     }

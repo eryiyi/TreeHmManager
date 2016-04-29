@@ -73,10 +73,15 @@
        <task:scheduled-tasks>
               <task:scheduled ref="empController" method="update" cron="0 1 0 * * ?"/>
        </task:scheduled-tasks>
+
        <!--排行榜到期-->
        <task:scheduled-tasks>
-              <task:scheduled ref="paihangController" method="update" cron="0 1 0 * * ?"/>
+              <task:scheduled ref="paihangController" method="update" cron="0 2 0 * * ?"/>
        </task:scheduled-tasks>
 
+       <!--VIP即将到期提醒-->
+       <task:scheduled-tasks>
+              <task:scheduled ref="empController" method="noticeVipEndThree" cron="0 3 0 * * ?"/>
+       </task:scheduled-tasks>
 
 </beans>

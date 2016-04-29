@@ -123,7 +123,7 @@
 
           <div class="form-group">
             <select class="form-control w12" id="is_daoqi">
-              <option value="">--是否到期--</option>
+              <option value="">--3天之内即将到期--</option>
               <option value="0" ${query.is_daoqi=='0'?'selected':''}>否</option>
               <option value="1" ${query.is_daoqi=='1'?'selected':''}>是</option>
             </select>
@@ -242,7 +242,14 @@
                 <c:if test="${e.is_miaomu=='1'}">是</c:if>
               </td>
               <td>${e.levelName}</td>
-              <td>${e.mm_emp_endtime}</td>
+
+              <%--<c:if test="${e.is_dq=='0'}"><td>无</td></c:if>--%>
+
+              <td>
+              <c:if test="${e.is_dq=='1'}"><font color="red">${e.mm_emp_endtime}</font></c:if>
+              <c:if test="${e.is_dq=='0'}">${e.mm_emp_endtime}</c:if>
+              </td>
+
               <td>
                 <c:if test="${e.is_login=='0'}">是</c:if>
                 <c:if test="${e.is_login=='1'}">否</c:if>

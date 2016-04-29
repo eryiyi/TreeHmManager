@@ -13,10 +13,15 @@ import com.liangxunwang.unimanager.util.Constants;
 import com.liangxunwang.unimanager.util.DateUtil;
 import com.liangxunwang.unimanager.util.MD5Util;
 import com.liangxunwang.unimanager.util.StringUtil;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -54,10 +59,28 @@ public class EmpService implements ListService , UpdateService , ExecuteService{
         if (!StringUtil.isNullOrEmpty(query.getKeyword())) {
             map.put("keyword", query.getKeyword());
         }
+
+        //判断三天之内的即将到期的，需要传递当前日期的毫秒值和三天之后的毫秒值
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");//设置日期格式
+        DateTimeFormatter timeFormatter = DateTimeFormat.forPattern("yyyy-MM-dd HH:mm");
+        String today = String.valueOf(df.format(new Date())) +" 23:59";//今天
+        DateTime dateTime = DateTime.parse(today, timeFormatter);
+
+        Object[] objects = DateUtil.getDayInterval(dateTime.getMillis(), -3);//3天之后
+        String startDay = (String) objects[2];
+
+        DateTime dateTimeStart = DateTime.parse(startDay, timeFormatter);
+
         if (!StringUtil.isNullOrEmpty(query.getIs_daoqi())) {
             map.put("is_daoqi", query.getIs_daoqi());
-            //判断三天之内的即将到期的，需要传递当前日期的毫秒值和三天之后的毫秒值
-
+            if("1".equals(query.getIs_daoqi())){
+                if (!StringUtil.isNullOrEmpty(String.valueOf(dateTimeStart.getMillis()))){
+                    map.put("end", String.valueOf(dateTimeStart.getMillis()));
+                }
+                if (!StringUtil.isNullOrEmpty(String.valueOf(dateTime.getMillis()))){
+                    map.put("start", String.valueOf(dateTime.getMillis()));
+                }
+            }
         }
 
         //分地区管理
@@ -83,9 +106,23 @@ public class EmpService implements ListService , UpdateService , ExecuteService{
 
         List<EmpVO> lists = empDao.listMemberByName(map);
         if(lists != null){
+            String startTimeLong = "";//今天的毫秒值
+            String endTimeLong = "";//三天之后的毫秒值
+            if (!StringUtil.isNullOrEmpty(String.valueOf(dateTimeStart.getMillis()))){
+                endTimeLong = String.valueOf(dateTimeStart.getMillis());
+            }
+            if (!StringUtil.isNullOrEmpty(String.valueOf(dateTime.getMillis()))){
+                startTimeLong = String.valueOf(dateTime.getMillis());
+            }
             for(EmpVO empVO:lists){
                 if(empVO != null && !StringUtil.isNullOrEmpty(empVO.getMm_emp_endtime())){
                     //vip到期日期不为空
+                    if(Long.valueOf(empVO.getMm_emp_endtime()) > Long.valueOf(startTimeLong) && Long.valueOf(empVO.getMm_emp_endtime())<Long.valueOf(endTimeLong)){
+                        //大于开始时间 小于结束时间 说明三天之内即将到期
+                        empVO.setIs_dq("1");
+                    }else {
+                        empVO.setIs_dq("0");
+                    }
                     empVO.setMm_emp_endtime(DateUtil.getDate( empVO.getMm_emp_endtime(), "yyyy-MM-dd"));
                 }
             }

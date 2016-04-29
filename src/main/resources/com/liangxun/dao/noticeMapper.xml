@@ -20,7 +20,7 @@
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.Notice">
         INSERT INTO mm_notice(mm_notice_id, mm_manager_id, mm_notice_title, mm_notice_content, dateline, is_del, mm_emp_id)
-        VALUES (#{mm_notice_id}, #{mm_manager_id}, #{mm_notice_title}, #{mm_notice_content}, #{dateline}, #{is_del}, #{mm_emp_id,jdbcType=VARCHAR})
+        VALUES (#{mm_notice_id}, #{mm_manager_id ,jdbcType=VARCHAR}, #{mm_notice_title}, #{mm_notice_content}, #{dateline}, #{is_del}, #{mm_emp_id ,jdbcType=VARCHAR})
     </insert>
 
     <select id="findById" parameterType="String" resultMap="notice">
