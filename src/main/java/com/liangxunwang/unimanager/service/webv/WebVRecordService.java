@@ -120,6 +120,14 @@ public class WebVRecordService implements ListService,DeleteService,ExecuteServi
         }
         List<RecordVO> lists = recordDao.listRecordVo(map);
         for (RecordVO record : lists){
+            //处理内容-文字超出限制
+            if(!StringUtil.isNullOrEmpty(record.getMm_msg_content())){
+                if(record.getMm_msg_content().length() > 20){
+                    record.setMm_msg_title(record.getMm_msg_content().substring(0,19)+"...");
+                }else {
+                    record.setMm_msg_title(record.getMm_msg_content());
+                }
+            }
             if (!StringUtil.isNullOrEmpty(record.getMm_emp_cover())){
                 if (record.getMm_emp_cover().startsWith("upload")){
                     record.setMm_emp_cover(Constants.URL+record.getMm_emp_cover());

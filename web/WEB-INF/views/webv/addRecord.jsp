@@ -13,6 +13,7 @@
 	<meta name="author" content="花木通" />
 	<meta name="Copyright" content="花木通版权所有" />
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8"/>
 	<link rel="shortcut icon" type="image/png" href="/img/logo.png">
 	<link rel="stylesheet" href="/css/reset.css">
 	<link rel="stylesheet" href="/css/common.css">

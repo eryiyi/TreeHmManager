@@ -108,6 +108,14 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/webvHotController/toIndex\\.do$)"+
                         "|(^/webvHotSController/toSell\\.do$)"+
 
+
+                        "|(^/hmtIndex/toIndex\\.do$)"+
+                        "|(^/netLoginController/toLogin\\.do$)"+
+                        "|(^/netLoginController/login\\.do$)"+
+                        "|(^/netLoginController/toQuite\\.do$)"+
+                        "|(^/netRegController/toReg\\.do$)"+
+                        "|(^/netRegController/empReg\\.do$)"+
+
                         "|(^/memberLogin\\.do$)"
 
         ) || account != null) {

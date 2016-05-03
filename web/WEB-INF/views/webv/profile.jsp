@@ -49,8 +49,14 @@
 				<img src="${emp.mm_emp_cover}" alt="${emp.mm_emp_nickname}" class="head-pic">
 				<div class="user-info">
 					<h2 class="name">${emp.mm_emp_nickname}</h2>
-					<c:if test="${emp.mm_emp_type==0}"><h3 class="type">苗木经营户</h3></c:if>
-					<c:if test="${emp.mm_emp_type==1}"><h3 class="type">苗木会员</h3></c:if>
+					<%--<c:if test="${emp.mm_emp_type==0}"><h3 class="type">苗木经营户</h3></c:if>--%>
+					<%--<c:if test="${emp.mm_emp_type==1}"><h3 class="type">苗木会员</h3></c:if>--%>
+					<%--<h3 class="type">${emp.mm_level_num}</h3>--%>
+					<c:if test="${emp.mm_level_num==0}"><h3 class="type">vip1</h3></c:if>
+					<c:if test="${emp.mm_level_num==1}"><h3 class="type">vip2</h3></c:if>
+					<c:if test="${emp.mm_level_num==2}"><h3 class="type">vip3</h3></c:if>
+					<c:if test="${emp.mm_level_num==3}"><h3 class="type">vip4</h3></c:if>
+					<c:if test="${emp.mm_level_num==4}"><h3 class="type">vip5</h3></c:if>
 				</div>
 			</div>
 			<div class="glide__wrapper">
@@ -91,15 +97,15 @@
 				<a class="button fill-green mb2" href="${emp.mm_emp_company_url}" target="_blank">公司微网站</a>
 
 			</div>
-			<%--<div class="switcher mt1">--%>
-				<%--<div class="w9">--%>
-					<%--<h2 class="area-head tac mb1">发布过的信息</h2>--%>
-					<%--<div class="button-group-x2">--%>
-						<%--<a class="button fill-green" href="javaScript:void(0)" onclick="searchProfile('0')">求购</a>--%>
-						<%--<a class="button fill-green" href="javaScript:void(0)" onclick="searchProfile('1')">供应</a>--%>
-					<%--</div>--%>
-				<%--</div>--%>
-			<%--</div>--%>
+			<div class="switcher mt1">
+				<div class="w9">
+					<h2 class="area-head tac mb1">发布过的信息</h2>
+					<div class="button-group-x2">
+						<a class="button fill-green" href="javaScript:void(0)" onclick="searchProfile('0')">求购</a>
+						<a class="button fill-green" href="javaScript:void(0)" onclick="searchProfile('1')">供应</a>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<div class="recent">

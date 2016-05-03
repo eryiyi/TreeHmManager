@@ -80,18 +80,18 @@ public class AppRecordService implements ListService ,SaveService, FindService{
                 if(!StringUtil.isNullOrEmpty(query.getMm_level_num())){
                     //存在等级
                     switch (Integer.parseInt(query.getMm_level_num())){
-                        case 0:
+                        case 0://VIP1
                             if (!StringUtil.isNullOrEmpty(query.getCountryid())) {
                                 map.put("countryid", query.getCountryid());
                                 map.put("is_guanzhu", "0");
                             }
                             break;
-                        case 1:
+                        case 1://VIP2
                             if (!StringUtil.isNullOrEmpty(query.getCityid())) {
                                 map.put("cityid", query.getCityid());
                             }
                             break;
-                        case 2:
+                        case 2://VIP3
                             if (!StringUtil.isNullOrEmpty(query.getProvinceid())) {
                                 map.put("provinceid", query.getProvinceid());
                             }
