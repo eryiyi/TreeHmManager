@@ -5,9 +5,9 @@ var shopinfo = (function () {
         shopCode: null,
         //店铺id
         shopId: null,
-        //店铺对应的惠农UserId
+        //店铺对应的花木通UserId
         shopHnUserId: null,
-        //惠农网各部件访问域名集合
+        //花木通网各部件访问域名集合
         hnWebUrlContainer: null,
         hnShopUrl: null,
         logonUserInfo: null,
@@ -55,8 +55,8 @@ var shopinfo = (function () {
 * 2015电商评选活动结果图标显示
 */
 faithSupplyer = { title: "2015诚信供应商", url: "img/logo/faitherSupplyer.png" },
-hotSupplyer = { title: "2015惠农人气电商", url: "img/logo/hotSupplyer.png" },
-hnPioneer = { title: "2015惠农电商先锋", url: "img/logo/hnPioneer.png" },
+hotSupplyer = { title: "2015花木通人气电商", url: "img/logo/hotSupplyer.png" },
+hnPioneer = { title: "2015花木通电商先锋", url: "img/logo/hnPioneer.png" },
 faithImg = "", hotImg = "", poinnerImg = "";
 function initActivityResutlLogo() {
     var endTime = "2017-03-04 00:00:00";

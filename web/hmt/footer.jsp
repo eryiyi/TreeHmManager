@@ -28,41 +28,34 @@
         <dl class="clearfix">
           <dt>新手指南</dt>
           <dd>
-            <a href="#
-" target="_blank" rel="nofollow">注册新用户</a></dd>
-          <dd>
-            <a href="#" target="_blank" rel="nofollow">实名认证</a></dd>
+            <a href="/netRegController/toReg.do" target="_blank" rel="nofollow">注册新用户</a></dd>
           <dd>
             <a href="#" target="_blank" rel="nofollow">找回密码</a></dd>
           <dd>
-            <a href="#" target="_blank" rel="nofollow">帮助中心</a></dd>
-          <dd>
-            <a href="#" target="_blank" rel="nofollow">安装手机花木通</a></dd>
+            <a href="../html/download.html" target="_blank" rel="nofollow">安装手机花木通</a></dd>
         </dl>
         <dl class="clearfix">
           <dt>采购商服务</dt>
           <dd>
-            <a href="#" target="_blank">找供应</a></dd>
+            <a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=1" target="_blank">找供应</a></dd>
           <dd>
-            <a href="#" target="_blank" rel="nofollow">发布供应</a></dd>
+            <a href="#" target="_blank" rel="nofollow">服务中心</a></dd>
         </dl>
         <dl class="clearfix">
           <dt>供应商服务</dt>
           <dd>
-            <a href="#" target="_blank">找需求</a></dd>
+            <a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=0" target="_blank">找需求</a></dd>
           <dd>
             <a href="#" target="_blank" rel="nofollow">服务中心</a></dd>
-          <dd>
-            <a href="#" target="_blank" rel="nofollow">发布需求</a></dd>
         </dl>
         <dl class="clearfix">
-          <dt>交易安全</dt>
+          <dt>使用帮助</dt>
           <dd>
-            <a href="#" target="_blank" rel="nofollow">卖家防骗</a></dd>
+            <a href="/netKefuController/toKefu.do" target="_blank" rel="nofollow">客服中心</a></dd>
           <dd>
-            <a href="#" target="_blank" rel="nofollow">绑定支付宝</a></dd>
+            <a href="/netWeixinController/toKefu.do" target="_blank" rel="nofollow">微信客服中心</a></dd>
           <dd>
-            <a href="#" target="_blank" rel="nofollow">买家防骗</a></dd>
+            <a href="#" target="_blank" rel="nofollow">全国招商合作伙伴</a></dd>
         </dl>
       </div>
     </div>
@@ -80,25 +73,19 @@
         </div>
       </div>
       <ul class="foot-nav clearfix">
-        <li><a href="#" target="_blank" rel="nofollow">关于我们</a></li>
-        <li><a href="#" target="_blank" rel="nofollow">法律声明</a></li>
-        <li><a href="#" target="_blank" rel="nofollow">
-          使用协议</a></li>
-        <li><a href="#" target="_blank" rel="nofollow">
-          版权隐私</a></li>
-        <li><a href="#" target="_blank" rel="nofollow">友情链接</a></li>
-        <li><a href="#" target="_blank" rel="nofollow">成功案例</a></li>
-        <li><a href="#" target="_blank" rel="nofollow">淄角蔬菜大事记</a></li>
-        <li><a href="#" target="_blank">产品库</a></li>
-        <li><a href="#" target="_blank">网站地图</a></li>
+        <li><a href="/netAboutUsController/toAboutUs.do" target="_blank" rel="nofollow">关于我们</a></li>
+        <li><a href="/netAboutUsController/toLegal.do" target="_blank" rel="nofollow">法律声明</a></li>
+        <li><a href="/netAboutUsController/toXieyie.do" target="_blank" rel="nofollow">使用协议</a></li>
+        <li><a href="/netAboutUsController/toPrivacy.do" target="_blank" rel="nofollow">版权隐私</a></li>
+        <li><a href="/netAboutUsController/toLink.do" target="_blank" rel="nofollow">友情链接</a></li>
       </ul>
       <div class="copyright">
         <p>
-          鲁ICP备13005678号-1 | Powered by Cnzjw 2.1 | 服务热线：400-666-8888</p>
+          鲁ICP备16015579号 - 1| Powered by rykj | 服务热线：0543-5253666</p>
         <p>
-          互联网药品信息服务资格证书:(鲁)-经营性-2016-0005</p>
+          </p>
         <p>
-          ©2011-2020 Cnzjw B2B2C SYSTEM All Rights Reserved</p>
+          ©2016-2022 rykj B2C SYSTEM All Rights Reserved</p>
         <p class="imgs">
           <a target="_blank" href="http://www.bj.cyberpolice.cn/index.jsp" rel="nofollow">
             <img alt="45" src="../hmt/images/jhd_45.png"></a>

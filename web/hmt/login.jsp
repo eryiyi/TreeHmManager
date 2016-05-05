@@ -40,7 +40,7 @@
 <div class="header clearfix">
   <div class="logo-box fl">
     <div class="logo fl">
-      <a href="javascript:void(0)"><img src="../hmt/images/category-vegetable/logo_type.png" alt="花木通信息平台" width="205px" height="40px"></a>
+      <a href="/hmtIndex/toIndex.do?page=1"><img src="../hmt/images/category-vegetable/logo_type.png" alt="花木通信息平台" width="205px" height="40px"></a>
     </div>
     <div class="logotext lh22 fl ml10">
       <div class="fs18">用户登录</div>

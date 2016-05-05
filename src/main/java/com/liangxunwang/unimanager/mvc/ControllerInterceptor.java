@@ -122,7 +122,12 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/netAddRecordController/toAddRecord\\.do$)"+
                         "|(^/netAddRecordController/addRecord\\.do$)"+
                         "|(^/netKefuController/toKefu\\.do$)"+
-                        "|(^/netKefuController/toKefuCenter\\.do$)"+
+                        "|(^/netAboutUsController/toAboutUs\\.do$)"+
+                        "|(^/netAboutUsController/toXieyie\\.do$)"+
+                        "|(^/netAboutUsController/toLegal\\.do$)"+
+                        "|(^/netAboutUsController/toLink\\.do$)"+
+                        "|(^/netAboutUsController/toPrivacy\\.do$)"+
+                        "|(^/netWeixinController/toKefu\\.do$)"+
 
                         "|(^/memberLogin\\.do$)"
 

@@ -136,8 +136,8 @@
 			alert("公司名称不能为空");
 			return ;
 		}
-		if(mm_emp_company.length > 12){
-			alert("公司名称超出字段限制，最多12个字");
+		if(mm_emp_company.length > 14){
+			alert("公司名称超出字段限制，最多14个字");
 			return ;
 		}
 		if(mm_emp_company_address.replace(/\s/g, '') == ''){

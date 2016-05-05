@@ -251,7 +251,7 @@
         <div class="dropdown-layer dd-help-center">
           <p>
             <a href="javascript:void(0)" target="_blank" rel="nofollow">常见问题</a><a
-                  href="/netKefuController/toKefuCenter.do" target="_blank" rel="nofollow">联系客服</a></p>
+                  href="/netKefuController/toKefu.do" target="_blank" rel="nofollow">联系客服</a></p>
         </div>
       </li>
     </ul>
@@ -320,10 +320,6 @@
       <a href="javaScript:void(0)" onclick="searchIndex(event)" class="notice-submit"> <i class="lee-ico lee-cx"></i>搜索</a>
       <span class="notice-msg"><a href="#" target="_blank" rel="nofollow">欢迎使用花木通信息平台，请谨慎核实信息内容!</a></span>
     </div>
-    <input type="hidden" id="showType" name="showType" value="0">
-    <input type="hidden" id="provinceId" name="provinceId">
-    <input type="hidden" id="cateId" name="cateId" value="">
-    <input type="hidden" id="breedId" name="breedId">
     <div class="tabs mt_15">
       <ul class="tabs-list">
         <li class="cur" onclick="javascript:changeShowType('0');"><a>最新供应</a></li>
@@ -369,6 +365,7 @@
   </form>
   <div class="sides mt_15">
     <div class="release-but mb_15"><a href="javascript:void(0)" target="_blank" onclick="addMsg()"><i class="lee-ico lee-fb"></i> &nbsp; 发布供应</a></div>
+    <div class="release-but mb_15"><a href="/netKefuController/toKefu.do" target="_blank" ><i class="lee-ico lee-fb"></i> &nbsp; 客服中心</a></div>
     <div class="ad2">
 
       <a href="#" target="_target" title="点击进入春季种苗批发市场页面" rel="nofollow">

@@ -90,7 +90,7 @@
 				<div class="icon-pic"><img src="/img/tree_user_profile.png" alt=""></div>
 				<h5 class="icon-name">个人主页</h5>
 			</a>
-			<a href="http://hmt.sdhmmm.cn/loginFront.aspx" target="_blank" class="icon">
+			<a href="http://mhmt.sdhmmm.cn/loginFront.aspx" target="_blank" class="icon">
 				<div class="icon-pic"><img src="/img/tree_user_massage.png" alt=""></div>
 				<h5 class="icon-name">短信平台</h5>
 			</a>
@@ -140,7 +140,7 @@
 		<!-- services -->
 		<h4 class="title">服务</h4>
 		<div class="icons clearfix">
-			<a href="javaScript:void(0)" class="icon">
+			<a href="http://www.sdnxs.com/Channel/23166" class="icon">
 				<div class="icon-pic"><img src="/img/tree_user_bank.png" alt=""></div>
 				<h5 class="icon-name">商业银行</h5>
 			</a>

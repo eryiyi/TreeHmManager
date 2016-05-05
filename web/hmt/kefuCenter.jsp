@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="icon" href="logo.ico" type="image/x-icon" />
   <meta name="renderer" content="webkit">
-  <title>花木通|供需信息</title>
+  <title>花木通|客服</title>
   <meta name="keywords" content="花木通,惠民,苗木,花木,苗木交易,花木求购,苗木求购,花木资讯,花木论坛,花木销售,苗木销售,苗木资讯,绿化苗木,花草,苗联通,白蜡,园林,惠民皂户李镇,苗木协会">
   <meta name="Description" content=" 花木通是惠民县本地第一苗木供求信息平台、信息通讯平台，突破了苗木大市场、绿化工程公司、经纪人、苗农之间的信息壁垒，让市场订单苗木不愁买，苗农种植苗木不愁卖！为本地苗木行业发展助力，让经纪人足不出户，随时随地做生意！让苗农及时了解市场行情，苗木卖价更高更容易！">
   <link href="../hmt/css/common/index-type.css" rel="stylesheet" type="text/css" />
@@ -19,8 +19,7 @@
   <link href="../hmt/css/search/style.css" rel="stylesheet" type="text/css" />
   <link href="../hmt/css/search/base.css" rel="stylesheet" type="text/css" />
   <link href="../hmt/css/supply/index.css" rel="stylesheet" type="text/css" />
-  <link href="../hmt/css/service.css" rel="stylesheet" type="text/css" />
-  <link href="../hmt/css/reset.css" rel="stylesheet" type="text/css" />
+
 
   <script type="text/javascript" src="../js/jquery.min.js"></script>
   <script type="text/javascript" src="../js/md5.js"></script>
@@ -144,9 +143,7 @@
     }
   </style>
 </head>
-
 <body>
-
 <!-- 顶部 -->
 <div class="topbar">
   <div class="container clearfix">
@@ -254,128 +251,139 @@
         <div class="dropdown-layer dd-help-center">
           <p>
             <a href="javascript:void(0)" target="_blank" rel="nofollow">常见问题</a><a
-                  href="javascript:void(0)" target="_blank" rel="nofollow">联系客服</a></p>
+                  href="/netKefuController/toKefuCenter.do" target="_blank" rel="nofollow">联系客服</a></p>
         </div>
       </li>
     </ul>
   </div>
 </div>
-<!--页头top end /-->
+<!--头部 导航-->
+<div class="type-head">
+  <h1 class="logo">
+    <a href="javascript:void(0)" title="花木通信息平台"></a>
+  </h1>
 
-<!-- container -->
-<div class="container">
-
-  <div class="wrap-990 pt_20 pb_20">
-    <!--tabs-->
-    <div class="hc-kf-tabs" id="hcKFTabs">
-      <div class="tabHead clearfix">
-        <div class="tabLabel current"><a href="http://help.cnhnb.com/service.htm#" rel="#tabID-0"><b>自助服务</b><em>极速</em><span>快速解决常见问题,自助,高效！</span></a></div>
-        <div class="tabLabel"><a href="http://help.cnhnb.com/service.htm#" rel="#tabID-1"><b>在线QQ</b><em>极速</em><span>QQ在线为您提供各种在线专业咨询!</span></a></div>
-        <div class="tabLabel"><a href="http://help.cnhnb.com/service.htm#" rel="#tabID-2"><b>惠农IM</b><em>极速</em><span>使用惠农原生通讯系统，在线咨询，轻松搞定！</span></a></div>
-        <div class="tabLabel"><a href="http://help.cnhnb.com/service.htm#" rel="#tabID-3"><b>客服热线</b><em class="alert">繁忙</em><span>专业的人工电话服务热线，高峰期需要耐心等待。建议先使用自助服务或在线咨询。</span></a></div>
+  <div class="search">
+    <form target="_blank" method="get" id="searchForm" action="category.htm">
+      <div class="sear-area">
+        <div style="z-index: 15" class="autoComplete">
+          <input type="text" placeholder="西红柿" defaulturl="" class="sear-inpt broder_r_no"
+                 autocomplete="off" >
+          <ul class="green" style="display: none;">
+            <li></li>
+          </ul>
+        </div>
+        <input type="submit" value="搜索" class="sear-btn">
       </div>
-      <div class="tabBody">
-
-        <div id="tabID-0" class="tabContent" style="display: block;">
-          <div class="wrapper mainWrap">
-            <div class="wrap-tit clearfix"><h3 class="wrap-tit-l">热门自助服务</h3><p class="wrap-tit-r"><a href="http://help.cnhnb.com/index.htm" target="_blank">更多&gt;&gt;</a></p></div>
-            <div class="wrap-inner">
-              <ul class="hotBuzy clearfix">
-                <li><a href="http://help.cnhnb.com/problem/detail/309" target="_blank"><span class="pwd"></span><em>找回密码</em></a></li>
-                <li><a href="http://help.cnhnb.com/problem/9039.htm" target="_blank"><span class="shop"></span><em>店铺管理</em></a></li>
-                <li><a href="http://help.cnhnb.com/problem/9015.htm" target="_blank"><span class="flow"></span><em>买卖流程及在线支付</em></a></li>
-                <li><a href="http://help.cnhnb.com/problem/9038.htm" target="_blank"><span class="dist"></span><em>在线咨询</em></a></li>
-                <li><a href="http://help.cnhnb.com/problem/9043.htm" target="_blank"><span class="anti"></span><em>交易防骗</em></a></li>
-                <li><a href="http://help.cnhnb.com/problem/9033.htm" target="_blank"><span class="adv"></span><em>排名及广告服务</em></a></li>
-                <li><a href="http://help.cnhnb.com/problem/9009.htm" target="_blank"><span class="vip"></span><em>会员服务 </em></a></li>
-                <li><a href="http://help.cnhnb.com/problem/9008.htm" target="_blank"><span class="real"></span><em>实名认证</em></a></li>
-                <li><a href="http://help.cnhnb.com/problem/9028.htm" target="_blank"><span class="prd"></span><em>发布产品</em></a></li>
-                <li><a href="http://help.cnhnb.com/problem/9026.htm" target="_blank"><span class="mobile"></span><em>手机惠农网</em></a></li>
-              </ul>
-            </div>
-            <div class="wrap-btm clearfix"><div class="wrap-btm-l">&nbsp;</div><div class="wrap-btm-r">&nbsp;</div></div>
-          </div><!--/.wrapper-->
-          <div class="wrapper sideWrap">
-            <div class="wrap-tit clearfix"><h3 class="wrap-tit-l">常见问题</h3><p class="wrap-tit-r"><a href="http://help.cnhnb.com/problem/" target="_blank">更多&gt;&gt;</a></p></div>
-            <div class="wrap-inner p10">
-              <ul class="faq_list">
-
-                <li><a href="http://help.cnhnb.com/problem/detail/318" target="_blank" title="修改/绑定手机号">修改/绑定手机号</a></li>
-
-                <li><a href="http://help.cnhnb.com/problem/detail/328" target="_blank" title="实名认证">实名认证</a></li>
-
-                <li><a href="http://help.cnhnb.com/problem/detail/362" target="_blank" title="网站会员">网站会员</a></li>
-
-                <li><a href="http://help.cnhnb.com/problem/detail/401" target="_blank" title="手机惠农网">手机惠农网</a></li>
-
-                <li><a href="http://help.cnhnb.com/problem/detail/406" target="_blank" title="惠农网微信微博">惠农网微信微博</a></li>
-
-                <li><a href="http://help.cnhnb.com/problem/detail/380" target="_blank" title="在线咨询">在线咨询</a></li>
-
-              </ul>
-            </div>
-            <div class="wrap-btm clearfix"><div class="wrap-btm-l">&nbsp;</div><div class="wrap-btm-r">&nbsp;</div></div>
-          </div><!--/.wrapper-->
-          <div class="clear"></div>
-        </div>
-
-        <div id="tabID-1" class="tabContent" style="display: none;">
-          <div class="service-qq">
-            <p class="tit">人工服务时间：周一至周日 9:00-17:30</p>
-            <div class="inner">
-              <ul class="clearfix">
-                <li class="guide">
-                  <h4>操作指引</h4>
-                  <p>在惠农网使用中遇到任<br>何问题请与我们联系</p>
-                </li>
-                <li class="advise">
-                  <h4>投诉建议</h4>
-                  <p>有投诉？没问题，我们会<br>虚心接受您的意见</p>
-                </li>
-                <li class="consult">
-                  <h4>在线咨询</h4>
-                  <p>专业客服为您提供在线服务<br>
-                    <a class="btn-qq" href="http://b.qq.com/webc.htm?new=0&sid=4000088688&eid=218808P8z8p8q8Q8Q8q8x&o=www.cnhnb.com&q=7" target="_blank">立即咨询</a>
-                  </p>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div id="tabID-2" class="tabContent" style="display: none;">
-          <div class="service-im">
-            <p class="tit">人工服务时间：周一至周日 9:00-17:30</p>
-            <div class="inner clearfix">
-              <!-- IM上线前 -->
-              <img src="./联系客服_帮助中心_files/service_im.jpg" width="928" height="304">
-              <!-- IM上线后 -->
-              <!--<div class="sign-in">
-                  <h4>惠农IM</h4>
-                  <p>原生惠农沟通平台，一键<a href="#">登录</a>，沟通无忧</p>
-              </div>
-              <ul class="bb-list">
-                  <li class="on"><span>&nbsp;</span><a href="#">宝宝一号</a></li>
-                  <li class="on"><span>&nbsp;</span><a href="#">宝宝二号</a></li>
-                  <li class="on"><span>&nbsp;</span><a href="#">宝宝三号</a></li>
-                  <li><span>&nbsp;</span><a href="#">宝宝四号</a></li>
-                  <li><span>&nbsp;</span><a href="#">宝宝五号</a></li>
-              </ul>-->
-            </div>
-          </div>
-        </div>
-
-        <div id="tabID-3" class="tabContent" style="display: none;">
-          <img src="./联系客服_帮助中心_files/service_number.jpg" width="988" height="391" alt="">
-        </div>
-
-      </div>
-    </div>
-    <!--/tabs-->
+    </form>
+    <ul style="display: block;" class="keylist" id="idkeyList">
+      <li>热门搜索：</li>
+      <li><a title="大白菜" href="#" rel="nofollow">大白菜</a></li>
+      <li><a title="包菜" href="#" rel="nofollow">包菜</a></li>
+      <li><a title="萝卜" href="#" rel="nofollow">萝卜</a></li>
+      <li><a title="丝瓜" href="#" rel="nofollow">丝瓜</a></li>
+      <li><a title="西红柿" href="category.htm" rel="nofollow">西红柿</a></li>
+    </ul>
   </div>
 
 </div>
-<!-- //container -->
+<div class="type-nav">
+  <div class="nav-con">
+    <div class="menu-c-nav">
+      <!-- 精选分类 title-->
+      <a href="/netTopController/toTop.do?page=1">
+        <div class="menu-c-tit">
+          <span class="">金牌榜</span>
+        </div>
+      </a>
+    </div>
+    <!-- 顶部栏目-->
+    <ul class="nav-con-tit">
+      <li><a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=0" class="nav-tstj">求购大厅</a></li>
+      <li><a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=1" class="nav-dptj">供应大厅</a></li>
+      <li><a href="/netServiceController/toService.do" class="nav-zxhq">服务中心</a></li>
+      <li><a href="../html/download.html" target="_blank" class="nav-zxhq">手机版</a></li>
+    </ul>
+  </div>
+</div>
+<!--头部 导航 end-->
+
+<input type="hidden" id="is_login" name="is_login" value="${is_login}">
+<input type="hidden" id="accessToken" name="accessToken" value="${emp.access_token}">
+<input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${emp.mm_emp_id}">
+
+<div class="container wrap-1190">
+
+  <form action="supply.htm" id="filterForm" class="fl" style="width: 956px;">
+    <%--<div class="noticebar mt_15">--%>
+      <%--<input type="text" id="keyword" name="keyword" autocomplete="off" class="notice-input" value="" placeholder="标题|手机号|公司名称|联系人">--%>
+      <%--<a href="javaScript:void(0)" onclick="searchIndex(event)" class="notice-submit"> <i class="lee-ico lee-cx"></i>搜索</a>--%>
+      <%--<span class="notice-msg"><a href="#" target="_blank" rel="nofollow">欢迎使用花木通信息平台，请谨慎核实信息内容!</a></span>--%>
+    <%--</div>--%>
+    <div class="tabs mt_15">
+      <ul class="tabs-list">
+        <li class="cur" id="all_li"><a href="javascript:void(0)" onclick="allKefu()">全国客服</a></li>
+        <li id="location_li"><a href="javascript:void(0)" onclick="locationKefu()" >地方客服</a></li>
+      </ul>
+      <div class="tabs-msg"><a></a></div>
+    </div>
+    <div class="pro-list mb_10">
+
+      <ul class="pro-list-title pt_15">
+        <li class="l2">客服</li>
+        <li class="l3">电话</li>
+      </ul>
+      <ul  id="con_one_2" >
+        <c:forEach items="${listAll}" var="e" varStatus="st">
+          <li class="text-list">
+            <a href="javascript:void(0)" target="_blank">
+              <span class="l2">全国客服</span>
+              <span class="l3">${e.mm_tel}</span>
+            </a>
+          </li>
+        </c:forEach>
+      </ul>
+
+      <ul  id="con_one_1" style="display: none">
+       <c:forEach items="${list}" var="e" varStatus="st">
+         <li class="text-list">
+           <a href="javascript:void(0)" target="_blank">
+             <span class="l2">${e.provinceName}${e.cityName}${e.areaName}</span>
+             <span class="l3">${e.mm_tel}</span>
+           </a>
+         </li>
+       </c:forEach>
+      </ul>
+
+      <div class="clear"></div>
+    </div>
+  </form>
+  <div class="sides mt_15">
+    <div class="release-but mb_15"><a href="javascript:void(0)" target="_blank" onclick="addMsg()"><i class="lee-ico lee-fb"></i> &nbsp; 发布供应</a></div>
+    <div class="ad2">
+
+      <a href="#" target="_target" title="点击进入春季种苗批发市场页面" rel="nofollow">
+        <img src="../hmt/images/2C604DU858ChRkRlcHTCeAU9-hAAHy19HEc7E108.jpg" alt="这是一张春季种苗批发市场的展示图片" width="216" height="353">
+      </a>
+
+    </div>
+    <div class="sides-hot mtb_15">
+      <h2>热门信息</h2>
+      <ul>
+        <c:forEach items="${listsHot}" var="e" varStatus="st">
+          <li>
+            <c:if test="${e.mm_msg_type=='0'}"><em class="hot">[求购]</em></c:if>
+            <c:if test="${e.mm_msg_type=='1'}"><em >[供应]</em></c:if>
+            <h3><a target="_blank" href="javascript:void(0)" onclick="showDetail('${e.mm_msg_id}')">${e.mm_msg_title}</a></h3>
+            <p></p>
+          </li>
+        </c:forEach>
+      </ul>
+    </div>
+  </div>
+
+</div>
+<!--内容 end-->
 
 <jsp:include page="footer.jsp" flush="true" />
 
@@ -399,34 +407,6 @@
       window.location.href=_url+"?page="+_page;
     }else{
       window.location.href=_url;
-    }
-  }
-  function favourClick(_mm_msg_id){
-    //先判断是否登录
-    var is_login = $("#is_login").val();
-    if(is_login == 1){
-      //登陆了
-      var mm_emp_id = $("#mm_emp_id").val();
-      var accessToken = $("#accessToken").val();
-      $.ajax({
-        cache: true,
-        type:"POST",
-        url:"/saveFavour.do",
-        data:{"mm_msg_id":_mm_msg_id, "accessToken":accessToken, "mm_emp_id":mm_emp_id},
-        async: false,
-        success:function(_data){
-          var data = $.parseJSON(_data);
-          if(data.success){
-            alert("收藏成功");
-          }else{
-            var _case = {1:"收藏失败", 2:"已经收藏，不能重复收藏！",9:"账号过期，请重新登录！"};
-            alert(_case[data.code])
-          }
-        }
-      });
-    }else{
-      //没登陆
-      alert("请先登录");
     }
   }
 
@@ -461,29 +441,6 @@
 </script>
 
 <script type="text/javascript" charset="UTF-8">
-  function searchIndex(e,_page){
-    var _index = $("#index").val();
-    var page = parseInt(_page);
-    var size = $("#size").val();
-    var keyword = $("#keyword").val();
-    if(_index <= ${page.pageCount} && _index >= 1){
-      window.location.href="/hmtIndex/toIndex.do?page="+_index+"&size="+size+"&keyword="+keyword;
-    }else{
-      alert("请输入1-${page.pageCount}的页码数");
-    }
-  }
-
-  function nextPage(_page) {
-    var page = parseInt(_page);
-    var size = $("#size").val();
-    var keyword = $("#keyword").val();
-    addCookie("contract_size", size, 36);
-    if ((page <= ${page.pageCount} && page >= 1)) {
-      window.location.href="/hmtIndex/toIndex.do?page="+page+"&size="+size+"&keyword="+keyword;
-    } else {
-      alert("请输入1-${page.pageCount}的页码数");
-    }
-  }
 
   function quiteClick(){
     //退出
@@ -505,6 +462,28 @@
       }
     });
   }
+
+  function allKefu (){
+    $("#location_li").removeClass("cur");
+    $("#all_li").addClass("cur");
+
+    var con_one_1=document.getElementById("con_one_1");
+    var con_one_2=document.getElementById("con_one_2");
+    con_one_1.style.display = "none";
+    con_one_2.style.display = "block";
+  }
+  function locationKefu(){
+
+    $("#location_li").addClass("cur");
+    $("#all_li").removeClass("cur");
+
+    var con_one_1=document.getElementById("con_one_1");
+    var con_one_2=document.getElementById("con_one_2");
+    con_one_1.style.display = "block";
+    con_one_2.style.display = "none";
+  }
+
 </script>
 
 </html>
+
