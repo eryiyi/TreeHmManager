@@ -276,7 +276,7 @@ ul.details-title{height:40px; line-height:40px; overflow:hidden; border:#ddd sol
 .related .text-list:hover{background-color:#f8f8f8;}
 .related .text-list span{float:left; display:inline; height:55px; line-height:55px; font-size:14px; font-family:'微软雅黑';}
 .related .text-list span.l1{width: 220px;text-align: left;padding-left: 12px;}
-.related .text-list span.l2{width: 100px; overflow:hidden; white-space: nowrap; text-overflow: ellipsis; text-align:center;}
+.related .text-list span.l2{width: 120px; overflow:hidden; white-space: nowrap; text-overflow: ellipsis; text-align:center;}
 .related .text-list span.l2 i { color: #8d8d8d; }
 .related .text-list span.l3{width:160px; text-align:center; color:#f47a11; font-weight:bold; padding:0 5px; overflow:hidden; white-space: nowrap; text-overflow: ellipsis;}
 .related .text-list span.l4{width: 305px; text-align:center; overflow:hidden; white-space: nowrap; text-overflow: ellipsis;}

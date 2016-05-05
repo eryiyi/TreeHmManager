@@ -8,6 +8,7 @@ import com.liangxunwang.unimanager.mvc.vo.RecordVO;
 import com.liangxunwang.unimanager.query.RecordQuery;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.Constants;
+import com.liangxunwang.unimanager.util.DateUtil;
 import com.liangxunwang.unimanager.util.RelativeDateFormat;
 import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -157,7 +158,8 @@ public class WebVRecordService implements ListService,DeleteService,ExecuteServi
                 }
                 record.setMm_msg_picurl(buffer.toString());
             }
-            record.setDateline(RelativeDateFormat.format(Long.parseLong(record.getDateline())));
+//            record.setDateline(RelativeDateFormat.format(Long.parseLong(record.getDateline())));
+            record.setDateline(DateUtil.getDate(record.getDateline(), "yy-MM-dd HH:mm"));
         }
 
         long count = recordDao.count(map);

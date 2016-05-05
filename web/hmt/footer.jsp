@@ -37,23 +37,23 @@
           <dd>
             <a href="#" target="_blank" rel="nofollow">帮助中心</a></dd>
           <dd>
-            <a href="#" target="_blank" rel="nofollow">安装手机淄角蔬菜网</a></dd>
+            <a href="#" target="_blank" rel="nofollow">安装手机花木通</a></dd>
         </dl>
         <dl class="clearfix">
           <dt>采购商服务</dt>
           <dd>
             <a href="#" target="_blank">找供应</a></dd>
           <dd>
-            <a href="#" target="_blank" rel="nofollow">发布采购</a></dd>
+            <a href="#" target="_blank" rel="nofollow">发布供应</a></dd>
         </dl>
         <dl class="clearfix">
           <dt>供应商服务</dt>
           <dd>
-            <a href="#" target="_blank">找采购</a></dd>
+            <a href="#" target="_blank">找需求</a></dd>
           <dd>
-            <a href="#" target="_blank" rel="nofollow">淄角蔬菜服务</a></dd>
+            <a href="#" target="_blank" rel="nofollow">服务中心</a></dd>
           <dd>
-            <a href="#" target="_blank" rel="nofollow">发布供应</a></dd>
+            <a href="#" target="_blank" rel="nofollow">发布需求</a></dd>
         </dl>
         <dl class="clearfix">
           <dt>交易安全</dt>
@@ -71,7 +71,7 @@
         <div class="qrcode">
           <img src="../hmt/images/category-vegetable/topbar-hn-app.png" alt="手机花木通">
           <p>
-            <span>手机花木通</span><span>扫描下载APP</span></p>
+            <span>手机花木通</span><span>安卓版扫描下载APP</span></p>
         </div>
         <div class="qrcode">
           <img src="../hmt/images/category-vegetable/topbar-hn-weixin.jpg" alt="花木通官方微信">

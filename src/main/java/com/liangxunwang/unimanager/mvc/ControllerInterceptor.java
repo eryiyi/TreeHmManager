@@ -115,6 +115,14 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/netLoginController/toQuite\\.do$)"+
                         "|(^/netRegController/toReg\\.do$)"+
                         "|(^/netRegController/empReg\\.do$)"+
+                        "|(^/netRecordController/toDetail\\.do$)"+
+                        "|(^/netTopController/toTop\\.do$)"+
+                        "|(^/netServiceController/toService\\.do$)"+
+                        "|(^/netCenterController/toCenter\\.do$)"+
+                        "|(^/netAddRecordController/toAddRecord\\.do$)"+
+                        "|(^/netAddRecordController/addRecord\\.do$)"+
+                        "|(^/netKefuController/toKefu\\.do$)"+
+                        "|(^/netKefuController/toKefuCenter\\.do$)"+
 
                         "|(^/memberLogin\\.do$)"
 

@@ -46,8 +46,13 @@
 			<img src="${emp.mm_emp_cover}" alt="${emp.mm_emp_nickname}" class="head-pic">
 			<div class="user-info">
 				<h2 class="name">${emp.mm_emp_nickname}</h2>
-				<c:if test="${emp.mm_emp_type==0}"><h3 class="type">苗木经营户</h3></c:if>
-				<c:if test="${emp.mm_emp_type==1}"><h3 class="type">苗木会员</h3></c:if>
+				<%--<c:if test="${emp.mm_emp_type==0}"><h3 class="type">苗木经营户</h3></c:if>--%>
+				<%--<c:if test="${emp.mm_emp_type==1}"><h3 class="type">苗木会员</h3></c:if>--%>
+				<c:if test="${emp.mm_level_num==0}"><h3 class="type">vip1</h3></c:if>
+				<c:if test="${emp.mm_level_num==1}"><h3 class="type">vip2</h3></c:if>
+				<c:if test="${emp.mm_level_num==2}"><h3 class="type">vip3</h3></c:if>
+				<c:if test="${emp.mm_level_num==3}"><h3 class="type">vip4</h3></c:if>
+				<c:if test="${emp.mm_level_num==4}"><h3 class="type">vip5</h3></c:if>
 			</div>
 		</div>
 		<div class="glide__wrapper">

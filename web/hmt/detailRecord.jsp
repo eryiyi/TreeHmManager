@@ -8,8 +8,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="icon" href="logo.ico" type="image/x-icon" />
   <meta name="renderer" content="webkit">
-  <title>花木通|供需信息</title>
-  <meta name="keywords" content="花木通,惠民,苗木,花木,苗木交易,花木求购,苗木求购,花木资讯,花木论坛,花木销售,苗木销售,苗木资讯,绿化苗木,花草,苗联通,白蜡,园林,惠民皂户李镇,苗木协会">
+  <title>花木通|求购信息</title>
+  <meta name="keywords" content="花木通,苗木,花木,苗木交易,花木求购,苗木求购,花木资讯,花木论坛,花木销售,苗木销售,苗木资讯,绿化苗木">
   <meta name="Description" content=" 花木通是惠民县本地第一苗木供求信息平台、信息通讯平台，突破了苗木大市场、绿化工程公司、经纪人、苗农之间的信息壁垒，让市场订单苗木不愁买，苗农种植苗木不愁卖！为本地苗木行业发展助力，让经纪人足不出户，随时随地做生意！让苗农及时了解市场行情，苗木卖价更高更容易！">
   <link href="../hmt/css/common/index-type.css" rel="stylesheet" type="text/css" />
   <link href="../hmt/css/common/common.css" rel="stylesheet" type="text/css" />
@@ -20,6 +20,7 @@
   <link href="../hmt/css/search/base.css" rel="stylesheet" type="text/css" />
   <link href="../hmt/css/supply/index.css" rel="stylesheet" type="text/css" />
 
+  <link href="../hmt/css/purchase/details.css" rel="stylesheet" type="text/css" />
 
   <script type="text/javascript" src="../js/jquery.min.js"></script>
   <script type="text/javascript" src="../js/md5.js"></script>
@@ -144,6 +145,7 @@
   </style>
 </head>
 <body>
+
 <!-- 顶部 -->
 <div class="topbar">
   <div class="container clearfix">
@@ -217,7 +219,7 @@
       <c:if test="${is_login=='1'}">
         <li>
           <div class="label">
-            <a href="/netCenterController/toCenter.do" rel="nofollow">我的中心</a>
+            <a href="buyer/main.htm" rel="nofollow">我的中心</a>
           </div>
         </li>
       </c:if>
@@ -247,177 +249,214 @@
       </li>
       <li class="dropdown">
         <div class="dropdown-label">
-          <i>&nbsp;</i><span><a href="javascript:void(0)" target="_blank" rel="nofollow">帮助中心</a></span></div>
+          <i>&nbsp;</i><span><a href="#" target="_blank" rel="nofollow">帮助中心</a></span></div>
         <div class="dropdown-layer dd-help-center">
           <p>
-            <a href="javascript:void(0)" target="_blank" rel="nofollow">常见问题</a><a
-                  href="/netKefuController/toKefuCenter.do" target="_blank" rel="nofollow">联系客服</a></p>
+            <a href="#" target="_blank" rel="nofollow">常见问题</a><a
+                  href="#" target="_blank" rel="nofollow">联系客服</a></p>
         </div>
       </li>
     </ul>
   </div>
 </div>
 <!--头部 导航-->
-<div class="type-head">
-  <h1 class="logo">
-    <a href="javascript:void(0)" title="花木通信息平台"></a>
-  </h1>
 
-  <div class="search">
-    <form target="_blank" method="get" id="searchForm" action="category.htm">
-      <div class="sear-area">
-        <div style="z-index: 15" class="autoComplete">
-          <input type="text" placeholder="西红柿" defaulturl="" class="sear-inpt broder_r_no"
-                 autocomplete="off" >
-          <ul class="green" style="display: none;">
-            <li></li>
-          </ul>
-        </div>
-        <input type="submit" value="搜索" class="sear-btn">
-      </div>
-    </form>
-    <ul style="display: block;" class="keylist" id="idkeyList">
-      <li>热门搜索：</li>
-      <li><a title="大白菜" href="#" rel="nofollow">大白菜</a></li>
-      <li><a title="包菜" href="#" rel="nofollow">包菜</a></li>
-      <li><a title="萝卜" href="#" rel="nofollow">萝卜</a></li>
-      <li><a title="丝瓜" href="#" rel="nofollow">丝瓜</a></li>
-      <li><a title="西红柿" href="category.htm" rel="nofollow">西红柿</a></li>
-    </ul>
-  </div>
 
-</div>
-<div class="type-nav">
-  <div class="nav-con">
-    <div class="menu-c-nav">
-      <!-- 精选分类 title-->
-      <a href="/netTopController/toTop.do?page=1">
-        <div class="menu-c-tit">
-          <span class="">金牌榜</span>
-        </div>
-      </a>
-    </div>
-    <!-- 顶部栏目-->
-    <ul class="nav-con-tit">
-      <li><a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=0" class="nav-tstj">求购大厅</a></li>
-      <li><a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=1" class="nav-dptj">供应大厅</a></li>
-      <li><a href="/netServiceController/toService.do" class="nav-zxhq">服务中心</a></li>
-      <li><a href="../html/download.html" target="_blank" class="nav-zxhq">手机版</a></li>
-    </ul>
-  </div>
-</div>
-<!--头部 导航 end-->
-
+<!--内容-->
 <input type="hidden" id="is_login" name="is_login" value="${is_login}">
 <input type="hidden" id="accessToken" name="accessToken" value="${emp.access_token}">
-<input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${emp.mm_emp_id}">
-
+<input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${recordVO.mm_emp_id}">
+<!--banner-->
+<div class="blank_10"></div>
 <div class="container wrap-1190">
+  <!--// banner-->
+  <div class="position">
+    <a href="javaScript:void(0)">花木通信息平台</a> &gt; <a href="javascript:void(0)">
+    <c:if test="${recordVO.mm_msg_type=='0'}"><a>求购</a></c:if>
+    <c:if test="${recordVO.mm_msg_type=='1'}"><a>供应</a></c:if>
+  </a>
+  </div>
+  <!--内容 start-->
+  <div class="info-details">
+    <!-- details -->
+    <ul class="details-title">
+      <li class="details-times">发布时间：${recordVO.dateline}</li>
+      <li class="details-author">发布人：<span>${recordVO.mm_emp_nickname}</span></li>
+      <li class="details-certification">
 
-  <form action="supply.htm" id="filterForm" class="fl" style="width: 956px;">
-    <div class="noticebar mt_15">
-      <input type="text" id="keyword" name="keyword" autocomplete="off" class="notice-input" value="" placeholder="标题|手机号|公司名称|联系人">
-      <a href="javaScript:void(0)" onclick="searchIndex(event)" class="notice-submit"> <i class="lee-ico lee-cx"></i>搜索</a>
-      <span class="notice-msg"><a href="#" target="_blank" rel="nofollow">欢迎使用花木通信息平台，请谨慎核实信息内容!</a></span>
-    </div>
-    <input type="hidden" id="showType" name="showType" value="0">
-    <input type="hidden" id="provinceId" name="provinceId">
-    <input type="hidden" id="cateId" name="cateId" value="">
-    <input type="hidden" id="breedId" name="breedId">
-    <div class="tabs mt_15">
-      <ul class="tabs-list">
-        <li class="cur" onclick="javascript:changeShowType('0');"><a>最新供应</a></li>
-        <li onclick="javascript:changeShowType('1');"><a>已认证</a></li>
+      </li>
+      <li class="details-audit">
+        <a class="highlight" onclick="favourClick('${recordVO.mm_msg_id}')" href="javascript:void(0);" title="收藏">收藏</a>
+      </li>
+    </ul>
+    <div class="details ">
+
+      <ul class="details-content">
+        <li class="c1">
+          <p class="c1-name">
+            <c:if test="${recordVO.mm_msg_type=='0'}">
+              [求购]
+            </c:if>
+            <c:if test="${recordVO.mm_msg_type=='1'}">
+              [供应]
+            </c:if>
+          ${recordVO.mm_msg_title}
+          </p>
+        </li>
+        <li>
+
+        </li>
+        <li>
+          <p>${recordVO.mm_msg_content}</p>
+        </li>
       </ul>
-      <div class="tabs-msg"><a></a></div>
-      <div class="list-pages">
-        <a href="javascript:void(0);">&lt;</a>
-        <span>${page.page}/${page.pageCount}</span>
-        <a href="http://www.cnhnb.com/supply/p/0-0-2">&gt;</a>
 
+      <div class="details-contact">
+        <ul>
+          <li class="contact-name">${recordVO.mm_emp_nickname}</li>
+          <li class="contact-location">${recordVO.cityName}${recordVO.area}</li>
+          <li class="contact-tel" unselectable="on" onselectstart="return false;">${recordVO.mm_emp_mobile}</li>
+        </ul>
+        <span class="tit">联系方式</span>
       </div>
-    </div>
-    <div class="pro-list mb_10">
-      <ul class="pro-list-title pt_15">
-        <li class="l1">时间</li>
-        <li class="l2">内容</li>
-        <li class="l4">所在地区</li>
-        <li class="l5">联系人</li>
-      </ul>
-      <ul>
 
-       <c:forEach items="${list}" var="e" varStatus="st">
-         <li class="text-list">
-           <a href="javascript:void(0)" target="_blank" onclick="showDetail('${e.mm_msg_id}')">
-             <span class="l1">${e.dateline}</span>
-             <span class="l2">${e.mm_msg_title}</span>
-             <span class="l4">${e.area}</span>
-             <span class="l5">${e.mm_emp_nickname}</span>
-			                <span class="l6">
-                                <c:if test="${e.is_miaomu=='1'}"><img style="width: 25px;height: 32px;" src="../img/tree_icons_trust.png" title="苗木协会"></c:if>
-								<c:if test="${e.is_chengxin=='1'}"><img style="width: 25px;height: 32px;" src="../img/tree_icons_group.png" title="诚信会员"></c:if>
-			                </span>
-             <span class="l7"><em class="text-list-view">查看详情</em></span>
-           </a>
-         </li>
-       </c:forEach>
+      <div class="details-tips">
+        <p>交易纠纷时有发生，建议谨慎交易。具体参见 <a href="#">防骗提醒</a>。</p>
+        <p class="icon-time">发布日期：${recordVO.dateline}<em class="ml_10"></em></p>
+      </div>
 
-      </ul>
-
+      <div class="blank_20"></div>
       <div class="clear"></div>
+
+
     </div>
-  </form>
-  <div class="sides mt_15">
-    <div class="release-but mb_15"><a href="javascript:void(0)" target="_blank" onclick="addMsg()"><i class="lee-ico lee-fb"></i> &nbsp; 发布供应</a></div>
+    <!-- //details -->
+    <div class="related mb_15">
+      <div class="related-title">
+        <span>相关信息</span>
+      </div>
+      <ul class="related-list-title pt_15" >
+        <li class="l1">标题</li>
+        <li class="l2">发布时间</li>
+        <li class="l3">所在地</li>
+        <li class="l4">发布人</li>
+      </ul>
+
+
+      <c:forEach items="${listRelate}" var="e" varStatus="st">
+        <c:if test="${e.mm_msg_id != recordVO.mm_msg_id}">
+          <ul onclick="showDetail('${e.mm_msg_id}')">
+            <li class="text-list">
+              <a href="javascript:void(0)" target="_blank">
+                <span class="l1">
+                   <c:if test="${e.mm_msg_type=='0'}">
+                     [求购]
+                   </c:if>
+                  <c:if test="${e.mm_msg_type=='1'}">
+                    [供应]
+                  </c:if>
+                ${e.mm_msg_title}
+                </span>
+                <span class="l2">${e.dateline}</span>
+                <span class="l4">${e.cityName}${e.area}</span>
+                <span class="l5">${e.mm_emp_nickname}</span>
+
+               <span class="l6">
+                  <c:if test="${e.is_miaomu=='1'}"><img style="width: 25px;height: 32px;" src="../img/tree_icons_trust.png" title="苗木协会"></c:if>
+                  <c:if test="${e.is_chengxin=='1'}"><img style="width: 25px;height: 32px;" src="../img/tree_icons_group.png" title="诚信会员"></c:if>
+              </span>
+              </a>
+            </li>
+          </ul>
+        </c:if>
+      </c:forEach>
+
+
+    </div>
+    <div class="security-tips mb_20"><span class="highlight">安全提示：</span>欢迎使用花木通信息平台，请谨慎核实信息内容!</div>
+
+  </div>
+  <!--内容 end-->
+  <div class="sides">
     <div class="ad2">
-
-      <a href="#" target="_target" title="点击进入春季种苗批发市场页面" rel="nofollow">
-        <img src="../hmt/images/2C604DU858ChRkRlcHTCeAU9-hAAHy19HEc7E108.jpg" alt="这是一张春季种苗批发市场的展示图片" width="216" height="353">
+      <a href="javaScript:void(0)" target="_target" title="点击进入花更少的钱 买更好的蛋页面" rel="nofollow">
+        <img src="../hmt/images/B7FB71C00EChRkRlcDJuSAR_zUAAEs43XuKFw721.jpg" alt="这是一张花更少的钱 买更好的蛋的展示图片" width="216" height="353">
       </a>
-
     </div>
-    <div class="sides-hot mtb_15">
-      <h2>热门信息</h2>
-      <ul>
-        <c:forEach items="${listsHot}" var="e" varStatus="st">
-          <li>
-            <c:if test="${e.mm_msg_type=='0'}"><em class="hot">[求购]</em></c:if>
-            <c:if test="${e.mm_msg_type=='1'}"><em >[供应]</em></c:if>
-            <h3><a target="_blank" href="javascript:void(0)" onclick="showDetail('${e.mm_msg_id}')">${e.mm_msg_title}</a></h3>
-            <p></p>
-          </li>
-        </c:forEach>
+
+    <div class="hot-purchase mtb_15">
+      <h2>最热采购</h2>
+      <ul class="hotwords clearfix">
+
+        <li class="li_0 li_color_0 button-slide">
+          <a href="purchasedetail.htm" target="_blank" class="hotwords_li_a" title="玉米">
+            玉米
+          </a>
+        </li>
+
+        <li class="li_1 li_color_1 button-slide">
+          <a href="purchasedetail.htm" target="_blank" class="hotwords_li_a" title="苹果">
+            苹果
+          </a>
+        </li>
+
+        <li class="li_2 li_color_0 button-slide">
+          <a href="purchasedetail.htm" target="_blank" class="hotwords_li_a" title="大米">
+            大米
+          </a>
+        </li>
+
+        <li class="li_3 li_color_0 button-slide">
+          <a href="purchasedetail.htm" target="_blank" class="hotwords_li_a" title="鸡蛋">
+            鸡蛋
+          </a>
+        </li>
+
+        <li class="li_4 li_color_0 button-slide">
+          <a href="purchasedetail.htm" target="_blank" class="hotwords_li_a" title="鸡">
+            鸡
+          </a>
+        </li>
+
+        <li class="li_5 li_color_1 button-slide">
+          <a href="purchasedetail.htm" target="_blank" class="hotwords_li_a" title="小麦">
+            小麦
+          </a>
+        </li>
+
+        <li class="li_6 li_color_1 button-slide">
+          <a href="purchasedetail.htm" target="_blank" class="hotwords_li_a" title="其它蔬果加工">
+            其它蔬果加工
+          </a>
+        </li>
+
+        <li class="li_7 li_color_0 button-slide">
+          <a href="purchasedetail.htm" target="_blank" class="hotwords_li_a" title="蜂蜜">
+            蜂蜜
+          </a>
+        </li>
+
+        <li class="li_8 li_color_0 button-slide">
+          <a href="purchasedetail.htm" target="_blank" class="hotwords_li_a" title="肥料">
+            肥料
+          </a>
+        </li>
+
+        <li class="li_9 li_color_1 button-slide">
+          <a href="purchasedetail.htm" target="_blank" class="hotwords_li_a" title="土豆">
+            土豆
+          </a>
+        </li>
+
       </ul>
     </div>
-  </div>
 
-  <div class="page p_30 mb_10 tr">
-    <center>
-      <c:if test="${is_login=='1'}">
-        <input type="hidden" id="pageCount" value="6443">
-        <input type="hidden" name="size" id="size" value="${query.size}">
-        <a href="javascript:void(0);" onclick="nextPage('1')">第一页 </a>
-        <a href="javascript:void(0);" onclick="nextPage('${page.page-1}')">上一页</a>
-        <a href="javascript:void(0);" onclick="nextPage('${page.page+1}')">下一页</a>
-        <a href="javascript:void(0);" onclick="nextPage('${page.pageCount}')">最后页</a>
-        <span>跳到</span>
-        <span><input type="text" id="index" name="index" value="${page.page}"
-                     autocomplete="off" maxlength="6"
-                     value="${page.page}"
-                     onpaste="return false" style="text-align:center;"></span>
-        <span>页 </span>
-        <span><button type="button" onclick="searchIndex(event, '${page.page}')">GO</button></span>
-      </c:if>
-      <c:if test="${is_login=='0'}">
-        <a href="javaScript:void(0)" onclick="login()">登录查看更多信息</a>
-      </c:if>
-    </center>
   </div>
-
 </div>
-<!--内容 end-->
+<!--页脚footer-->
 
 <jsp:include page="footer.jsp" flush="true" />
+
 
 <script src="../hmt/js/home.js" type="text/javascript"></script>
 <script src="../hmt/js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
@@ -429,18 +468,13 @@
 </html>-->
 </body>
 
-<script>
-  function reg(){
-    //注册页面跳转
-    window.location.href="/netRegController/toReg.do";
+<script type="text/javascript" charset="UTF-8">
+
+  function login(){
+    //登录页面跳转
+    window.location.href="/netLoginController/toLogin.do";
   }
-  function toPage(_url, _page){
-    if(_page != ''){
-      window.location.href=_url+"?page="+_page;
-    }else{
-      window.location.href=_url;
-    }
-  }
+
   function favourClick(_mm_msg_id){
     //先判断是否登录
     var is_login = $("#is_login").val();
@@ -470,58 +504,16 @@
     }
   }
 
-  function showDetail(_mm_msg_id){
-    window.location.href="/netRecordController/toDetail.do?mm_msg_id="+_mm_msg_id;
+  function reg(){
+    //注册页面跳转
+    window.location.href="/netRegController/toReg.do";
   }
 
-  function login(){
-    //登录页面跳转
-    window.location.href="/netLoginController/toLogin.do";
-  }
-  function selectPro(){
-    //页面跳转
-    window.location.href="/webvSelectProvinceController/toSelectProvince.do";
-  }
-
-  function addMsg(){
-    var is_login = $("#is_login").val();
-    if(is_login == 1) {
-      //登陆了
-      if(${emp.is_upate_profile == '1'} ){
-        window.location.href="/netAddRecordController/toAddRecord.do";
-      }else{
-        window.location.href="/webvProfile/toUpdateProfile.do";
-      }
-
+  function toPage(_url, _page){
+    if(_page != ''){
+      window.location.href=_url+"?page="+_page;
     }else{
-      //登录页面跳转
-      window.location.href="/netLoginController/toLogin.do";
-    }
-  }
-</script>
-
-<script type="text/javascript" charset="UTF-8">
-  function searchIndex(e,_page){
-    var _index = $("#index").val();
-    var page = parseInt(_page);
-    var size = $("#size").val();
-    var keyword = $("#keyword").val();
-    if(_index <= ${page.pageCount} && _index >= 1){
-      window.location.href="/hmtIndex/toIndex.do?page="+_index+"&size="+size+"&keyword="+keyword;
-    }else{
-      alert("请输入1-${page.pageCount}的页码数");
-    }
-  }
-
-  function nextPage(_page) {
-    var page = parseInt(_page);
-    var size = $("#size").val();
-    var keyword = $("#keyword").val();
-    addCookie("contract_size", size, 36);
-    if ((page <= ${page.pageCount} && page >= 1)) {
-      window.location.href="/hmtIndex/toIndex.do?page="+page+"&size="+size+"&keyword="+keyword;
-    } else {
-      alert("请输入1-${page.pageCount}的页码数");
+      window.location.href=_url;
     }
   }
 
@@ -545,7 +537,16 @@
       }
     });
   }
+
+  function showDetail(_mm_msg_id){
+    var is_login = $("#is_login").val();
+    if(is_login == 1){
+      window.location.href="/netRecordController/toDetail.do?mm_msg_id="+_mm_msg_id;
+    }else{
+      //没登陆
+      alert("请先登录");
+    }
+
+  }
 </script>
-
 </html>
-

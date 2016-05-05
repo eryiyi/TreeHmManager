@@ -10,10 +10,7 @@ import com.liangxunwang.unimanager.query.EmpQuery;
 import com.liangxunwang.unimanager.query.MemberQuery;
 import com.liangxunwang.unimanager.query.RecordQuery;
 import com.liangxunwang.unimanager.service.*;
-import com.liangxunwang.unimanager.util.Constants;
-import com.liangxunwang.unimanager.util.MD5Util;
-import com.liangxunwang.unimanager.util.RelativeDateFormat;
-import com.liangxunwang.unimanager.util.StringUtil;
+import com.liangxunwang.unimanager.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -101,6 +98,7 @@ public class RecordService implements ListService,DeleteService,ExecuteService,U
                 record.setMm_msg_picurl(buffer.toString());
             }
 //            record.setDateline(RelativeDateFormat.format(Long.parseLong(record.getDateline())));
+//            record.setDateline(DateUtil.getDate(record.getDateline(), "yy-MM-dd HH:mm"));
         }
 
         long count = recordDao.count(map);

@@ -30,24 +30,24 @@ public class RelativeDateFormat {
         if (delta < 24L * ONE_HOUR) {
 //            long hours = toHours(delta);
 //            return (hours <= 0 ? 1 : hours) + ONE_HOUR_AGO;
-            return "今天" + DateUtil.getDate(String.valueOf(new Date().getTime()), "HH:mm");
+            return "今天" + DateUtil.getDate(String.valueOf(time), "HH:mm");
         }
         if (delta < 48L * ONE_HOUR) {
-            return "昨天" + DateUtil.getDate(String.valueOf(new Date().getTime()), "HH:mm");
+            return "昨天" + DateUtil.getDate(String.valueOf(time), "HH:mm");
         }
         if (delta < 30L * ONE_DAY) {
 //            long days = toDays(delta);
 //            return (days <= 0 ? 1 : days) + ONE_DAY_AGO;
-            return DateUtil.getDate(String.valueOf(new Date().getTime()), "yyyy-MM-dd HH:mm");
+            return DateUtil.getDate(String.valueOf(time), "yyyy-MM-dd HH:mm");
         }
         if (delta < 12L * 4L * ONE_WEEK) {
 //            long months = toMonths(delta);
 //            return (months <= 0 ? 1 : months) + ONE_MONTH_AGO;
-            return DateUtil.getDate(String.valueOf(new Date().getTime()), "yyyy-MM-dd HH:mm");
+            return DateUtil.getDate(String.valueOf(time), "yyyy-MM-dd HH:mm");
         } else {
 //            long years = toYears(delta);
 //            return (years <= 0 ? 1 : years) + ONE_YEAR_AGO;
-            return DateUtil.getDate(String.valueOf(new Date().getTime()), "yyyy-MM-dd HH:mm");
+            return DateUtil.getDate(String.valueOf(time), "yyyy-MM-dd HH:mm");
         }
     }
 

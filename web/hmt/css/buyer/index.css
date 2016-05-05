@@ -706,13 +706,13 @@ body {
     height: 51px;
     line-height: 51px;
     overflow: hidden;
-    background: url("../../images/modu-2.png")  no-repeat;
+    background: url("../../images/modu-3.png")  no-repeat;
     padding-left: 70px;
     font-size: 48px;
     color: #f47a11;
 }
 .modu-wdcg .box a:hover p{
-    background: url("../../images/modu-2-click.png")  no-repeat;
+    background: url("../../images/modu-3-click.png")  no-repeat;
 }
 /*- modu-wdxd -*/
 .modu-wdxd{
@@ -757,13 +757,13 @@ body {
     height: 51px;
     line-height: 51px;
     overflow: hidden;
-    background: url("../../images/modu-3.png")  no-repeat;
+    background: url("../../images/modu-2.png")  no-repeat;
     padding-left: 70px;
     font-size: 48px;
     color: #f47a11;
 }
 .modu-wdxd .box a:hover p{
-    background: url("../../images/modu-3-click.png")  no-repeat;
+    background: url("../../images/modu-2-click.png")  no-repeat;
 }
 /*- modu-jygl -*/
 .modu-jygl{
@@ -812,7 +812,7 @@ body {
     width:78px;
     overflow: hidden;
 }
-.modu-jygl .box li.link a.number{
+.modu-jygl .box li.link a.number1{
     display: block;
     width: 62px;
     height: 62px;
@@ -824,13 +824,53 @@ body {
     font-size: 18px;
     color: #f47a11;
     text-decoration: none;
-    background: url("../../images/jygl-link-1.png") no-repeat;
+    background: url("../../images/tree_user_nearby.png") no-repeat;
 }
-.modu-jygl .box li.link a.number:hover{
+.modu-jygl .box li.link a.number2{
+    display: block;
+    width: 62px;
+    height: 62px;
+    margin: auto;
+    overflow: hidden;
+    line-height: 62px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 18px;
+    color: #f47a11;
+    text-decoration: none;
+    background: url("../../images/tree_user_crs.png") no-repeat;
+}
+.modu-jygl .box li.link a.number3{
+    display: block;
+    width: 62px;
+    height: 62px;
+    margin: auto;
+    overflow: hidden;
+    line-height: 62px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 18px;
+    color: #f47a11;
+    text-decoration: none;
+    background: url("../../images/tree_user_weixin.png") no-repeat;
+}
+
+.modu-jygl .box li.link a.number1:hover{
     color: #ffffff;
     text-decoration: none;
-    background: url("../../images/jygl-link-2.png") no-repeat;
+    background: url("../../images/tree_user_nearby_p.png") no-repeat;
 }
+.modu-jygl .box li.link a.number2:hover{
+    color: #ffffff;
+    text-decoration: none;
+    background: url("../../images/tree_user_crs_p.png") no-repeat;
+}
+.modu-jygl .box li.link a.number3:hover{
+    color: #ffffff;
+    text-decoration: none;
+    background: url("../../images/tree_user_weixin_p.png") no-repeat;
+}
+
 .modu-jygl .box li.link p{
     display: block;
     margin-top: 10px;
