@@ -6,6 +6,8 @@ import com.liangxunwang.unimanager.query.EmpAdQuery;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.util.Constants;
 import com.liangxunwang.unimanager.util.ControllerConstants;
+import com.liangxunwang.unimanager.util.DateUtil;
+import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -32,6 +34,10 @@ public class WebvServiceController extends ControllerConstants {
         EmpVO empVO = (EmpVO) session.getAttribute(MEMBER_KEY);
         if(empVO != null) {
             //说明已经登陆
+            if(empVO != null && !StringUtil.isNullOrEmpty(empVO.getMm_emp_endtime())){
+                String endStr = DateUtil.getDate(empVO.getMm_emp_endtime(), "yyyy-MM-dd");
+                empVO.setMm_emp_endtime(endStr);
+            }
             map.put("emp", empVO);
             //获得用户的轮播图
             EmpAdQuery query = new EmpAdQuery();

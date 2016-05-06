@@ -115,6 +115,13 @@ public class AppRecordService implements ListService ,SaveService, FindService{
                     map.put("cityid", "");
                     map.put("provinceid", "");
                 }
+                if("1".equals(query.getMm_msg_type())){
+                    //如果是供应的话 要让全部人都看到
+                    query.setIs_see_all("1");
+                    map.put("countryid", "");
+                    map.put("cityid", "");
+                    map.put("provinceid", "");
+                }
             }
         }
 

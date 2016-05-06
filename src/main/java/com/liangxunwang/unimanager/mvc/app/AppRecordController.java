@@ -65,6 +65,7 @@ public class AppRecordController extends ControllerConstants {
             }
         }
     }
+
     //个人主页获得求购供应信息
     @RequestMapping(value = "/recordListById", produces = "text/plain;charset=UTF-8")
     @ResponseBody

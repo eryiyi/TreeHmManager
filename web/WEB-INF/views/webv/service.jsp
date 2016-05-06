@@ -48,11 +48,13 @@
 				<h2 class="name">${emp.mm_emp_nickname}</h2>
 				<%--<c:if test="${emp.mm_emp_type==0}"><h3 class="type">苗木经营户</h3></c:if>--%>
 				<%--<c:if test="${emp.mm_emp_type==1}"><h3 class="type">苗木会员</h3></c:if>--%>
-				<c:if test="${emp.mm_level_num==0}"><h3 class="type">vip1</h3></c:if>
-				<c:if test="${emp.mm_level_num==1}"><h3 class="type">vip2</h3></c:if>
-				<c:if test="${emp.mm_level_num==2}"><h3 class="type">vip3</h3></c:if>
-				<c:if test="${emp.mm_level_num==3}"><h3 class="type">vip4</h3></c:if>
-				<c:if test="${emp.mm_level_num==4}"><h3 class="type">vip5</h3></c:if>
+				<c:if test="${emp.mm_level_num==0}"><h3 class="type">会员等级:vip1</h3></c:if>
+				<c:if test="${emp.mm_level_num==1}"><h3 class="type">会员等级:vip2</h3><h3 class="type">到期时间：${emp.mm_emp_endtime}</h3></c:if>
+				<c:if test="${emp.mm_level_num==2}"><h3 class="type">会员等级:vip3</h3><h3 class="type">到期时间：${emp.mm_emp_endtime}</h3></c:if>
+				<c:if test="${emp.mm_level_num==3}"><h3 class="type">会员等级:vip4</h3><h3 class="type">到期时间：${emp.mm_emp_endtime}</h3></c:if>
+				<c:if test="${emp.mm_level_num==4}"><h3 class="type">会员等级:vip5</h3><h3 class="type">到期时间：${emp.mm_emp_endtime}</h3></c:if>
+				<h3 class="type">注册时间：${emp.mm_emp_regtime}</h3>
+				<h3 class="type">注册地区：${emp.provinceName}${emp.cityName}${emp.areaName}</h3>
 			</div>
 		</div>
 		<div class="glide__wrapper">

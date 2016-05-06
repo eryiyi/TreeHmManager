@@ -72,15 +72,6 @@
 		</form>
 		<div class="right"><a class="publish" href="javaScript:void(0)" onclick="addMsg()">发布</a></div>
 	</div>
-		<%--<button class="new"></button>--%>
-		<%--<div class="imgbox" >--%>
-			<%--<img  id="rightpic" src="/img/fabu.png">--%>
-			<%--<div  id="menu" class="imgboxtxt hide" >--%>
-				<%--<a href="javaScript:void(0)" onclick="addMsg()">发布信息</a>--%>
-				<%--<a href="javaScript:void(0)" onclick="guanzhuArea()">关注区域</a>--%>
-			<%--</div>--%>
-		<%--</div>--%>
-
 	<!-- CONTENT -->
 	<div class="content">
 		<c:if test="${listAd !=null && listAd.size() > 0}">

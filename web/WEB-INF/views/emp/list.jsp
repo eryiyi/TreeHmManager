@@ -217,9 +217,8 @@
             <th>操作</th>
             <c:if test="${is_manager=='0'}">
               <th>操作</th>
-              <th>操作</th>
             </c:if>
-
+            <th>操作</th>
           </tr>
           </thead>
           <tbody>
@@ -282,10 +281,10 @@
                 <td>
                   <a class="btn btn-default btn-sm" href="#module=/emp/toPaihang&mm_emp_id=${e.mm_emp_id}" role="button">上榜</a>
                 </td>
-                <td>
-                  <a class="btn btn-default btn-sm" href="#module=/emp/detail&mm_emp_id=${e.mm_emp_id}" role="button">编辑</a>
-                </td>
               </c:if>
+              <td>
+                <a class="btn btn-default btn-sm" href="#module=/emp/detail&mm_emp_id=${e.mm_emp_id}" role="button">编辑</a>
+              </td>
             </tr>
           </c:forEach>
           </tbody>

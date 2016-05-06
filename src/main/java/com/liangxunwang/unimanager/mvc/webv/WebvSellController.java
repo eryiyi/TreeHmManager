@@ -69,11 +69,11 @@ public class WebvSellController extends ControllerConstants {
             }
 
             //权限-- 查看全部信息
-            if(!StringUtil.isNullOrEmpty(emp.getIs_see_all())){
-                query.setIs_see_all(emp.getIs_see_all());
-            }else {
-                query.setIs_see_all("");
-            }
+//            if(!StringUtil.isNullOrEmpty(emp.getIs_see_all())){
+                query.setIs_see_all("1");
+//            }else {
+//                query.setIs_see_all("");
+//            }
 
 //            //是否是选择的县区
 //            if(!StringUtil.isNullOrEmpty(query.getCountryid())){

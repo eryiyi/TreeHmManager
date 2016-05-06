@@ -88,6 +88,13 @@ public class NetIndexController extends ControllerConstants {
             if(!StringUtil.isNullOrEmpty(query.getCountryid())){
                 query.setIs_select_countryId(query.getIs_select_countryId());
             }
+            if("1".equals(query.getMm_msg_type())){
+                //如果是供应的话 要让全部人都看到
+                query.setIs_see_all("1");
+                query.setCountryid("");
+                query.setCityid("");
+                query.setProvinceid("");
+            }
 
         }else{
             //说明没有登陆

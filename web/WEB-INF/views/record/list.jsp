@@ -52,15 +52,15 @@
           </div>
           <button type="submit" onclick="searchOrder('1')" class="btn form-control btn-warning btn-sm btn-block">查找</button>
         </form>
-
-        <form action="" class="form">
-          <div class="form-group">
-            <div class="col-md-2 col-lg-2">
-              <button type="button" onclick="Daochu_Select()" class="btn w12 form-control btn-block btn-danger btn-sm">批量导出Excel</button>
-            </div>
-          </div>
-        </form>
-
+          <c:if test="${is_manager=='0'}">
+              <form action="" class="form">
+                <div class="form-group">
+                  <div class="col-md-2 col-lg-2">
+                    <button type="button" onclick="Daochu_Select()" class="btn w12 form-control btn-block btn-danger btn-sm">批量导出Excel</button>
+                  </div>
+                </div>
+              </form>
+          </c:if>
         <table class="table">
           <thead>
           <tr>

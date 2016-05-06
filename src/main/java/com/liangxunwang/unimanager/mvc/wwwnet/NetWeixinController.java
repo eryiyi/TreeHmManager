@@ -57,7 +57,6 @@ public class NetWeixinController extends ControllerConstants {
                 return "../../hmt/login";
             }
         }
-
     }
 
 }
