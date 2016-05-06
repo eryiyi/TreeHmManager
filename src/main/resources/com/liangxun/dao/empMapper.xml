@@ -88,6 +88,7 @@
         <result column="provinceName" property="provinceName"/>
         <result column="cityName" property="cityName"/>
         <result column="areaName" property="areaName"/>
+        <result column="countLoginNum" property="countLoginNum"/>
     </resultMap>
 
     <select id="listMemberByName" resultMap="emp_vo">
@@ -187,7 +188,7 @@
         SELECT count(sn.mm_emp_id) FROM mm_emp sn
         WHERE 1=1
         <if test="mm_emp_regtime != null and mm_emp_regtime != ''">
-            AND sn.mm_emp_regtime = #{mm_emp_regtime}
+            AND sn.mm_emp_regtime  like CONCAT('%',#{mm_emp_regtime},'%')
         </if>
     </select>
 
@@ -396,6 +397,40 @@
         <if test="end != null and end != ''">
             AND sn.mm_emp_endtime &lt;= #{end}
         </if>
+    </select>
+
+
+    <select id="listCountLoginNum" resultMap="emp_vo">
+        SELECT lemp.*,llogin.mm_emp_id ,count(*) as countLoginNum from mm_emp_login_num llogin
+        LEFT JOIN mm_emp lemp ON lemp.mm_emp_id=llogin.mm_emp_id
+        WHERE lemp.mm_emp_id is not NULL
+        <if test="mm_emp_provinceId != null and mm_emp_provinceId != ''">
+            AND lemp.mm_emp_provinceId = #{mm_emp_provinceId}
+        </if>
+        <if test="mm_emp_cityId != null and mm_emp_cityId != ''">
+            AND lemp.mm_emp_cityId = #{mm_emp_cityId}
+        </if>
+        <if test="mm_emp_countryId != null and mm_emp_countryId != ''">
+            AND lemp.mm_emp_countryId = #{mm_emp_countryId}
+        </if>
+
+        GROUP BY llogin.mm_emp_id order by countLoginNum DESC limit #{index},#{size}
+    </select>
+
+
+    <select id="countLoginNumOne" resultType="Long">
+        SELECT count(lemp.mm_emp_id) from mm_emp lemp
+        where lemp.mm_emp_id is not NULL
+        <if test="mm_emp_provinceId != null and mm_emp_provinceId != ''">
+            AND lemp.mm_emp_provinceId = #{mm_emp_provinceId}
+        </if>
+        <if test="mm_emp_cityId != null and mm_emp_cityId != ''">
+            AND lemp.mm_emp_cityId = #{mm_emp_cityId}
+        </if>
+        <if test="mm_emp_countryId != null and mm_emp_countryId != ''">
+            AND lemp.mm_emp_countryId = #{mm_emp_countryId}
+        </if>
+
     </select>
 
 </mapper>

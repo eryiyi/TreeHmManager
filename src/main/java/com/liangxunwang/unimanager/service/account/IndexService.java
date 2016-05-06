@@ -51,7 +51,7 @@ public class IndexService implements ListService {
         long memberCountNo = empDao.count(map);
         //今日注册会员数量
 
-        map.put("mm_emp_regtime", DateUtil.getDateAndTimeTwo());
+        map.put("mm_emp_regtime", DateUtil.getDateAndTimeThree());
         long memberCountNoDay = empDao.countDay(map);
 
         //资讯管理

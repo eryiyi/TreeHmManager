@@ -11,6 +11,15 @@ public class EmpVO extends Emp{
     private String provinceName;
     private String cityName;
     private String areaName;
+    private String countLoginNum;//登录次数统计
+
+    public String getCountLoginNum() {
+        return countLoginNum;
+    }
+
+    public void setCountLoginNum(String countLoginNum) {
+        this.countLoginNum = countLoginNum;
+    }
 
     private String is_dq;//是否即将到期  1是  其他否
 

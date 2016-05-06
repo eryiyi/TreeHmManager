@@ -64,6 +64,7 @@
                 <div class="col-sm-10">
                     <input type="file" name="file" id="fileUpload" style="float: left;" />
                     <input type="button" value="上传" onclick="uploadImage()" style="float: left;"/><br/><br/>
+                  <font color="red">*如果需要修改头像，请右键“图片另存为”，修改之后重新上传！</font>
                 </div>
             </div>
 

@@ -80,6 +80,7 @@
     </group>
     <group id="EMP_LOGIN_NUMBER_MANAGE" name="活跃度">
         <permission id="EMP_LOGIN_NUMBER_MANA" name="活跃度"/>
+        <permission id="EMP_LOGIN_NUM_NUMBER_MANA" name="活跃度统计"/>
     </group>
     <group id="NEARBY_DISTANCE_MANAGE" name="附近距离">
         <permission id="NEARBY_DISTANCE_MANA" name="附近距离"/>

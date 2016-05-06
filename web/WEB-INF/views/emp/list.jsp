@@ -205,6 +205,7 @@
             <th>所属地区</th>
             <th>诚信</th>
             <th>协会</th>
+            <th>注册时间</th>
             <th>星级</th>
             <th>到期时间</th>
             <th>允许登陆</th>
@@ -225,10 +226,7 @@
           <c:forEach items="${list}" var="e" varStatus="st">
             <tr>
               <td><input type="checkbox" id="${e.mm_emp_id}" name="checkbox_one"></td>
-
-              <c:if test="${is_manager=='0'}"><td><a href="#module=/emp/detail&mm_emp_id=${e.mm_emp_id}">${e.mm_emp_nickname}</a></td></c:if>
-              <c:if test="${is_manager=='1'}"><td>${e.mm_emp_nickname}</td></c:if>
-
+              <td><a href="#module=/emp/detail&mm_emp_id=${e.mm_emp_id}">${e.mm_emp_nickname}</a></td>
               <td>${e.mm_emp_mobile}</td>
               <td>${e.mm_emp_company}</td>
               <td>${e.provinceName}${e.cityName}${e.areaName}</td>
@@ -240,9 +238,8 @@
                 <c:if test="${e.is_miaomu=='0'}">否</c:if>
                 <c:if test="${e.is_miaomu=='1'}">是</c:if>
               </td>
+              <td>${e.mm_emp_regtime}</td>
               <td>${e.levelName}</td>
-
-              <%--<c:if test="${e.is_dq=='0'}"><td>无</td></c:if>--%>
 
               <td>
               <c:if test="${e.is_dq=='1'}"><font color="red">${e.mm_emp_endtime}</font></c:if>
