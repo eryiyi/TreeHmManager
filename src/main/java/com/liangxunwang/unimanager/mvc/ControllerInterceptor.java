@@ -132,6 +132,7 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/netNoticeController/toDetail\\.do$)"+
                         "|(^/netMineFavourController/favour\\.do$)"+
                         "|(^/netNearbyController/nearby\\.do$)"+
+                        "|(^/netFuwuCenterController/toCenter\\.do$)"+
 
                         "|(^/memberLogin\\.do$)"
 
