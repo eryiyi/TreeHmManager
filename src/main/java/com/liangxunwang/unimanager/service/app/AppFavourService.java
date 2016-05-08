@@ -56,6 +56,14 @@ public class AppFavourService implements ListService,SaveService ,DeleteService,
 
         List<FavourVO> lists = favourDao.lists(map);
         for (FavourVO record : lists){
+            //处理内容-文字超出限制
+            if(!StringUtil.isNullOrEmpty(record.getMm_msg_content())){
+                if(record.getMm_msg_content().length() > 20){
+                    record.setMm_msg_title(record.getMm_msg_content().substring(0,19)+"...");
+                }else {
+                    record.setMm_msg_title(record.getMm_msg_content());
+                }
+            }
             if (!StringUtil.isNullOrEmpty(record.getMm_emp_cover())){
                 if (record.getMm_emp_cover().startsWith("upload")){
                     record.setMm_emp_cover(Constants.URL+record.getMm_emp_cover());
@@ -86,7 +94,6 @@ public class AppFavourService implements ListService,SaveService ,DeleteService,
                 record.setMm_msg_picurl(buffer.toString());
             }
             if(!StringUtil.isNullOrEmpty(record.getDatelineRecord())){
-//                record.setDatelineRecord(RelativeDateFormat.format(Long.parseLong(record.getDatelineRecord())));
                 record.setDatelineRecord(DateUtil.getDate(record.getDatelineRecord(), "yyyy-MM-dd HH:mm"));
             }
 

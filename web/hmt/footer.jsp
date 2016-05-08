@@ -53,7 +53,7 @@
           <dd>
             <a href="/netKefuController/toKefu.do" target="_blank" rel="nofollow">客服中心</a></dd>
           <dd>
-            <a href="/netWeixinController/toKefu.do" target="_blank" rel="nofollow">微信客服中心</a></dd>
+            <a href="/netWeixinController/toKefu.do" target="_blank" rel="nofollow">微信客服</a></dd>
           <dd>
             <a href="#" target="_blank" rel="nofollow">全国招商合作伙伴</a></dd>
         </dl>

@@ -46,7 +46,7 @@ public class WebvProfileController extends ControllerConstants {
 
     @RequestMapping("toProfile")
     public String add(HttpSession session,ModelMap map,RecordQuery query, Page page) throws Exception {
-        EmpVO emp = (EmpVO) session.getAttribute(MEMBER_KEY);
+//        EmpVO emp = (EmpVO) session.getAttribute(MEMBER_KEY);
         if(!StringUtil.isNullOrEmpty(query.getMm_emp_id())){
             EmpVO empVO = (EmpVO) empService.execute(query.getMm_emp_id());
             map.put("emp", empVO);
@@ -93,14 +93,14 @@ public class WebvProfileController extends ControllerConstants {
             map.addAttribute("query", query);
         }
 
-        if(emp != null){
+//        if(emp != null){
             //说明已经登陆
-            map.put("is_login", "1");
-            map.put("emp", emp);
-        }else{
+//            map.put("is_login", "1");
+//            map.put("emp", emp);
+//        }else{
             //说明没有登陆
-            map.put("is_login", "0");
-        }
+//            map.put("is_login", "0");
+//        }
         return "/webv/profile";
 
     }

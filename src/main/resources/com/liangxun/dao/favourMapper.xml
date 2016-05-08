@@ -57,7 +57,7 @@
         (SELECT is_miaomu  FROM mm_emp lemp WHERE lemp.mm_emp_id = lmsg.mm_emp_id) as is_miaomu
         from mm_record_favour sn
         LEFT JOIN mm_msg lmsg ON sn.mm_msg_id=lmsg.mm_msg_id
-        WHERE 1=1
+        WHERE 1=1 AND lmsg.mm_msg_id is not NULL
         <if test="mm_emp_id != null and mm_emp_id != ''">
             AND sn.mm_emp_id = #{mm_emp_id}
         </if>

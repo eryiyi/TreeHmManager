@@ -97,7 +97,7 @@
         LEFT JOIN hat_province hatp ON sn.mm_emp_provinceId=hatp.provinceID
         LEFT JOIN hat_city hatc ON sn.mm_emp_cityId=hatc.cityID
         LEFT JOIN hat_area hata ON sn.mm_emp_countryId=hata.areaID
-        WHERE 1=1
+        WHERE 1=1 AND sn.mm_emp_nickname is not NULL
         <if test="mm_emp_type != null and mm_emp_type != ''">
         AND sn.mm_emp_type = #{mm_emp_type}
         </if>
@@ -144,7 +144,7 @@
         LEFT JOIN hat_province hatp ON sn.mm_emp_provinceId=hatp.provinceID
         LEFT JOIN hat_city hatc ON sn.mm_emp_cityId=hatc.cityID
         LEFT JOIN hat_area hata ON sn.mm_emp_countryId=hata.areaID
-        WHERE 1=1
+        WHERE 1=1 AND sn.mm_emp_nickname is not NULL
         <if test="mm_emp_type != null and mm_emp_type != ''">
             AND sn.mm_emp_type = #{mm_emp_type}
         </if>
@@ -186,7 +186,7 @@
 
     <select id="countDay" resultType="Long">
         SELECT count(sn.mm_emp_id) FROM mm_emp sn
-        WHERE 1=1
+        WHERE 1=1 AND sn.mm_emp_nickname is not NULL
         <if test="mm_emp_regtime != null and mm_emp_regtime != ''">
             AND sn.mm_emp_regtime  like CONCAT('%',#{mm_emp_regtime},'%')
         </if>
@@ -319,6 +319,12 @@
         LEFT JOIN hat_province hatp ON sn.mm_emp_provinceId=hatp.provinceID
         LEFT JOIN hat_city hatc ON sn.mm_emp_cityId=hatc.cityID
         LEFT JOIN hat_area hata ON sn.mm_emp_countryId=hata.areaID
+        WHERE 1=1 AND  sn.mm_emp_type = '0'
+        limit #{index},#{size}
+    </select>
+
+    <select id="countLocation" resultType="Long">
+        SELECT count(sn.mm_emp_id) FROM mm_emp sn
         WHERE 1=1 AND  sn.mm_emp_type = '0'
     </select>
 

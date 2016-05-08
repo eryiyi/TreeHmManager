@@ -51,6 +51,9 @@
             <th>服务电话</th>
             <th>服务描述</th>
             <th>服务类型</th>
+            <th>省</th>
+            <th>市</th>
+            <th>县</th>
             <th>lat</th>
             <th>lng</th>
             <th>操作</th>
@@ -70,6 +73,11 @@
                 <c:if test="${e.mm_fuwu_type=='3'}">嫁接团队</c:if>
                 <c:if test="${e.mm_fuwu_type=='4'}">吊车服务</c:if>
               </td>
+
+              <td>${e.provinceName}</td>
+              <td>${e.cityName}</td>
+              <td>${e.areaName}</td>
+
               <td>${e.lat}</td>
               <td>${e.lng}</td>
               <td>
@@ -82,11 +90,69 @@
           </c:forEach>
           </tbody>
         </table>
+
+          <div style="margin-top: 20px;border-top: 1px solid #dedede;padding-bottom:15px; height: 50px">
+            <span style="line-height:28px;margin-top:25px;padding-left:10px; float: left">共${page.count}条/${page.pageCount}页</span>
+            <ul class="pagination" style="padding-left:100px; float: right">
+              <li>
+                <a style="margin-right:20px">每页显示&nbsp;<select name="size" id="size" onchange="nextPage('1')">
+                  <option value="10" ${query.size==10?'selected':''}>10</option>
+                  <option value="20" ${query.size==20?'selected':''}>20</option>
+                  <option value="30" ${query.size==30?'selected':''}>30</option>
+                  <option value="100" ${query.size==100?'selected':''}>100</option>
+                </select>&nbsp;条</a>
+              </li>
+              <c:choose >
+                <c:when test="${page.page == 1}">
+                  <li><a href="javascript:void(0)">首页</a></li>
+                  <li><a href="javascript:void(0)"><span class="left">《</span></a></li>
+                </c:when>
+                <c:otherwise>
+                  <li><a href="javascript:void(0);" onclick="nextPage('1')">首页</a></li>
+                  <li><a href="javascript:void(0);" onclick="nextPage('${page.page-1}')"><span class="left">《</span></a></li>
+                </c:otherwise>
+              </c:choose>
+              <li><a style="height: 30px; width: 100px">第<input style="width: 40px;height:20px;" type="text" id="index" name="index" onkeyup="searchIndex(event)" value="${page.page}"/> 页</a></li>
+
+              <c:choose>
+                <c:when test="${page.page == page.pageCount}">
+                  <li><a href="javascript:void(0)"><span class="right">》</span></a></li>
+                  <li><a href="javascript:void(0)">末页</a></li>
+                </c:when>
+                <c:otherwise>
+                  <li><a href="javascript:void(0);" onclick="nextPage('${page.page+1}')"><span class="right">》</span></a></li>
+                  <li><a href="javascript:void(0);" onclick="nextPage('${page.pageCount}')">末页</a></li>
+                </c:otherwise>
+              </c:choose>
+            </ul>
+          </div>
+
       </div>
     </div>
   </div>
 </div>
 <script type="text/javascript">
+  function searchIndex(e){
+    if(e.keyCode != 13) return;
+    var _index = $("#index").val();
+    var size = getCookie("contract_size");
+
+    if(_index <= ${page.pageCount} && _index >= 1){
+      window.location.href="#module=/fuwu/list&page="+page+"&size="+size;
+    }else{
+      alert("请输入1-${page.pageCount}的页码数");
+    }
+  }
+  function nextPage(_page) {
+    var page = parseInt(_page);
+    var size = $("#size").val();
+    addCookie("contract_size", size, 36);
+    if ((page <= ${page.pageCount} && page >= 1)) {
+      window.location.href="#module=/fuwu/list&page="+page+"&size="+size;
+    } else {
+      alert("请输入1-${page.pageCount}的页码数");
+    }
+  }
 
   function editRole(_id){
     if(confirm("确定要编辑该服务么？")){

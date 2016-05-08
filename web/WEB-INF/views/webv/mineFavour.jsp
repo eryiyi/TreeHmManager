@@ -70,65 +70,12 @@
 						${e.mm_msg_content}
 				</a>
 				<div class="item-footer clearfix">
-					<%--<button class="read-status-unread"></button>--%>
-						<%--<div  class="share-left">--%>
-							<%--<div class="bdsharebuttonbox" >--%>
-								<%--<a class="bds_mshare" data-cmd="mshare"></a>--%>
-								<%--<a class="bds_qzone" data-cmd="qzone" href="javaScript:void(0)"></a>--%>
-								<%--<a class="bds_tsina" data-cmd="tsina"></a>--%>
-								<%--<a class="bds_tqq" data-cmd="tqq"></a>--%>
-								<%--<a class="bds_more" data-cmd="more">更多</a>--%>
-								<%--<a class="bds_count" data-cmd="count"></a>--%>
-							<%--</div>--%>
-						<%--</div>--%>
 					<a type="button" href="tel:${e.mm_emp_mobile}"  class="button-phone"></a>
 					<c:if test="${e.mm_msg_picurl !=''}"><a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-pic"></a></c:if>
-
 				</div>
 			</div>
 		</c:forEach>
 
-		<%--<c:if test="${is_login=='1'}"><a href="/html/download.html" class="warning" target="_blank">下载客户端以查看更多内容...</a></c:if>--%>
-		<%--<c:if test="${is_login=='0'}"><a href="/webvLoginController/toLogin.do" class="warning">请先登录...</a></c:if>--%>
-		<%--<c:if test="${is_login=='1'}">--%>
-
-			<%--<div class="page-num clearfix">--%>
-				<%--<div class="brief hide-phone">--%>
-					<%--<a><span>共${page.count}条/${page.pageCount}页</span></a>--%>
-					<%--<a>每页显示--%>
-						<%--<select name="size" id="size" onchange="nextPage('1')">--%>
-							<%--<option value="10" ${query.size==10?'selected':''}>10</option>--%>
-							<%--<option value="20" ${query.size==20?'selected':''}>20</option>--%>
-							<%--<option value="30" ${query.size==30?'selected':''}>30</option>--%>
-							<%--<option value="100" ${query.size==100?'selected':''}>100</option>--%>
-						<%--</select>条--%>
-					<%--</a>--%>
-				<%--</div>--%>
-				<%--<div class="page-nav fr-screen clearfix">--%>
-					<%--<c:choose >--%>
-						<%--<c:when test="${page.page == 1}">--%>
-							<%--<a href="javascript:void(0)">首页</a>--%>
-							<%--<a href="javascript:void(0)">《</a>--%>
-						<%--</c:when>--%>
-						<%--<c:otherwise>--%>
-							<%--<a href="javascript:void(0);" onclick="nextPage('1')">首页</a>--%>
-							<%--<a href="javascript:void(0);" onclick="nextPage('${page.page-1}')">《</a>--%>
-						<%--</c:otherwise>--%>
-					<%--</c:choose>--%>
-					<%--<a>第<input type="text" id="index" name="index" onkeyup="searchIndex(event)" value="${page.page}">页</a>--%>
-					<%--<c:choose>--%>
-						<%--<c:when test="${page.page == page.pageCount}">--%>
-							<%--<a href="javascript:void(0)">》</a>--%>
-							<%--<a href="javascript:void(0)">末页</a>--%>
-						<%--</c:when>--%>
-						<%--<c:otherwise>--%>
-							<%--<a href="javascript:void(0);" onclick="nextPage('${page.page+1}')">》</a>--%>
-							<%--<a href="javascript:void(0);" onclick="nextPage('${page.pageCount}')">末页</a>--%>
-						<%--</c:otherwise>--%>
-					<%--</c:choose>--%>
-				<%--</div>--%>
-			<%--</div>--%>
-		<%--</c:if>--%>
 	</div>
 	<!-- TOOLBAR -->
 	<div class="toolbar">

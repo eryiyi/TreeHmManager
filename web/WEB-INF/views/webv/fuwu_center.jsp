@@ -18,6 +18,7 @@
 	<link rel="stylesheet" href="/css/common.css">
 	<link rel="stylesheet" href="/css/common_2.css">
 	<link rel="stylesheet" href="/css/contact.css">
+	<link rel="stylesheet" href="/css/index.css">
 
 	<script type="text/javascript" src="/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/md5.js"></script>
@@ -37,24 +38,6 @@
 	<!-- CONTENT -->
 	<div class="content">
 		<ul class="contact-list">
-			<%--<li>--%>
-				<%--<div class="contact clearfix">--%>
-					<%--<div class="left">--%>
-						<%--<h1 class="name">邴新科</h1>--%>
-						<%--<h3 class="company">山东良讯传媒有限公司</h3>--%>
-					<%--</div>--%>
-					<%--<div class="right">--%>
-						<%--<a href="tel:18366883986" class="button-phone-big clearfix">--%>
-							<%--<img src="pics/tree_button_icon_phone.png" alt="" class="phone-icon">--%>
-							<%--<h2 class="phone-number">18366883986</h2>--%>
-						<%--</a>--%>
-					<%--</div>--%>
-				<%--</div>--%>
-				<%--<div class="duty">--%>
-					<%--<h3 class="main-duty">主营：</h3>--%>
-					<%--<p class="duty-detail">过年过年，过年过年，过年正月十五</p>--%>
-				<%--</div>--%>
-			<%--</li>--%>
 				<c:forEach items="${list}" var="e" varStatus="st">
 					<li>
 						<div class="contact clearfix">
@@ -74,6 +57,45 @@
 				</c:forEach>
 
 		</ul>
+
+		<!--分页信息，页面跳转-->
+		<div class="page clearfix">
+			<div class="left hide-phone">
+				<a><span>共${page.count}条/${page.pageCount}页</span></a>
+				<a>每页显示
+					<select name="size" id="size" onchange="nextPage('1')">
+						<option value="10" ${query.size==10?'selected':''}>10</option>
+						<option value="20" ${query.size==20?'selected':''}>20</option>
+						<option value="30" ${query.size==30?'selected':''}>30</option>
+						<option value="100" ${query.size==100?'selected':''}>100</option>
+					</select>条
+				</a>
+			</div>
+			<div class="right">
+				<c:choose >
+					<c:when test="${page.page == 1}">
+						<a href="javascript:void(0)">首页</a>
+						<a href="javascript:void(0)">《</a>
+					</c:when>
+					<c:otherwise>
+						<a href="javascript:void(0);" onclick="nextPage('1')">首页</a>
+						<a href="javascript:void(0);" onclick="nextPage('${page.page-1}')">《</a>
+					</c:otherwise>
+				</c:choose>
+				<a>第<input type="text" id="index" name="index" onkeyup="searchIndex(event)" value="${page.page}">页</a>
+				<c:choose>
+					<c:when test="${page.page == page.pageCount}">
+						<a href="javascript:void(0)">》</a>
+						<a href="javascript:void(0)">末页</a>
+					</c:when>
+					<c:otherwise>
+						<a href="javascript:void(0);" onclick="nextPage('${page.page+1}')">》</a>
+						<a href="javascript:void(0);" onclick="nextPage('${page.pageCount}')">末页</a>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</div>
+
 	</div>
 	<!-- TOOLBAR -->
 	<div class="toolbar">
@@ -85,6 +107,33 @@
 	<!-- TOOLBAR -->
 </div>
 </body>
+
+
+<script type="text/javascript" charset="UTF-8">
+	function searchIndex(e){
+		if(e.keyCode != 13) return;
+		var _index = $("#index").val();
+		var page = parseInt(_page);
+		var size = $("#size").val();
+		if(_index <= ${page.pageCount} && _index >= 1){
+			window.location.href="/webvFuwuCenterController/toCenter.do?page="+page+"&size="+size;
+		}else{
+			alert("请输入1-${page.pageCount}的页码数");
+		}
+	}
+
+	function nextPage(_page) {
+		var page = parseInt(_page);
+		var size = $("#size").val();
+		addCookie("contract_size", size, 36);
+		if ((page <= ${page.pageCount} && page >= 1)) {
+			window.location.href="/webvFuwuCenterController/toCenter.do?page="+page+"&size="+size;
+		} else {
+			alert("请输入1-${page.pageCount}的页码数");
+		}
+	}
+</script>
+
 <script>
 	function toPage(_url, _page){
 		if(_page != ''){

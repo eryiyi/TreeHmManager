@@ -99,6 +99,45 @@
 
 
 
+
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">省份</label>
+            <div class="col-sm-4">
+              <select class="form-control" id="mm_emp_provinceId" onchange="selectCitys()">
+                <option value="">--选择省份--</option>
+                <c:forEach items="${listProvinces}" var="e" varStatus="st">
+                  <option value="${e.provinceID}" >${e.province}</option>
+                </c:forEach>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">城市</label>
+            <div class="col-sm-4">
+              <select class="form-control" id="mm_emp_cityId" onchange="selectCountrys()">
+                <option value="">--选择城市--</option>
+                <c:forEach items="${listCitys}" var="e" varStatus="st">
+                  <option value="${e.cityID}" >${e.city}</option>
+                </c:forEach>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">县区</label>
+            <div class="col-sm-4">
+              <select class="form-control" id="mm_emp_countryId" >
+                <option value="">--选择县区--</option>
+                <c:forEach items="${listsCountry}" var="e" varStatus="st">
+                  <option value="${e.areaID}" >${e.area}</option>
+                </c:forEach>
+              </select>
+            </div>
+          </div>
+
+
+
+
           <div class="form-group">
             <div class="col-sm-9 col-sm-offset-3">
               <button type="button" class="btn btn-primary" onclick="saveP()">添加</button>
@@ -145,6 +184,10 @@
     var lng = $("#lng").val();
     var mm_fuwu_url = $("#mm_fuwu_url").val();
 
+    var mm_emp_provinceId = $("#mm_emp_provinceId").val();
+    var mm_emp_cityId = $("#mm_emp_cityId").val();
+    var mm_emp_countryId = $("#mm_emp_countryId").val();
+
     if(add_one.replace(/\s/g, '')==''){
       alert("请输入正确的服务名称");
       return;
@@ -165,11 +208,23 @@
       alert("请点击地图选择经纬度");
       return;
     }
+
     $.ajax({
       cache: true,
       type: "POST",
       url:"/fuwu/addFuwu.do",
-      data:{"mm_fuwu_nickname":add_one, "mm_fuwu_tel":add_two,"mm_fuwu_content":add_three,"mm_fuwu_type":mm_fuwu_type,"lat":lat,"lng":lng,"mm_fuwu_url":mm_fuwu_url},
+      data:{"mm_fuwu_nickname":add_one,
+        "mm_fuwu_tel":add_two,
+        "mm_fuwu_content":add_three,
+        "mm_fuwu_type":mm_fuwu_type,
+        "lat":lat,
+        "lng":lng,
+        "provinceid":mm_emp_provinceId,
+        "cityid":mm_emp_cityId,
+        "countryid":mm_emp_countryId,
+        "mm_fuwu_url":mm_fuwu_url
+
+      },
       async: false,
       success: function(_data) {
         var data = $.parseJSON(_data);
@@ -182,6 +237,31 @@
       }
     });
   }
+
+  function selectCitys(){
+    var citys = ${listCitysAll};
+    var province = $("#mm_emp_provinceId").val();
+    var ret = "<option value=''>"+'请选择城市'+"</option>";
+    for(var i= citys.length-1; i>=0; i-- ){
+      if(citys[i].father==province){
+        ret += "<option value='"+citys[i].cityID+"'>"+citys[i].city+"</option>";
+      }
+    }
+    $("#mm_emp_cityId").html(ret);
+  };
+
+  function selectCountrys(){
+    var countrys = ${listsCountryAll};
+    var city = $("#mm_emp_cityId").val();
+    var ret = "<option value=''>"+'请选择县区'+"</option>";
+    for(var i= countrys.length-1; i>=0; i-- ){
+      if(countrys[i].father==city){
+        ret += "<option value='"+countrys[i].areaID+"'>"+countrys[i].area+"</option>";
+      }
+    }
+    $("#mm_emp_countryId").html(ret);
+  };
+
 </script>
 <script type="text/javascript">
   //初始化地图对象，加载地图

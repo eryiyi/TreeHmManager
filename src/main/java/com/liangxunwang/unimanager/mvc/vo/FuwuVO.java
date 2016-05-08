@@ -1,13 +1,11 @@
 package com.liangxunwang.unimanager.mvc.vo;
 
-import com.liangxunwang.unimanager.model.Emp;
-import com.liangxunwang.unimanager.model.KefuTel;
+import com.liangxunwang.unimanager.model.FuwuObj;
 
 /**
- * Created by Administrator on 2016/2/14.
+ * Created by zhl on 2016/5/8.
  */
-public class KefuVO extends KefuTel{
-
+public class FuwuVO extends FuwuObj {
     private String provinceName;
     private String cityName;
     private String areaName;

@@ -2,6 +2,7 @@ package com.liangxunwang.unimanager.dao;
 
 import com.liangxunwang.unimanager.model.FuwuObj;
 import com.liangxunwang.unimanager.model.Level;
+import com.liangxunwang.unimanager.mvc.vo.FuwuVO;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -16,8 +17,8 @@ public interface FuwuDao {
     /**
      * 查询服务
      */
-    List<FuwuObj> lists(Map<String, Object> map);
-//    long count(Map<String, Object> map);
+    List<FuwuVO> lists(Map<String, Object> map);
+    long count(Map<String, Object> map);
 
 
     //保存

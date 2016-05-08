@@ -157,10 +157,6 @@
 				</div>
 				</c:forEach>
 
-
-			<c:if test="${is_login=='1'}"><a href="/html/download.html" class="warning" target="_blank">下载安卓APP可以查看更多内容...</a></c:if>
-			<c:if test="${is_login=='0'}"><a href="/webvLoginController/toLogin.do" class="warning">查看更多信息，请先注册并登录账号...</a></c:if>
-			<c:if test="${is_login=='1'}">
 				<input type="hidden" id="mm_msg_type" name="mm_msg_type" value="${query.mm_msg_type}">
 				<input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${query.mm_emp_id}">
 				<!--分页信息，页面跳转-->
@@ -200,7 +196,6 @@
 						</c:choose>
 					</div>
 				</div>
-			</c:if>
 
 		</div>
 	</div>

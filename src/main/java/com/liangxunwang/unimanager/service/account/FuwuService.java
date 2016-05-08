@@ -6,6 +6,7 @@ import com.liangxunwang.unimanager.dao.LevelDao;
 import com.liangxunwang.unimanager.model.AccessToken;
 import com.liangxunwang.unimanager.model.FuwuObj;
 import com.liangxunwang.unimanager.model.Level;
+import com.liangxunwang.unimanager.mvc.vo.FuwuVO;
 import com.liangxunwang.unimanager.query.FuwuQuery;
 import com.liangxunwang.unimanager.query.LevelQuery;
 import com.liangxunwang.unimanager.service.*;
@@ -38,6 +39,11 @@ public class FuwuService implements ListService,SaveService ,DeleteService,Execu
         FuwuQuery query = (FuwuQuery) object;
 
         Map<String, Object> map = new HashMap<String, Object>();
+        int index = (query.getIndex() - 1) * query.getSize();
+        int size = query.getIndex() * query.getSize();
+
+        map.put("index", index);
+        map.put("size", size);
 
         if(!StringUtil.isNullOrEmpty(query.getLat())){
             map.put("lat", query.getLat());
@@ -48,9 +54,22 @@ public class FuwuService implements ListService,SaveService ,DeleteService,Execu
         if(!StringUtil.isNullOrEmpty(query.getMm_fuwu_type())){
             map.put("mm_fuwu_type", query.getMm_fuwu_type());
         }
-        List<FuwuObj> lists = fuwuDao.lists(map);
 
-        return lists;
+        if(!StringUtil.isNullOrEmpty(query.getProvinceid())){
+            map.put("provinceid", query.getProvinceid());
+        }
+        if(!StringUtil.isNullOrEmpty(query.getCityid())){
+            map.put("cityid", query.getCityid());
+        }
+        if(!StringUtil.isNullOrEmpty(query.getCountryid())){
+            map.put("countryid", query.getCountryid());
+        }
+
+        List<FuwuVO> lists = fuwuDao.lists(map);
+
+        long count = fuwuDao.count(map);
+
+        return new Object[]{lists, count};
     }
 
 

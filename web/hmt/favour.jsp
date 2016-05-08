@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="icon" href="logo.ico" type="image/x-icon" />
   <meta name="renderer" content="webkit">
-  <title>花木通|供需信息</title>
+  <title>花木通|我的收藏</title>
   <meta name="keywords" content="花木通,惠民,苗木,花木,苗木交易,花木求购,苗木求购,花木资讯,花木论坛,花木销售,苗木销售,苗木资讯,绿化苗木,花草,苗联通,白蜡,园林,惠民皂户李镇,苗木协会">
   <meta name="Description" content=" 花木通是惠民县本地第一苗木供求信息平台、信息通讯平台，突破了苗木大市场、绿化工程公司、经纪人、苗农之间的信息壁垒，让市场订单苗木不愁买，苗农种植苗木不愁卖！为本地苗木行业发展助力，让经纪人足不出户，随时随地做生意！让苗农及时了解市场行情，苗木卖价更高更容易！">
   <link href="../hmt/css/common/index-type.css" rel="stylesheet" type="text/css" />
@@ -30,7 +30,118 @@
   <script language="javascript" src="../js/jquery.js"></script>
   <script type="text/javascript" src="../js/jquery_latest.js"></script>
 
-
+  <style type="text/css">
+    #bd #detail a.rr-taobao-big
+    {
+      float: left;
+      line-height: 38px;
+      padding: 0 15px;
+      font-size: 14px;
+      border-radius: 2px;
+      margin-left: 8px;
+      border: 1px #f40 solid;
+    }
+    #bd #detail a.rrfl-before-big
+    {
+      background: #f40;
+      color: #fff;
+    }
+    #bd #detail a.rrfl-before-big:hover
+    {
+      background: #f20;
+    }
+    #bd #detail a.rrfl-after-big
+    {
+      background: #fff;
+      color: #f40;
+    }
+    #bd #detail a.rrfl-after-big:hover
+    {
+      background: #fff;
+    }
+    #bd #detail a.rr-taobao-normal
+    {
+      display: inline-block;
+      padding: 0 5px;
+      border-radius: 2px;
+      line-height: 23px;
+      margin-left: 5px;
+      border: 1px #ff8e1b solid;
+    }
+    #bd #detail a.rr-taobao-normal:hover
+    {
+      background: #f60;
+    }
+    #bd #detail a.rrfl-before-normal
+    {
+      background: #ff8e1b;
+      color: #fff;
+    }
+    #bd #detail a.rrfl-before-normal:hover
+    {
+      background: #f60;
+    }
+    #bd #detail a.rrfl-after-normal
+    {
+      background: #fff;
+      color: #ff8e1b;
+    }
+    #bd #detail a.rrfl-after-normal:hover
+    {
+      background: #fff;
+    }
+    #page a.rr-tmall-big, #page a.rr-tmall-normal
+    {
+      display: inline-block;
+      line-height: 30px;
+      padding: 0 10px;
+      border-radius: 2px;
+      margin-left: 12px;
+      border: 1px #c40000 solid;
+    }
+    #page .tb-attention a.rr-tmall-big, #page .tb-attention a.rr-tmall-normal
+    {
+      position: absolute;
+      right: 50px;
+    }
+    #page a.rrfl-after-big, #page a.rrfl-after-normal
+    {
+      background: #fff;
+      color: #c40000;
+    }
+    #page a.rrfl-after-big:hover, #page a.rrfl-after-normal:hover
+    {
+      background: #fff;
+      text-decoration: none;
+    }
+    #page a.rrfl-before-big, #page a.rrfl-before-normal
+    {
+      background: #c40000;
+      color: #fff;
+    }
+    #page a.rrfl-before-big:hover, #page a.rrfl-before-normal:hover
+    {
+      background: #c40000;
+      text-decoration: none;
+    }
+    #itemInfo #choose-btn-append a.rr-jd-big, #itemInfo #choose-btn-append a.rr-jd-normal
+    {
+      line-height: 36px;
+      background-color: rgb(222, 53, 60);
+      color: #f0f0f0;
+      padding: 0 10px;
+      border-radius: 2px;
+      text-shadow: 1px 1px 1px #999;
+    }
+    #itemInfo #choose-btn-append a.rr-jd-big:hover, #itemInfo #choose-btn-append a.rr-jd-normal:hover
+    {
+      background-color: rgb(237, 82, 87);
+      color: #f0f0f0;
+      padding: 0 10px;
+      border-radius: 2px;
+      text-shadow: 1px 1px 1px #999;
+    }
+  </style>
 </head>
 <body>
 <!-- 顶部 -->
@@ -211,22 +322,13 @@
     </div>
     <div class="tabs mt_15">
       <ul class="tabs-list">
-        <c:if test="${query.mm_msg_type=='0'}"><li class="cur" onclick="javascript:changeShowType('0');"><a>最新求购</a></li></c:if>
-        <c:if test="${query.mm_msg_type=='1'}"><li class="cur" onclick="javascript:changeShowType('0');"><a>最新供应</a></li></c:if>
+        <li class="cur" onclick="javascript:changeShowType('0');"><a>我的收藏</a></li>
       </ul>
-      <div class="tabs-msg"><a></a></div>
-      <div class="list-pages">
-        <a href="javascript:void(0);">&lt;</a>
-        <span>${page.page}/${page.pageCount}</span>
-        <a href="http://www.cnhnb.com/supply/p/0-0-2">&gt;</a>
-
-      </div>
     </div>
     <div class="pro-list mb_10">
       <ul class="pro-list-title pt_15">
         <li class="l1">时间</li>
         <li class="l2">内容</li>
-        <li class="l4">所在地区</li>
         <li class="l5">联系人</li>
       </ul>
       <ul>
@@ -236,7 +338,6 @@
            <a href="javascript:void(0)" target="_blank" onclick="showDetail('${e.mm_msg_id}')">
              <span class="l1">${e.dateline}</span>
              <span class="l2">${e.mm_msg_title}</span>
-             <span class="l4">${e.area}</span>
              <span class="l5">${e.mm_emp_nickname}</span>
 			                <span class="l6">
                                 <c:if test="${e.is_miaomu=='1'}"><img style="width: 25px;height: 32px;" src="../img/tree_icons_trust.png" title="苗木协会"></c:if>
@@ -275,29 +376,6 @@
         </c:forEach>
       </ul>
     </div>
-  </div>
-
-  <div class="page p_30 mb_10 tr">
-    <center>
-      <c:if test="${is_login=='1'}">
-        <input type="hidden" id="pageCount" value="6443">
-        <input type="hidden" name="size" id="size" value="${query.size}">
-        <a href="javascript:void(0);" onclick="nextPage('1')">第一页 </a>
-        <a href="javascript:void(0);" onclick="nextPage('${page.page-1}')">上一页</a>
-        <a href="javascript:void(0);" onclick="nextPage('${page.page+1}')">下一页</a>
-        <a href="javascript:void(0);" onclick="nextPage('${page.pageCount}')">最后页</a>
-        <span>跳到</span>
-        <span><input type="text" id="index" name="index" value="${page.page}"
-                     autocomplete="off" maxlength="6"
-                     value="${page.page}"
-                     onpaste="return false" style="text-align:center;"></span>
-        <span>页 </span>
-        <span><button type="button" onclick="searchIndex(event, '${page.page}')">GO</button></span>
-      </c:if>
-      <c:if test="${is_login=='0'}">
-        <a href="javaScript:void(0)" onclick="login()">登录查看更多信息</a>
-      </c:if>
-    </center>
   </div>
 
 </div>

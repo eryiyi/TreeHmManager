@@ -3,6 +3,7 @@ package com.liangxunwang.unimanager.mvc.app;
 import com.liangxunwang.unimanager.model.FuwuObj;
 import com.liangxunwang.unimanager.model.Record;
 import com.liangxunwang.unimanager.model.tip.DataTip;
+import com.liangxunwang.unimanager.mvc.vo.FuwuVO;
 import com.liangxunwang.unimanager.mvc.vo.RecordVO;
 import com.liangxunwang.unimanager.query.FuwuQuery;
 import com.liangxunwang.unimanager.query.RecordQuery;
@@ -47,7 +48,7 @@ public class AppFuwuController extends ControllerConstants {
     @ResponseBody
     public String getFuwuByLocationAndType(FuwuQuery query){
         try {
-            List<FuwuObj> list = (List<FuwuObj>) appFuwuService.list(query);
+            List<FuwuVO> list = (List<FuwuVO>) appFuwuService.list(query);
             DataTip tip = new DataTip();
             tip.setData(list);
             return toJSONString(tip);

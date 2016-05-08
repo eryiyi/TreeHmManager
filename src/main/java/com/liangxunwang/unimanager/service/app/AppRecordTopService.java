@@ -94,7 +94,6 @@ public class AppRecordTopService implements ListService {
             }
             record.setDateline(RelativeDateFormat.format(Long.parseLong(record.getDateline())));
         }
-
         return list;
     }
 

@@ -128,6 +128,10 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/netAboutUsController/toLink\\.do$)"+
                         "|(^/netAboutUsController/toPrivacy\\.do$)"+
                         "|(^/netWeixinController/toKefu\\.do$)"+
+                        "|(^/netNoticeController/list\\.do$)"+
+                        "|(^/netNoticeController/toDetail\\.do$)"+
+                        "|(^/netMineFavourController/favour\\.do$)"+
+                        "|(^/netNearbyController/nearby\\.do$)"+
 
                         "|(^/memberLogin\\.do$)"
 

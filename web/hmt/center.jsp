@@ -289,12 +289,6 @@
                 <c:if test="${emp.mm_level_num==4}"><img src="../hmt/images/grade-1.png" alt="我的等级" title="顶级会员，能查看所有信息" id="pointPic"></c:if>
             </a>
             </div>
-            <%--<div class="message">--%>
-              <%--<a href="userMessage" target="_blank" class="txt" id="message">系统消息</a>--%>
-              <%--<a href="userMessage" target="_blank" class="msg-mark" id="messagenum">--%>
-                <%--6--%>
-              <%--</a>--%>
-            <%--</div>--%>
           </div>
         </div>
         <div class="userstate">
@@ -313,21 +307,17 @@
             <li class="password"><em><a href="javascript:void(0);"></a></em>
               <span><a href="javascript:void(0);">修改密码</a></span></li>
           </ul>
-          <%--<div class="login-time">--%>
-            <%--本次登录时间:--%>
-            <%--2016-04-23 16:54:29--%>
-          <%--</div>--%>
         </div>
       </div>
       <div id="LEFT_FETURES">
-        <div class="left-side left-side-3" myid="BUYERS_LEFT_FIX_child0">
-          <a href="http://hnuser.cnhnb.com/buyers/attention">
-            <h2>我的关注</h2>
-            <p>已关注   <span class="number">0</span> 个类别</p>
-          </a>
-        </div>
+        <%--<div class="left-side left-side-3" myid="BUYERS_LEFT_FIX_child0">--%>
+          <%--<a href="http://hnuser.cnhnb.com/buyers/attention">--%>
+            <%--<h2>我的关注</h2>--%>
+            <%--<p>已关注   <span class="number">0</span> 个类别</p>--%>
+          <%--</a>--%>
+        <%--</div>--%>
         <div class="left-side left-side-4" myid="BUYERS_LEFT_FIX_child1">
-        <a href="javascript:void(0)">
+        <a href="/netMineFavourController/favour.do?page=1">
           <h2>我的收藏</h2>
           <p> 已收藏 <span class="number">${count}</span> 条</p>
         </a>
@@ -363,17 +353,17 @@
         <div class="box">
           <ul class="w594">
             <li class="link">
-              <a href="#" class="number1"></a>
+              <a href="/netNearbyController/nearby.do?page=1" class="number1"></a>
               <p class="txt"><img src="../hmt/images/jygl-ico-1.png"><span>经纪人</span></p>
             </li>
             <li class="line  w180"><span></span></li>
             <li class="link">
-              <a href="#" class="number2"></a>
+              <a href="/netKefuController/toKefu.do" class="number2"></a>
               <p class="txt"><img src="../hmt/images/jygl-ico-3.png"><span>客服中心</span></p>
             </li>
             <li class="line  w180"><span></span></li>
             <li class="link">
-              <a href="#" class="number3"></a>
+              <a href="/netWeixinController/toKefu.do" class="number3"></a>
               <p class="txt"><img src="../hmt/images/jygl-ico-4.png"><span>微信客服</span></p>
             </li>
           </ul>
@@ -383,14 +373,12 @@
       <%--<div class="ad-2">--%>
         <%--<a href="#" target="_blank"><img src="../hmt/images/AF443AL303ChRkRlcQolaAKmLNAADMTzN7IQA454.jpg" style="width:1190px;height:90px;"></a>--%>
       <%--</div>--%>
-      <div class="browseb-record">
-        <!-- browseb-record -->
-        <div class="title">最近浏览记录</div>
-        <div class="norecord">亲~您还没有浏览过任何商品，赶紧去逛逛吧</div>
-      </div>
-
+      <%--<div class="browseb-record">--%>
+        <%--<!-- browseb-record -->--%>
+        <%--<div class="title">最近浏览记录</div>--%>
+        <%--<div class="norecord">亲~您还没有浏览过任何商品，赶紧去逛逛吧</div>--%>
+      <%--</div>--%>
     </div>
-
 
   </div>
   <div class="mainR">
@@ -398,19 +386,19 @@
       <h2>快捷入口</h2>
       <ul id="RIGHT_MENU">
         <li menuid="29">
-          <a href="#">
+          <a href="/netNoticeController/list.do?page=1">
             <em><img src="../hmt/images/tree_user_notice.png"></em>
             <span>公告信息</span>
           </a>
         </li>
         <li menuid="34">
-        <a href="#" target="_blank">
+        <a href="javascript:void(0)" target="_blank">
           <em><img src="../hmt/images/plug-7.png"></em>
           <span>公司招商</span>
         </a>
       </li>
         <li menuid="30">
-        <a href="#">
+        <a href="http://www.sdnxs.com/Channel/23166" target="_blank">
           <em><img src="../hmt/images/tree_user_bank.png"></em>
           <span>商业银行</span>
         </a>
@@ -445,9 +433,9 @@
     </div>
 
     <div class="customer">
-      <a href="javascript:void(0);" class="btn help" id="newhelp">新版指南</a>
-      <a href="#" target="_blank" class="btn old" id="enterold">更新板块</a>
-      <a href="http://b.qq.com/webc.htm?new=0&amp;sid=4000088688&amp;eid=218808P8z8p8q8Q8Q8q8x&amp;o=www.cnhnb.com&amp;q=7" class="btn-qq">QQ在线客服</a>
+      <%--<a href="javascript:void(0);" class="btn help" id="newhelp">新版指南</a>--%>
+      <%--<a href="#" target="_blank" class="btn old" id="enterold">更新板块</a>--%>
+      <%--<a href="http://b.qq.com/webc.htm?new=0&amp;sid=564293010&amp;eid=218808P8z8p8q8Q8Q8q8x&amp;o=www.cnhnb.com&amp;q=7" class="btn-qq">QQ在线客服</a>--%>
       <div class="tel">
         <h3>客服热线：</h3>
         <span>0543-5253666</span>

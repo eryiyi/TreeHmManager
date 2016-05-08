@@ -51,6 +51,11 @@
         <h4 class="page-header">修改服务</h4>
         <form class="form-horizontal" role="form">
           <input type="hidden" id="mm_fuwu_id" value="${levelObj.mm_fuwu_id}">
+
+          <input type="hidden" id="mm_emp_provinceId" value="${levelObj.provinceid}">
+          <input type="hidden" id="mm_emp_cityId" value="${levelObj.cityid}">
+          <input type="hidden" id="mm_emp_countryId" value="${levelObj.countryid}">
+
           <div class="form-group">
             <label class="col-sm-2 control-label">服务名称</label>
             <div class="col-sm-4">
@@ -146,6 +151,11 @@
     var lng = $("#lng").val();
     var mm_fuwu_url = $("#mm_fuwu_url").val();
 
+    var mm_emp_provinceId = $("#mm_emp_provinceId").val();
+    var mm_emp_cityId = $("#mm_emp_cityId").val();
+    var mm_emp_countryId = $("#mm_emp_countryId").val();
+
+
     if(add_one.replace(/\s/g, '')==''){
       alert("请输入正确的服务名称");
       return;
@@ -170,7 +180,19 @@
       cache: true,
       type: "POST",
       url:"/fuwu/editFuwu.do",
-      data:{"mm_fuwu_nickname":add_one, "mm_fuwu_tel":add_two,"mm_fuwu_content":add_three, "mm_fuwu_id":mm_fuwu_id, "mm_fuwu_type":mm_fuwu_type,"lat":lat,"lng":lng,"mm_fuwu_url":mm_fuwu_url},
+      data:{"mm_fuwu_nickname":add_one,
+        "mm_fuwu_tel":add_two,
+        "mm_fuwu_content":add_three,
+        "mm_fuwu_id":mm_fuwu_id,
+        "mm_fuwu_type":mm_fuwu_type,
+        "lat":lat,
+        "lng":lng,
+
+        "provinceid":mm_emp_provinceId,
+        "cityid":mm_emp_cityId,
+        "countryid":mm_emp_countryId,
+
+        "mm_fuwu_url":mm_fuwu_url},
       async: false,
       success: function(_data) {
         var data = $.parseJSON(_data);

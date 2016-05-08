@@ -4,10 +4,12 @@ import com.liangxunwang.unimanager.model.AboutUs;
 import com.liangxunwang.unimanager.model.FuwuObj;
 import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.mvc.vo.EmpVO;
+import com.liangxunwang.unimanager.mvc.vo.FuwuVO;
 import com.liangxunwang.unimanager.query.FuwuQuery;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.ServiceException;
 import com.liangxunwang.unimanager.util.ControllerConstants;
+import com.liangxunwang.unimanager.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -29,15 +31,25 @@ public class WebvFuwuCenterController extends ControllerConstants {
     private ListService appFuwuService;
 
     @RequestMapping("toCenter")
-    public String toLogin(HttpSession session,ModelMap map,FuwuQuery query){
+    public String toLogin(HttpSession session,ModelMap map,FuwuQuery query ,Page page){
         EmpVO emp = (EmpVO) session.getAttribute(MEMBER_KEY);
+
+        query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
+        query.setSize(query.getSize() == 0 ? page.getDefaultSize() : query.getSize());
+
         if(emp == null){
             return "/webv/login";
         }else
         query.setAccessToken(emp.getAccess_token());
         try {
-            List<FuwuObj> list = (List<FuwuObj>) appFuwuService.list(query);
-            map.put("list", list);
+            Object[] results = (Object[]) appFuwuService.list(query);
+            map.put("list", results[0]);
+            long count = (Long) results[1];
+            page.setCount(count);
+            page.setPageCount(calculatePageCount(query.getSize(), count));
+            map.addAttribute("page", page);
+            map.addAttribute("query", query);
+
             switch (Integer.parseInt(query.getMm_fuwu_type())){
                 case 0:
                     //商店
@@ -64,12 +76,7 @@ public class WebvFuwuCenterController extends ControllerConstants {
             return "/webv/fuwu_center";
 
         }catch (ServiceException e){
-            String msg = e.getMessage();
-            if (msg.equals("accessTokenNull")){
-                return "/webv/login";
-            }else{
-                return "/webv/login";
-            }
+            return "/webv/login";
         }
 
     }

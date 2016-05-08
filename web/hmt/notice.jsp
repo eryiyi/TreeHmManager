@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="icon" href="logo.ico" type="image/x-icon" />
   <meta name="renderer" content="webkit">
-  <title>花木通|供需信息</title>
+  <title>花木通|消息通知</title>
   <meta name="keywords" content="花木通,惠民,苗木,花木,苗木交易,花木求购,苗木求购,花木资讯,花木论坛,花木销售,苗木销售,苗木资讯,绿化苗木,花草,苗联通,白蜡,园林,惠民皂户李镇,苗木协会">
   <meta name="Description" content=" 花木通是惠民县本地第一苗木供求信息平台、信息通讯平台，突破了苗木大市场、绿化工程公司、经纪人、苗农之间的信息壁垒，让市场订单苗木不愁买，苗农种植苗木不愁卖！为本地苗木行业发展助力，让经纪人足不出户，随时随地做生意！让苗农及时了解市场行情，苗木卖价更高更容易！">
   <link href="../hmt/css/common/index-type.css" rel="stylesheet" type="text/css" />
@@ -30,7 +30,118 @@
   <script language="javascript" src="../js/jquery.js"></script>
   <script type="text/javascript" src="../js/jquery_latest.js"></script>
 
-
+  <style type="text/css">
+    #bd #detail a.rr-taobao-big
+    {
+      float: left;
+      line-height: 38px;
+      padding: 0 15px;
+      font-size: 14px;
+      border-radius: 2px;
+      margin-left: 8px;
+      border: 1px #f40 solid;
+    }
+    #bd #detail a.rrfl-before-big
+    {
+      background: #f40;
+      color: #fff;
+    }
+    #bd #detail a.rrfl-before-big:hover
+    {
+      background: #f20;
+    }
+    #bd #detail a.rrfl-after-big
+    {
+      background: #fff;
+      color: #f40;
+    }
+    #bd #detail a.rrfl-after-big:hover
+    {
+      background: #fff;
+    }
+    #bd #detail a.rr-taobao-normal
+    {
+      display: inline-block;
+      padding: 0 5px;
+      border-radius: 2px;
+      line-height: 23px;
+      margin-left: 5px;
+      border: 1px #ff8e1b solid;
+    }
+    #bd #detail a.rr-taobao-normal:hover
+    {
+      background: #f60;
+    }
+    #bd #detail a.rrfl-before-normal
+    {
+      background: #ff8e1b;
+      color: #fff;
+    }
+    #bd #detail a.rrfl-before-normal:hover
+    {
+      background: #f60;
+    }
+    #bd #detail a.rrfl-after-normal
+    {
+      background: #fff;
+      color: #ff8e1b;
+    }
+    #bd #detail a.rrfl-after-normal:hover
+    {
+      background: #fff;
+    }
+    #page a.rr-tmall-big, #page a.rr-tmall-normal
+    {
+      display: inline-block;
+      line-height: 30px;
+      padding: 0 10px;
+      border-radius: 2px;
+      margin-left: 12px;
+      border: 1px #c40000 solid;
+    }
+    #page .tb-attention a.rr-tmall-big, #page .tb-attention a.rr-tmall-normal
+    {
+      position: absolute;
+      right: 50px;
+    }
+    #page a.rrfl-after-big, #page a.rrfl-after-normal
+    {
+      background: #fff;
+      color: #c40000;
+    }
+    #page a.rrfl-after-big:hover, #page a.rrfl-after-normal:hover
+    {
+      background: #fff;
+      text-decoration: none;
+    }
+    #page a.rrfl-before-big, #page a.rrfl-before-normal
+    {
+      background: #c40000;
+      color: #fff;
+    }
+    #page a.rrfl-before-big:hover, #page a.rrfl-before-normal:hover
+    {
+      background: #c40000;
+      text-decoration: none;
+    }
+    #itemInfo #choose-btn-append a.rr-jd-big, #itemInfo #choose-btn-append a.rr-jd-normal
+    {
+      line-height: 36px;
+      background-color: rgb(222, 53, 60);
+      color: #f0f0f0;
+      padding: 0 10px;
+      border-radius: 2px;
+      text-shadow: 1px 1px 1px #999;
+    }
+    #itemInfo #choose-btn-append a.rr-jd-big:hover, #itemInfo #choose-btn-append a.rr-jd-normal:hover
+    {
+      background-color: rgb(237, 82, 87);
+      color: #f0f0f0;
+      padding: 0 10px;
+      border-radius: 2px;
+      text-shadow: 1px 1px 1px #999;
+    }
+  </style>
 </head>
 <body>
 <!-- 顶部 -->
@@ -73,11 +184,12 @@
           </li>
           <li>
             <div class="label o-login">
-              <a href="javascript:void(0)" onclick="quiteClick()">退出</a></div>
+              <a href="javascript:void(0)" onclick="quiteClick()">
+                退出</a></div>
           </li>
           <li>
             <div class="label pr">
-              <a href="/netNoticeController/list.do?page=1" class="msg">消息<span class="msg-mark"></span></a></div>
+              <a href="javascript:void(0)" class="msg">消息<span class="msg-mark"></span></a></div>
           </li>
         </ul>
       </c:if>
@@ -95,12 +207,11 @@
           </li>
         </c:if>
       </ul>
-
     </ul>
     <ul class="top-nav fr">
       <li id="hn_home_id">
         <div class="label">
-          <a href="/hmtIndex/toIndex.do?page=1">花木通求购信息</a></div>
+          <a href="index.htm">花木通求购信息</a></div>
       </li>
 
       <c:if test="${is_login=='1'}">
@@ -139,8 +250,8 @@
           <i>&nbsp;</i><span><a href="javascript:void(0)" target="_blank" rel="nofollow">帮助中心</a></span></div>
         <div class="dropdown-layer dd-help-center">
           <p>
-            <a href="/netWeixinController/toKefu.do" target="_blank" rel="nofollow">微信客服</a>
-            <a href="/netKefuController/toKefu.do" target="_blank" rel="nofollow">电话客服</a></p>
+            <a href="javascript:void(0)" target="_blank" rel="nofollow">常见问题</a><a
+                  href="/netKefuController/toKefuCenter.do" target="_blank" rel="nofollow">联系客服</a></p>
         </div>
       </li>
     </ul>
@@ -203,58 +314,33 @@
 
 <div class="container wrap-1190">
 
-  <form action="supply.htm" id="filterForm" class="fl" style="width: 956px;">
-    <div class="noticebar mt_15">
-      <input type="text" id="keyword" name="keyword" autocomplete="off" class="notice-input" value="" placeholder="标题|手机号|公司名称|联系人">
-      <a href="javaScript:void(0)" onclick="searchIndex(event)" class="notice-submit"> <i class="lee-ico lee-cx"></i>搜索</a>
-      <span class="notice-msg"><a href="#" target="_blank" rel="nofollow">欢迎使用花木通信息平台，请谨慎核实信息内容!</a></span>
-    </div>
     <div class="tabs mt_15">
       <ul class="tabs-list">
-        <c:if test="${query.mm_msg_type=='0'}"><li class="cur" onclick="javascript:changeShowType('0');"><a>最新求购</a></li></c:if>
-        <c:if test="${query.mm_msg_type=='1'}"><li class="cur" onclick="javascript:changeShowType('0');"><a>最新供应</a></li></c:if>
+        <li class="cur" id="all_li"><a href="javascript:void(0)">通知列表</a></li>
       </ul>
       <div class="tabs-msg"><a></a></div>
-      <div class="list-pages">
-        <a href="javascript:void(0);">&lt;</a>
-        <span>${page.page}/${page.pageCount}</span>
-        <a href="http://www.cnhnb.com/supply/p/0-0-2">&gt;</a>
-
-      </div>
     </div>
     <div class="pro-list mb_10">
+
       <ul class="pro-list-title pt_15">
-        <li class="l1">时间</li>
-        <li class="l2">内容</li>
-        <li class="l4">所在地区</li>
-        <li class="l5">联系人</li>
+        <li class="l2">通知标题</li>
+        <li class="l3">发布时间</li>
       </ul>
-      <ul>
-
-       <c:forEach items="${list}" var="e" varStatus="st">
-         <li class="text-list">
-           <a href="javascript:void(0)" target="_blank" onclick="showDetail('${e.mm_msg_id}')">
-             <span class="l1">${e.dateline}</span>
-             <span class="l2">${e.mm_msg_title}</span>
-             <span class="l4">${e.area}</span>
-             <span class="l5">${e.mm_emp_nickname}</span>
-			                <span class="l6">
-                                <c:if test="${e.is_miaomu=='1'}"><img style="width: 25px;height: 32px;" src="../img/tree_icons_trust.png" title="苗木协会"></c:if>
-								<c:if test="${e.is_chengxin=='1'}"><img style="width: 25px;height: 32px;" src="../img/tree_icons_group.png" title="诚信会员"></c:if>
-			                </span>
-             <span class="l7"><em class="text-list-view">查看详情</em></span>
-           </a>
-         </li>
-       </c:forEach>
-
+      <ul  id="con_one_2" >
+        <c:forEach items="${list}" var="e" varStatus="st">
+          <li class="text-list">
+            <a href="/netNoticeController/toDetail.do?id=${e.mm_notice_id}" target="_blank">
+              <span class="l2">${e.mm_notice_title}</span>
+              <span class="l3">${e.dateline}</span>
+            </a>
+          </li>
+        </c:forEach>
       </ul>
 
       <div class="clear"></div>
     </div>
-  </form>
   <div class="sides mt_15">
     <div class="release-but mb_15"><a href="javascript:void(0)" target="_blank" onclick="addMsg()"><i class="lee-ico lee-fb"></i> &nbsp; 发布供应</a></div>
-    <div class="release-but mb_15"><a href="/netKefuController/toKefu.do" target="_blank" ><i class="lee-ico lee-fb"></i> &nbsp; 客服中心</a></div>
     <div class="ad2">
 
       <a href="#" target="_target" title="点击进入春季种苗批发市场页面" rel="nofollow">
@@ -275,29 +361,6 @@
         </c:forEach>
       </ul>
     </div>
-  </div>
-
-  <div class="page p_30 mb_10 tr">
-    <center>
-      <c:if test="${is_login=='1'}">
-        <input type="hidden" id="pageCount" value="6443">
-        <input type="hidden" name="size" id="size" value="${query.size}">
-        <a href="javascript:void(0);" onclick="nextPage('1')">第一页 </a>
-        <a href="javascript:void(0);" onclick="nextPage('${page.page-1}')">上一页</a>
-        <a href="javascript:void(0);" onclick="nextPage('${page.page+1}')">下一页</a>
-        <a href="javascript:void(0);" onclick="nextPage('${page.pageCount}')">最后页</a>
-        <span>跳到</span>
-        <span><input type="text" id="index" name="index" value="${page.page}"
-                     autocomplete="off" maxlength="6"
-                     value="${page.page}"
-                     onpaste="return false" style="text-align:center;"></span>
-        <span>页 </span>
-        <span><button type="button" onclick="searchIndex(event, '${page.page}')">GO</button></span>
-      </c:if>
-      <c:if test="${is_login=='0'}">
-        <a href="javaScript:void(0)" onclick="login()">登录查看更多信息</a>
-      </c:if>
-    </center>
   </div>
 
 </div>
@@ -325,34 +388,6 @@
       window.location.href=_url+"?page="+_page;
     }else{
       window.location.href=_url;
-    }
-  }
-  function favourClick(_mm_msg_id){
-    //先判断是否登录
-    var is_login = $("#is_login").val();
-    if(is_login == 1){
-      //登陆了
-      var mm_emp_id = $("#mm_emp_id").val();
-      var accessToken = $("#accessToken").val();
-      $.ajax({
-        cache: true,
-        type:"POST",
-        url:"/saveFavour.do",
-        data:{"mm_msg_id":_mm_msg_id, "accessToken":accessToken, "mm_emp_id":mm_emp_id},
-        async: false,
-        success:function(_data){
-          var data = $.parseJSON(_data);
-          if(data.success){
-            alert("收藏成功");
-          }else{
-            var _case = {1:"收藏失败", 2:"已经收藏，不能重复收藏！",9:"账号过期，请重新登录！"};
-            alert(_case[data.code])
-          }
-        }
-      });
-    }else{
-      //没登陆
-      alert("请先登录");
     }
   }
 
@@ -387,29 +422,6 @@
 </script>
 
 <script type="text/javascript" charset="UTF-8">
-  function searchIndex(e,_page){
-    var _index = $("#index").val();
-    var page = parseInt(_page);
-    var size = $("#size").val();
-    var keyword = $("#keyword").val();
-    if(_index <= ${page.pageCount} && _index >= 1){
-      window.location.href="/hmtIndex/toIndex.do?page="+_index+"&size="+size+"&keyword="+keyword;
-    }else{
-      alert("请输入1-${page.pageCount}的页码数");
-    }
-  }
-
-  function nextPage(_page) {
-    var page = parseInt(_page);
-    var size = $("#size").val();
-    var keyword = $("#keyword").val();
-    addCookie("contract_size", size, 36);
-    if ((page <= ${page.pageCount} && page >= 1)) {
-      window.location.href="/hmtIndex/toIndex.do?page="+page+"&size="+size+"&keyword="+keyword;
-    } else {
-      alert("请输入1-${page.pageCount}的页码数");
-    }
-  }
 
   function quiteClick(){
     //退出
@@ -431,6 +443,27 @@
       }
     });
   }
+
+  function allKefu (){
+    $("#location_li").removeClass("cur");
+    $("#all_li").addClass("cur");
+
+    var con_one_1=document.getElementById("con_one_1");
+    var con_one_2=document.getElementById("con_one_2");
+    con_one_1.style.display = "none";
+    con_one_2.style.display = "block";
+  }
+  function locationKefu(){
+
+    $("#location_li").addClass("cur");
+    $("#all_li").removeClass("cur");
+
+    var con_one_1=document.getElementById("con_one_1");
+    var con_one_2=document.getElementById("con_one_2");
+    con_one_1.style.display = "block";
+    con_one_2.style.display = "none";
+  }
+
 </script>
 
 </html>

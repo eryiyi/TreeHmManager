@@ -4,6 +4,7 @@ import com.liangxunwang.unimanager.dao.AccessTokenDao;
 import com.liangxunwang.unimanager.dao.FuwuDao;
 import com.liangxunwang.unimanager.model.AccessToken;
 import com.liangxunwang.unimanager.model.FuwuObj;
+import com.liangxunwang.unimanager.mvc.vo.FuwuVO;
 import com.liangxunwang.unimanager.query.FuwuQuery;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.DateUtil;
@@ -35,6 +36,11 @@ public class AppFuwuService implements ListService,SaveService ,DeleteService,Ex
         FuwuQuery query = (FuwuQuery) object;
 
         Map<String, Object> map = new HashMap<String, Object>();
+        int index = (query.getIndex() - 1) * query.getSize();
+        int size = query.getIndex() * query.getSize();
+
+        map.put("index", index);
+        map.put("size", size);
 
         //判断accesstoken是否存在 是否是最新的
         if(!StringUtil.isNullOrEmpty(query.getAccessToken())){
@@ -56,9 +62,11 @@ public class AppFuwuService implements ListService,SaveService ,DeleteService,Ex
         if(!StringUtil.isNullOrEmpty(query.getMm_fuwu_type())){
             map.put("mm_fuwu_type", query.getMm_fuwu_type());
         }
-        List<FuwuObj> lists = fuwuDao.lists(map);
+        List<FuwuVO> lists = fuwuDao.lists(map);
 
-        return lists;
+        long count = fuwuDao.count(map);
+
+        return new Object[]{lists, count};
     }
 
 

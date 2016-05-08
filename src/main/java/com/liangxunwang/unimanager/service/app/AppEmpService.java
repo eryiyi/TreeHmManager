@@ -7,6 +7,7 @@ import com.liangxunwang.unimanager.mvc.vo.EmpAdVO;
 import com.liangxunwang.unimanager.mvc.vo.EmpVO;
 import com.liangxunwang.unimanager.mvc.vo.RecordVO;
 import com.liangxunwang.unimanager.query.EmpQuery;
+import com.liangxunwang.unimanager.query.NearbyQuery;
 import com.liangxunwang.unimanager.service.ExecuteService;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.ServiceException;
@@ -36,7 +37,6 @@ public class AppEmpService implements  UpdateService,ListService ,ExecuteService
         EmpVO empVO = empDao.findByMobile(mobile);
         return empVO;
     }
-
 
     //修改会员信息
     @Override
@@ -75,8 +75,14 @@ public class AppEmpService implements  UpdateService,ListService ,ExecuteService
 
     @Override
     public Object list(Object object) throws ServiceException {
-//        EmpQuery query = (EmpQuery) object;
+        NearbyQuery query = (NearbyQuery) object;
         Map<String, Object> map = new HashMap<String, Object>();
+
+        int index = (query.getIndex() - 1) * query.getSize();
+        int size = query.getIndex() * query.getSize();
+        map.put("index", index);
+        map.put("size", size);
+
         List<EmpVO> lists = empDao.listsLocation(map);
         List<EmpVO> listsTmp = new ArrayList<EmpVO>();
         for(EmpVO empVO:lists){
@@ -91,6 +97,7 @@ public class AppEmpService implements  UpdateService,ListService ,ExecuteService
                 listsTmp.add(empVO);
             }
         }
-        return listsTmp;
+        long count = empDao.countLocation(map);
+        return new Object[]{lists, count};
     }
 }
