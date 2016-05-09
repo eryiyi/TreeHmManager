@@ -46,11 +46,13 @@ public class AppFuwuController extends ControllerConstants {
     //服务信息列表
     @RequestMapping(value = "/getFuwuByLocationAndType", produces = "text/plain;charset=UTF-8")
     @ResponseBody
-    public String getFuwuByLocationAndType(FuwuQuery query){
+    public String getFuwuByLocationAndType(FuwuQuery query,Page page){
+        query.setIndex(page.getIndex()==0?1:page.getIndex());
+        query.setSize(query.getSize()==0?page.getDefaultSize():query.getSize());
         try {
-            List<FuwuVO> list = (List<FuwuVO>) appFuwuService.list(query);
+            Object[] results = (Object[])appFuwuService.list(query);
             DataTip tip = new DataTip();
-            tip.setData(list);
+            tip.setData(results[0]);
             return toJSONString(tip);
         }catch (ServiceException e){
             String msg = e.getMessage();

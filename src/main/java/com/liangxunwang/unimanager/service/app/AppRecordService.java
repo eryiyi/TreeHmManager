@@ -157,6 +157,10 @@ public class AppRecordService implements ListService ,SaveService, FindService{
         List<RecordVO> list = recordDao.listRecordVo(map);
         long count = recordDao.count(map);
         for (RecordVO record : list){
+            //处理经纬度
+            if(!StringUtil.isNullOrEmpty(record.getLat()) && !StringUtil.isNullOrEmpty(record.getLng())){
+                record.setMm_msg_title(record.getLat() +"," + record.getLng());//把经纬度放到title字段里
+            }
             if (!StringUtil.isNullOrEmpty(record.getMm_emp_cover())){
                 if (record.getMm_emp_cover().startsWith("upload")){
                     record.setMm_emp_cover(Constants.URL+record.getMm_emp_cover());

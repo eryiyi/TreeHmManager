@@ -19,6 +19,25 @@ public class RecordVO extends Record {
     private String area;//县区名称
     private String cityName;//城市名字
 
+    private String lat;//发布信息的人所处的位置
+    private String lng;//
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
+
+    public String getLng() {
+        return lng;
+    }
+
+    public void setLng(String lng) {
+        this.lng = lng;
+    }
+
     public String getCityName() {
         return cityName;
     }

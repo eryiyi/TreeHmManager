@@ -6,6 +6,24 @@ package com.liangxunwang.unimanager.query;
 public class NearbyQuery {
     private int index;
     private int size;
+    private String lat;
+    private String lng;
+
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
+
+    public String getLng() {
+        return lng;
+    }
+
+    public void setLng(String lng) {
+        this.lng = lng;
+    }
 
     public int getIndex() {
         return index;

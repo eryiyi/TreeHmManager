@@ -5,6 +5,7 @@ import com.liangxunwang.unimanager.mvc.vo.EmpVO;
 import com.liangxunwang.unimanager.service.ExecuteService;
 import com.liangxunwang.unimanager.service.ServiceException;
 import com.liangxunwang.unimanager.util.Constants;
+import com.liangxunwang.unimanager.util.DateUtil;
 import com.liangxunwang.unimanager.util.MD5Util;
 import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,6 +69,10 @@ public class MemberLoginService implements ExecuteService {
             }else {
                 member.setMm_emp_company_pic(Constants.QINIU_URL + member.getMm_emp_company_pic());
             }
+        }
+        if(member != null && !StringUtil.isNullOrEmpty(member.getMm_emp_endtime())){
+            //vip到期日期不为空
+            member.setMm_emp_endtime(DateUtil.getDate(member.getMm_emp_endtime(), "yyyy-MM-dd"));
         }
         return member;
     }

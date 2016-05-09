@@ -3,10 +3,7 @@ package com.liangxunwang.unimanager.mvc.app;
 import com.liangxunwang.unimanager.model.*;
 import com.liangxunwang.unimanager.model.tip.DataTip;
 import com.liangxunwang.unimanager.mvc.vo.EmpVO;
-import com.liangxunwang.unimanager.query.CityQuery;
-import com.liangxunwang.unimanager.query.CountryQuery;
-import com.liangxunwang.unimanager.query.EmpQuery;
-import com.liangxunwang.unimanager.query.LevelQuery;
+import com.liangxunwang.unimanager.query.*;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.ControllerConstants;
 import com.liangxunwang.unimanager.util.MD5Util;
@@ -22,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by zhl on 2015/8/12.
@@ -100,11 +98,13 @@ public class AppEmpController extends ControllerConstants {
 
     @RequestMapping(value = "/getNearby", produces = "text/plain;charset=UTF-8;")
     @ResponseBody
-    public String getNearby(String lat, String lng){
+    public String getNearby(NearbyQuery query, Page page){
+        query.setIndex(page.getIndex()==0?1:page.getIndex());
+        query.setSize(query.getSize()==0?page.getDefaultSize():query.getSize());
         try {
-            List<EmpVO> lists = (List<EmpVO>)appEmpServiceList.list("");
+            Object[] results = (Object[])appEmpServiceList.list(query);
             DataTip tip = new DataTip();
-            tip.setData(lists);
+            tip.setData(results[0]);
             return toJSONString(tip);
         }catch (ServiceException e){
             return toJSONString(ERROR_1);
