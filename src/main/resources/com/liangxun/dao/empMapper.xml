@@ -342,6 +342,9 @@
         <if test="mm_emp_card != null and mm_emp_card != ''">
             AND sn.mm_emp_card = #{mm_emp_card}
         </if>
+        <if test="mm_emp_id != null and mm_emp_id != ''">
+            AND sn.mm_emp_id = #{mm_emp_id}
+        </if>
     </select>
 
 

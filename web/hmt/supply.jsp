@@ -39,29 +39,7 @@
     <ul class="top-login fl">
       <li class="dropdown">
         <div class="dropdown-label dl-city">
-          <i>&nbsp;</i><span class="tit">所在地：</span><span id="topbar_address">山东</span></div>
-        <div class="dropdown-layer dd-city-list">
-          <div class="list">
-            <a data-id="45081" href="javascript:void(0)">北京</a><a data-id="45083" href="javascript:void(0)">上海</a><a
-                  data-id="45082" href="javascript:void(0)">天津</a><a data-id="45084" href="javascript:void(0)">重庆</a><a
-                  data-id="3" href="javascript:void(0)">河北</a><a data-id="4" href="javascript:void(0)">山西</a><a
-                  data-id="16" href="javascript:void(0)">河南</a><a data-id="6" href="javascript:void(0)">辽宁</a><a
-                  data-id="7" href="javascript:void(0)">吉林</a><a data-id="8" href="javascript:void(0)">黑龙江</a><a
-                  data-id="5" href="javascript:void(0)">内蒙古</a><a data-id="10" href="javascript:void(0)">江苏</a><a
-                  data-id="15" href="javascript:void(0)" class="selected">山东</a><a data-id="12" href="javascript:void(0)">安徽</a><a
-                  data-id="11" href="javascript:void(0)">浙江</a><a data-id="13" href="javascript:void(0)">福建</a><a
-                  data-id="17" href="javascript:void(0)">湖北</a><a data-id="18" href="javascript:void(0)"
-                                                                  class="">湖南</a>
-            <a data-id="19" href="javascript:void(0)">广东</a>
-            <a data-id="20" href="javascript:void(0)">广西</a><a
-                  data-id="14" href="javascript:void(0)">江西</a><a data-id="23" href="javascript:void(0)">四川</a><a
-                  data-id="21" href="javascript:void(0)">海南</a><a data-id="24" href="javascript:void(0)">贵州</a><a
-                  data-id="25" href="javascript:void(0)">云南</a><a data-id="26" href="javascript:void(0)">西藏</a><a
-                  data-id="27" href="javascript:void(0)">陕西</a><a data-id="28" href="javascript:void(0)">甘肃</a><a
-                  data-id="29" href="javascript:void(0)">青海</a><a data-id="30" href="javascript:void(0)">宁夏</a><a
-                  data-id="31" href="javascript:void(0)">新疆</a><a data-id="32" href="javascript:void(0)">台湾</a><a
-                  data-id="33" href="javascript:void(0)">香港</a><a data-id="34" href="javascript:void(0)">澳门</a></div>
-        </div>
+          <i>&nbsp;</i><span class="tit">点击选择区域</span></div>
       </li>
 
       <c:if test="${is_login=='1'}">
@@ -151,29 +129,6 @@
   <h1 class="logo">
     <a href="javascript:void(0)" title="花木通信息平台"></a>
   </h1>
-
-  <div class="search">
-    <form target="_blank" method="get" id="searchForm" action="category.htm">
-      <div class="sear-area">
-        <div style="z-index: 15" class="autoComplete">
-          <input type="text" placeholder="西红柿" defaulturl="" class="sear-inpt broder_r_no"
-                 autocomplete="off" >
-          <ul class="green" style="display: none;">
-            <li></li>
-          </ul>
-        </div>
-        <input type="submit" value="搜索" class="sear-btn">
-      </div>
-    </form>
-    <ul style="display: block;" class="keylist" id="idkeyList">
-      <li>热门搜索：</li>
-      <li><a title="大白菜" href="#" rel="nofollow">大白菜</a></li>
-      <li><a title="包菜" href="#" rel="nofollow">包菜</a></li>
-      <li><a title="萝卜" href="#" rel="nofollow">萝卜</a></li>
-      <li><a title="丝瓜" href="#" rel="nofollow">丝瓜</a></li>
-      <li><a title="西红柿" href="category.htm" rel="nofollow">西红柿</a></li>
-    </ul>
-  </div>
 
 </div>
 <div class="type-nav">

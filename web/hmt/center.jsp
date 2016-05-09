@@ -300,22 +300,16 @@
         </div>
         <div class="userbind userbind-buy">
           <ul>
-            <li class="phone isbind"><em><a href="javascript:void(0);"></a></em>
-              <span><a id="w3-2" href="javascript:void(0);">修改手机</a></span></li>
-            <li class="email"><em><a href="javascript:void(0);"></a></em> <span>
-              <a id="w3" href="javascript:void(0);">绑定邮箱</a></span></li>
-            <li class="password"><em><a href="javascript:void(0);"></a></em>
-              <span><a href="javascript:void(0);">修改密码</a></span></li>
+            <li class="phone isbind"><em><a href="javascript:void(0);"  onclick="quiteClick()" ></a></em>
+              <span><a id="w3-2" href="javascript:void(0);"  onclick="quiteClick()" >切换账号</a></span></li>
+            <%--<li class="email"><em><a href="javascript:void(0);"></a></em> <span>--%>
+              <%--<a id="w3" href="javascript:void(0);">绑定邮箱</a></span></li>--%>
+            <li class="password"><em><a href="/netUpdatePwrController/toFindPwr.do"></a></em>
+              <span><a href="/netUpdatePwrController/toFindPwr.do">修改密码</a></span></li>
           </ul>
         </div>
       </div>
       <div id="LEFT_FETURES">
-        <%--<div class="left-side left-side-3" myid="BUYERS_LEFT_FIX_child0">--%>
-          <%--<a href="http://hnuser.cnhnb.com/buyers/attention">--%>
-            <%--<h2>我的关注</h2>--%>
-            <%--<p>已关注   <span class="number">0</span> 个类别</p>--%>
-          <%--</a>--%>
-        <%--</div>--%>
         <div class="left-side left-side-4" myid="BUYERS_LEFT_FIX_child1">
         <a href="/netMineFavourController/favour.do?page=1">
           <h2>我的收藏</h2>
@@ -369,15 +363,6 @@
           </ul>
         </div>
       </div></div>
-
-      <%--<div class="ad-2">--%>
-        <%--<a href="#" target="_blank"><img src="../hmt/images/AF443AL303ChRkRlcQolaAKmLNAADMTzN7IQA454.jpg" style="width:1190px;height:90px;"></a>--%>
-      <%--</div>--%>
-      <%--<div class="browseb-record">--%>
-        <%--<!-- browseb-record -->--%>
-        <%--<div class="title">最近浏览记录</div>--%>
-        <%--<div class="norecord">亲~您还没有浏览过任何商品，赶紧去逛逛吧</div>--%>
-      <%--</div>--%>
     </div>
 
   </div>
@@ -433,9 +418,6 @@
     </div>
 
     <div class="customer">
-      <%--<a href="javascript:void(0);" class="btn help" id="newhelp">新版指南</a>--%>
-      <%--<a href="#" target="_blank" class="btn old" id="enterold">更新板块</a>--%>
-      <%--<a href="http://b.qq.com/webc.htm?new=0&amp;sid=564293010&amp;eid=218808P8z8p8q8Q8Q8q8x&amp;o=www.cnhnb.com&amp;q=7" class="btn-qq">QQ在线客服</a>--%>
       <div class="tel">
         <h3>客服热线：</h3>
         <span>0543-5253666</span>
@@ -468,55 +450,12 @@
   <div class="popup" style="margin-top: -163.5px;">
     <div class="bg-t"></div>
     <div class="bg-c">
-      <div class="title"><h2>模块管理</h2><span><img src="http://static.cnhnb.com/4.0/images/personal/home/popup-close.png"></span></div>
       <div class="box">
-        <div class="tip1">更多模块持续开放中</div>
-        <!--<ul>
-            <li>
-                <em><img src="http://static.cnhnb.com/4.0/images/personal/home/plug-11.png" /></em>
-                <span>交易管理</span>
-            </li>
-            <li>
-                <em><img src="http://static.cnhnb.com/4.0/images/personal/home/plug-12.png" /></em>
-                <span>产品询单</span>
-            </li>
-        </ul>
-        <div class="tip">更多模块持续开放中</div>-->
       </div>
     </div>
     <div class="bg-f"></div>
   </div>
 </div>
-<script src="../js/jquery-1.7.2.min.js" type="text/javascript"></script>
-<script src="../js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
-<script src="../js/highcharts.js" type="text/javascript"></script>
-<script src="../js/windows.js" type="text/javascript"></script>
-<style>.w-bg{position:fixed; z-index:9998; left:0; top:0; background-color:#000; width:100%; height:100%; opacity:0.5; filter:alpha(opacity=50);}.d-none{display:none;}.fx-wds-m1{text-align:center;}.fx-wds-m2{padding-left:37px;}.fx-wds-m2 span{color:#0684cf;}.fx-wds-m2 a{color:#0684cf;}.fx-wds-m2 a.but{ display:block; width:66px; height:30px; line-height:30px; background-color:#f47912; color:#FFF; margin:10px auto 0 auto; text-align:center; overflow:hidden;}.fx-wds-m3 h3{line-height:36px; padding:5px 0 0 41px; font-size:12px; margin:0px;}.fx-wds-m3 p{width:590px; height:250px; overflow:scroll; margin:0 0 0 41px; padding:8px; border:#cccccc solid 1px; }.fx-wds-m3 span{text-align:center; display:block; line-height:40px; padding-top:12px;}.fx-wds-m3 a{display:block; width:105px; height:29px; line-height:29px; overflow:hidden; text-align:center; background-color:#ccc; color:#666; margin:auto;}.fx-wds-m3 a.agree{margin:40px auto 0 auto;}.fx-wds-m3 a.cur{background-color:#f47912; color:#FFF;}.fx-wds-m4{margin:5px 0 0 26px; color:#666;}.fx-wds-m4 strong{font-size:14px; float:left; display:inline;color:#333;}.fx-wds-m4 img{float:left; display:inline;}.fx-wds-m4 span{color:#333;}.fx-wds-m4 a{width:88px; height:30px; overflow:hidden; display:block; margin:auto; line-height:30px; background-color:#f47912; color:#FFF; text-align:center; font-weight:bold;}.fx-w{position:fixed; z-index:9999; left:50%; top:50%; margin-left:-160px; margin-top:-90px; font-family:"微软雅黑";}.fx-w-3{margin-left:-286px; margin-top:-144px;}.fx-w-4{margin-left:-338px; margin-top:-225px;}.fx-w .fx-s-1{width:345px; height:210px; overflow:hidden; border:#b9b8b8 solid 1px; background-color: #fff;}.fx-w .fx-s-2{width:676px; height:450px; overflow:hidden; border:#b9b8b8 solid 1px; background-color: #fff;}.fx-w .fx-s-3{width:572px; height:288px; overflow:hidden; border:#b9b8b8 solid 1px; background-color: #fff;}.fx-w .fx-s-4{width:676px; height:450px; overflow:hidden; border:#b9b8b8 solid 1px; background-color: #fff;}.fx-w h2{height:32px; background-color:#f3f3f3; margin:0px;}.fx-w h2 strong{font-weight:bold; line-height:32px; padding-left:19px; float:left; display:inline; font-size:14px;}.fx-w h2 a{float:right; display:inline; margin:0 16px 0 0; line-height:32px; color:#333; text-decoration:none;}.fx-w .fx-s-4 h2{ background-color:#fff; }.fx-w .fx-s-4 h2 a{ font-size:28px; }.fx-w .line{display:block; height:1px; border-bottom:#cccccc solid 1px;}.fx-w .message{line-height:21px; color:#585858; font-size:12px;}.rule-h1{font-weight:bold;font-size:16px;line-height:30px;}.rule-h2{font-size:14px;line-height:28px;}.fx-w-5 .info{line-height:22px; padding-top:30px; text-align:center;}.fx-w-5 .message a{height:30px; float:left; width:80px; text-align:center; line-height:30px; color:#FFF; margin:30px 0 0 50px; cursor:pointer; border-radius:3px;}.fx-w-5 .message .a-yes{background-color:#009435;}.fx-w-5 .message .a-no{background-color:#f47a11;}.w-box{position:fixed; z-index:9999; left:50%; top:50%; margin-left:-160px; margin-top:-90px; font-family:"微软雅黑";}.w-consignee{margin-left:-250px; margin-top:-175px;}.w-consignee-box{width:500px; height:350px; overflow:hidden; border:#b9b8b8 solid 1px; background-color: #fff;}.w-box h2{height:32px; background-color:#f3f3f3; margin:0px;}.w-box h2 strong{font-weight:bold; line-height:32px; padding-left:19px; float:left; display:inline; font-size:14px;}.w-box h2 a{float:right; display:inline; margin:0 16px 0 0; line-height:32px; color:#333; text-decoration:none;}.w-box .line{display:block; height:1px; border-bottom:#cccccc solid 1px;}.w-box .message{}.w-box .message ul{padding-left:20px;}.w-box .message li{height:26px; line-height:26px; padding-top:10px;}.w-box .message li em{float:left; display:inline; width:15px; text-align:center; color:#f00;}.w-box .message li span{float:left; display:inline; width:70px;}.w-box .message li p{float:left; display:inline; width:390px;}.w-box .message li p input{height:24px; line-height:24px; border:#e5e5e5 solid 1px; width:120px; padding-left:10px;}.w-box .message li p input.consignee-street{width:330px;}.w-box .message li p input.consignee-postal{width:120px;}.w-box .message li p input.consignee-phone{width:180px;}.w-box .message li p input.consignee-areaCode{width:40px;}.w-box .message li p input.consignee-tel{width:120px;}.w-box .message li p input.consignee-ext{width:40px;}.w-box .message .consignee-but{padding-top:50px;}.w-box .message .consignee-but p{float:left; display:inline; line-height:24px; margin-left:230px;}.w-box .message .consignee-but p input{margin-top:5px;float:left; display:inline;}.w-box .message .consignee-but .but{float:right; display:inline; line-height:24px; height:24px; width:130px; margin-right:20px;}</style>
-<script src="../js/pointmessagetips.js" type="text/javascript"></script>
-<script src="../js/jquery.signalR.js" type="text/javascript"></script>
-<script src="../js/top_foot.js" type="text/javascript"></script>
-<script type="text/javascript">
-  var init = {
-    userWebUrl: "http://hnuser.cnhnb.com/",
-    email: "",
-    mobile: "15266788746",
-    userPic: "",
-    imgUrl: "http://img.cnhnb.com/",
-    shopUrl: "",
-    shopName: "",
-    resoruceUrl: "http://static.cnhnb.com/",
-    domain: "cnhnb.com",
-    guides: "BUYERS_GUIDE_"
-  }
-</script>
-<script src="../js/jquery.qrcode.min.js" type="text/javascript"></script>
-<script src="../js/index.js" type="text/javascript"></script>
-<script src="../js/hn.frame.util-0.1.js" type="text/javascript"></script>
-<!--<script src="../js/guide.js" type="text/javascript"></script>-->
-<script src="../js/binding.js" type="text/javascript"></script>
-<script src="../js/features.buyers.mgr.js" type="text/javascript"></script>
-<!--内容 end-->
-
 <jsp:include page="footer.jsp" flush="true" />
 
 <script src="../hmt/js/home.js" type="text/javascript"></script>
@@ -541,90 +480,14 @@
       window.location.href=_url;
     }
   }
-  function favourClick(_mm_msg_id){
-    //先判断是否登录
-    var is_login = $("#is_login").val();
-    if(is_login == 1){
-      //登陆了
-      var mm_emp_id = $("#mm_emp_id").val();
-      var accessToken = $("#accessToken").val();
-      $.ajax({
-        cache: true,
-        type:"POST",
-        url:"/saveFavour.do",
-        data:{"mm_msg_id":_mm_msg_id, "accessToken":accessToken, "mm_emp_id":mm_emp_id},
-        async: false,
-        success:function(_data){
-          var data = $.parseJSON(_data);
-          if(data.success){
-            alert("收藏成功");
-          }else{
-            var _case = {1:"收藏失败", 2:"已经收藏，不能重复收藏！",9:"账号过期，请重新登录！"};
-            alert(_case[data.code])
-          }
-        }
-      });
-    }else{
-      //没登陆
-      alert("请先登录");
-    }
-  }
-
-  function showDetail(_mm_msg_id){
-    window.location.href="/netRecordController/toDetail.do?mm_msg_id="+_mm_msg_id;
-  }
 
   function login(){
     //登录页面跳转
     window.location.href="/netLoginController/toLogin.do";
   }
-  function selectPro(){
-    //页面跳转
-    window.location.href="/webvSelectProvinceController/toSelectProvince.do";
-  }
-
-  function addMsg(){
-    var is_login = $("#is_login").val();
-    if(is_login == 1) {
-      //登陆了
-      if(${emp.is_upate_profile == '1'} ){
-        window.location.href="/webvAddRecordController/toAddRecord.do";
-      }else{
-        window.location.href="/webvProfile/toUpdateProfile.do";
-      }
-
-    }else{
-      //登录页面跳转
-      window.location.href="/webvLoginController/toLogin.do";
-    }
-  }
 </script>
 
 <script type="text/javascript" charset="UTF-8">
-  function searchIndex(e,_page){
-    var _index = $("#index").val();
-    var page = parseInt(_page);
-    var size = $("#size").val();
-    var keyword = $("#keyword").val();
-    if(_index <= ${page.pageCount} && _index >= 1){
-      window.location.href="/hmtIndex/toIndex.do?page="+_index+"&size="+size+"&keyword="+keyword;
-    }else{
-      alert("请输入1-${page.pageCount}的页码数");
-    }
-  }
-
-  function nextPage(_page) {
-    var page = parseInt(_page);
-    var size = $("#size").val();
-    var keyword = $("#keyword").val();
-    addCookie("contract_size", size, 36);
-    if ((page <= ${page.pageCount} && page >= 1)) {
-      window.location.href="/hmtIndex/toIndex.do?page="+page+"&size="+size+"&keyword="+keyword;
-    } else {
-      alert("请输入1-${page.pageCount}的页码数");
-    }
-  }
-
   function quiteClick(){
     //退出
     $.ajax({
