@@ -67,7 +67,7 @@
             <span>手机花木通</span><span>安卓版扫描下载APP</span></p>
         </div>
         <div class="qrcode">
-          <img src="../hmt/images/category-vegetable/topbar-hn-weixin.jpg" alt="花木通官方微信">
+          <img src="../hmt/images/category-vegetable/topbar-hn-weixin.png" alt="花木通官方微信">
           <p>
             <span>扫码关注</span><span>花木通官方微信</span></p>
         </div>

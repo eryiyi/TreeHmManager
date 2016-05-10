@@ -241,7 +241,7 @@
           <i>&nbsp;</i><span>关注花木通</span></div>
         <div class="dropdown-layer dd-hn-qrcode">
           <div class="qrcode">
-            <img src="../hmt/images/category-vegetable/topbar-hn-weixin.jpg" alt="花木通官方微信">
+            <img src="../hmt/images/category-vegetable/topbar-hn-weixin.png" alt="花木通官方微信">
             <p>
               <span>扫码关注</span><span>花木通官方微信</span></p>
           </div>
@@ -311,23 +311,28 @@
       </div>
       <div id="LEFT_FETURES">
         <div class="left-side left-side-4" myid="BUYERS_LEFT_FIX_child1">
-        <a href="/netMineFavourController/favour.do?page=1">
-          <h2>我的收藏</h2>
-          <p> 已收藏 <span class="number">${count}</span> 条</p>
-        </a>
-
-          <a href="/netCenterController/toAddArea.do">
-            <h2>添加关注区域</h2>
+          <a href="/netMineFavourController/favour.do?page=1">
+            <h2>我的收藏</h2>
+            <p> 已收藏 <span class="number">${count}</span> 条</p>
           </a>
+        </div>
+        </div>
+        <div class="left-side left-side-4" myid="BUYERS_LEFT_FIX_child1">
+            <a href="/netCenterController/toAddArea.do">
+              <h2>添加关注区域</h2>
+            </a>
+        </div>
+        <div class="left-side left-side-4" myid="BUYERS_LEFT_FIX_child1">
           <a href="/netCenterController/toGuanzhu.do">
             <h2>关注区域</h2>
           </a>
+        </div>
+        <div class="left-side left-side-4" myid="BUYERS_LEFT_FIX_child1">
           <a href="/netCenterController/toSelectArea.do">
             <h2>地区选择</h2>
           </a>
+        </div>
       </div>
-      </div>
-    </div>
     <div class="mainC">
       <!-- module -->
       <div class="module" id="MIDDEL_FETURES">
@@ -341,7 +346,19 @@
               <p></p>
             </a>
           </div>
-        </div><div class="modules modu-wdxd" myid="BUYES_MIDDLE_FEATURES_child1">
+        </div>
+        <div class="modules modu-wdcg" myid="BUYES_MIDDLE_FEATURES_child0">
+          <div class="title">
+            <h2>短信平台</h2>
+          </div>
+          <div class="box">
+            <a href="http://mhmt.sdhmmm.cn/loginFront.aspx" target="_blank">
+              <h3>苗木通短信平台</h3>
+              <p></p>
+            </a>
+          </div>
+        </div>
+        <div class="modules modu-wdxd" myid="BUYES_MIDDLE_FEATURES_child1">
         <div class="title">
           <h2>我的关注</h2>
         </div>

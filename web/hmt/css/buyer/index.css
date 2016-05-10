@@ -665,7 +665,8 @@ body {
 }
 /*- modu-wdcg -*/
 .modu-wdcg{
-    width: 345px;
+    width: 30%;
+    margin-right: 3.33%;
     height: 202px;
 }
 .modu-wdcg .title{
@@ -702,21 +703,19 @@ body {
     text-align: center;
 }
 .modu-wdcg .box p{
-    margin: 20px 0 0 110px;
+    margin: 20px auto;
     height: 51px;
-    line-height: 51px;
+    width: 51px;
     overflow: hidden;
     background: url("../../images/modu-3.png")  no-repeat;
-    padding-left: 70px;
-    font-size: 48px;
-    color: #f47a11;
 }
 .modu-wdcg .box a:hover p{
     background: url("../../images/modu-3-click.png")  no-repeat;
 }
 /*- modu-wdxd -*/
 .modu-wdxd{
-    width: 345px;
+    width: 30%;
+    margin-right: 3.33%;
     height: 202px;
 }
 .modu-wdxd .title{
@@ -753,14 +752,11 @@ body {
     text-align: center;
 }
 .modu-wdxd .box p{
-    margin: 20px 0 0 110px;
+    margin: 20px auto;
     height: 51px;
-    line-height: 51px;
+    width: 51px;
     overflow: hidden;
     background: url("../../images/modu-2.png")  no-repeat;
-    padding-left: 70px;
-    font-size: 48px;
-    color: #f47a11;
 }
 .modu-wdxd .box a:hover p{
     background: url("../../images/modu-2-click.png")  no-repeat;
