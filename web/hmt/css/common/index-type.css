@@ -16,16 +16,16 @@
     width: 100%;
     height: 100%;
     display: block;
-    background-color: #009237;
-    border-bottom: 5px solid #008030;
+    background-color: #0EBB4F;
+    border-bottom: 5px solid #04AB43;
 }
 .type-nav .nav-con ul.nav-con-tit li:hover a{ color:#f47a11;}
 /*.type-nav .nav-con .menu-c-nav{ width:220px; background-color:#4E4E4E; position:absolute; z-index:99; margin-top:44px;} */
 .type-nav .nav-con .menu-c-tit {
     width: 220px;
     text-indent: 1em;
-    background-color: #009237;
-    border-bottom: 5px solid #008030;
+    background-color: #0EBB4F;
+    border-bottom: 5px solid #04AB43;
     overflow: hidden;
     position: absolute;
     z-index: 101;

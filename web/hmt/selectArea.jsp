@@ -19,6 +19,8 @@
   <link href="../hmt/css/search/style.css" rel="stylesheet" type="text/css" />
   <link href="../hmt/css/search/base.css" rel="stylesheet" type="text/css" />
   <link href="../hmt/css/supply/index.css" rel="stylesheet" type="text/css" />
+  <link href="../hmt/css/location_select.css" rel="stylesheet" type="text/css" />
+
 
 
   <script type="text/javascript" src="../js/jquery.min.js"></script>
@@ -166,33 +168,128 @@
 
 <div class="container wrap-1190">
 
-  <form action="supply.htm" id="filterForm" class="fl" style="width: 956px;">
+  <form  action="supply.htm" id="filterForm" class="fl" style="width: 956px;">
     <div class="noticebar mt_15">
       <input type="text" id="keyword" name="keyword" autocomplete="off" class="notice-input" value="" placeholder="标题|手机号|公司名称|联系人">
       <a href="javaScript:void(0)" onclick="searchIndex(event)" class="notice-submit"> <i class="lee-ico lee-cx"></i>搜索</a>
       <span class="notice-msg"><a href="#" target="_blank" rel="nofollow">欢迎使用花木通信息平台，请谨慎核实信息内容!</a></span>
     </div>
-    <div class="tabs mt_15">
-      <ul class="tabs-list">
-        <%--<c:if test="${query.mm_msg_type=='0'}"><li class="cur" onclick="javascript:changeShowType('0');"><a>最新求购</a></li></c:if>--%>
-        <%--<c:if test="${query.mm_msg_type=='1'}"><li class="cur" onclick="javascript:changeShowType('0');"><a>最新供应</a></li></c:if>--%>
-      </ul>
-      <div class="tabs-msg"><a></a></div>
-      <div class="list-pages">
-        <a href="javascript:void(0);">&lt;</a>
-        <%--<span>${page.page}/${page.pageCount}</span>--%>
-        <a href="http://www.cnhnb.com/supply/p/0-0-2">&gt;</a>
+    <%--<div class="tabs mt_15">--%>
+      <%--<ul class="tabs-list">--%>
+        <%--&lt;%&ndash;<c:if test="${query.mm_msg_type=='0'}"><li class="cur" onclick="javascript:changeShowType('0');"><a>最新求购</a></li></c:if>&ndash;%&gt;--%>
+        <%--&lt;%&ndash;<c:if test="${query.mm_msg_type=='1'}"><li class="cur" onclick="javascript:changeShowType('0');"><a>最新供应</a></li></c:if>&ndash;%&gt;--%>
+      <%--</ul>--%>
+      <%--<div class="tabs-msg"><a></a></div>--%>
+      <%--<div class="list-pages">--%>
+        <%--<a href="javascript:void(0);">&lt;</a>--%>
+        <%--&lt;%&ndash;<span>${page.page}/${page.pageCount}</span>&ndash;%&gt;--%>
+        <%--<a href="http://www.cnhnb.com/supply/p/0-0-2">&gt;</a>--%>
 
-      </div>
-    </div>
+      <%--</div>--%>
+    <%--</div>--%>
     <div class="pro-list mb_10">
-      <ul class="pro-list-title pt_15">
-        <li class="l1">时间</li>
-        <li class="l2">内容</li>
-        <li class="l4">所在地区</li>
-        <li class="l5">联系人</li>
-      </ul>
-      <ul>
+      <%--<c:if test="${is_guanzhu=='0'}"><span>您已经申请了关注区域！请等待管理员审核</span></c:if>--%>
+      <%--<c:if test="${is_guanzhu=='1'}">--%>
+        <%--<h2 class="label-title">我关注的区域</h2>--%>
+        <%--<ul class="location-list location-list-green clearfix">--%>
+          <%--<c:forEach items="${areaNames}" var="e" varStatus="st">--%>
+            <%--<li>--%>
+              <%--<a href="/webvGuanzhuController/guanzhuArea.do?page=1">--%>
+                <%--<span class="list-name">${e}</span>--%>
+              <%--</a>--%>
+            <%--</li>--%>
+          <%--</c:forEach>--%>
+        <%--</ul>--%>
+
+        <h2 class="label-title">我关注的区域</h2>
+        <ul class="location-list location-list-green clearfix">
+            <li>
+              <a href="/webvGuanzhuController/guanzhuArea.do?page=1">
+                <span class="list-name">山东省</span>
+              </a>
+            </li>
+            <li>
+              <a href="/webvGuanzhuController/guanzhuArea.do?page=1">
+                <span class="list-name">山东省</span>
+              </a>
+            </li>
+            <li>
+              <a href="/webvGuanzhuController/guanzhuArea.do?page=1">
+                <span class="list-name">山东省</span>
+              </a>
+            </li>
+            <li>
+              <a href="/webvGuanzhuController/guanzhuArea.do?page=1">
+                <span class="list-name">山东省</span>
+              </a>
+            </li>
+            <li>
+              <a href="/webvGuanzhuController/guanzhuArea.do?page=1">
+                <span class="list-name">山东省</span>
+              </a>
+            </li>
+        </ul>
+
+      <%--</c:if>--%>
+      <c:if test="${is_guanzhu=='2'}"><span>您申请的关注区域未通过审核，请联系客服！</span></c:if>
+      <c:if test="${is_guanzhu=='3'}"><span>您尚未申请关注区域，请设置关注区域！</span></c:if>
+
+      <%--<ul class="location-list clearfix">--%>
+        <%--<h2 class="label-title">*热门区域</h2>--%>
+        <%--<c:forEach items="${listhot}" var="e" varStatus="st">--%>
+          <%--<li>--%>
+            <%--<a href="/webvHotController/toIndex.do?page=1&countryid=${e.areaID}&is_guanzhu='1'">--%>
+              <%--<span class="list-name">${e.cityName}${e.area}</span>--%>
+            <%--</a>--%>
+          <%--</li>--%>
+        <%--</c:forEach>--%>
+      <%--</ul>--%>
+
+        <ul class="location-list clearfix">
+          <h2 class="label-title">*热门区域</h2>
+            <li>
+              <a href="/webvHotController/toIndex.do?page=1&countryid=${e.areaID}&is_guanzhu='1'">
+                <span class="list-name">济南市</span>
+              </a>
+            </li>
+            <li>
+              <a href="/webvHotController/toIndex.do?page=1&countryid=${e.areaID}&is_guanzhu='1'">
+                <span class="list-name">济南市</span>
+              </a>
+            </li>
+            <li>
+              <a href="/webvHotController/toIndex.do?page=1&countryid=${e.areaID}&is_guanzhu='1'">
+                <span class="list-name">济南市</span>
+              </a>
+            </li>
+            <li>
+              <a href="/webvHotController/toIndex.do?page=1&countryid=${e.areaID}&is_guanzhu='1'">
+                <span class="list-name">济南市</span>
+              </a>
+            </li>
+            <li>
+              <a href="/webvHotController/toIndex.do?page=1&countryid=${e.areaID}&is_guanzhu='1'">
+                <span class="list-name">济南市</span>
+              </a>
+            </li>
+            <li>
+              <a href="/webvHotController/toIndex.do?page=1&countryid=${e.areaID}&is_guanzhu='1'">
+                <span class="list-name">济南市</span>
+              </a>
+            </li>
+        </ul>
+        <div class="clear"></div>
+
+    <script>
+      function toPage(_url, _page){
+        if(_page != ''){
+          window.location.href=_url+"?page="+_page;
+        }else{
+          window.location.href=_url;
+        }
+      }
+    </script>
+      <%--<ul>--%>
 
        <%--<c:forEach items="${list}" var="e" varStatus="st">--%>
          <%--<li class="text-list">--%>
@@ -210,9 +307,8 @@
          <%--</li>--%>
        <%--</c:forEach>--%>
 
-      </ul>
+      <%--</ul>--%>
 
-      <div class="clear"></div>
     </div>
   </form>
   <div class="sides mt_15">
@@ -241,7 +337,6 @@
   </div>
 
   <div class="page p_30 mb_10 tr">
-    <center>
       <c:if test="${is_login=='1'}">
         <input type="hidden" id="pageCount" value="6443">
         <input type="hidden" name="size" id="size" value="${query.size}">

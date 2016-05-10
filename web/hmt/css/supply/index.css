@@ -74,7 +74,7 @@ a:hover {
 .tabs ul.tabs-list{float:left; display:inline; border-right:#ddd solid 1px; height:41px;}
 .tabs ul.tabs-list li{float:left; display:inline; height:40px; line-height:40px; border-left:#ddd solid 1px; border-top:#ddd solid 1px; width:110px; text-align:center; font-size:14px; font-family:'微软雅黑'; cursor:pointer;}
 .tabs ul.tabs-list li a{text-decoration:none;}
-.tabs ul.tabs-list li.cur{height:39px; line-height:39px; border-top:#009435 solid 2px; background-color:#FFF;}
+.tabs ul.tabs-list li.cur{height:39px; line-height:39px; border-top:#0EBB4F solid 2px; background-color:#FFF;}
 .tabs .tabs-msg{float:left; display:inline; line-height:40px; height:40px; width:562px; padding-left:50px; border-top:#ddd solid 1px; font-size:14px; font-family:'微软雅黑';}
 .tabs .list-pages{float:right; display:inline; line-height:40px; height:40px; width:120px; border-top:#ddd solid 1px; border-right:#ddd solid 1px; text-align:center;}
 .tabs .list-pages span{padding:0 5px;}

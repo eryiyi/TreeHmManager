@@ -19,6 +19,7 @@
   <link href="../hmt/css/search/style.css" rel="stylesheet" type="text/css" />
   <link href="../hmt/css/search/base.css" rel="stylesheet" type="text/css" />
   <link href="../hmt/css/supply/index.css" rel="stylesheet" type="text/css" />
+  <link href="../hmt/css/location_focus.css" rel="stylesheet" type="text/css" />
 
 
   <script type="text/javascript" src="../js/jquery.min.js"></script>
@@ -42,6 +43,37 @@
       font-size: 1.5rem;
       color: #fff !important;
       background-color: #009237;
+    }
+
+    .category {
+      width: 100%;
+      padding: 10px;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    .category > li {
+      float: left;
+      display: block;
+      width: 19%;
+      margin-right: 1%;
+    }
+    .category > li > .active {
+      border: 1px solid #FF250E;
+      background-color: #FF6C6C;
+      color: #fff;
+    }
+    .category > li > a {
+      text-align: center;
+      border: 1px solid #05D000;
+      color: #000;
+      display: block;
+      padding: 10px 15px;
+      font-size: 1rem;
+      background-color: #acf86a;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
     }
   </style>
 
@@ -172,19 +204,18 @@
       <a href="javaScript:void(0)" onclick="searchIndex(event)" class="notice-submit"> <i class="lee-ico lee-cx"></i>搜索</a>
       <span class="notice-msg"><a href="#" target="_blank" rel="nofollow">欢迎使用花木通信息平台，请谨慎核实信息内容!</a></span>
     </div>
-    <div class="tabs mt_15">
-      <ul class="tabs-list">
-        <%--<c:if test="${query.mm_msg_type=='0'}"><li class="cur" onclick="javascript:changeShowType('0');"><a>最新求购</a></li></c:if>--%>
-        <%--<c:if test="${query.mm_msg_type=='1'}"><li class="cur" onclick="javascript:changeShowType('0');"><a>最新供应</a></li></c:if>--%>
+    <div class="pro-list mb_10">
+      <%--顶部地区选择--%>
+      <ul class="category clearfix">
+          <li><a class="active" href="" onclick="">山东</a></li>
+          <li><a href="" onclick="">湖北</a></li>
+          <li><a href="" onclick="">湖南</a></li>
+          <li><a href="" onclick="">湖南</a></li>
+          <li><a href="" onclick="">湖南</a></li>
       </ul>
-      <div class="tabs-msg"><a></a></div>
-      <div class="list-pages">
-        <a href="javascript:void(0);">&lt;</a>
-        <%--<span>${page.page}/${page.pageCount}</span>--%>
-        <a href="http://www.cnhnb.com/supply/p/0-0-2">&gt;</a>
-
-      </div>
+      <%--地区选择结束--%>
     </div>
+    <%--内容区--%>
     <div class="pro-list mb_10">
       <ul class="pro-list-title pt_15">
         <li class="l1">时间</li>
@@ -194,26 +225,29 @@
       </ul>
       <ul>
 
-       <%--<c:forEach items="${list}" var="e" varStatus="st">--%>
-         <%--<li class="text-list">--%>
-           <%--<a href="javascript:void(0)" target="_blank" onclick="showDetail('${e.mm_msg_id}')">--%>
-             <%--<span class="l1">${e.dateline}</span>--%>
-             <%--<span class="l2">${e.mm_msg_title}</span>--%>
-             <%--<span class="l4">${e.area}</span>--%>
-             <%--<span class="l5">${e.mm_emp_nickname}</span>--%>
-			                <%--<span class="l6">--%>
-                                <%--<c:if test="${e.is_miaomu=='1'}"><img style="width: 25px;height: 32px;" src="../img/tree_icons_trust.png" title="苗木协会"></c:if>--%>
-								<%--<c:if test="${e.is_chengxin=='1'}"><img style="width: 25px;height: 32px;" src="../img/tree_icons_group.png" title="诚信会员"></c:if>--%>
-			                <%--</span>--%>
-             <%--<span class="l7"><em class="text-list-view">查看详情</em></span>--%>
-           <%--</a>--%>
-         <%--</li>--%>
-       <%--</c:forEach>--%>
+        <c:forEach items="${list}" var="e" varStatus="st">
+          <li class="text-list">
+            <a href="javascript:void(0)" target="_blank" onclick="showDetail('${e.mm_msg_id}')">
+              <span class="l1">${e.dateline}</span>
+              <span class="l2">${e.mm_msg_title}</span>
+              <span class="l4">${e.area}</span>
+              <span class="l5">${e.mm_emp_nickname}</span>
+                              <span class="l6">
+                                  <c:if test="${e.is_miaomu=='1'}"><img style="width: 25px;height: 32px;" src="../img/tree_icons_trust.png" title="苗木协会"></c:if>
+                                  <c:if test="${e.is_chengxin=='1'}"><img style="width: 25px;height: 32px;" src="../img/tree_icons_group.png" title="诚信会员"></c:if>
+                              </span>
+              <span class="l7"><em class="text-list-view">查看详情</em></span>
+            </a>
+          </li>
+        </c:forEach>
 
       </ul>
-
+      <%--内容区结束--%>
       <div class="clear"></div>
     </div>
+
+
+      <div class="clear"></div>
   </form>
   <div class="sides mt_15">
     <div class="release-but mb_15"><a href="javascript:void(0)" target="_blank" onclick="addMsg()"><i class="lee-ico lee-fb"></i> &nbsp; 发布供应</a></div>
