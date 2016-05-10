@@ -32,7 +32,7 @@ public class NetCenterController extends ControllerConstants {
     private ExecuteService appFavourCountService;
 
     @RequestMapping("toCenter")
-    public String add(HttpSession session, ModelMap map) throws Exception {
+    public String toCenter(HttpSession session, ModelMap map) throws Exception {
         EmpVO empVO = (EmpVO) session.getAttribute(MEMBER_KEY);
         if(empVO != null) {
             //说明已经登陆
@@ -62,5 +62,20 @@ public class NetCenterController extends ControllerConstants {
 
     }
 
+
+    @RequestMapping("toAddArea")
+    public String toAddArea(HttpSession session, ModelMap map) throws Exception {
+            return "../../hmt/guanzhuAdd";
+    }
+
+    @RequestMapping("toGuanzhu")
+    public String toGuanzhu(HttpSession session, ModelMap map) throws Exception {
+        return "../../hmt/guanzhu";
+    }
+
+    @RequestMapping("toSelectArea")
+    public String toSelectArea(HttpSession session, ModelMap map) throws Exception {
+        return "../../hmt/selectArea";
+    }
 
 }

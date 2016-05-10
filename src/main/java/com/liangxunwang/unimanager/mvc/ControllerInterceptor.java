@@ -135,6 +135,9 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/netFuwuCenterController/toCenter\\.do$)"+
                         "|(^/netUpdatePwrController/toFindPwr\\.do$)"+
                         "|(^/netUpdatePwrController/findPwr\\.do$)"+
+                        "|(^/netCenterController/toAddArea\\.do$)"+
+                        "|(^/netCenterController/toGuanzhu\\.do$)"+
+                        "|(^/netCenterController/toSelectArea\\.do$)"+
 
                         "|(^/memberLogin\\.do$)"
 

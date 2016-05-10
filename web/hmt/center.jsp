@@ -315,7 +315,18 @@
           <h2>我的收藏</h2>
           <p> 已收藏 <span class="number">${count}</span> 条</p>
         </a>
-      </div></div>
+
+          <a href="/netCenterController/toAddArea.do">
+            <h2>添加关注区域</h2>
+          </a>
+          <a href="/netCenterController/toGuanzhu.do">
+            <h2>关注区域</h2>
+          </a>
+          <a href="/netCenterController/toSelectArea.do">
+            <h2>地区选择</h2>
+          </a>
+      </div>
+      </div>
     </div>
     <div class="mainC">
       <!-- module -->
