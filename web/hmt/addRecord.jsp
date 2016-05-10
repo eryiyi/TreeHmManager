@@ -45,6 +45,7 @@
             margin-left: 1%;
             width: 32%;
             float: left;
+            margin-bottom: 20px;
         }
         .pic-holder>label{
             background-color: #fff;
@@ -53,15 +54,21 @@
         }
         .pic-holder .img-thumbnail{
             display: block;
-            width: 30%;
-            height: 30%;
+            width: 100%;
         }
         .upload-button{
+            outline: none;
+            border: none;
             font-size: 1rem;
-            line-height: 200%;
-            width: 30% !important;
+            line-height: 250%;
+            width: 100% !important;
             display: block;
         }
+        .fill-green{
+            background-color: #0EBB4F;
+            color: #fff;
+        }
+
     </style>
 
 </head>
@@ -119,7 +126,7 @@
 
     <a target="_blank" href="#">发布信息指南</a>
   </div>
-    <div class="release mb_50">
+    <div class="release mb_50" style="padding: 50px 200px;">
 
         <ul class="row-3">
             <li class="col-1">信息类型</li>
