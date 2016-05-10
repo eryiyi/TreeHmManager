@@ -34,10 +34,10 @@ public class WebvServiceController extends ControllerConstants {
         EmpVO empVO = (EmpVO) session.getAttribute(MEMBER_KEY);
         if(empVO != null) {
             //说明已经登陆
-            if(empVO != null && !StringUtil.isNullOrEmpty(empVO.getMm_emp_endtime())){
-                String endStr = DateUtil.getDate(empVO.getMm_emp_endtime(), "yyyy-MM-dd");
-                empVO.setMm_emp_endtime(endStr);
-            }
+//            if(empVO != null && !StringUtil.isNullOrEmpty(empVO.getMm_emp_endtime())){
+//                String endStr = DateUtil.getDate(empVO.getMm_emp_endtime(), "yyyy-MM-dd");
+//                empVO.setMm_emp_endtime(endStr);
+//            }
             map.put("emp", empVO);
             //获得用户的轮播图
             EmpAdQuery query = new EmpAdQuery();
