@@ -6,7 +6,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="icon" href="logo.ico" type="image/x-icon" />
+	<link rel="icon" href="../img/icon.png" type="image/png" />
 	<meta name="renderer" content="webkit">
 	<title>花木通|金牌榜</title>
 	<meta name="keywords" content="花木通,惠民,苗木,花木,苗木交易,花木求购,苗木求购,花木资讯,花木论坛,花木销售,苗木销售,苗木资讯,绿化苗木,花草,苗联通,白蜡,园林,惠民皂户李镇,苗木协会">
@@ -19,7 +19,9 @@
 	<link href="../hmt/css/search/style.css" rel="stylesheet" type="text/css" />
 	<link href="../hmt/css/search/base.css" rel="stylesheet" type="text/css" />
 	<link href="../hmt/css/supply/index.css" rel="stylesheet" type="text/css" />
-	<link href="../hmt/css/xihongshi.css" rel="stylesheet" type="text/css" />
+	<%--<link href="../hmt/css/xihongshi.css" rel="stylesheet" type="text/css" />--%>
+	<link href="../hmt/css/toplist.css" rel="stylesheet" type="text/css" />
+
 
 	<script type="text/javascript" src="../js/jquery.min.js"></script>
 	<script type="text/javascript" src="../js/md5.js"></script>
@@ -204,24 +206,31 @@
 <input type="hidden" id="accessToken" name="accessToken" value="${emp.access_token}">
 <input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${emp.mm_emp_id}">
 
-<div class="m3 wrap">
-	<ul>
-		<c:forEach items="${list}" var="e" varStatus="st">
-			<li>
-				<a href="/webvProfile/toProfile.do?mm_emp_id=${e.mm_emp_id}" target="_blank">
-					<em><img src="${e.mm_emp_cover}"></em>
-					<div class="txt">
-						<h2>${e.mm_emp_nickname}</h2>
-						<h3>${e.mm_emp_mobile}</h3>
-						<span>${e.mm_emp_company}</span>
-						<p>${e.mm_emp_company_detail}</p>
-					</div>
-				</a>
-			</li>
-		</c:forEach>
-
-	</ul>
+<div class="card-holder clearfix">
+	<c:forEach items="${list}" var="e" varStatus="st">
+		<a  href="/webvProfile/toProfile.do?mm_emp_id=${e.mm_emp_id}" target="_blank" class="card clearfix">
+			<div class="pic-holder">
+				<img src="${e.mm_emp_cover}" alt="头像"/>
+			</div>
+			<div class="words clearfix">
+				<div class="words-line clearfix">
+					<h2 class="name">${e.mm_emp_nickname}</h2>
+					<img class="badge" src="../hmt/images/tree_icons_group.png" alt="协会图标"/>
+					<img class="badge" src="../hmt/images/tree_icons_trust.png" alt="信任图标"/>
+				</div>
+				<div class="words-line clearfix">
+					<h3 class="phone">${e.mm_emp_mobile}</h3>
+					<img class="star" src="../hmt/images/tree_icons_star_5.png" alt="星级图标"/>
+				</div>
+				<div class="words-line clearfix">
+					<h3 class="company">${e.mm_emp_company}</h3>
+				</div>
+			</div>
+		</a>
+	</c:forEach>
 </div>
+
+
 <!--内容 end-->
 <jsp:include page="footer.jsp" flush="true" />
 
