@@ -42,33 +42,6 @@
     <div class="logo fl">
       <a href="javascript:void(0)"><img src="../hmt/images/category-vegetable/logo_type.png" alt="花木通信息平台" width="205px" height="40px"></a>
     </div>
-    <div class="logotext lh22 fl ml10">
-      <div class="fs18">用户注册</div>
-      <div class="">客服热线：400-666-8888</div>
-    </div>
-  </div>
-  <div class="links fr">
-            <span>
-                <i class="fl"><img src="../hmt/images/top_ico_01.jpg"></i>
-                <div class="lh22 fs14 fl ml10">
-                  <p>海量供应</p>
-                  <p>实时更新</p>
-                </div>
-            </span>
-            <span>
-                <i class="fl"><img src="../hmt/images/top_ico_02.jpg"></i>
-                <div class="lh22 fs14 fl ml10">
-                  <p>采购信息</p>
-                  <p>免费发布</p>
-                </div>
-            </span>
-            <span>
-                <i class="fl"><img src="../hmt/images/top_ico_03.jpg"></i>
-                <div class="lh22 fs14 fl ml10">
-                  <p>知名产地 </p>
-                  <p>源头好货</p>
-                </div>
-            </span>
   </div>
 </div>
 <!--头部 导航 end-->
@@ -89,53 +62,53 @@
                           placeholder="常用手机号码" value="常用手机号码"
                           onfocus="this.value=this.value=='常用手机号码'?'':this.value;" onblur="this.value=this.value==''?'常用手机号码':this.value"
                           autocomplete="off">
-                   <i id="mobilev" class="reg-ico-1" style="display: none;"></i>
-                   <div id="mobile-error" class="errorWrapper">
-                     <label class="error">手机号不能为空</label>
-                   </div>
+                   <%--<i id="mobilev" class="reg-ico-1" style="display: none;"></i>--%>
+                   <%--<div id="mobile-error" class="errorWrapper">--%>
+                     <%--<label class="error">手机号不能为空</label>--%>
+                   <%--</div>--%>
                </span>
       </li>
         <li><span><i>*</i>登录密码：</span>
                <span class="input-box">
-                   <span class="passwordbox">
-                       <input type="password" id="mm_emp_password" name="mm_emp_password" class="password" attr_name="password" minlength="6" maxlength="18" placeholder="设置密码" autocomplete="off">
-                       <a class="button-password hidden" href="javascript:void(0);" id="togglePassword" target="_self"></a>
-                   </span>
-                   <i class="reg-ico-1" id="passwordv" style="display: none;"></i>
-                   <span class="password-prompt hidden">温馨提示：新增密码明细切换显示</span>
-                   <div id="password-error" class="errorWrapper">
-                       <label class="error">请输入6~18位数字、字母或常用符号，字母区分大小写</label>
-                   </div>
+                   <input type="password" id="mm_emp_password" name="mm_emp_password" attr_name="password" minlength="6" maxlength="18" placeholder="设置密码" autocomplete="off">
+                   <%--<span class="passwordbox">--%>
+                       <%--<a class="button-password hidden" href="javascript:void(0);" id="togglePassword" target="_self"></a>--%>
+                   <%--</span>--%>
+                   <%--<i class="reg-ico-1" id="passwordv" style="display: none;"></i>--%>
+                   <%--<span class="password-prompt hidden">温馨提示：新增密码明细切换显示</span>--%>
+                   <%--<div id="password-error" class="errorWrapper">--%>
+                       <%--<label class="error">请输入6~18位数字、字母或常用符号，字母区分大小写</label>--%>
+                   <%--</div>--%>
                </span>
         </li>
       <li>
         <span><i>*</i>联系人：</span>
                <span class="input-box">
-                   <input type="text" class="name" attr_name="linkMan" placeholder="真实姓名" id="mm_emp_nickname" name="mm_emp_nickname"
+                   <input type="text"  attr_name="linkMan" placeholder="真实姓名" id="mm_emp_nickname" name="mm_emp_nickname"
                           onfocus="this.value=this.value==''?'':this.value;" onblur="this.value=this.value==''?'':this.value"
                           autocomplete="off">
-                   <i class="reg-ico-1" id="linkManv" style="display: none;"></i>
-                   <div id="linkMan-error" class="errorWrapper">
-                     <label class="error">联系人姓名不能为空，请输入3~12位中文字符</label>
-                   </div>
+                   <%--<i class="reg-ico-1" id="linkManv" style="display: none;"></i>--%>
+                   <%--<div id="linkMan-error" class="errorWrapper">--%>
+                     <%--<label class="error">联系人姓名不能为空，请输入3~12位中文字符</label>--%>
+                   <%--</div>--%>
                </span>
       </li>
         <li>
             <span><i>*</i>身份证号：</span>
                <span class="input-box">
-                   <input type="text" class="name" attr_name="linkMan" placeholder="身份证号" id="mm_emp_card" name="mm_emp_card"
+                   <input type="text" attr_name="linkMan" placeholder="身份证号" id="mm_emp_card" name="mm_emp_card"
                           onfocus="this.value=this.value==''?'':this.value;" onblur="this.value=this.value==''?'':this.value"
                           autocomplete="off">
-                   <div id="mm_emp_card-error" class="errorWrapper">
-                       <label class="error">身份证号不能为空，请输入！</label>
-                   </div>
+                   <%--<div id="mm_emp_card-error" class="errorWrapper">--%>
+                       <%--<label class="error">身份证号不能为空，请输入！</label>--%>
+                   <%--</div>--%>
                </span>
         </li>
       <li>
         <li>
             <span><i>*</i>省：</span>
                <span class="input-box">
-                   <select class="name" name="mm_emp_provinceId" id="mm_emp_provinceId" onchange="selectCitys()">
+                   <select  name="mm_emp_provinceId" id="mm_emp_provinceId" onchange="selectCitys()">
                        <option value="">--选择省份--</option>
                        <c:forEach items="${listProvinces}" var="e" varStatus="st">
                            <option value="${e.provinceID}" >${e.province}</option>
@@ -146,7 +119,7 @@
         <li>
             <span><i>*</i>市：</span>
                <span class="input-box">
-                   <select class="name" name="mm_emp_cityId" id="mm_emp_cityId" onchange="selectCountrys()">
+                   <select  name="mm_emp_cityId" id="mm_emp_cityId" onchange="selectCountrys()">
                        <option value="">--选择城市--</option>
                        <c:forEach items="${listCitys}" var="e" varStatus="st">
                            <option value="${e.cityID}" >${e.city}</option>
@@ -157,7 +130,7 @@
         <li>
             <span><i>*</i>县区：</span>
                <span class="input-box">
-                   <select class="name" name="mm_emp_countryId" id="mm_emp_countryId">
+                   <select  name="mm_emp_countryId" id="mm_emp_countryId">
                        <option value="">--选择县区--</option>
                        <c:forEach items="${listsCountry}" var="e" varStatus="st">
                            <option value="${e.areaID}" >${e.area}</option>

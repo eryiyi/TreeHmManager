@@ -4,13 +4,39 @@
 .type-nav { background-color:#f5f5f5; border-bottom:5px solid #eaeaea; font-family:微软雅黑; min-width:1190px; width:100%;}
 .type-nav-fixed{ position:fixed; top:0; z-index:10000;}
 .type-nav .nav-con{ width:1190px; margin:0 auto; height:44px; line-height:44px; font-size:16px; }
-.type-nav .nav-con ul.nav-con-tit{ float:left; overflow:hidden; margin-left:220px;}
+.type-nav .nav-con ul.nav-con-tit{ float:left; overflow:hidden;}
 .type-nav .nav-con ul.nav-con-tit li{ width:150px; float:left; text-align:center; border-right:1px solid #eaeaea;}
 .type-nav .nav-con ul.nav-con-tit li:hover{ background-color:#fff; cursor:pointer;}
 .type-nav .nav-con ul.nav-con-tit li a{ color:#333; text-decoration:none; width:100%; height:100%; display:block; }
+
+.type-nav .nav-con ul.nav-con-tit li .nav-active {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: #009237;
+    border-bottom: 5px solid #008030;
+}
 .type-nav .nav-con ul.nav-con-tit li:hover a{ color:#f47a11;}
-.type-nav .nav-con .menu-c-nav{ width:220px; background-color:#4E4E4E; position:absolute; z-index:99; margin-top:44px;}
-.type-nav .nav-con .menu-c-tit{ width:220px; text-indent:1em; background-color:#009237; border-bottom:5px solid #008030; overflow:hidden; position:absolute; z-index:101; top:-44px; left:0; color:#fff; height:44px; line-height:44px; font-size:16px;}
+/*.type-nav .nav-con .menu-c-nav{ width:220px; background-color:#4E4E4E; position:absolute; z-index:99; margin-top:44px;} */
+.type-nav .nav-con .menu-c-tit {
+    width: 220px;
+    text-indent: 1em;
+    background-color: #009237;
+    border-bottom: 5px solid #008030;
+    overflow: hidden;
+    position: absolute;
+    z-index: 101;
+    top: -44px;
+    left: 0;
+    color: #fff;
+    height: 44px;
+    line-height: 44px;
+    font-size: 16px;
+}
+
 .type-nav .nav-con .menu-c-tit a{ float:right; font-size:12px; color:#fff; margin-right:5px;}
 .type-nav .nav-con .menu-c-nav ul.menu-c-list{ display:inline-block; min-height:345px; padding:10px 0; clear:both; overflow:hidden; font-size:14px; line-height:30px;}
 .type-nav .nav-con .menu-c-nav ul.menu-c-list li{ float:left; width:210px; background:url(../../images/category-vegetable/line_bg.png) no-repeat center bottom; padding-left:10px; padding-bottom:20px; padding-top:10px;}

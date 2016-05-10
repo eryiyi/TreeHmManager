@@ -89,7 +89,6 @@
     border-radius: 3px;
     margin-right: 10px;
     cursor: pointer;
-    background: url("../../images/reg/ico/release-ico_18x18.png") 25px center no-repeat #f47a11;
     text-indent: 20px;
     line-height: 34px;
 }
@@ -156,25 +155,28 @@ hr.hr-cont {
 }
 .text-input li input {
     height: 36px;
-    width: 176px;
     margin-left: 15px;
-    border: 1px solid #ddd;
+    display: block;
+    width: 100%;
     line-height: 36px;
     font-size: 14px;
     vertical-align: middle;
     float: left;
     padding:0 4px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 .text-input li input.submit {
     font-size: 16px;
     color: #fff;
     background: #f47a11;
-    width: 280px;
     height: 40px;
     border: 0;
     border-radius: 3px;
     cursor: pointer;
-    margin-left: 15px;
+    width: 300px;
+    margin: 0 auto !important;
     float: none;
 }
 .text-input li input.disabled {
@@ -225,7 +227,6 @@ input.submit.disabled {}
 #showPass{
     width: 16px;
     height: 16px;
-    background: url(../../images/reg/ico/password-display.jpg) no-repeat;
     display: inline-block;
     vertical-align: middle;
     margin-right: 2px;
@@ -233,11 +234,10 @@ input.submit.disabled {}
 }
 .text-input li .button-password.hidden,
 #showPass.hidden{
-    background: url(../../images/reg/ico/password-hidden.jpg) no-repeat !important;
 }
 .text-input li span,
 .text-input li .name{
-    width: 100px;
+    width: 90px;
     display: inline-block;
     vertical-align: middle;
     font-size: 14px;
@@ -256,9 +256,24 @@ input.submit.disabled {}
     display: inline-block;
     vertical-align: middle;
     position: relative;
-    width: 380px;
+    width: 300px;
     text-align: left;
 }
+.text-input li .input-box select{
+    margin-left: 15px;
+    line-height: 35px;
+    height: 35px;
+    display: block;
+    width: 300px;
+}
+input:focus,select:focus{
+    border: 1px solid #35d5ff !important;
+    outline: none;
+    -webkit-box-shadow: 0 0 4px #35d5ff;
+    -moz-box-shadow: 0 0 4px #35d5ff;
+    box-shadow: 0 0 4px #35d5ff;
+}
+
 .text-input li span i,
 .text-input li .name i{
     color: #ff0000;
@@ -368,16 +383,13 @@ input.submit.disabled {}
     margin: 4px 10px 0 10px;
     float: left;
 }
-.reg-ico-1{ background:url(../../../auth/images/common/correct.png) no-repeat; width:15px; height:15px;float: left;margin-top:10px;margin-left: 10px;}
 .business span {
     margin-top: 10px;
-    background: url("../../images/reg/ico/radio-icon.jpg") no-repeat 15px center ;
     width: 90px !important;
     line-height: 14px;
     cursor: pointer;
 }
 .business span.cur {
-    background-image:url("../../images/reg/ico/radio-icon-cur.jpg")
 }
 
 .reg-top{ width:1000px; min-height:46px; height:auto;margin: 0 auto 10px;font-size: 14px;}
