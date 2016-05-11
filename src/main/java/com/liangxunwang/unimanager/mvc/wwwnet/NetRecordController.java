@@ -14,6 +14,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * Created by zhl on 2015/8/12.
@@ -28,6 +29,10 @@ public class NetRecordController extends ControllerConstants {
     @Autowired
     @Qualifier("webVRecordService")
     private ListService recordService;
+
+    @Autowired
+    @Qualifier("appRecordTopService")
+    private ListService appRecordTopService;
 
     @RequestMapping("toDetail")
     public String toDetail(HttpSession session,String mm_msg_id,ModelMap map) throws Exception {
@@ -60,6 +65,12 @@ public class NetRecordController extends ControllerConstants {
         Object[] results = (Object[]) recordService.list(query);
         map.put("listRelate", results[0]);
 
+        //查询热点信息
+        RecordQuery recordQuery = new RecordQuery();
+        recordQuery.setIndex(1);
+        recordQuery.setSize(10);
+        List<RecordVO> listsHot = (List<RecordVO>) appRecordTopService.list(recordQuery);
+        map.put("listsHot", listsHot);
         return "../../hmt/detailRecord";
     }
 

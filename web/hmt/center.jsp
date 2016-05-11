@@ -180,21 +180,21 @@
           </a>
         </div>
         </div>
-        <div class="left-side left-side-4" myid="BUYERS_LEFT_FIX_child1">
-            <a href="/netCenterController/toAddArea.do">
-              <h2>添加关注区域</h2>
-            </a>
-        </div>
-        <div class="left-side left-side-4" myid="BUYERS_LEFT_FIX_child1">
-          <a href="/netCenterController/toGuanzhu.do">
-            <h2>关注区域</h2>
-          </a>
-        </div>
-        <div class="left-side left-side-4" myid="BUYERS_LEFT_FIX_child1">
-          <a href="/netCenterController/toSelectArea.do">
-            <h2>地区选择</h2>
-          </a>
-        </div>
+        <%--<div class="left-side left-side-4" myid="BUYERS_LEFT_FIX_child1">--%>
+            <%--<a href="/netCenterController/toAddArea.do">--%>
+              <%--<h2>添加关注区域</h2>--%>
+            <%--</a>--%>
+        <%--</div>--%>
+        <%--<div class="left-side left-side-4" myid="BUYERS_LEFT_FIX_child1">--%>
+          <%--<a href="/netCenterController/toGuanzhu.do">--%>
+            <%--<h2>关注区域</h2>--%>
+          <%--</a>--%>
+        <%--</div>--%>
+        <%--<div class="left-side left-side-4" myid="BUYERS_LEFT_FIX_child1">--%>
+          <%--<a href="/netSelectProvinceController/toSelectProvince.do">--%>
+            <%--<h2>地区选择</h2>--%>
+          <%--</a>--%>
+        <%--</div>--%>
       </div>
     <div class="mainC">
       <!-- module -->

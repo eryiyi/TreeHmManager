@@ -40,14 +40,14 @@
 
       <ul class="fl">
         <li class="label orange">您好，欢迎来到花木通信息平台</li>
-          <li class="label p-login">
-            <a title="马上登录，享受更多会员专享服务" href="javascript:void(0)" onclick="login()"
-               rel="nofollow">请登录</a>
-          </li>
-          <li class="label">
-            <a title="马上注册，共享无限商机" href="javascript:void(0)" onclick="reg()"
-               rel="nofollow">免费注册 </a>
-          </li>
+          <%--<li class="label p-login">--%>
+            <%--<a title="马上登录，享受更多会员专享服务" href="javascript:void(0)" onclick="login()"--%>
+               <%--rel="nofollow">请登录</a>--%>
+          <%--</li>--%>
+          <%--<li class="label">--%>
+            <%--<a title="马上注册，共享无限商机" href="javascript:void(0)" onclick="reg()"--%>
+               <%--rel="nofollow">免费注册 </a>--%>
+          <%--</li>--%>
       </ul>
     </ul>
     <ul class="top-nav fr">
@@ -145,7 +145,7 @@
               <div class="content-list-media">
                 <p>公司地址：${aboutUs.mm_abou_address}</p>
                 <p>公司总机：${aboutUs.mm_about_tel}</p>
-                <p>客服及招商热线：400-008-8688</p>
+                <%--<p>客服及招商热线：0543-5253777</p>--%>
               </div>
             </div>
             <div class="last-item"><span class="last-item-end">END</span></div>

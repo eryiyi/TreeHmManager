@@ -37,33 +37,6 @@
 <div class="topbar">
   <div class="container clearfix">
     <ul class="top-login fl">
-      <li class="dropdown">
-        <div class="dropdown-label dl-city">
-          <i>&nbsp;</i><span class="tit">所在地：</span><span id="topbar_address">山东</span></div>
-        <div class="dropdown-layer dd-city-list">
-          <div class="list">
-            <a data-id="45081" href="javascript:void(0)">北京</a><a data-id="45083" href="javascript:void(0)">上海</a><a
-                  data-id="45082" href="javascript:void(0)">天津</a><a data-id="45084" href="javascript:void(0)">重庆</a><a
-                  data-id="3" href="javascript:void(0)">河北</a><a data-id="4" href="javascript:void(0)">山西</a><a
-                  data-id="16" href="javascript:void(0)">河南</a><a data-id="6" href="javascript:void(0)">辽宁</a><a
-                  data-id="7" href="javascript:void(0)">吉林</a><a data-id="8" href="javascript:void(0)">黑龙江</a><a
-                  data-id="5" href="javascript:void(0)">内蒙古</a><a data-id="10" href="javascript:void(0)">江苏</a><a
-                  data-id="15" href="javascript:void(0)" class="selected">山东</a><a data-id="12" href="javascript:void(0)">安徽</a><a
-                  data-id="11" href="javascript:void(0)">浙江</a><a data-id="13" href="javascript:void(0)">福建</a><a
-                  data-id="17" href="javascript:void(0)">湖北</a><a data-id="18" href="javascript:void(0)"
-                                                                  class="">湖南</a>
-            <a data-id="19" href="javascript:void(0)">广东</a>
-            <a data-id="20" href="javascript:void(0)">广西</a><a
-                  data-id="14" href="javascript:void(0)">江西</a><a data-id="23" href="javascript:void(0)">四川</a><a
-                  data-id="21" href="javascript:void(0)">海南</a><a data-id="24" href="javascript:void(0)">贵州</a><a
-                  data-id="25" href="javascript:void(0)">云南</a><a data-id="26" href="javascript:void(0)">西藏</a><a
-                  data-id="27" href="javascript:void(0)">陕西</a><a data-id="28" href="javascript:void(0)">甘肃</a><a
-                  data-id="29" href="javascript:void(0)">青海</a><a data-id="30" href="javascript:void(0)">宁夏</a><a
-                  data-id="31" href="javascript:void(0)">新疆</a><a data-id="32" href="javascript:void(0)">台湾</a><a
-                  data-id="33" href="javascript:void(0)">香港</a><a data-id="34" href="javascript:void(0)">澳门</a></div>
-        </div>
-      </li>
-
       <c:if test="${is_login=='1'}">
         <ul class="fl">
           <li>
@@ -81,7 +54,6 @@
           </li>
         </ul>
       </c:if>
-
       <ul class="fl">
         <li class="label orange">您好，欢迎来到花木通信息平台</li>
         <c:if test="${is_login=='0'}">
@@ -90,19 +62,17 @@
                rel="nofollow">请登录</a>
           </li>
           <li class="label">
-            <a title="马上注册，共享无限农业商机" href="javascript:void(0)" onclick="reg()"
+            <a title="马上注册，共享无限商机" href="javascript:void(0)" onclick="reg()"
                rel="nofollow">免费注册 </a>
           </li>
         </c:if>
       </ul>
-
     </ul>
     <ul class="top-nav fr">
       <li id="hn_home_id">
         <div class="label">
           <a href="/hmtIndex/toIndex.do?page=1">花木通求购信息</a></div>
       </li>
-
       <c:if test="${is_login=='1'}">
         <li>
           <div class="label">
@@ -110,7 +80,6 @@
           </div>
         </li>
       </c:if>
-
       <li class="dropdown">
         <div class="dropdown-label">
           <i>&nbsp;</i><span><a href="javaScript:void(0)" target="_blank"
@@ -149,53 +118,24 @@
 <!--头部 导航-->
 <div class="type-head">
   <h1 class="logo">
-    <a href="javascript:void(0)" title="花木通信息平台"></a>
+    <a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=0" title="花木通信息平台"></a>
   </h1>
-
-  <div class="search">
-    <form target="_blank" method="get" id="searchForm" action="category.htm">
-      <div class="sear-area">
-        <div style="z-index: 15" class="autoComplete">
-          <input type="text" placeholder="西红柿" defaulturl="" class="sear-inpt broder_r_no"
-                 autocomplete="off" >
-          <ul class="green" style="display: none;">
-            <li></li>
-          </ul>
-        </div>
-        <input type="submit" value="搜索" class="sear-btn">
-      </div>
-    </form>
-    <ul style="display: block;" class="keylist" id="idkeyList">
-      <li>热门搜索：</li>
-      <li><a title="大白菜" href="#" rel="nofollow">大白菜</a></li>
-      <li><a title="包菜" href="#" rel="nofollow">包菜</a></li>
-      <li><a title="萝卜" href="#" rel="nofollow">萝卜</a></li>
-      <li><a title="丝瓜" href="#" rel="nofollow">丝瓜</a></li>
-      <li><a title="西红柿" href="category.htm" rel="nofollow">西红柿</a></li>
-    </ul>
-  </div>
-
 </div>
+
 <div class="type-nav">
   <div class="nav-con">
-    <div class="menu-c-nav">
-      <!-- 精选分类 title-->
-      <a href="/netTopController/toTop.do?page=1">
-        <div class="menu-c-tit">
-          <span class="">金牌榜</span>
-        </div>
-      </a>
-    </div>
     <!-- 顶部栏目-->
     <ul class="nav-con-tit">
       <li><a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=0" class="nav-tstj">求购大厅</a></li>
       <li><a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=1" class="nav-dptj">供应大厅</a></li>
-      <li><a href="/netServiceController/toService.do" class="nav-zxhq">服务中心</a></li>
+      <li><a href="/netTopController/toTop.do?page=1" class="nav-tstj">金牌榜</a></li>
+      <li><a href="/netCenterController/toCenter.do" class="nav-zxhq">服务中心</a></li>
       <li><a href="../html/download.html" target="_blank" class="nav-zxhq">手机版</a></li>
     </ul>
   </div>
 </div>
 <!--头部 导航 end-->
+
 
 <input type="hidden" id="is_login" name="is_login" value="${is_login}">
 <input type="hidden" id="accessToken" name="accessToken" value="${emp.access_token}">
@@ -238,13 +178,15 @@
     </div>
   </form>
   <div class="sides mt_15">
-    <div class="release-but mb_15"><a href="javascript:void(0)" target="_blank" onclick="addMsg()"><i class="lee-ico lee-fb"></i> &nbsp; 发布供应</a></div>
-    <div class="release-but mb_15"><a href="/netKefuController/toKefu.do" target="_blank" ><i class="lee-ico lee-fb"></i> &nbsp; 客服中心</a></div>
+    <%--<div class="release-but mb_15"><a href="javascript:void(0)" target="_blank" onclick="addMsg()"><i class="lee-ico lee-fb"></i> &nbsp; 发布供应</a></div>--%>
+    <%--<div class="release-but mb_15"><a href="/netKefuController/toKefu.do" target="_blank" ><i class="lee-ico lee-fb"></i> &nbsp; 客服中心</a></div>--%>
     <div class="ad2">
 
-      <a href="#" target="_target" title="点击进入春季种苗批发市场页面" rel="nofollow">
-        <img src="../hmt/images/2C604DU858ChRkRlcHTCeAU9-hAAHy19HEc7E108.jpg" alt="这是一张春季种苗批发市场的展示图片" width="216" height="353">
+
+      <a href="../html/download.html" target="_blank" title="花木通app" rel="nofollow">
+        <img src="../hmt/images/2C604DU858ChRkRlcHTCeAU9-hAAHy19HEc7E108.jpg" alt="花木通app" width="216" height="353">
       </a>
+
 
     </div>
     <div class="sides-hot mtb_15">

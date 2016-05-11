@@ -201,33 +201,17 @@
           <%--</c:forEach>--%>
         <%--</ul>--%>
 
-        <h2 class="label-title">我关注的区域</h2>
+        <c:if test="${is_guanzhu=='0'}"><h2 class="label-title">您已经申请了关注区域！请等待管理员审核</h2></c:if>
+        <c:if test="${is_guanzhu=='1'}"><h2 class="label-title">我关注的区域</h2></c:if>
+
         <ul class="location-list location-list-green clearfix">
+            <c:forEach items="${areaNames}" var="e" varStatus="st">
             <li>
-              <a href="/webvGuanzhuController/guanzhuArea.do?page=1">
-                <span class="list-name">山东省</span>
+              <a href="/NetGuanzhuController/guanzhuArea.do?page=1">
+                <span class="list-name">${e}</span>
               </a>
             </li>
-            <li>
-              <a href="/webvGuanzhuController/guanzhuArea.do?page=1">
-                <span class="list-name">山东省</span>
-              </a>
-            </li>
-            <li>
-              <a href="/webvGuanzhuController/guanzhuArea.do?page=1">
-                <span class="list-name">山东省</span>
-              </a>
-            </li>
-            <li>
-              <a href="/webvGuanzhuController/guanzhuArea.do?page=1">
-                <span class="list-name">山东省</span>
-              </a>
-            </li>
-            <li>
-              <a href="/webvGuanzhuController/guanzhuArea.do?page=1">
-                <span class="list-name">山东省</span>
-              </a>
-            </li>
+            </c:forEach>
         </ul>
 
       <%--</c:if>--%>
@@ -247,36 +231,14 @@
 
         <ul class="location-list clearfix">
           <h2 class="label-title">*热门区域</h2>
+            <c:forEach items="${listhot}" var="e" varStatus="st">
             <li>
-              <a href="/webvHotController/toIndex.do?page=1&countryid=${e.areaID}&is_guanzhu='1'">
-                <span class="list-name">济南市</span>
+              <a href="/netHotController/toIndex.do?page=1&countryid=${e.areaID}&is_guanzhu='1'">
+                <span class="list-name">${e.cityName}${e.area}</span>
               </a>
             </li>
-            <li>
-              <a href="/webvHotController/toIndex.do?page=1&countryid=${e.areaID}&is_guanzhu='1'">
-                <span class="list-name">济南市</span>
-              </a>
-            </li>
-            <li>
-              <a href="/webvHotController/toIndex.do?page=1&countryid=${e.areaID}&is_guanzhu='1'">
-                <span class="list-name">济南市</span>
-              </a>
-            </li>
-            <li>
-              <a href="/webvHotController/toIndex.do?page=1&countryid=${e.areaID}&is_guanzhu='1'">
-                <span class="list-name">济南市</span>
-              </a>
-            </li>
-            <li>
-              <a href="/webvHotController/toIndex.do?page=1&countryid=${e.areaID}&is_guanzhu='1'">
-                <span class="list-name">济南市</span>
-              </a>
-            </li>
-            <li>
-              <a href="/webvHotController/toIndex.do?page=1&countryid=${e.areaID}&is_guanzhu='1'">
-                <span class="list-name">济南市</span>
-              </a>
-            </li>
+           </c:forEach>
+
         </ul>
         <div class="clear"></div>
 
@@ -289,25 +251,6 @@
         }
       }
     </script>
-      <%--<ul>--%>
-
-       <%--<c:forEach items="${list}" var="e" varStatus="st">--%>
-         <%--<li class="text-list">--%>
-           <%--<a href="javascript:void(0)" target="_blank" onclick="showDetail('${e.mm_msg_id}')">--%>
-             <%--<span class="l1">${e.dateline}</span>--%>
-             <%--<span class="l2">${e.mm_msg_title}</span>--%>
-             <%--<span class="l4">${e.area}</span>--%>
-             <%--<span class="l5">${e.mm_emp_nickname}</span>--%>
-			                <%--<span class="l6">--%>
-                                <%--<c:if test="${e.is_miaomu=='1'}"><img style="width: 25px;height: 32px;" src="../img/tree_icons_trust.png" title="苗木协会"></c:if>--%>
-								<%--<c:if test="${e.is_chengxin=='1'}"><img style="width: 25px;height: 32px;" src="../img/tree_icons_group.png" title="诚信会员"></c:if>--%>
-			                <%--</span>--%>
-             <%--<span class="l7"><em class="text-list-view">查看详情</em></span>--%>
-           <%--</a>--%>
-         <%--</li>--%>
-       <%--</c:forEach>--%>
-
-      <%--</ul>--%>
 
     </div>
   </form>
@@ -316,8 +259,9 @@
     <div class="release-but mb_15"><a href="/netKefuController/toKefu.do" target="_blank" ><i class="lee-ico lee-fb"></i> &nbsp; 客服中心</a></div>
     <div class="ad2">
 
-      <a href="#" target="_target" title="点击进入春季种苗批发市场页面" rel="nofollow">
-        <img src="../hmt/images/2C604DU858ChRkRlcHTCeAU9-hAAHy19HEc7E108.jpg" alt="这是一张春季种苗批发市场的展示图片" width="216" height="353">
+
+      <a href="../html/download.html" target="_blank" title="花木通app" rel="nofollow">
+        <img src="../hmt/images/2C604DU858ChRkRlcHTCeAU9-hAAHy19HEc7E108.jpg" alt="花木通app" width="216" height="353">
       </a>
 
     </div>
@@ -336,28 +280,6 @@
     </div>
   </div>
 
-  <div class="page p_30 mb_10 tr">
-      <c:if test="${is_login=='1'}">
-        <input type="hidden" id="pageCount" value="6443">
-        <input type="hidden" name="size" id="size" value="${query.size}">
-        <a href="javascript:void(0);" onclick="nextPage('1')">第一页 </a>
-        <a href="javascript:void(0);" onclick="nextPage('${page.page-1}')">上一页</a>
-        <a href="javascript:void(0);" onclick="nextPage('${page.page+1}')">下一页</a>
-        <a href="javascript:void(0);" onclick="nextPage('${page.pageCount}')">最后页</a>
-        <span>跳到</span>
-        <span><input type="text" id="index" name="index" value="${page.page}"
-                     autocomplete="off" maxlength="6"
-                     value="${page.page}"
-                     onpaste="return false" style="text-align:center;"></span>
-        <span>页 </span>
-        <span><button type="button" onclick="searchIndex(event, '${page.page}')">GO</button></span>
-      </c:if>
-      <c:if test="${is_login=='0'}">
-        <a class="index-button" href="javaScript:void(0)" onclick="login()">登录查看更多信息</a>
-      </c:if>
-    </center>
-  </div>
-
 </div>
 <!--内容 end-->
 
@@ -374,57 +296,12 @@
 </body>
 
 <script>
-  function reg(){
-    //注册页面跳转
-    window.location.href="/netRegController/toReg.do";
-  }
   function toPage(_url, _page){
     if(_page != ''){
       window.location.href=_url+"?page="+_page;
     }else{
       window.location.href=_url;
     }
-  }
-  function favourClick(_mm_msg_id){
-    //先判断是否登录
-    var is_login = $("#is_login").val();
-    if(is_login == 1){
-      //登陆了
-      var mm_emp_id = $("#mm_emp_id").val();
-      var accessToken = $("#accessToken").val();
-      $.ajax({
-        cache: true,
-        type:"POST",
-        url:"/saveFavour.do",
-        data:{"mm_msg_id":_mm_msg_id, "accessToken":accessToken, "mm_emp_id":mm_emp_id},
-        async: false,
-        success:function(_data){
-          var data = $.parseJSON(_data);
-          if(data.success){
-            alert("收藏成功");
-          }else{
-            var _case = {1:"收藏失败", 2:"已经收藏，不能重复收藏！",9:"账号过期，请重新登录！"};
-            alert(_case[data.code])
-          }
-        }
-      });
-    }else{
-      //没登陆
-      alert("请先登录");
-    }
-  }
-
-  function showDetail(_mm_msg_id){
-    window.location.href="/netRecordController/toDetail.do?mm_msg_id="+_mm_msg_id;
-  }
-
-  function login(){
-    //登录页面跳转
-    window.location.href="/netLoginController/toLogin.do";
-  }
-  function selectPro(){
-    //页面跳转
-    window.location.href="/webvSelectProvinceController/toSelectProvince.do";
   }
 
   function addMsg(){
@@ -434,39 +311,22 @@
       if(${emp.is_upate_profile == '1'} ){
         window.location.href="/netAddRecordController/toAddRecord.do";
       }else{
-        window.location.href="/webvProfile/toUpdateProfile.do";
+        alert("请先完善您的个人资料");
+        window.location.href="/netProfileController/toUpdateProfile.do";
       }
-
     }else{
       //登录页面跳转
       window.location.href="/netLoginController/toLogin.do";
     }
   }
-</script>
 
-<script type="text/javascript" charset="UTF-8">
-  function searchIndex(e,_page){
-    var _index = $("#index").val();
-    var page = parseInt(_page);
-    var size = $("#size").val();
-    var keyword = $("#keyword").val();
-    if(_index <= ${page.pageCount} && _index >= 1){
-      window.location.href="/hmtIndex/toIndex.do?page="+_index+"&size="+size+"&keyword="+keyword;
-    }else{
-      alert("请输入1-${page.pageCount}的页码数");
-    }
+  function login(){
+    //登录页面跳转
+    window.location.href="/netLoginController/toLogin.do";
   }
-
-  function nextPage(_page) {
-    var page = parseInt(_page);
-    var size = $("#size").val();
-    var keyword = $("#keyword").val();
-    addCookie("contract_size", size, 36);
-    if ((page <= ${page.pageCount} && page >= 1)) {
-      window.location.href="/hmtIndex/toIndex.do?page="+page+"&size="+size+"&keyword="+keyword;
-    } else {
-      alert("请输入1-${page.pageCount}的页码数");
-    }
+  function reg(){
+    //注册页面跳转
+    window.location.href="/netRegController/toReg.do";
   }
 
   function quiteClick(){

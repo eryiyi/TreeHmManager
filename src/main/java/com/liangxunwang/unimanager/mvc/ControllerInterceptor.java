@@ -148,6 +148,10 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/netProfileController/webMemberUpdateProfile\\.do$)"+
                         "|(^/netProfileController/toUpdateProfile\\.do$)"+
 
+                        "|(^/netSelectProvinceController/toSelectProvince\\.do$)"+
+                        "|(^/netSelectProvinceController/toSelectCity\\.do$)"+
+                        "|(^/netSelectProvinceController/toSelectArea\\.do$)"+
+
                         "|(^/memberLogin\\.do$)"
 
         ) || account != null) {

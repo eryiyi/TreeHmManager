@@ -2,7 +2,9 @@ package com.liangxunwang.unimanager.mvc.wwwnet;
 
 import com.liangxunwang.unimanager.model.Notice;
 import com.liangxunwang.unimanager.mvc.vo.EmpVO;
+import com.liangxunwang.unimanager.mvc.vo.RecordVO;
 import com.liangxunwang.unimanager.query.NoticeQuery;
+import com.liangxunwang.unimanager.query.RecordQuery;
 import com.liangxunwang.unimanager.service.ExecuteService;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.ServiceException;
@@ -15,6 +17,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * Created by zhl on 2015/8/12.
@@ -30,6 +33,10 @@ public class NetNoticeController extends ControllerConstants {
     @Autowired
     @Qualifier("noticeService")
     private ExecuteService noticeServiceExe;
+
+    @Autowired
+    @Qualifier("appRecordTopService")
+    private ListService appRecordTopService;
 
     @RequestMapping("list")
     public String list(HttpSession session, ModelMap map, NoticeQuery query, Page page){
@@ -52,6 +59,12 @@ public class NetNoticeController extends ControllerConstants {
                 //说明没有登陆
                 map.put("is_login", "0");
             }
+            //查询热点信息
+            RecordQuery recordQuery = new RecordQuery();
+            recordQuery.setIndex(1);
+            recordQuery.setSize(10);
+            List<RecordVO> listsHot = (List<RecordVO>) appRecordTopService.list(recordQuery);
+            map.put("listsHot", listsHot);
             return "../../hmt/notice";
         }catch (ServiceException e){
             String msg = e.getMessage();
@@ -67,6 +80,14 @@ public class NetNoticeController extends ControllerConstants {
         if(empVO != null) {
             Notice notice = (Notice)noticeServiceExe.execute(id);
             map.put("notice", notice);
+
+            //查询热点信息
+            RecordQuery recordQuery = new RecordQuery();
+            recordQuery.setIndex(1);
+            recordQuery.setSize(10);
+            List<RecordVO> listsHot = (List<RecordVO>) appRecordTopService.list(recordQuery);
+            map.put("listsHot", listsHot);
+
             return "../../hmt/noticeDetail";
         }else {
             return "../../hmt/login";

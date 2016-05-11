@@ -297,9 +297,11 @@
     <div class="release-but mb_15"><a href="/netKefuController/toKefu.do" target="_blank" ><i class="lee-ico lee-fb"></i> &nbsp; 客服中心</a></div>
     <div class="ad2">
 
-      <a href="#" target="_target" title="点击进入春季种苗批发市场页面" rel="nofollow">
-        <img src="../hmt/images/2C604DU858ChRkRlcHTCeAU9-hAAHy19HEc7E108.jpg" alt="这是一张春季种苗批发市场的展示图片" width="216" height="353">
+
+      <a href="../html/download.html" target="_blank" title="花木通app" rel="nofollow">
+        <img src="../hmt/images/2C604DU858ChRkRlcHTCeAU9-hAAHy19HEc7E108.jpg" alt="花木通app" width="216" height="353">
       </a>
+
 
     </div>
     <div class="sides-hot mtb_15">
@@ -381,10 +383,6 @@
     //登录页面跳转
     window.location.href="/netLoginController/toLogin.do";
   }
-  function selectPro(){
-    //页面跳转
-    window.location.href="/webvSelectProvinceController/toSelectProvince.do";
-  }
 
   function addMsg(){
     var is_login = $("#is_login").val();
@@ -393,9 +391,9 @@
       if(${emp.is_upate_profile == '1'} ){
         window.location.href="/netAddRecordController/toAddRecord.do";
       }else{
-        window.location.href="/webvProfile/toUpdateProfile.do";
+        alert("请先完善您的个人资料");
+        window.location.href="/netProfileController/toUpdateProfile.do";
       }
-
     }else{
       //登录页面跳转
       window.location.href="/netLoginController/toLogin.do";

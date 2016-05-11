@@ -19,7 +19,6 @@
   <link href="../hmt/css/search/style.css" rel="stylesheet" type="text/css" />
   <link href="../hmt/css/search/base.css" rel="stylesheet" type="text/css" />
   <link href="../hmt/css/supply/index.css" rel="stylesheet" type="text/css" />
-
   <link href="../hmt/css/reg.css" rel="stylesheet" type="text/css" />
   <link href="../hmt/css/base.min.css" rel="stylesheet" type="text/css" />
   <link href="../hmt/css/login/common.css" rel="stylesheet" type="text/css" />
@@ -27,14 +26,11 @@
   <link href="../hmt/css/release.css" rel="stylesheet" type="text/css" />
   <link href="../hmt/css/v.css" rel="stylesheet" type="text/css" />
     <script language="javascript" src="../js/jquery.js"></script>
-  <%--<script type="text/javascript" src="../js/jquery.min.js"></script>--%>
   <script type="text/javascript" src="../js/md5.js"></script>
   <script type="text/javascript" src="../js/cookie.js"></script>
   <script type="text/javascript" src="../js/ajaxfileupload.js"></script>
   <script type="text/javascript" src="../js/Util.js"></script>
   <script type="text/javascript" src="../js/validation.js"></script>
-
-  <%--<script type="text/javascript" src="../js/jquery_latest.js"></script>--%>
 
 
     <style>
