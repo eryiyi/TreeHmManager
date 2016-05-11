@@ -44,6 +44,10 @@
     .button{
       color: #fff !important;
     }
+    .profile-holder{
+      width: 956px;
+      float: left;
+    }
   </style>
 </head>
 <body>
@@ -292,7 +296,7 @@
         </div>
     </div>
 
-      <div class="clear"></div>
+
 
 <%--边栏--%>
   <div class="sides mt_15">
@@ -321,7 +325,7 @@
       </ul>
     </div>
   </div>
-
+  <div class="clear"></div>
 
 </div>
 

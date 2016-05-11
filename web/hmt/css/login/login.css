@@ -46,7 +46,6 @@
 	padding: 0;
 }
 .login-form .userinput{
-	overflow:hidden;
 }
 .login-form .userinput input{
 	width:307px;
