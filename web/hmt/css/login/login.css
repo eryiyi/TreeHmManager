@@ -46,18 +46,18 @@
 	padding: 0;
 }
 .login-form .userinput{
-	width:300px; 
-	height:32px;
-	background:url(../images/common/login-user.png) right top no-repeat;
-	padding-left:5px;
-	border:#ccc solid 1px;
 	overflow:hidden;
 }
 .login-form .userinput input{
-	width:265px; 
-	height:32px; 
-	border:0px;
+	width:307px;
+	height:32px;
+	border: 1px solid #ccc;
+	padding: 0 5px;
 	line-height:32px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	display: block;
 
 }
 .login-form .passwordtxt{
@@ -67,18 +67,17 @@
 	font-weight:bold;
 }
 .login-form .passwordinput{
-	width:300px; 
-	height:32px;
-	background:url(../images/common/login-password.png) right top no-repeat;
-	padding-left:5px;
-	border:#ccc solid 1px;
-	overflow:hidden;
 }
 .login-form .passwordinput input{
-	width:265px; 
-	height:32px; 
-	border:0px;
+	width:307px;
+	height:32px;
+	border: 1px solid #ccc;
+	padding: 0 5px;
 	line-height:32px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	display: block;
 }
 .login-form .codetxt{
 	line-height:24px;
@@ -134,7 +133,6 @@
 	margin-top:12px;
 }
 .login-form .forget em.cur{
-	background:url(../images/myhn/common/checked-bg.png) no-repeat;
 }
 .login-form .forget span{
 	float:left;
@@ -157,8 +155,7 @@
 	display:block;
 	height:34px;
 	line-height:34px;
-	font-size:14px;
-	font-weight:bold;
+	font-size:1rem;
     color: #fff;
 }
 .login-form .login-qq{
@@ -199,8 +196,6 @@
 .reg-hint{ width:250px; height:24px; line-height:24px; margin-left:1px; margin-right:22px; float:right; font-weight:normal; font-size:12px; text-align:right;}
 .reg-hint i{ margin:11px 6px 0 0;}
 
-.reg-ico-1{ background:url(../images/common/correct.png) no-repeat; width:15px; height:15px; float:left;}
-.reg-ico-2{ background:url(../images/common/error.png) no-repeat; width:15px; height:15px; float:left;}
 
 
 .login-form .userinput input::-webkit-input-placeholder {

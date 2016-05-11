@@ -1,5 +1,9 @@
 ﻿@CHARSET "utf-8";
 
+.top-bg{
+    background: url("../../images/top_bg.jpg") center ;
+}
+
 /*导航*/
 .type-nav { background-color:#f5f5f5; border-bottom:5px solid #eaeaea; font-family:微软雅黑; min-width:1190px; width:100%;}
 .type-nav-fixed{ position:fixed; top:0; z-index:10000;}
