@@ -6,7 +6,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="icon" href="logo.ico" type="image/x-icon" />
+  <link rel="icon" href="../img/icon.png" type="image/png" />
   <meta name="renderer" content="webkit">
   <title>花木通|个人中心</title>
   <meta name="keywords" content="花木通,惠民,苗木,花木,苗木交易,花木求购,苗木求购,花木资讯,花木论坛,花木销售,苗木销售,苗木资讯,绿化苗木,花草,苗联通,白蜡,园林,惠民皂户李镇,苗木协会">
@@ -33,149 +33,11 @@
   <script language="javascript" src="../js/jquery.js"></script>
   <script type="text/javascript" src="../js/jquery_latest.js"></script>
 
-  <style type="text/css">
-    #bd #detail a.rr-taobao-big
-    {
-      float: left;
-      line-height: 38px;
-      padding: 0 15px;
-      font-size: 14px;
-      border-radius: 2px;
-      margin-left: 8px;
-      border: 1px #f40 solid;
-    }
-    #bd #detail a.rrfl-before-big
-    {
-      background: #f40;
-      color: #fff;
-    }
-    #bd #detail a.rrfl-before-big:hover
-    {
-      background: #f20;
-    }
-    #bd #detail a.rrfl-after-big
-    {
-      background: #fff;
-      color: #f40;
-    }
-    #bd #detail a.rrfl-after-big:hover
-    {
-      background: #fff;
-    }
-    #bd #detail a.rr-taobao-normal
-    {
-      display: inline-block;
-      padding: 0 5px;
-      border-radius: 2px;
-      line-height: 23px;
-      margin-left: 5px;
-      border: 1px #ff8e1b solid;
-    }
-    #bd #detail a.rr-taobao-normal:hover
-    {
-      background: #f60;
-    }
-    #bd #detail a.rrfl-before-normal
-    {
-      background: #ff8e1b;
-      color: #fff;
-    }
-    #bd #detail a.rrfl-before-normal:hover
-    {
-      background: #f60;
-    }
-    #bd #detail a.rrfl-after-normal
-    {
-      background: #fff;
-      color: #ff8e1b;
-    }
-    #bd #detail a.rrfl-after-normal:hover
-    {
-      background: #fff;
-    }
-    #page a.rr-tmall-big, #page a.rr-tmall-normal
-    {
-      display: inline-block;
-      line-height: 30px;
-      padding: 0 10px;
-      border-radius: 2px;
-      margin-left: 12px;
-      border: 1px #c40000 solid;
-    }
-    #page .tb-attention a.rr-tmall-big, #page .tb-attention a.rr-tmall-normal
-    {
-      position: absolute;
-      right: 50px;
-    }
-    #page a.rrfl-after-big, #page a.rrfl-after-normal
-    {
-      background: #fff;
-      color: #c40000;
-    }
-    #page a.rrfl-after-big:hover, #page a.rrfl-after-normal:hover
-    {
-      background: #fff;
-      text-decoration: none;
-    }
-    #page a.rrfl-before-big, #page a.rrfl-before-normal
-    {
-      background: #c40000;
-      color: #fff;
-    }
-    #page a.rrfl-before-big:hover, #page a.rrfl-before-normal:hover
-    {
-      background: #c40000;
-      text-decoration: none;
-    }
-    #itemInfo #choose-btn-append a.rr-jd-big, #itemInfo #choose-btn-append a.rr-jd-normal
-    {
-      line-height: 36px;
-      background-color: rgb(222, 53, 60);
-      color: #f0f0f0;
-      padding: 0 10px;
-      border-radius: 2px;
-      text-shadow: 1px 1px 1px #999;
-    }
-    #itemInfo #choose-btn-append a.rr-jd-big:hover, #itemInfo #choose-btn-append a.rr-jd-normal:hover
-    {
-      background-color: rgb(237, 82, 87);
-      color: #f0f0f0;
-      padding: 0 10px;
-      border-radius: 2px;
-      text-shadow: 1px 1px 1px #999;
-    }
-  </style>
 </head>
 <body>
 <div class="topbar">
   <div class="container clearfix">
     <ul class="top-login fl">
-      <li class="dropdown">
-        <div class="dropdown-label dl-city">
-          <i>&nbsp;</i><span class="tit">所在地：</span><span id="topbar_address">山东</span></div>
-        <div class="dropdown-layer dd-city-list">
-          <div class="list">
-            <a data-id="45081" href="javascript:void(0)">北京</a><a data-id="45083" href="javascript:void(0)">上海</a><a
-                  data-id="45082" href="javascript:void(0)">天津</a><a data-id="45084" href="javascript:void(0)">重庆</a><a
-                  data-id="3" href="javascript:void(0)">河北</a><a data-id="4" href="javascript:void(0)">山西</a><a
-                  data-id="16" href="javascript:void(0)">河南</a><a data-id="6" href="javascript:void(0)">辽宁</a><a
-                  data-id="7" href="javascript:void(0)">吉林</a><a data-id="8" href="javascript:void(0)">黑龙江</a><a
-                  data-id="5" href="javascript:void(0)">内蒙古</a><a data-id="10" href="javascript:void(0)">江苏</a><a
-                  data-id="15" href="javascript:void(0)" class="selected">山东</a><a data-id="12" href="javascript:void(0)">安徽</a><a
-                  data-id="11" href="javascript:void(0)">浙江</a><a data-id="13" href="javascript:void(0)">福建</a><a
-                  data-id="17" href="javascript:void(0)">湖北</a><a data-id="18" href="javascript:void(0)"
-                                                                  class="">湖南</a>
-            <a data-id="19" href="javascript:void(0)">广东</a>
-            <a data-id="20" href="javascript:void(0)">广西</a><a
-                  data-id="14" href="javascript:void(0)">江西</a><a data-id="23" href="javascript:void(0)">四川</a><a
-                  data-id="21" href="javascript:void(0)">海南</a><a data-id="24" href="javascript:void(0)">贵州</a><a
-                  data-id="25" href="javascript:void(0)">云南</a><a data-id="26" href="javascript:void(0)">西藏</a><a
-                  data-id="27" href="javascript:void(0)">陕西</a><a data-id="28" href="javascript:void(0)">甘肃</a><a
-                  data-id="29" href="javascript:void(0)">青海</a><a data-id="30" href="javascript:void(0)">宁夏</a><a
-                  data-id="31" href="javascript:void(0)">新疆</a><a data-id="32" href="javascript:void(0)">台湾</a><a
-                  data-id="33" href="javascript:void(0)">香港</a><a data-id="34" href="javascript:void(0)">澳门</a></div>
-        </div>
-      </li>
 
       <c:if test="${is_login=='1'}">
         <ul class="fl">
@@ -186,12 +48,11 @@
           </li>
           <li>
             <div class="label o-login">
-              <a href="javascript:void(0)" onclick="quiteClick()">
-                退出</a></div>
+              <a href="javascript:void(0)" onclick="quiteClick()">退出</a></div>
           </li>
           <li>
             <div class="label pr">
-              <a href="javascript:void(0)" class="msg">消息<span class="msg-mark"></span></a></div>
+              <a href="/netNoticeController/list.do?page=1" class="msg">消息<span class="msg-mark"></span></a></div>
           </li>
         </ul>
       </c:if>
@@ -213,7 +74,7 @@
     <ul class="top-nav fr">
       <li id="hn_home_id">
         <div class="label">
-          <a href="index.htm">花木通求购信息</a></div>
+          <a href="/hmtIndex/toIndex.do?page=1">花木通求购信息</a></div>
       </li>
 
       <c:if test="${is_login=='1'}">
@@ -268,7 +129,9 @@
       <span>${emp.mm_emp_nickname}</span>
     </div>
   </div>
-
+  <input type="hidden" id="is_login" name="is_login" value="${is_login}">
+  <input type="hidden" id="accessToken" name="accessToken" value="${emp.access_token}">
+  <input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${emp.mm_emp_id}">
 </div>
 <div class="main wrap" style=" margin-top: 20px;">
   <div class="mains">
@@ -363,7 +226,7 @@
           <h2>我的关注</h2>
         </div>
         <div class="box">
-          <a href="http://im.cnhnb.com" target="_blank">
+          <a href="javascript:void(0)" onclick="guanzhuArea()"  target="_blank">
             <h3>关注区域</h3>
             <p></p>
           </a>
@@ -536,6 +399,39 @@
       }
     });
   }
+
+
+  function guanzhuArea() {
+    //查询是否关注了区域
+    var mm_emp_id = $("#mm_emp_id").val();
+    $.ajax({
+      cache: true,
+      type: "POST",
+      url: "/netGuanzhuController/webvGetGuanzhu.do",
+      data: {"index": "1", "size": "10", "mm_emp_id": mm_emp_id},
+      async: false,
+      success: function (_data) {
+        var data = $.parseJSON(_data);
+        if (data.success) {
+          window.location.href = "/netGuanzhuController/guanzhuArea.do?page=1";
+        } else {
+          var _case = {
+            1: "操作失败，请稍后重试！",
+            2: "您尚未申请关注区域，请设置关注区域！",
+            3: "您已经申请了关注区域！请等待管理员审核",
+            4: "您申请的关注区域未通过审核，请联系客服！",
+            9: "账号过期，请重新登录！"
+          };
+          alert(_case[data.code])
+          if (data.code == 2) {
+            //跳转到设置关注区域页面
+            window.location.href = "/netGuanzhuController/toGuanzhu.do";
+          }
+        }
+      }
+    });
+  }
+
 </script>
 
 </html>

@@ -139,6 +139,15 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/netCenterController/toGuanzhu\\.do$)"+
                         "|(^/netCenterController/toSelectArea\\.do$)"+
 
+                        "|(^/netGuanzhuController/webvGetGuanzhu\\.do$)"+
+                        "|(^/netGuanzhuController/toGuanzhu\\.do$)"+
+                        "|(^/netGuanzhuController/guanzhuArea\\.do$)"+
+                        "|(^/netGuanzhuController/saveGuanzhuArea\\.do$)"+
+
+                        "|(^/netProfileController/toProfile\\.do$)"+
+                        "|(^/netProfileController/webMemberUpdateProfile\\.do$)"+
+                        "|(^/netProfileController/toUpdateProfile\\.do$)"+
+
                         "|(^/memberLogin\\.do$)"
 
         ) || account != null) {

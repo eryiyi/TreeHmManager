@@ -49,16 +49,12 @@
 
 </head>
 <body>
+
 <!-- 顶部 -->
 <div class="topbar">
   <div class="container clearfix">
     <ul class="top-login fl">
-      <li class="dropdown">
-        <div class="dropdown-label dl-city">
-          <i>&nbsp;</i><span class="tit">点击选择区域</span></div>
-      </li>
 
-      <c:if test="${is_login=='1'}">
         <ul class="fl">
           <li>
             <div class="label" id="userName">
@@ -74,37 +70,21 @@
               <a href="/netNoticeController/list.do?page=1" class="msg">消息<span class="msg-mark"></span></a></div>
           </li>
         </ul>
-      </c:if>
 
       <ul class="fl">
         <li class="label orange">您好，欢迎来到花木通信息平台</li>
-        <c:if test="${is_login=='0'}">
-          <li class="label p-login">
-            <a title="马上登录，享受更多会员专享服务" href="javascript:void(0)" onclick="login()"
-               rel="nofollow">请登录</a>
-          </li>
-          <li class="label">
-            <a title="马上注册，共享无限农业商机" href="javascript:void(0)" onclick="reg()"
-               rel="nofollow">免费注册 </a>
-          </li>
-        </c:if>
       </ul>
-
     </ul>
     <ul class="top-nav fr">
       <li id="hn_home_id">
         <div class="label">
           <a href="/hmtIndex/toIndex.do?page=1">花木通求购信息</a></div>
       </li>
-
-      <c:if test="${is_login=='1'}">
         <li>
           <div class="label">
             <a href="/netCenterController/toCenter.do" rel="nofollow">我的中心</a>
           </div>
         </li>
-      </c:if>
-
       <li class="dropdown">
         <div class="dropdown-label">
           <i>&nbsp;</i><span><a href="javaScript:void(0)" target="_blank"
@@ -143,18 +123,18 @@
 <!--头部 导航-->
 <div class="type-head">
   <h1 class="logo">
-    <a href="javascript:void(0)" title="花木通信息平台"></a>
+    <a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=0" title="花木通信息平台"></a>
   </h1>
-
 </div>
+
 <div class="type-nav">
   <div class="nav-con">
     <!-- 顶部栏目-->
     <ul class="nav-con-tit">
       <li><a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=0" class="nav-tstj">求购大厅</a></li>
       <li><a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=1" class="nav-dptj">供应大厅</a></li>
-      <li><a href="/netTopController/toTop.do?page=1" class="nav-tstj nav-active">金牌榜</a></li>
-      <li><a href="/netServiceController/toService.do" class="nav-zxhq">服务中心</a></li>
+      <li><a href="/netTopController/toTop.do?page=1" class="nav-tstj">金牌榜</a></li>
+      <li><a href="/netCenterController/toCenter.do" class="nav-zxhq">服务中心</a></li>
       <li><a href="../html/download.html" target="_blank" class="nav-zxhq">手机版</a></li>
     </ul>
   </div>
@@ -166,13 +146,6 @@
 <input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${emp.mm_emp_id}">
 
 <div class="container wrap-1190">
-
-  <form action="supply.htm" id="filterForm" class="fl" style="width: 956px;">
-    <div class="noticebar mt_15">
-      <input type="text" id="keyword" name="keyword" autocomplete="off" class="notice-input" value="" placeholder="标题|手机号|公司名称|联系人">
-      <a href="javaScript:void(0)" onclick="searchIndex(event)" class="notice-submit"> <i class="lee-ico lee-cx"></i>搜索</a>
-      <span class="notice-msg"><a href="#" target="_blank" rel="nofollow">欢迎使用花木通信息平台，请谨慎核实信息内容!</a></span>
-    </div>
 
     <div class="pro-list mb_10 mt_10">
       <div class="info">
@@ -214,7 +187,7 @@
     </div>
 
       <div class="clear"></div>
-  </form>
+
   <div class="sides mt_15">
     <div class="release-but mb_15"><a href="javascript:void(0)" target="_blank" onclick="addMsg()"><i class="lee-ico lee-fb"></i> &nbsp; 发布供应</a></div>
     <div class="release-but mb_15"><a href="/netKefuController/toKefu.do" target="_blank" ><i class="lee-ico lee-fb"></i> &nbsp; 客服中心</a></div>
@@ -240,28 +213,28 @@
     </div>
   </div>
 
-  <div class="page p_30 mb_10 tr">
-    <center>
-      <c:if test="${is_login=='1'}">
-        <input type="hidden" id="pageCount" value="6443">
-        <input type="hidden" name="size" id="size" value="${query.size}">
-        <a href="javascript:void(0);" onclick="nextPage('1')">第一页 </a>
-        <a href="javascript:void(0);" onclick="nextPage('${page.page-1}')">上一页</a>
-        <a href="javascript:void(0);" onclick="nextPage('${page.page+1}')">下一页</a>
-        <a href="javascript:void(0);" onclick="nextPage('${page.pageCount}')">最后页</a>
-        <span>跳到</span>
-        <span><input type="text" id="index" name="index" value="${page.page}"
-                     autocomplete="off" maxlength="6"
-                     value="${page.page}"
-                     onpaste="return false" style="text-align:center;"></span>
-        <span>页 </span>
-        <span><button type="button" onclick="searchIndex(event, '${page.page}')">GO</button></span>
-      </c:if>
-      <c:if test="${is_login=='0'}">
-        <a class="index-button" href="javaScript:void(0)" onclick="login()">登录查看更多信息</a>
-      </c:if>
-    </center>
-  </div>
+  <%--<div class="page p_30 mb_10 tr">--%>
+    <%--<center>--%>
+      <%--<c:if test="${is_login=='1'}">--%>
+        <%--<input type="hidden" id="pageCount" value="6443">--%>
+        <%--<input type="hidden" name="size" id="size" value="${query.size}">--%>
+        <%--<a href="javascript:void(0);" onclick="nextPage('1')">第一页 </a>--%>
+        <%--<a href="javascript:void(0);" onclick="nextPage('${page.page-1}')">上一页</a>--%>
+        <%--<a href="javascript:void(0);" onclick="nextPage('${page.page+1}')">下一页</a>--%>
+        <%--<a href="javascript:void(0);" onclick="nextPage('${page.pageCount}')">最后页</a>--%>
+        <%--<span>跳到</span>--%>
+        <%--<span><input type="text" id="index" name="index" value="${page.page}"--%>
+                     <%--autocomplete="off" maxlength="6"--%>
+                     <%--value="${page.page}"--%>
+                     <%--onpaste="return false" style="text-align:center;"></span>--%>
+        <%--<span>页 </span>--%>
+        <%--<span><button type="button" onclick="searchIndex(event, '${page.page}')">GO</button></span>--%>
+      <%--</c:if>--%>
+      <%--<c:if test="${is_login=='0'}">--%>
+        <%--<a class="index-button" href="javaScript:void(0)" onclick="login()">登录查看更多信息</a>--%>
+      <%--</c:if>--%>
+    <%--</center>--%>
+  <%--</div>--%>
 
 </div>
 <!--内容 end-->
@@ -290,90 +263,15 @@
       window.location.href=_url;
     }
   }
-  function favourClick(_mm_msg_id){
-    //先判断是否登录
-    var is_login = $("#is_login").val();
-    if(is_login == 1){
-      //登陆了
-      var mm_emp_id = $("#mm_emp_id").val();
-      var accessToken = $("#accessToken").val();
-      $.ajax({
-        cache: true,
-        type:"POST",
-        url:"/saveFavour.do",
-        data:{"mm_msg_id":_mm_msg_id, "accessToken":accessToken, "mm_emp_id":mm_emp_id},
-        async: false,
-        success:function(_data){
-          var data = $.parseJSON(_data);
-          if(data.success){
-            alert("收藏成功");
-          }else{
-            var _case = {1:"收藏失败", 2:"已经收藏，不能重复收藏！",9:"账号过期，请重新登录！"};
-            alert(_case[data.code])
-          }
-        }
-      });
-    }else{
-      //没登陆
-      alert("请先登录");
-    }
-  }
-
-  function showDetail(_mm_msg_id){
-    window.location.href="/netRecordController/toDetail.do?mm_msg_id="+_mm_msg_id;
-  }
 
   function login(){
     //登录页面跳转
     window.location.href="/netLoginController/toLogin.do";
   }
-  function selectPro(){
-    //页面跳转
-    window.location.href="/webvSelectProvinceController/toSelectProvince.do";
-  }
 
-  function addMsg(){
-    var is_login = $("#is_login").val();
-    if(is_login == 1) {
-      //登陆了
-      if(${emp.is_upate_profile == '1'} ){
-        window.location.href="/netAddRecordController/toAddRecord.do";
-      }else{
-        window.location.href="/webvProfile/toUpdateProfile.do";
-      }
-
-    }else{
-      //登录页面跳转
-      window.location.href="/netLoginController/toLogin.do";
-    }
-  }
 </script>
 
 <script type="text/javascript" charset="UTF-8">
-  function searchIndex(e,_page){
-    var _index = $("#index").val();
-    var page = parseInt(_page);
-    var size = $("#size").val();
-    var keyword = $("#keyword").val();
-    if(_index <= ${page.pageCount} && _index >= 1){
-      window.location.href="/hmtIndex/toIndex.do?page="+_index+"&size="+size+"&keyword="+keyword;
-    }else{
-      alert("请输入1-${page.pageCount}的页码数");
-    }
-  }
-
-  function nextPage(_page) {
-    var page = parseInt(_page);
-    var size = $("#size").val();
-    var keyword = $("#keyword").val();
-    addCookie("contract_size", size, 36);
-    if ((page <= ${page.pageCount} && page >= 1)) {
-      window.location.href="/hmtIndex/toIndex.do?page="+page+"&size="+size+"&keyword="+keyword;
-    } else {
-      alert("请输入1-${page.pageCount}的页码数");
-    }
-  }
-
   function quiteClick(){
     //退出
     $.ajax({
@@ -386,7 +284,7 @@
         var data = $.parseJSON(_data);
         if(data.success){
           alert("您已退出账号，请重新登录！");
-          window.location.href="/netLoginController/toLogin.do";
+          window.location.href="/netGuanzhuController/toLogin.do";
         }else{
           var _case = {1:"退出账号失败！", 9:"账号过期，请重新登录！"};
           alert(_case[data.code])
@@ -394,6 +292,86 @@
       }
     });
   }
+
+  function add(){
+    var areaid1 = $("#areaid1").val();
+    var mm_emp_countryId = $("#mm_emp_countryId").val();
+    var mm_emp_countryName = $("#mm_emp_countryId").find("option:selected").text();
+
+    if($("#areaid1").val().split(',').length > 5){
+      alert("最多选择5个县区！");
+    }else{
+      if($("#areaid1").val().indexOf(mm_emp_countryId) > -1){
+        //说明存在这个值了
+        alert("不能重复选择同一个县区！");
+      }else{
+        $("#mm_msg_title").val($("#mm_msg_title").val() + mm_emp_countryName +",");
+        $("#areaid1").val($("#areaid1").val() + mm_emp_countryId +",");
+      }
+    }
+  }
+
+  function subAll(){
+    //提交审核]
+    var areaid1 = $("#areaid1").val();
+    var mm_msg_title = $("#mm_msg_title").val();
+    if(areaid1 == '' || mm_msg_title==''){
+      alert("请先选择地区！");
+    }else{
+      $.ajax({
+        cache: true,
+        type: "POST",
+        url:"/netGuanzhuController/saveGuanzhuArea.do",
+        data:{
+          "area_name":mm_msg_title,
+          "areaid":areaid1
+        },
+        async: false,
+        success: function(_data) {
+          var data = $.parseJSON(_data);
+          if(data.success){
+            alert("提交申请成功，请等待管理员审核！");
+            window.history.go(-1);
+          }else{
+            var _case = {1:"提交申请失败",2:"已经提交申请，不能重复发布！",9:"您的账号在其它设备上登录，请重新登录"};
+            alert(_case[data.code])
+          }
+        }
+      });
+    }
+  }
+  function toPage(_url, _page){
+    if(_page != ''){
+      window.location.href=_url+"?page="+_page;
+    }else{
+      window.location.href=_url;
+    }
+  }
+
+  function selectCitys(){
+    var citys = ${listCitysAll};
+    var province = $("#mm_emp_provinceId").val();
+    var ret = "<option value=''>"+'请选择城市'+"</option>";
+    for(var i= citys.length-1; i>=0; i-- ){
+      if(citys[i].father==province){
+        ret += "<option value='"+citys[i].cityID+"'>"+citys[i].city+"</option>";
+      }
+    }
+    $("#mm_emp_cityId").html(ret);
+  };
+
+  function selectCountrys(){
+    var countrys = ${listsCountryAll};
+    var city = $("#mm_emp_cityId").val();
+    var ret = "<option value=''>"+'请选择县区'+"</option>";
+    for(var i= countrys.length-1; i>=0; i-- ){
+      if(countrys[i].father==city){
+        ret += "<option value='"+countrys[i].areaID+"'>"+countrys[i].area+"</option>";
+      }
+    }
+    $("#mm_emp_countryId").html(ret);
+  };
+
 </script>
 
 </html>

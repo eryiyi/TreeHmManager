@@ -52,11 +52,6 @@
 <div class="topbar">
   <div class="container clearfix">
     <ul class="top-login fl">
-      <li class="dropdown">
-        <div class="dropdown-label dl-city">
-          <i>&nbsp;</i><span class="tit">点击选择区域</span></div>
-      </li>
-
       <c:if test="${is_login=='1'}">
         <ul class="fl">
           <li>
@@ -74,7 +69,6 @@
           </li>
         </ul>
       </c:if>
-
       <ul class="fl">
         <li class="label orange">您好，欢迎来到花木通信息平台</li>
         <c:if test="${is_login=='0'}">
@@ -83,19 +77,17 @@
                rel="nofollow">请登录</a>
           </li>
           <li class="label">
-            <a title="马上注册，共享无限农业商机" href="javascript:void(0)" onclick="reg()"
+            <a title="马上注册，共享无限商机" href="javascript:void(0)" onclick="reg()"
                rel="nofollow">免费注册 </a>
           </li>
         </c:if>
       </ul>
-
     </ul>
     <ul class="top-nav fr">
       <li id="hn_home_id">
         <div class="label">
           <a href="/hmtIndex/toIndex.do?page=1">花木通求购信息</a></div>
       </li>
-
       <c:if test="${is_login=='1'}">
         <li>
           <div class="label">
@@ -103,7 +95,6 @@
           </div>
         </li>
       </c:if>
-
       <li class="dropdown">
         <div class="dropdown-label">
           <i>&nbsp;</i><span><a href="javaScript:void(0)" target="_blank"
@@ -142,18 +133,25 @@
 <!--头部 导航-->
 <div class="type-head">
   <h1 class="logo">
-    <a href="javascript:void(0)" title="花木通信息平台"></a>
+    <a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=0" title="花木通信息平台"></a>
   </h1>
-
 </div>
+
 <div class="type-nav">
   <div class="nav-con">
     <!-- 顶部栏目-->
     <ul class="nav-con-tit">
-      <li><a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=0" class="nav-tstj">求购大厅</a></li>
-      <li><a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=1" class="nav-dptj">供应大厅</a></li>
-      <li><a href="/netTopController/toTop.do?page=1" class="nav-tstj nav-active">金牌榜</a></li>
-      <li><a href="/netServiceController/toService.do" class="nav-zxhq">服务中心</a></li>
+      <c:if test="${query.mm_msg_type=='0'}">
+        <li><a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=0" class="nav-tstj nav-active">求购大厅</a></li>
+        <li><a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=1" class="nav-dptj">供应大厅</a></li>
+      </c:if>
+      <c:if test="${query.mm_msg_type=='1'}">
+        <li><a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=0" class="nav-dptj">求购大厅</a></li>
+        <li><a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=1" class="nav-dptj nav-active">供应大厅</a></li>
+      </c:if>
+
+      <li><a href="/netTopController/toTop.do?page=1" class="nav-tstj">金牌榜</a></li>
+      <li><a href="/netCenterController/toCenter.do" class="nav-zxhq">服务中心</a></li>
       <li><a href="../html/download.html" target="_blank" class="nav-zxhq">手机版</a></li>
     </ul>
   </div>
@@ -327,6 +325,7 @@
     //登录页面跳转
     window.location.href="/netLoginController/toLogin.do";
   }
+
   function selectPro(){
     //页面跳转
     window.location.href="/webvSelectProvinceController/toSelectProvince.do";
@@ -339,9 +338,9 @@
       if(${emp.is_upate_profile == '1'} ){
         window.location.href="/netAddRecordController/toAddRecord.do";
       }else{
-        window.location.href="/webvProfile/toUpdateProfile.do";
+        alert("请先完善您的个人资料");
+        window.location.href="/netProfileController/toUpdateProfile.do";
       }
-
     }else{
       //登录页面跳转
       window.location.href="/netLoginController/toLogin.do";

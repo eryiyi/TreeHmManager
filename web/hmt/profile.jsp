@@ -8,7 +8,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="icon" href="../img/icon.png" type="image/png" />
   <meta name="renderer" content="webkit">
-  <title>花木通|消息通知</title>
+  <title>花木通|个人主页</title>
   <meta name="keywords" content="花木通,惠民,苗木,花木,苗木交易,花木求购,苗木求购,花木资讯,花木论坛,花木销售,苗木销售,苗木资讯,绿化苗木,花草,苗联通,白蜡,园林,惠民皂户李镇,苗木协会">
   <meta name="Description" content=" 花木通是惠民县本地第一苗木供求信息平台、信息通讯平台，突破了苗木大市场、绿化工程公司、经纪人、苗农之间的信息壁垒，让市场订单苗木不愁买，苗农种植苗木不愁卖！为本地苗木行业发展助力，让经纪人足不出户，随时随地做生意！让苗农及时了解市场行情，苗木卖价更高更容易！">
   <link href="../hmt/css/common/index-type.css" rel="stylesheet" type="text/css" />
@@ -19,7 +19,10 @@
   <link href="../hmt/css/search/style.css" rel="stylesheet" type="text/css" />
   <link href="../hmt/css/search/base.css" rel="stylesheet" type="text/css" />
   <link href="../hmt/css/supply/index.css" rel="stylesheet" type="text/css" />
-
+  <link href="../hmt/css/buyercommon/base.min.css" rel="stylesheet" type="text/css" />
+  <link href="../hmt/css/buyercommon/common.css" rel="stylesheet" type="text/css" />
+  <link href="../hmt/css/buyer/index.css" rel="stylesheet" type="text/css" />
+  <link href="../hmt/css/buyer/common.css" rel="stylesheet" type="text/css" />
 
   <script type="text/javascript" src="../js/jquery.min.js"></script>
   <script type="text/javascript" src="../js/md5.js"></script>
@@ -32,11 +35,10 @@
 
 </head>
 <body>
-
-<!-- 顶部 -->
 <div class="topbar">
   <div class="container clearfix">
     <ul class="top-login fl">
+
       <c:if test="${is_login=='1'}">
         <ul class="fl">
           <li>
@@ -54,6 +56,7 @@
           </li>
         </ul>
       </c:if>
+
       <ul class="fl">
         <li class="label orange">您好，欢迎来到花木通信息平台</li>
         <c:if test="${is_login=='0'}">
@@ -62,7 +65,7 @@
                rel="nofollow">请登录</a>
           </li>
           <li class="label">
-            <a title="马上注册，共享无限商机" href="javascript:void(0)" onclick="reg()"
+            <a title="马上注册，共享无限农业商机" href="javascript:void(0)" onclick="reg()"
                rel="nofollow">免费注册 </a>
           </li>
         </c:if>
@@ -73,6 +76,7 @@
         <div class="label">
           <a href="/hmtIndex/toIndex.do?page=1">花木通求购信息</a></div>
       </li>
+
       <c:if test="${is_login=='1'}">
         <li>
           <div class="label">
@@ -80,6 +84,7 @@
           </div>
         </li>
       </c:if>
+
       <li class="dropdown">
         <div class="dropdown-label">
           <i>&nbsp;</i><span><a href="javaScript:void(0)" target="_blank"
@@ -108,91 +113,28 @@
           <i>&nbsp;</i><span><a href="javascript:void(0)" target="_blank" rel="nofollow">帮助中心</a></span></div>
         <div class="dropdown-layer dd-help-center">
           <p>
-            <a href="/netWeixinController/toKefu.do" target="_blank" rel="nofollow">微信客服</a>
-            <a href="/netKefuController/toKefu.do" target="_blank" rel="nofollow">电话客服</a></p>
+            <a href="javascript:void(0)" target="_blank" rel="nofollow">常见问题</a><a
+                  href="javascript:void(0)" target="_blank" rel="nofollow">联系客服</a></p>
         </div>
       </li>
     </ul>
   </div>
 </div>
-<!--头部 导航-->
-<div class="type-head">
-  <h1 class="logo">
-    <a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=0" title="花木通信息平台"></a>
-  </h1>
-</div>
 
-<div class="type-nav">
-  <div class="nav-con">
-    <!-- 顶部栏目-->
-    <ul class="nav-con-tit">
-      <li><a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=0" class="nav-tstj">求购大厅</a></li>
-      <li><a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=1" class="nav-dptj">供应大厅</a></li>
-      <li><a href="/netTopController/toTop.do?page=1" class="nav-tstj">金牌榜</a></li>
-      <li><a href="/netCenterController/toCenter.do" class="nav-zxhq">服务中心</a></li>
-      <li><a href="../html/download.html" target="_blank" class="nav-zxhq">手机版</a></li>
-    </ul>
-  </div>
-</div>
-<!--头部 导航 end-->
-
-<input type="hidden" id="is_login" name="is_login" value="${is_login}">
-<input type="hidden" id="accessToken" name="accessToken" value="${emp.access_token}">
-<input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${emp.mm_emp_id}">
-
-<div class="container wrap-1190">
-
-    <div class="tabs mt_15">
-      <ul class="tabs-list">
-        <li class="cur" id="all_li"><a href="javascript:void(0)">通知列表</a></li>
-      </ul>
-      <div class="tabs-msg"><a></a></div>
-    </div>
-    <div class="pro-list mb_10">
-
-      <ul class="pro-list-title pt_15">
-        <li class="l2">通知标题</li>
-        <li class="l3">发布时间</li>
-      </ul>
-      <ul  id="con_one_2" >
-        <c:forEach items="${list}" var="e" varStatus="st">
-          <li class="text-list">
-            <a href="/netNoticeController/toDetail.do?id=${e.mm_notice_id}" target="_blank">
-              <span class="l2">${e.mm_notice_title}</span>
-              <span class="l3">${e.dateline}</span>
-            </a>
-          </li>
-        </c:forEach>
-      </ul>
-
-      <div class="clear"></div>
-    </div>
-  <div class="sides mt_15">
-    <div class="release-but mb_15"><a href="javascript:void(0)" target="_blank" onclick="addMsg()"><i class="lee-ico lee-fb"></i> &nbsp; 发布供应</a></div>
-    <div class="ad2">
-
-      <a href="#" target="_target" title="点击进入春季种苗批发市场页面" rel="nofollow">
-        <img src="../hmt/images/2C604DU858ChRkRlcHTCeAU9-hAAHy19HEc7E108.jpg" alt="这是一张春季种苗批发市场的展示图片" width="216" height="353">
-      </a>
-
-    </div>
-    <div class="sides-hot mtb_15">
-      <h2>热门信息</h2>
-      <ul>
-        <c:forEach items="${listsHot}" var="e" varStatus="st">
-          <li>
-            <c:if test="${e.mm_msg_type=='0'}"><em class="hot">[求购]</em></c:if>
-            <c:if test="${e.mm_msg_type=='1'}"><em >[供应]</em></c:if>
-            <h3><a target="_blank" href="javascript:void(0)" onclick="showDetail('${e.mm_msg_id}')">${e.mm_msg_title}</a></h3>
-            <p></p>
-          </li>
-        </c:forEach>
-      </ul>
+<div class="header">
+  <div class="wrap">
+    <a href="javascript:void(0)" target="_blank" class="logo"><img src="../hmt/images/category-vegetable/logo_type.png" width="194px" height="38px"></a>
+    <div class="webname">
+      <h2>用户中心</h2>
+      <span>${emp.mm_emp_nickname}</span>
     </div>
   </div>
-
 </div>
-<!--内容 end-->
+
+
+
+
+
 
 <jsp:include page="footer.jsp" flush="true" />
 
@@ -219,38 +161,13 @@
     }
   }
 
-  function showDetail(_mm_msg_id){
-    window.location.href="/netRecordController/toDetail.do?mm_msg_id="+_mm_msg_id;
-  }
-
   function login(){
     //登录页面跳转
     window.location.href="/netLoginController/toLogin.do";
   }
-  function selectPro(){
-    //页面跳转
-    window.location.href="/webvSelectProvinceController/toSelectProvince.do";
-  }
-
-  function addMsg(){
-    var is_login = $("#is_login").val();
-    if(is_login == 1) {
-      //登陆了
-      if(${emp.is_upate_profile == '1'} ){
-        window.location.href="/netAddRecordController/toAddRecord.do";
-      }else{
-        window.location.href="/webvProfile/toUpdateProfile.do";
-      }
-
-    }else{
-      //登录页面跳转
-      window.location.href="/netLoginController/toLogin.do";
-    }
-  }
 </script>
 
 <script type="text/javascript" charset="UTF-8">
-
   function quiteClick(){
     //退出
     $.ajax({
@@ -270,26 +187,6 @@
         }
       }
     });
-  }
-
-  function allKefu (){
-    $("#location_li").removeClass("cur");
-    $("#all_li").addClass("cur");
-
-    var con_one_1=document.getElementById("con_one_1");
-    var con_one_2=document.getElementById("con_one_2");
-    con_one_1.style.display = "none";
-    con_one_2.style.display = "block";
-  }
-  function locationKefu(){
-
-    $("#location_li").addClass("cur");
-    $("#all_li").removeClass("cur");
-
-    var con_one_1=document.getElementById("con_one_1");
-    var con_one_2=document.getElementById("con_one_2");
-    con_one_1.style.display = "block";
-    con_one_2.style.display = "none";
   }
 
 </script>
