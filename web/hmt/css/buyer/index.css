@@ -709,8 +709,63 @@ body {
     overflow: hidden;
     background: url("../../images/modu-3.png")  no-repeat;
 }
+
 .modu-wdcg .box a:hover p{
     background: url("../../images/modu-3-click.png")  no-repeat;
+}
+
+
+.modu-syyh{
+    width: 30%;
+    margin-right: 3.33%;
+    height: 202px;
+}
+.modu-syyh .title{
+    height: 42px;
+    line-height: 42px;
+    overflow: hidden;
+    color:#ffffff;
+    border-top: #54b6df solid 2px;
+    border-bottom: #54b6df solid 1px;
+    background-color: #54b6df;
+}
+.modu-syyh .title h2{
+    float: left;
+    padding-left: 20px;
+    font-size: 16px;
+}
+.modu-syyh .box,
+.modu-syyh .box a
+{
+    display: block;
+    height: 157px;
+    text-decoration: none;
+}
+.modu-syyh .box a:hover
+{
+    background-color: #fafafa;
+}
+.modu-syyh .box h3{
+    padding-top: 20px;
+    font-size: 16px;
+    color: #666666;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+}
+
+
+.modu-syyh .box p{
+    margin: 20px auto;
+    height: 51px;
+    width: 51px;
+    overflow: hidden;
+    background: url("../../images/tree_user_bank.png")  no-repeat;
+    background-size: contain;
+}
+.modu-syyh .box a:hover p{
+    background: url("../../images/tree_user_bank_p.png")  no-repeat;
+    background-size: contain;
 }
 /*- modu-wdxd -*/
 .modu-wdxd{

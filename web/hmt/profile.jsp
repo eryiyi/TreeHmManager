@@ -135,7 +135,7 @@
 
 <div class="header">
   <div class="wrap">
-    <a href="javascript:void(0)" target="_blank" class="logo"><img src="../hmt/images/category-vegetable/logo_type.png" width="194px" height="38px"></a>
+    <a href="/hmtIndex/toIndex.do?page=1" target="_blank" class="logo"><img src="../hmt/images/category-vegetable/logo_type.png" width="194px" height="38px"></a>
     <div class="webname">
       <h2>用户中心</h2>
       <span>${emp.mm_emp_nickname}</span>
