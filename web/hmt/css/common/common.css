@@ -1167,10 +1167,8 @@ a:hover, a:active, a:focus {
       margin: 0 4px; }
       .footer .foot-qr .qrcode img {
         display: block;
-        width: 84px;
-        height: 84px;
         margin: 0 auto;
-        padding: 6px;
+        padding: 3px;
         vertical-align: top;
         background: #fff; }
       .footer .foot-qr .qrcode p {

@@ -24,6 +24,13 @@
   <link href="../hmt/css/buyer/index.css" rel="stylesheet" type="text/css" />
   <link href="../hmt/css/buyer/common.css" rel="stylesheet" type="text/css" />
 
+  <link rel="stylesheet" href="../hmt/css/profileupdate/common.css"/>
+  <link rel="stylesheet" href="../hmt/css/profileupdate/common_2.css"/>
+  <link rel="stylesheet" href="../hmt/css/profileupdate/service.css"/>
+  <link rel="stylesheet" href="../hmt/css/glide.core.min.css"/>
+  <link rel="stylesheet" href="../hmt/css/glide.theme.min.css"/>
+  <link rel="stylesheet" href="../hmt/css/user_profile.css"/>
+
   <script type="text/javascript" src="../js/jquery.min.js"></script>
   <script type="text/javascript" src="../js/md5.js"></script>
   <script type="text/javascript" src="../js/cookie.js"></script>
@@ -32,7 +39,12 @@
   <script type="text/javascript" src="../js/validation.js"></script>
   <script language="javascript" src="../js/jquery.js"></script>
   <script type="text/javascript" src="../js/jquery_latest.js"></script>
-
+  <script type="text/javascript" src="../js/glide.min.js"></script>
+  <style>
+    .button{
+      color: #fff !important;
+    }
+  </style>
 </head>
 <body>
 <div class="topbar">
@@ -130,9 +142,218 @@
     </div>
   </div>
 </div>
+<div class="container wrap-1190">
+
+  <form action="supply.htm" id="filterForm" class="fl" style="width: 956px;">
+    <div class="profile-holder">
+        <div id="Glide" class="glide">
+          <div class="panel clearfix">
+            <img src="${emp.mm_emp_cover}" alt="${emp.mm_emp_nickname}" class="head-pic">
+            <div class="user-info">
+              <h2 class="name">${emp.mm_emp_nickname}</h2>
+              <%--<c:if test="${emp.mm_emp_type==0}"><h3 class="type">苗木经营户</h3></c:if>--%>
+              <%--<c:if test="${emp.mm_emp_type==1}"><h3 class="type">苗木会员</h3></c:if>--%>
+              <%--<h3 class="type">${emp.mm_level_num}</h3>--%>
+              <c:if test="${emp.mm_level_num==0}"><h3 class="type">vip1</h3></c:if>
+              <c:if test="${emp.mm_level_num==1}"><h3 class="type">vip2</h3></c:if>
+              <c:if test="${emp.mm_level_num==2}"><h3 class="type">vip3</h3></c:if>
+              <c:if test="${emp.mm_level_num==3}"><h3 class="type">vip4</h3></c:if>
+              <c:if test="${emp.mm_level_num==4}"><h3 class="type">vip5</h3></c:if>
+            </div>
+          </div>
+          <div class="glide__wrapper">
+            <ul class="glide__track">
+              <c:forEach items="${empAdVO}" var="e" varStatus="st">
+                <li class="glide__slide"><img src="${e.mm_emp_ad_pic}" alt="${e.mm_emp_ad_url}"></li>
+              </c:forEach>
+            </ul>
+          </div>
+
+          <div class="glide__bullets"></div>
+
+        </div>
+        <script>
+          $(function(){
+            $('.glide').glide({
+              mode:'horizontal',     // 幻灯片走向
+              autoplay:5000,         // 自动播放，false为关闭自动播放
+              startAt:0,             // 开始于哪个幻灯片
+              // paddings:'1rem',       // 幻灯片左右的padding 可以是单位，%
+              centered:true,         // 当前幻灯片在slides的中间
+              hoverpause:true,       // 鼠标悬停的时候暂停播放
+              autoheight:false,      // 设置包裹的slider为当前幻灯片的高度
+              keyboard:true,         // 光标方向键使幻灯片左右滑动
+              touchDistance:80,      // 最小手指滑动距离，以触发滑动操作
+              dragDistance:120,      // 最小鼠标拖动距离，以触发滑动操作
+              animationDuration:400 // 动画时间 ms
+            });
+          })
+        </script>
+        <!-- GLIDE SLIDE END -->
+
+        <!-- user-info -->
+        <div class="content mb2">
+          <div class="user-info w9">
+            <h3 class="area-head">公司简介：</h3>
+            <p class="company-info mb1">${emp.mm_emp_company}</p>
+            <a class="button fill-green mb2" href="${emp.mm_emp_company_url}" target="_blank">公司微网站</a>
+
+          </div>
+          <div class="switcher mt1">
+            <div class="w9">
+              <h2 class="area-head tac mb1">发布过的信息</h2>
+              <div class="button-group-x2">
+                <a class="button fill-green" href="javaScript:void(0)" onclick="searchProfile('0')">求购</a>
+                <a class="button fill-green" href="javaScript:void(0)" onclick="searchProfile('1')">供应</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="recent">
+          <c:forEach items="${list}" var="e" varStatus="st">
+            <div class="item">
+              <div class="item-heading clearfix">
+                <a href="javaScript:void(0)" class="left clearfix">
+                  <img src="${e.mm_emp_cover}" alt="" class="head-pic">
+                  <div class="detail">
+                    <h1 class="company">${e.mm_emp_company}&nbsp;${e.mm_emp_nickname}</h1>
+                    <h3 class="time">${e.dateline} &nbsp;&nbsp; ${e.area}</h3>
+                  </div>
+                </a>
+                <div class="right">
+                  <div class="top clearfix">
+                    <c:if test="${e.is_miaomu=='1'}"><img src="/img/tree_icons_trust.png" alt=""></c:if>
+                    <c:if test="${e.is_chengxin=='1'}"><img src="/img/tree_icons_group.png" alt=""></c:if>
+                  </div>
+                  <div class="botton clearfix">
+                    <c:if test="${e.mm_level_num=='0'}"><img src="/img/tree_icons_star_1.png" alt=""></c:if>
+                    <c:if test="${e.mm_level_num=='1'}"><img src="/img/tree_icons_star_2.png" alt=""></c:if>
+                    <c:if test="${e.mm_level_num=='2'}"><img src="/img/tree_icons_star_3.png" alt=""></c:if>
+                    <c:if test="${e.mm_level_num=='3'}"><img src="/img/tree_icons_star_4.png" alt=""></c:if>
+                    <c:if test="${e.mm_level_num=='4'}"><img src="/img/tree_icons_star_5.png" alt=""></c:if>
+                  </div>
+                </div>
+              </div>
+              <a href="javaScript:void(0)" onclick="showDetail('${e.mm_msg_id}')" class="item-content">
+                  ${e.mm_msg_title}
+                  ${e.mm_msg_content}
+              </a>
+              <div class="item-footer clearfix">
+                  <%--<button class="read-status-unread"></button>--%>
+                  <%--<div  class="share-left">--%>
+                  <%--<div class="bdsharebuttonbox" >--%>
+                  <%--<a class="bds_mshare" data-cmd="mshare"></a>--%>
+                  <%--<a class="bds_qzone" data-cmd="qzone" href="javaScript:void(0)"></a>--%>
+                  <%--<a class="bds_tsina" data-cmd="tsina"></a>--%>
+                  <%--<a class="bds_tqq" data-cmd="tqq"></a>--%>
+                  <%--<a class="bds_more" data-cmd="more">更多</a>--%>
+                  <%--<a class="bds_count" data-cmd="count"></a>--%>
+                  <%--</div>--%>
+                  <%--</div>--%>
+                <a type="button" href="tel:${e.mm_emp_mobile}"  class="button-phone"></a>
+                <a type="button" href="javaScript:void(0)" onclick="favourClick('${e.mm_msg_id}')" class="button-fav"></a>
+                <c:if test="${e.mm_msg_picurl !=''}"><a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-pic"></a></c:if>
+
+              </div>
+            </div>
+          </c:forEach>
+
+          <input type="hidden" id="mm_msg_type" name="mm_msg_type" value="${query.mm_msg_type}">
+          <input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${query.mm_emp_id}">
+          <!--分页信息，页面跳转-->
+          <div class="page clearfix">
+            <div class="left hide-phone">
+              <a><span>共${page.count}条/${page.pageCount}页</span></a>
+              <a>每页显示
+                <select name="size" id="size" onchange="nextPage('1')">
+                  <option value="10" ${query.size==10?'selected':''}>10</option>
+                  <option value="20" ${query.size==20?'selected':''}>20</option>
+                  <option value="30" ${query.size==30?'selected':''}>30</option>
+                  <option value="100" ${query.size==100?'selected':''}>100</option>
+                </select>条
+              </a>
+            </div>
+            <div class="right">
+              <c:choose >
+                <c:when test="${page.page == 1}">
+                  <a href="javascript:void(0)">首页</a>
+                  <a href="javascript:void(0)">《</a>
+                </c:when>
+                <c:otherwise>
+                  <a href="javascript:void(0);" onclick="nextPage('1')">首页</a>
+                  <a href="javascript:void(0);" onclick="nextPage('${page.page-1}')">《</a>
+                </c:otherwise>
+              </c:choose>
+              <a>第<input type="text" id="index" name="index" onkeyup="searchIndex(event)" value="${page.page}">页</a>
+              <c:choose>
+                <c:when test="${page.page == page.pageCount}">
+                  <a href="javascript:void(0)">》</a>
+                  <a href="javascript:void(0)">末页</a>
+                </c:when>
+                <c:otherwise>
+                  <a href="javascript:void(0);" onclick="nextPage('${page.page+1}')">》</a>
+                  <a href="javascript:void(0);" onclick="nextPage('${page.pageCount}')">末页</a>
+                </c:otherwise>
+              </c:choose>
+            </div>
+          </div>
+
+        </div>
+    </div>
+
+      <div class="clear"></div>
+  </form>
+<%--边栏--%>
+  <div class="sides mt_15">
+    <div class="release-but mb_15"><a href="javascript:void(0)" target="_blank" onclick="addMsg()"><i class="lee-ico lee-fb"></i> &nbsp; 发布供应</a></div>
+    <div class="release-but mb_15"><a href="/netKefuController/toKefu.do" target="_blank" ><i class="lee-ico lee-fb"></i> &nbsp; 客服中心</a></div>
+    <div class="ad2">
 
 
+      <a href="../html/download.html" target="_blank" title="花木通app" rel="nofollow">
+        <img src="../hmt/images/2C604DU858ChRkRlcHTCeAU9-hAAHy19HEc7E108.jpg" alt="花木通app" width="216" height="353">
+      </a>
 
+
+    </div>
+    <div class="sides-hot mtb_15">
+      <h2>热门信息</h2>
+      <ul>
+        <c:forEach items="${listsHot}" var="e" varStatus="st">
+          <li>
+            <c:if test="${e.mm_msg_type=='0'}"><em class="hot">[求购]</em></c:if>
+            <c:if test="${e.mm_msg_type=='1'}"><em >[供应]</em></c:if>
+            <h3><a target="_blank" href="javascript:void(0)" onclick="showDetail('${e.mm_msg_id}')">${e.mm_msg_title}</a></h3>
+            <p></p>
+          </li>
+        </c:forEach>
+      </ul>
+    </div>
+  </div>
+
+  <div class="page p_30 mb_10 tr">
+      <c:if test="${is_login=='1'}">
+        <input type="hidden" id="pageCount" value="6443">
+        <input type="hidden" name="size" id="size" value="${query.size}">
+        <a href="javascript:void(0);" onclick="nextPage('1')">第一页 </a>
+        <a href="javascript:void(0);" onclick="nextPage('${page.page-1}')">上一页</a>
+        <a href="javascript:void(0);" onclick="nextPage('${page.page+1}')">下一页</a>
+        <a href="javascript:void(0);" onclick="nextPage('${page.pageCount}')">最后页</a>
+        <span>跳到</span>
+        <span><input type="text" id="index" name="index" value="${page.page}"
+                     autocomplete="off" maxlength="6"
+                     value="${page.page}"
+                     onpaste="return false" style="text-align:center;"></span>
+        <span>页 </span>
+        <span><button type="button" onclick="searchIndex(event, '${page.page}')">GO</button></span>
+      </c:if>
+      <c:if test="${is_login=='0'}">
+        <a class="index-button" href="javaScript:void(0)" onclick="login()">登录查看更多信息</a>
+      </c:if>
+  </div>
+
+</div>
 
 
 
