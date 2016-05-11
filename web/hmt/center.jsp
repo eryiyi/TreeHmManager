@@ -123,7 +123,7 @@
 
 <div class="header">
   <div class="wrap">
-    <a href="javascript:void(0)" target="_blank" class="logo"><img src="../hmt/images/category-vegetable/logo_type.png" width="194px" height="38px"></a>
+    <a href="/hmtIndex/toIndex.do?page=1" target="_blank" class="logo"><img src="../hmt/images/category-vegetable/logo_type.png" width="194px" height="38px"></a>
     <div class="webname">
       <h2>用户中心</h2>
       <span>${emp.mm_emp_nickname}</span>
@@ -210,13 +210,13 @@
             </a>
           </div>
         </div>
-        <div class="modules modu-wdcg" myid="BUYES_MIDDLE_FEATURES_child0">
+        <div class="modules modu-syyh" myid="BUYES_MIDDLE_FEATURES_child0">
           <div class="title">
-            <h2>短信平台</h2>
+            <h2>商业银行</h2>
           </div>
           <div class="box">
-            <a href="http://mhmt.sdhmmm.cn/loginFront.aspx" target="_blank">
-              <h3>苗木通短信平台</h3>
+            <a href="http://www.sdnxs.com/Channel/23166" target="_blank">
+              <h3>商业银行</h3>
               <p></p>
             </a>
           </div>
@@ -273,12 +273,13 @@
           <span>公司招商</span>
         </a>
       </li>
-        <li menuid="30">
-        <a href="http://www.sdnxs.com/Channel/23166" target="_blank">
-          <em><img src="../hmt/images/tree_user_bank.png"></em>
-          <span>商业银行</span>
-        </a>
-      </li><li menuid="35">
+        <%--<li menuid="30">--%>
+        <%--<a href="http://www.sdnxs.com/Channel/23166" target="_blank">--%>
+          <%--<em><img src="../hmt/images/tree_user_bank.png"></em>--%>
+          <%--<span>商业银行</span>--%>
+        <%--</a>--%>
+      <%--</li>--%>
+        <li menuid="35">
         <a href="/netFuwuCenterController/toCenter.do?mm_fuwu_type=0&page=1">
           <em><img src="../hmt/images/tree_user_shop.png"></em>
           <span>苗木商店</span>
