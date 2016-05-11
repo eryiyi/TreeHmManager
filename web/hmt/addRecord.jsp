@@ -6,7 +6,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="icon" href="logo.ico" type="image/x-icon" />
+  <link rel="icon" href="../img/icon.png" type="image/png" />
   <meta name="renderer" content="webkit">
   <title>花木通|发布信息</title>
   <meta name="keywords" content="花木通,苗木,花木,苗木交易,花木求购,苗木求购,花木资讯,花木论坛,花木销售,苗木销售,苗木资讯,绿化苗木">
@@ -19,7 +19,6 @@
   <link href="../hmt/css/search/style.css" rel="stylesheet" type="text/css" />
   <link href="../hmt/css/search/base.css" rel="stylesheet" type="text/css" />
   <link href="../hmt/css/supply/index.css" rel="stylesheet" type="text/css" />
-
   <link href="../hmt/css/reg.css" rel="stylesheet" type="text/css" />
   <link href="../hmt/css/base.min.css" rel="stylesheet" type="text/css" />
   <link href="../hmt/css/login/common.css" rel="stylesheet" type="text/css" />
@@ -27,14 +26,11 @@
   <link href="../hmt/css/release.css" rel="stylesheet" type="text/css" />
   <link href="../hmt/css/v.css" rel="stylesheet" type="text/css" />
     <script language="javascript" src="../js/jquery.js"></script>
-  <%--<script type="text/javascript" src="../js/jquery.min.js"></script>--%>
   <script type="text/javascript" src="../js/md5.js"></script>
   <script type="text/javascript" src="../js/cookie.js"></script>
   <script type="text/javascript" src="../js/ajaxfileupload.js"></script>
   <script type="text/javascript" src="../js/Util.js"></script>
   <script type="text/javascript" src="../js/validation.js"></script>
-
-  <%--<script type="text/javascript" src="../js/jquery_latest.js"></script>--%>
 
 
     <style>

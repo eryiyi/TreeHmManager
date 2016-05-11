@@ -144,7 +144,7 @@
 	function selectCitys(){
 		var citys = ${listCitysAll};
 		var province = $("#mm_emp_provinceId").val();
-		var ret = '';
+		var ret = "<option value=''>"+'请选择城市'+"</option>";
 		for(var i= citys.length-1; i>=0; i-- ){
 			if(citys[i].father==province){
 				ret += "<option value='"+citys[i].cityID+"'>"+citys[i].city+"</option>";
@@ -156,7 +156,7 @@
 	function selectCountrys(){
 		var countrys = ${listsCountryAll};
 		var city = $("#mm_emp_cityId").val();
-		var ret = '';
+		var ret = "<option value=''>"+'请选择县区'+"</option>";
 		for(var i= countrys.length-1; i>=0; i-- ){
 			if(countrys[i].father==city){
 				ret += "<option value='"+countrys[i].areaID+"'>"+countrys[i].area+"</option>";

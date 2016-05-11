@@ -80,15 +80,11 @@
 
 </head>
 <body>
+
 <!-- 顶部 -->
 <div class="topbar">
   <div class="container clearfix">
     <ul class="top-login fl">
-      <li class="dropdown">
-        <div class="dropdown-label dl-city">
-          <i>&nbsp;</i><span class="tit">点击选择区域</span></div>
-      </li>
-
       <c:if test="${is_login=='1'}">
         <ul class="fl">
           <li>
@@ -106,7 +102,6 @@
           </li>
         </ul>
       </c:if>
-
       <ul class="fl">
         <li class="label orange">您好，欢迎来到花木通信息平台</li>
         <c:if test="${is_login=='0'}">
@@ -115,19 +110,17 @@
                rel="nofollow">请登录</a>
           </li>
           <li class="label">
-            <a title="马上注册，共享无限农业商机" href="javascript:void(0)" onclick="reg()"
+            <a title="马上注册，共享无限商机" href="javascript:void(0)" onclick="reg()"
                rel="nofollow">免费注册 </a>
           </li>
         </c:if>
       </ul>
-
     </ul>
     <ul class="top-nav fr">
       <li id="hn_home_id">
         <div class="label">
           <a href="/hmtIndex/toIndex.do?page=1">花木通求购信息</a></div>
       </li>
-
       <c:if test="${is_login=='1'}">
         <li>
           <div class="label">
@@ -135,7 +128,6 @@
           </div>
         </li>
       </c:if>
-
       <li class="dropdown">
         <div class="dropdown-label">
           <i>&nbsp;</i><span><a href="javaScript:void(0)" target="_blank"
@@ -174,18 +166,18 @@
 <!--头部 导航-->
 <div class="type-head">
   <h1 class="logo">
-    <a href="javascript:void(0)" title="花木通信息平台"></a>
+    <a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=0" title="花木通信息平台"></a>
   </h1>
-
 </div>
+
 <div class="type-nav">
   <div class="nav-con">
     <!-- 顶部栏目-->
     <ul class="nav-con-tit">
       <li><a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=0" class="nav-tstj">求购大厅</a></li>
       <li><a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=1" class="nav-dptj">供应大厅</a></li>
-      <li><a href="/netTopController/toTop.do?page=1" class="nav-tstj nav-active">金牌榜</a></li>
-      <li><a href="/netServiceController/toService.do" class="nav-zxhq">服务中心</a></li>
+      <li><a href="/netTopController/toTop.do?page=1" class="nav-tstj">金牌榜</a></li>
+      <li><a href="/netCenterController/toCenter.do" class="nav-zxhq">服务中心</a></li>
       <li><a href="../html/download.html" target="_blank" class="nav-zxhq">手机版</a></li>
     </ul>
   </div>
@@ -199,39 +191,57 @@
 <div class="container wrap-1190">
 
   <form action="supply.htm" id="filterForm" class="fl" style="width: 956px;">
-    <div class="noticebar mt_15">
-      <input type="text" id="keyword" name="keyword" autocomplete="off" class="notice-input" value="" placeholder="标题|手机号|公司名称|联系人">
-      <a href="javaScript:void(0)" onclick="searchIndex(event)" class="notice-submit"> <i class="lee-ico lee-cx"></i>搜索</a>
-      <span class="notice-msg"><a href="#" target="_blank" rel="nofollow">欢迎使用花木通信息平台，请谨慎核实信息内容!</a></span>
-    </div>
+    <%--<div class="noticebar mt_15">--%>
+      <%--<input type="text" id="keyword" name="keyword" autocomplete="off" class="notice-input" value="" placeholder="标题|手机号|公司名称|联系人">--%>
+      <%--<a href="javaScript:void(0)" onclick="searchIndex(event)" class="notice-submit"> <i class="lee-ico lee-cx"></i>搜索</a>--%>
+      <%--<span class="notice-msg"><a href="#" target="_blank" rel="nofollow">欢迎使用花木通信息平台，请谨慎核实信息内容!</a></span>--%>
+    <%--</div>--%>
     <div class="pro-list mb_10">
       <%--顶部地区选择--%>
       <ul class="category clearfix">
-          <li><a class="active" href="" onclick="">山东</a></li>
-          <li><a href="" onclick="">湖北</a></li>
-          <li><a href="" onclick="">湖南</a></li>
-          <li><a href="" onclick="">湖南</a></li>
-          <li><a href="" onclick="">湖南</a></li>
+
+        <c:forEach items="${listArea}" var="e" varStatus="st">
+          <c:if test="${countryid == e.areaID}"><li><a class="active" href="javaScript:void(0)" onclick="gzClickArea('${e.areaID}')">${e.area}</a></li></c:if>
+          <c:if test="${countryid != e.areaID}"><li><a href="javaScript:void(0)" onclick="gzClickArea('${e.areaID}')">${e.area}</a></li></c:if>
+        </c:forEach>
+
       </ul>
+        <%--<input type="hidden" id="mm_msg_type" name="mm_msg_type" value="${query.mm_msg_type}">--%>
+        <input type="hidden" id="countryid" name="countryid" value="${countryid}">
+        <input type="hidden" id="is_login" name="is_login" value="${is_login}">
+        <input type="hidden" id="accessToken" name="accessToken" value="${emp.access_token}">
+        <input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${emp.mm_emp_id}">
+
       <%--地区选择结束--%>
     </div>
     <%--内容区--%>
     <div class="pro-list mb_10">
       <ul class="pro-list-title pt_15">
-        <li class="l1">时间</li>
+        <li class="l2">
+        <select class="form-control" id="mm_msg_type" onchange="searchChange()">
+          <option value="">--选择信息类别--</option>
+          <option value="0" ${query.mm_msg_type=='0'?'selected':''}>求购</option>
+          <option value="1" ${query.mm_msg_type=='1'?'selected':''}>供应</option>
+        </select>
+        </li>
+
         <li class="l2">内容</li>
         <li class="l4">所在地区</li>
         <li class="l5">联系人</li>
+        <li class="l1">时间</li>
+        <li class="l1">操作</li>
       </ul>
       <ul>
 
         <c:forEach items="${list}" var="e" varStatus="st">
           <li class="text-list">
             <a href="javascript:void(0)" target="_blank" onclick="showDetail('${e.mm_msg_id}')">
-              <span class="l1">${e.dateline}</span>
+              <c:if test="${e.mm_msg_type=='0'}"> <span class="l2">[求购]</span></c:if>
+              <c:if test="${e.mm_msg_type=='1'}"> <span class="l2">[供应]</span></c:if>
               <span class="l2">${e.mm_msg_title}</span>
               <span class="l4">${e.area}</span>
               <span class="l5">${e.mm_emp_nickname}</span>
+              <span class="l1">${e.dateline}</span>
                               <span class="l6">
                                   <c:if test="${e.is_miaomu=='1'}"><img style="width: 25px;height: 32px;" src="../img/tree_icons_trust.png" title="苗木协会"></c:if>
                                   <c:if test="${e.is_chengxin=='1'}"><img style="width: 25px;height: 32px;" src="../img/tree_icons_group.png" title="诚信会员"></c:if>
@@ -254,9 +264,11 @@
     <div class="release-but mb_15"><a href="/netKefuController/toKefu.do" target="_blank" ><i class="lee-ico lee-fb"></i> &nbsp; 客服中心</a></div>
     <div class="ad2">
 
-      <a href="#" target="_target" title="点击进入春季种苗批发市场页面" rel="nofollow">
-        <img src="../hmt/images/2C604DU858ChRkRlcHTCeAU9-hAAHy19HEc7E108.jpg" alt="这是一张春季种苗批发市场的展示图片" width="216" height="353">
+
+      <a href="../html/download.html" target="_blank" title="花木通app" rel="nofollow">
+        <img src="../hmt/images/2C604DU858ChRkRlcHTCeAU9-hAAHy19HEc7E108.jpg" alt="花木通app" width="216" height="353">
       </a>
+
 
     </div>
     <div class="sides-hot mtb_15">
@@ -384,28 +396,45 @@
 </script>
 
 <script type="text/javascript" charset="UTF-8">
-  function searchIndex(e,_page){
+  function searchIndex(e){
+    if(e.keyCode != 13) return;
     var _index = $("#index").val();
     var page = parseInt(_page);
     var size = $("#size").val();
-    var keyword = $("#keyword").val();
+    var mm_msg_type = $("#mm_msg_type").val();
+    var countryid = $("#countryid").val();
     if(_index <= ${page.pageCount} && _index >= 1){
-      window.location.href="/hmtIndex/toIndex.do?page="+_index+"&size="+size+"&keyword="+keyword;
+      window.location.href="/netGuanzhuController/guanzhuArea.do?page="+page+"&size="+size+"&countryid="+countryid+"&mm_msg_type=" + mm_msg_type;
     }else{
       alert("请输入1-${page.pageCount}的页码数");
     }
   }
 
+  function searchChange(){
+    var size = $("#size").val();
+    var mm_msg_type = $("#mm_msg_type").val();
+    var countryid = $("#countryid").val();
+    window.location.href="/netGuanzhuController/guanzhuArea.do?page=1"+"&size="+size+"&countryid="+countryid+"&mm_msg_type=" + mm_msg_type;
+  }
+
+
   function nextPage(_page) {
     var page = parseInt(_page);
     var size = $("#size").val();
-    var keyword = $("#keyword").val();
+    var mm_msg_type = $("#mm_msg_type").val();
+    var countryid = $("#countryid").val();
     addCookie("contract_size", size, 36);
     if ((page <= ${page.pageCount} && page >= 1)) {
-      window.location.href="/hmtIndex/toIndex.do?page="+page+"&size="+size+"&keyword="+keyword;
+      window.location.href="/netGuanzhuController/guanzhuArea.do?page="+page+"&size="+size+"&countryid="+countryid+"&mm_msg_type=" + mm_msg_type;
     } else {
       alert("请输入1-${page.pageCount}的页码数");
     }
+  }
+
+  function gzClickArea(_countryid){
+    var size = $("#size").val();
+    var mm_msg_type = $("#mm_msg_type").val();
+    window.location.href="/netGuanzhuController/guanzhuArea.do?page=1"+"&size="+size+"&countryid="+_countryid+"&mm_msg_type=" + mm_msg_type;
   }
 
   function quiteClick(){

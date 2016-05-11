@@ -6,7 +6,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="icon" href="logo.ico" type="image/x-icon" />
+  <link rel="icon" href="../img/icon.png" type="image/png" />
   <meta name="renderer" content="webkit">
   <title>花木通|会员注册</title>
   <meta name="keywords" content="花木通,苗木,花木,苗木交易,花木求购,苗木求购,花木资讯,花木论坛,花木销售,苗木销售,苗木资讯,绿化苗木">
@@ -40,7 +40,7 @@
 <div class="header clearfix">
   <div class="logo-box fl">
     <div class="logo fl">
-      <a href="javascript:void(0)"><img src="../hmt/images/category-vegetable/logo_type.png" alt="花木通信息平台" width="205px" height="40px"></a>
+      <a href="/hmtIndex/toIndex.do?page=1"><img src="../hmt/images/category-vegetable/logo_type.png" alt="花木通信息平台" width="205px" height="40px"></a>
     </div>
   </div>
 </div>

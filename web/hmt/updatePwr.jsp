@@ -6,7 +6,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="icon" href="logo.ico" type="image/x-icon" />
+  <link rel="icon" href="../img/icon.png" type="image/png" />
   <meta name="renderer" content="webkit">
   <title>花木通|修改密码</title>
   <meta name="keywords" content="花木通,惠民,苗木,花木,苗木交易,花木求购,苗木求购,花木资讯,花木论坛,花木销售,苗木销售,苗木资讯,绿化苗木,花草,苗联通,白蜡,园林,惠民皂户李镇,苗木协会">
@@ -19,6 +19,12 @@
   <link href="../hmt/css/pass/common(1).css" rel="stylesheet" type="text/css" />
   <link href="../hmt/css/pass/common(2).css" rel="stylesheet" type="text/css" />
   <link href="../hmt/css/pass/password.css" rel="stylesheet" type="text/css" />
+
+  <link href="../hmt/css/common/index-type.css" rel="stylesheet" type="text/css" />
+  <link href="../hmt/css/category-vegetable/common.css" rel="stylesheet" type="text/css" />
+  <link href="../hmt/css/search/style.css" rel="stylesheet" type="text/css" />
+  <link href="../hmt/css/search/base.css" rel="stylesheet" type="text/css" />
+  <link href="../hmt/css/supply/index.css" rel="stylesheet" type="text/css" />
 
 
 
@@ -33,66 +39,28 @@
 
 </head>
 <body>
-
-<!-- header -->
-
-<!-- <div></div> --><!--整行替换成网站头部-->
-
 <!-- 顶部 -->
 <div class="topbar">
   <div class="container clearfix">
     <ul class="top-login fl">
-      <li class="dropdown">
-        <div class="dropdown-label dl-city">
-          <i>&nbsp;</i><span class="tit">点击选择区域</span></div>
-      </li>
-
-      <c:if test="${is_login=='1'}">
-        <ul class="fl">
-          <li>
-            <div class="label" id="userName">
-              <a href="javascript:void(0)">${emp.mm_emp_nickname}</a>
-            </div>
-          </li>
-          <li>
-            <div class="label o-login">
-              <a href="javascript:void(0)" onclick="quiteClick()">退出</a></div>
-          </li>
-          <li>
-            <div class="label pr">
-              <a href="/netNoticeController/list.do?page=1" class="msg">消息<span class="msg-mark"></span></a></div>
-          </li>
-        </ul>
-      </c:if>
 
       <ul class="fl">
         <li class="label orange">您好，欢迎来到花木通信息平台</li>
-        <c:if test="${is_login=='0'}">
-          <li class="label p-login">
-            <a title="马上登录，享受更多会员专享服务" href="javascript:void(0)" onclick="login()"
-               rel="nofollow">请登录</a>
-          </li>
-          <li class="label">
-            <a title="马上注册，共享无限农业商机" href="javascript:void(0)" onclick="reg()"
-               rel="nofollow">免费注册 </a>
-          </li>
-        </c:if>
+        <%--<li class="label p-login">--%>
+        <%--<a title="马上登录，享受更多会员专享服务" href="javascript:void(0)" onclick="login()"--%>
+        <%--rel="nofollow">请登录</a>--%>
+        <%--</li>--%>
+        <%--<li class="label">--%>
+        <%--<a title="马上注册，共享无限商机" href="javascript:void(0)" onclick="reg()"--%>
+        <%--rel="nofollow">免费注册 </a>--%>
+        <%--</li>--%>
       </ul>
-
     </ul>
     <ul class="top-nav fr">
       <li id="hn_home_id">
         <div class="label">
           <a href="/hmtIndex/toIndex.do?page=1">花木通求购信息</a></div>
       </li>
-
-      <c:if test="${is_login=='1'}">
-        <li>
-          <div class="label">
-            <a href="/netCenterController/toCenter.do" rel="nofollow">我的中心</a>
-          </div>
-        </li>
-      </c:if>
 
       <li class="dropdown">
         <div class="dropdown-label">
@@ -129,17 +97,26 @@
     </ul>
   </div>
 </div>
-<div class="header">
-  <div class="wrap">
-    <a href="http://www.cnhnb.com/" target="_blank" class="logo"><img src="./修改个人密码_files/logo.png"></a>
-    <div class="webname">
-      <h2>个人中心:修改密码</h2>
-      <span>www.huamutong.com</span>
-    </div>
+<!--头部 导航-->
+<div class="type-head">
+  <h1 class="logo">
+    <a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=0" title="花木通信息平台"></a>
+  </h1>
+</div>
+
+<div class="type-nav">
+  <div class="nav-con">
+    <!-- 顶部栏目-->
+    <ul class="nav-con-tit">
+      <li><a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=0" class="nav-tstj">求购大厅</a></li>
+      <li><a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=1" class="nav-dptj">供应大厅</a></li>
+      <li><a href="/netTopController/toTop.do?page=1" class="nav-tstj">金牌榜</a></li>
+      <li><a href="/netCenterController/toCenter.do" class="nav-zxhq">服务中心</a></li>
+      <li><a href="../html/download.html" target="_blank" class="nav-zxhq">手机版</a></li>
+    </ul>
   </div>
 </div>
-<!--头部 导航-->
-
+<!--头部 导航 end-->
 <!-- main -->
 <div class="main wrap">
 

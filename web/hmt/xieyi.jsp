@@ -6,7 +6,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="icon" href="logo.ico" type="image/x-icon" />
+  <link rel="icon" href="../img/icon.png" type="image/png" />
   <meta name="renderer" content="webkit">
   <title>花木通|使用协议</title>
   <meta name="keywords" content="花木通,苗木,花木,苗木交易,花木求购,苗木求购,花木资讯,花木论坛,花木销售,苗木销售,苗木资讯,绿化苗木">
@@ -16,6 +16,16 @@
   <link rel="stylesheet" href="../hmt/css/help/common.css"/>
   <link href="../hmt/css/help/public.css" rel="stylesheet" type="text/css" />
   <link href="../hmt/css/help/service.css" rel="stylesheet" type="text/css" />
+
+  <link href="../hmt/css/common/index-type.css" rel="stylesheet" type="text/css" />
+  <link href="../hmt/css/common/common.css" rel="stylesheet" type="text/css" />
+  <link href="../hmt/css/common/base.css" rel="stylesheet" type="text/css" />
+  <link href="../hmt/css/frame.css" rel="stylesheet" type="text/css" />
+  <link href="../hmt/css/category-vegetable/common.css" rel="stylesheet" type="text/css" />
+  <link href="../hmt/css/search/style.css" rel="stylesheet" type="text/css" />
+  <link href="../hmt/css/search/base.css" rel="stylesheet" type="text/css" />
+  <link href="../hmt/css/supply/index.css" rel="stylesheet" type="text/css" />
+
   <script type="text/javascript" src="../hmt/js/jquery-1.7.2.min.js"></script>
   <script type="text/javascript" src="../hmt/js/home.js"></script>
   <script async="" src="../hmt/js/agt.js"></script>
@@ -24,84 +34,28 @@
 
 </head>
 <body>
-
 <!-- 顶部 -->
 <div class="topbar">
   <div class="container clearfix">
     <ul class="top-login fl">
-      <li class="dropdown">
-        <div class="dropdown-label dl-city">
-          <i>&nbsp;</i><span class="tit">所在地：</span><span id="topbar_address">山东</span></div>
-        <div class="dropdown-layer dd-city-list">
-          <div class="list">
-            <a data-id="45081" href="javascript:void(0)">北京</a><a data-id="45083" href="javascript:void(0)">上海</a><a
-                  data-id="45082" href="javascript:void(0)">天津</a><a data-id="45084" href="javascript:void(0)">重庆</a><a
-                  data-id="3" href="javascript:void(0)">河北</a><a data-id="4" href="javascript:void(0)">山西</a><a
-                  data-id="16" href="javascript:void(0)">河南</a><a data-id="6" href="javascript:void(0)">辽宁</a><a
-                  data-id="7" href="javascript:void(0)">吉林</a><a data-id="8" href="javascript:void(0)">黑龙江</a><a
-                  data-id="5" href="javascript:void(0)">内蒙古</a><a data-id="10" href="javascript:void(0)">江苏</a><a
-                  data-id="15" href="javascript:void(0)" class="selected">山东</a><a data-id="12" href="javascript:void(0)">安徽</a><a
-                  data-id="11" href="javascript:void(0)">浙江</a><a data-id="13" href="javascript:void(0)">福建</a><a
-                  data-id="17" href="javascript:void(0)">湖北</a><a data-id="18" href="javascript:void(0)"
-                                                                  class="">湖南</a>
-            <a data-id="19" href="javascript:void(0)">广东</a>
-            <a data-id="20" href="javascript:void(0)">广西</a><a
-                  data-id="14" href="javascript:void(0)">江西</a><a data-id="23" href="javascript:void(0)">四川</a><a
-                  data-id="21" href="javascript:void(0)">海南</a><a data-id="24" href="javascript:void(0)">贵州</a><a
-                  data-id="25" href="javascript:void(0)">云南</a><a data-id="26" href="javascript:void(0)">西藏</a><a
-                  data-id="27" href="javascript:void(0)">陕西</a><a data-id="28" href="javascript:void(0)">甘肃</a><a
-                  data-id="29" href="javascript:void(0)">青海</a><a data-id="30" href="javascript:void(0)">宁夏</a><a
-                  data-id="31" href="javascript:void(0)">新疆</a><a data-id="32" href="javascript:void(0)">台湾</a><a
-                  data-id="33" href="javascript:void(0)">香港</a><a data-id="34" href="javascript:void(0)">澳门</a></div>
-        </div>
-      </li>
-
-      <c:if test="${is_login=='1'}">
-        <ul class="fl">
-          <li>
-            <div class="label" id="userName">
-              <a href="javascript:void(0)">${emp.mm_emp_nickname}</a>
-            </div>
-          </li>
-          <li>
-            <div class="label o-login">
-              <a href="javascript:void(0)" onclick="quiteClick()">
-                退出</a></div>
-          </li>
-          <li>
-            <div class="label pr">
-              <a href="javascript:void(0)" class="msg">消息<span class="msg-mark"></span></a></div>
-          </li>
-        </ul>
-      </c:if>
 
       <ul class="fl">
         <li class="label orange">您好，欢迎来到花木通信息平台</li>
-        <c:if test="${is_login=='0'}">
-          <li class="label p-login">
-            <a title="马上登录，享受更多会员专享服务" href="javascript:void(0)" onclick="login()"
-               rel="nofollow">请登录</a>
-          </li>
-          <li class="label">
-            <a title="马上注册，共享无限农业商机" href="javascript:void(0)" onclick="reg()"
-               rel="nofollow">免费注册 </a>
-          </li>
-        </c:if>
+        <%--<li class="label p-login">--%>
+        <%--<a title="马上登录，享受更多会员专享服务" href="javascript:void(0)" onclick="login()"--%>
+        <%--rel="nofollow">请登录</a>--%>
+        <%--</li>--%>
+        <%--<li class="label">--%>
+        <%--<a title="马上注册，共享无限商机" href="javascript:void(0)" onclick="reg()"--%>
+        <%--rel="nofollow">免费注册 </a>--%>
+        <%--</li>--%>
       </ul>
     </ul>
     <ul class="top-nav fr">
       <li id="hn_home_id">
         <div class="label">
-          <a href="index.htm">花木通求购信息</a></div>
+          <a href="/hmtIndex/toIndex.do?page=1">花木通求购信息</a></div>
       </li>
-
-      <c:if test="${is_login=='1'}">
-        <li>
-          <div class="label">
-            <a href="buyer/main.htm" rel="nofollow">我的中心</a>
-          </div>
-        </li>
-      </c:if>
 
       <li class="dropdown">
         <div class="dropdown-label">
@@ -128,25 +82,36 @@
       </li>
       <li class="dropdown">
         <div class="dropdown-label">
-          <i>&nbsp;</i><span><a href="#" target="_blank" rel="nofollow">帮助中心</a></span></div>
+          <i>&nbsp;</i><span><a href="javascript:void(0)" target="_blank" rel="nofollow">帮助中心</a></span></div>
         <div class="dropdown-layer dd-help-center">
           <p>
-            <a href="#" target="_blank" rel="nofollow">常见问题</a><a
-                  href="#" target="_blank" rel="nofollow">联系客服</a></p>
+            <a href="/netWeixinController/toKefu.do" target="_blank" rel="nofollow">微信客服</a>
+            <a href="/netKefuController/toKefu.do" target="_blank" rel="nofollow">电话客服</a></p>
         </div>
       </li>
     </ul>
   </div>
 </div>
-<!--/.topbar-->
-
-<!--head-->
-<div class="service_head ">
-  <a title="花木通信息平台" href="/hmtIndex/toIndex.do?page=1" target="_blank"><div class="logo"></div></a>
-  <div class="rightfont">精彩源于花木通，服务开创未来</div>
+<!--头部 导航-->
+<div class="type-head">
+  <h1 class="logo">
+    <a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=0" title="花木通信息平台"></a>
+  </h1>
 </div>
-<!--nav-->
-<div class="service_dh"></div>
+
+<div class="type-nav">
+  <div class="nav-con">
+    <!-- 顶部栏目-->
+    <ul class="nav-con-tit">
+      <li><a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=0" class="nav-tstj">求购大厅</a></li>
+      <li><a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=1" class="nav-dptj">供应大厅</a></li>
+      <li><a href="/netTopController/toTop.do?page=1" class="nav-tstj">金牌榜</a></li>
+      <li><a href="/netCenterController/toCenter.do" class="nav-zxhq">服务中心</a></li>
+      <li><a href="../html/download.html" target="_blank" class="nav-zxhq">手机版</a></li>
+    </ul>
+  </div>
+</div>
+<!--头部 导航 end-->
 <!--wrap-->
 <div id="wrapper">
   <div class="leftbox">

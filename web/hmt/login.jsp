@@ -6,7 +6,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="icon" href="logo.ico" type="image/x-icon" />
+  <link rel="icon" href="../img/icon.png" type="image/png" />
   <meta name="renderer" content="webkit">
   <title>花木通|会员登录</title>
   <meta name="keywords" content="花木通,苗木,花木,苗木交易,花木求购,苗木求购,花木资讯,花木论坛,花木销售,苗木销售,苗木资讯,绿化苗木">
@@ -120,10 +120,11 @@
         <%--<span>下次自动登录</span>--%>
       <%--</div>--%>
       <a href="javascript:void(0)" class="userloginbut but"  onclick="login()" style="margin-top: 15px">登   录</a>
+      <a href="javascript:void(0)" class="userloginbut but"  onclick="reg()"style="margin-top: 10px">免费注册</a>
       <a href="javascript:void(0)" class="userloginbut but"  onclick="kefu()"style="margin-top: 10px">客服中心</a>
       <p class="mt_10" style="margin-top: 20px"></p>
-      <a href="javascript:void(0)" class="forget-word" onclick="findpwr()" style="margin-top: 20px;margin-bottom: 20px">忘记登录密码</a>
-      <a href="javascript:void(0)" class="regin" id="free_goReg" onclick="reg()">免费注册</a>
+      <%--<a href="javascript:void(0)" class="forget-word" onclick="findpwr()" style="margin-top: 20px;margin-bottom: 20px">忘记登录密码</a>--%>
+      <%--<a href="javascript:void(0)" class="regin" id="free_goReg" onclick="reg()">免费注册</a>--%>
 
     <%--<div class="login-qq">--%>
       <%--<div class="login-g"><b>—————</b>&nbsp;&nbsp;使用合作伙伴账号登录&nbsp;&nbsp;<b>—————</b></div>--%>
@@ -161,7 +162,7 @@
   }
 
   function kefu(){
-    window.location.href="/webvKefuController/toKefu.do";
+    window.location.href="/netKefuController/toKefu.do";
   }
 
   function login(){

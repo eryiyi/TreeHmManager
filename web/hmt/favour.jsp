@@ -6,7 +6,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="icon" href="logo.ico" type="image/x-icon" />
+  <link rel="icon" href="../img/icon.png" type="image/png" />
   <meta name="renderer" content="webkit">
   <title>花木通|我的收藏</title>
   <meta name="keywords" content="花木通,惠民,苗木,花木,苗木交易,花木求购,苗木求购,花木资讯,花木论坛,花木销售,苗木销售,苗木资讯,绿化苗木,花草,苗联通,白蜡,园林,惠民皂户李镇,苗木协会">
@@ -148,33 +148,6 @@
 <div class="topbar">
   <div class="container clearfix">
     <ul class="top-login fl">
-      <li class="dropdown">
-        <div class="dropdown-label dl-city">
-          <i>&nbsp;</i><span class="tit">所在地：</span><span id="topbar_address">山东</span></div>
-        <div class="dropdown-layer dd-city-list">
-          <div class="list">
-            <a data-id="45081" href="javascript:void(0)">北京</a><a data-id="45083" href="javascript:void(0)">上海</a><a
-                  data-id="45082" href="javascript:void(0)">天津</a><a data-id="45084" href="javascript:void(0)">重庆</a><a
-                  data-id="3" href="javascript:void(0)">河北</a><a data-id="4" href="javascript:void(0)">山西</a><a
-                  data-id="16" href="javascript:void(0)">河南</a><a data-id="6" href="javascript:void(0)">辽宁</a><a
-                  data-id="7" href="javascript:void(0)">吉林</a><a data-id="8" href="javascript:void(0)">黑龙江</a><a
-                  data-id="5" href="javascript:void(0)">内蒙古</a><a data-id="10" href="javascript:void(0)">江苏</a><a
-                  data-id="15" href="javascript:void(0)" class="selected">山东</a><a data-id="12" href="javascript:void(0)">安徽</a><a
-                  data-id="11" href="javascript:void(0)">浙江</a><a data-id="13" href="javascript:void(0)">福建</a><a
-                  data-id="17" href="javascript:void(0)">湖北</a><a data-id="18" href="javascript:void(0)"
-                                                                  class="">湖南</a>
-            <a data-id="19" href="javascript:void(0)">广东</a>
-            <a data-id="20" href="javascript:void(0)">广西</a><a
-                  data-id="14" href="javascript:void(0)">江西</a><a data-id="23" href="javascript:void(0)">四川</a><a
-                  data-id="21" href="javascript:void(0)">海南</a><a data-id="24" href="javascript:void(0)">贵州</a><a
-                  data-id="25" href="javascript:void(0)">云南</a><a data-id="26" href="javascript:void(0)">西藏</a><a
-                  data-id="27" href="javascript:void(0)">陕西</a><a data-id="28" href="javascript:void(0)">甘肃</a><a
-                  data-id="29" href="javascript:void(0)">青海</a><a data-id="30" href="javascript:void(0)">宁夏</a><a
-                  data-id="31" href="javascript:void(0)">新疆</a><a data-id="32" href="javascript:void(0)">台湾</a><a
-                  data-id="33" href="javascript:void(0)">香港</a><a data-id="34" href="javascript:void(0)">澳门</a></div>
-        </div>
-      </li>
-
       <c:if test="${is_login=='1'}">
         <ul class="fl">
           <li>
@@ -192,7 +165,6 @@
           </li>
         </ul>
       </c:if>
-
       <ul class="fl">
         <li class="label orange">您好，欢迎来到花木通信息平台</li>
         <c:if test="${is_login=='0'}">
@@ -201,19 +173,17 @@
                rel="nofollow">请登录</a>
           </li>
           <li class="label">
-            <a title="马上注册，共享无限农业商机" href="javascript:void(0)" onclick="reg()"
+            <a title="马上注册，共享无限商机" href="javascript:void(0)" onclick="reg()"
                rel="nofollow">免费注册 </a>
           </li>
         </c:if>
       </ul>
-
     </ul>
     <ul class="top-nav fr">
       <li id="hn_home_id">
         <div class="label">
           <a href="/hmtIndex/toIndex.do?page=1">花木通求购信息</a></div>
       </li>
-
       <c:if test="${is_login=='1'}">
         <li>
           <div class="label">
@@ -221,7 +191,6 @@
           </div>
         </li>
       </c:if>
-
       <li class="dropdown">
         <div class="dropdown-label">
           <i>&nbsp;</i><span><a href="javaScript:void(0)" target="_blank"
@@ -260,48 +229,18 @@
 <!--头部 导航-->
 <div class="type-head">
   <h1 class="logo">
-    <a href="javascript:void(0)" title="花木通信息平台"></a>
+    <a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=0" title="花木通信息平台"></a>
   </h1>
-
-  <div class="search">
-    <form target="_blank" method="get" id="searchForm" action="category.htm">
-      <div class="sear-area">
-        <div style="z-index: 15" class="autoComplete">
-          <input type="text" placeholder="西红柿" defaulturl="" class="sear-inpt broder_r_no"
-                 autocomplete="off" >
-          <ul class="green" style="display: none;">
-            <li></li>
-          </ul>
-        </div>
-        <input type="submit" value="搜索" class="sear-btn">
-      </div>
-    </form>
-    <ul style="display: block;" class="keylist" id="idkeyList">
-      <li>热门搜索：</li>
-      <li><a title="大白菜" href="#" rel="nofollow">大白菜</a></li>
-      <li><a title="包菜" href="#" rel="nofollow">包菜</a></li>
-      <li><a title="萝卜" href="#" rel="nofollow">萝卜</a></li>
-      <li><a title="丝瓜" href="#" rel="nofollow">丝瓜</a></li>
-      <li><a title="西红柿" href="category.htm" rel="nofollow">西红柿</a></li>
-    </ul>
-  </div>
-
 </div>
+
 <div class="type-nav">
   <div class="nav-con">
-    <div class="menu-c-nav">
-      <!-- 精选分类 title-->
-      <a href="/netTopController/toTop.do?page=1">
-        <div class="menu-c-tit">
-          <span class="">金牌榜</span>
-        </div>
-      </a>
-    </div>
     <!-- 顶部栏目-->
     <ul class="nav-con-tit">
       <li><a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=0" class="nav-tstj">求购大厅</a></li>
       <li><a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=1" class="nav-dptj">供应大厅</a></li>
-      <li><a href="/netServiceController/toService.do" class="nav-zxhq">服务中心</a></li>
+      <li><a href="/netTopController/toTop.do?page=1" class="nav-tstj">金牌榜</a></li>
+      <li><a href="/netCenterController/toCenter.do" class="nav-zxhq">服务中心</a></li>
       <li><a href="../html/download.html" target="_blank" class="nav-zxhq">手机版</a></li>
     </ul>
   </div>
@@ -315,11 +254,11 @@
 <div class="container wrap-1190">
 
   <form action="supply.htm" id="filterForm" class="fl" style="width: 956px;">
-    <div class="noticebar mt_15">
-      <input type="text" id="keyword" name="keyword" autocomplete="off" class="notice-input" value="" placeholder="标题|手机号|公司名称|联系人">
-      <a href="javaScript:void(0)" onclick="searchIndex(event)" class="notice-submit"> <i class="lee-ico lee-cx"></i>搜索</a>
-      <span class="notice-msg"><a href="#" target="_blank" rel="nofollow">欢迎使用花木通信息平台，请谨慎核实信息内容!</a></span>
-    </div>
+    <%--<div class="noticebar mt_15">--%>
+      <%--<input type="text" id="keyword" name="keyword" autocomplete="off" class="notice-input" value="" placeholder="标题|手机号|公司名称|联系人">--%>
+      <%--<a href="javaScript:void(0)" onclick="searchIndex(event)" class="notice-submit"> <i class="lee-ico lee-cx"></i>搜索</a>--%>
+      <%--<span class="notice-msg"><a href="#" target="_blank" rel="nofollow">欢迎使用花木通信息平台，请谨慎核实信息内容!</a></span>--%>
+    <%--</div>--%>
     <div class="tabs mt_15">
       <ul class="tabs-list">
         <li class="cur" onclick="javascript:changeShowType('0');"><a>我的收藏</a></li>
@@ -358,9 +297,11 @@
     <div class="release-but mb_15"><a href="/netKefuController/toKefu.do" target="_blank" ><i class="lee-ico lee-fb"></i> &nbsp; 客服中心</a></div>
     <div class="ad2">
 
-      <a href="#" target="_target" title="点击进入春季种苗批发市场页面" rel="nofollow">
-        <img src="../hmt/images/2C604DU858ChRkRlcHTCeAU9-hAAHy19HEc7E108.jpg" alt="这是一张春季种苗批发市场的展示图片" width="216" height="353">
+
+      <a href="../html/download.html" target="_blank" title="花木通app" rel="nofollow">
+        <img src="../hmt/images/2C604DU858ChRkRlcHTCeAU9-hAAHy19HEc7E108.jpg" alt="花木通app" width="216" height="353">
       </a>
+
 
     </div>
     <div class="sides-hot mtb_15">
@@ -442,10 +383,6 @@
     //登录页面跳转
     window.location.href="/netLoginController/toLogin.do";
   }
-  function selectPro(){
-    //页面跳转
-    window.location.href="/webvSelectProvinceController/toSelectProvince.do";
-  }
 
   function addMsg(){
     var is_login = $("#is_login").val();
@@ -454,9 +391,9 @@
       if(${emp.is_upate_profile == '1'} ){
         window.location.href="/netAddRecordController/toAddRecord.do";
       }else{
-        window.location.href="/webvProfile/toUpdateProfile.do";
+        alert("请先完善您的个人资料");
+        window.location.href="/netProfileController/toUpdateProfile.do";
       }
-
     }else{
       //登录页面跳转
       window.location.href="/netLoginController/toLogin.do";
@@ -465,29 +402,29 @@
 </script>
 
 <script type="text/javascript" charset="UTF-8">
-  function searchIndex(e,_page){
-    var _index = $("#index").val();
-    var page = parseInt(_page);
-    var size = $("#size").val();
-    var keyword = $("#keyword").val();
-    if(_index <= ${page.pageCount} && _index >= 1){
-      window.location.href="/hmtIndex/toIndex.do?page="+_index+"&size="+size+"&keyword="+keyword;
-    }else{
-      alert("请输入1-${page.pageCount}的页码数");
-    }
-  }
+  <%--function searchIndex(e,_page){--%>
+    <%--var _index = $("#index").val();--%>
+    <%--var page = parseInt(_page);--%>
+    <%--var size = $("#size").val();--%>
+    <%--var keyword = $("#keyword").val();--%>
+    <%--if(_index <= ${page.pageCount} && _index >= 1){--%>
+      <%--window.location.href="/hmtIndex/toIndex.do?page="+_index+"&size="+size+"&keyword="+keyword;--%>
+    <%--}else{--%>
+      <%--alert("请输入1-${page.pageCount}的页码数");--%>
+    <%--}--%>
+  <%--}--%>
 
-  function nextPage(_page) {
-    var page = parseInt(_page);
-    var size = $("#size").val();
-    var keyword = $("#keyword").val();
-    addCookie("contract_size", size, 36);
-    if ((page <= ${page.pageCount} && page >= 1)) {
-      window.location.href="/hmtIndex/toIndex.do?page="+page+"&size="+size+"&keyword="+keyword;
-    } else {
-      alert("请输入1-${page.pageCount}的页码数");
-    }
-  }
+  <%--function nextPage(_page) {--%>
+    <%--var page = parseInt(_page);--%>
+    <%--var size = $("#size").val();--%>
+    <%--var keyword = $("#keyword").val();--%>
+    <%--addCookie("contract_size", size, 36);--%>
+    <%--if ((page <= ${page.pageCount} && page >= 1)) {--%>
+      <%--window.location.href="/hmtIndex/toIndex.do?page="+page+"&size="+size+"&keyword="+keyword;--%>
+    <%--} else {--%>
+      <%--alert("请输入1-${page.pageCount}的页码数");--%>
+    <%--}--%>
+  <%--}--%>
 
   function quiteClick(){
     //退出
