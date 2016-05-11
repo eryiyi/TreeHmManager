@@ -143,22 +143,24 @@
   </div>
 </div>
 <div class="container wrap-1190">
+  <input type="hidden" id="is_login" name="is_login" value="${is_login}">
+  <input type="hidden" id="accessToken" name="accessToken" value="${emp.access_token}">
 
-  <form action="supply.htm" id="filterForm" class="fl" style="width: 956px;">
     <div class="profile-holder">
         <div id="Glide" class="glide">
           <div class="panel clearfix">
-            <img src="${emp.mm_emp_cover}" alt="${emp.mm_emp_nickname}" class="head-pic">
+            <img src="${empVO.mm_emp_cover}" alt="${empVO.mm_emp_nickname}" class="head-pic">
             <div class="user-info">
-              <h2 class="name">${emp.mm_emp_nickname}</h2>
+              <h2 class="name">${empVO.mm_emp_nickname}</h2>
               <%--<c:if test="${emp.mm_emp_type==0}"><h3 class="type">苗木经营户</h3></c:if>--%>
               <%--<c:if test="${emp.mm_emp_type==1}"><h3 class="type">苗木会员</h3></c:if>--%>
               <%--<h3 class="type">${emp.mm_level_num}</h3>--%>
-              <c:if test="${emp.mm_level_num==0}"><h3 class="type">vip1</h3></c:if>
-              <c:if test="${emp.mm_level_num==1}"><h3 class="type">vip2</h3></c:if>
-              <c:if test="${emp.mm_level_num==2}"><h3 class="type">vip3</h3></c:if>
-              <c:if test="${emp.mm_level_num==3}"><h3 class="type">vip4</h3></c:if>
-              <c:if test="${emp.mm_level_num==4}"><h3 class="type">vip5</h3></c:if>
+              <c:if test="${emp.mm_level_num==0}"><h3 class="type">等级：vip1</h3></c:if>
+              <c:if test="${emp.mm_level_num==1}"><h3 class="type">等级：vip2</h3></c:if>
+              <c:if test="${emp.mm_level_num==2}"><h3 class="type">等级：vip3</h3></c:if>
+              <c:if test="${emp.mm_level_num==3}"><h3 class="type">等级：vip4</h3></c:if>
+              <c:if test="${emp.mm_level_num==4}"><h3 class="type">等级：vip5</h3></c:if>
+              <h3 class="name">注册日期：${emp.mm_emp_regtime}</h3>
             </div>
           </div>
           <div class="glide__wrapper">
@@ -195,8 +197,8 @@
         <div class="content mb2">
           <div class="user-info w9">
             <h3 class="area-head">公司简介：</h3>
-            <p class="company-info mb1">${emp.mm_emp_company}</p>
-            <a class="button fill-green mb2" href="${emp.mm_emp_company_url}" target="_blank">公司微网站</a>
+            <p class="company-info mb1">${empVO.mm_emp_company_detail}</p>
+            <a class="button fill-green mb2" href="${empVO.mm_emp_company_url}" target="_blank">${empVO.mm_emp_company}</a>
 
           </div>
           <div class="switcher mt1">
@@ -214,7 +216,7 @@
           <c:forEach items="${list}" var="e" varStatus="st">
             <div class="item">
               <div class="item-heading clearfix">
-                <a href="javaScript:void(0)" class="left clearfix">
+                <a href="javaScript:void(0)"  onclick="showDetail('${e.mm_msg_id}')" class="left clearfix">
                   <img src="${e.mm_emp_cover}" alt="" class="head-pic">
                   <div class="detail">
                     <h1 class="company">${e.mm_emp_company}&nbsp;${e.mm_emp_nickname}</h1>
@@ -240,21 +242,9 @@
                   ${e.mm_msg_content}
               </a>
               <div class="item-footer clearfix">
-                  <%--<button class="read-status-unread"></button>--%>
-                  <%--<div  class="share-left">--%>
-                  <%--<div class="bdsharebuttonbox" >--%>
-                  <%--<a class="bds_mshare" data-cmd="mshare"></a>--%>
-                  <%--<a class="bds_qzone" data-cmd="qzone" href="javaScript:void(0)"></a>--%>
-                  <%--<a class="bds_tsina" data-cmd="tsina"></a>--%>
-                  <%--<a class="bds_tqq" data-cmd="tqq"></a>--%>
-                  <%--<a class="bds_more" data-cmd="more">更多</a>--%>
-                  <%--<a class="bds_count" data-cmd="count"></a>--%>
-                  <%--</div>--%>
-                  <%--</div>--%>
                 <a type="button" href="tel:${e.mm_emp_mobile}"  class="button-phone"></a>
                 <a type="button" href="javaScript:void(0)" onclick="favourClick('${e.mm_msg_id}')" class="button-fav"></a>
                 <c:if test="${e.mm_msg_picurl !=''}"><a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-pic"></a></c:if>
-
               </div>
             </div>
           </c:forEach>
@@ -303,7 +293,7 @@
     </div>
 
       <div class="clear"></div>
-  </form>
+
 <%--边栏--%>
   <div class="sides mt_15">
     <div class="release-but mb_15"><a href="javascript:void(0)" target="_blank" onclick="addMsg()"><i class="lee-ico lee-fb"></i> &nbsp; 发布供应</a></div>
@@ -332,30 +322,8 @@
     </div>
   </div>
 
-  <div class="page p_30 mb_10 tr">
-      <c:if test="${is_login=='1'}">
-        <input type="hidden" id="pageCount" value="6443">
-        <input type="hidden" name="size" id="size" value="${query.size}">
-        <a href="javascript:void(0);" onclick="nextPage('1')">第一页 </a>
-        <a href="javascript:void(0);" onclick="nextPage('${page.page-1}')">上一页</a>
-        <a href="javascript:void(0);" onclick="nextPage('${page.page+1}')">下一页</a>
-        <a href="javascript:void(0);" onclick="nextPage('${page.pageCount}')">最后页</a>
-        <span>跳到</span>
-        <span><input type="text" id="index" name="index" value="${page.page}"
-                     autocomplete="off" maxlength="6"
-                     value="${page.page}"
-                     onpaste="return false" style="text-align:center;"></span>
-        <span>页 </span>
-        <span><button type="button" onclick="searchIndex(event, '${page.page}')">GO</button></span>
-      </c:if>
-      <c:if test="${is_login=='0'}">
-        <a class="index-button" href="javaScript:void(0)" onclick="login()">登录查看更多信息</a>
-      </c:if>
-  </div>
 
 </div>
-
-
 
 <jsp:include page="footer.jsp" flush="true" />
 
@@ -411,6 +379,100 @@
   }
 
 </script>
+<script type="text/javascript" charset="UTF-8">
+  function searchIndex(e){
+    if(e.keyCode != 13) return;
+    var _index = $("#index").val();
+    var page = parseInt(_page);
+    var mm_msg_type = $("#mm_msg_type").val();
+    var mm_emp_id = $("#mm_emp_id").val();
+    var size = $("#size").val();
+    if(_index <= ${page.pageCount} && _index >= 1){
+      window.location.href="/netProfileController/toProfile.do?page="+page+"&size="+size+"&mm_msg_type="+mm_msg_type+"&mm_emp_id="+mm_emp_id;
+    }else{
+      alert("请输入1-${page.pageCount}的页码数");
+    }
+  }
+  function searchProfile(_mm_msg_type){
+    var mm_emp_id = $("#mm_emp_id").val();
+    window.location.href="/netProfileController/toProfile.do?page=1"+"&size=10"+"&mm_msg_type="+_mm_msg_type+"&mm_emp_id="+mm_emp_id;
+  }
 
+  function nextPage(_page) {
+    var page = parseInt(_page);
+    var mm_msg_type = $("#mm_msg_type").val();
+    var size = $("#size").val();
+    var mm_emp_id = $("#mm_emp_id").val();
+    addCookie("contract_size", size, 36);
+    if ((page <= ${page.pageCount} && page >= 1)) {
+      window.location.href="/netProfileController/toProfile.do?page="+page+"&size="+size+"&mm_msg_type="+mm_msg_type+"&mm_emp_id="+mm_emp_id;
+    } else {
+      alert("请输入1-${page.pageCount}的页码数");
+    }
+  }
+</script>
+<script>
+  function toPage(_url, _page){
+    if(_page != ''){
+      window.location.href=_url+"?page="+_page;
+    }else{
+      window.location.href=_url;
+    }
+  }
+  function favourClick(_mm_msg_id){
+    //先判断是否登录
+    var is_login = $("#is_login").val();
+    if(is_login == 1){
+      //登陆了
+      var mm_emp_id = $("#mm_emp_id").val();
+      var accessToken = $("#accessToken").val();
+      $.ajax({
+        cache: true,
+        type:"POST",
+        url:"/saveFavour.do",
+        data:{"mm_msg_id":_mm_msg_id, "accessToken":accessToken, "mm_emp_id":mm_emp_id},
+        async: false,
+        success:function(_data){
+          var data = $.parseJSON(_data);
+          if(data.success){
+            alert("收藏成功");
+          }else{
+            var _case = {1:"收藏失败", 2:"已经收藏，不能重复收藏！",9:"账号过期，请重新登录！"};
+            alert(_case[data.code])
+          }
+        }
+      });
+    }else{
+      //没登陆
+      alert("请先登录");
+    }
+  }
+
+  function showDetail(_mm_msg_id){
+    window.location.href="/netRecordController/toDetail.do?mm_msg_id="+_mm_msg_id;
+  }
+
+  function login(){
+    //登录页面跳转
+    window.location.href="/netLoginController/toLogin.do";
+  }
+  function addMsg(){
+    var is_login = $("#is_login").val();
+    if(is_login == 1) {
+      //登陆了
+      if(${emp.is_upate_profile == '1'} ){
+        window.location.href="/netAddRecordController/toAddRecord.do";
+      }else{
+        alert("请先完善您的个人资料");
+        window.location.href="/netProfileController/toUpdateProfile.do";
+      }
+    }else{
+      //登录页面跳转
+      window.location.href="/netLoginController/toLogin.do";
+    }
+  }
+
+
+</script>
 </html>
 

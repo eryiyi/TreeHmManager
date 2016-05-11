@@ -152,12 +152,18 @@
 			<div class="words clearfix">
 				<div class="words-line clearfix">
 					<h2 class="name">${e.mm_emp_nickname}</h2>
-					<img class="badge" src="../hmt/images/tree_icons_group.png" alt="协会图标"/>
-					<img class="badge" src="../hmt/images/tree_icons_trust.png" alt="信任图标"/>
+					<c:if test="${e.is_miaomu=='1'}"><img class="badge" src="../hmt/images/tree_icons_trust.png" alt="信任图标"/></c:if>
+					<c:if test="${e.is_chengxin=='1'}"><img class="badge" src="../hmt/images/tree_icons_group.png" alt="协会图标"/></c:if>
 				</div>
 				<div class="words-line clearfix">
 					<h3 class="phone">${e.mm_emp_mobile}</h3>
-					<img class="star" src="../hmt/images/tree_icons_star_5.png" alt="星级图标"/>
+
+					<c:if test="${e.mm_level_num=='0'}"><img class="star" src="/img/tree_icons_star_1.png" alt="星级图标"/></c:if>
+					<c:if test="${e.mm_level_num=='1'}"><img class="star" src="/img/tree_icons_star_2.png" alt="星级图标"/></c:if>
+					<c:if test="${e.mm_level_num=='2'}"><img class="star" src="/img/tree_icons_star_3.png" alt="星级图标"/></c:if>
+					<c:if test="${e.mm_level_num=='3'}"><img class="star" src="/img/tree_icons_star_4.png" alt="星级图标"/></c:if>
+					<c:if test="${e.mm_level_num=='4'}"><img class="star" src="/img/tree_icons_star_5.png" alt="星级图标"/></c:if>
+
 				</div>
 				<div class="words-line clearfix">
 					<h3 class="company">${e.mm_emp_company}</h3>

@@ -24,8 +24,8 @@
   <link href="../hmt/css/buyer/index.css" rel="stylesheet" type="text/css" />
   <link href="../hmt/css/buyer/common.css" rel="stylesheet" type="text/css" />
 
-  <link rel="stylesheet" href="../hmt/css/fileupdate/common.css"/>
-  <link rel="stylesheet" href="../hmt/css/fileupdate/common_2.css"/>
+  <link rel="stylesheet" href="../hmt/css/profileupdate/common.css"/>
+  <link rel="stylesheet" href="../hmt/css/profileupdate/common_2.css"/>
 
   <script type="text/javascript" src="../js/jquery.min.js"></script>
   <script type="text/javascript" src="../js/md5.js"></script>

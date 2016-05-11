@@ -3,6 +3,7 @@ package com.liangxunwang.unimanager.mvc.wwwnet;
 import com.liangxunwang.unimanager.model.Emp;
 import com.liangxunwang.unimanager.mvc.vo.EmpAdVO;
 import com.liangxunwang.unimanager.mvc.vo.EmpVO;
+import com.liangxunwang.unimanager.mvc.vo.RecordVO;
 import com.liangxunwang.unimanager.query.EmpAdQuery;
 import com.liangxunwang.unimanager.query.RecordQuery;
 import com.liangxunwang.unimanager.service.ExecuteService;
@@ -43,13 +44,16 @@ public class NetProfileController extends ControllerConstants {
     @Qualifier("webVRecordService")
     private ListService recordService;
 
+    @Autowired
+    @Qualifier("appRecordTopService")
+    private ListService appRecordTopService;
 
     @RequestMapping("toProfile")
     public String add(HttpSession session,ModelMap map,RecordQuery query, Page page) throws Exception {
-//        EmpVO emp = (EmpVO) session.getAttribute(MEMBER_KEY);
+        EmpVO emp = (EmpVO) session.getAttribute(MEMBER_KEY);
         if(!StringUtil.isNullOrEmpty(query.getMm_emp_id())){
             EmpVO empVO = (EmpVO) empService.execute(query.getMm_emp_id());
-            map.put("emp", empVO);
+            map.put("empVO", empVO);
             //获得用户的轮播图
             EmpAdQuery queryad = new EmpAdQuery();
             queryad.setMm_emp_id(empVO.getMm_emp_id());
@@ -101,6 +105,21 @@ public class NetProfileController extends ControllerConstants {
             //说明没有登陆
 //            map.put("is_login", "0");
 //        }
+
+        //查询热点信息
+        RecordQuery recordQuery = new RecordQuery();
+        recordQuery.setIndex(1);
+        recordQuery.setSize(10);
+        List<RecordVO> listsHot = (List<RecordVO>) appRecordTopService.list(recordQuery);
+        map.put("listsHot", listsHot);
+        if(emp != null){
+            //说明已经登陆
+            map.put("is_login", "1");
+            map.put("emp", emp);
+        }else{
+            //说明没有登陆
+            map.put("is_login", "0");
+        }
         return "../../hmt/profile";
 
     }
