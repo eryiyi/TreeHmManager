@@ -1,64 +1,126 @@
+<style>
+  .footer-nav{}
+  /*.footer-nav .title{*/
+    /*text-align: center;*/
+    /*margin-bottom: 10px;*/
+    /*display: block;*/
+    /*line-height: 300%;*/
+    /*font-size: 1rem;*/
+    /*color: #bbb;*/
+  /*}*/
+  .footer-nav .ad-holder{
+    margin: 10px 0 20px 0;
+  }
+  .footer-nav .ad-holder>a{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0 5px 10px 5px;
+    width: 228px;
+    height: 80px;
+    background-color: #fff;
+    float: left;
+    display: block;
+    -webkit-box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.1);
+    transition: all .5s;
+  }
+  .footer-nav .ad-holder>a:hover{
+    transition: all .3s;
+    transform: scale(1.2);
+    -webkit-box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+
+  }
+  .footer-nav .ad-holder>a:active{
+    transform:translateY(2px);
+  }
+  .footer-nav .ad-holder>a>img{
+    display: block;
+    overflow: hidden;
+  }
+</style>
+
 <!--页脚footer-->
 <div class="footer">
   <div class="container">
-    <div class="quick-nav">
-      <ul class="icon clearfix">
-        <li>
-          <img src="../hmt/images/quick-nav-icon-1.gif" alt="资源多">
-          <p>
-            <span>资源多</span><span>海量信息免费发</span></p>
-        </li>
-        <li>
-          <img src="../hmt/images/quick-nav-icon-2.gif" alt="优惠大">
-          <p>
-            <span>优惠大</span><span>挑战市场超低价</span></p>
-        </li>
-        <li>
-          <img src="../hmt/images/quick-nav-icon-3.gif" alt="销售广">
-          <p>
-            <span>销售广</span><span>采购便捷一站式</span></p>
-        </li>
-        <li>
-          <img src="../hmt/images/quick-nav-icon-4.gif" alt="更安全">
-          <p>
-            <span>更安全</span><span>实名认证更安心</span></p>
-        </li>
-      </ul>
-      <div class="list clearfix">
-        <dl class="clearfix">
-          <dt>新手指南</dt>
-          <dd>
-            <a href="/netRegController/toReg.do" target="_blank" rel="nofollow">注册新用户</a></dd>
-          <dd>
-            <a href="#" target="_blank" rel="nofollow">找回密码</a></dd>
-          <dd>
-            <a href="../html/download.html" target="_blank" rel="nofollow">安装手机花木通</a></dd>
-        </dl>
-        <dl class="clearfix">
-          <dt>采购商服务</dt>
-          <dd>
-            <a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=1" target="_blank">找供应</a></dd>
-          <dd>
-            <a href="#" target="_blank" rel="nofollow">服务中心</a></dd>
-        </dl>
-        <dl class="clearfix">
-          <dt>供应商服务</dt>
-          <dd>
-            <a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=0" target="_blank">找需求</a></dd>
-          <dd>
-            <a href="#" target="_blank" rel="nofollow">服务中心</a></dd>
-        </dl>
-        <dl class="clearfix">
-          <dt>使用帮助</dt>
-          <dd>
-            <a href="/netKefuController/toKefu.do" target="_blank" rel="nofollow">客服中心</a></dd>
-          <dd>
-            <a href="/netWeixinController/toKefu.do" target="_blank" rel="nofollow">微信客服</a></dd>
-          <dd>
-            <a href="#" target="_blank" rel="nofollow">全国招商合作伙伴</a></dd>
-        </dl>
+    <div class="footer-nav">
+      <%--<h3 class="title">---   友情链接   --- </h3>--%>
+      <div class="ad-holder clearfix">
+        <a class="web-link" href=""><img src="../hmt/images/links/01.png" alt="花木通"/></a>
+        <a class="web-link" href=""><img src="" alt=""/></a>
+        <a class="web-link" href=""><img src="" alt=""/></a>
+        <a class="web-link" href=""><img src="" alt=""/></a>
+        <a class="web-link" href=""><img src="" alt=""/></a>
+        <a class="web-link" href=""><img src="" alt=""/></a>
+        <a class="web-link" href=""><img src="" alt=""/></a>
+        <a class="web-link" href=""><img src="" alt=""/></a>
+        <a class="web-link" href=""><img src="" alt=""/></a>
+        <a class="web-link" href=""><img src="" alt=""/></a>
       </div>
     </div>
+
+    <%--<div class="quick-nav">--%>
+      <%--<ul class="icon clearfix">--%>
+        <%--<li>--%>
+          <%--<img src="../hmt/images/quick-nav-icon-1.gif" alt="资源多">--%>
+          <%--<p>--%>
+            <%--<span>资源多</span><span>海量信息免费发</span></p>--%>
+        <%--</li>--%>
+        <%--<li>--%>
+          <%--<img src="../hmt/images/quick-nav-icon-2.gif" alt="优惠大">--%>
+          <%--<p>--%>
+            <%--<span>优惠大</span><span>挑战市场超低价</span></p>--%>
+        <%--</li>--%>
+        <%--<li>--%>
+          <%--<img src="../hmt/images/quick-nav-icon-3.gif" alt="销售广">--%>
+          <%--<p>--%>
+            <%--<span>销售广</span><span>采购便捷一站式</span></p>--%>
+        <%--</li>--%>
+        <%--<li>--%>
+          <%--<img src="../hmt/images/quick-nav-icon-4.gif" alt="更安全">--%>
+          <%--<p>--%>
+            <%--<span>更安全</span><span>实名认证更安心</span></p>--%>
+        <%--</li>--%>
+      <%--</ul>--%>
+      <%--<div class="list clearfix">--%>
+        <%--<dl class="clearfix">--%>
+          <%--<dt>新手指南</dt>--%>
+          <%--<dd>--%>
+            <%--<a href="/netRegController/toReg.do" target="_blank" rel="nofollow">注册新用户</a></dd>--%>
+          <%--<dd>--%>
+            <%--<a href="#" target="_blank" rel="nofollow">找回密码</a></dd>--%>
+          <%--<dd>--%>
+            <%--<a href="../html/download.html" target="_blank" rel="nofollow">安装手机花木通</a></dd>--%>
+        <%--</dl>--%>
+        <%--<dl class="clearfix">--%>
+          <%--<dt>采购商服务</dt>--%>
+          <%--<dd>--%>
+            <%--<a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=1" target="_blank">找供应</a></dd>--%>
+          <%--<dd>--%>
+            <%--<a href="#" target="_blank" rel="nofollow">服务中心</a></dd>--%>
+        <%--</dl>--%>
+        <%--<dl class="clearfix">--%>
+          <%--<dt>供应商服务</dt>--%>
+          <%--<dd>--%>
+            <%--<a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=0" target="_blank">找需求</a></dd>--%>
+          <%--<dd>--%>
+            <%--<a href="#" target="_blank" rel="nofollow">服务中心</a></dd>--%>
+        <%--</dl>--%>
+        <%--<dl class="clearfix">--%>
+          <%--<dt>使用帮助</dt>--%>
+          <%--<dd>--%>
+            <%--<a href="/netKefuController/toKefu.do" target="_blank" rel="nofollow">客服中心</a></dd>--%>
+          <%--<dd>--%>
+            <%--<a href="/netWeixinController/toKefu.do" target="_blank" rel="nofollow">微信客服</a></dd>--%>
+          <%--<dd>--%>
+            <%--<a href="#" target="_blank" rel="nofollow">全国招商合作伙伴</a></dd>--%>
+        <%--</dl>--%>
+      <%--</div>--%>
+    <%--</div>--%>
+
     <div class="ptb20 clearfix">
       <div class="foot-qr clearfix">
         <div class="qrcode">
