@@ -35,6 +35,7 @@
         <form class="form-horizontal" role="form">
           <input type="hidden" value="${empVO.mm_emp_id}" id="mm_emp_id">
           <input type="hidden" value="${empVO.mm_emp_cover}" id="mm_emp_cover">
+          <input type="hidden" value="${empVO.ad_pic}" id="ad_pic">
           <div class="form-group">
             <label class="col-sm-2 control-label">用户名</label>
               <div class="col-sm-4">
@@ -63,7 +64,7 @@
                 <label class="col-sm-2 control-label" ></label>
                 <div class="col-sm-10">
                     <input type="file" name="file" id="fileUpload" style="float: left;" />
-                    <input type="button" value="上传" onclick="uploadImage()" style="float: left;"/><br/><br/>
+                    <input type="button" value="上传" onclick="uploadImage('fileUpload','imagePath')" style="float: left;"/><br/><br/>
                   <font color="red">*如果需要修改头像，请右键“图片另存为”，修改之后重新上传！</font>
                 </div>
             </div>
@@ -80,6 +81,20 @@
               <%--<input type="text" id="mm_emp_password" class="form-control" value="${empVO.mm_emp_password}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">--%>
             <%--</div>--%>
           <%--</div>--%>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label" >名片</label>
+            <div class="col-sm-10 col-md-2">
+              <img class="img-thumbnail" name="imagePath1" id="imageDiv1"   style="cursor: pointer"  src="${empVO.ad_pic}"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" ></label>
+            <div class="col-sm-10">
+              <input type="file" name="file" id="fileUpload1" style="float: left;" />
+              <input type="button" value="上传" onclick="uploadImage('fileUpload1','imageDiv1')" style="float: left;"/><br/><br/>
+            </div>
+          </div>
 
           <div class="form-group">
             <label class="col-sm-2 control-label">用户类型</label>
@@ -326,6 +341,14 @@
           </div>
 
           <div class="form-group">
+            <label class="col-sm-2 control-label">公司经纬度</label>
+            <div class="col-sm-4">
+              <input type="text" id="lat_company" class="form-control" value="${empVO.lat_company}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+              <input type="text" id="lng_company" class="form-control" value="${empVO.lng_company}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+            </div>
+          </div>
+
+          <div class="form-group">
             <label class="col-sm-2 control-label">是否审核</label>
             <div class="col-sm-4">
               <select class="form-control" id="ischeck">
@@ -384,6 +407,8 @@
     var lat = $("#lat").val();
     var lng = $("#lng").val();
     var ischeck = $("#ischeck").val();
+    var lat_company = $("#lat_company").val();
+    var lng_company = $("#lng_company").val();
 
     if(mm_emp_nickname.replace(/\s/g, '') == ''){
         alert("名称不能为空");
@@ -504,6 +529,13 @@
           return;
       }
 
+    var imagePath1 = $("img[name='imagePath1']").attr("src");
+
+    if(imagePath1== "" || imagePath1==null){
+      imagePath1 = $("#ad_pic").val();
+      return;
+    }
+
     $.ajax({
       cache: true,
       type: "POST",
@@ -514,6 +546,7 @@
         "mm_msg_length":mm_msg_length,
         "mm_emp_card":mm_emp_card,
         "mm_emp_cover":imagePath,
+        "ad_pic":imagePath1,
         "mm_emp_mobile":mm_emp_mobile,
         "mm_emp_nickname":mm_emp_nickname,
         "mm_emp_type":mm_emp_type,
@@ -542,6 +575,8 @@
         "is_use":is_use,
         "lat":lat,
         "lng":lng,
+        "lat_company":lat_company,
+        "lng_company":lng_company,
         "ischeck":ischeck
       },
       async: false,
@@ -574,17 +609,17 @@
 </script>
 
 <script type="text/javascript">
-    function uploadImage() {
+    function uploadImage(_fileUpload,_imageDiv) {
         $.ajaxFileUpload(
                 {
                     url:"/uploadUnCompressImage.do?_t=" + new Date().getTime(),            //需要链接到服务器地址
                     secureuri:false,//是否启用安全提交，默认为false
-                    fileElementId:'fileUpload',                        //文件选择框的id属性
+                    fileElementId:_fileUpload,                        //文件选择框的id属性
                     dataType: 'json',                                     //服务器返回的格式，可以是json, xml
                     success: function (data, status)  //服务器成功响应处理函数
                     {
                         if(data.success) {
-                            document.getElementById('imageDiv').src= data.data;
+                            document.getElementById(_imageDiv).src= data.data;
                         } else {
                             if(data.code == 1) {
                                 alert("上传图片失败");

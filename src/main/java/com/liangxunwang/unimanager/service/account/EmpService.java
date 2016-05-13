@@ -143,6 +143,8 @@ public class EmpService implements ListService , UpdateService , ExecuteService{
             }else {
                 if(emp != null && !StringUtil.isNullOrEmpty(emp.getMm_emp_cover()) && !emp.getMm_emp_cover().startsWith("http://")){
                     empDao.updateCover(emp);
+                }if(emp != null && !StringUtil.isNullOrEmpty(emp.getAd_pic()) && !emp.getAd_pic().startsWith("http://")){
+                    empDao.updateAd(emp);
                 }
                 if(!StringUtil.isNullOrEmpty(emp.getMm_emp_endtime())){
                     emp.setMm_emp_endtime(DateUtil.getMs(emp.getMm_emp_endtime(), "yyyy-MM-dd") + "");
@@ -162,6 +164,13 @@ public class EmpService implements ListService , UpdateService , ExecuteService{
                 empVO.setMm_emp_cover(Constants.URL + empVO.getMm_emp_cover());
             }else {
                 empVO.setMm_emp_cover(Constants.QINIU_URL + empVO.getMm_emp_cover());
+            }
+        }
+        if (empVO !=null && !StringUtil.isNullOrEmpty(empVO.getAd_pic())) {
+            if (empVO.getAd_pic().startsWith("upload")) {
+                empVO.setAd_pic(Constants.URL + empVO.getAd_pic());
+            }else {
+                empVO.setAd_pic(Constants.QINIU_URL + empVO.getAd_pic());
             }
         }
         if(empVO != null && !StringUtil.isNullOrEmpty(empVO.getMm_emp_company_pic())){

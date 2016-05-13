@@ -24,20 +24,25 @@ public interface EmpDao {
      * 查询所有的会员信息--统计登录信息
      */
     List<EmpVO> listCountLoginNum(Map<String, Object> map);
-    long countLoginNumOne(Map<String,Object> map);
+    long countLoginNumOne(Map<String, Object> map);
 
     //查询VIP 3天内到期的所有会员
     List<Emp> listAllVipEndThree(Map<String, Object> map);
 
-    long count(Map<String,Object> map);
+    long count(Map<String, Object> map);
     //今日注册会员数量
-    long countDay(Map<String,Object> map);
+    long countDay(Map<String, Object> map);
 
     //更新会员数据
     void update(Emp emp);
 
+    //上传公司经纬度
+    void updateCompanyLocation(Emp emp);
+
     //更新头像
     void updateCover(Emp emp);
+    //更新头像
+    void updateAd(Emp emp);
 
     //根据用户ID查询用户信息
     EmpVO findById(String mm_emp_id);
@@ -59,13 +64,13 @@ public interface EmpDao {
     void updatePwr(Emp emp);
 
     //审核用户
-    void updateCheck(Map<String,Object> map);
+    void updateCheck(Map<String, Object> map);
 
     /**
      * 查询附近商家
      */
     List<EmpVO> listsLocation(Map<String, Object> map);
-    long countLocation(Map<String,Object> map);
+    long countLocation(Map<String, Object> map);
 
     /**
      * 根据手机号和身份证号查找会员
@@ -74,13 +79,13 @@ public interface EmpDao {
     EmpVO findByMobileAndCard(Map<String, Object> map);
 
     //用户登陆状态修改
-    void updateLogin(Map<String,Object> map);
+    void updateLogin(Map<String, Object> map);
 
     //用户发布供应权限
-    void updateFabugy(Map<String,Object> map);
+    void updateFabugy(Map<String, Object> map);
 
     //发布求购权限
-    void updateFabuqg(Map<String,Object> map);
+    void updateFabuqg(Map<String, Object> map);
 
     //补充资料
     void updateProfileMember(Emp emp);
@@ -99,6 +104,6 @@ public interface EmpDao {
      * 根据ID更新pushId
      * {id, userId, channelId, type}
      */
-    void updatePushId(@Param(value = "id") String id, @Param(value = "userId") String userId, @Param(value = "channelId") String channelId, @Param(value = "type")String type);
+    void updatePushId(@Param(value = "id") String id, @Param(value = "userId") String userId, @Param(value = "channelId") String channelId, @Param(value = "type") String type);
 
 }

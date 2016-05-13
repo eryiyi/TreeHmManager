@@ -211,7 +211,7 @@ public class AppRecordController extends ControllerConstants {
             System.err.println("路径[" + veido_path + "]对应的视频文件不存在!");
             return false;
         }
-        List<String> commands = new java.util.ArrayList<String>();
+        List<String> commands = new ArrayList<String>();
         commands.add(ffmpeg_path);
         commands.add("-i");
         commands.add(veido_path);

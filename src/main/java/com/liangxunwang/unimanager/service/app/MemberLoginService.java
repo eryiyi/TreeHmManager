@@ -63,6 +63,14 @@ public class MemberLoginService implements ExecuteService {
             }
         }
 
+        if(!StringUtil.isNullOrEmpty(member.getAd_pic())){
+            if (member.getAd_pic().startsWith("upload")) {
+                member.setAd_pic(Constants.URL + member.getAd_pic());
+            }else {
+                member.setAd_pic(Constants.QINIU_URL + member.getAd_pic());
+            }
+        }
+
         if(!StringUtil.isNullOrEmpty(member.getMm_emp_company_pic())){
             if (member.getMm_emp_company_pic().startsWith("upload")) {
                 member.setMm_emp_company_pic(Constants.URL + member.getMm_emp_company_pic());

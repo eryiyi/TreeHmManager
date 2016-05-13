@@ -42,6 +42,9 @@
         <result column="userId" property="userId"/>
         <result column="channelId" property="channelId"/>
         <result column="deviceType" property="deviceType"/>
+        <result column="lat_company" property="lat_company"/>
+        <result column="lng_company" property="lng_company"/>
+        <result column="ad_pic" property="ad_pic"/>
     </resultMap>
     <resultMap id="emp_vo" type="com.liangxunwang.unimanager.mvc.vo.EmpVO">
         <id column="mm_emp_id" property="mm_emp_id"/>
@@ -82,6 +85,9 @@
         <result column="userId" property="userId"/>
         <result column="channelId" property="channelId"/>
         <result column="deviceType" property="deviceType"/>
+        <result column="lat_company" property="lat_company"/>
+        <result column="lng_company" property="lng_company"/>
+        <result column="ad_pic" property="ad_pic"/>
 
         <result column="levelName" property="levelName"/>
         <result column="mm_level_num" property="mm_level_num"/>
@@ -223,6 +229,8 @@
         lat=#{lat},
         lng=#{lng},
         mm_msg_length=#{mm_msg_length},
+        lat_company=#{lat_company},
+        lng_company=#{lng_company},
         ischeck=#{ischeck}
         WHERE mm_emp_id=#{mm_emp_id}
     </update>
@@ -248,8 +256,8 @@
     </select>
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.Emp">
-        INSERT INTO mm_emp(mm_emp_cover,mm_emp_company_pic,mm_emp_company_url,mm_emp_id, mm_emp_mobile, mm_emp_nickname,mm_emp_card, mm_emp_password, mm_emp_type, mm_emp_company, mm_emp_company_type, mm_emp_company_address, mm_emp_company_detail, mm_emp_provinceId, mm_emp_cityId, mm_emp_countryId, mm_emp_regtime, mm_emp_endtime, mm_level_id, mm_emp_beizhu, mm_emp_msg_num, is_login, is_fabugongying, is_fabuqiugou, is_fabuqiugou_see, is_fabugongying_see, is_see_all, is_use, is_pic, is_chengxin, is_miaomu, lat, lng, ischeck,is_upate_profile,mm_msg_length)
-        VALUES (#{mm_emp_cover,jdbcType=VARCHAR},#{mm_emp_company_pic,jdbcType=VARCHAR},#{mm_emp_company_url,jdbcType=VARCHAR},#{mm_emp_id}, #{mm_emp_mobile},#{mm_emp_nickname}, #{mm_emp_card,jdbcType=VARCHAR}, #{mm_emp_password},#{mm_emp_type},#{mm_emp_company,jdbcType=VARCHAR},#{mm_emp_company_type},#{mm_emp_company_address,jdbcType=VARCHAR},#{mm_emp_company_detail,jdbcType=VARCHAR},#{mm_emp_provinceId},#{mm_emp_cityId},#{mm_emp_countryId},#{mm_emp_regtime},#{mm_emp_endtime,jdbcType=VARCHAR},#{mm_level_id,jdbcType=VARCHAR},#{mm_emp_beizhu,jdbcType=VARCHAR},#{mm_emp_msg_num,jdbcType=VARCHAR},#{is_login},#{is_fabugongying},#{is_fabuqiugou},#{is_fabuqiugou_see},#{is_fabugongying_see},#{is_see_all},#{is_use},#{is_pic},#{is_chengxin},#{is_miaomu},#{lat},#{lng},#{ischeck},#{is_upate_profile},#{mm_msg_length,jdbcType=VARCHAR})
+        INSERT INTO mm_emp(mm_emp_cover,mm_emp_company_pic,mm_emp_company_url,mm_emp_id, mm_emp_mobile, mm_emp_nickname,mm_emp_card, mm_emp_password, mm_emp_type, mm_emp_company, mm_emp_company_type, mm_emp_company_address, mm_emp_company_detail, mm_emp_provinceId, mm_emp_cityId, mm_emp_countryId, mm_emp_regtime, mm_emp_endtime, mm_level_id, mm_emp_beizhu, mm_emp_msg_num, is_login, is_fabugongying, is_fabuqiugou, is_fabuqiugou_see, is_fabugongying_see, is_see_all, is_use, is_pic, is_chengxin, is_miaomu, lat, lng, ischeck,is_upate_profile,mm_msg_length,lat_company,lng_company)
+        VALUES (#{mm_emp_cover,jdbcType=VARCHAR},#{mm_emp_company_pic,jdbcType=VARCHAR},#{mm_emp_company_url,jdbcType=VARCHAR},#{mm_emp_id}, #{mm_emp_mobile},#{mm_emp_nickname}, #{mm_emp_card,jdbcType=VARCHAR}, #{mm_emp_password},#{mm_emp_type},#{mm_emp_company,jdbcType=VARCHAR},#{mm_emp_company_type},#{mm_emp_company_address,jdbcType=VARCHAR},#{mm_emp_company_detail,jdbcType=VARCHAR},#{mm_emp_provinceId},#{mm_emp_cityId},#{mm_emp_countryId},#{mm_emp_regtime},#{mm_emp_endtime,jdbcType=VARCHAR},#{mm_level_id,jdbcType=VARCHAR},#{mm_emp_beizhu,jdbcType=VARCHAR},#{mm_emp_msg_num,jdbcType=VARCHAR},#{is_login},#{is_fabugongying},#{is_fabuqiugou},#{is_fabuqiugou_see},#{is_fabugongying_see},#{is_see_all},#{is_use},#{is_pic},#{is_chengxin},#{is_miaomu},#{lat},#{lng},#{ischeck},#{is_upate_profile},#{mm_msg_length,jdbcType=VARCHAR},#{lat_company,jdbcType=VARCHAR},#{lng_company,jdbcType=VARCHAR})
     </insert>
 
     <insert id="saveList" parameterType="java.util.List">
@@ -307,9 +315,21 @@
         WHERE mm_emp_mobile=#{mm_emp_mobile}
     </update>
 
+    <update id="updateCompanyLocation" parameterType="com.liangxunwang.unimanager.model.Emp">
+        UPDATE mm_emp SET
+        lat_company=#{lat_company},
+        lng_company=#{lng_company}
+        WHERE mm_emp_id=#{mm_emp_id}
+    </update>
+
     <update id="updateCover" parameterType="com.liangxunwang.unimanager.model.Emp">
         UPDATE mm_emp SET
         mm_emp_cover=#{mm_emp_cover}
+        WHERE mm_emp_mobile=#{mm_emp_mobile}
+    </update>
+    <update id="updateAd" parameterType="com.liangxunwang.unimanager.model.Emp">
+        UPDATE mm_emp SET
+        ad_pic=#{ad_pic}
         WHERE mm_emp_mobile=#{mm_emp_mobile}
     </update>
 

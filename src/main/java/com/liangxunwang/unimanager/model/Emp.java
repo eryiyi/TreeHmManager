@@ -45,6 +45,35 @@ public class Emp {
     private String deviceType;
     private String mm_msg_length;
 
+    private String lat_company;
+    private String lng_company;
+
+    private String ad_pic;
+
+    public String getAd_pic() {
+        return ad_pic;
+    }
+
+    public void setAd_pic(String ad_pic) {
+        this.ad_pic = ad_pic;
+    }
+
+    public String getLat_company() {
+        return lat_company;
+    }
+
+    public void setLat_company(String lat_company) {
+        this.lat_company = lat_company;
+    }
+
+    public String getLng_company() {
+        return lng_company;
+    }
+
+    public void setLng_company(String lng_company) {
+        this.lng_company = lng_company;
+    }
+
     public String getMm_msg_length() {
         return mm_msg_length;
     }

@@ -1,9 +1,11 @@
 package com.liangxunwang.unimanager.service.account;
 
 import com.liangxunwang.unimanager.dao.EmpDao;
+import com.liangxunwang.unimanager.model.Emp;
 import com.liangxunwang.unimanager.mvc.vo.EmpVO;
 import com.liangxunwang.unimanager.service.ExecuteService;
 import com.liangxunwang.unimanager.service.ServiceException;
+import com.liangxunwang.unimanager.service.UpdateService;
 import com.liangxunwang.unimanager.util.CreateSimpleExcelToDisk;
 import com.liangxunwang.unimanager.util.DateUtil;
 import com.liangxunwang.unimanager.util.StringUtil;
@@ -24,7 +26,7 @@ import java.util.*;
 /**
  */
 @Service("empExcelService")
-public class EmpExcelService implements ExecuteService{
+public class EmpExcelService implements ExecuteService,UpdateService{
     @Autowired
     @Qualifier("empDao")
     private EmpDao empDao;
@@ -55,6 +57,10 @@ public class EmpExcelService implements ExecuteService{
     }
 
 
-
-
+    @Override
+    public Object update(Object object) {
+        Emp emp = (Emp) object;
+        empDao.updateCompanyLocation(emp);
+        return null;
+    }
 }

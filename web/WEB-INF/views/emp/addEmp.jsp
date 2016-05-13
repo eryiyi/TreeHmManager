@@ -301,6 +301,15 @@
               </select>
             </div>
           </div>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">公司经纬度</label>
+            <div class="col-sm-4">
+              <input type="text" id="lat_company" class="form-control" value="${empVO.lat_company}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+              <input type="text" id="lng_company" class="form-control" value="${empVO.lng_company}" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+            </div>
+          </div>
+
           <div class="form-group">
             <div class="col-sm-9 col-sm-offset-3">
               <button type="button" class="btn btn-primary" onclick="saveRole()">确定</button>
@@ -345,6 +354,8 @@
     var is_miaomu = $("#is_miaomu").val();
     var is_use = $("#is_use").val();
     var ischeck = $("#ischeck").val();
+    var lat_company = $("#lat_company").val();
+    var lng_company = $("#lng_company").val();
 
     if(mm_emp_nickname.replace(/\s/g, '') == ''){
         alert("名称不能为空");
@@ -457,6 +468,7 @@
       alert("请选择是否审核");
       return;
     }
+
     $.ajax({
       cache: true,
       type: "POST",
@@ -490,6 +502,8 @@
         "is_chengxin":is_chengxin,
         "is_miaomu":is_miaomu,
         "is_use":is_use,
+        "lat_company":lat_company,
+        "lng_company":lng_company,
         "ischeck":ischeck
       },
       async: false,

@@ -178,6 +178,26 @@ public class AppEmpController extends ControllerConstants {
         }
     }
 
+    @Autowired
+    @Qualifier("empExcelService")
+    private UpdateService empExcelService;
 
+    @RequestMapping(value = "/addCompanyLocation", produces = "text/plain;charset=UTF-8;")
+    @ResponseBody
+    public String addCompanyLocation(String mm_emp_id,String lat, String lng){
+        try {
+            //保存用户公司定位数据
+            Emp emp = new Emp();
+            emp.setMm_emp_id(mm_emp_id);
+            emp.setLat_company(lat);
+            emp.setLng_company(lng);
+            empExcelService.update(emp);
+            DataTip tip = new DataTip();
+            tip.setData(tip);
+            return toJSONString(tip);
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+        }
+    }
 
 }
