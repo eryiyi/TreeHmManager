@@ -175,13 +175,13 @@
         <c:if test="${query.mm_msg_type=='0'}"><li class="cur" onclick="javascript:changeShowType('0');"><a>最新求购</a></li></c:if>
         <c:if test="${query.mm_msg_type=='1'}"><li class="cur" onclick="javascript:changeShowType('0');"><a>最新供应</a></li></c:if>
       </ul>
-      <div class="tabs-msg"><a></a></div>
-      <div class="list-pages">
-        <a href="javascript:void(0);">&lt;</a>
-        <span>${page.page}/${page.pageCount}</span>
-        <a href="http://www.cnhnb.com/supply/p/0-0-2">&gt;</a>
-
-      </div>
+      <%--内容区标签页边框 & 页码--%>
+      <%--<div class="tabs-msg"><a></a></div>--%>
+      <%--<div class="list-pages">--%>
+        <%--<a href="javascript:void(0);">&lt;</a>--%>
+        <%--<span>${page.page}/${page.pageCount}</span>--%>
+        <%--<a href="http://www.cnhnb.com/supply/p/0-0-2">&gt;</a>--%>
+      <%--</div>--%>
     </div>
     <div class="pro-list mb_10">
       <ul class="pro-list-title pt_15">

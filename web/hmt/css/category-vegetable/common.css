@@ -113,7 +113,7 @@ a{ color:#333;}
 
 /*logo*/
 .type-head { height:120px; width:1190px; margin:0 auto; position: relative; font-family:微软雅黑; z-index:998;}
-.type-head .logo { background:url(../../images/category-vegetable/logo_type.png) no-repeat scroll left top; float:left; height:78px; width:353px; overflow:hidden; margin-top:30px;}
+.type-head .logo { background:url(../../images/category-vegetable/logo_type.png) no-repeat scroll left top; float:left; height:78px; width:430px; overflow:hidden; margin-top:30px;}
 .type-head .logo a{ height:60px; width:260px; display:inline-block;}
 .type-head .dot{ float:left; margin:35px 20px 0; }
 .type-head .hnw_title{ float:left; margin-top:30px; font-size:26px; font-weight:bold; line-height:60px; }
