@@ -26,6 +26,7 @@ public class Emp {
     private String mm_emp_beizhu;
     private String mm_emp_msg_num;
     private String is_login;
+    private String is_cover;
     private String is_fabugongying;
     private String is_fabuqiugou;
     private String is_fabuqiugou_see;
@@ -49,6 +50,14 @@ public class Emp {
     private String lng_company;
 
     private String ad_pic;
+
+    public String getIs_cover() {
+        return is_cover;
+    }
+
+    public void setIs_cover(String is_cover) {
+        this.is_cover = is_cover;
+    }
 
     public String getAd_pic() {
         return ad_pic;

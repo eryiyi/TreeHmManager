@@ -45,6 +45,7 @@
         <result column="lat_company" property="lat_company"/>
         <result column="lng_company" property="lng_company"/>
         <result column="ad_pic" property="ad_pic"/>
+        <result column="is_cover" property="is_cover"/>
     </resultMap>
     <resultMap id="emp_vo" type="com.liangxunwang.unimanager.mvc.vo.EmpVO">
         <id column="mm_emp_id" property="mm_emp_id"/>
@@ -88,6 +89,7 @@
         <result column="lat_company" property="lat_company"/>
         <result column="lng_company" property="lng_company"/>
         <result column="ad_pic" property="ad_pic"/>
+        <result column="is_cover" property="is_cover"/>
 
         <result column="levelName" property="levelName"/>
         <result column="mm_level_num" property="mm_level_num"/>
@@ -231,6 +233,7 @@
         mm_msg_length=#{mm_msg_length},
         lat_company=#{lat_company},
         lng_company=#{lng_company},
+        is_cover=#{is_cover},
         ischeck=#{ischeck}
         WHERE mm_emp_id=#{mm_emp_id}
     </update>

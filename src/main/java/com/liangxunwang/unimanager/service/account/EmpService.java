@@ -184,6 +184,9 @@ public class EmpService implements ListService , UpdateService , ExecuteService{
             //vip到期日期不为空
             empVO.setMm_emp_endtime(DateUtil.getDate( empVO.getMm_emp_endtime(), "yyyy-MM-dd"));
         }
+        if(empVO != null && !StringUtil.isNullOrEmpty(empVO.getAd_pic())){
+            empVO.setAd_pic(Constants.QINIU_URL + "ad_mp.jpg" );
+        }
         return empVO;
     }
 

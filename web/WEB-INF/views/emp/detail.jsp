@@ -239,6 +239,17 @@
           </div>
 
           <div class="form-group">
+            <label class="col-sm-2 control-label">允许用户修改头像</label>
+            <div class="col-sm-4">
+              <select class="form-control" id="is_cover">
+                <option value="">--请选择--</option>
+                <option value="0" ${empVO.is_cover=='0'?'selected':''}>允许</option>
+                <option value="1" ${empVO.is_cover=='1'?'selected':''}>不允许</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
             <label class="col-sm-2 control-label">发布供应信息权限</label>
             <div class="col-sm-4">
               <select class="form-control" id="is_fabugongying">
@@ -395,6 +406,7 @@
     var mm_emp_beizhu = $("#mm_emp_beizhu").val();
     var mm_emp_msg_num = $("#mm_emp_msg_num").val();
     var is_login = $("#is_login").val();
+    var is_cover = $("#is_cover").val();
     var is_fabugongying = $("#is_fabugongying").val();
     var is_fabuqiugou = $("#is_fabuqiugou").val();
     var is_fabugongying_see = $("#is_fabugongying_see").val();
@@ -564,6 +576,7 @@
         "mm_emp_beizhu":mm_emp_beizhu,
         "mm_emp_msg_num":mm_emp_msg_num,
         "is_login":is_login,
+        "is_cover":is_cover,
         "is_fabugongying":is_fabugongying,
         "is_fabuqiugou":is_fabuqiugou,
         "is_fabugongying_see":is_fabugongying_see,

@@ -27,7 +27,7 @@
 	<script type="text/javascript" src="/js/validation.js"></script>
 
 </head>
-<body>
+<body onload="loginAuto()">
 <div class="container">
 	<!-- HEADING -->
 	<div class="heading clearfix">
@@ -119,7 +119,13 @@
 				}
 			}
 		});
+	}
 
+	function loginAuto(){
+		var username = getCookie("loginName");
+		var password = getCookie("loginPassword");
+		document.getElementById("mobile").value = username
+		document.getElementById("pwr").value = password
 	}
 </script>
 </html>

@@ -36,7 +36,7 @@
   <script type="text/javascript" src="../js/jquery_latest.js"></script>
 
 </head>
-<body>
+<body onload="loginAuto()">
 <div class="header clearfix">
   <div class="logo-box fl">
     <div class="logo fl">
@@ -143,6 +143,7 @@
 
 </body>
 <script>
+
   function toPage(_url, _page){
     if(_page != ''){
       window.location.href=_url+"?page="+_page;
@@ -187,6 +188,8 @@
       success:function(_data){
         var data = $.parseJSON(_data);
         if(data.success){
+          addCookie("loginName", username, 36);
+          addCookie("loginPassword", password, 36);
           window.location.href = "/hmtIndex/toIndex.do?page=1";
         }else{
           var _case = {1:"该用户不存在", 2:"密码不正确", 3:"该用户被禁用了，请联系客服", 4:"该用户尚未审核，请联系客服", 5:"手机号不能为空",6:"密码不能为空",7:"登录失败",8:"请使用注册手机登录，不能更换手机！"};
@@ -194,6 +197,12 @@
         }
       }
     });
+  }
+  function loginAuto(){
+    var username = getCookie("loginName");
+    var password = getCookie("loginPassword");
+    document.getElementById("mobile").value = username
+    document.getElementById("pwr").value = password
   }
 </script>
 
