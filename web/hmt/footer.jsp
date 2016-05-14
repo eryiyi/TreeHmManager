@@ -50,16 +50,16 @@
       <%--<h3 class="title">---   友情链接   --- </h3>--%>
       <div class="ad-holder clearfix">
         <%--<a class="web-link" href=""><img src="../hmt/images/links/01.png" alt=""/></a>--%>
-        <a class="web-link" href="http://www.312tree.net"><img src="../hmt/images/links/02.png" alt=""/></a>
-        <a class="web-link" href="http://www.yuhuagu.com"><img src="../hmt/images/links/03.png" alt=""/></a>
-        <a class="web-link" href="http://www.huamu0101.com"><img src="../hmt/images/links/04.png" alt=""/></a>
-        <a class="web-link" href="http://www.miaomudi.com"><img src="../hmt/images/links/05.png" alt=""/></a>
-        <a class="web-link" href="http://www.huamu.cn"><img src="../hmt/images/links/06.png" alt=""/></a>
-        <a class="web-link" href="http://www.hm160.cn"><img src="../hmt/images/links/07.png" alt=""/></a>
-        <a class="web-link" href="http://www.xbmiaomu.com"><img src="../hmt/images/links/08.png" alt=""/></a>
-        <a class="web-link" href="http://www.yuanlinyc.com"><img src="../hmt/images/links/09.png" alt=""/></a>
-        <a class="web-link" href="http://www.hnmmw.com"><img src="../hmt/images/links/10.png" alt=""/></a>
-        <a class="web-link" href="http://yuanlin.com"><img src="../hmt/images/links/11.png" alt=""/></a>
+        <a class="web-link" href="http://www.312tree.net" target="_blank"><img src="../hmt/images/links/02.png" alt=""/></a>
+        <a class="web-link" href="http://www.yuhuagu.com" target="_blank"><img src="../hmt/images/links/03.png" alt=""/></a>
+        <a class="web-link" href="http://www.huamu0101.com" target="_blank"><img src="../hmt/images/links/04.png" alt=""/></a>
+        <a class="web-link" href="http://www.miaomudi.com" target="_blank"><img src="../hmt/images/links/05.png" alt=""/></a>
+        <a class="web-link" href="http://www.huamu.cn" target="_blank"><img src="../hmt/images/links/06.png" alt=""/></a>
+        <a class="web-link" href="http://www.hm160.cn" target="_blank"><img src="../hmt/images/links/07.png" alt=""/></a>
+        <a class="web-link" href="http://www.xbmiaomu.com" target="_blank"><img src="../hmt/images/links/08.png" alt=""/></a>
+        <a class="web-link" href="http://www.yuanlinyc.com" target="_blank"><img src="../hmt/images/links/09.png" alt=""/></a>
+        <a class="web-link" href="http://www.hnmmw.com" target="_blank"><img src="../hmt/images/links/10.png" alt=""/></a>
+        <a class="web-link" href="http://yuanlin.com" target="_blank"><img src="../hmt/images/links/11.png" alt=""/></a>
       </div>
     </div>
 

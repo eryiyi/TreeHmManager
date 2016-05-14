@@ -86,7 +86,10 @@ public class WebvRegController extends ControllerConstants {
                 return toJSONString(ERROR_2);
             }else if (msg.equals(Constants.SAVE_ERROR)){
                 return toJSONString(ERROR_1);
-            }else{
+            }else if(msg.equals("CardIsUse")){
+                return toJSONString(ERROR_3);
+            }
+            else{
                 return toJSONString(ERROR_1);
             }
         }

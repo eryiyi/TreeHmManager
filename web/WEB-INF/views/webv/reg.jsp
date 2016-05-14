@@ -201,7 +201,7 @@
 					//登录页面跳转
 					window.location.href="/webvLoginController/toLogin.do";
 				}else{
-					var _case = {1:"注册失败",2:"该手机号已经注册，请换个手机号试试"};
+					var _case = {1:"注册失败",2:"该手机号已经注册",3:"该身份证号已经注册"};
 					alert(_case[data.code])
 				}
 			}

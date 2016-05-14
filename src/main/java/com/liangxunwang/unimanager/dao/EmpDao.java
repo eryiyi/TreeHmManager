@@ -53,6 +53,8 @@ public interface EmpDao {
      * @return
      */
     EmpVO findByMobile(String mm_emp_mobile);
+    //查询身份证号
+    EmpVO findByCard(String mm_emp_card);
 
     //保存会员信息
     void save(Emp emp);

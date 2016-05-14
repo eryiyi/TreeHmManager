@@ -106,19 +106,19 @@ public class WebVRecordService implements ListService,DeleteService,ExecuteServi
             }
         }
 
-        //判断accesstoken是否存在 是否是最新的
-        if(!StringUtil.isNullOrEmpty(query.getAccessToken())){
-            //不为空，判断是否单点登录
-            AccessToken accessToken = accessTokenDao.findByToken(query.getAccessToken());
-            if(accessToken == null){
-                throw new ServiceException("accessTokenNull");
-            }
-        }else {
-        //      throw new ServiceException("accessTokenNull");
-            //没登陆
-            map.put("index", 1);
-            map.put("size", 10);
-        }
+//        //判断accesstoken是否存在 是否是最新的
+//        if(!StringUtil.isNullOrEmpty(query.getAccessToken())){
+//            //不为空，判断是否单点登录
+//            AccessToken accessToken = accessTokenDao.findByToken(query.getAccessToken());
+//            if(accessToken == null){
+//                throw new ServiceException("accessTokenNull");
+//            }
+//        }else {
+//        //      throw new ServiceException("accessTokenNull");
+//            //没登陆
+//            map.put("index", 1);
+//            map.put("size", 10);
+//        }
         List<RecordVO> lists = recordDao.listRecordVo(map);
         for (RecordVO record : lists){
             //处理内容-文字超出限制

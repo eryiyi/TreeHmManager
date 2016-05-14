@@ -155,7 +155,7 @@
     <!-- details -->
     <ul class="details-title">
       <li class="details-times">发布时间：${recordVO.dateline}</li>
-      <li class="details-author">发布人：<span>${recordVO.mm_emp_nickname}</span></li>
+      <li class="details-author">发布人：<span><a href="/netProfileController/toProfile.do?page=1&mm_emp_id=${recordVO.mm_emp_id}">${recordVO.mm_emp_nickname}</a></span></li>
       <li class="details-certification">
 
       </li>

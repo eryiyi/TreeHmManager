@@ -254,6 +254,14 @@
         LEFT JOIN hat_area hata ON sn.mm_emp_countryId=hata.areaID
         WHERE sn.mm_emp_mobile=#{mm_emp_mobile}
     </select>
+    <select id="findByCard" parameterType="String" resultMap="emp_vo">
+        SELECT sn.* ,lev.mm_level_name as levelName,lev.mm_level_num as mm_level_num, hatp.province as provinceName, hatc.city as cityName, hata.area as areaName  from mm_emp sn
+        LEFT JOIN mm_level lev ON sn.mm_level_id=lev.mm_level_id
+        LEFT JOIN hat_province hatp ON sn.mm_emp_provinceId=hatp.provinceID
+        LEFT JOIN hat_city hatc ON sn.mm_emp_cityId=hatc.cityID
+        LEFT JOIN hat_area hata ON sn.mm_emp_countryId=hata.areaID
+        WHERE sn.mm_emp_card=#{mm_emp_card}
+    </select>
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.Emp">
         INSERT INTO mm_emp(mm_emp_cover,mm_emp_company_pic,mm_emp_company_url,mm_emp_id, mm_emp_mobile, mm_emp_nickname,mm_emp_card, mm_emp_password, mm_emp_type, mm_emp_company, mm_emp_company_type, mm_emp_company_address, mm_emp_company_detail, mm_emp_provinceId, mm_emp_cityId, mm_emp_countryId, mm_emp_regtime, mm_emp_endtime, mm_level_id, mm_emp_beizhu, mm_emp_msg_num, is_login, is_fabugongying, is_fabuqiugou, is_fabuqiugou_see, is_fabugongying_see, is_see_all, is_use, is_pic, is_chengxin, is_miaomu, lat, lng, ischeck,is_upate_profile,mm_msg_length,lat_company,lng_company)

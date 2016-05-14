@@ -64,7 +64,7 @@
                 <label class="col-sm-2 control-label" ></label>
                 <div class="col-sm-10">
                     <input type="file" name="file" id="fileUpload" style="float: left;" />
-                    <input type="button" value="上传" onclick="uploadImage('fileUpload','imagePath')" style="float: left;"/><br/><br/>
+                    <input type="button" value="上传" onclick="uploadImage('fileUpload','imageDiv')" style="float: left;"/><br/><br/>
                   <font color="red">*如果需要修改头像，请右键“图片另存为”，修改之后重新上传！</font>
                 </div>
             </div>

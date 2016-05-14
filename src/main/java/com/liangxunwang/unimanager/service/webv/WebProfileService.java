@@ -31,9 +31,15 @@ public class WebProfileService implements SaveService,UpdateService{
     public Object save(Object object) {
         Emp member = (Emp) object;
         Emp checkMember = memberDao.findByMobile(member.getMm_emp_mobile());
+        Emp checkMemberT = memberDao.findByCard(member.getMm_emp_card());
         if (checkMember != null){
             throw new ServiceException("MobileIsUse");
         }
+        if (checkMemberT != null){
+            throw new ServiceException("CardIsUse");
+        }
+        //查询身份证号是否使用
+
         member.setMm_emp_id(UUIDFactory.random());//设置ID
         member.setMm_emp_regtime(DateUtil.getDateAndTime());//时间戳
         if(!StringUtil.isNullOrEmpty(member.getMm_emp_cover())){

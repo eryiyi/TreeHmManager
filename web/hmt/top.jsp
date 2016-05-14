@@ -145,7 +145,7 @@
 
 <div class="card-holder clearfix">
 	<c:forEach items="${list}" var="e" varStatus="st">
-		<a  href="/netProfileController/toProfile.do?mm_emp_id=${e.mm_emp_id}" target="_blank" class="card clearfix">
+		<a  href="/netProfileController/toProfile.do?page=1&mm_emp_id=${e.mm_emp_id}" target="_blank" class="card clearfix">
 			<div class="pic-holder">
 				<img src="${e.mm_emp_cover}" alt="头像"/>
 			</div>
