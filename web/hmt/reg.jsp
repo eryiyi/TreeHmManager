@@ -143,7 +143,7 @@
         <span></span>
         <input type="button" onclick="reg()"  class="submit" value="同意服务协议，完成注册">
         <div class="provision mb10">
-          <a id="treaty" href="javascript:void(0);" target="_self">《花木通服务条款》</a>
+          <a id="treaty" href="/netAboutUsController/toXieyie.do" target="_blank">《花木通服务条款》</a>
         </div>
       </li>
     </ul>
