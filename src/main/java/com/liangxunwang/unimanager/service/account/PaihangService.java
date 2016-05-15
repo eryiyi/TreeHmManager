@@ -58,7 +58,6 @@ public class PaihangService implements ListService,DeleteService,ExecuteService,
             if(!StringUtil.isNullOrEmpty(record.getEnd_time())){
                 record.setEnd_time(DateUtil.getDate(record.getEnd_time() , "yyyy-MM-dd"));
             }
-
         }
         long count = paihangObjDao.count(map);
         return new Object[]{lists, count};

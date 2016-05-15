@@ -44,8 +44,8 @@
         , lemp.mm_emp_company as mm_emp_company, lemp.mm_emp_company_address as mm_emp_company_address,
         lemp.mm_emp_company_detail as mm_emp_company_detail, lemp.mm_level_id as mm_level_id,
         lemp.is_chengxin as is_chengxin ,
-        lemp.lat as lat ,
-        lemp.lng as lng ,
+        lemp.lat_company as lat ,
+        lemp.lng_company as lng ,
         lemp.is_miaomu as is_miaomu  from mm_paihang sn
         LEFT JOIN mm_emp lemp ON sn.mm_emp_id=lemp.mm_emp_id
         WHERE 1=1

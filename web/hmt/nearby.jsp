@@ -276,7 +276,7 @@
 
        <c:forEach items="${list}" var="e" varStatus="st">
          <li class="text-list">
-           <a href="/webvProfile/toProfile.do?mm_emp_id=${e.mm_emp_id}" target="_blank">
+           <a href="/webvProfile/toProfile.do?mm_emp_id=${e.mm_emp_id}&page=1" target="_blank">
              <span class="l1">${e.mm_emp_nickname}</span>
              <span class="l2">${e.mm_emp_company}</span>
              <span class="l4">${e.mm_emp_company_address}</span>

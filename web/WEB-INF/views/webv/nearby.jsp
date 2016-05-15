@@ -44,7 +44,7 @@
 		<c:forEach items="${list}" var="e" varStatus="st">
 			<div class="item">
 				<div class="item-heading clearfix">
-					<a href="/webvProfile/toProfile.do?mm_emp_id=${e.mm_emp_id}" class="left clearfix">
+					<a href="/webvProfile/toProfile.do?mm_emp_id=${e.mm_emp_id}&page=1" class="left clearfix">
 						<img src="${e.mm_emp_cover}" alt="" class="head-pic">
 						<div class="detail">
 							<h1 class="company">${e.mm_emp_company}&nbsp;${e.mm_emp_nickname}</h1>
