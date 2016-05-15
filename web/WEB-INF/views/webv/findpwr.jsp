@@ -30,11 +30,8 @@
 <div class="container">
 	<!-- HEADING -->
 	<div class="heading clearfix">
-		<!-- HEADING -->
-		<div class="heading clearfix">
-			<a href="javascript:history.back()" class="back"><img src="/img/tree_icons_back.png" alt=""></a>
-			<h1 class="head-title">找回密码</h1>
-		</div>
+		<a href="javascript:history.back()" class="back"><img src="/img/tree_icons_back.png" alt=""></a>
+		<h1 class="head-title">找回密码</h1>
 	</div>
 	<!-- CONTENT -->
 	<div class="content w85">

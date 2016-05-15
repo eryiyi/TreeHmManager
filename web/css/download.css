@@ -117,5 +117,5 @@
   }
 }
 body {
-  background-color: #5DCC99;
+  background: url("../img/share_bg.jpg") no-repeat center fixed;
 }
