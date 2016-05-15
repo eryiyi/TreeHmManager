@@ -86,7 +86,7 @@
 		<c:forEach items="${list}" var="e" varStatus="st">
 			<div href="javaScript:void(0)"  class="item">
 				<div class="item-heading clearfix">
-					<a href="/webvProfile/toProfile.do?mm_emp_id=${e.mm_emp_id}"  class="left clearfix">
+					<a href="/webvProfile/toProfile.do?mm_emp_id=${e.mm_emp_id}&page=1"  class="left clearfix">
 						<img src="${e.mm_emp_cover}" alt="" class="head-pic">
 						<div class="detail">
 							<h1 class="company">${e.mm_emp_nickname}</h1>
@@ -106,7 +106,7 @@
 						</div>
 					</div>
 				</div>
-				<a class="item-content" href="/webvProfile/toProfile.do?mm_emp_id=${e.mm_emp_id}">
+				<a class="item-content" href="/webvProfile/toProfile.do?mm_emp_id=${e.mm_emp_id}&page=1">
 						${e.mm_emp_company}
 						${e.mm_emp_company_detail}
 				</a>

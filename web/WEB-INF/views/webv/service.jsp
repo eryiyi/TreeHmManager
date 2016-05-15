@@ -88,7 +88,7 @@
 		<!-- mine -->
 		<h4 class="title">我的</h4>
 		<div class="icons clearfix">
-			<a href="/webvProfile/toProfile.do?mm_emp_id=${emp.mm_emp_id}" class="icon">
+			<a href="/webvProfile/toProfile.do?mm_emp_id=${emp.mm_emp_id}&page=1" class="icon">
 				<div class="icon-pic"><img src="/img/tree_user_profile.png" alt=""></div>
 				<h5 class="icon-name">个人主页</h5>
 			</a>
