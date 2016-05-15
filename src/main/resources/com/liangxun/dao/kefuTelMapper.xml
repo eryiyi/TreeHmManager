@@ -30,15 +30,18 @@
         LEFT JOIN hat_area hata ON sn.mm_emp_countryId=hata.areaID
         WHERE  1=1
         <if test="mm_emp_countryId != null and mm_emp_countryId != ''">
-            AND mm_emp_countryId = #{mm_emp_countryId}
+            AND sn.mm_emp_countryId = #{mm_emp_countryId}
         </if>
         <if test="mm_tel_type != null and mm_tel_type != ''">
-            AND mm_tel_type = #{mm_tel_type}
+            AND sn.mm_tel_type = #{mm_tel_type}
         </if>
     </select>
 
     <select id="listsAll" resultMap="kefu_vo">
-        SELECT sn.* from mm_tel sn
+        SELECT sn.*,hatp.province as provinceName, hatc.city as cityName, hata.area as areaName from mm_tel sn
+        LEFT JOIN hat_province hatp ON sn.mm_emp_provinceId=hatp.provinceID
+        LEFT JOIN hat_city hatc ON sn.mm_emp_cityId=hatc.cityID
+        LEFT JOIN hat_area hata ON sn.mm_emp_countryId=hata.areaID
         WHERE  1=1
         <if test="mm_tel_type != null and mm_tel_type != ''">
             AND sn.mm_tel_type = #{mm_tel_type}

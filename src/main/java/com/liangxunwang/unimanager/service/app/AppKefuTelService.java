@@ -33,8 +33,15 @@ public class AppKefuTelService implements ListService{
         if(!StringUtil.isNullOrEmpty(query.getMm_tel_type())){
             map.put("mm_tel_type", query.getMm_tel_type());
         }
-        List<KefuVO> lists = fuwuDao.lists(map);
-        return lists;
+        if(!StringUtil.isNullOrEmpty(query.getMm_emp_countryId())){
+            //说明取本地的
+            List<KefuVO> lists = fuwuDao.lists(map);
+            return lists;
+        }else {
+            //说明取全国的
+            List<KefuVO> lists = fuwuDao.listsAll(map);
+            return lists;
+        }
     }
 
 }

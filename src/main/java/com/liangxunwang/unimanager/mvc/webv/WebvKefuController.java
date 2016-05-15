@@ -33,14 +33,19 @@ public class WebvKefuController extends ControllerConstants {
     @RequestMapping("toKefu")
     public String toLogin(HttpSession session,ModelMap map,KefuQuery query){
         try {
+            EmpVO emp = (EmpVO) session.getAttribute(MEMBER_KEY);
+            if(emp != null){
+                //说明登陆了 ，只需要取本地的
+                query.setMm_emp_countryId(emp.getMm_emp_countryId());
+            }
             query.setMm_tel_type("0");
             List<KefuVO> list = (List<KefuVO>) appKefuTelService.list(query);
             map.put("list", list);//本地的
             query.setMm_tel_type("1");
+            query.setMm_emp_countryId("");
             List<KefuVO> listAll = (List<KefuVO>) appKefuTelService.list(query);
             map.put("listAll", listAll);//全国的
             return "/webv/kefu";
-
         }catch (ServiceException e){
             String msg = e.getMessage();
             if (msg.equals("accessTokenNull")){
