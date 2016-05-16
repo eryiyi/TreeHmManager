@@ -178,6 +178,27 @@ public class AppEmpController extends ControllerConstants {
         }
     }
 
+
+    @Autowired
+    @Qualifier("appEmpCoverService")
+    private UpdateService appEmpCoverService;
+
+    @RequestMapping("/uploadCover")
+    @ResponseBody
+    public String uploadCover(@RequestParam String mm_emp_id, @RequestParam String mm_emp_cover){
+        if (StringUtil.isNullOrEmpty(mm_emp_id) || StringUtil.isNullOrEmpty(mm_emp_cover)){
+            return toJSONString(ERROR_1);
+        }
+        Object[] params = new Object[]{mm_emp_id, mm_emp_cover};
+        try {
+            appEmpCoverService.update(params);
+            return toJSONString(SUCCESS);
+        }catch (ServiceException e){
+            return toJSONString(ERROR_1);
+
+        }
+    }
+
     @Autowired
     @Qualifier("empExcelService")
     private UpdateService empExcelService;

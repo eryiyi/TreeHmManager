@@ -111,6 +111,7 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/webvHotController/toIndex\\.do$)"+
                         "|(^/webvHotSController/toSell\\.do$)"+
                         "|(^/toShareMp\\.do$)"+
+                        "|(^/uploadCover\\.do$)"+
 
 
                         "|(^/hmtIndex/toIndex\\.do$)"+
