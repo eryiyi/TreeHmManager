@@ -91,6 +91,7 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/getNotices\\.do$)"+
                         "|(^/getNoticesDetail\\.do$)"+
                         "|(^/addCompanyLocation\\.do$)"+
+                        "|(^/getFuwuType\\.do$)"+
 
                         "|(^/webvWeixinController/toKefu\\.do$)"+
                         "|(^/webvNoticeController/list\\.do$)"+
@@ -109,6 +110,7 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/webvProfile/toUpdateProfile\\.do$)"+
                         "|(^/webvHotController/toIndex\\.do$)"+
                         "|(^/webvHotSController/toSell\\.do$)"+
+                        "|(^/toShareMp\\.do$)"+
 
 
                         "|(^/hmtIndex/toIndex\\.do$)"+

@@ -40,8 +40,11 @@ public class AppFuwuController extends ControllerConstants {
     private ListService recordListService;
 
     @Autowired
-    @Qualifier("appFuwuService")
+    @Qualifier("appFuwuLocationService")
     private ListService appFuwuService;
+    @Autowired
+    @Qualifier("appFuwuLocationService")
+    private ListService appFuwuLocationService;
 
     //服务信息列表
     @RequestMapping(value = "/getFuwuByLocationAndType", produces = "text/plain;charset=UTF-8")
@@ -51,6 +54,27 @@ public class AppFuwuController extends ControllerConstants {
         query.setSize(query.getSize()==0?page.getDefaultSize():query.getSize());
         try {
             Object[] results = (Object[])appFuwuService.list(query);
+            DataTip tip = new DataTip();
+            tip.setData(results[0]);
+            return toJSONString(tip);
+        }catch (ServiceException e){
+            String msg = e.getMessage();
+            if (msg.equals("accessTokenNull")){
+                return toJSONString(ERROR_9);
+            }else{
+                return toJSONString(ERROR_1);
+            }
+        }
+    }
+
+    //服务信息列表   附近的 按照区域查询
+    @RequestMapping(value = "/getFuwuType", produces = "text/plain;charset=UTF-8")
+    @ResponseBody
+    public String getFuwuType(FuwuQuery query,Page page){
+        query.setIndex(page.getIndex()==0?1:page.getIndex());
+        query.setSize(query.getSize()==0?page.getDefaultSize():query.getSize());
+        try {
+            Object[] results = (Object[])appFuwuLocationService.list(query);
             DataTip tip = new DataTip();
             tip.setData(results[0]);
             return toJSONString(tip);

@@ -166,13 +166,7 @@ public class EmpService implements ListService , UpdateService , ExecuteService{
                 empVO.setMm_emp_cover(Constants.QINIU_URL + empVO.getMm_emp_cover());
             }
         }
-        if (empVO !=null && !StringUtil.isNullOrEmpty(empVO.getAd_pic())) {
-            if (empVO.getAd_pic().startsWith("upload")) {
-                empVO.setAd_pic(Constants.URL + empVO.getAd_pic());
-            }else {
-                empVO.setAd_pic(Constants.QINIU_URL + empVO.getAd_pic());
-            }
-        }
+
         if(empVO != null && !StringUtil.isNullOrEmpty(empVO.getMm_emp_company_pic())){
             if(empVO.getMm_emp_company_pic().startsWith("upload")){
                 empVO.setMm_emp_company_pic(Constants.URL + empVO.getMm_emp_company_pic());
@@ -185,6 +179,12 @@ public class EmpService implements ListService , UpdateService , ExecuteService{
             empVO.setMm_emp_endtime(DateUtil.getDate( empVO.getMm_emp_endtime(), "yyyy-MM-dd"));
         }
         if(empVO != null && !StringUtil.isNullOrEmpty(empVO.getAd_pic())){
+            if(empVO.getAd_pic().startsWith("upload")){
+                empVO.setAd_pic(Constants.URL + empVO.getAd_pic());
+            }else{
+                empVO.setAd_pic(Constants.QINIU_URL + empVO.getAd_pic());
+            }
+        }else {
             empVO.setAd_pic(Constants.QINIU_URL + "ad_mp.jpg" );
         }
         return empVO;
