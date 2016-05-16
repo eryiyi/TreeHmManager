@@ -338,6 +338,7 @@
         mm_emp_cover=#{mm_emp_cover}
         WHERE mm_emp_mobile=#{mm_emp_mobile}
     </update>
+
     <update id="updateAd" parameterType="com.liangxunwang.unimanager.model.Emp">
         UPDATE mm_emp SET
         ad_pic=#{ad_pic}
@@ -428,6 +429,10 @@
         UPDATE mm_emp set userId=#{userId}, channelId=#{channelId}, deviceType=#{type} WHERE mm_emp_id=#{id}
     </update>
 
+    <update id="updateCoverByEmpId" parameterType="String">
+        UPDATE mm_emp set mm_emp_cover=#{mm_emp_cover} WHERE mm_emp_id=#{mm_emp_id}
+    </update>
+
 
     <select id="listAllVipEndThree" resultMap="emp">
         SELECT sn.*  from mm_emp sn
@@ -439,7 +444,6 @@
             AND sn.mm_emp_endtime &lt;= #{end}
         </if>
     </select>
-
 
     <select id="listCountLoginNum" resultMap="emp_vo">
         SELECT lemp.*,llogin.mm_emp_id ,count(*) as countLoginNum from mm_emp_login_num llogin
@@ -457,7 +461,6 @@
 
         GROUP BY llogin.mm_emp_id order by countLoginNum DESC limit #{index},#{size}
     </select>
-
 
     <select id="countLoginNumOne" resultType="Long">
         SELECT count(lemp.mm_emp_id) from mm_emp lemp

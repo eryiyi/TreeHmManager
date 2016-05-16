@@ -41,7 +41,8 @@ public interface EmpDao {
 
     //更新头像
     void updateCover(Emp emp);
-    //更新头像
+
+    //更新名片
     void updateAd(Emp emp);
 
     //根据用户ID查询用户信息
@@ -107,5 +108,8 @@ public interface EmpDao {
      * {id, userId, channelId, type}
      */
     void updatePushId(@Param(value = "id") String id, @Param(value = "userId") String userId, @Param(value = "channelId") String channelId, @Param(value = "type") String type);
+
+    //更新头像
+    void updateCoverByEmpId(@Param(value = "mm_emp_id") String id, @Param(value = "mm_emp_cover") String type);
 
 }
