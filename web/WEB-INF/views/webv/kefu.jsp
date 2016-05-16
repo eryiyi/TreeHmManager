@@ -27,14 +27,7 @@
 	<script type="text/javascript" src="/js/validation.js"></script>
 	<script type="text/javascript" src="/js/PictureUpload.js"></script>
 	<style type="text/css">
-		<!--
-		/*选项卡*/
-		/*#Tab1{
-			width:460px;
-			margin:0px;
-			padding:0px;
-			margin:0 auto;}*/
-		/*菜单class*/
+
 		ul{
 			list-style:none;
 		}
@@ -51,23 +44,19 @@
 			width: 100%;
 		}
 		.Menubox li{
+			padding: 10px 0;
 			float:left;
 			display:block;
 			cursor:pointer;
-			/*width:114px;*/
 			text-align:center;
 			color:#949694;
 			font-weight:bold;
 			width: 50%;
 		}
 		.Menubox li.hover{
-			padding:0px;
-			background:#fff;
-			/*border-left:1px solid #A8C29F;
-			border-top:1px solid #A8C29F;
-			border-right:1px solid #A8C29F;*/
-			/*background:url(20080115123242961.gif);*/
-			color:#739242;
+			padding:10px 0;
+			background:#4ABA67;
+			color:#fff;
 			font-weight:bold;
 			height:27px;
 			line-height:27px;
@@ -75,12 +64,10 @@
 		.Contentbox{
 			clear:both;
 			margin-top:0px;
-			/*border:1px solid #A8C29F;*/
 			border-top:none;
 			height:181px;
 			text-align:center;
-			padding-top:8px;
-			width: 99.5%;
+			width: 100%;
 		}
 		-->
 	</style>
@@ -136,50 +123,77 @@
 	<div class="content">
 		<div class="Menubox">
 		<ul>
-			<li id ="one1"onclick="setTab('one',1,2)" class="hover" style="width: 50%">本地</li>
-			<li id="one2" onclick="setTab('one',2,2)"  style="width: 49%">全国</li>
+			<li id ="one1" onclick="setTab('one',1,2)" class="hover" style="width: 50%">本地</li>
+			<li id ="one2" onclick="setTab('one',2,2)"  style="width: 49%">全国</li>
 		</ul>
 		</div>
 		<div class="Contentbox">
-			<ul>
-			<div id="con_one_1" class="hover">
-				<c:forEach items="${list}" var="e" varStatus="st">
-					<li>
-						<div class="contact clearfix">
-							<div class="left">
-								<h1 class="name">${e.provinceName}${e.cityName}${e.areaName}</h1>
-								<%--&lt;%&ndash;<h3 class="company">${e.mm_fuwu_content}</h3>&ndash;%&gt;--%>
-							</div>
-							<div class="right">
-								<a href="tel:${e.mm_tel}" class="button-phone-big clearfix">
-									<img src="/img/tree_button_icon_phone.png" alt="" class="phone-icon">
-									<h2 class="phone-number">${e.mm_tel}</h2>
-								</a>
-							</div>
-						</div>
-						<div class="duty"></div>
-					</li>
-				</c:forEach>
-			</div>
-			<div id="con_one_2" style="display:none">
-				<c:forEach items="${listAll}" var="e" varStatus="st">
-					<li>
-						<div class="contact clearfix">
-							<div class="left">
-								<h1 class="name">全国客服</h1>
-							</div>
-							<div class="right">
-								<a href="tel:${e.mm_tel}" class="button-phone-big clearfix">
-									<img src="/img/tree_button_icon_phone.png" alt="" class="phone-icon">
-									<h2 class="phone-number">${e.mm_tel}</h2>
-								</a>
-							</div>
-						</div>
-						<div class="duty"></div>
-					</li>
-				</c:forEach>
-			</div>
+			<ul class="phones">
+				<li class="phone-list">
+					<div class="pic-holder"><img src="../../../img/apple.png" alt=""/></div>
+					<div class="info">
+						<h2 class="name">邴新科</h2>
+						<h3 class="address">山东省滨州市滨城区</h3>
+					</div>
+					<div class="phone"><a href=""><img src="../../../img/apple.png" alt=""/></a></div>
+				</li>
+				<li class="phone-list">
+					<div class="pic-holder"><img src="../../../img/apple.png" alt=""/></div>
+					<div class="info">
+						<h2 class="name">邴新科</h2>
+						<h3 class="address">山东省滨州市滨城区</h3>
+					</div>
+					<div class="phone"><a href=""><img src="../../../img/apple.png" alt=""/></a></div>
+				</li>
+				<li class="phone-list">
+					<div class="pic-holder"><img src="../../../img/apple.png" alt=""/></div>
+					<div class="info">
+						<h2 class="name">邴新科</h2>
+						<h3 class="address">山东省滨州市滨城区</h3>
+					</div>
+					<div class="phone"><a href=""><img src="../../../img/apple.png" alt=""/></a></div>
+				</li>
+
 			</ul>
+			<%--<ul>--%>
+			<%--<div id="con_one_1" class="hover">--%>
+				<%--<c:forEach items="${list}" var="e" varStatus="st">--%>
+					<%--<li>--%>
+						<%--<div class="contact clearfix">--%>
+							<%--<div class="left">--%>
+								<%--<h1 class="name">${e.provinceName}${e.cityName}${e.areaName}</h1>--%>
+								<%--&lt;%&ndash;&lt;%&ndash;<h3 class="company">${e.mm_fuwu_content}</h3>&ndash;%&gt;&ndash;%&gt;--%>
+							<%--</div>--%>
+							<%--<div class="right">--%>
+								<%--<a href="tel:${e.mm_tel}" class="button-phone-big clearfix">--%>
+									<%--<img src="/img/tree_button_icon_phone.png" alt="" class="phone-icon">--%>
+									<%--<h2 class="phone-number">${e.mm_tel}</h2>--%>
+								<%--</a>--%>
+							<%--</div>--%>
+						<%--</div>--%>
+						<%--<div class="duty"></div>--%>
+					<%--</li>--%>
+				<%--</c:forEach>--%>
+			<%--</div>--%>
+			<%--<div id="con_one_2" style="display:none">--%>
+				<%--<c:forEach items="${listAll}" var="e" varStatus="st">--%>
+					<%--<li>--%>
+						<%--<div class="contact clearfix">--%>
+							<%--<div class="left">--%>
+								<%--<h1 class="name">全国客服</h1>--%>
+							<%--</div>--%>
+							<%--<div class="right">--%>
+								<%--<a href="tel:${e.mm_tel}" class="button-phone-big clearfix">--%>
+									<%--<img src="/img/tree_button_icon_phone.png" alt="" class="phone-icon">--%>
+									<%--<h2 class="phone-number">${e.mm_tel}</h2>--%>
+								<%--</a>--%>
+							<%--</div>--%>
+						<%--</div>--%>
+						<%--<div class="duty"></div>--%>
+					<%--</li>--%>
+				<%--</c:forEach>--%>
+			<%--</div>--%>
+			<%--</ul>--%>
 		</div>
 
 	<div class="toolbar">

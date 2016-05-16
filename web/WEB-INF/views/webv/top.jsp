@@ -30,6 +30,24 @@
 	<script language="javascript" src="/js/jquery.js"></script>
 	<script type="text/javascript" src="/js/jquery_latest.js"></script>
 	<script type="text/javascript" src="/js/glide.min.js"></script>
+	<style>
+
+		.link-button{
+
+		}
+		.link-button a{
+			text-align: center;
+			display: block;
+			line-height: 200%;
+			font-size: 1rem;
+			color: #4ABA67;
+			background-color: #fffbea;
+		}
+		.link-button a:active {
+			background-color: #4ABA67;
+			color: #fff;
+		}
+	</style>
 
 </head>
 <body>
@@ -78,7 +96,10 @@
 			</script>
 			<!-- GLIDE SLIDE END -->
 		</c:if>
-
+		<%--banner下的链接按钮--%>
+		<div class="link-button">
+			<a href="">你说我要在这里出现，然后你就出现了。</a>
+		</div>
 		<input type="hidden" id="is_login" name="is_login" value="${is_login}">
 		<input type="hidden" id="accessToken" name="accessToken" value="${emp.access_token}">
 		<input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${emp.mm_emp_id}">

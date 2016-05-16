@@ -81,6 +81,9 @@
 				<h2 class="phone-number">${recordVO.mm_emp_nickname} ${recordVO.mm_emp_mobile}</h2>
 			</a>
 		</div>
+		<div class="share-seciton">
+			<img class="cqr" src="" alt=""/>
+		</div>
 	</div>
 	<!-- TOOLBAR -->
 	<div class="toolbar">

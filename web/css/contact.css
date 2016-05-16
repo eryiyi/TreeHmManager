@@ -1,37 +1,48 @@
-.content {
-  width: 95%;
+.content{
+  width: 100%;
 }
-.contact-list li {
-  border-bottom: 1px solid #ccc;
+.phones{
+  display: block;
 }
-.contact-list li .contact {
-  padding: 15px 0;
+.phone-list{
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+  display: flex;
+  flex-flow: row;
 }
-.contact-list li .contact .left {
-  float: left;
+.pic-holder{
+  width: 80px;
 }
-.contact-list li .contact .left .name {
-  font-size: 1rem;
+.pic-holder>img{
+  display: block;
+  height: 80px;
+  width: 80px;
 }
-.contact-list li .contact .left .company {
-  font-size: .6rem;
+.info{
+  text-align: left;
+  flex: auto;
+  padding: 0 5px;
 }
-.contact-list li .contact .right {
-  float: right;
+.info .name{
+  line-height: 40px;
+  font-size: 18px;
+  font-weight: bold;
 }
-.contact-list li .duty .main-duty {
-  display: table-cell;
-  font-size: 1rem;
-  padding: 5px 10px;
-  background-color: #F2F2F2;
-  border-radius: 30px;
-  border: 1px solid #ccc;
+.info .address{
+  line-height: 20px;
+  font-size: 15px;
 }
-.contact-list li .duty .duty-detail {
-  margin: 10px auto;
-  font-size: 1rem;
-  padding: 10px;
-  border: 1px solid #ccc;
-  background-color: #F2F2F2;
-  border-radius: 5px;
+.phone{
+  width: 80px;
+}
+.phone>a{
+  display: block;
+  background-color: #4ABA67;
+  padding: 15px;
+}
+.phone>a>img{
+  display: block;
+  height: 50px;
+  width: 50px;
 }

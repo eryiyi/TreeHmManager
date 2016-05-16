@@ -60,7 +60,7 @@
 		})
 	</script>
 </head>
-<body>
+<body style="position: relative;">
 <%--<%--%>
 	<%--Cookie cookies[]=request.getCookies(); //读出用户硬盘上的Cookie，并将所有的Cookie放到一个cookie对象数组--%>
 	<%--List<RecordVO> lists = (List<RecordVO>) request.getAttribute("list");--%>
@@ -74,6 +74,7 @@
 
 
 <%--%>--%>
+
 <div class="container">
 	<!-- HEADING -->
 	<div class="heading clearfix">
@@ -119,6 +120,7 @@
 			</script>
 			<!-- GLIDE SLIDE END -->
 		</c:if>
+
 
 		<input type="hidden" id="is_login" name="is_login" value="${is_login}">
 		<input type="hidden" id="accessToken" name="accessToken" value="${emp.access_token}">

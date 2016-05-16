@@ -33,20 +33,20 @@ hr.gray { }
 
 /*==COLOR*/
 .red { color: #DE4B44; }
-.green { color: #7BC942 }
+.green { color: #4ABA67 }
 .darkgreen { color: #1BA839; }
 .orange { color: #FE941E; }
 .blue { color: #3FA9F5; }
 .gray { color: #666; }
 .lightgray { color: #aaa; }
 .fill-red { background-color: #DE4B44; color: #fff; }
-.fill-green { background-color: #7BC942; color: #fff; }
+.fill-green { background-color: #4ABA67; color: #fff; }
 .fill-darkgreen { background-color: #1BA839; color: #fff; }
 .fill-orange { background-color: #FE941E; color: #fff; }
 .fill-blue { background-color: #3FA9F5; color: #fff; }
 .fill-gray { background-color: #666; color: #fff; }
 .hollow-red { border: 1px solid #DE4B44; background-color: #fff; color: #DE4B44 }
-.hollow-green { border: 1px solid #7BC942; background-color: #fff; color: #7BC942 }
+.hollow-green { border: 1px solid #4ABA67; background-color: #fff; color: #4ABA67 }
 .hollow-darkgreen { border: 1px solid #1BA839; background-color: #fff; color: #1BA839 }
 .hollow-orange { border: 1px solid #FE941E; background-color: #fff; color: #FE941E }
 .hollow-blue { border: 1px solid #3FA9F5; background-color: #fff; color: #3FA9F5 }

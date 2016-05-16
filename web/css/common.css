@@ -14,6 +14,7 @@
   .container {
     width: 100%;
   }
+
 }
 .heading {
   padding: 0 5px;
@@ -49,20 +50,20 @@
   text-align: center;
   line-height: 50px;
   font-size: 1rem;
-  color: #7CD43A;
+  color: #4ABA67;
 }
 .heading .location {
   display: block;
   margin: 5px auto;
   line-height: 20px;
   font-size: 10px;
-  color: #7CD43A;
+  color: #4ABA67;
 }
 .heading .location:active{
   background-color: #ccc;
 }
 .heading .publish{
-  color: #7CD43A;
+  color: #4ABA67;
   line-height: 50px;
   display: block;
   font-size: 1.1rem;
@@ -72,7 +73,7 @@
   background-color: #ccc;
 }
 .heading .search{
-  color: #7CD43A;
+  color: #4ABA67;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -124,7 +125,7 @@
   background-color: #fff;
 }
 .heading .search-bar button {
-  background-color: #7CD43A;
+  background-color: #4ABA67;
   color: #fff;
   font-weight: bold;
   float: left;
@@ -273,7 +274,7 @@
 .button-phone-big {
   display: inline-block;
   border-radius: 50px;
-  border: 1px solid #7bc942;
+  border: 1px solid #4ABA67;
   padding: 5px 30px 5px 20px;
   min-width: 140px;
 }
@@ -289,11 +290,11 @@
   display: block;
   float: right;
   font-size: 1rem;
-  color: #7bc942;
+  color: #4ABA67;
   line-height: 30px;
 }
 .button-phone-big:active {
-  background-color: #7bc942;
+  background-color: #4ABA67;
 }
 .button-phone-big:active .phone-number {
   font-size: 1rem;
@@ -313,7 +314,7 @@
   /*margin-top: 40px;*/
   margin-top: -9px;
   text-align: center;
-  background-color: #7CD43A;
+  background-color: #4ABA67;
   box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
 }
 .imgboxtxt a {
