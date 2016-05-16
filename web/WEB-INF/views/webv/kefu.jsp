@@ -130,28 +130,28 @@
 		<div class="Contentbox">
 			<ul class="phones">
 				<li class="phone-list">
-					<div class="pic-holder"><img src="../../../img/apple.png" alt=""/></div>
+					<div class="pic-holder"><img src="../../../img/btn_phone.png" alt=""/></div>
 					<div class="info">
 						<h2 class="name">邴新科</h2>
 						<h3 class="address">山东省滨州市滨城区</h3>
 					</div>
-					<div class="phone"><a href=""><img src="../../../img/apple.png" alt=""/></a></div>
+					<div class="phone"><a href=""><img src="../../../img/btn_phone.png" alt=""/></a></div>
 				</li>
 				<li class="phone-list">
-					<div class="pic-holder"><img src="../../../img/apple.png" alt=""/></div>
+					<div class="pic-holder"><img src="../../../img/btn_phone.png" alt=""/></div>
 					<div class="info">
 						<h2 class="name">邴新科</h2>
 						<h3 class="address">山东省滨州市滨城区</h3>
 					</div>
-					<div class="phone"><a href=""><img src="../../../img/apple.png" alt=""/></a></div>
+					<div class="phone"><a href=""><img src="../../../img/btn_phone.png" alt=""/></a></div>
 				</li>
 				<li class="phone-list">
-					<div class="pic-holder"><img src="../../../img/apple.png" alt=""/></div>
+					<div class="pic-holder"><img src="../../../img/btn_phone.png" alt=""/></div>
 					<div class="info">
 						<h2 class="name">邴新科</h2>
 						<h3 class="address">山东省滨州市滨城区</h3>
 					</div>
-					<div class="phone"><a href=""><img src="../../../img/apple.png" alt=""/></a></div>
+					<div class="phone"><a href=""><img src="../../../img/btn_phone.png" alt=""/></a></div>
 				</li>
 
 			</ul>

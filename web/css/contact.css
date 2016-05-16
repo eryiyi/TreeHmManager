@@ -41,6 +41,9 @@
   background-color: #4ABA67;
   padding: 15px;
 }
+.phone>a:active{
+  background-color: #26ac50;
+}
 .phone>a>img{
   display: block;
   height: 50px;

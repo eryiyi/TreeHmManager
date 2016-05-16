@@ -17,6 +17,7 @@
 	<link rel="stylesheet" href="/css/reset.css">
 	<link rel="stylesheet" href="/css/common.css">
 	<link rel="stylesheet" href="/css/index.css">
+	<link rel="stylesheet" href="/css/mingpianshare.css">
 
 	<script type="text/javascript" src="/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/js/md5.js"></script>
@@ -24,9 +25,14 @@
 	<script type="text/javascript" src="/js/ajaxfileupload.js"></script>
 	<script type="text/javascript" src="/js/Util.js"></script>
 	<script type="text/javascript" src="/js/validation.js"></script>
+	<style>
+		.share-seciton{
+			width: 100%;
+		}
+	</style>
 
 </head>
-<body style="background-color: #fff;">
+<body style="background-color: #fff; background: none;">
 <div class="container">
 	<!-- HEADING -->
 	<div class="heading clearfix">
@@ -82,7 +88,22 @@
 			</a>
 		</div>
 		<div class="share-seciton">
-			<img class="cqr" src="" alt=""/>
+			<div class="side">
+				<div class="side-content">
+					<div class="pic-holder">
+						<img class="cqr" src="/img/mobile_erweima.png" alt=""/>
+					</div>
+					<a class="btn-download" href="">长按识别图中二维码-安卓版</a>
+				</div>
+			</div>
+			<div class="side">
+				<div class="side-content">
+					<div class="pic-holder">
+						<img class="cqr" src="/img/weixin_erweima.png" alt=""/>
+					</div>
+					<a class="btn-download" href="">长按识别图中二维码-微信版</a>
+				</div>
+			</div>
 		</div>
 	</div>
 	<!-- TOOLBAR -->
