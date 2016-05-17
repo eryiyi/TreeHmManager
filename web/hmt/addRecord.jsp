@@ -120,7 +120,7 @@
       <input type="hidden" id="ad_8">
       <input type="hidden" id="ad_9">
 
-    <a target="_blank" href="#">发布信息指南</a>
+    <%--<a target="_blank" href="#">发布信息指南</a>--%>
   </div>
     <div class="release mb_50" style="padding: 50px 200px;">
 
@@ -335,15 +335,11 @@
   }
 
   function kefu(){
-    window.location.href="/webvKefuController/toKefu.do";
+    window.location.href="/netWeixinController/toKefu.do";
   }
 
 </script>
 <script>
-  function kefu(){
-    window.location.href="/webvKefuController/toKefu.do";
-  }
-
   function toPage(_url, _page){
     if(_page != ''){
       window.location.href=_url+"?page="+_page;
@@ -385,7 +381,6 @@
     var ad_7 = $("#ad_7").val();
     var ad_8 = $("#ad_8").val();
     var ad_9 = $("#ad_9").val();
-
 
     $.ajax({
       cache: true,

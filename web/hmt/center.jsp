@@ -158,7 +158,7 @@
           <strong>账户状态：</strong> <span>
             <a href="javascript:void(0);"><img alt="手机认证" title="手机认证" src="../hmt/images/phone-yes.png"></a>
             <c:if test="${emp.is_miaomu=='1'}"><a href="javascript:void(0);"><img alt="诚信单位" title="诚信单位" src="/img/tree_icons_trust.png" style="width: 18px;height: 22px"></a></c:if>
-			<c:if test="${emp.is_chengxin=='1'}"><a href="javascript:void(0);"><img alt="苗木会员" title="苗木会员" src="/img/tree_icons_group.png" style="width: 18px;height: 22px"></a></c:if>
+			<c:if test="${emp.is_chengxin=='1'}"><a href="javascript:void(0);"><img alt="认证会员" title="认证会员" src="/img/tree_icons_group.png" style="width: 18px;height: 22px"></a></c:if>
 	</span>
         </div>
         <div class="userbind userbind-buy">
@@ -182,13 +182,13 @@
         </div>
         <div class="left-side left-side-4" myid="BUYERS_LEFT_FIX_child1">
             <a href="/netKefuController/toKefu.do">
-              <h2>申请协会单位</h2>
+              <h2>申请认证会员</h2>
               <p>点此联系客服</p>
             </a>
         </div>
         <div class="left-side left-side-4" myid="BUYERS_LEFT_FIX_child1">
           <a href="/netKefuController/toKefu.do">
-            <h2>申请诚信会员</h2>
+            <h2>申请诚信单位</h2>
             <p>点此联系客服</p>
           </a>
         </div>

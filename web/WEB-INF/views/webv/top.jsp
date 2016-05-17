@@ -98,7 +98,7 @@
 		</c:if>
 		<%--banner下的链接按钮--%>
 		<div class="link-button">
-			<a href="">你说我要在这里出现，然后你就出现了。</a>
+			<a href="">我要在这里出现</a>
 		</div>
 		<input type="hidden" id="is_login" name="is_login" value="${is_login}">
 		<input type="hidden" id="accessToken" name="accessToken" value="${emp.access_token}">

@@ -217,7 +217,7 @@
     <%--内容区--%>
     <div class="pro-list mb_10">
       <ul class="pro-list-title pt_15">
-        <li class="l2">
+        <li class="l1">
         <select class="form-control" id="mm_msg_type" onchange="searchChange()">
           <option value="">--选择信息类别--</option>
           <option value="0" ${query.mm_msg_type=='0'?'selected':''}>求购</option>
@@ -226,21 +226,21 @@
         </li>
 
         <li class="l2">内容</li>
-        <li class="l4">所在地区</li>
-        <li class="l5">联系人</li>
+        <li class="l5">所在地区</li>
+        <li class="l1">联系人</li>
         <li class="l1">时间</li>
-        <li class="l1">操作</li>
+        <li class="l1">属性</li>
       </ul>
       <ul>
 
         <c:forEach items="${list}" var="e" varStatus="st">
           <li class="text-list">
             <a href="javascript:void(0)" target="_blank" onclick="showDetail('${e.mm_msg_id}')">
-              <c:if test="${e.mm_msg_type=='0'}"> <span class="l2">[求购]</span></c:if>
-              <c:if test="${e.mm_msg_type=='1'}"> <span class="l2">[供应]</span></c:if>
+              <c:if test="${e.mm_msg_type=='0'}"> <span class="l1">[求购]</span></c:if>
+              <c:if test="${e.mm_msg_type=='1'}"> <span class="l1">[供应]</span></c:if>
               <span class="l2">${e.mm_msg_title}</span>
-              <span class="l4">${e.area}</span>
-              <span class="l5">${e.mm_emp_nickname}</span>
+              <span class="l5">${e.area}</span>
+              <span class="l1">${e.mm_emp_nickname}</span>
               <span class="l1">${e.dateline}</span>
                               <span class="l6">
                                   <c:if test="${e.is_miaomu=='1'}"><img style="width: 25px;height: 32px;" src="../img/tree_icons_trust.png" title="苗木协会"></c:if>
