@@ -144,6 +144,10 @@ a{ color:#333;}
 .autoComplete .green { border: 2px solid #009237; color: #3e3e3e;}
 .red, a.red, a.read:visited, a.red:hover { color: #f00; text-decoration: none;}
 .org, a.org, a.org:visited, a.org:hover { color: #009237;}
-input[type="text"]:hover, input[type="text"]:active, input[type="text"]:focus {
-    border-color: #009237;
+input[type="text"]:active, input[type="text"]:focus {
+  border: 1px solid #35d5ff !important;
+  outline: none;
+  -webkit-box-shadow: 0 0 4px #35d5ff;
+  -moz-box-shadow: 0 0 4px #35d5ff;
+  box-shadow: 0 0 4px #35d5ff;
 }

@@ -116,7 +116,7 @@
   </div>
 </div>
 <!--头部 导航-->
-<div class="type-head">
+<div class="type-head top-bg">
   <h1 class="logo">
     <a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=0" title="花木通信息平台"></a>
   </h1>
@@ -155,10 +155,9 @@
     <!-- details -->
     <ul class="details-title">
       <li class="details-times">发布时间：${recordVO.dateline}</li>
-      <li class="details-author">发布人：<span><a href="/netProfileController/toProfile.do?page=1&mm_emp_id=${recordVO.mm_emp_id}">${recordVO.mm_emp_nickname}</a></span></li>
-      <li class="details-certification">
-
-      </li>
+      <li class="details-author">发布人：<img src="../hmt/images/ico-tel.png" alt="${recordVO.mm_emp_nickname}"/><span><a href="/netProfileController/toProfile.do?page=1&mm_emp_id=${recordVO.mm_emp_id}">${recordVO.mm_emp_nickname}</a></span></li>
+      <li class="details-certification"><img src="../hmt/images/ico-tel.png" alt="电话"/> ${recordVO.mm_emp_mobile} </li>
+      <li class="details-certification"><img src="../hmt/images/ico-location.png" alt="位置"/> ${recordVO.cityName}${recordVO.area} </li>
       <li class="details-audit">
         <a class="highlight" onclick="favourClick('${recordVO.mm_msg_id}')" href="javascript:void(0);" title="收藏">收藏</a>
       </li>
@@ -178,28 +177,32 @@
           </p>
         </li>
         <li>
-
-        </li>
-        <li>
-          <p>${recordVO.mm_msg_content}</p>
+          <%--<p>${recordVO.mm_msg_content}</p>--%>
+          <p> Noisli 在线背景环境声音网是一个生产环境音效,
+            让你仿佛置身于雨天、森林、海边或者咖啡厅,这样的环境音效站点可以帮助你有个好的睡眠,还能提供工作效率,
+            让你免受... Noisli 在线背景环境声音网是一个生产环境音效,让你仿佛置身于雨天、森林、海边或者咖啡厅,
+            这样的环境音效站点可以帮助你有个好的睡眠,还能提供工作效率,让你免受...
+            <img src="../hmt/images/login-ad.jpg" alt=""/>
+            Noisli 在线背景环境声音网是一个生产环境音效,让你仿佛置身于雨天、森林、海边或者咖啡厅,
+            这样的环境音效站点可以帮助你有个好的睡眠,还能提供工作效率,让你免受...
+            <img src="../hmt/images/login-ad.jpg" alt=""/></p>
         </li>
       </ul>
 
       <div class="details-contact">
-        <ul>
-          <li class="contact-name">${recordVO.mm_emp_nickname}</li>
-          <li class="contact-location">${recordVO.cityName}${recordVO.area}</li>
-          <li class="contact-tel" unselectable="on" onselectstart="return false;">${recordVO.mm_emp_mobile}</li>
-        </ul>
-        <span class="tit">联系方式</span>
+        <div class="map-holder"></div>
+        <div class="cqr-holder">
+          <div class="weixin"><img src="../hmt/images/weixin_erweima.png" alt=""/></div>
+          <div class="app"><img src="../hmt/images/mobile_erweima.png" alt=""/></div>
+        </div>
       </div>
 
       <div class="details-tips">
         <p>交易纠纷时有发生，建议谨慎交易。具体参见 <a href="#">防骗提醒</a>。</p>
-        <p class="icon-time">发布日期：${recordVO.dateline}<em class="ml_10"></em></p>
+        <%--<p class="icon-time">发布日期：${recordVO.dateline}<em class="ml_10"></em></p>--%>
       </div>
 
-      <div class="blank_20"></div>
+      <div class="blank_5"></div>
       <div class="clear"></div>
 
 

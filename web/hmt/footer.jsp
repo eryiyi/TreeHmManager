@@ -16,8 +16,7 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     margin: 0 5px 10px 5px;
-    width: 228px;
-    height: 80px;
+    width: 150px;
     background-color: #fff;
     float: left;
     display: block;
@@ -38,8 +37,8 @@
     transform:translateY(2px);
   }
   .footer-nav .ad-holder>a>img{
+    width: 100%;
     display: block;
-    overflow: hidden;
   }
 </style>
 

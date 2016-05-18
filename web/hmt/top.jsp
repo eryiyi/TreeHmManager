@@ -152,8 +152,8 @@
 			<div class="words clearfix">
 				<div class="words-line clearfix">
 					<h2 class="name">${e.mm_emp_nickname}</h2>
-					<c:if test="${e.is_miaomu=='1'}"><img class="badge" src="../hmt/images/tree_icons_trust.png" alt="信任图标"/></c:if>
-					<c:if test="${e.is_chengxin=='1'}"><img class="badge" src="../hmt/images/tree_icons_group.png" alt="协会图标"/></c:if>
+					<c:if test="${e.is_miaomu=='1'}"><img class="badge" src="../img/tree_icons_trust.png" alt="信任图标"/></c:if>
+					<c:if test="${e.is_chengxin=='1'}"><img class="badge" src="../img/tree_icons_group.png" alt="协会图标"/></c:if>
 				</div>
 				<div class="words-line clearfix">
 					<h3 class="phone">${e.mm_emp_mobile}</h3>
