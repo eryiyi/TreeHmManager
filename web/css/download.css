@@ -118,4 +118,5 @@
 }
 body {
   background: url("../img/share_bg.jpg") no-repeat center fixed;
+  background-size: cover;
 }

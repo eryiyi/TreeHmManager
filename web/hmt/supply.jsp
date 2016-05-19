@@ -241,7 +241,6 @@
   </div>
 
   <div class="page p_30 mb_10 tr">
-    <center>
       <c:if test="${is_login=='1'}">
         <input type="hidden" id="pageCount" value="6443">
         <input type="hidden" name="size" id="size" value="${query.size}">
@@ -260,7 +259,6 @@
       <c:if test="${is_login=='0'}">
         <a class="index-button" href="javaScript:void(0)" onclick="login()">登录查看更多信息</a>
       </c:if>
-    </center>
   </div>
 
 </div>
