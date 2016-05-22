@@ -1,6 +1,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="um" uri="/unimanager-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" trimDirectiveWhitespaces="true" %>
+
+<link rel="stylesheet" href="http://cache.amap.com/lbs/static/main.css?v=1.0"/>
+<script type="text/javascript"
+        src="http://webapi.amap.com/maps?v=1.3&key=98ec561802a0063ec6d8301ae2321505"></script>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +13,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="icon" href="../img/icon.png" type="image/png" />
   <meta name="renderer" content="webkit">
-  <title>花木通|求购信息</title>
+  <title>花木通信息</title>
   <meta name="keywords" content="花木通,苗木,花木,苗木交易,花木求购,苗木求购,花木资讯,花木论坛,花木销售,苗木销售,苗木资讯,绿化苗木">
   <meta name="Description" content=" 花木通是惠民县本地第一苗木供求信息平台、信息通讯平台，突破了苗木大市场、绿化工程公司、经纪人、苗农之间的信息壁垒，让市场订单苗木不愁买，苗农种植苗木不愁卖！为本地苗木行业发展助力，让经纪人足不出户，随时随地做生意！让苗农及时了解市场行情，苗木卖价更高更容易！">
   <link href="../hmt/css/common/index-type.css" rel="stylesheet" type="text/css" />
@@ -32,7 +37,7 @@
   <script type="text/javascript" src="../js/jquery_latest.js"></script>
 
 </head>
-<body>
+<body onload="loadLocation('${recordVO.lat}','${recordVO.lng}')">
 <!-- 顶部 -->
 <div class="topbar">
   <div class="container clearfix">
@@ -155,9 +160,9 @@
     <!-- details -->
     <ul class="details-title">
       <li class="details-times">发布时间：${recordVO.dateline}</li>
-      <li class="details-author">发布人：<img src="../hmt/images/ico-tel.png" alt="${recordVO.mm_emp_nickname}"/><span><a href="/netProfileController/toProfile.do?page=1&mm_emp_id=${recordVO.mm_emp_id}">${recordVO.mm_emp_nickname}</a></span></li>
-      <li class="details-certification"><img src="../hmt/images/ico-tel.png" alt="电话"/> ${recordVO.mm_emp_mobile} </li>
-      <li class="details-certification"><img src="../hmt/images/ico-location.png" alt="位置"/> ${recordVO.cityName}${recordVO.area} </li>
+      <li class="details-author">发布人：<img src="../hmt/images/ico-tel.png" alt="联系人" title="联系人"/><span><a href="/netProfileController/toProfile.do?page=1&mm_emp_id=${recordVO.mm_emp_id}">${recordVO.mm_emp_nickname}</a></span></li>
+      <li class="details-certification"><img src="../hmt/images/ico-tel.png" alt="联系电话" title="联系电话"/> ${recordVO.mm_emp_mobile} </li>
+      <li class="details-certification"><img src="../hmt/images/ico-location.png" alt="地址" title="地址"/> ${recordVO.cityName}${recordVO.area} </li>
       <li class="details-audit">
         <a class="highlight" onclick="favourClick('${recordVO.mm_msg_id}')" href="javascript:void(0);" title="收藏">收藏</a>
       </li>
@@ -178,29 +183,31 @@
         </li>
         <li>
           <%--<p>${recordVO.mm_msg_content}</p>--%>
-          <p> Noisli 在线背景环境声音网是一个生产环境音效,
-            让你仿佛置身于雨天、森林、海边或者咖啡厅,这样的环境音效站点可以帮助你有个好的睡眠,还能提供工作效率,
-            让你免受... Noisli 在线背景环境声音网是一个生产环境音效,让你仿佛置身于雨天、森林、海边或者咖啡厅,
-            这样的环境音效站点可以帮助你有个好的睡眠,还能提供工作效率,让你免受...
-            <img src="../hmt/images/login-ad.jpg" alt=""/>
-            Noisli 在线背景环境声音网是一个生产环境音效,让你仿佛置身于雨天、森林、海边或者咖啡厅,
-            这样的环境音效站点可以帮助你有个好的睡眠,还能提供工作效率,让你免受...
-            <img src="../hmt/images/login-ad.jpg" alt=""/></p>
+            ${recordVO.mm_msg_content}
+            <%--处理图片--%>
+              <c:forEach items="${picArr}" var="epic" varStatus="st">
+            <p><img src="${epic}" alt=""/></p>
+              </c:forEach>
         </li>
       </ul>
 
       <div class="details-contact">
-        <div class="map-holder"></div>
+        <div class="map-holder" style="width: 100%;height: 200px;">
+          <%--地图--%>
+            <%--http://m.amap.com/navi/?dest=116.470098,39.992838&destName=阜通西&hideRouteIcon=1&key=(您申请的key)--%>
+            <%--<iframe id="ii" src="../hmt/locationGaode.jsp" style="width: 100%;height: 200px;" frameborder="0"></iframe>--%>
+          <jsp:include page="../hmt/locationGaode.jsp" ></jsp:include>
+        </div>
         <div class="cqr-holder">
           <div class="weixin"><img src="../hmt/images/weixin_erweima.png" alt=""/></div>
           <div class="app"><img src="../hmt/images/mobile_erweima.png" alt=""/></div>
         </div>
       </div>
 
-      <div class="details-tips">
-        <p>交易纠纷时有发生，建议谨慎交易。具体参见 <a href="#">防骗提醒</a>。</p>
+      <%--<div class="details-tips">--%>
+        <%--<p>欢迎使用花木通信息平台，请谨慎核实信息内容!</p>--%>
         <%--<p class="icon-time">发布日期：${recordVO.dateline}<em class="ml_10"></em></p>--%>
-      </div>
+      <%--</div>--%>
 
       <div class="blank_5"></div>
       <div class="clear"></div>
@@ -391,5 +398,9 @@
     }
 
   }
+//  function loadLocation(_lat,_lng){
+//    $("#ii")[0].contentWindow.lat=_lat ;
+//    $("#ii")[0].contentWindow.lnt=_lng ;
+//  }
 </script>
 </html>

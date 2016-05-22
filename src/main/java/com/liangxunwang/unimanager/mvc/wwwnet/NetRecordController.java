@@ -71,6 +71,11 @@ public class NetRecordController extends ControllerConstants {
         recordQuery.setSize(10);
         List<RecordVO> listsHot = (List<RecordVO>) appRecordTopService.list(recordQuery);
         map.put("listsHot", listsHot);
+        //处理图片
+        if(!StringUtil.isNullOrEmpty(recordVO.getMm_msg_picurl())){
+            String[] arrs = recordVO.getMm_msg_picurl().split(",");
+            map.put("picArr", arrs);
+        }
         return "../../hmt/detailRecord";
     }
 

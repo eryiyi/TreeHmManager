@@ -98,9 +98,6 @@
           </div>
 
 
-
-
-
           <div class="form-group">
             <label class="col-sm-2 control-label">省份</label>
             <div class="col-sm-4">
@@ -134,8 +131,6 @@
               </select>
             </div>
           </div>
-
-
 
 
           <div class="form-group">

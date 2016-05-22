@@ -123,8 +123,8 @@ public class WebVRecordService implements ListService,DeleteService,ExecuteServi
         for (RecordVO record : lists){
             //处理内容-文字超出限制
             if(!StringUtil.isNullOrEmpty(record.getMm_msg_content())){
-                if(record.getMm_msg_content().length() > 20){
-                    record.setMm_msg_title(record.getMm_msg_content().substring(0,19)+"...");
+                if(record.getMm_msg_content().length() > 50){
+                    record.setMm_msg_title(record.getMm_msg_content().substring(0,49)+"...");
                 }else {
                     record.setMm_msg_title(record.getMm_msg_content());
                 }

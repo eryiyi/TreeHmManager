@@ -143,7 +143,7 @@
         (SELECT mm_level_num FROM mm_level ll WHERE m.mm_level_id = ll.mm_level_id ) as mm_level_num
         FROM (
         SELECT sn.* ,larea.area as area,lemp.mm_emp_mobile as mm_emp_mobile, lemp.mm_emp_nickname as mm_emp_nickname, lemp.mm_emp_type as mm_emp_type,lemp.mm_emp_cover as mm_emp_cover, lemp.mm_emp_company_type as mm_emp_company_type
-        , lemp.mm_emp_company as mm_emp_company, lemp.mm_level_id as mm_level_id, lemp.is_chengxin as is_chengxin , lemp.is_miaomu as is_miaomu  from mm_msg sn
+        , lemp.mm_emp_company as mm_emp_company, lemp.mm_level_id as mm_level_id, lemp.is_chengxin as is_chengxin , lemp.is_miaomu as is_miaomu,lemp.lat_company as lat, lemp.lng_company as lng  from mm_msg sn
         LEFT JOIN mm_emp lemp ON sn.mm_emp_id=lemp.mm_emp_id
          LEFT JOIN hat_area larea ON sn.countryid=larea.areaID
          WHERE sn.mm_msg_id = #{id}

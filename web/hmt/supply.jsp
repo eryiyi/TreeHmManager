@@ -197,13 +197,17 @@
            <a href="javascript:void(0)" target="_blank" onclick="showDetail('${e.mm_msg_id}')">
              <span class="l1">${e.mm_msg_title}</span>
              <span class="l2">${e.area}</span>
-             <a class="l3"><img class="head-pic" src="../img/template.jpg" alt=""/>${e.mm_emp_nickname}</a>
-             <span class="l4">${e.dateline}</span>
-			                <span class="l5">
+             <a class="l3" onclick="showDetail('${e.mm_msg_id}')"><img class="head-pic" src="${e.mm_emp_cover}" alt="${e.mm_emp_nickname}" title="${e.mm_emp_nickname}"/>${e.mm_emp_nickname}</a>
+             <span class="l4" onclick="showDetail('${e.mm_msg_id}')">${e.dateline}</span>
+			                <span class="l5" onclick="showDetail('${e.mm_msg_id}')">
                                 <c:if test="${e.is_miaomu=='1'}"><img style="width: 25px;height: 32px;" src="../img/tree_icons_trust.png" title="苗木协会"></c:if>
 								<c:if test="${e.is_chengxin=='1'}"><img style="width: 25px;height: 32px;" src="../img/tree_icons_group.png" title="诚信会员"></c:if>
 			                </span>
-             <span class="l6"><em class="text-list-view">查看详情<img class="have-pic" src="../img/icon_have_pic_green.png" alt=""/></em></span>
+             <span class="l6">
+               <em class="text-list-view" onclick="showDetail('${e.mm_msg_id}')">查看详情
+                <c:if test="${e.mm_msg_picurl !=''}"><img class="have-pic" src="../img/icon_have_pic_green.png" alt="有图" title="有图"/></c:if>
+               </em>
+             </span>
            </a>
          </li>
        </c:forEach>

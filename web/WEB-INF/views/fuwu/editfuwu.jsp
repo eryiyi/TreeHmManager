@@ -52,9 +52,7 @@
         <form class="form-horizontal" role="form">
           <input type="hidden" id="mm_fuwu_id" value="${levelObj.mm_fuwu_id}">
 
-          <input type="hidden" id="mm_emp_provinceId" value="${levelObj.provinceid}">
-          <input type="hidden" id="mm_emp_cityId" value="${levelObj.cityid}">
-          <input type="hidden" id="mm_emp_countryId" value="${levelObj.countryid}">
+
 
           <div class="form-group">
             <label class="col-sm-2 control-label">服务名称</label>
@@ -101,6 +99,44 @@
             </div>
             <div class="col-sm-4">
               <input type="text" id="lng" class="form-control" value ="${levelObj.lng}" placeholder="经度" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
+            </div>
+          </div>
+
+          <%--<input type="hidden" id="mm_emp_provinceId" value="${levelObj.provinceid}">--%>
+          <%--<input type="hidden" id="mm_emp_cityId" value="${levelObj.cityid}">--%>
+          <%--<input type="hidden" id="mm_emp_countryId" value="${levelObj.countryid}">--%>
+
+          <div class="form-group">
+            <label class="col-sm-2 control-label">省份</label>
+            <div class="col-sm-4">
+              <select class="form-control" id="mm_emp_provinceId" onchange="selectCitys()">
+                <option value="">--选择省份--</option>
+                <c:forEach items="${listProvinces}" var="e" varStatus="st">
+                  <option value="${e.provinceID}"  ${levelObj.provinceid==e.provinceID?'selected':''}>${e.province}</option>
+                </c:forEach>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">城市</label>
+            <div class="col-sm-4">
+              <select class="form-control" id="mm_emp_cityId" onchange="selectCountrys()">
+                <option value="">--选择城市--</option>
+                <c:forEach items="${listCitys}" var="e" varStatus="st">
+                  <option value="${e.cityID}" ${levelObj.cityid==e.cityID?'selected':''}>${e.city}</option>
+                </c:forEach>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">县区</label>
+            <div class="col-sm-4">
+              <select class="form-control" id="mm_emp_countryId" >
+                <option value="">--选择县区--</option>
+                <c:forEach items="${listsCountry}" var="e" varStatus="st">
+                  <option value="${e.areaID}" ${levelObj.countryid==e.areaID?'selected':''}>${e.area}</option>
+                </c:forEach>
+              </select>
             </div>
           </div>
 
@@ -251,5 +287,30 @@
     });
     marker.setMap(mapObj);
   });
+
+
+  function selectCitys(){
+    var citys = ${listCitysAll};
+    var province = $("#mm_emp_provinceId").val();
+    var ret = "<option value=''>"+'请选择城市'+"</option>";
+    for(var i= citys.length-1; i>=0; i-- ){
+      if(citys[i].father==province){
+        ret += "<option value='"+citys[i].cityID+"'>"+citys[i].city+"</option>";
+      }
+    }
+    $("#mm_emp_cityId").html(ret);
+  };
+
+  function selectCountrys(){
+    var countrys = ${listsCountryAll};
+    var city = $("#mm_emp_cityId").val();
+    var ret = "<option value=''>"+'请选择县区'+"</option>";
+    for(var i= countrys.length-1; i>=0; i-- ){
+      if(countrys[i].father==city){
+        ret += "<option value='"+countrys[i].areaID+"'>"+countrys[i].area+"</option>";
+      }
+    }
+    $("#mm_emp_countryId").html(ret);
+  };
 </script>
 

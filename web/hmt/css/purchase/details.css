@@ -71,6 +71,7 @@ ul.details-title{height:40px; line-height:40px; overflow:hidden; border:#ddd sol
 }
 .details ul.details-content li p img {
     margin: 15px 0;
+    width: 100%;
 }
 .details ul.details-content li.c1 p{width:auto;}
 .details ul.details-content li.c1 .c1-name{color:#000; display:block; float:none;font-size: 24px; padding-left:0;}
@@ -358,7 +359,7 @@ ul.details-title{height:40px; line-height:40px; overflow:hidden; border:#ddd sol
 .sides .sides-hot h2{height:30px; overflow:hidden; line-height:30px; font-size:14px; font-family:'微软雅黑'; color:#000; background:#f8f8f8;border:1px solid #ddd; border-bottom:none; margin:0;padding:0 10px;}
 .sides .sides-hot ul{border:#ddd solid 1px; padding:13px 9px 0 9px;}
 .sides .sides-hot ul li{height:20px; line-height:20px; overflow:hidden; margin-bottom:9px;}
-.sides .sides-hot ul li em{float:left; display:inline; width:18px; height:18px; overflow:hidden; text-align:center; line-height:18px; border:#ddd solid 1px; font-size:12px; font-family:'微软雅黑';
+.sides .sides-hot ul li em{float:left; display:inline; width:45px; height:18px; overflow:hidden; text-align:center; line-height:18px; border:#ddd solid 1px; font-size:12px; font-family:'微软雅黑';
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;}
