@@ -6,57 +6,57 @@
 });
 
 /**
-* 用户选择的4级分类信息
-*/
+ * 用户选择的4级分类信息
+ */
 var _cate3Id = "init";
 
 /**
-* 用户选择的品种信息
-*/
+ * 用户选择的品种信息
+ */
 var _product_breed = null;
 
 function _initEvent() {
     /**
-    * 产品名称输入框事件
-    */
+     * 产品名称输入框事件
+     */
     _initProductNameClick();
     /**
-    * 热门、一级分类点击事件
-    */
+     * 热门、一级分类点击事件
+     */
     _initFirstCategoryClick();
     /**
-    * 字母点击事件
-    */
+     * 字母点击事件
+     */
     _initLetterClick();
     /**
-    * 4级分类数据选中
-    */
+     * 4级分类数据选中
+     */
     _initFourCategoryClick();
     /**
-    * 警告提示
-    */
+     * 警告提示
+     */
     _initWarning();
 
     /**
-    * 产品分类点击事件
-    */
+     * 产品分类点击事件
+     */
     _initProductDropSelectClick();
 
     /**
-    * 初始化品种信息点击
-    */
+     * 初始化品种信息点击
+     */
     _initProductBreedClick();
 
     /**
-    * 全局dom事件
-    */
+     * 全局dom事件
+     */
     _domEventInit();
 }
 
 
 /**
-* 初始化各个位置数据(一级分类下的4级分类、4级分类下的品种数据等)
-*/
+ * 初始化各个位置数据(一级分类下的4级分类、4级分类下的品种数据等)
+ */
 function _initData() {
     //初始化分类数据
     _initFirstFourCategoryData();
@@ -65,9 +65,9 @@ var _hotCategoryDom = $('.product-choice .type-3').eq(0);
 var _targetCategoryDom = $('.product-choice .type-3').eq(1);
 
 /**
-* 初始化分类HTML信息
-* @param firstCategory 一级分类数据
-*/
+ * 初始化分类HTML信息
+ * @param firstCategory 一级分类数据
+ */
 var _first_fourCategoryDatas = {};
 var _first_fourCategoryPageDatas = {};
 var _first_fourCategory_page_key = "_first_fourCategory_page_";
@@ -180,13 +180,14 @@ function _filterCategoryData() {
             marginLeft: marginLeft
         }, 100);
     }
+
     _currentLetter = selectedLetter;
 }
 
 
 /**
-* 选择4级分类数据、出发品种数据
-*/
+ * 选择4级分类数据、出发品种数据
+ */
 var _category_breed_data = {};
 var _category_breedd_data_key = "_category_breed_";
 function _selectFourCategory() {
@@ -196,7 +197,8 @@ function _selectFourCategory() {
         var keyword = $(this).text();
         $('.product-name').val(keyword);
         _lastkeyword = keyword;
-        selectedFourCategory(four_category_id); 0
+        selectedFourCategory(four_category_id);
+        0
         hideProductMsg();
     }
 }
@@ -266,13 +268,13 @@ function selectedFourCategory(fourCategoryId, targetBreed) {
     $(".product-drop ul").empty();
 
     /**
-    * 获取品种信息
-    */
+     * 获取品种信息
+     */
     function fetchBreed(targetBreed) {
         $.ajax({
             type: 'post',
             url: _getBreedBycate3Id_url + "/" + fourCategoryId,
-            data: { ac: Math.random() },
+            data: {ac: Math.random()},
             dataType: 'json',
             async: false,
             cache: false,
@@ -287,10 +289,10 @@ function selectedFourCategory(fourCategoryId, targetBreed) {
     }
 
     /**
-    * 填充品种信息
-    * @param breed
-    * @returns
-    */
+     * 填充品种信息
+     * @param breed
+     * @returns
+     */
     function fillBreed(breeds, targetBreed) {
         var bool = false;
         $(breeds).each(function () {
@@ -310,10 +312,9 @@ function selectedFourCategory(fourCategoryId, targetBreed) {
 }
 
 
-
 /**
-* 填充产品输入框下拉菜单数据
-*/
+ * 填充产品输入框下拉菜单数据
+ */
 var _fillProductSelectorTimeout = null;
 var _keyword = "";
 
@@ -335,7 +336,7 @@ function _fillProductsData() {
     $.ajax({
         type: 'post',
         url: _search_url + _initProductsData_url,
-        data: { keyword: encodeURIComponent(_keyword), t: Math.random() },
+        data: {keyword: encodeURIComponent(_keyword), t: Math.random()},
         dataType: 'jsonp',
         jsonp: 'callback',
         cache: false,
@@ -377,8 +378,8 @@ function _fillProducts(data) {
     }
 
     /**
-    * 解析数据获取品种信息
-    */
+     * 解析数据获取品种信息
+     */
     function parse(data) {
         // cate1-cate3|aaaa-bbbb
         $(data).each(function (index) {
@@ -412,7 +413,6 @@ function _fillProducts(data) {
     }
 
 }
-
 
 
 function _initProductChoicePanel() {
@@ -477,13 +477,13 @@ function _initFourCategoryClick() {
 
 
 /**
-* 当前选择的4级分类信息
-*/
+ * 当前选择的4级分类信息
+ */
 _currentFourCategory = null;
 
 /**
-* 当前选择的品种信息
-*/
+ * 当前选择的品种信息
+ */
 _currentBreedId = null;
 
 _currentSupplyTitle = "";
@@ -509,8 +509,8 @@ function _initProductNameClick() {
         function before() {
             $(".release .row-1 .col-msg").text("").hide();
             /**
-            * 当输入的数据与原来选择的数据发生改变，隐藏品种，清空之前选择数据
-            */
+             * 当输入的数据与原来选择的数据发生改变，隐藏品种，清空之前选择数据
+             */
             if (_currentSupplyTitle != pValue) {
                 _product_col_msg.hide();
                 $(".breed-drop ul").empty();
@@ -526,8 +526,8 @@ function _initProductNameClick() {
 }
 
 /**
-* 初始化提示事件
-*/
+ * 初始化提示事件
+ */
 function _initWarning() {
     /*无品名 提示*/
     $('.release .row-1 .col-ico').hover(function () {
@@ -540,10 +540,6 @@ function _initWarning() {
         $('.product-msg').hide();
     });
 }
-
-
-
-
 
 
 var _cate3_key = "cate3Id";
@@ -559,7 +555,7 @@ function _initFirstFourCategoryData() {
             $.ajax({
                 type: 'post',
                 url: _initFourCategoriesByFirstCategory_url + "/" + firstCategoryId,
-                data: { id: firstCategoryId },
+                data: {id: firstCategoryId},
                 dataType: 'json',
                 success: function (data) {
                     //清空原有数据
@@ -592,8 +588,8 @@ function _domEventInit() {
         $('.product-drop').hide();
         breed_drop_hide();
         /*
-        * 当没有选择品种的时候，隐藏品种选项
-        */
+         * 当没有选择品种的时候，隐藏品种选项
+         */
         if (_product_breed == null) {
             _product_col_msg.hide();
         } else {
@@ -715,12 +711,11 @@ function hideProductMsg() {
 }
 
 
-
 /**
-* 禁止回退
-* @param e
-* @returns
-*/
+ * 禁止回退
+ * @param e
+ * @returns
+ */
 function banBackSpace(e) {
     var ev = e || window.event;
     var obj = ev.target || ev.srcElement;
@@ -730,9 +725,9 @@ function banBackSpace(e) {
     vReadOnly = (vReadOnly == null) ? false : vReadOnly;
     vEnabled = (vEnabled == null) ? true : vEnabled;
     var flag1 = (ev.keyCode == 8 && (t == "password" || t == "text" || t == "textarea")
-	&& (vReadOnly == true || vEnabled != true)) ? true : false;
+    && (vReadOnly == true || vEnabled != true)) ? true : false;
     var flag2 = (ev.keyCode == 8 && t != "password" && t != "text" && t != "textarea")
-	? true : false;
+        ? true : false;
     if (flag2) return false;
     if (flag1) return false;
 }

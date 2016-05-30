@@ -105,21 +105,21 @@ public class WebvSellController extends ControllerConstants {
         }
 
         //查询省份
-        ProvinceQuery provinceQuery = new ProvinceQuery();
-        provinceQuery.setIs_use("1");
-        List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list(provinceQuery);
-        //查询地市all
-        CityQuery cityQueryAll = new CityQuery();
-        cityQueryAll.setIs_use("1");
-        List<CityObj> listCitysAll = (List<CityObj>) cityService.list(cityQueryAll);
-        //查询县区all
-        CountryQuery countryQueryAll = new CountryQuery();
-        countryQueryAll.setIs_use("1");
-        List<CountryObj> listsCountryAll = (List<CountryObj>) countryService.list(countryQueryAll);
-
-        map.put("listProvinces", listProvinces);
-        map.put("listCitysAll", toJSONString(listCitysAll));
-        map.put("listsCountryAll", toJSONString(listsCountryAll));
+//        ProvinceQuery provinceQuery = new ProvinceQuery();
+//        provinceQuery.setIs_use("1");
+//        List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list(provinceQuery);
+//        //查询地市all
+//        CityQuery cityQueryAll = new CityQuery();
+//        cityQueryAll.setIs_use("1");
+//        List<CityObj> listCitysAll = (List<CityObj>) cityService.list(cityQueryAll);
+//        //查询县区all
+//        CountryQuery countryQueryAll = new CountryQuery();
+//        countryQueryAll.setIs_use("1");
+//        List<CountryObj> listsCountryAll = (List<CountryObj>) countryService.list(countryQueryAll);
+//
+//        map.put("listProvinces", listProvinces);
+//        map.put("listCitysAll", toJSONString(listCitysAll));
+//        map.put("listsCountryAll", toJSONString(listsCountryAll));
 
         if(emp != null){
             //说明已经登陆

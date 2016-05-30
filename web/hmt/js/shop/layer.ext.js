@@ -1,10 +1,10 @@
 ﻿/**
- 
-@Name: layer拓展类，依赖于layer
-@Date: 2014.08.30
-@Author: coxo
 
-**/
+ @Name: layer拓展类，依赖于layer
+ @Date: 2014.08.30
+ @Author: coxo
+
+ **/
 
 layer.use('skin/layer.ext.css', function () {
     layer.ext && layer.ext();
@@ -15,9 +15,9 @@ layer.extv = '1.3';
 
 /**
 
-系统prompt
- 
-**/
+ 系统prompt
+
+ **/
 
 layer.prompt = function (parme, yes, no) {
     var log = {}, parme = parme || {}, conf = {
@@ -35,7 +35,7 @@ layer.prompt = function (parme, yes, no) {
                 } else {
                     return 'text';
                 }
-            } () + '" class="xubox_prompt xubox_form" id="xubox_prompt" value="" />',
+            }() + '" class="xubox_prompt xubox_form" id="xubox_prompt" value="" />',
             yes: function (index) {
                 var val = log.prompt.val();
                 if (val === '') {
@@ -61,9 +61,9 @@ layer.prompt = function (parme, yes, no) {
 
 /**
 
-tab层 v1.0.0
- 
-**/
+ tab层 v1.0.0
+
+ **/
 
 layer.tab = function (parme) {
     var log = {}, parme = parme || {}, data = parme.data || [], conf = {
@@ -75,34 +75,35 @@ layer.tab = function (parme) {
         offset: parme.offset,
         move: '.xubox_tabmove',
         closeBtn: false,
-        page: { html: '<div class="xubox_tab" style="' + function () {
-            parme.area = parme.area || [];
-            return 'width:' + (parme.area[0] || '500px') + '; height:' + (parme.area[1] || '300px') + '">';
-        } ()
-        + '<span class="xubox_tabmove"></span>'
-        + '<div class="xubox_tabtit">'
-        + function () {
-            var len = data.length, ii = 1, str = '';
-            if (len > 0) {
-                str = '<span class="xubox_tabnow">' + data[0].title + '</span>';
-                for (; ii < len; ii++) {
-                    str += '<span>' + data[ii].title + '</span>';
+        page: {
+            html: '<div class="xubox_tab" style="' + function () {
+                parme.area = parme.area || [];
+                return 'width:' + (parme.area[0] || '500px') + '; height:' + (parme.area[1] || '300px') + '">';
+            }()
+            + '<span class="xubox_tabmove"></span>'
+            + '<div class="xubox_tabtit">'
+            + function () {
+                var len = data.length, ii = 1, str = '';
+                if (len > 0) {
+                    str = '<span class="xubox_tabnow">' + data[0].title + '</span>';
+                    for (; ii < len; ii++) {
+                        str += '<span>' + data[ii].title + '</span>';
+                    }
                 }
-            }
-            return str;
-        } () + '</div>'
-        + '<ul class="xubox_tab_main">' + function () {
-            var len = data.length, ii = 1, str = '';
-            if (len > 0) {
-                str = '<li class="xubox_tabli xubox_tab_layer">' + (data[0].content || 'content未传入') + '</li>';
-                for (; ii < len; ii++) {
-                    str += '<li class="xubox_tabli">' + (data[ii].content || 'content未传入') + '</li>';
+                return str;
+            }() + '</div>'
+            + '<ul class="xubox_tab_main">' + function () {
+                var len = data.length, ii = 1, str = '';
+                if (len > 0) {
+                    str = '<li class="xubox_tabli xubox_tab_layer">' + (data[0].content || 'content未传入') + '</li>';
+                    for (; ii < len; ii++) {
+                        str += '<li class="xubox_tabli">' + (data[ii].content || 'content未传入') + '</li>';
+                    }
                 }
-            }
-            return str;
-        } () + '</ul>'
-        + '<span class="xubox_tabclose" title="关闭">X</span>'
-        + '</div>'
+                return str;
+            }() + '</ul>'
+            + '<span class="xubox_tabclose" title="关闭">X</span>'
+            + '</div>'
         }, success: function (layerE) {
             //切换事件
             var btn = $('.xubox_tabtit').children(), main = $('.xubox_tab_main').children(), close = $('.xubox_tabclose');
@@ -121,12 +122,11 @@ layer.tab = function (parme) {
 };
 
 
-
 /**
 
-相册层 v1.0.0
- 
-**/
+ 相册层 v1.0.0
+
+ **/
 
 
 layer.photos = function (options) {
@@ -182,15 +182,15 @@ layer.photos = function (options) {
                 } else {
                     return '';
                 }
-            } () + '<div class="xubox_imgbar"><span class="xubox_imgtit"><a href="javascript:;">' + log.imgsname + ' </a><em>' + log.imgIndex + '/' + log.imgLen + '</em></span></div></div></div>' + function () {
+            }() + '<div class="xubox_imgbar"><span class="xubox_imgtit"><a href="javascript:;">' + log.imgsname + ' </a><em>' + log.imgIndex + '/' + log.imgLen + '</em></span></div></div></div>' + function () {
                 if (options.html) {
                     return '<div class="xubox_intro">' +
-                    '<div style="padding:20px;">' + options.html + '<p>相册支持左右方向键，支持Esc关闭</p><p id="change"></p></div>' +
-                    '</div>';
+                        '<div style="padding:20px;">' + options.html + '<p>相册支持左右方向键，支持Esc关闭</p><p id="change"></p></div>' +
+                        '</div>';
                 } else {
                     return '';
                 }
-            } ()
+            }()
         }, success: function (layero) {
             log.bigimg = layero.find('.xubox_bigimg');
             log.imgsee = log.bigimg.find('.xubox_imgsee');
@@ -313,17 +313,17 @@ layer.photos = function (options) {
         });
         relog.flwidth = area[0] - (options.html ? 300 : 0);
         if (log.imgarea[0] > relog.flwidth) {
-            log.imgs.css({ width: relog.flwidth });
+            log.imgs.css({width: relog.flwidth});
         } else {
-            log.imgs.css({ width: log.imgarea[0] });
+            log.imgs.css({width: log.imgarea[0]});
         }
         if (log.imgs.outerHeight() < area[1]) {
-            log.imgs.css({ top: (area[1] - log.imgs.outerHeight()) / 2 });
+            log.imgs.css({top: (area[1] - log.imgs.outerHeight()) / 2});
         }
-        log.imgs.css({ visibility: 'visible' });
-        log.bigimg.css({ width: relog.flwidth, height: area[1], 'background-color': options.bgcolor });
+        log.imgs.css({visibility: 'visible'});
+        log.bigimg.css({width: relog.flwidth, height: area[1], 'background-color': options.bgcolor});
         if (options.html) {
-            layero.find('.xubox_intro').css({ height: area[1] });
+            layero.find('.xubox_intro').css({height: area[1]});
         }
         relog = null;
         wa = null;

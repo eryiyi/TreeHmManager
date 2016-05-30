@@ -185,7 +185,9 @@ public class EmpService implements ListService , UpdateService , ExecuteService{
                 empVO.setAd_pic(Constants.QINIU_URL + empVO.getAd_pic());
             }
         }else {
-            empVO.setAd_pic(Constants.QINIU_URL + "ad_mp.jpg" );
+            if(empVO != null){
+                empVO.setAd_pic(Constants.QINIU_URL + "ad_mp.jpg" );
+            }
         }
         return empVO;
     }

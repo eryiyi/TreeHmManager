@@ -11,8 +11,8 @@ var _purchase = {
     process: {},
     event: {},
     /**
-    * 地址配置信息
-    */
+     * 地址配置信息
+     */
     address: {
         _address_level_province: 1,
         _address_level_city: 2,
@@ -126,21 +126,21 @@ _purchase.view = {
 };
 
 /**
-* 发布供应业务处理方法
-*/
+ * 发布供应业务处理方法
+ */
 _purchase.process = {
     /**
-    * 发布供应
-    */
+     * 发布供应
+     */
     release: function () {
 
     },
 
     /**
-    * 初始化所在地
-    * parentId : 父节点地址
-    * level : 区域级别
-    */
+     * 初始化所在地
+     * parentId : 父节点地址
+     * level : 区域级别
+     */
     fetchAreaData: function (level, parentId) {
         var url = "../purchase/area";
         var area = [];
@@ -164,9 +164,9 @@ _purchase.process = {
     },
 
     /**
-    * 初始化省份信息
-    * privinceId:默认省份选中的编号
-    */
+     * 初始化省份信息
+     * privinceId:默认省份选中的编号
+     */
     initProvince: function (privinceId) {
         var ps = this.fetchAreaData(_purchase.address._address_level_province);
         ps = ps || [];
@@ -181,8 +181,8 @@ _purchase.process = {
         $("#province").val(privinceId);
     },
     /**
-    * 提交表单
-    */
+     * 提交表单
+     */
     submit: function () {
         var bool = this.valide();
         if (bool) {
@@ -226,8 +226,8 @@ _purchase.process = {
     },
 
     /**
-    * 获取结果
-    */
+     * 获取结果
+     */
     _iframeLoadHandler: function () {
         var iframe = $("iframe[id='purchaseform']");
         var doc = iframe.contentDocument || window.frames[iframe.attr("id")].document;
@@ -256,7 +256,6 @@ _purchase.process = {
             _isSubmiting = false;
             alert(result.msg || "服务器异常");
         }
-
 
 
     },
@@ -371,15 +370,15 @@ _purchase.process = {
         $("form").append(input);
     },
     /**
-    * 适配产品、品种信息
-    */
+     * 适配产品、品种信息
+     */
     adaptProductBreed: function (name) {
         //没有找到分类信息
         if (_cate3Id == "" || _cate3Id == null || _cate3Id == "init") {
             $.ajax({
                 type: 'post',
                 url: "../purchase/adaptor",
-                data: { name: encodeURIComponent(name) },
+                data: {name: encodeURIComponent(name)},
                 dataType: 'json',
                 async: false,
                 cache: false,
@@ -442,8 +441,8 @@ _purchase.event = {
     },
 
     /**
-    * 产品名称提醒
-    */
+     * 产品名称提醒
+     */
     productNameTip: function () {
         var productName = $(".release .row-1 .product-name").val();
         if ($.trim(productName) == "") {
@@ -461,8 +460,8 @@ _purchase.event = {
     },
 
     /**
-    * 最大价格处理事件
-    */
+     * 最大价格处理事件
+     */
     priceMax_blur: function () {
         _purchase.view.hidePriceMsg();
         var priceMax = $(this).val();
@@ -471,7 +470,8 @@ _purchase.event = {
             _purchase.view.showPriceMsg("价格必须为大于0的数值(可保留2位小数)");
             $(this).focus();
             return;
-        };
+        }
+        ;
 
         if (priceMax != "") {
             priceMax = Number(priceMax).toFixed(2);
@@ -497,8 +497,8 @@ _purchase.event = {
         }
     },
     /**
-    * 最小价格处理事件
-    */
+     * 最小价格处理事件
+     */
     priceMin_blur: function () {
         _purchase.view.hidePriceMsg();
         var priceMin = $(this).val();
@@ -519,8 +519,8 @@ _purchase.event = {
         }
     },
     /**
-    * 价格格式处理
-    */
+     * 价格格式处理
+     */
     priceFormat: function (event) {
         var keyCode = event.keyCode || event.which;
         if (keyCode >= 37 && keyCode <= 40) return;
@@ -624,7 +624,7 @@ _purchase.event = {
                 async: false,
                 jsonp: "callback",
                 url: regUrl + "myinfo/getRegValCodeJsonp?t=" + new Date(),
-                data: { code: value },
+                data: {code: value},
                 dataType: "jsonp",
                 success: function (result) {
                     //						alert(result.code==0);
@@ -794,7 +794,7 @@ _purchase.event = {
             $.ajax({
                 type: "POST",
                 url: regUrl + "myinfo/sendMobileValidateCodeJsonp",
-                data: { mobile: tel, code: code },
+                data: {mobile: tel, code: code},
                 dataType: "jsonp",
                 jsonp: "callback",
                 success: function (result) {

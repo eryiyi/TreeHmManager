@@ -238,8 +238,14 @@ function windows_open(i, txt) {
     if (bodys.find('.fx-w-' + i).length == 0) {
         bodys.find('.fx-w-' + i).remove();
     }
-    if (i == '1') { bodys.append(fxHtml_1); bodys.find('.fx-w-' + i).show(); }
-    if (i == '2') { bodys.append(fxHtml_2); bodys.find('.fx-w-' + i).show(); }
+    if (i == '1') {
+        bodys.append(fxHtml_1);
+        bodys.find('.fx-w-' + i).show();
+    }
+    if (i == '2') {
+        bodys.append(fxHtml_2);
+        bodys.find('.fx-w-' + i).show();
+    }
     bodys.find('.fx-wds-m' + i).html(txt);
 }
 

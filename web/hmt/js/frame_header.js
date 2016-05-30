@@ -8,7 +8,8 @@ function searchLocal() {
     var searchWebUrl = shopinfo.hnShopUrl + "supply";
     $("#category").val("");
     $("#breed").val("");
-    $("#keyword").attr("name", "k"); ;
+    $("#keyword").attr("name", "k");
+    ;
     $("#searchForm").attr("action", searchWebUrl);
     $("#searchForm").submit();
 }

@@ -61,12 +61,16 @@ function userPic() {
 }
 
 
-
 //流量图表
 function initCharts() {
     var json = {
         "times": [],
-        "result": [{ "name": "", "color": "", "data": [], tooltip: {} }, { "name": "", "color": "", "data": [], tooltip: {} }, { "name": "", "color": "", "data": [], tooltip: {}}]
+        "result": [{"name": "", "color": "", "data": [], tooltip: {}}, {
+            "name": "",
+            "color": "",
+            "data": [],
+            tooltip: {}
+        }, {"name": "", "color": "", "data": [], tooltip: {}}]
     };
     $.ajax({
         type: "post",
@@ -181,7 +185,14 @@ function eventBind() {
     if (local.indexOf("/buyers/") > 0) {
         hnUtil.view.html(init.userWebUrl + "buyers/lastProductBrower", {}, function (data) {
             $(".browseb-record").html(data);
-            $(".picScroll-left").slide({ titCell: ".hd ul", mainCell: ".bd ul", autoPage: true, effect: "left", autoPlay: true, vis: 5 });
+            $(".picScroll-left").slide({
+                titCell: ".hd ul",
+                mainCell: ".bd ul",
+                autoPage: true,
+                effect: "left",
+                autoPlay: true,
+                vis: 5
+            });
         });
     }
     if (local.indexOf("/sellers/") > 0) {

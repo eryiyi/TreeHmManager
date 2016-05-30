@@ -32,12 +32,19 @@ $(function () {
                 pre = c;
                 isPlay = 0;
                 next = c + 1;
-                if (next > picNumber) { next = 1; }
+                if (next > picNumber) {
+                    next = 1;
+                }
                 timer = setTimeout(_init(next), times);
-                function _init(c) { return function () { init(c); } }
+                function _init(c) {
+                    return function () {
+                        init(c);
+                    }
+                }
             });
         }
     }
+
     objBtn.find('li').on('click', function () {
         var indexs = objBtn.find('li').index(this);
         init(indexs + 1);
@@ -46,21 +53,21 @@ $(function () {
 })
 
 /*首页右侧焦点图*/
-jQuery(".slideBox").slide({ mainCell: ".bd ul", autoPlay: true });
+jQuery(".slideBox").slide({mainCell: ".bd ul", autoPlay: true});
 
 /*导航*/
 $(function () {
     $(".nav-djrx").click(function () {
-        $("html,body").animate({ scrollTop: $(".vegetable-good").offset().top - 30 }, 500);
+        $("html,body").animate({scrollTop: $(".vegetable-good").offset().top - 30}, 500);
     });
     $(".nav-tstj").click(function () {
-        $("html,body").animate({ scrollTop: $(".vegetable-local").offset().top - 30 }, 650);
+        $("html,body").animate({scrollTop: $(".vegetable-local").offset().top - 30}, 650);
     });
     $(".nav-dptj").click(function () {
-        $("html,body").animate({ scrollTop: $(".vegetable-base").offset().top - 30 }, 800);
+        $("html,body").animate({scrollTop: $(".vegetable-base").offset().top - 30}, 800);
     });
     $(".nav-zxhq").click(function () {
-        $("html,body").animate({ scrollTop: $(".vegetable-market").offset().top - 30 }, 1000);
+        $("html,body").animate({scrollTop: $(".vegetable-market").offset().top - 30}, 1000);
     });
 
     function nav() {
@@ -71,14 +78,14 @@ $(function () {
             $(".menu-c-list").hide();
             $(".menu-c-bottom").hide();
             $(".menu-c-tit,.menu-c-list").hover(
-		   	function () {
-		   	    $(".menu-c-list").show();
-		   	    $(".menu-c-list").css("height", "auto");
-		   	},
-		   	function () {
-		   	    $(".menu-c-list").hide();
-		   	}
-		 );
+                function () {
+                    $(".menu-c-list").show();
+                    $(".menu-c-list").css("height", "auto");
+                },
+                function () {
+                    $(".menu-c-list").hide();
+                }
+            );
         } else if ($(window).scrollTop() <= '150') {
             $(".type-nav").removeClass("type-nav-fixed");
             $(".menu-c-tit span").removeClass("menu-c-tit-v");
@@ -86,19 +93,24 @@ $(function () {
             $(".menu-c-list").show();
             $(".menu-c-bottom").show();
             $(".menu-c-tit,.menu-c-bottom,.menu-c-list").hover(
-		   	function () {
-		   	    $(".menu-c-list").show();
-		   	    $(".menu-c-list").css("height", "auto");
-		   	},
-		   	function () {
-		   	    $(".menu-c-list").show();
-		   	    $(".menu-c-list").css("height", "345px");
-		   	}
-		 );
+                function () {
+                    $(".menu-c-list").show();
+                    $(".menu-c-list").css("height", "auto");
+                },
+                function () {
+                    $(".menu-c-list").show();
+                    $(".menu-c-list").css("height", "345px");
+                }
+            );
         }
     }
-    $(window).scroll(function () { nav(); });
-    $(document).ready(function () { nav(); });
+
+    $(window).scroll(function () {
+        nav();
+    });
+    $(document).ready(function () {
+        nav();
+    });
 
 });
 

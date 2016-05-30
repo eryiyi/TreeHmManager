@@ -1,10 +1,10 @@
 ﻿/**
-*  Ajax Autocomplete for jQuery, version 1.2.24
-*  (c) 2015 Tomas Kirda
-*
-*  Ajax Autocomplete for jQuery is freely distributable under the terms of an MIT-style license.
-*  For details, see the web site: https://github.com/devbridge/jQuery-Autocomplete
-*/
+ *  Ajax Autocomplete for jQuery, version 1.2.24
+ *  (c) 2015 Tomas Kirda
+ *
+ *  Ajax Autocomplete for jQuery is freely distributable under the terms of an MIT-style license.
+ *  For details, see the web site: https://github.com/devbridge/jQuery-Autocomplete
+ */
 
 /*jslint  browser: true, white: true, plusplus: true, vars: true */
 /*global define, window, document, jQuery, exports, require */
@@ -22,10 +22,10 @@
         // Browser globals
         factory(jQuery);
     }
-} (function ($) {
+}(function ($) {
     'use strict';
 
-    var 
+    var
         utils = (function () {
             return {
                 escapeRegExChars: function (value) {
@@ -39,7 +39,7 @@
                     return div;
                 }
             };
-        } ()),
+        }()),
 
         keys = {
             ESC: 27,
@@ -52,7 +52,8 @@
         };
 
     function Autocomplete(el, options) {
-        var noop = function () { },
+        var noop = function () {
+            },
             that = this,
             defaults = {
                 ajaxSettings: {},
@@ -161,7 +162,7 @@
 
             // html() deals with many types: htmlString or Element or Array or jQuery
             that.noSuggestionsContainer = $('<div class="autocomplete-no-suggestion"></div>')
-                                          .html(this.options.noSuggestionNotice).get(0);
+                .html(this.options.noSuggestionNotice).get(0);
 
             that.suggestionsContainer = Autocomplete.utils.createNode(options.containerClass);
 
@@ -198,12 +199,24 @@
 
             $(window).on('resize.autocomplete', that.fixPositionCapture);
 
-            that.el.on('keydown.autocomplete', function (e) { that.onKeyPress(e); });
-            that.el.on('keyup.autocomplete', function (e) { that.onKeyUp(e); });
-            that.el.on('blur.autocomplete', function () { that.onBlur(); });
-            that.el.on('focus.autocomplete', function () { that.onFocus(); });
-            that.el.on('change.autocomplete', function (e) { that.onKeyUp(e); });
-            that.el.on('input.autocomplete', function (e) { that.onKeyUp(e); });
+            that.el.on('keydown.autocomplete', function (e) {
+                that.onKeyPress(e);
+            });
+            that.el.on('keyup.autocomplete', function (e) {
+                that.onKeyUp(e);
+            });
+            that.el.on('blur.autocomplete', function () {
+                that.onBlur();
+            });
+            that.el.on('focus.autocomplete', function () {
+                that.onFocus();
+            });
+            that.el.on('change.autocomplete', function (e) {
+                that.onKeyUp(e);
+            });
+            that.el.on('input.autocomplete', function (e) {
+                that.onKeyUp(e);
+            });
         },
 
         onFocus: function () {
@@ -288,7 +301,7 @@
                 containerHeight = $container.outerHeight(),
                 height = that.el.outerHeight(),
                 offset = that.el.offset(),
-                styles = { 'top': offset.top, 'left': offset.left };
+                styles = {'top': offset.top, 'left': offset.left};
 
             if (orientation === 'auto') {
                 var viewPortHeight = $(window).height(),
@@ -700,8 +713,8 @@
 
         noSuggestions: function () {
             var that = this,
-                 container = $(that.suggestionsContainer),
-                 noSuggestionsContainer = $(that.noSuggestionsContainer);
+                container = $(that.suggestionsContainer),
+                noSuggestionsContainer = $(that.noSuggestionsContainer);
 
             this.adjustContainerWidth();
 
@@ -770,7 +783,7 @@
             // If suggestions is string array, convert them to supported format:
             if (suggestions.length && typeof suggestions[0] === 'string') {
                 return $.map(suggestions, function (value) {
-                    return { value: value, data: null };
+                    return {value: value, data: null};
                 });
             }
 

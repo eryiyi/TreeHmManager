@@ -12,8 +12,6 @@ $(document).ready(function () {
     });
 
 
-
-
     /*商品清单 订单商品数量改变效果*/
     $(function () {
         //订单留言点击可编辑状态改变

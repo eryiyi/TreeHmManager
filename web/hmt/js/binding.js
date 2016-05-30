@@ -75,7 +75,7 @@ $('.email').click(function () {
             $.ajax({
                 type: "POST",
                 url: init.userWebUrl + "myhn/sendEmailValidateCode",
-                data: { email: _email },
+                data: {email: _email},
                 dataType: "json",
                 success: function (result) {
                     if (result.msg == 3) {
@@ -112,7 +112,7 @@ $('.email').click(function () {
             $.ajax({
                 type: "POST",
                 url: init.userWebUrl + "myhn/validateEmailCode",
-                data: { email: _email, emailCode: _code },
+                data: {email: _email, emailCode: _code},
                 dataType: "json",
                 success: function (result) {
                     if (result.msg == 1) {
@@ -150,7 +150,7 @@ $('.phone').click(function () {
             $.ajax({
                 type: "POST",
                 url: init.userWebUrl + "myhn/sendMobileCode",
-                data: { mobile: _mobile },
+                data: {mobile: _mobile},
                 dataType: "json",
                 success: function (result) {
                     if (result.msg == 3) {
@@ -187,7 +187,7 @@ $('.phone').click(function () {
             $.ajax({
                 type: "POST",
                 url: init.userWebUrl + "myhn/validateMobileCode",
-                data: { phoneNo: _mobile, phoneCode: _code },
+                data: {phoneNo: _mobile, phoneCode: _code},
                 dataType: "json",
                 success: function (result) {
                     if (result.msg == 1) {

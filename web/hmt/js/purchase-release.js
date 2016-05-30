@@ -52,8 +52,12 @@ $(function () {
 
 
     $citySelect.click(function () {
-        if ($cityDialog.is(':hidden')) { $cityDialog.show(); }
-        else { $cityDialog.hide(); }
+        if ($cityDialog.is(':hidden')) {
+            $cityDialog.show();
+        }
+        else {
+            $cityDialog.hide();
+        }
         return false;
     });
     $('body').click(function () {
@@ -72,9 +76,10 @@ $(function () {
     });
 
 
-
     // 选择城市控件 -- 自动补全
-    var countriesArray = $.map(countries, function (value, key) { return { value: value, data: key }; });
+    var countriesArray = $.map(countries, function (value, key) {
+        return {value: value, data: key};
+    });
     $('#city-auto').autocomplete({
         //        lookup: countriesArray,
         serviceUrl: '../purchase/citysAuto',
@@ -92,7 +97,7 @@ $(function () {
         transformResult: function (response) {
             return {
                 suggestions: $.map(response, function (n) {
-                    return { value: n.shortName, data: n.id };
+                    return {value: n.shortName, data: n.id};
                 })
             };
         },
@@ -214,7 +219,7 @@ function initAddressAuto() {
         transformResult: function (response) {
             return {
                 suggestions: $.map(response, function (n) {
-                    return { value: n.name, data: n.location };
+                    return {value: n.name, data: n.location};
                 })
             };
         },

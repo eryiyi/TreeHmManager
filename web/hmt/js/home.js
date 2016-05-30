@@ -40,7 +40,6 @@
     });
 
 
-
     $("#topmenu1 li").hover(function () {
         $(this).addClass("hover").find("div.tp-cont").show();
     }, function () {
@@ -48,7 +47,6 @@
     });
 
 });
-
 
 
 $(document).ready(function () {
@@ -65,11 +63,26 @@ $(document).ready(function () {
         var z = parseInt(s.css("z-index"));
         var dt = $(this).children("dt");
         var dd = $(this).children("dd");
-        var _show = function () { dd.slideDown(200); dt.addClass("cur"); s.css("z-index", z + 1); };   //灞曞紑鏁堟灉
-        var _hide = function () { dd.slideUp(200); dt.removeClass("cur"); s.css("z-index", z); };    //鍏抽棴鏁堟灉
-        dt.click(function () { dd.is(":hidden") ? _show() : _hide(); });
-        dd.find("a").click(function () { dt.html($(this).html()); _hide(); });     //閫夋嫨鏁堟灉锛堝闇�浼犲�锛屽彲鑷畾涔夊弬鏁帮紝鍦ㄦ澶勮繑鍥炲搴旂殑"value"鍊�锛�
-        $("body").click(function (i) { !$(i.target).parents(".select").first().is(s) ? _hide() : ""; });
+        var _show = function () {
+            dd.slideDown(200);
+            dt.addClass("cur");
+            s.css("z-index", z + 1);
+        };   //灞曞紑鏁堟灉
+        var _hide = function () {
+            dd.slideUp(200);
+            dt.removeClass("cur");
+            s.css("z-index", z);
+        };    //鍏抽棴鏁堟灉
+        dt.click(function () {
+            dd.is(":hidden") ? _show() : _hide();
+        });
+        dd.find("a").click(function () {
+            dt.html($(this).html());
+            _hide();
+        });     //閫夋嫨鏁堟灉锛堝闇�浼犲�锛屽彲鑷畾涔夊弬鏁帮紝鍦ㄦ澶勮繑鍥炲搴旂殑"value"鍊�锛�
+        $("body").click(function (i) {
+            !$(i.target).parents(".select").first().is(s) ? _hide() : "";
+        });
     })
 
     $curtainopen = false;
@@ -77,9 +90,9 @@ $(document).ready(function () {
     $(".rope").click(function () {
         $(this).blur();
         if ($curtainopen == false) {
-            $(this).stop().animate({ top: '0px' }, { queue: false, duration: 350, easing: 'easeOutBounce' });
-            $(".leftcurtain").stop().animate({ width: '60px' }, 2000);
-            $(".rightcurtain").stop().animate({ width: '60px' }, 2000, function () {
+            $(this).stop().animate({top: '0px'}, {queue: false, duration: 350, easing: 'easeOutBounce'});
+            $(".leftcurtain").stop().animate({width: '60px'}, 2000);
+            $(".rightcurtain").stop().animate({width: '60px'}, 2000, function () {
                 $(".leftcurtain").fadeOut(1000);
                 $(".rightcurtain").fadeOut(1000);
             });
@@ -89,9 +102,9 @@ $(document).ready(function () {
 
             $curtainopen = true;
         } else {
-            $(this).stop().animate({ top: '-40px' }, { queue: false, duration: 350, easing: 'easeOutBounce' });
-            $(".leftcurtain").stop().animate({ width: '50%' }, 2000);
-            $(".rightcurtain").stop().animate({ width: '51%' }, 2000);
+            $(this).stop().animate({top: '-40px'}, {queue: false, duration: 350, easing: 'easeOutBounce'});
+            $(".leftcurtain").stop().animate({width: '50%'}, 2000);
+            $(".rightcurtain").stop().animate({width: '51%'}, 2000);
             $curtainopen = false;
         }
         return false;
@@ -111,6 +124,7 @@ $(function () {
         $(".focus .num a").eq(i).addClass("cur").siblings("a").removeClass("cur");
         $(".focus ul li").eq(i).stop(true, true).fadeIn(600).siblings("li").fadeOut(600);
     }
+
     //滑入停止动画，滑出开始动画
     $(".focus").hover(function () {
         if (myTime) {
@@ -120,13 +134,17 @@ $(function () {
         myTime = setInterval(function () {
             myShow(sw)
             sw++;
-            if (sw == 3) { sw = 0; }
+            if (sw == 3) {
+                sw = 0;
+            }
         }, 5000);
     });
     //自动开始
     var myTime = setInterval(function () {
         myShow(sw)
         sw++;
-        if (sw == 3) { sw = 0; }
+        if (sw == 3) {
+            sw = 0;
+        }
     }, 5000);
 });

@@ -106,7 +106,8 @@ function get(passportUrl) {
     });
 };
 
-function getLoginUserInfo(data) { };
+function getLoginUserInfo(data) {
+};
 
 
 /** 公共购物车 **/

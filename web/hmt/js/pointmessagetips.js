@@ -39,7 +39,10 @@ function initStart() {
 
 
     //用户信息
-    $.connection.hub.start({ xdomain: true, transport: ['longPolling', 'serverSentEvents', 'foreverFrame', 'webSockets'] }).done(function () {
+    $.connection.hub.start({
+        xdomain: true,
+        transport: ['longPolling', 'serverSentEvents', 'foreverFrame', 'webSockets']
+    }).done(function () {
         //console.log("连接成功");
     });
 
@@ -57,7 +60,9 @@ function isUserLogin() {
 }
 
 function viewPoint(result) {
-    if ($("#my-message")) { $("#my-message").remove(); }
+    if ($("#my-message")) {
+        $("#my-message").remove();
+    }
     if (result) {
         var titps = '<div class="tp-cont my-message" id="my-message" style="z-index:9999">';
         titps += '<b><img src="' + homeUrl + '/img/msg-ico-top.png" /></b>';

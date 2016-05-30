@@ -1,7 +1,7 @@
 ﻿/*
-* Translated default messages for the jQuery validation plugin.
-* Locale: CN
-*/
+ * Translated default messages for the jQuery validation plugin.
+ * Locale: CN
+ */
 jQuery.extend(jQuery.validator.messages, {
     required: "该字段不能为空",
     remote: "请修正该字段",

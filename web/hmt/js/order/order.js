@@ -1,17 +1,16 @@
 ﻿/**
-* 订单确页js
-*/
+ * 订单确页js
+ */
 var basePath = $("#basePath").val();
 var html = $("#addOrModifyAdd").html();
 $(function () {
     //在调用load方法之前利用该方法禁止load方法调用IE缓存文件
-    $.ajaxSetup({ cache: false });
+    $.ajaxSetup({cache: false});
 
     //错误提示
     if ($("#act_status").val() != "") {
         alert($("#act_status").val());
     }
-
 
 
     //加载收货地址
@@ -56,7 +55,7 @@ function submitOrder() {
         return false;
     }
     if ($("#noReminder").val() == 1) {
-        $.cookie("cookie.order.noReminder", "1", { expires: 30 });
+        $.cookie("cookie.order.noReminder", "1", {expires: 30});
     }
     $("#addOrderForm").submit();
 }
@@ -155,7 +154,7 @@ function addDelivery() {
         $.post(basePath + "order/purchase/update-delivery", paramter, function (data) {
             if (data == "hd_sucs") {
                 //在调用load方法之前利用该方法禁止load方法调用IE缓存文件
-                $.ajaxSetup({ cache: false });
+                $.ajaxSetup({cache: false});
                 //$("#delivery_div").load("order/purchase/delivery");
                 alert("收货地址修改成功！");
             } else {
@@ -169,7 +168,7 @@ function addDelivery() {
         $.post(basePath + "order/purchase/add-delivery", paramter, function (data) {
             if (data == "hd_sucs") {
                 //在调用load方法之前利用该方法禁止load方法调用IE缓存文件
-                $.ajaxSetup({ cache: false });
+                $.ajaxSetup({cache: false});
                 //$("#delivery_div").load("order/purchase/delivery");
                 alert("收货地址保存成功！");
             } else {
@@ -191,7 +190,7 @@ function consigneeInfoEdit(type, addressId) {
         $("#consigneeId").val("");
     } else {
         title = '修改';
-        $.post(basePath + "order/purchase/ajax-update-delovery-init", { "deliveryId": addressId }, function (data) {
+        $.post(basePath + "order/purchase/ajax-update-delovery-init", {"deliveryId": addressId}, function (data) {
             if (data.flag == "hd_sucs") {
                 $("#receiver").val(data.consignee.receiver);
                 $("#addressDetail").val(data.consignee.street);
@@ -261,7 +260,7 @@ function init() {
 
 function changeProvince(dom) {
     var consigneeProvinceId = $("#consigneeProvinceId").val();
-    $.post(basePath + "cart/area", { "provinceId": $(dom).val() }, function (data) {
+    $.post(basePath + "cart/area", {"provinceId": $(dom).val()}, function (data) {
         var json = eval("(" + data + ")");
         var str = "";
         if (consigneeProvinceId == "" || consigneeProvinceId == null) {
@@ -282,7 +281,7 @@ function changeProvince(dom) {
 
 function changeCity(dom) {
     var consigneeCityId = $("#consigneeCityId").val();
-    $.post(basePath + "cart/area", { "cityId": $(dom).val() }, function (data) {
+    $.post(basePath + "cart/area", {"cityId": $(dom).val()}, function (data) {
         var json = eval("(" + data + ")");
         var str = "";
         if (consigneeCityId == "" || consigneeCityId == null) {

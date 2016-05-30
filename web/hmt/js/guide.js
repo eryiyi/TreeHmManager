@@ -1,7 +1,8 @@
 ﻿// JavaScript Document
 
 var resoruceUrl = init.resoruceUrl;
-var guide = function () { }
+var guide = function () {
+}
 guide.prototype = {
     get_css: function () {
         var css = '<link rel="stylesheet" href="' + resoruceUrl + '4.0/css/personal/home/guide.css">';
@@ -230,13 +231,20 @@ guide.prototype = {
         //run
         $('.guide-seller').show().children().hide();
         $('.guide-seller .guide-0').fadeIn(500).siblings().fadeOut(500);
-        $('.guide-seller .close').on('click', function () { $('.guide-seller').fadeOut(500); $(document).scrollTop(0); });
+        $('.guide-seller .close').on('click', function () {
+            $('.guide-seller').fadeOut(500);
+            $(document).scrollTop(0);
+        });
         $('.guide-seller .next').on('click', function () {
             $(this).parent().parent().next().fadeIn(500).siblings().hide();
             var indexs = $('.guide-seller .next').index(this);
             var scrollTop = 0;
-            if (indexs == 2 || indexs == 3) { scrollTop = 200; }
-            if (indexs == 4) { scrollTop = 400; }
+            if (indexs == 2 || indexs == 3) {
+                scrollTop = 200;
+            }
+            if (indexs == 4) {
+                scrollTop = 400;
+            }
             $(document).scrollTop(scrollTop);
         });
         $('.guide-seller .guide-5 .next').on('click', function () {
@@ -259,7 +267,10 @@ guide.prototype = {
         //run
         $('.guide-buyer').show().children().hide();
         $('.guide-buyer .guide-0').fadeIn(500).siblings().fadeOut(500);
-        $('.guide-buyer .close').on('click', function () { $('.guide-buyer').fadeOut(500); $(document).scrollTop(0); });
+        $('.guide-buyer .close').on('click', function () {
+            $('.guide-buyer').fadeOut(500);
+            $(document).scrollTop(0);
+        });
         $('.guide-buyer .next').on('click', function () {
             $(this).parent().parent().next().fadeIn(500).siblings().hide();
             $(document).scrollTop(0);

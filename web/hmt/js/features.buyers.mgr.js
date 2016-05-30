@@ -104,6 +104,7 @@
         g.guide_buyer_open();
         g_initHtml(g);
     }
+
     function g_initHtml(g) {
         if (!g) {
             g = new guide();

@@ -1,8 +1,8 @@
 ﻿var supplier = (function () {
     return {
         /**
-        * 使用标签来判断导致界面变形，直接使用js来控制
-        */
+         * 使用标签来判断导致界面变形，直接使用js来控制
+         */
         initCertInfo: function (isCertCompany, isCertUser, imgUrl) {
             var html = "<span>认证信息：</span>";
             if (isCertCompany && isCertCompany == "1") {

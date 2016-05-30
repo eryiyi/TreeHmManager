@@ -40,10 +40,11 @@ var shopinfo = (function () {
             this.hnShopUrl = hnShopUrl;
         },
         /**
-        * 因为需要兼容2种地址跳转同一个地址，添加新方法
-        */
+         * 因为需要兼容2种地址跳转同一个地址，添加新方法
+         */
         getSpecUrl: function () {
-            var domain = this.domain; var commonPath = "common";
+            var domain = this.domain;
+            var commonPath = "common";
             if (domain) commonPath = domain.toLowerCase().indexOf("shop") >= 0 ? "common/" : "shop/common/";
             return domain + commonPath;
         }
@@ -52,12 +53,12 @@ var shopinfo = (function () {
 
 
 /**
-* 2015电商评选活动结果图标显示
-*/
-faithSupplyer = { title: "2015诚信供应商", url: "img/logo/faitherSupplyer.png" },
-hotSupplyer = { title: "2015花木通人气电商", url: "img/logo/hotSupplyer.png" },
-hnPioneer = { title: "2015花木通电商先锋", url: "img/logo/hnPioneer.png" },
-faithImg = "", hotImg = "", poinnerImg = "";
+ * 2015电商评选活动结果图标显示
+ */
+faithSupplyer = {title: "2015诚信供应商", url: "img/logo/faitherSupplyer.png"},
+    hotSupplyer = {title: "2015花木通人气电商", url: "img/logo/hotSupplyer.png"},
+    hnPioneer = {title: "2015花木通电商先锋", url: "img/logo/hnPioneer.png"},
+    faithImg = "", hotImg = "", poinnerImg = "";
 function initActivityResutlLogo() {
     var endTime = "2017-03-04 00:00:00";
     var today = new Date();

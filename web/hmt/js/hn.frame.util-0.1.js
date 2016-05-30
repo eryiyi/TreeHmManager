@@ -1,8 +1,8 @@
 ﻿var hnUtil = (function () {
     return {
         /**
-        * 常用的正则验证表达式<br>
-        */
+         * 常用的正则验证表达式<br>
+         */
         regType: {
             /**数字类型*/
             digit: /^[\d]+$/,
@@ -55,9 +55,9 @@
             if (typeof $ === 'undefined') {
                 this.includeScript(url, callback);
             } else {
-                if (!async) $.ajaxSetup({ async: async });
+                if (!async) $.ajaxSetup({async: async});
                 $.getScript(url, callback);
-                if (!async) $.ajaxSetup({ async: true });
+                if (!async) $.ajaxSetup({async: true});
             }
         },
         includeScript: function (url, callback) {
@@ -133,8 +133,8 @@
 
 
 /**
-* 消息提示：(错误信息、警告信息、确认信息等)
-*/
+ * 消息提示：(错误信息、警告信息、确认信息等)
+ */
 hnUtil.message = (function () {
     return {
         alert: function (msg) {
@@ -171,8 +171,8 @@ hnUtil.validor = (function () {
             return hnUtil.regType.chinese.test(varStr);
         },
         /**
-        * 校验是否为数字  min最小长度、Max最大长度
-        */
+         * 校验是否为数字  min最小长度、Max最大长度
+         */
         isNumber: function (value, min, max) {
             if (!min && !max) return hnUtil.regType.digit.test(value);
             var regexStr = "/^\\d{" + (min ? min + (max ? "," + max : "") : (max ? max : "")) + "}$/";
@@ -183,8 +183,8 @@ hnUtil.validor = (function () {
 
 
 /**
-* 视图信息
-*/
+ * 视图信息
+ */
 hnUtil.view = (function () {
     return {
         html: function (url, param, c) {
@@ -207,17 +207,17 @@ hnUtil.view = (function () {
 })();
 
 /**
-* 视图信息
-*/
+ * 视图信息
+ */
 hnUtil.frame = (function () {
     return {
         /**
-        * ajax请求
-        * @param url 访问地址
-        * @param p 参数对象json格式 {}
-        * @param config 访问配置对象
-        * @param callback :回调函数
-        */
+         * ajax请求
+         * @param url 访问地址
+         * @param p 参数对象json格式 {}
+         * @param config 访问配置对象
+         * @param callback :回调函数
+         */
         post: function (url, p, config, callback) {
             var setting = {
                 async: true,
@@ -252,14 +252,14 @@ hnUtil.frame = (function () {
     };
 })();
 
-/**   
-* 拓展
-*/
+/**
+ * 拓展
+ */
 hnUtil.extend = (function () {
     return {
         /**
-        * 判断是否是ajax请求的配置参数对象(方法有隐患，目前没有硬性规则，暂时这样判断。)
-        */
+         * 判断是否是ajax请求的配置参数对象(方法有隐患，目前没有硬性规则，暂时这样判断。)
+         */
         isGetConfigParam: function (param) {
             if (param.async || param.dataType || param.isReturn) {
                 return true;

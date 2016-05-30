@@ -2,7 +2,16 @@
 
 //banner
 var ary = location.href.split("&");
-jQuery(".slideBox").slide({ mainCell: ".bd ul", effect: ary[1], autoPlay: ary[2], trigger: ary[3], easing: ary[4], delayTime: ary[5], mouseOverStop: ary[6], pnLoop: ary[7] });
+jQuery(".slideBox").slide({
+    mainCell: ".bd ul",
+    effect: ary[1],
+    autoPlay: ary[2],
+    trigger: ary[3],
+    easing: ary[4],
+    delayTime: ary[5],
+    mouseOverStop: ary[6],
+    pnLoop: ary[7]
+});
 
 $(document).ready(function () {
 
@@ -36,7 +45,7 @@ $(document).ready(function () {
     });
     //当点击跳转链接后，回到页面顶部位置
     $("#cx_zd_but").click(function () {
-        $('body,html').animate({ scrollTop: 0 }, 500);
+        $('body,html').animate({scrollTop: 0}, 500);
         return false;
     });
     //店铺左侧导航
@@ -86,28 +95,34 @@ $(document).ready(function () {
 
             function init() {
                 clearTimeout(timer);
-                if (direction == 'left') { currentNum--; }
-                if (direction == 'right') { currentNum++; }
+                if (direction == 'left') {
+                    currentNum--;
+                }
+                if (direction == 'right') {
+                    currentNum++;
+                }
                 if (isRun == 1) {
                     isRun = 0;
                     var marginLeftCss = -(currentNum - 1) * ListWidth - TotalWidth;
                     demo.animate({
                         marginTop: marginLeftCss
-                    }, { duration: speed, easing: "easeInOutCubic", complete: function () {
-                        if (currentNum >= tablListNumber + 1) {
-                            currentNum = parseInt(currentNum - tablListNumber);
-                            demo.css('margin-top', '-' + TotalWidth + 'px');
+                    }, {
+                        duration: speed, easing: "easeInOutCubic", complete: function () {
+                            if (currentNum >= tablListNumber + 1) {
+                                currentNum = parseInt(currentNum - tablListNumber);
+                                demo.css('margin-top', '-' + TotalWidth + 'px');
+                            }
+                            if (currentNum <= 0) {
+                                currentNum = parseInt(tablListNumber + currentNum);
+                                demo.css('margin-top', '-' + (TotalWidth * 2 - ListWidth) + 'px');
+                            }
+                            isRun = 1;
+                            timer = setTimeout(init, intTime);
                         }
-                        if (currentNum <= 0) {
-                            currentNum = parseInt(tablListNumber + currentNum);
-                            demo.css('margin-top', '-' + (TotalWidth * 2 - ListWidth) + 'px');
-                        }
-                        isRun = 1;
-                        timer = setTimeout(init, intTime);
-                    } 
                     });
                 }
             }
+
             setTimeout(init, intTime);
         }
 

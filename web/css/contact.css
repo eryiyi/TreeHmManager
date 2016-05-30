@@ -1,51 +1,62 @@
-.content{
-  width: 100%;
+.content {
+    width: 100%;
 }
-.phones{
-  display: block;
+
+.phones {
+    display: block;
 }
-.phone-list{
-  background-color: #fff;
-  border-bottom: 1px solid #ddd;
-  width: 100%;
-  display: flex;
-  flex-flow: row;
+
+.phone-list {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    display: flex;
+    flex-flow: row;
 }
-.pic-holder{
-  width: 80px;
+
+.pic-holder {
+    width: 80px;
 }
-.pic-holder>img{
-  display: block;
-  height: 80px;
-  width: 80px;
+
+.pic-holder > img {
+    display: block;
+    height: 80px;
+    width: 80px;
 }
-.info{
-  text-align: left;
-  flex: auto;
-  padding: 0 5px;
+
+.info {
+    text-align: left;
+    flex: auto;
+    padding: 0 5px;
 }
-.info .name{
-  line-height: 40px;
-  font-size: 18px;
-  font-weight: bold;
+
+.info .name {
+    line-height: 40px;
+    font-size: 18px;
+    font-weight: bold;
 }
-.info .address{
-  line-height: 20px;
-  font-size: 15px;
+
+.info .address {
+    line-height: 20px;
+    font-size: 15px;
 }
-.phone{
-  width: 80px;
+
+.phone {
+    width: 80px;
 }
-.phone>a{
-  display: block;
-  background-color: #4ABA67;
-  padding: 15px;
+
+.phone > a {
+    display: block;
+    background-color: #4ABA67;
+    padding: 15px;
 }
-.phone>a:active{
-  background-color: #26ac50;
+
+.phone > a:active {
+    background-color: #26ac50;
 }
-.phone>a>img{
-  display: block;
-  height: 50px;
-  width: 50px;
+
+.phone > a > img {
+    display: block;
+    height: 50px;
+    width: 50px;
 }

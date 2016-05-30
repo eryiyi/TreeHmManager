@@ -42,7 +42,7 @@
             var duration = parseInt($topAdv.val()) || 5000;
 
             var smallShow = function () {
-                $small.animate({ opacity: 1 }, 200);
+                $small.animate({opacity: 1}, 200);
             };
             var bigHide = function () {
                 $big.animate({
@@ -53,7 +53,7 @@
                     $('html, body').scroll();
                 });
             };
-            $small.css({ opacity: 0 });
+            $small.css({opacity: 0});
             $close.click(function () {
                 $banner.slideUp('fast');
                 return false;
@@ -97,11 +97,11 @@
             });
             var $tab2top = this.$toolbar.find('.hn-tbar-tab-top a');
             $tab2top.click(function () {
-                $('html, body').stop(true).animate({ scrollTop: 0 }, 300);
+                $('html, body').stop(true).animate({scrollTop: 0}, 300);
                 return false;
             });
             setWrapH();
             $(window).resize(setWrapH);
         }
     };
-} (jQuery, window, document));
+}(jQuery, window, document));

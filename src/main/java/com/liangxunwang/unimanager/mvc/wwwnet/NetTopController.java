@@ -57,11 +57,10 @@ public class NetTopController extends ControllerConstants {
                 map.put("is_login", "0");
             }
             //查询广告
-            AdQuery queryad = new AdQuery();
-            queryad.setMm_ad_type("1");
-            List<AdObj> listAd = (List<AdObj>) adObjService.list(queryad);
-            map.put("listAd", listAd);
-
+//            AdQuery queryad = new AdQuery();
+//            queryad.setMm_ad_type("1");
+//            List<AdObj> listAd = (List<AdObj>) adObjService.list(queryad);
+//            map.put("listAd", listAd);
             return "../../hmt/top";
         }catch (ServiceException e){
             String msg = e.getMessage();
