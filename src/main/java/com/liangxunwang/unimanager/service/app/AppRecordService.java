@@ -53,7 +53,7 @@ public class AppRecordService implements ListService ,SaveService, FindService{
             }
         }
         int index = (query.getIndex() - 1) * query.getSize();
-        int size = query.getIndex() * query.getSize();
+        int size = query.getSize();
         map.put("index", index);
         map.put("size", size);
         if (!StringUtil.isNullOrEmpty(query.getKeyword())) {
@@ -266,6 +266,8 @@ public class AppRecordService implements ListService ,SaveService, FindService{
                 vo.setMm_msg_picurl(buffer.toString());
             }
         }
+        //发通知 给所有用户 有新消息
+//        BaiduPush.PushMsgToAllMsg("花木通有新的消息", "新的求购供应信息" ,"");
         return vo;
     }
 

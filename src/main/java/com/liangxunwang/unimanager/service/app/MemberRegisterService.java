@@ -47,14 +47,14 @@ public class MemberRegisterService implements SaveService,UpdateService{
         }
         member.setMm_emp_password(new MD5Util().getMD5ofStr(member.getMm_emp_password()));//密码加密
         member.setMm_level_id("358b1e94e2274685b0badf41e22b85c8");//默认VIP1
-        member.setMm_emp_msg_num("1");//允许发布信息数量  默认0
+        member.setMm_emp_msg_num("10");//允许发布信息数量  默认0
         member.setIs_login("0");//允许登陆 默认0允许
         member.setIs_fabugongying("1");//发布供应信息权限  0默认不允许
         member.setIs_fabuqiugou("1");//发布求购信息权限 0默认不允许
         member.setIs_fabugongying_see("0");//查看供应信息权限 0默认允许
         member.setIs_fabuqiugou_see("0");//查看求购信息权限 0默认允许
         member.setIs_see_all("0");//1	查看所有信息权限 0默认不允许
-        member.setIs_pic("0");//照片发布权限默认0不允许
+        member.setIs_pic("3");//照片发布权限默认0不允许
         member.setIs_chengxin("0");//诚信单位 0默认否
         member.setIs_miaomu("0");//苗木协会  0默认否
         member.setIs_use("0");//是否禁用 0默认否

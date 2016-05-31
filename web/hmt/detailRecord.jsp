@@ -38,7 +38,7 @@
     <script type="text/javascript" src="../js/jquery_latest.js"></script>
 
 </head>
-<body onload="loadLocation('${recordVO.lat}','${recordVO.lng}')">
+<body>
 <!-- 顶部 -->
 <div class="topbar">
     <div class="container clearfix">
@@ -164,11 +164,16 @@
         <!-- details -->
         <ul class="details-title">
             <li class="details-times">发布时间：${recordVO.dateline}</li>
-            <li class="details-author">发布人：<img src="../hmt/images/ico-tel.png" alt="联系人" title="联系人"/><span><a
+            <li class="details-author">发布人：<img src="../hmt/images/ico-user.png" alt="联系人" title="联系人"/><span><a
                     href="/netProfileController/toProfile.do?page=1&mm_emp_id=${recordVO.mm_emp_id}">${recordVO.mm_emp_nickname}</a></span>
             </li>
-            <li class="details-certification"><img src="../hmt/images/ico-tel.png" alt="联系电话"
-                                                   title="联系电话"/> ${recordVO.mm_emp_mobile} </li>
+
+            <li class="details-certification">
+                <img src="../hmt/images/ico-tel.png" alt="联系电话" title="联系电话"/>
+                <c:if test="${is_login=='1'}">${recordVO.mm_emp_mobile}</c:if>
+                <c:if test="${is_login=='0'}">${recordVO.mm_emp_mobile.substring(0,7)}****</c:if>
+            </li>
+
             <li class="details-certification"><img src="../hmt/images/ico-location.png" alt="地址"
                                                    title="地址"/> ${recordVO.cityName}${recordVO.area} </li>
             <li class="details-audit">
@@ -205,7 +210,15 @@
                     <%--地图--%>
                     <%--http://m.amap.com/navi/?dest=116.470098,39.992838&destName=阜通西&hideRouteIcon=1&key=(您申请的key)--%>
                     <%--<iframe id="ii" src="../hmt/locationGaode.jsp" style="width: 100%;height: 200px;" frameborder="0"></iframe>--%>
-                    <jsp:include page="../hmt/locationGaode.jsp"></jsp:include>
+                    <%--<jsp:include page="../hmt/locationGaode.jsp"></jsp:include>--%>
+
+                        <jsp:include page="../hmt/locationGaode.jsp" >
+                            <jsp:param name="lat" value="${recordVO.lat}" />
+                            <jsp:param name="lng" value="${recordVO.lng}" />
+                            <jsp:param name="mm_emp_nickname" value="${recordVO.mm_emp_nickname}" />
+                            <jsp:param name="mm_emp_company" value="${recordVO.mm_emp_company}" />
+                        </jsp:include>
+
                 </div>
                 <div class="cqr-holder">
                     <div class="weixin"><img src="../hmt/images/weixin_erweima.png" alt=""/></div>
@@ -234,7 +247,6 @@
                 <li class="l3">所在地</li>
                 <li class="l4">发布人</li>
             </ul>
-
 
             <c:forEach items="${listRelate}" var="e" varStatus="st">
                 <c:if test="${e.mm_msg_id != recordVO.mm_msg_id}">
@@ -414,9 +426,6 @@
         }
 
     }
-    //  function loadLocation(_lat,_lng){
-    //    $("#ii")[0].contentWindow.lat=_lat ;
-    //    $("#ii")[0].contentWindow.lnt=_lng ;
-    //  }
+
 </script>
 </html>

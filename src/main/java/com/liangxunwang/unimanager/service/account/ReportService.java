@@ -36,7 +36,7 @@ public class ReportService implements ListService,SaveService,ExecuteService,Upd
         ReportQuery query = (ReportQuery) object;
         Map<String, Object> map = new HashMap<String, Object>();
         int index = (query.getIndex() - 1) * query.getSize();
-        int size = query.getIndex() * query.getSize();
+        int size = query.getSize();
 
         map.put("index", index);
         map.put("size", size);

@@ -62,6 +62,32 @@
                         </div>
                     </div>
 
+                    <c:if test="${is_manager=='0'}">
+                        <div class="form-group">
+                            <select class="form-control w12" id="mm_emp_provinceId" onchange="selectCitys()">
+                                <option value="">--选择省份--</option>
+                                <c:forEach items="${listProvinces}" var="e" varStatus="st">
+                                    <option value="${e.provinceID}" ${query.mm_emp_provinceId == e.provinceID?'selected':''}>${e.province}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control w12" id="mm_emp_cityId" onchange="selectCountrys()">
+                                <option value="">--选择城市--</option>
+                                <c:forEach items="${listCitys}" var="e" varStatus="st">
+                                    <option value="${e.cityID}" ${query.mm_emp_cityId == e.cityID?'selected':''}>${e.city}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control w12" id="mm_emp_countryId" onchange="selectArea()">
+                                <option value="">--选择县区--</option>
+                                <c:forEach items="${listsCountry}" var="e" varStatus="st">
+                                    <option value="${e.areaID}" ${query.mm_emp_countryId == e.areaID?'selected':''}>${e.area}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                    </c:if>
 
                     <div class="form-group">
                         <select class="form-control w12" id="ischeck">
@@ -108,9 +134,6 @@
                     <div class="form-group">
                         <button type="submit" onclick="searchOrder('1')"
                                 class="btn form-control btn-warning btn-sm btn-block">查找
-                        </button>
-                        <button type="submit" onclick="listArea()"
-                                class="btn form-control btn-warning btn-sm btn-block">按照省份查找
                         </button>
                     </div>
                 </form>
@@ -353,6 +376,9 @@
         var mm_emp_company_type = $("#mm_emp_company_type").val();
         var mm_level_id = $("#mm_level_id").val();
         var ischeck = $("#ischeck").val();
+        var province = $("#mm_emp_provinceId").val();
+        var city = $("#mm_emp_cityId").val();
+        var mm_emp_countryId = $("#mm_emp_countryId").val();
         var mm_emp_regtime = $("#mm_emp_regtime").val();
         var is_daoqi = $("#is_daoqi").val();
         if (_index <= ${page.pageCount} && _index >= 1) {
@@ -360,6 +386,9 @@
             window.location.href = "#module=/emp/list&page=" + _index + "&size=" + size + "&mm_emp_type=" + mm_emp_type + "&keyword=" + keywords
             + "&mm_emp_company_type=" + mm_emp_company_type
             + "&mm_level_id=" + mm_level_id
+            + "&mm_emp_provinceId=" + province
+            + "&mm_emp_cityId=" + city
+            + "&mm_emp_countryId=" + mm_emp_countryId
             + "&mm_emp_regtime=" + mm_emp_regtime
             + "&is_daoqi=" + is_daoqi
             + "&ischeck=" + ischeck + "&_t=" + new Date().getTime();
@@ -375,6 +404,9 @@
         var mm_emp_company_type = $("#mm_emp_company_type").val();
         var mm_level_id = $("#mm_level_id").val();
         var ischeck = $("#ischeck").val();
+        var province = $("#mm_emp_provinceId").val();
+        var city = $("#mm_emp_cityId").val();
+        var mm_emp_countryId = $("#mm_emp_countryId").val();
         var mm_emp_regtime = $("#mm_emp_regtime").val();
         var is_daoqi = $("#is_daoqi").val();
 
@@ -384,6 +416,9 @@
             + "&mm_emp_type=" + mm_emp_type
             + "&mm_emp_company_type=" + mm_emp_company_type
             + "&mm_level_id=" + mm_level_id
+            + "&mm_emp_provinceId=" + province
+            + "&mm_emp_cityId=" + city
+            + "&mm_emp_countryId=" + mm_emp_countryId
             + "&mm_emp_regtime=" + mm_emp_regtime
             + "&is_daoqi=" + is_daoqi
             + "&ischeck=" + ischeck + "&_t=" + new Date().getTime();
@@ -400,6 +435,9 @@
         var mm_emp_company_type = $("#mm_emp_company_type").val();
         var mm_level_id = $("#mm_level_id").val();
         var ischeck = $("#ischeck").val();
+        var province = $("#mm_emp_provinceId").val();
+        var city = $("#mm_emp_cityId").val();
+        var mm_emp_countryId = $("#mm_emp_countryId").val();
         var mm_emp_regtime = $("#mm_emp_regtime").val();
         var is_daoqi = $("#is_daoqi").val();
 
@@ -409,6 +447,9 @@
             + "&mm_emp_type=" + mm_emp_type
             + "&mm_emp_company_type=" + mm_emp_company_type
             + "&mm_level_id=" + mm_level_id
+            + "&mm_emp_provinceId=" + province
+            + "&mm_emp_cityId=" + city
+            + "&mm_emp_countryId=" + mm_emp_countryId
             + "&mm_emp_regtime=" + mm_emp_regtime
             + "&is_daoqi=" + is_daoqi
             + "&ischeck=" + ischeck + "&_t=" + new Date().getTime();
@@ -417,9 +458,46 @@
         }
     }
 
-    function listArea(){
-        window.location.href = "#module=/emp/listArea&page=1" ;
+    function selectCitys() {
+        var citys = ${listCitysAll};
+        var province = $("#mm_emp_provinceId").val();
+        var ret = "<option value=''>" + '请选择城市' + "</option>";
+        for (var i = citys.length - 1; i >= 0; i--) {
+            if (citys[i].father == province) {
+                ret += "<option value='" + citys[i].cityID + "'>" + citys[i].city + "</option>";
+            }
+        }
+        $("#mm_emp_cityId").html(ret);
+
+        var mm_emp_provinceId = $("#mm_emp_provinceId").val();
+
     }
+    ;
+
+    function selectCountrys() {
+        var countrys = ${listsCountryAll};
+        var city = $("#mm_emp_cityId").val();
+        var ret = "<option value=''>" + '请选择县区' + "</option>";
+        for (var i = countrys.length - 1; i >= 0; i--) {
+            if (countrys[i].father == city) {
+                ret += "<option value='" + countrys[i].areaID + "'>" + countrys[i].area + "</option>";
+            }
+        }
+        $("#mm_emp_countryId").html(ret);
+
+        var mm_emp_provinceId = $("#mm_emp_provinceId").val();
+        var mm_emp_cityId = $("#mm_emp_cityId").val();
+
+    }
+    ;
+
+    function selectArea() {
+        var mm_emp_provinceId = $("#mm_emp_provinceId").val();
+        var mm_emp_cityId = $("#mm_emp_cityId").val();
+        var mm_emp_countryId = $("#mm_emp_countryId").val();
+
+    }
+    ;
 
     function checkAll() {
         var all = document.getElementsByName("allmails")[0];

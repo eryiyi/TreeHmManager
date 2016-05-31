@@ -32,7 +32,7 @@ public class PaihangService implements ListService,DeleteService,ExecuteService,
         PaihangQuery query = (PaihangQuery) object;
         Map<String, Object> map = new HashMap<String, Object>();
         int index = (query.getIndex() - 1) * query.getSize();
-        int size = query.getIndex() * query.getSize();
+        int size = query.getSize();
 
         map.put("index", index);
         map.put("size", size);
