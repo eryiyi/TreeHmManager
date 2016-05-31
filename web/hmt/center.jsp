@@ -265,19 +265,19 @@
                             <li class="link">
                                 <a href="/netNearbyController/nearby.do?page=1" class="number1"></a>
 
-                                <p class="txt"><img src="../hmt/images/jygl-ico-1.png"><span>经纪人</span></p>
+                                <p class="txt"><span>经纪人</span></p>
                             </li>
                             <li class="line  w180"><span></span></li>
                             <li class="link">
                                 <a href="/netKefuController/toKefu.do" class="number2"></a>
 
-                                <p class="txt"><img src="../hmt/images/jygl-ico-3.png"><span>客服中心</span></p>
+                                <p class="txt"><span>客服中心</span></p>
                             </li>
                             <li class="line  w180"><span></span></li>
                             <li class="link">
                                 <a href="/netWeixinController/toKefu.do" class="number3"></a>
 
-                                <p class="txt"><img src="../hmt/images/jygl-ico-4.png"><span>微信客服</span></p>
+                                <p class="txt"><span>微信客服</span></p>
                             </li>
                         </ul>
                     </div>
@@ -344,11 +344,15 @@
         <div class="customer">
             <div class="tel">
                 <h3>客服热线：</h3>
-                <span>0543-5253666</span>
+                <span>400-0242-103</span>
             </div>
             <div class="mail">
-                <h3>客服邮箱：</h3>
-                <span>826321978@qq.com</span>
+                <h3>客服电话：</h3>
+                <span>18706637302</span>
+            </div>
+            <div class="mail">
+                <h3>招商电话：</h3>
+                <span>18854337802</span>
             </div>
 
         </div>

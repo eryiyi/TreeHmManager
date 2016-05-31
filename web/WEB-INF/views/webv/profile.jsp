@@ -231,14 +231,14 @@
         var mm_emp_id = $("#mm_emp_id").val();
         var size = $("#size").val();
         if (_index <= ${page.pageCount} && _index >= 1) {
-            window.location.href = "/webvProfile/toProfile.do?page=" + page + "&size=" + size + "&mm_msg_type=" + mm_msg_type + "&mm_emp_id=" + mm_emp_id;
+            window.location.href = "/webvProfile/toProfile.do?page=" + page + "&size=" + size + "&mm_msg_type=" + mm_msg_type + "&mm_emp_id=" + mm_emp_id+ "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
     }
     function searchProfile(_mm_msg_type) {
         var mm_emp_id = $("#mm_emp_id").val();
-        window.location.href = "/webvProfile/toProfile.do?page=1" + "&size=10" + "&mm_msg_type=" + _mm_msg_type + "&mm_emp_id=" + mm_emp_id;
+        window.location.href = "/webvProfile/toProfile.do?page=1" + "&size=10" + "&mm_msg_type=" + _mm_msg_type + "&mm_emp_id=" + mm_emp_id+ "&_t=" + new Date().getTime();
     }
 
     function nextPage(_page) {
@@ -248,7 +248,7 @@
         var mm_emp_id = $("#mm_emp_id").val();
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1)) {
-            window.location.href = "/webvProfile/toProfile.do?page=" + page + "&size=" + size + "&mm_msg_type=" + mm_msg_type + "&mm_emp_id=" + mm_emp_id;
+            window.location.href = "/webvProfile/toProfile.do?page=" + page + "&size=" + size + "&mm_msg_type=" + mm_msg_type + "&mm_emp_id=" + mm_emp_id+ "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }

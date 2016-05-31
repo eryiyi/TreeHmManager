@@ -155,14 +155,14 @@
     <div class="pro-list mb_10">
 
         <ul class="pro-list-title pt_15">
-            <li class="l2">通知标题</li>
+            <li class="l1">通知标题</li>
             <li class="l3">发布时间</li>
         </ul>
         <ul id="con_one_2">
             <c:forEach items="${list}" var="e" varStatus="st">
                 <li class="text-list">
                     <a href="/netNoticeController/toDetail.do?id=${e.mm_notice_id}" target="_blank">
-                        <span class="l2">${e.mm_notice_title}</span>
+                        <span class="l1">${e.mm_notice_title}</span>
                         <span class="l3">${e.dateline}</span>
                     </a>
                 </li>

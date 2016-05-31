@@ -160,18 +160,18 @@
         </div>
         <div class="pro-list mb_10">
             <ul class="pro-list-title pt_15">
-                <li class="l1">标题</li>
-                <li class="l2">电话</li>
-                <li class="l4">内容</li>
+                <li class="l2">标题</li>
+                <li class="l3">电话</li>
+                <li class="l1">内容</li>
             </ul>
             <ul>
 
                 <c:forEach items="${list}" var="e" varStatus="st">
                     <li class="text-list">
                         <a href="javascript:void(0)" target="_blank">
-                            <span class="l1">${e.mm_fuwu_nickname}</span>
-                            <span class="l2">${e.mm_fuwu_tel}</span>
-                            <span class="l4">${e.mm_fuwu_content}</span>
+                            <span class="l2">${e.mm_fuwu_nickname}</span>
+                            <span class="l3">${e.mm_fuwu_tel}</span>
+                            <span class="l1">${e.mm_fuwu_content}</span>
                         </a>
                     </li>
                 </c:forEach>

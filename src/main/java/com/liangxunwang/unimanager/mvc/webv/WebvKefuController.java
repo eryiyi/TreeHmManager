@@ -9,6 +9,7 @@ import com.liangxunwang.unimanager.query.KefuQuery;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.ServiceException;
 import com.liangxunwang.unimanager.util.ControllerConstants;
+import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -33,6 +34,9 @@ public class WebvKefuController extends ControllerConstants {
     @RequestMapping("toKefu")
     public String toLogin(HttpSession session,ModelMap map,KefuQuery query){
         try {
+            if(StringUtil.isNullOrEmpty(query.getIsType())){
+                query.setIsType("0");//0是本地  1是全国
+            }
             EmpVO emp = (EmpVO) session.getAttribute(MEMBER_KEY);
             if(emp != null){
                 //说明登陆了 ，只需要取本地的
@@ -40,11 +44,17 @@ public class WebvKefuController extends ControllerConstants {
             }
             query.setMm_tel_type("0");
             List<KefuVO> list = (List<KefuVO>) appKefuTelService.list(query);
-            map.put("list", list);//本地的
+
             query.setMm_tel_type("1");
             query.setMm_emp_countryId("");
             List<KefuVO> listAll = (List<KefuVO>) appKefuTelService.list(query);
-            map.put("listAll", listAll);//全国的
+
+            if("0".equals(query.getIsType())){
+                map.put("list", list);//本地的
+            }else {
+                map.put("list", listAll);//全国的
+            }
+            map.addAttribute("query", query);
             return "/webv/kefu";
         }catch (ServiceException e){
             String msg = e.getMessage();

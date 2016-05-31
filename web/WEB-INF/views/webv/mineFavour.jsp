@@ -146,30 +146,30 @@
 
 <script type="text/javascript" charset="UTF-8">
 
-    function searchIndex(e) {
-        if (e.keyCode != 13) return;
-        var _index = $("#index").val();
-        var page = parseInt(_page);
-        var size = $("#size").val();
-        var keyword = $("#keyword").val();
-        if (_index <= ${page.pageCount} && _index >= 1) {
-            window.location.href = "/webv/toIndex.do?page=" + page + "&size=" + size + "&keyword=" + keyword;
-        } else {
-            alert("请输入1-${page.pageCount}的页码数");
-        }
-    }
+    <%--function searchIndex(e) {--%>
+        <%--if (e.keyCode != 13) return;--%>
+        <%--var _index = $("#index").val();--%>
+        <%--var page = parseInt(_page);--%>
+        <%--var size = $("#size").val();--%>
+        <%--var keyword = $("#keyword").val();--%>
+        <%--if (_index <= ${page.pageCount} && _index >= 1) {--%>
+            <%--window.location.href = "/webv/toIndex.do?page=" + page + "&size=" + size + "&keyword=" + keyword+ "&_t=" + new Date().getTime();--%>
+        <%--} else {--%>
+            <%--alert("请输入1-${page.pageCount}的页码数");--%>
+        <%--}--%>
+    <%--}--%>
 
-    function nextPage(_page) {
-        var page = parseInt(_page);
-        var size = $("#size").val();
-        var keyword = $("#keyword").val();
-        addCookie("contract_size", size, 36);
-        if ((page <= ${page.pageCount} && page >= 1)) {
-            window.location.href = "/webv/toIndex.do?page=" + page + "&size=" + size + "&keyword=" + keyword;
-        } else {
-            alert("请输入1-${page.pageCount}的页码数");
-        }
-    }
+    <%--function nextPage(_page) {--%>
+        <%--var page = parseInt(_page);--%>
+        <%--var size = $("#size").val();--%>
+        <%--var keyword = $("#keyword").val();--%>
+        <%--addCookie("contract_size", size, 36);--%>
+        <%--if ((page <= ${page.pageCount} && page >= 1)) {--%>
+            <%--window.location.href = "/webv/toIndex.do?page=" + page + "&size=" + size + "&keyword=" + keyword+ "&_t=" + new Date().getTime();--%>
+        <%--} else {--%>
+            <%--alert("请输入1-${page.pageCount}的页码数");--%>
+        <%--}--%>
+    <%--}--%>
 
 </script>
 <script type="text/javascript">
@@ -219,36 +219,6 @@
     })(window);
 
 
-</script>
-
-<script>
-    window._bd_share_config = {
-        common: {
-            bdText: '自定义分享内容',
-            bdDesc: '自定义分享摘要',
-            bdUrl: '自定义分享url地址',
-            bdPic: '自定义分享图片'
-        },
-        share: [{
-            "bdSize": 16
-        }],
-        slide: [{
-            bdImg: 0,
-            bdPos: "right",
-            bdTop: 100
-        }],
-        image: [{
-            viewType: 'list',
-            viewPos: 'top',
-            viewColor: 'black',
-            viewSize: '16',
-            viewList: ['qzone', 'tsina', 'huaban', 'tqq', 'renren']
-        }],
-        selectShare: [{
-            "bdselectMiniList": ['qzone', 'tqq', 'kaixin001', 'bdxc', 'tqf']
-        }]
-    }
-    with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
 </script>
 
 </html>

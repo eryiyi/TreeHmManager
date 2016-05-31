@@ -143,7 +143,7 @@
         var page = parseInt(_page);
         var size = $("#size").val();
         if (_index <= ${page.pageCount} && _index >= 1) {
-            window.location.href = "/webvNoticeController/list.do?page=" + page + "&size=" + size;
+            window.location.href = "/webvNoticeController/list.do?page=" + page + "&size=" + size+ "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
@@ -154,7 +154,7 @@
         var size = $("#size").val();
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1)) {
-            window.location.href = "/webvNoticeController/list.do?page=" + page + "&size=" + size;
+            window.location.href = "/webvNoticeController/list.do?page=" + page + "&size=" + size+ "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }

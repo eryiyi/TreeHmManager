@@ -7,6 +7,15 @@ public class KefuQuery extends BaseAreaQuery{
     private String mm_tel_id;
     private String mm_tel;
     private String mm_tel_type;
+    private String isType;
+
+    public String getIsType() {
+        return isType;
+    }
+
+    public void setIsType(String isType) {
+        this.isType = isType;
+    }
 
     public String getMm_tel_type() {
         return mm_tel_type;

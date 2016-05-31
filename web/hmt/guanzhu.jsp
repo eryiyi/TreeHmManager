@@ -218,59 +218,66 @@
                 </c:forEach>
 
             </ul>
-            <%--<input type="hidden" id="mm_msg_type" name="mm_msg_type" value="${query.mm_msg_type}">--%>
             <input type="hidden" id="countryid" name="countryid" value="${countryid}">
             <input type="hidden" id="is_login" name="is_login" value="${is_login}">
             <input type="hidden" id="accessToken" name="accessToken" value="${emp.access_token}">
             <input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${emp.mm_emp_id}">
 
-            <%--地区选择结束--%>
         </div>
-        <%--内容区--%>
-        <div class="pro-list mb_10">
-            <ul class="pro-list-title pt_15">
-                <li class="l1">
-                    <select class="form-control" id="mm_msg_type" onchange="searchChange()">
-                        <option value="">--选择信息类别--</option>
-                        <option value="0" ${query.mm_msg_type=='0'?'selected':''}>求购</option>
-                        <option value="1" ${query.mm_msg_type=='1'?'selected':''}>供应</option>
-                    </select>
-                </li>
 
-                <li class="l2">内容</li>
-                <li class="l5">所在地区</li>
-                <li class="l1">联系人</li>
-                <li class="l1">时间</li>
-                <li class="l1">属性</li>
-            </ul>
-            <ul>
-
-                <c:forEach items="${list}" var="e" varStatus="st">
-                    <li class="text-list">
-                        <a href="javascript:void(0)" target="_blank" onclick="showDetail('${e.mm_msg_id}')">
-                            <c:if test="${e.mm_msg_type=='0'}"> <span class="l1">[求购]</span></c:if>
-                            <c:if test="${e.mm_msg_type=='1'}"> <span class="l1">[供应]</span></c:if>
-                            <span class="l2">${e.mm_msg_title}</span>
-                            <span class="l5">${e.area}</span>
-                            <span class="l1">${e.mm_emp_nickname}</span>
-                            <span class="l1">${e.dateline}</span>
-                              <span class="l6">
-                                  <c:if test="${e.is_miaomu=='1'}"><img style="width: 25px;height: 32px;"
-                                                                        src="../img/tree_icons_trust.png"
-                                                                        title="苗木协会"></c:if>
-                                  <c:if test="${e.is_chengxin=='1'}"><img style="width: 25px;height: 32px;"
-                                                                          src="../img/tree_icons_group.png"
-                                                                          title="诚信会员"></c:if>
-                              </span>
-                            <span class="l7"><em class="text-list-view">查看详情</em></span>
-                        </a>
+            <div class="pro-list mb_10">
+                <ul class="pro-list-title pt_15">
+                    <li class="l2">
+                        <select style="width: 80px" class="form-control" id="mm_msg_type" onchange="searchChange()">
+                            <option value="">--选择信息类别--</option>
+                            <option value="0" ${query.mm_msg_type=='0'?'selected':''}>求购</option>
+                            <option value="1" ${query.mm_msg_type=='1'?'selected':''}>供应</option>
+                        </select>
                     </li>
-                </c:forEach>
+                    <li class="l1">内容</li>
+                    <li class="l2">所在地区</li>
+                    <li class="l3">联系人</li>
+                    <li class="l4">时间</li>
+                    <li class="l5">信誉</li>
+                </ul>
+                <ul>
+                    <c:forEach items="${list}" var="e" varStatus="st">
+                        <li class="text-list">
+                            <a href="javascript:void(0)" target="_blank" onclick="showDetail('${e.mm_msg_id}')">
 
-            </ul>
-            <%--内容区结束--%>
-            <div class="clear"></div>
-        </div>
+                                <c:if test="${e.mm_msg_type=='0'}"> <span class="l2">[求购]</span></c:if>
+                                <c:if test="${e.mm_msg_type=='1'}"> <span class="l2">[供应]</span></c:if>
+
+                                <span class="l1">${e.mm_msg_title}</span>
+                                <span class="l2">${e.area}</span>
+                                <a class="l3" onclick="showDetail('${e.mm_msg_id}')"><img class="head-pic"
+                                                                                          src="${e.mm_emp_cover}"
+                                                                                          alt="${e.mm_emp_nickname}"
+                                                                                          title="${e.mm_emp_nickname}"/>${e.mm_emp_nickname}
+                                </a>
+                                <span class="l4" onclick="showDetail('${e.mm_msg_id}')">${e.dateline}</span>
+			                <span class="l5" onclick="showDetail('${e.mm_msg_id}')">
+                                <c:if test="${e.is_miaomu=='1'}"><img style="width: 25px;height: 32px;"
+                                                                      src="../img/tree_icons_trust.png"
+                                                                      title="苗木协会"></c:if>
+								<c:if test="${e.is_chengxin=='1'}"><img style="width: 25px;height: 32px;"
+                                                                        src="../img/tree_icons_group.png"
+                                                                        title="诚信会员"></c:if>
+			                </span>
+             <span class="l6">
+               <em class="text-list-view" onclick="showDetail('${e.mm_msg_id}')">查看详情
+                   <c:if test="${e.mm_msg_picurl !=''}"><img class="have-pic" src="../img/icon_have_pic_green.png"
+                                                             alt="有图" title="有图"/></c:if>
+               </em>
+             </span>
+                            </a>
+                        </li>
+                    </c:forEach>
+
+                </ul>
+
+                <div class="clear"></div>
+            </div>
 
 
         <div class="clear"></div>
@@ -425,7 +432,7 @@
         var mm_msg_type = $("#mm_msg_type").val();
         var countryid = $("#countryid").val();
         if (_index <= ${page.pageCount} && _index >= 1) {
-            window.location.href = "/netGuanzhuController/guanzhuArea.do?page=" + page + "&size=" + size + "&countryid=" + countryid + "&mm_msg_type=" + mm_msg_type;
+            window.location.href = "/netGuanzhuController/guanzhuArea.do?page=" + page + "&size=" + size + "&countryid=" + countryid + "&mm_msg_type=" + mm_msg_type+ "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
@@ -435,7 +442,7 @@
         var size = $("#size").val();
         var mm_msg_type = $("#mm_msg_type").val();
         var countryid = $("#countryid").val();
-        window.location.href = "/netGuanzhuController/guanzhuArea.do?page=1" + "&size=" + size + "&countryid=" + countryid + "&mm_msg_type=" + mm_msg_type;
+        window.location.href = "/netGuanzhuController/guanzhuArea.do?page=1" + "&size=" + size + "&countryid=" + countryid + "&mm_msg_type=" + mm_msg_type+ "&_t=" + new Date().getTime();
     }
 
 
@@ -446,7 +453,7 @@
         var countryid = $("#countryid").val();
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1)) {
-            window.location.href = "/netGuanzhuController/guanzhuArea.do?page=" + page + "&size=" + size + "&countryid=" + countryid + "&mm_msg_type=" + mm_msg_type;
+            window.location.href = "/netGuanzhuController/guanzhuArea.do?page=" + page + "&size=" + size + "&countryid=" + countryid + "&mm_msg_type=" + mm_msg_type+ "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
@@ -455,7 +462,7 @@
     function gzClickArea(_countryid) {
         var size = $("#size").val();
         var mm_msg_type = $("#mm_msg_type").val();
-        window.location.href = "/netGuanzhuController/guanzhuArea.do?page=1" + "&size=" + size + "&countryid=" + _countryid + "&mm_msg_type=" + mm_msg_type;
+        window.location.href = "/netGuanzhuController/guanzhuArea.do?page=1" + "&size=" + size + "&countryid=" + _countryid + "&mm_msg_type=" + mm_msg_type+ "&_t=" + new Date().getTime();
     }
 
     function quiteClick() {

@@ -78,65 +78,6 @@
             </div>
         </div>
 
-        <%--<div class="quick-nav">--%>
-        <%--<ul class="icon clearfix">--%>
-        <%--<li>--%>
-        <%--<img src="../hmt/images/quick-nav-icon-1.gif" alt="资源多">--%>
-        <%--<p>--%>
-        <%--<span>资源多</span><span>海量信息免费发</span></p>--%>
-        <%--</li>--%>
-        <%--<li>--%>
-        <%--<img src="../hmt/images/quick-nav-icon-2.gif" alt="优惠大">--%>
-        <%--<p>--%>
-        <%--<span>优惠大</span><span>挑战市场超低价</span></p>--%>
-        <%--</li>--%>
-        <%--<li>--%>
-        <%--<img src="../hmt/images/quick-nav-icon-3.gif" alt="销售广">--%>
-        <%--<p>--%>
-        <%--<span>销售广</span><span>采购便捷一站式</span></p>--%>
-        <%--</li>--%>
-        <%--<li>--%>
-        <%--<img src="../hmt/images/quick-nav-icon-4.gif" alt="更安全">--%>
-        <%--<p>--%>
-        <%--<span>更安全</span><span>实名认证更安心</span></p>--%>
-        <%--</li>--%>
-        <%--</ul>--%>
-        <%--<div class="list clearfix">--%>
-        <%--<dl class="clearfix">--%>
-        <%--<dt>新手指南</dt>--%>
-        <%--<dd>--%>
-        <%--<a href="/netRegController/toReg.do" target="_blank" rel="nofollow">注册新用户</a></dd>--%>
-        <%--<dd>--%>
-        <%--<a href="#" target="_blank" rel="nofollow">找回密码</a></dd>--%>
-        <%--<dd>--%>
-        <%--<a href="../html/download.html" target="_blank" rel="nofollow">安装手机花木通</a></dd>--%>
-        <%--</dl>--%>
-        <%--<dl class="clearfix">--%>
-        <%--<dt>采购商服务</dt>--%>
-        <%--<dd>--%>
-        <%--<a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=1" target="_blank">找供应</a></dd>--%>
-        <%--<dd>--%>
-        <%--<a href="#" target="_blank" rel="nofollow">服务中心</a></dd>--%>
-        <%--</dl>--%>
-        <%--<dl class="clearfix">--%>
-        <%--<dt>供应商服务</dt>--%>
-        <%--<dd>--%>
-        <%--<a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=0" target="_blank">找需求</a></dd>--%>
-        <%--<dd>--%>
-        <%--<a href="#" target="_blank" rel="nofollow">服务中心</a></dd>--%>
-        <%--</dl>--%>
-        <%--<dl class="clearfix">--%>
-        <%--<dt>使用帮助</dt>--%>
-        <%--<dd>--%>
-        <%--<a href="/netKefuController/toKefu.do" target="_blank" rel="nofollow">客服中心</a></dd>--%>
-        <%--<dd>--%>
-        <%--<a href="/netWeixinController/toKefu.do" target="_blank" rel="nofollow">微信客服</a></dd>--%>
-        <%--<dd>--%>
-        <%--<a href="#" target="_blank" rel="nofollow">全国招商合作伙伴</a></dd>--%>
-        <%--</dl>--%>
-        <%--</div>--%>
-        <%--</div>--%>
-
         <div class="ptb20 clearfix">
             <div class="foot-qr clearfix">
                 <div class="qrcode">
@@ -161,7 +102,7 @@
             </ul>
             <div class="copyright">
                 <p>
-                    鲁ICP备16015579号 - 1| Powered by rykj | 服务热线：0543-5253666</p>
+                    鲁ICP备16015579号 - 1| Powered by rykj | 服务热线：400-0242-103</p>
 
                 <p>
                 </p>

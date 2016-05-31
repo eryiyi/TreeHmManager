@@ -48,7 +48,6 @@
         .button {
             color: #fff !important;
         }
-
         .profile-holder {
             width: 956px;
             float: left;
@@ -157,6 +156,8 @@
     </div>
 </div>
 <div class="container wrap-1190">
+    <input type="hidden" id="mm_msg_type" name="mm_msg_type" value="${query.mm_msg_type}">
+    <input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${query.mm_emp_id}">
     <input type="hidden" id="is_login" name="is_login" value="${is_login}">
     <input type="hidden" id="accessToken" name="accessToken" value="${emp.access_token}">
 
@@ -216,8 +217,15 @@
             <div class="liner"></div>
         </div>
         <div class="brief-btn-group clearfix">
-            <a class="active" href="">求购</a>
-            <a href="">供应</a>
+            <c:if test="${query.mm_msg_type=='0'}">
+                <a class="active" href="javascript:void(0)" onclick="searchProfile('0')">求购</a>
+                <a href="javascript:void(0)"  onclick="searchProfile('1')">供应</a>
+            </c:if>
+            <c:if test="${query.mm_msg_type=='1'}">
+                <a href="javascript:void(0)" onclick="searchProfile('0')">求购</a>
+                <a class="active" href="javascript:void(0)" onclick="searchProfile('1')">供应</a>
+            </c:if>
+
         </div>
         <div class="breif-recent">
             <div class="pro-list mb_10">
@@ -234,7 +242,7 @@
                             <a href="javascript:void(0)" target="_blank" onclick="showDetail('${e.mm_msg_id}')">
                                 <span class="l1">${e.mm_msg_title}</span>
                                 <span class="l2">${e.area}</span>
-                                <a class="l3"><img class="head-pic" src="../img/template.jpg"
+                                <a class="l3" onclick="showDetail('${e.mm_msg_id}')"><img class="head-pic" src="${e.mm_emp_cover}"
                                                    alt=""/>${e.mm_emp_nickname}</a>
                                 <span class="l4">${e.dateline}</span>
                               <span class="l5">
@@ -245,9 +253,10 @@
                                                                           src="../img/tree_icons_group.png"
                                                                           title="诚信会员"></c:if>
                               </span>
-                                <span class="l6"><em class="text-list-view">查看详情<img class="have-pic"
-                                                                                     src="../img/icon_have_pic_green.png"
-                                                                                     alt=""/></em></span>
+                                <span class="l6"><em class="text-list-view" onclick="showDetail('${e.mm_msg_id}')">查看详情
+                                    <c:if test="${e.mm_msg_picurl !=''}"><img class="have-pic" src="../img/icon_have_pic_green.png"
+                                                                              alt="有图" title="有图"/></c:if>
+                                </em></span>
                             </a>
                         </li>
                     </c:forEach>
@@ -257,103 +266,27 @@
             <div class="clear"></div>
         </div>
 
-        <%--<!-- user-info -->--%>
-        <%--<div class="content mb2">--%>
-        <%--<div class="user-info w9">--%>
-        <%--<h3 class="area-head">公司简介：</h3>--%>
-        <%--<p class="company-info mb1">${empVO.mm_emp_company_detail}</p>--%>
-        <%--<a class="button fill-green mb2" href="${empVO.mm_emp_company_url}" target="_blank">${empVO.mm_emp_company}</a>--%>
+        <div class="page p_30 mb_10 tr">
+            <c:if test="${is_login=='1'}">
+                <input type="hidden" id="pageCount" value="6443">
+                <input type="hidden" name="size" id="size" value="${query.size}">
+                <a href="javascript:void(0);" onclick="nextPage('1')">第一页 </a>
+                <a href="javascript:void(0);" onclick="nextPage('${page.page-1}')">上一页</a>
+                <a href="javascript:void(0);" onclick="nextPage('${page.page+1}')">下一页</a>
+                <a href="javascript:void(0);" onclick="nextPage('${page.pageCount}')">最后页</a>
+                <span>跳到</span>
+        <span><input type="text" id="index" name="index" value="${page.page}"
+                     autocomplete="off" maxlength="6"
+                     value="${page.page}"
+                     onpaste="return false" style="text-align:center;"></span>
+                <span>页 </span>
+                <span><button type="button" onclick="searchIndex(event, '${page.page}')">GO</button></span>
+            </c:if>
+            <c:if test="${is_login=='0'}">
+                <a class="index-button" href="javaScript:void(0)" onclick="login()">登录查看更多信息</a>
+            </c:if>
+        </div>
 
-        <%--</div>--%>
-        <%--<div class="switcher mt1">--%>
-        <%--<div class="w9">--%>
-        <%--<h2 class="area-head tac mb1">发布过的信息</h2>--%>
-        <%--<div class="button-group-x2">--%>
-        <%--<a class="button fill-green" href="javaScript:void(0)" onclick="searchProfile('0')">求购</a>--%>
-        <%--<a class="button fill-green" href="javaScript:void(0)" onclick="searchProfile('1')">供应</a>--%>
-        <%--</div>--%>
-        <%--</div>--%>
-        <%--</div>--%>
-        <%--</div>--%>
-
-        <%--<div class="recent">--%>
-        <%--<c:forEach items="${list}" var="e" varStatus="st">--%>
-        <%--<div class="item">--%>
-        <%--<div class="item-heading clearfix">--%>
-        <%--<a href="javaScript:void(0)"  onclick="showDetail('${e.mm_msg_id}')" class="left clearfix">--%>
-        <%--<img src="${e.mm_emp_cover}" alt="" class="head-pic">--%>
-        <%--<div class="detail">--%>
-        <%--<h1 class="company">${e.mm_emp_company}&nbsp;${e.mm_emp_nickname}</h1>--%>
-        <%--<h3 class="time">${e.dateline} &nbsp;&nbsp; ${e.area}</h3>--%>
-        <%--</div>--%>
-        <%--</a>--%>
-        <%--<div class="right">--%>
-        <%--<div class="top clearfix">--%>
-        <%--<c:if test="${e.is_miaomu=='1'}"><img src="/img/tree_icons_trust.png" alt=""></c:if>--%>
-        <%--<c:if test="${e.is_chengxin=='1'}"><img src="/img/tree_icons_group.png" alt=""></c:if>--%>
-        <%--</div>--%>
-        <%--<div class="botton clearfix">--%>
-        <%--<c:if test="${e.mm_level_num=='0'}"><img src="/img/tree_icons_star_1.png" alt=""></c:if>--%>
-        <%--<c:if test="${e.mm_level_num=='1'}"><img src="/img/tree_icons_star_2.png" alt=""></c:if>--%>
-        <%--<c:if test="${e.mm_level_num=='2'}"><img src="/img/tree_icons_star_3.png" alt=""></c:if>--%>
-        <%--<c:if test="${e.mm_level_num=='3'}"><img src="/img/tree_icons_star_4.png" alt=""></c:if>--%>
-        <%--<c:if test="${e.mm_level_num=='4'}"><img src="/img/tree_icons_star_5.png" alt=""></c:if>--%>
-        <%--</div>--%>
-        <%--</div>--%>
-        <%--</div>--%>
-        <%--<a href="javaScript:void(0)" onclick="showDetail('${e.mm_msg_id}')" class="item-content">--%>
-        <%--${e.mm_msg_title}--%>
-        <%--${e.mm_msg_content}--%>
-        <%--</a>--%>
-        <%--<div class="item-footer clearfix">--%>
-        <%--<a type="button" href="tel:${e.mm_emp_mobile}"  class="button-phone"></a>--%>
-        <%--<a type="button" href="javaScript:void(0)" onclick="favourClick('${e.mm_msg_id}')" class="button-fav"></a>--%>
-        <%--<c:if test="${e.mm_msg_picurl !=''}"><a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-pic"></a></c:if>--%>
-        <%--</div>--%>
-        <%--</div>--%>
-        <%--</c:forEach>--%>
-
-        <%--<input type="hidden" id="mm_msg_type" name="mm_msg_type" value="${query.mm_msg_type}">--%>
-        <%--<input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${query.mm_emp_id}">--%>
-        <%--<!--分页信息，页面跳转-->--%>
-        <%--<div class="page clearfix">--%>
-        <%--<div class="left hide-phone">--%>
-        <%--<a><span>共${page.count}条/${page.pageCount}页</span></a>--%>
-        <%--<a>每页显示--%>
-        <%--<select name="size" id="size" onchange="nextPage('1')">--%>
-        <%--<option value="10" ${query.size==10?'selected':''}>10</option>--%>
-        <%--<option value="20" ${query.size==20?'selected':''}>20</option>--%>
-        <%--<option value="30" ${query.size==30?'selected':''}>30</option>--%>
-        <%--<option value="100" ${query.size==100?'selected':''}>100</option>--%>
-        <%--</select>条--%>
-        <%--</a>--%>
-        <%--</div>--%>
-        <%--<div class="right">--%>
-        <%--<c:choose >--%>
-        <%--<c:when test="${page.page == 1}">--%>
-        <%--<a href="javascript:void(0)">首页</a>--%>
-        <%--<a href="javascript:void(0)">《</a>--%>
-        <%--</c:when>--%>
-        <%--<c:otherwise>--%>
-        <%--<a href="javascript:void(0);" onclick="nextPage('1')">首页</a>--%>
-        <%--<a href="javascript:void(0);" onclick="nextPage('${page.page-1}')">《</a>--%>
-        <%--</c:otherwise>--%>
-        <%--</c:choose>--%>
-        <%--<a>第<input type="text" id="index" name="index" onkeyup="searchIndex(event)" value="${page.page}">页</a>--%>
-        <%--<c:choose>--%>
-        <%--<c:when test="${page.page == page.pageCount}">--%>
-        <%--<a href="javascript:void(0)">》</a>--%>
-        <%--<a href="javascript:void(0)">末页</a>--%>
-        <%--</c:when>--%>
-        <%--<c:otherwise>--%>
-        <%--<a href="javascript:void(0);" onclick="nextPage('${page.page+1}')">》</a>--%>
-        <%--<a href="javascript:void(0);" onclick="nextPage('${page.pageCount}')">末页</a>--%>
-        <%--</c:otherwise>--%>
-        <%--</c:choose>--%>
-        <%--</div>--%>
-        <%--</div>--%>
-
-        <%--</div>--%>
     </div>
 
 
@@ -389,7 +322,10 @@
             </ul>
         </div>
     </div>
+
     <div class="clear"></div>
+
+
 
 </div>
 
@@ -456,14 +392,14 @@
         var mm_emp_id = $("#mm_emp_id").val();
         var size = $("#size").val();
         if (_index <= ${page.pageCount} && _index >= 1) {
-            window.location.href = "/netProfileController/toProfile.do?page=" + page + "&size=" + size + "&mm_msg_type=" + mm_msg_type + "&mm_emp_id=" + mm_emp_id;
+            window.location.href = "/netProfileController/toProfile.do?page=" + page + "&size=" + size + "&mm_msg_type=" + mm_msg_type + "&mm_emp_id=" + mm_emp_id+ "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
     }
     function searchProfile(_mm_msg_type) {
         var mm_emp_id = $("#mm_emp_id").val();
-        window.location.href = "/netProfileController/toProfile.do?page=1" + "&size=10" + "&mm_msg_type=" + _mm_msg_type + "&mm_emp_id=" + mm_emp_id;
+        window.location.href = "/netProfileController/toProfile.do?page=1" + "&size=10" + "&mm_msg_type=" + _mm_msg_type + "&mm_emp_id=" + mm_emp_id+ "&_t=" + new Date().getTime();
     }
 
     function nextPage(_page) {
@@ -473,7 +409,7 @@
         var mm_emp_id = $("#mm_emp_id").val();
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1)) {
-            window.location.href = "/netProfileController/toProfile.do?page=" + page + "&size=" + size + "&mm_msg_type=" + mm_msg_type + "&mm_emp_id=" + mm_emp_id;
+            window.location.href = "/netProfileController/toProfile.do?page=" + page + "&size=" + size + "&mm_msg_type=" + mm_msg_type + "&mm_emp_id=" + mm_emp_id+ "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }

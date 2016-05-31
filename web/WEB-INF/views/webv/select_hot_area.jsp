@@ -166,24 +166,6 @@
     <!-- TOOLBAR -->
 </div>
 
-<%--<link rel="stylesheet" href="/css/dialog_reset.css"> <!-- CSS reset -->--%>
-<%--<link rel="stylesheet" href="/css/dialog_style.css"> <!-- Resource style -->--%>
-<%--<script src="/js/dialog_main.js"></script> <!-- Resource jQuery -->--%>
-
-<%--<div class="cd-popup" role="alert">--%>
-<%--<div class="cd-popup-container">--%>
-<%--<p>请先注册或联系管理员</p>--%>
-<%--<ul class="cd-buttons">--%>
-<%--<li><a href="javaScript:void(0)" onclick="reg()">注册</a></li>--%>
-<%--<li><a href="javaScript:void(0)" onclick="login()">登录</a></li>--%>
-<%--</ul>--%>
-<%--<ul style="background: #ffffff;line-height: 45px;">--%>
-<%--<li><a href="/webvKefuController/toKefu.do">客服中心</a></li>--%>
-<%--</ul>--%>
-<%--<a href="javaScript:void(0)" class="cd-popup-close img-replace">关闭</a>--%>
-<%--</div> <!-- cd-popup-container -->--%>
-<%--</div> <!-- cd-popup -->--%>
-
 </body>
 <script>
     function selectPro() {
@@ -250,7 +232,7 @@
         var size = $("#size").val();
         var countryid = $("#countryid").val();
         if (_index <= ${page.pageCount} && _index >= 1) {
-            window.location.href = "/webvHotController/toIndex.do?page=" + page + "&size=" + size + "&is_guanzhu='1'" + "&countryid=" + countryid;
+            window.location.href = "/webvHotController/toIndex.do?page=" + page + "&size=" + size + "&is_guanzhu='1'" + "&countryid=" + countryid+ "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
@@ -262,7 +244,7 @@
         var size = $("#size").val();
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1)) {
-            window.location.href = "/webvHotController/toIndex.do?page=" + page + "&size=" + size + "&is_guanzhu='1'" + "&countryid=" + countryid;
+            window.location.href = "/webvHotController/toIndex.do?page=" + page + "&size=" + size + "&is_guanzhu='1'" + "&countryid=" + countryid+ "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }

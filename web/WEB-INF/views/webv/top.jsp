@@ -286,7 +286,6 @@
 </script>
 
 <script type="text/javascript" charset="UTF-8">
-
     function searchIndex(e) {
         if (e.keyCode != 13) return;
         var _index = $("#index").val();
@@ -294,7 +293,7 @@
         var size = $("#size").val();
         var keyword = $("#keyword").val();
         if (_index <= ${page.pageCount} && _index >= 1) {
-            window.location.href = "/webvTopController/toTop.do?page=" + page + "&size=" + size + "&keyword=" + keyword;
+            window.location.href = "/webvTopController/toTop.do?page=" + page + "&size=" + size + "&keyword=" + keyword+ "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
@@ -306,7 +305,7 @@
         var keyword = $("#keyword").val();
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1)) {
-            window.location.href = "/webvTopController/toTop.do?page=" + page + "&size=" + size + "&keyword=" + keyword;
+            window.location.href = "/webvTopController/toTop.do?page=" + page + "&size=" + size + "&keyword=" + keyword+ "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }

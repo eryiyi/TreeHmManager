@@ -239,7 +239,7 @@
         var mm_msg_type = $("#mm_msg_type").val();
         var countryid = $("#countryid").val();
         if (_index <= ${page.pageCount} && _index >= 1) {
-            window.location.href = "/webvGuanzhuController/guanzhuArea.do?page=" + page + "&size=" + size + "&countryid=" + countryid + "mm_msg_type" + mm_msg_type;
+            window.location.href = "/webvGuanzhuController/guanzhuArea.do?page=" + page + "&size=" + size + "&countryid=" + countryid + "mm_msg_type" + mm_msg_type+ "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
@@ -252,7 +252,7 @@
         var countryid = $("#countryid").val();
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1)) {
-            window.location.href = "/webvGuanzhuController/guanzhuArea.do?page=" + page + "&size=" + size + "&countryid=" + countryid + "&mm_msg_type=" + mm_msg_type;
+            window.location.href = "/webvGuanzhuController/guanzhuArea.do?page=" + page + "&size=" + size + "&countryid=" + countryid + "&mm_msg_type=" + mm_msg_type+ "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
@@ -261,7 +261,7 @@
     function gzClickArea(_countryid) {
         var size = $("#size").val();
         var mm_msg_type = $("#mm_msg_type").val();
-        window.location.href = "/webvGuanzhuController/guanzhuArea.do?page=1" + "&size=" + size + "&countryid=" + _countryid + "&mm_msg_type=" + mm_msg_type;
+        window.location.href = "/webvGuanzhuController/guanzhuArea.do?page=1" + "&size=" + size + "&countryid=" + _countryid + "&mm_msg_type=" + mm_msg_type+ "&_t=" + new Date().getTime();
     }
 
 </script>
