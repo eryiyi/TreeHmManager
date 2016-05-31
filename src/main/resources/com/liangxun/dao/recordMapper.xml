@@ -17,6 +17,7 @@
         <result column="provinceid" property="provinceid"/>
         <result column="cityid" property="cityid"/>
         <result column="countryid" property="countryid"/>
+        <result column="mm_msg_video" property="mm_msg_video"/>
     </resultMap>
     <resultMap id="record_vo" type="com.liangxunwang.unimanager.mvc.vo.RecordVO">
         <id column="mm_msg_id" property="mm_msg_id"/>
@@ -46,6 +47,7 @@
 
         <result column="lat" property="lat"/>
         <result column="lng" property="lng"/>
+        <result column="mm_msg_video" property="mm_msg_video"/>
     </resultMap>
 
     <select id="listRecordVo" resultMap="record_vo">
@@ -134,8 +136,8 @@
     </select>
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.Record">
-        INSERT INTO mm_msg( mm_msg_id, mm_emp_id, mm_msg_type, mm_msg_title, mm_msg_content, mm_msg_picurl, dateline,is_del, is_top, top_num, provinceid, cityid, countryid)
-        VALUES ( #{mm_msg_id}, #{mm_emp_id}, #{mm_msg_type}, #{mm_msg_title, jdbcType=VARCHAR}, #{mm_msg_content, jdbcType=VARCHAR}, #{mm_msg_picurl, jdbcType=VARCHAR}, #{dateline}, #{is_del}, #{is_top}, #{top_num}, #{provinceid}, #{cityid}, #{countryid})
+        INSERT INTO mm_msg( mm_msg_id, mm_emp_id, mm_msg_type, mm_msg_title, mm_msg_content, mm_msg_picurl, dateline,is_del, is_top, top_num, provinceid, cityid, countryid, mm_msg_video)
+        VALUES ( #{mm_msg_id}, #{mm_emp_id}, #{mm_msg_type}, #{mm_msg_title, jdbcType=VARCHAR}, #{mm_msg_content, jdbcType=VARCHAR}, #{mm_msg_picurl, jdbcType=VARCHAR}, #{dateline}, #{is_del}, #{is_top}, #{top_num}, #{provinceid}, #{cityid}, #{countryid}, #{mm_msg_video, jdbcType=VARCHAR})
     </insert>
 
     <select id="findById" resultMap="record_vo" parameterType="String">

@@ -13,6 +13,8 @@ import com.liangxunwang.unimanager.util.*;
 import com.qiniu.common.QiniuException;
 import com.qiniu.storage.BucketManager;
 import com.qiniu.util.Auth;
+import com.qiniu.util.StringMap;
+import com.qiniu.util.UrlSafeBase64;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
@@ -157,6 +159,13 @@ public class AppRecordService implements ListService ,SaveService, FindService{
         List<RecordVO> list = recordDao.listRecordVo(map);
         long count = recordDao.count(map);
         for (RecordVO record : list){
+            if(!StringUtil.isNullOrEmpty(record.getMm_msg_video())){
+                if (record.getMm_msg_video().startsWith("upload")){
+                    record.setMm_msg_video(Constants.URL + record.getMm_msg_video());
+                }else {
+                    record.setMm_msg_video(Constants.QINIU_URL + record.getMm_msg_video());
+                }
+            }
             //处理经纬度
             if(!StringUtil.isNullOrEmpty(record.getLat()) && !StringUtil.isNullOrEmpty(record.getLng())){
                 record.setMm_msg_title(record.getLat() +"," + record.getLng());//把经纬度放到title字段里
@@ -237,6 +246,10 @@ public class AppRecordService implements ListService ,SaveService, FindService{
         record.setIs_del("0");
         record.setIs_top("0");
         record.setTop_num("0");
+        if(!StringUtil.isNullOrEmpty(record.getMm_msg_video())){
+            String picName = getVideoPic(record.getMm_msg_video());
+            record.setMm_msg_picurl(picName);
+        }
         recordDao.save(record);
 
         RecordVO vo = recordDao.findById(record.getMm_msg_id());
@@ -333,4 +346,36 @@ public class AppRecordService implements ListService ,SaveService, FindService{
 //        }
 //        return null;
 //    }
+
+    private String getVideoPic(String videoName){
+        String picName = UUIDFactory.random();
+        StringMap params = new StringMap()
+                .putWhen("force", 1, true)
+                .putNotEmpty("pipeline", "");
+
+        String saveas = Constants.QINIU_SPACE+":"+picName;
+        String safeSaveas = UrlSafeBase64.encodeToString(saveas);
+
+        String fops = "vframe/jpg/offset/1/rotate/auto|saveas/";
+
+        String fop = fops + safeSaveas;
+
+        String persistentId;
+        try {
+            persistentId = new Ops().oper(Constants.QINIU_SPACE, videoName,fop,params);
+            System.out.println(persistentId);
+        } catch (QiniuException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            try {
+                System.out.println(e.response.bodyString());
+            } catch (QiniuException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+        }
+
+        return picName;
+    }
+
 }

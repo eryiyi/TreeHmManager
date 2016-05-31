@@ -61,6 +61,7 @@ public class MemberRegisterService implements SaveService,UpdateService{
         member.setMm_emp_beizhu("");
         member.setMm_emp_company_detail("");
         member.setIs_upate_profile("0");//是否补充资料 默认否
+        member.setIs_video("1");//0否  1是  发布视频
 
 
         //判断审核方式

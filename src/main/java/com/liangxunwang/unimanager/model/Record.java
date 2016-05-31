@@ -18,9 +18,18 @@ public class Record {
     private String cityid;
     private String countryid;
     private String accessToken;
+    private String mm_msg_video;
 
     private String mm_emp_msg_num;//允许会员发布的信息数量
     private String is_read;
+
+    public String getMm_msg_video() {
+        return mm_msg_video;
+    }
+
+    public void setMm_msg_video(String mm_msg_video) {
+        this.mm_msg_video = mm_msg_video;
+    }
 
     public String getIs_read() {
         return is_read;

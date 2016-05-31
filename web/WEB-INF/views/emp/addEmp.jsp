@@ -283,6 +283,17 @@
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="col-sm-2 control-label">发布视频</label>
+
+                        <div class="col-sm-4">
+                            <select class="form-control" id="is_video">
+                                <option value="">--请选择--</option>
+                                <option value="0" selected="selected">不允许</option>
+                                <option value="1">允许</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="col-sm-2 control-label">照片发布权限</label>
 
                         <div class="col-sm-4">
@@ -399,6 +410,7 @@
         var is_miaomu = $("#is_miaomu").val();
         var is_use = $("#is_use").val();
         var ischeck = $("#ischeck").val();
+        var is_video = $("#is_video").val();
         var lat_company = $("#lat_company").val();
         var lng_company = $("#lng_company").val();
 
@@ -457,6 +469,7 @@
             return;
         }
 
+
 //    if(mm_emp_endtime.replace(/\s/g, '') == ''){
 //      alert("请选择VIP到期日期");
 //      return;
@@ -495,6 +508,10 @@
         }
         if (is_pic.replace(/\s/g, '') == '') {
             alert("请选择发布图片权限");
+            return;
+        }
+        if (is_video.replace(/\s/g, '') == '') {
+            alert("请选择是否允许发布视频");
             return;
         }
         if (is_chengxin.replace(/\s/g, '') == '') {
@@ -549,6 +566,7 @@
                 "is_use": is_use,
                 "lat_company": lat_company,
                 "lng_company": lng_company,
+                "is_video": is_video,
                 "ischeck": ischeck
             },
             async: false,
