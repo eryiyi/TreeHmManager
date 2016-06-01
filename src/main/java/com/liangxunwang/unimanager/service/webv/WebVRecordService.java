@@ -186,6 +186,13 @@ public class WebVRecordService implements ListService,DeleteService,ExecuteServi
     public Object execute(Object object) throws ServiceException {
         String mm_msg_id = (String) object;
         RecordVO recordVO = recordDao.findById(mm_msg_id);
+        if(!StringUtil.isNullOrEmpty(recordVO.getMm_msg_video())){
+            if (recordVO.getMm_msg_video().startsWith("upload")){
+                recordVO.setMm_msg_video(Constants.URL + recordVO.getMm_msg_video());
+            }else {
+                recordVO.setMm_msg_video(Constants.QINIU_URL + recordVO.getMm_msg_video());
+            }
+        }
         if (recordVO != null && !StringUtil.isNullOrEmpty(recordVO.getMm_emp_cover())){
             if (recordVO.getMm_emp_cover().startsWith("upload")){
                 recordVO.setMm_emp_cover(Constants.URL+recordVO.getMm_emp_cover());

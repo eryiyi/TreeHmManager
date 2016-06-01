@@ -36,6 +36,7 @@
     <script type="text/javascript" src="../js/validation.js"></script>
     <script language="javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/jquery_latest.js"></script>
+    <script src="http://html5media.googlecode.com/svn/trunk/src/html5media.min.js"></script>
 
 </head>
 <body>
@@ -198,10 +199,17 @@
                 <li>
                     <%--<p>${recordVO.mm_msg_content}</p>--%>
                     ${recordVO.mm_msg_content}
-                    <%--处理图片--%>
-                    <c:forEach items="${picArr}" var="epic" varStatus="st">
-                        <p><img src="${epic}" alt=""/></p>
-                    </c:forEach>
+
+                        <c:if test="${recordVO.mm_msg_video == null}">
+                            <%--处理图片--%>
+                            <c:forEach items="${picArr}" var="epic" varStatus="st">
+                                <p><img src="${epic}" alt=""/></p>
+                            </c:forEach>
+                        </c:if>
+                        <c:if test="${recordVO.mm_msg_video != null}">
+                           <p> 网站暂不支持视频播放，请下载APP查看更多信息！</p>
+                        </c:if>
+
                 </li>
             </ul>
 

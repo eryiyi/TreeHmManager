@@ -93,6 +93,38 @@ body {
     background-size: 50px;
 }
 
+.item .item-footer .button-video {
+    float: right;
+    display: block;
+    height: 50px;
+    width: 50px;
+    margin: 0 5px;
+    background: url("/img/tree_button_video.png") no-repeat center center;
+    background-size: 50px;
+}
+
+.item .item-footer .button-video:active {
+    background: url("/img/tree_button_video.png") no-repeat center center;
+    background-size: 50px;
+}
+
+
+.item .item-footer .button-video{
+    float: right;
+    display: block;
+    height: 50px;
+    width: 50px;
+    margin: 0 5px;
+    background: url("/img/tree_button_video.png") no-repeat center center;
+    background-size: 50px;
+}
+
+.item .item-footer .button-video:active {
+    background: url("/img/tree_button_video.png") no-repeat center center;
+    background-size: 50px;
+}
+
+
 .item .item-footer .button-phone {
     float: right;
     display: block;

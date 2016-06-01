@@ -164,11 +164,18 @@
                         <%--<a href="" class="read-status-unread"></a>--%>
 
                     <a href="tel:${e.mm_emp_mobile}" class="button-phone"></a>
+
                     <a type="button" href="javaScript:void(0)" onclick="favourClick('${e.mm_msg_id}')"
-                       class="button-fav"></a>
-                    <c:if test="${e.mm_msg_picurl !='' && e.mm_msg_picurl != nul}"><a type="button"
-                                                                                      onclick="showDetail('${e.mm_msg_id}')"
-                                                                                      class="button-pic"></a></c:if>
+                       class="button-fav">
+                    </a>
+
+                    <c:if test="${ e.mm_msg_video ==null && e.mm_msg_picurl !='' && e.mm_msg_picurl != nul}">
+                        <a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-pic"></a>
+                    </c:if>
+
+                    <c:if test="${e.mm_msg_video !='' && e.mm_msg_video != nul}">
+                        <a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-video"></a>
+                    </c:if>
 
                 </div>
             </div>

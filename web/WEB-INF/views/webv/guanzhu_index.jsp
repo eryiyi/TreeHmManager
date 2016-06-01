@@ -104,9 +104,13 @@
                     <a type="button" href="tel:${e.mm_emp_mobile}" class="button-phone"></a>
                     <a type="button" href="javaScript:void(0)" onclick="favourClick('${e.mm_msg_id}')"
                        class="button-fav"></a>
-                    <c:if test="${e.mm_msg_picurl !='' && e.mm_msg_picurl != nul}"><a type="button"
-                                                                                      onclick="showDetail('${e.mm_msg_id}')"
-                                                                                      class="button-pic"></a></c:if>
+                    <c:if test="${ e.mm_msg_video ==null && e.mm_msg_picurl !='' && e.mm_msg_picurl != nul}">
+                        <a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-pic"></a>
+                    </c:if>
+
+                    <c:if test="${e.mm_msg_video !='' && e.mm_msg_video != nul}">
+                        <a type="button" onclick="showDetail('${e.mm_msg_id}')" class="button-video"></a>
+                    </c:if>
                 </div>
             </div>
         </c:forEach>
@@ -161,15 +165,15 @@
     <div class="toolbar-2">
 
         <c:if test="${query.mm_msg_type =='0'}">
-            <a href="javaScript:void(0)" onclick="toPage('/webvGuanzhuController/guanzhuArea.do','1','0')"
+            <a href="javaScript:void(0)" onclick="gzClickAreaT('${countryid}','0')"
                class="buy buy-active"></a>
-            <a href="javaScript:void(0)" onclick="toPage('/webvGuanzhuController/guanzhuArea.do','1','1')"
+            <a href="javaScript:void(0)"  onclick="gzClickAreaT('${countryid}','1')"
                class="sell"></a>
         </c:if>
         <c:if test="${query.mm_msg_type =='1'}">
-            <a href="javaScript:void(0)" onclick="toPage('/webvGuanzhuController/guanzhuArea.do','1','0')"
+            <a href="javaScript:void(0)"  onclick="gzClickAreaT('${countryid}','0')"
                class="buy"></a>
-            <a href="javaScript:void(0)" onclick="toPage('/webvGuanzhuController/guanzhuArea.do','1','1')"
+            <a href="javaScript:void(0)"  onclick="gzClickAreaT('${countryid}','1')"
                class="sell sell-active"></a>
         </c:if>
     </div>
@@ -184,11 +188,12 @@
         window.location.href = "/webvSelectProvinceController/toSelectProvince.do";
     }
 
-    function toPage(_url, _page, _type) {
-        if (_page != '') {
-            window.location.href = _url + "?page=" + _page + "&mm_msg_type=" + _type;
-        }
-    }
+//    function toPage(_url, _page, _type) {
+//
+//        if (_page != '') {
+//            window.location.href = _url + "?page=" + _page + "&mm_msg_type=" + _type;
+//        }
+//    }
     function favourClick(_mm_msg_id) {
         //先判断是否登录
         var is_login = $("#is_login").val();
@@ -264,6 +269,10 @@
         window.location.href = "/webvGuanzhuController/guanzhuArea.do?page=1" + "&size=" + size + "&countryid=" + _countryid + "&mm_msg_type=" + mm_msg_type+ "&_t=" + new Date().getTime();
     }
 
+    function gzClickAreaT(_countryid,_mm_msg_type) {
+        var size = $("#size").val();
+        window.location.href = "/webvGuanzhuController/guanzhuArea.do?page=1" + "&size=" + size + "&countryid=" + _countryid + "&mm_msg_type=" + _mm_msg_type+ "&_t=" + new Date().getTime();
+    }
 </script>
 <script type="text/javascript">
     (function (window, undefined) {

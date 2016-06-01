@@ -78,9 +78,18 @@
 
                 <div class="img-holder clearfix">
 
-                    <c:forEach items="${pics}" var="e" varStatus="st">
-                        <a href="${e}" target="_blank"><img src="${e}" alt=""></a>
-                    </c:forEach>
+
+
+                    <c:if test="${recordVO.mm_msg_video == null}">
+                        <%--处理图片--%>
+                        <c:forEach items="${pics}" var="e" varStatus="st">
+                            <a href="${e}" target="_blank"><img src="${e}" alt=""></a>
+                        </c:forEach>
+                    </c:if>
+                    <c:if test="${recordVO.mm_msg_video != null}">
+                        <p> 微信版暂不支持视频播放，请下载APP手机版查看更多信息！</p>
+                    </c:if>
+
 
                 </div>
             </div>

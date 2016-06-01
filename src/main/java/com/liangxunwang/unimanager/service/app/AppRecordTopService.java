@@ -57,6 +57,13 @@ public class AppRecordTopService implements ListService {
         List<RecordVO> list = recordDao.listRecordVoTop(map);
 
         for (RecordVO record : list){
+            if(!StringUtil.isNullOrEmpty(record.getMm_msg_video())){
+                if (record.getMm_msg_video().startsWith("upload")){
+                    record.setMm_msg_video(Constants.URL + record.getMm_msg_video());
+                }else {
+                    record.setMm_msg_video(Constants.QINIU_URL + record.getMm_msg_video());
+                }
+            }
             //处理内容-文字超出限制
             if(!StringUtil.isNullOrEmpty(record.getMm_msg_content())){
                 if(record.getMm_msg_content().length() > 20){
