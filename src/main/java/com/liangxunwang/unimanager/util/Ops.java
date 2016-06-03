@@ -20,7 +20,7 @@ public class Ops {
      * @throws com.qiniu.common.QiniuException ����ʧ���쳣������������Ӧ����Ϣ
      */
     public String oper(String bucket, String key, String fops, StringMap params) throws QiniuException {
-
+//		String bucket, String key, String fops, StringMap params
     	String persistentId = operater.pfop(bucket, key, fops, params);
 		return persistentId;
         
