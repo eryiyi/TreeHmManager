@@ -477,21 +477,21 @@ a.show-sidebar:hover {
     display: none;
 }
 
-#sidebar-left.col-xs-2 {
+#sidebar-left.col-xs-4 {
     opacity: 0;
     width: 0%;
     padding: 0;
 }
 
-.sidebar-show #sidebar-left.col-xs-2 {
+.sidebar-show #sidebar-left.col-xs-4 {
     opacity: 1;
-    width: 16.666666666666664%;
+    width: 33.333333333333333%;
     padding: 0 15px;
 }
 
 .sidebar-show #content.col-xs-12 {
     opacity: 1;
-    width: 83.33333333333334%;
+    width: 66.66666666666665%;
 }
 
 .expanded {
@@ -2657,7 +2657,7 @@ ul.DTTT_dropdown.dropdown-menu > li:hover > a {
 
 @media (max-width: 767px) {
     #main {
-        margin-top: 100px;
+        margin-top: 50px;
     }
 
     #messages-menu {

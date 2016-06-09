@@ -90,19 +90,11 @@
 <header class="navbar">
     <div class="container-fluid expanded-panel">
         <div class="row">
-            <div id="logo" class="col-xs-12 col-sm-2">
-                <a href="javascript:void(0);">花木通后台管理系统</a>
-            </div>
-
-            <div id="top-panel" class="col-xs-12 col-sm-10">
+            <div id="logo" class="col-xs-8 col-sm-5"><a href="javascript:void(0);">花木通后台管理系统</a></div>
+            <div id="top-panel" class="col-xs-4 col-sm-7">
                 <div class="row">
-                    <div class="col-xs-8 col-sm-4">
-                        <%--<div id="search">--%>
-                        <%--<input type="text" placeholder="search"/>--%>
-                        <%--<i class="fa fa-search"></i>--%>
-                        <%--</div>--%>
-                    </div>
-                    <div class="col-xs-8 col-sm-8 top-panel-right">
+                    <%--<div class="col-xs-8 col-sm-4"> <div id="search"> <input type="text" placeholder="search"/> <i class="fa fa-search"></i> </div> </div>--%>
+                    <div class="col-xs-12 col-sm-12 top-panel-right">
                         <%--<a href="javascript:void(0);" class="about">about</a>--%>
                         <%--<a href="javascript:void(0);" class="style1"></a>--%>
                         <ul class="nav navbar-nav pull-right panel-menu">
@@ -138,12 +130,12 @@
 <!--Start Container-->
 <div id="main" class="container-fluid">
     <div class="row">
-        <div id="sidebar-left" class="col-xs-2 col-sm-2">
+        <div id="sidebar-left" class="col-xs-4 col-sm-2">
             <ul class="nav main-menu">
                 <li>
                     <a href="javascript:void(0);" class="active" onclick="toPage('mainPage','')">
                         <i class="fa fa-home"></i>
-                        <span class="hidden-xs">主页</span>
+                        <span>主页</span>
                     </a>
                 </li>
 
@@ -151,7 +143,7 @@
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
                             <i class="fa fa-user-md"></i>
-                            <span class="hidden-xs">角色管理</span>
+                            <span>角色管理</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('ADD_ROLE', sessionScope.powers)}">
@@ -167,7 +159,7 @@
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
                             <i class="fa fa-user"></i>
-                            <span class="hidden-xs">管理员</span>
+                            <span>管理员</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('MANAGER_ADD_MANAGE', sessionScope.powers)}">
@@ -185,7 +177,7 @@
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
                             <i class="fa fa-group"></i>
-                            <span class="hidden-xs">会员管理</span>
+                            <span>会员管理</span>
                         </a>
                         <ul class="dropdown-menu">
                                 <%--<li><a href="javascript:void(0);" onclick="toPage('/role/add','')">添加宝宝</a></li>--%>
@@ -206,7 +198,7 @@
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
                             <i class="fa fa-comments"></i>
-                            <span class="hidden-xs">信息管理</span>
+                            <span>信息管理</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('QIUGOU_MSG', sessionScope.powers)}">
@@ -224,8 +216,8 @@
                 <c:if test="${um:permission('PAIHANG_SHANGHU_MANAGE', sessionScope.powers)}">
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
-                            <i class="fa fa-reorder"></i>
-                            <span class="hidden-xs">金牌榜</span>
+                            <i class="fa fa-thumbs-up "></i>
+                            <span>金牌榜</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('PAIHANG_SHANGHU_MANAGE', sessionScope.powers)}">
@@ -239,7 +231,7 @@
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
                             <i class="fa fa-phone"></i>
-                            <span class="hidden-xs">客服电话</span>
+                            <span>客服电话</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('ADD_TEL_KEFU_MANAGE', sessionScope.powers)}">
@@ -259,7 +251,7 @@
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
                             <i class="fa fa-credit-card"></i>
-                            <span class="hidden-xs">广告管理</span>
+                            <span>广告管理</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('ADD_AD_MANAGE', sessionScope.powers)}">
@@ -276,7 +268,7 @@
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
                             <i class="fa fa-credit-card"></i>
-                            <span class="hidden-xs">关注管理</span>
+                            <span>关注管理</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('GUANZHU_LIST_MANAGE', sessionScope.powers)}">
@@ -290,7 +282,7 @@
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
                             <i class="fa fa-credit-card"></i>
-                            <span class="hidden-xs">注册审核方式</span>
+                            <span>注册审核方式</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('SHNEHE_TYPE_MANAGE', sessionScope.powers)}">
@@ -303,8 +295,8 @@
                 <c:if test="${um:permission('ADD_WEIXIN_KEFU_MANAGE', sessionScope.powers)||um:permission('WEIXIN_KEFU_MANAGE', sessionScope.powers)}">
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
-                            <i class="fa fa-shopping-cart"></i>
-                            <span class="hidden-xs">微信客服</span>
+                            <i class="glyphicon glyphicon-user"></i>
+                            <span>微信客服</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('ADD_WEIXIN_KEFU_MANAGE', sessionScope.powers)}">
@@ -321,7 +313,7 @@
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
                             <i class="fa fa-envelope"></i>
-                            <span class="hidden-xs">举报管理</span>
+                            <span>举报管理</span>
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="javascript:void(0);" onclick="toPage('/report/list','1')">举报列表</a></li>
@@ -333,7 +325,7 @@
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
                             <i class="fa fa-sitemap"></i>
-                            <span class="hidden-xs">等级管理</span>
+                            <span>等级管理</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('ADD_LEVEL', sessionScope.powers)}">
@@ -350,7 +342,7 @@
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
                             <i class="fa fa-credit-card"></i>
-                            <span class="hidden-xs">会费管理</span>
+                            <span>会费管理</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('ADD_FEIYONG', sessionScope.powers)}">
@@ -367,7 +359,7 @@
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
                             <i class="fa fa-shopping-cart"></i>
-                            <span class="hidden-xs">订单管理</span>
+                            <span>订单管理</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('ORDER_LIST', sessionScope.powers)}">
@@ -380,7 +372,7 @@
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
                             <i class="fa fa-leaf"></i>
-                            <span class="hidden-xs">服务管理</span>
+                            <span>服务管理</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('FUWU_ADD', sessionScope.powers)}">
@@ -397,7 +389,7 @@
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
                             <i class="fa fa-envelope"></i>
-                            <span class="hidden-xs">意见反馈</span>
+                            <span>意见反馈</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('SUGGEST_MANAGE', sessionScope.powers)}">
@@ -411,7 +403,7 @@
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
                             <i class="fa fa-bullhorn"></i>
-                            <span class="hidden-xs">公告管理</span>
+                            <span>公告管理</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('ADD_NOTICE', sessionScope.powers)}">
@@ -431,7 +423,7 @@
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
                             <i class="fa fa-globe"></i>
-                            <span class="hidden-xs">地区管理</span>
+                            <span>地区管理</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('PROVINCE_LIST', sessionScope.powers)}">
@@ -451,7 +443,7 @@
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
                             <i class="fa fa-reorder"></i>
-                            <span class="hidden-xs">日志管理</span>
+                            <span>日志管理</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('LOGO_LIST', sessionScope.powers)}">
@@ -468,7 +460,7 @@
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
                             <i class="fa fa-info"></i>
-                            <span class="hidden-xs">关于我们</span>
+                            <span>关于我们</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('ABOUT_US_MANA', sessionScope.powers)}">
@@ -480,8 +472,8 @@
                 <c:if test="${um:permission('VIP_END_TIME_NOTICE_MANA', sessionScope.powers)}">
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
-                            <i class="fa fa-info"></i>
-                            <span class="hidden-xs">提醒语句</span>
+                            <i class="glyphicon glyphicon-comment"></i>
+                            <span>提醒语句</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('VIP_END_TIME_NOTICE_MANA', sessionScope.powers)}">
@@ -495,8 +487,8 @@
                 <c:if test="${um:permission('NEARBY_DISTANCE_MANA', sessionScope.powers)}">
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
-                            <i class="fa fa-info"></i>
-                            <span class="hidden-xs">附近距离</span>
+                            <i class="glyphicon glyphicon-road"></i>
+                            <span>附近距离</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('NEARBY_DISTANCE_MANA', sessionScope.powers)}">
@@ -510,8 +502,8 @@
                 <c:if test="${um:permission('MSG_KONGZHI_MANA', sessionScope.powers)}">
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
-                            <i class="fa fa-info"></i>
-                            <span class="hidden-xs">控制信息显示的天数</span>
+                            <i class="glyphicon glyphicon-calendar"></i>
+                            <span>控制信息显示的天数</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('MSG_KONGZHI_MANA', sessionScope.powers)}">
@@ -525,8 +517,8 @@
                 <c:if test="${um:permission('HOT_CITY_ADD_MANA', sessionScope.powers) || um:permission('HOT_CITY_LIST_MANA', sessionScope.powers)}">
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
-                            <i class="fa fa-reorder"></i>
-                            <span class="hidden-xs">热门城市</span>
+                            <i class="glyphicon glyphicon-screenshot"></i>
+                            <span>热门城市</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('HOT_CITY_ADD_MANA', sessionScope.powers)}">
@@ -544,8 +536,8 @@
                 <c:if test="${um:permission('HOT_AREA_ADD_MANA', sessionScope.powers) || um:permission('HOT_AREA_LIST_MANA', sessionScope.powers)}">
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
-                            <i class="fa fa-reorder"></i>
-                            <span class="hidden-xs">热门县区</span>
+                            <i class="glyphicon glyphicon-screenshot"></i>
+                            <span>热门县区</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('HOT_AREA_ADD_MANA', sessionScope.powers)}">
@@ -564,8 +556,8 @@
                 <c:if test="${um:permission('EMP_LOGIN_NUMBER_MANA', sessionScope.powers) || um:permission('EMP_LOGIN_NUM_NUMBER_MANA', sessionScope.powers)}">
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
-                            <i class="fa fa-reorder"></i>
-                            <span class="hidden-xs">活跃度</span>
+                            <i class="glyphicon glyphicon-dashboard"></i>
+                            <span>活跃度</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('EMP_LOGIN_NUMBER_MANA', sessionScope.powers)}">
@@ -600,7 +592,7 @@
                 </div>
             </div>
             <div class="preloader">
-                <img src="/img/devoops_getdata.gif" class="devoops-getdata" alt="preloader"/>
+                <img src="/img/devoops_getdata.gif" style="width: 100%" alt="preloader"/>
             </div>
             <div id="ajax-content"></div>
         </div>

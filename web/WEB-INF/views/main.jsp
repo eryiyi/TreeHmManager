@@ -1,6 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!--Start Content-->
+<div class="row">
+    <div id="breadcrumb" class="col-xs-12">
+        <a href="#" class="show-sidebar">
+            <i class="fa fa-bars"></i>
+        </a>
+        <ol class="breadcrumb pull-left">
+            <li><a href="javascript:void(0)" onclick="toPage('mainPage','')">主页</a></li>
+        </ol>
+    </div>
+</div>
 <div class="cat-content">
 
     <a href="javascript:void(0);"></a>

@@ -2,11 +2,11 @@
 <%@ taglib prefix="um" uri="/unimanager-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" trimDirectiveWhitespaces="true" %>
 <div class="row">
-    <div id="breadcrumb" class="col-xs-12">
+    <div id="" class="col-xs-12">
         <a href="#" class="show-sidebar">
             <i class="fa fa-bars"></i>
         </a>
-        <ol class="breadcrumb pull-left">
+        <ol class=" pull-left">
             <li><a href="javascript:void(0)" onclick="toPage('mainPage','')">主页</a></li>
             <li><a href="javascript:void(0)">关于我们</a></li>
             <li><a href="javascript:void(0)">关于我们</a></li>

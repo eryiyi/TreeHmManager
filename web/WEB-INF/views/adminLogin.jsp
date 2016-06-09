@@ -7,6 +7,8 @@
     <meta name="description" content="description">
     <meta name="author" content="Evgeniya">
     <meta name="keyword" content="keywords">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <%--<meta name="viewport" content="width=device-width, initial-scale=1">--%>
     <link href="/plugins/bootstrap/bootstrap.css" rel="stylesheet">
     <%--<link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css" rel="stylesheet">--%>
@@ -76,6 +78,7 @@
     <div id="page-login" class="row">
         <div class="col-xs-12 col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
             <div class="box">
+                <form>
                 <div class="box-content">
                     <div class="text-center">
                         <h3>花木通后台登陆</h3>
@@ -100,11 +103,12 @@
                     <div class="space"></div>
                     <div class="row">
                         <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-                            <a class="btn btn-success btn-block" onclick="login();">登陆</a>
+                            <button type="submit" class="btn btn-success btn-block" onclick="login();">登陆</button>
                         </div>
                     </div>
 
                 </div>
+                </form>
             </div>
         </div>
     </div>
