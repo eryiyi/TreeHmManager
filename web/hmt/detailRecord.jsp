@@ -36,7 +36,7 @@
     <script type="text/javascript" src="../js/validation.js"></script>
     <script language="javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/jquery_latest.js"></script>
-    <script src="http://html5media.googlecode.com/svn/trunk/src/html5media.min.js"></script>
+    <%--<script src="http://html5media.googlecode.com/svn/trunk/src/html5media.min.js"></script>--%>
 
 </head>
 <body>
@@ -214,20 +214,20 @@
             </ul>
 
             <div class="details-contact">
-                <div class="map-holder" style="width: 100%;height: 200px;">
+                <%--<div class="map-holder" style="width: 100%;height: 200px;">--%>
                     <%--地图--%>
                     <%--http://m.amap.com/navi/?dest=116.470098,39.992838&destName=阜通西&hideRouteIcon=1&key=(您申请的key)--%>
                     <%--<iframe id="ii" src="../hmt/locationGaode.jsp" style="width: 100%;height: 200px;" frameborder="0"></iframe>--%>
                     <%--<jsp:include page="../hmt/locationGaode.jsp"></jsp:include>--%>
 
-                        <jsp:include page="../hmt/locationGaode.jsp" >
-                            <jsp:param name="lat" value="${recordVO.lat}" />
-                            <jsp:param name="lng" value="${recordVO.lng}" />
-                            <jsp:param name="mm_emp_nickname" value="${recordVO.mm_emp_nickname}" />
-                            <jsp:param name="mm_emp_company" value="${recordVO.mm_emp_company}" />
-                        </jsp:include>
+                        <%--<jsp:include page="../hmt/locationGaode.jsp" >--%>
+                            <%--<jsp:param name="lat" value="${recordVO.lat}" />--%>
+                            <%--<jsp:param name="lng" value="${recordVO.lng}" />--%>
+                            <%--<jsp:param name="mm_emp_nickname" value="${recordVO.mm_emp_nickname}" />--%>
+                            <%--<jsp:param name="mm_emp_company" value="${recordVO.mm_emp_company}" />--%>
+                        <%--</jsp:include>--%>
 
-                </div>
+                <%--</div>--%>
                 <div class="cqr-holder">
                     <div class="weixin"><img src="../hmt/images/weixin_erweima.png" alt=""/></div>
                     <div class="app"><img src="../hmt/images/mobile_erweima.png" alt=""/></div>
@@ -285,9 +285,8 @@
                     </ul>
                 </c:if>
             </c:forEach>
-
-
         </div>
+
         <div class="security-tips mb_20"><span class="highlight">安全提示：</span>欢迎使用花木通信息平台，请谨慎核实信息内容!</div>
 
     </div>

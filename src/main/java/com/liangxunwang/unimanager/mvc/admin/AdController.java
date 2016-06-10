@@ -72,29 +72,7 @@ public class AdController extends ControllerConstants {
         ProvinceQuery provinceQuery = new ProvinceQuery();
         provinceQuery.setIs_use("1");
         List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list(provinceQuery);
-        //查询地市
-        CityQuery cityQuery = new CityQuery();
-        cityQuery.setIs_use("1");
-        List<CityObj> listCitys = (List<CityObj>) cityService.list(cityQuery);
-        //查询县区
-        CountryQuery countryQuery = new CountryQuery();
-        countryQuery.setIs_use("1");
-        List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);
         map.put("listProvinces", listProvinces);
-        map.put("listCitys", listCitys);
-
-        map.put("listsCountry", listsCountry);
-        //查询地市all
-        CityQuery cityQueryAll = new CityQuery();
-        cityQueryAll.setIs_use("1");
-        List<CityObj> listCitysAll = (List<CityObj>) cityService.list(cityQueryAll);
-        //查询县区all
-        CountryQuery countryQueryAll = new CountryQuery();
-        countryQueryAll.setIs_use("1");
-        List<CountryObj> listsCountryAll = (List<CountryObj>) countryService.list(countryQueryAll);
-
-        map.put("listCitysAll", toJSONString(listCitysAll));
-        map.put("listsCountryAll", toJSONString(listsCountryAll));
         return "/ad/addAd";
     }
 

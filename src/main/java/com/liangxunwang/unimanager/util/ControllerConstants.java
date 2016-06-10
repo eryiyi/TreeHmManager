@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
 
 public class ControllerConstants {
@@ -42,6 +43,7 @@ public class ControllerConstants {
     private static final Gson JSON_HELPER = new Gson();
 
     public String toJSONString(Object object) {
+
         return JSON_HELPER.toJson(object);
     }
 
@@ -56,11 +58,17 @@ public class ControllerConstants {
         return count % size == 0 ? count / size : count / size + 1;
     }
 
-    public static String  reBack(String str,HttpServletResponse response) throws IOException {
+    public static String  reBack(String str,HttpServletRequest request, HttpServletResponse response) throws IOException {
+//        response.setContentType("text/html;charset=utf-8");
+        request.setCharacterEncoding("utf-8");  //这里不设置编码会有乱码
         response.setContentType("text/html;charset=utf-8");
+        response.setHeader("Cache-Control", "no-cache");
+
         PrintWriter out = response.getWriter();
         out.println(str);
         out.close();
         return null;
     }
+
+
 }

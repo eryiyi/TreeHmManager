@@ -32,8 +32,8 @@
     <script type="text/javascript" src="../js/ajaxfileupload.js"></script>
     <script type="text/javascript" src="../js/Util.js"></script>
     <script type="text/javascript" src="../js/validation.js"></script>
-    <script language="javascript" src="../js/jquery.js"></script>
-    <script type="text/javascript" src="../js/jquery_latest.js"></script>
+    <%--<script language="javascript" src="../js/jquery.js"></script>--%>
+    <%--<script type="text/javascript" src="../js/jquery_latest.js"></script>--%>
 
 </head>
 <body>
@@ -170,7 +170,7 @@
 </html>-->
 
 </body>
-<script>
+<script  charset="utf-8">
     function login() {
         //登录页面跳转
         window.location.href = "/netLoginController/toLogin.do";
@@ -293,28 +293,65 @@
     }
 
     function selectCitys() {
-        var citys = ${listCitysAll};
         var province = $("#mm_emp_provinceId").val();
-        var ret = "<option value=''>" + '请选择城市' + "</option>";
-        for (var i = citys.length - 1; i >= 0; i--) {
-            if (citys[i].father == province) {
-                ret += "<option value='" + citys[i].cityID + "'>" + citys[i].city + "</option>";
+        $.ajax({
+            cache: true,
+            type: "POST",
+            url: "/getAllCitys.do",
+            data: {
+                "father": province
+            },
+            async: false,
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            success: function (_data) {
+                var data = $.parseJSON(_data);
+                if (data.success) {
+                    <%--var citys = ${listCitysAll};--%>
+                    var citys = data.data;
+                    var ret = "<option value=''>" + '请选择城市' + "</option>";
+                    for (var i = citys.length - 1; i >= 0; i--) {
+                        if (citys[i].father == province) {
+                            ret += "<option value='" + citys[i].cityID + "'>" + citys[i].city + "</option>";
+                        }
+                    }
+                    $("#mm_emp_cityId").html(ret);
+                } else {
+                    var _case = {1: "获取数据失败"};
+                    alert(_case[data.code])
+                }
             }
-        }
-        $("#mm_emp_cityId").html(ret);
+        });
     }
     ;
 
     function selectCountrys() {
-        var countrys = ${listsCountryAll};
         var city = $("#mm_emp_cityId").val();
-        var ret = "<option value=''>" + '请选择县区' + "</option>";
-        for (var i = countrys.length - 1; i >= 0; i--) {
-            if (countrys[i].father == city) {
-                ret += "<option value='" + countrys[i].areaID + "'>" + countrys[i].area + "</option>";
+        $.ajax({
+            cache: true,
+            type: "POST",
+            url: "/getAllCountrys.do",
+            data: {
+                "father": city
+            },
+            async: false,
+            success: function (_data) {
+                var data = $.parseJSON(_data);
+                if (data.success) {
+                    var countrys = data.data;
+                    var ret = "<option value=''>" + '请选择县区' + "</option>";
+                    for (var i = countrys.length - 1; i >= 0; i--) {
+                        if (countrys[i].father == city) {
+                            ret += "<option value='" + countrys[i].areaID + "'>" + countrys[i].area + "</option>";
+                        }
+                    }
+                    $("#mm_emp_countryId").html(ret);
+                } else {
+                    var _case = {1: "获取数据失败"};
+                    alert(_case[data.code])
+                }
             }
-        }
-        $("#mm_emp_countryId").html(ret);
+        });
+
     }
     ;
 

@@ -157,4 +157,66 @@
             }
         });
     }
+
+    function selectCitys() {
+        var province = $("#mm_emp_provinceId").val();
+        $.ajax({
+            cache: true,
+            type: "POST",
+            url: "/getAllCitys.do",
+            data: {
+                "father": province
+            },
+            async: false,
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            success: function (_data) {
+                var data = $.parseJSON(_data);
+                if (data.success) {
+                    <%--var citys = ${listCitysAll};--%>
+                    var citys = data.data;
+                    var ret = "<option value=''>" + '请选择城市' + "</option>";
+                    for (var i = citys.length - 1; i >= 0; i--) {
+                        if (citys[i].father == province) {
+                            ret += "<option value='" + citys[i].cityID + "'>" + citys[i].city + "</option>";
+                        }
+                    }
+                    $("#mm_emp_cityId").html(ret);
+                } else {
+                    var _case = {1: "获取数据失败"};
+                    alert(_case[data.code])
+                }
+            }
+        });
+    }
+    ;
+
+    function selectCountrys() {
+        var city = $("#mm_emp_cityId").val();
+        $.ajax({
+            cache: true,
+            type: "POST",
+            url: "/getAllCountrys.do",
+            data: {
+                "father": city
+            },
+            async: false,
+            success: function (_data) {
+                var data = $.parseJSON(_data);
+                if (data.success) {
+                    var countrys = data.data;
+                    var ret = "<option value=''>" + '请选择县区' + "</option>";
+                    for (var i = countrys.length - 1; i >= 0; i--) {
+                        if (countrys[i].father == city) {
+                            ret += "<option value='" + countrys[i].areaID + "'>" + countrys[i].area + "</option>";
+                        }
+                    }
+                    $("#mm_emp_countryId").html(ret);
+                } else {
+                    var _case = {1: "获取数据失败"};
+                    alert(_case[data.code])
+                }
+            }
+        });
+    }
+    ;
 </script>

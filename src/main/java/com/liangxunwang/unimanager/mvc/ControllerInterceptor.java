@@ -157,6 +157,9 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
                         "|(^/netSelectProvinceController/toSelectCity\\.do$)"+
                         "|(^/netSelectProvinceController/toSelectArea\\.do$)"+
 
+                        "|(^/getAllCitys\\.do$)"+
+                        "|(^/getAllCountrys\\.do$)"+
+
                         "|(^/memberLogin\\.do$)"
 
         ) || account != null) {

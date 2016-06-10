@@ -95,92 +95,98 @@ public class FuwuController extends ControllerConstants {
     @RequestMapping("add")
     public String add(HttpSession session,ModelMap map, FuwuQuery query){
         Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
-        if("0".endsWith(manager.getMm_manager_type()) || "4".endsWith(manager.getMm_manager_type())){
-            //如果是0或者4 说明是顶级管理员 全国性的 都可以看
-            //如果是123 说明是地区管理员，只能设置自己地区的服务
-            ProvinceQuery provinceQuery = new ProvinceQuery();
-            provinceQuery.setIs_use("1");
-            //查询省份
-            List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list(provinceQuery);
-            //查询地市
-            CityQuery cityQuery = new CityQuery();
-            cityQuery.setIs_use("1");
-            List<CityObj> listCitys = (List<CityObj>) cityService.list(cityQuery);
-            //查询县区
-            CountryQuery countryQuery = new CountryQuery();
-            countryQuery.setIs_use("1");
-            List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);
-            map.put("listProvinces", listProvinces);
-            map.put("listCitys", listCitys);
-            map.put("listsCountry", listsCountry);
-            //查询地市all
-            CityQuery cityQueryAll = new CityQuery();
-            cityQueryAll.setIs_use("1");
-            List<CityObj> listCitysAll = (List<CityObj>) cityService.list(cityQueryAll);
-            //查询县区all
-            CountryQuery countryQueryAll = new CountryQuery();
-            countryQueryAll.setIs_use("1");
-            List<CountryObj> listsCountryAll = (List<CountryObj>) countryService.list(countryQueryAll);
+        ProvinceQuery provinceQuery = new ProvinceQuery();
+        provinceQuery.setIs_use("1");
+        //查询省份
+        List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list(provinceQuery);
+        map.put("listProvinces", listProvinces);
 
-            map.put("listCitysAll", toJSONString(listCitysAll));
-            map.put("listsCountryAll", toJSONString(listsCountryAll));
-        }else {
-            if("1".endsWith(manager.getMm_manager_type())){
-                //县级管理员
-                List<ProvinceObj> listProvinces = new ArrayList<ProvinceObj>();
-                List<CityObj> listCitys = new ArrayList<CityObj>();
-                List<CountryObj> listsCountry = new ArrayList<CountryObj>();
-                map.put("listProvinces", listProvinces);
-                map.put("listCitys", listCitys);
-                map.put("listsCountry", listsCountry);
-
-
-                map.put("listCitysAll", toJSONString(listCitys));
-                map.put("listsCountryAll", toJSONString(listsCountry));
-            }
-            if("2".endsWith(manager.getMm_manager_type())){
-                //市级管理员
-                //查询县区
-                CountryQuery countryQuery = new CountryQuery();
-                countryQuery.setFather(manager.getMm_manager_area_uuid());//市的id
-                List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);//查找这个城市下的县区
-                map.put("listsCountry", listsCountry);
-
-                List<ProvinceObj> listProvinces = new ArrayList<ProvinceObj>();
-                List<CityObj> listCitys = new ArrayList<CityObj>();
-                map.put("listProvinces", listProvinces);
-                map.put("listCitys", listCitys);
-
-
-                map.put("listCitysAll", toJSONString(listCitys));
-                map.put("listsCountryAll", toJSONString(listsCountry));
-            }
-            if("3".endsWith(manager.getMm_manager_type())){
-                //省级管理员
-                //查询地市
-                CityQuery cityQuery = new CityQuery();
-                cityQuery.setFather(manager.getMm_manager_area_uuid());//省份ID
-                List<CityObj> listCitys = (List<CityObj>) cityService.list(cityQuery);//查找这个省份下的市
-                //查询县区
-                CountryQuery countryQuery = new CountryQuery();
-                List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);
-                map.put("listCitys", listCitys);
-                map.put("listsCountry", listsCountry);
-
-                //查询地市all
-                CityQuery cityQueryAll = new CityQuery();
-                List<CityObj> listCitysAll = (List<CityObj>) cityService.list(cityQueryAll);
-                //查询县区all
-                CountryQuery countryQueryAll = new CountryQuery();
-                List<CountryObj> listsCountryAll = (List<CountryObj>) countryService.list(countryQueryAll);
-                map.put("listCitysAll", toJSONString(listCitysAll));
-                map.put("listsCountryAll", toJSONString(listsCountryAll));
-
-
-                List<ProvinceObj> listProvinces = new ArrayList<ProvinceObj>();
-                map.put("listProvinces", listProvinces);
-            }
-        }
+//        if("0".endsWith(manager.getMm_manager_type()) || "4".endsWith(manager.getMm_manager_type())){
+//            //如果是0或者4 说明是顶级管理员 全国性的 都可以看
+//            //如果是123 说明是地区管理员，只能设置自己地区的服务
+//            ProvinceQuery provinceQuery = new ProvinceQuery();
+//            provinceQuery.setIs_use("1");
+//            //查询省份
+//            List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list(provinceQuery);
+//            //查询地市
+//            CityQuery cityQuery = new CityQuery();
+//            cityQuery.setIs_use("1");
+//            List<CityObj> listCitys = (List<CityObj>) cityService.list(cityQuery);
+//            //查询县区
+//            CountryQuery countryQuery = new CountryQuery();
+//            countryQuery.setIs_use("1");
+//            List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);
+//            map.put("listProvinces", listProvinces);
+//            map.put("listCitys", listCitys);
+//            map.put("listsCountry", listsCountry);
+//            //查询地市all
+//            CityQuery cityQueryAll = new CityQuery();
+//            cityQueryAll.setIs_use("1");
+//            List<CityObj> listCitysAll = (List<CityObj>) cityService.list(cityQueryAll);
+//            //查询县区all
+//            CountryQuery countryQueryAll = new CountryQuery();
+//            countryQueryAll.setIs_use("1");
+//            List<CountryObj> listsCountryAll = (List<CountryObj>) countryService.list(countryQueryAll);
+//
+//            map.put("listCitysAll", toJSONString(listCitysAll));
+//            map.put("listsCountryAll", toJSONString(listsCountryAll));
+//        }else {
+//            if("1".endsWith(manager.getMm_manager_type())){
+//                //县级管理员
+//                List<ProvinceObj> listProvinces = new ArrayList<ProvinceObj>();
+//                List<CityObj> listCitys = new ArrayList<CityObj>();
+//                List<CountryObj> listsCountry = new ArrayList<CountryObj>();
+//                map.put("listProvinces", listProvinces);
+//                map.put("listCitys", listCitys);
+//                map.put("listsCountry", listsCountry);
+//
+//
+//                map.put("listCitysAll", toJSONString(listCitys));
+//                map.put("listsCountryAll", toJSONString(listsCountry));
+//            }
+//            if("2".endsWith(manager.getMm_manager_type())){
+//                //市级管理员
+//                //查询县区
+//                CountryQuery countryQuery = new CountryQuery();
+//                countryQuery.setFather(manager.getMm_manager_area_uuid());//市的id
+//                List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);//查找这个城市下的县区
+//                map.put("listsCountry", listsCountry);
+//
+//                List<ProvinceObj> listProvinces = new ArrayList<ProvinceObj>();
+//                List<CityObj> listCitys = new ArrayList<CityObj>();
+//                map.put("listProvinces", listProvinces);
+//                map.put("listCitys", listCitys);
+//
+//
+//                map.put("listCitysAll", toJSONString(listCitys));
+//                map.put("listsCountryAll", toJSONString(listsCountry));
+//            }
+//            if("3".endsWith(manager.getMm_manager_type())){
+//                //省级管理员
+//                //查询地市
+//                CityQuery cityQuery = new CityQuery();
+//                cityQuery.setFather(manager.getMm_manager_area_uuid());//省份ID
+//                List<CityObj> listCitys = (List<CityObj>) cityService.list(cityQuery);//查找这个省份下的市
+//                //查询县区
+//                CountryQuery countryQuery = new CountryQuery();
+//                List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);
+//                map.put("listCitys", listCitys);
+//                map.put("listsCountry", listsCountry);
+//
+//                //查询地市all
+//                CityQuery cityQueryAll = new CityQuery();
+//                List<CityObj> listCitysAll = (List<CityObj>) cityService.list(cityQueryAll);
+//                //查询县区all
+//                CountryQuery countryQueryAll = new CountryQuery();
+//                List<CountryObj> listsCountryAll = (List<CountryObj>) countryService.list(countryQueryAll);
+//                map.put("listCitysAll", toJSONString(listCitysAll));
+//                map.put("listsCountryAll", toJSONString(listsCountryAll));
+//
+//
+//                List<ProvinceObj> listProvinces = new ArrayList<ProvinceObj>();
+//                map.put("listProvinces", listProvinces);
+//            }
+//        }
         return "/fuwu/addfuwu";
     }
 
@@ -224,28 +230,28 @@ public class FuwuController extends ControllerConstants {
         provinceQuery.setIs_use("1");
         //查询省份
         List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list(provinceQuery);
-        //查询地市
-        CityQuery cityQuery = new CityQuery();
-        cityQuery.setIs_use("1");
-        List<CityObj> listCitys = (List<CityObj>) cityService.list(cityQuery);
-        //查询县区
-        CountryQuery countryQuery = new CountryQuery();
-        countryQuery.setIs_use("1");
-        List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);
+//        //查询地市
+//        CityQuery cityQuery = new CityQuery();
+//        cityQuery.setIs_use("1");
+//        List<CityObj> listCitys = (List<CityObj>) cityService.list(cityQuery);
+//        //查询县区
+//        CountryQuery countryQuery = new CountryQuery();
+//        countryQuery.setIs_use("1");
+//        List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);
         map.put("listProvinces", listProvinces);
-        map.put("listCitys", listCitys);
-        map.put("listsCountry", listsCountry);
-        //查询地市all
-        CityQuery cityQueryAll = new CityQuery();
-        cityQueryAll.setIs_use("1");
-        List<CityObj> listCitysAll = (List<CityObj>) cityService.list(cityQueryAll);
-        //查询县区all
-        CountryQuery countryQueryAll = new CountryQuery();
-        countryQueryAll.setIs_use("1");
-        List<CountryObj> listsCountryAll = (List<CountryObj>) countryService.list(countryQueryAll);
-
-        map.put("listCitysAll", toJSONString(listCitysAll));
-        map.put("listsCountryAll", toJSONString(listsCountryAll));
+//        map.put("listCitys", listCitys);
+//        map.put("listsCountry", listsCountry);
+//        //查询地市all
+//        CityQuery cityQueryAll = new CityQuery();
+//        cityQueryAll.setIs_use("1");
+//        List<CityObj> listCitysAll = (List<CityObj>) cityService.list(cityQueryAll);
+//        //查询县区all
+//        CountryQuery countryQueryAll = new CountryQuery();
+//        countryQueryAll.setIs_use("1");
+//        List<CountryObj> listsCountryAll = (List<CountryObj>) countryService.list(countryQueryAll);
+//
+//        map.put("listCitysAll", toJSONString(listCitysAll));
+//        map.put("listsCountryAll", toJSONString(listsCountryAll));
 
         FuwuObj level = (FuwuObj) levelServiceSaveExe.execute(typeId);
         map.put("levelObj", level);

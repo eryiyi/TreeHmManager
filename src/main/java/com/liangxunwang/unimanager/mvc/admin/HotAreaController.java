@@ -68,23 +68,8 @@ public class HotAreaController extends ControllerConstants {
         //查询地市 热门的
         HotCityQuery cityQuery = new HotCityQuery();
         List<CityObj> listCitys = (List<CityObj>) hotCityService.list(query);
-        //查询县区
-        CountryQuery countryQuery = new CountryQuery();
-        countryQuery.setIs_use("1");
-        List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);
-        map.put("listCitys", listCitys);
-        map.put("listsCountry", listsCountry);
-        //查询地市all
-        CityQuery cityQueryAll = new CityQuery();
-        cityQueryAll.setIs_use("1");
-        List<CityObj> listCitysAll = (List<CityObj>) cityService.list(cityQueryAll);
-        //查询县区all
-        CountryQuery countryQueryAll = new CountryQuery();
-        countryQueryAll.setIs_use("1");
-        List<CountryObj> listsCountryAll = (List<CountryObj>) countryService.list(countryQueryAll);
 
-        map.put("listCitysAll", toJSONString(listCitysAll));
-        map.put("listsCountryAll", toJSONString(listsCountryAll));
+        map.put("listCitys", listCitys);
 
         return "/hotarea/addhotarea";
     }
