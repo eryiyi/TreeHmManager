@@ -35,11 +35,20 @@
     <div class="row">
         <div class="col-md-4 col-sm-6">
             <a href="javascript:void(0);" onclick="toPage('/emp/list','1')" class="cat-item bg-blue">
+                <span>会员数量(总)</span>
+                <i>${memberCountAll}</i>
+                <input type="button" class="btn-export" value="导出">
+            </a>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <a href="javascript:void(0);" onclick="toPage('/emp/list','1')" class="cat-item bg-blue">
                 <span>会员数量</span>
                 <i>${memberCount}</i>
                 <input type="button" class="btn-export" value="导出">
             </a>
         </div>
+    </div>
+    <div class="row">
         <div class="col-md-4 col-sm-6">
             <a href="javascript:void(0);" onclick="toPage('/emp/list','1')" class="cat-item bg-purple">
                 <span>待审核会员</span>
@@ -47,8 +56,6 @@
                 <input type="button" class="btn-export" value="导出">
             </a>
         </div>
-    </div>
-    <div class="row">
         <div class="col-md-4 col-sm-6">
             <a href="javascript:void(0);" onclick="toPage('/emp/list','1')" class="cat-item bg-blue">
                 <span>今日注册会员</span>

@@ -15,13 +15,7 @@
             <li><a href="javascript:void (0);">会员管理</a></li>
             <li><a href="javascript:void (0);">会员详情</a></li>
         </ol>
-        <div id="social" class="pull-right">
-            <a href="javascript:void(0)"><i class="fa fa-google-plus"></i></a>
-            <a href="javascript:void(0)"><i class="fa fa-facebook"></i></a>
-            <a href="javascript:void(0)"><i class="fa fa-twitter"></i></a>
-            <a href="javascript:void(0)"><i class="fa fa-linkedin"></i></a>
-            <a href="javascript:void(0)"><i class="fa fa-youtube"></i></a>
-        </div>
+
     </div>
 </div>
 
@@ -420,9 +414,9 @@
 
                         <div class="col-sm-4">
                             <input type="text" id="lat" class="form-control" value="${empVO.lat}" data-toggle="tooltip"
-                                   data-placement="bottom" title="Tooltip for name">
+                                   data-placement="bottom" title="Tooltip for name" readonly="true">
                             <input type="text" id="lng" class="form-control" value="${empVO.lng}" data-toggle="tooltip"
-                                   data-placement="bottom" title="Tooltip for name">
+                                   data-placement="bottom" title="Tooltip for name" readonly="true">
                         </div>
                     </div>
 

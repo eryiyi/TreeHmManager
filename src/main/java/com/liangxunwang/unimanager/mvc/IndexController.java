@@ -64,7 +64,6 @@ public class IndexController extends ControllerConstants {
             }
             //管理员类别
             map.put("mm_manager_type", admin.getMm_manager_type());
-
         }
 
         List<Object> list = (List<Object>) indexListService.list(query);
@@ -72,13 +71,13 @@ public class IndexController extends ControllerConstants {
         Long memberCount = (Long) list.get(0);
         Long memberCountNo = (Long) list.get(1);
         map.put("memberCount", memberCount);
+        map.put("memberCountAll", memberCount+7700);//总数--加7000
         map.put("memberCountNo", memberCountNo);
         //资讯管理
         Long countQiugou = (Long) list.get(2);
         Long countGongying = (Long) list.get(3);
         map.put("countQiugou", countQiugou);
         map.put("countGongying", countGongying);
-
 
         if(admin != null && "0".equals(admin.getMm_manager_type())){
             //如果是顶级管理员查询举报未处理的数量

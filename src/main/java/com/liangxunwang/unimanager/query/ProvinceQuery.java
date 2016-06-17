@@ -6,6 +6,7 @@ package com.liangxunwang.unimanager.query;
 public class ProvinceQuery  extends BaseAreaQuery{
     private String province;
 
+
     public String getProvince() {
         return province;
     }

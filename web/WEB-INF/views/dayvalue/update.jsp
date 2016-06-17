@@ -11,13 +11,7 @@
             <li><a href="javascript:void(0)">控制信息显示天数</a></li>
             <li><a href="javascript:void(0)">控制信息显示天数</a></li>
         </ol>
-        <div id="social" class="pull-right">
-            <a href="javascript:void(0)"><i class="fa fa-google-plus"></i></a>
-            <a href="javascript:void(0)"><i class="fa fa-facebook"></i></a>
-            <a href="javascript:void(0)"><i class="fa fa-twitter"></i></a>
-            <a href="javascript:void(0)"><i class="fa fa-linkedin"></i></a>
-            <a href="javascript:void(0)"><i class="fa fa-youtube"></i></a>
-        </div>
+
     </div>
 </div>
 
@@ -49,7 +43,7 @@
                     <input type="hidden" id="mm_day_id" value="${aboutUs.mm_day_id}">
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">附近距离</label>
+                        <label class="col-sm-2 control-label">信息显示天数</label>
 
                         <div class="col-sm-4">
                             <input type="text" value="${aboutUs.mm_day_value}" id="mm_day_value" class="form-control"

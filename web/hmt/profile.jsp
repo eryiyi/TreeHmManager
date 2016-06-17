@@ -209,7 +209,7 @@
         </script>
         <!-- GLIDE SLIDE END -->
         <h3 class="brief-label">公司简介：</h3>
-        <a class="brief-btn" href="">滨州军威林业有限公司</a>
+        <a class="brief-btn" href="">${empVO.mm_emp_company}</a>
 
         <div class="brief-divider">
             <h4 class="brief-title">发布过的信息</h4>

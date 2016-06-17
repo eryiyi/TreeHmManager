@@ -11,13 +11,7 @@
             <li><a href="javascript:void(0)">会员管理</a></li>
             <li><a href="javascript:void(0)">会员列表</a></li>
         </ol>
-        <div id="social" class="pull-right">
-            <a href="javascript:void(0)"><i class="fa fa-google-plus"></i></a>
-            <a href="javascript:void(0)"><i class="fa fa-facebook"></i></a>
-            <a href="javascript:void(0)"><i class="fa fa-twitter"></i></a>
-            <a href="javascript:void(0)"><i class="fa fa-linkedin"></i></a>
-            <a href="javascript:void(0)"><i class="fa fa-youtube"></i></a>
-        </div>
+
     </div>
 </div>
 
@@ -43,6 +37,7 @@
                 </div>
                 <div class="no-move"></div>
             </div>
+
             <div class="box-content">
                 <!-- style -->
                 <style>
@@ -105,13 +100,40 @@
                         </select>
                     </div>
 
+                    <c:if test="${is_manager=='0'}">
+                        <div class="form-group">
+                            <select class="form-control w12" id="mm_emp_provinceId" onchange="selectCitys()">
+                                <option value="">--选择省份--</option>
+                                <c:forEach items="${listProvinces}" var="e" varStatus="st">
+                                    <option value="${e.provinceID}" ${query.mm_emp_provinceId == e.provinceID?'selected':''}>${e.province}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control w12" id="mm_emp_cityId" onchange="selectCountrys()">
+                                <option value="">--选择城市--</option>
+                                <c:forEach items="${listCitys}" var="e" varStatus="st">
+                                    <option value="${e.cityID}" ${query.mm_emp_cityId == e.cityID?'selected':''}>${e.city}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control w12" id="mm_emp_countryId" onchange="selectArea()">
+                                <option value="">--选择县区--</option>
+                                <c:forEach items="${listsCountry}" var="e" varStatus="st">
+                                    <option value="${e.areaID}" ${query.mm_emp_countryId == e.areaID?'selected':''}>${e.area}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                    </c:if>
+
                     <div class="form-group">
                         <button type="submit" onclick="searchOrder('1')"
                                 class="btn form-control btn-warning btn-sm btn-block">查找
                         </button>
-                        <button type="submit" onclick="listArea()"
-                                class="btn form-control btn-warning btn-sm btn-block">按照省份查找
-                        </button>
+                        <%--<button type="submit" onclick="listArea()"--%>
+                                <%--class="btn form-control btn-warning btn-sm btn-block">按照省份查找--%>
+                        <%--</button>--%>
                     </div>
                 </form>
 
@@ -202,101 +224,104 @@
 
                 </c:if>
                 <%--<p>For basic styling add the base class <code>.table</code> to any <code>&lt;table&gt;</code>.</p>--%>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th><input type="checkbox" name="allmails" onclick="checkAll()"></th>
-                        <th>姓名</th>
-                        <th>电话</th>
-                        <th>公司名称</th>
-                        <th>所属地区</th>
-                        <th>诚信</th>
-                        <th>协会</th>
-                        <th>注册时间</th>
-                        <th>星级</th>
-                        <th>到期时间</th>
-                        <th>允许登陆</th>
-                        <th>发布供应</th>
-                        <th>发布求购</th>
-                        <th>已完善资料</th>
-                        <th>审核状态</th>
-                        <th>备注</th>
-                        <th>操作</th>
-                        <th>操作</th>
-                        <c:if test="${is_manager=='0'}">
-                            <th>操作</th>
-                        </c:if>
-                        <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach items="${list}" var="e" varStatus="st">
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
                         <tr>
-                            <td><input type="checkbox" id="${e.mm_emp_id}" name="checkbox_one"></td>
-                            <td><a href="#module=/emp/detail&mm_emp_id=${e.mm_emp_id}">${e.mm_emp_nickname}</a></td>
-                            <td>${e.mm_emp_mobile}</td>
-                            <td>${e.mm_emp_company}</td>
-                            <td>${e.provinceName}${e.cityName}${e.areaName}</td>
-                            <td>
-                                <c:if test="${e.is_chengxin=='0'}">否</c:if>
-                                <c:if test="${e.is_chengxin=='1'}">是</c:if>
-                            </td>
-                            <td>
-                                <c:if test="${e.is_miaomu=='0'}">否</c:if>
-                                <c:if test="${e.is_miaomu=='1'}">是</c:if>
-                            </td>
-                            <td>${e.mm_emp_regtime}</td>
-                            <td>${e.levelName}</td>
-
-                            <td>
-                                <c:if test="${e.is_dq=='1'}"><font color="red">${e.mm_emp_endtime}</font></c:if>
-                                <c:if test="${e.is_dq=='0'}">${e.mm_emp_endtime}</c:if>
-                            </td>
-
-                            <td>
-                                <c:if test="${e.is_login=='0'}">是</c:if>
-                                <c:if test="${e.is_login=='1'}">否</c:if>
-                            </td>
-                            <td>
-                                <c:if test="${e.is_fabugongying=='0'}">不允许</c:if>
-                                <c:if test="${e.is_fabugongying=='1'}">允许</c:if>
-                            </td>
-                            <td>
-                                <c:if test="${e.is_fabuqiugou=='0'}">不允许</c:if>
-                                <c:if test="${e.is_fabuqiugou=='1'}">允许</c:if>
-                            </td>
-                            <td>
-                                <c:if test="${e.is_upate_profile=='0'}">否</c:if>
-                                <c:if test="${e.is_upate_profile=='1'}">是</c:if>
-                            </td>
-                            <td>
-                                <c:if test="${e.ischeck=='0'}">未审核</c:if>
-                                <c:if test="${e.ischeck=='1'}">已审核</c:if>
-                                <c:if test="${e.ischeck=='2'}">未通过</c:if>
-                            </td>
-                            <td>${e.mm_emp_beizhu}</td>
-                            <td>
-                                <a class="btn btn-default btn-sm"
-                                   href="#module=/emp/toUpdatePwr&mm_emp_id=${e.mm_emp_id}" role="button">修改密码</a>
-                            </td>
-                            <td>
-                                <a class="btn btn-default btn-sm" href="#module=/empAd/list&mm_emp_id=${e.mm_emp_id}"
-                                   role="button">个人轮播</a>
-                            </td>
+                            <th><input type="checkbox" name="allmails" onclick="checkAll()"></th>
+                            <th>姓名</th>
+                            <th>电话</th>
+                            <th>公司名称</th>
+                            <th>所属地区</th>
+                            <th>诚信</th>
+                            <th>协会</th>
+                            <th>注册时间</th>
+                            <th>星级</th>
+                            <th>到期时间</th>
+                            <th>允许登陆</th>
+                            <th>发布供应</th>
+                            <th>发布求购</th>
+                            <th>已完善资料</th>
+                            <th>审核状态</th>
+                            <th>备注</th>
+                            <th>操作</th>
+                            <th>操作</th>
                             <c:if test="${is_manager=='0'}">
+                                <th>操作</th>
+                            </c:if>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach items="${list}" var="e" varStatus="st">
+                            <tr>
+                                <td><input type="checkbox" id="${e.mm_emp_id}" name="checkbox_one"></td>
+                                <td><a href="#module=/emp/detail&mm_emp_id=${e.mm_emp_id}">${e.mm_emp_nickname}</a></td>
+                                <td>${e.mm_emp_mobile}</td>
+                                <td>${e.mm_emp_company}</td>
+                                <td>${e.provinceName}${e.cityName}${e.areaName}</td>
+                                <td>
+                                    <c:if test="${e.is_chengxin=='0'}">否</c:if>
+                                    <c:if test="${e.is_chengxin=='1'}">是</c:if>
+                                </td>
+                                <td>
+                                    <c:if test="${e.is_miaomu=='0'}">否</c:if>
+                                    <c:if test="${e.is_miaomu=='1'}">是</c:if>
+                                </td>
+                                <td>${e.mm_emp_regtime}</td>
+                                <td>${e.levelName}</td>
+
+                                <td>
+                                    <c:if test="${e.is_dq=='1'}"><font color="red">${e.mm_emp_endtime}</font></c:if>
+                                    <c:if test="${e.is_dq=='0'}">${e.mm_emp_endtime}</c:if>
+                                </td>
+
+                                <td>
+                                    <c:if test="${e.is_login=='0'}">是</c:if>
+                                    <c:if test="${e.is_login=='1'}">否</c:if>
+                                </td>
+                                <td>
+                                    <c:if test="${e.is_fabugongying=='0'}">不允许</c:if>
+                                    <c:if test="${e.is_fabugongying=='1'}">允许</c:if>
+                                </td>
+                                <td>
+                                    <c:if test="${e.is_fabuqiugou=='0'}">不允许</c:if>
+                                    <c:if test="${e.is_fabuqiugou=='1'}">允许</c:if>
+                                </td>
+                                <td>
+                                    <c:if test="${e.is_upate_profile=='0'}">否</c:if>
+                                    <c:if test="${e.is_upate_profile=='1'}">是</c:if>
+                                </td>
+                                <td>
+                                    <c:if test="${e.ischeck=='0'}">未审核</c:if>
+                                    <c:if test="${e.ischeck=='1'}">已审核</c:if>
+                                    <c:if test="${e.ischeck=='2'}">未通过</c:if>
+                                </td>
+                                <td>${e.mm_emp_beizhu}</td>
                                 <td>
                                     <a class="btn btn-default btn-sm"
-                                       href="#module=/emp/toPaihang&mm_emp_id=${e.mm_emp_id}" role="button">上榜</a>
+                                       href="#module=/emp/toUpdatePwr&mm_emp_id=${e.mm_emp_id}" role="button">修改密码</a>
                                 </td>
-                            </c:if>
-                            <td>
-                                <a class="btn btn-default btn-sm" href="#module=/emp/detail&mm_emp_id=${e.mm_emp_id}"
-                                   role="button">编辑</a>
-                            </td>
-                        </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
+                                <td>
+                                    <a class="btn btn-default btn-sm" href="#module=/empAd/list&mm_emp_id=${e.mm_emp_id}"
+                                       role="button">个人轮播</a>
+                                </td>
+                                <c:if test="${is_manager=='0'}">
+                                    <td>
+                                        <a class="btn btn-default btn-sm"
+                                           href="#module=/emp/toPaihang&mm_emp_id=${e.mm_emp_id}" role="button">上榜</a>
+                                    </td>
+                                </c:if>
+                                <td>
+                                    <a class="btn btn-default btn-sm" href="#module=/emp/detail&mm_emp_id=${e.mm_emp_id}"
+                                       role="button">编辑</a>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                    </div>
 
                 <div style="margin-top: 20px;border-top: 1px solid #dedede;padding-bottom:15px; height: 50px">
                     <span style="line-height:28px;margin-top:25px;padding-left:10px; float: left">共${page.count}条/${page.pageCount}页</span>
@@ -340,6 +365,9 @@
                     </ul>
                 </div>
             </div>
+
+            <%--</div>--%>
+
         </div>
     </div>
 </div>
@@ -698,6 +726,69 @@
             }
         }
     }
+
+
+    function selectCitys() {
+        var province = $("#mm_emp_provinceId").val();
+        $.ajax({
+            cache: true,
+            type: "POST",
+            url: "/getAllCitys.do",
+            data: {
+                "father": province
+            },
+            async: false,
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            success: function (_data) {
+                var data = $.parseJSON(_data);
+                if (data.success) {
+                    <%--var citys = ${listCitysAll};--%>
+                    var citys = data.data;
+                    var ret = "<option value=''>" + '请选择城市' + "</option>";
+                    for (var i = citys.length - 1; i >= 0; i--) {
+                        if (citys[i].father == province) {
+                            ret += "<option value='" + citys[i].cityID + "'>" + citys[i].city + "</option>";
+                        }
+                    }
+                    $("#mm_emp_cityId").html(ret);
+                } else {
+                    var _case = {1: "获取数据失败"};
+                    alert(_case[data.code])
+                }
+            }
+        });
+    };
+
+    function selectCountrys() {
+        var city = $("#mm_emp_cityId").val();
+        $.ajax({
+            cache: true,
+            type: "POST",
+            url: "/getAllCountrys.do",
+            data: {
+                "father": city
+            },
+            async: false,
+            success: function (_data) {
+                var data = $.parseJSON(_data);
+                if (data.success) {
+                    var countrys = data.data;
+                    var ret = "<option value=''>" + '请选择县区' + "</option>";
+                    for (var i = countrys.length - 1; i >= 0; i--) {
+                        if (countrys[i].father == city) {
+                            ret += "<option value='" + countrys[i].areaID + "'>" + countrys[i].area + "</option>";
+                        }
+                    }
+                    $("#mm_emp_countryId").html(ret);
+                } else {
+                    var _case = {1: "获取数据失败"};
+                    alert(_case[data.code])
+                }
+            }
+        });
+    };
+
+
 </script>
 
 

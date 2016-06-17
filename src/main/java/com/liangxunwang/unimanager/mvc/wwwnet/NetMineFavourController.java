@@ -41,6 +41,7 @@ public class NetMineFavourController extends ControllerConstants {
             query.setAccessToken(emp.getAccess_token()==null?"":emp.getAccess_token());
             map.put("is_login", "1");
             map.put("emp", emp);
+        query.setMm_emp_id(emp.getMm_emp_id());
         try {
             List<FavourVO> list = (List<FavourVO>) appFavourService.list(query);
             map.put("list", list);

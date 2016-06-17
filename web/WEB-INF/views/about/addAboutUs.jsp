@@ -2,22 +2,16 @@
 <%@ taglib prefix="um" uri="/unimanager-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" trimDirectiveWhitespaces="true" %>
 <div class="row">
-    <div id="" class="col-xs-12">
+    <div id="breadcrumb" class="col-xs-12">
         <a href="#" class="show-sidebar">
             <i class="fa fa-bars"></i>
         </a>
-        <ol class=" pull-left">
+        <ol class="breadcrumb pull-left">
             <li><a href="javascript:void(0)" onclick="toPage('mainPage','')">主页</a></li>
             <li><a href="javascript:void(0)">关于我们</a></li>
             <li><a href="javascript:void(0)">关于我们</a></li>
         </ol>
-        <div id="social" class="pull-right">
-            <a href="javascript:void(0)"><i class="fa fa-google-plus"></i></a>
-            <a href="javascript:void(0)"><i class="fa fa-facebook"></i></a>
-            <a href="javascript:void(0)"><i class="fa fa-twitter"></i></a>
-            <a href="javascript:void(0)"><i class="fa fa-linkedin"></i></a>
-            <a href="javascript:void(0)"><i class="fa fa-youtube"></i></a>
-        </div>
+
     </div>
 </div>
 

@@ -12,13 +12,7 @@
             <li><a href="javascript:void(0)">客服电话</a></li>
             <li><a href="javascript:void(0)">编辑客服</a></li>
         </ol>
-        <div id="social" class="pull-right">
-            <a href="javascript:void(0)"><i class="fa fa-google-plus"></i></a>
-            <a href="javascript:void(0)"><i class="fa fa-facebook"></i></a>
-            <a href="javascript:void(0)"><i class="fa fa-twitter"></i></a>
-            <a href="javascript:void(0)"><i class="fa fa-linkedin"></i></a>
-            <a href="javascript:void(0)"><i class="fa fa-youtube"></i></a>
-        </div>
+
     </div>
 </div>
 

@@ -94,6 +94,11 @@ public class EmpController extends ControllerConstants {
         //0经营户 1会员
         map.put("mm_emp_type", query.getMm_emp_type());
 
+        ProvinceQuery provinceQuery = new ProvinceQuery();
+        provinceQuery.setIs_use("1");
+        List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list(provinceQuery);
+        map.put("listProvinces", listProvinces);
+
         return "/emp/list";
     }
 
@@ -110,81 +115,81 @@ public class EmpController extends ControllerConstants {
         provinceQuery.setIs_use("1");
         List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list(provinceQuery);
         //查询地市
-        CityQuery cityQuery = new CityQuery();
-        cityQuery.setFather(empVO.getMm_emp_provinceId());
-        List<CityObj> listCitys = (List<CityObj>) cityService.list(cityQuery);
-        //查询县区
-        CountryQuery countryQuery = new CountryQuery();
-        countryQuery.setFather(empVO.getMm_emp_cityId());
-        List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);
+//        CityQuery cityQuery = new CityQuery();
+//        cityQuery.setFather(empVO.getMm_emp_provinceId());
+//        List<CityObj> listCitys = (List<CityObj>) cityService.list(cityQuery);
+//        //查询县区
+//        CountryQuery countryQuery = new CountryQuery();
+//        countryQuery.setFather(empVO.getMm_emp_cityId());
+//        List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);
         map.put("listLevels", list);
         map.put("empVO", empVO);
         map.put("listProvinces", listProvinces);
-        map.put("listCitys", listCitys);
-        map.put("listsCountry", listsCountry);
+//        map.put("listCitys", listCitys);
+//        map.put("listsCountry", listsCountry);
 
 
         return "/emp/detail";
     }
 
 
-    @RequestMapping("listArea")
-    public String listArea(HttpSession session,ModelMap map, EmpQuery query, Page page){
-        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
-        query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
-        query.setSize(query.getSize() == 0 ? page.getDefaultSize() : query.getSize());
-        //分地区管理
-        if("1".equals(manager.getMm_manager_type())){
-            query.setMm_emp_countryId(manager.getMm_manager_area_uuid());
-        }
-        if("2".equals(manager.getMm_manager_type())){
-            query.setMm_emp_cityId(manager.getMm_manager_area_uuid());
-        }
-        if("3".equals(manager.getMm_manager_type())){
-            query.setMm_emp_provinceId(manager.getMm_manager_area_uuid());
-        }
-
-        Object[] results = (Object[]) empServiceList.list(query);
-        map.put("list", results[0]);
-        long count = (Long) results[1];
-        page.setCount(count);
-        page.setPageCount(calculatePageCount(query.getSize(), count));
-        map.addAttribute("page", page);
-        map.addAttribute("query", query);
-        //查询等级
-        LevelQuery levelQuery = new LevelQuery();
-        List<Level> list = (List<Level>) levelService.list(levelQuery);
-        map.put("listLevels", list);
-
-        //是否是顶级管理员 0是  1不是  用于页面是否展示操作功能
-        if("0".equals(manager.getMm_manager_type()) || "4".equals(manager.getMm_manager_type())){
-            map.put("is_manager", "0");
-        }else {
-            map.put("is_manager", "1");
-        }
-
-        ProvinceQuery provinceQuery = new ProvinceQuery();
-        provinceQuery.setIs_use("1");
-        //查询省份
-        List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list(provinceQuery);
-        //查询地市
-        CityQuery cityQuery = new CityQuery();
-        cityQuery.setIs_use("1");
-        List<CityObj> listCitys = (List<CityObj>) cityService.list(cityQuery);
-        //查询县区
-        CountryQuery countryQuery = new CountryQuery();
-        countryQuery.setIs_use("1");
-        List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);
-        map.put("listProvinces", listProvinces);
-        map.put("listCitys", listCitys);
-        map.put("listsCountry", listsCountry);
-
-
-        //0经营户 1会员
-        map.put("mm_emp_type", query.getMm_emp_type());
-
-        return "/emp/listArea";
-    }
+//    @RequestMapping("listArea")
+//    public String listArea(HttpSession session,ModelMap map, EmpQuery query, Page page){
+//        Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
+//        query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
+//        query.setSize(query.getSize() == 0 ? page.getDefaultSize() : query.getSize());
+//        //分地区管理
+//        if("1".equals(manager.getMm_manager_type())){
+//            query.setMm_emp_countryId(manager.getMm_manager_area_uuid());
+//        }
+//        if("2".equals(manager.getMm_manager_type())){
+//            query.setMm_emp_cityId(manager.getMm_manager_area_uuid());
+//        }
+//        if("3".equals(manager.getMm_manager_type())){
+//            query.setMm_emp_provinceId(manager.getMm_manager_area_uuid());
+//        }
+//
+//        Object[] results = (Object[]) empServiceList.list(query);
+//        map.put("list", results[0]);
+//        long count = (Long) results[1];
+//        page.setCount(count);
+//        page.setPageCount(calculatePageCount(query.getSize(), count));
+//        map.addAttribute("page", page);
+//        map.addAttribute("query", query);
+//        //查询等级
+//        LevelQuery levelQuery = new LevelQuery();
+//        List<Level> list = (List<Level>) levelService.list(levelQuery);
+//        map.put("listLevels", list);
+//
+//        //是否是顶级管理员 0是  1不是  用于页面是否展示操作功能
+//        if("0".equals(manager.getMm_manager_type()) || "4".equals(manager.getMm_manager_type())){
+//            map.put("is_manager", "0");
+//        }else {
+//            map.put("is_manager", "1");
+//        }
+//
+//        ProvinceQuery provinceQuery = new ProvinceQuery();
+//        provinceQuery.setIs_use("1");
+//        //查询省份
+//        List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list(provinceQuery);
+//        //查询地市
+//        CityQuery cityQuery = new CityQuery();
+//        cityQuery.setIs_use("1");
+//        List<CityObj> listCitys = (List<CityObj>) cityService.list(cityQuery);
+//        //查询县区
+//        CountryQuery countryQuery = new CountryQuery();
+//        countryQuery.setIs_use("1");
+//        List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);
+//        map.put("listProvinces", listProvinces);
+//        map.put("listCitys", listCitys);
+//        map.put("listsCountry", listsCountry);
+//
+//
+//        //0经营户 1会员
+//        map.put("mm_emp_type", query.getMm_emp_type());
+//
+//        return "/emp/listArea";
+//    }
 
     //更改会员数据
     @RequestMapping("/updateEmp")
@@ -241,19 +246,19 @@ public class EmpController extends ControllerConstants {
         provinceQuery.setIs_use("1");
         List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list(provinceQuery);
         //查询地市
-        CityQuery cityQuery = new CityQuery();
-        cityQuery.setFather(empVO.getMm_emp_provinceId());
-        cityQuery.setIs_use("1");
-        List<CityObj> listCitys = (List<CityObj>) cityService.list(cityQuery);
-        //查询县区
-        CountryQuery countryQuery = new CountryQuery();
-        countryQuery.setFather(empVO.getMm_emp_cityId());
-        List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);
+//        CityQuery cityQuery = new CityQuery();
+//        cityQuery.setFather(empVO.getMm_emp_provinceId());
+//        cityQuery.setIs_use("1");
+//        List<CityObj> listCitys = (List<CityObj>) cityService.list(cityQuery);
+//        //查询县区
+//        CountryQuery countryQuery = new CountryQuery();
+//        countryQuery.setFather(empVO.getMm_emp_cityId());
+//        List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);
         map.put("listLevels", list);
         map.put("empVO", empVO);
         map.put("listProvinces", listProvinces);
-        map.put("listCitys", listCitys);
-        map.put("listsCountry", listsCountry);
+//        map.put("listCitys", listCitys);
+//        map.put("listsCountry", listsCountry);
 
         //角色
         List<Role> roles = (List<Role>) roleService.list("");
@@ -297,19 +302,20 @@ public class EmpController extends ControllerConstants {
         //查询省份
         ProvinceQuery provinceQuery = new ProvinceQuery();
         provinceQuery.setIs_use("1");
+        provinceQuery.setMm_emp_provinceId(manager.getMm_manager_area_uuid());
         List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list(provinceQuery);
         //查询地市
-        CityQuery cityQuery = new CityQuery();
-        cityQuery.setIs_use("1");
-        List<CityObj> listCitys = (List<CityObj>) cityService.list(cityQuery);
+//        CityQuery cityQuery = new CityQuery();
+//        cityQuery.setIs_use("1");
+//        List<CityObj> listCitys = (List<CityObj>) cityService.list(cityQuery);
         //查询县区
-        CountryQuery countryQuery = new CountryQuery();
-        countryQuery.setIs_use("1");
-        List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);
+//        CountryQuery countryQuery = new CountryQuery();
+//        countryQuery.setIs_use("1");
+//        List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);
         map.put("listLevels", list);
         map.put("listProvinces", listProvinces);
-        map.put("listCitys", listCitys);
-        map.put("listsCountry", listsCountry);
+//        map.put("listCitys", listCitys);
+//        map.put("listsCountry", listsCountry);
 
         return "/emp/addEmp";
     }
