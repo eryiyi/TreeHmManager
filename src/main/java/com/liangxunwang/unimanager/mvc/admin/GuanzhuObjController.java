@@ -50,6 +50,17 @@ public class GuanzhuObjController extends ControllerConstants {
         query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
         query.setSize(query.getSize() == 0 ? page.getDefaultSize() : query.getSize());
 
+        //分地区管理
+        if("1".equals(manager.getMm_manager_type())){
+            query.setMm_emp_countryId(manager.getMm_manager_area_uuid());
+        }
+        if("2".equals(manager.getMm_manager_type())) {
+            query.setMm_emp_cityId(manager.getMm_manager_area_uuid());
+        }
+        if("3".equals(manager.getMm_manager_type())){
+            query.setMm_emp_provinceId(manager.getMm_manager_area_uuid());
+        }
+
         Object[] results = (Object[]) guanzhuAreaService.list(query);
         map.put("list", results[0]);
         long count = (Long) results[1];
@@ -58,8 +69,6 @@ public class GuanzhuObjController extends ControllerConstants {
         map.addAttribute("page", page);
         map.addAttribute("query", query);
 
-        //日志记录
-        logoService.save(new LogoObj("查看关注区域列表", manager.getMm_manager_id()));
         return "/guanzhu/list";
     }
 

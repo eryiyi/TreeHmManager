@@ -106,15 +106,15 @@
                                     <i class="fa fa-angle-down pull-right"></i>
 
                                     <div class="user-mini pull-right">
-                                        <span class="welcome">Welcome,</span>
-                                        <span>花木通</span>
+                                        <span class="welcome">欢迎</span>
+                                        <span>${admin.mm_manager_nickname}</span>
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
                                         <a href="/logout.do">
                                             <i class="fa fa-power-off"></i>
-                                            <span>Logout</span>
+                                            <span>退出</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -147,10 +147,10 @@
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('ADD_ROLE', sessionScope.powers)}">
-                                <li><a href="javascript:void(0);" onclick="toPage('/role/add','')">添加角色</a></li>
+                                <%--<li><a href="javascript:void(0);" onclick="toPage('/role/add','')">添加角色</a></li>--%>
                             </c:if>
                             <c:if test="${um:permission('LIST_ROLE', sessionScope.powers)}">
-                                <li><a href="javascript:void(0);" onclick="toPage('/role/list','')">角色列表</a></li>
+                                <li><a href="javascript:void(0);" onclick="toPage('/role/list','1')">角色列表</a></li>
                             </c:if>
                         </ul>
                     </li>
@@ -163,7 +163,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('MANAGER_ADD_MANAGE', sessionScope.powers)}">
-                                <li><a href="javascript:void(0);" onclick="toPage('/emp/listAddManager','')">添加管理员</a>
+                                <li><a href="javascript:void(0);" onclick="toPage('/emp/listAddManager','1')">添加管理员</a>
                                 </li>
                             </c:if>
                             <c:if test="${um:permission('MANAGER_LIST_MANAGE', sessionScope.powers)}">
@@ -221,7 +221,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('PAIHANG_SHANGHU_MANAGE', sessionScope.powers)}">
-                                <li><a href="javascript:void(0);" onclick="toPage('/paihang/list','')">金牌榜列表</a></li>
+                                <li><a href="javascript:void(0);" onclick="toPage('/paihang/list','1')">金牌榜列表</a></li>
                             </c:if>
                         </ul>
                     </li>
@@ -235,13 +235,13 @@
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('ADD_TEL_KEFU_MANAGE', sessionScope.powers)}">
-                                <li><a href="javascript:void(0);" onclick="toPage('/kefu/add','')">添加客服(总管理员)</a></li>
+                                <li><a href="javascript:void(0);" onclick="toPage('/kefu/add','')">添加客服</a></li>
                             </c:if>
                                 <%--<c:if test="${um:permission('ADD_TEL_KEFU_MANAGE_AREA', sessionScope.powers)}">--%>
                                 <%--<li><a href="javascript:void(0);" onclick="toPage('/kefu/addArea','')">添加客服(地区管理员)</a></li>--%>
                                 <%--</c:if>--%>
                             <c:if test="${um:permission('TEL_KEFU_MANAGE', sessionScope.powers)}">
-                                <li><a href="javascript:void(0);" onclick="toPage('/kefu/list','')">客服列表</a></li>
+                                <li><a href="javascript:void(0);" onclick="toPage('/kefu/list','1')">客服列表</a></li>
                             </c:if>
                         </ul>
                     </li>
@@ -258,7 +258,7 @@
                                 <li><a href="javascript:void(0);" onclick="toPage('/adObj/add','')">添加广告</a></li>
                             </c:if>
                             <c:if test="${um:permission('AD_LISTMANAGE', sessionScope.powers)}">
-                                <li><a href="javascript:void(0);" onclick="toPage('/adObj/list','')">广告列表</a></li>
+                                <li><a href="javascript:void(0);" onclick="toPage('/adObj/list','1')">广告列表</a></li>
                             </c:if>
                         </ul>
                     </li>
@@ -303,7 +303,7 @@
                                 <li><a href="javascript:void(0);" onclick="toPage('/weixin/add','')">添加微信</a></li>
                             </c:if>
                             <c:if test="${um:permission('WEIXIN_KEFU_MANAGE', sessionScope.powers)}">
-                                <li><a href="javascript:void(0);" onclick="toPage('/weixin/list','')">微信列表</a></li>
+                                <li><a href="javascript:void(0);" onclick="toPage('/weixin/list','1')">微信列表</a></li>
                             </c:if>
                         </ul>
                     </li>

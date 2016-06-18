@@ -30,9 +30,10 @@ public class IndexController extends ControllerConstants {
     private SaveService logoService;
 
     @RequestMapping("/index")
-    public String index(HttpSession session){
+    public String index(HttpSession session, ModelMap map){
         Admin admin = (Admin) session.getAttribute(ControllerConstants.ACCOUNT_KEY);
         if (admin != null){
+            map.put("admin", admin);
             return "/index";
         }
         return "/adminLogin";
@@ -71,7 +72,7 @@ public class IndexController extends ControllerConstants {
         Long memberCount = (Long) list.get(0);
         Long memberCountNo = (Long) list.get(1);
         map.put("memberCount", memberCount);
-        map.put("memberCountAll", memberCount+7700);//总数--加7000
+        map.put("memberCountAll", memberCount+7702);//总数--加7702
         map.put("memberCountNo", memberCountNo);
         //资讯管理
         Long countQiugou = (Long) list.get(2);

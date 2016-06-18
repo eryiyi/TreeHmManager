@@ -202,10 +202,7 @@
 
                         <div class="col-sm-4">
                             <select class="form-control" id="mm_emp_cityId" onchange="selectCountrys()">
-                                <option value="">--选择城市--</option>
-                                <c:forEach items="${listCitys}" var="e" varStatus="st">
-                                    <option value="${e.cityID}"  ${empVO.mm_emp_cityId==e.cityID?'selected':''}>${e.city}</option>
-                                </c:forEach>
+                                <option value="${empVO.mm_emp_cityId}" >${empVO.cityName}</option>
                             </select>
                         </div>
                     </div>
@@ -214,10 +211,7 @@
 
                         <div class="col-sm-4">
                             <select class="form-control" id="mm_emp_countryId">
-                                <option value="">--选择县区--</option>
-                                <c:forEach items="${listsCountry}" var="e" varStatus="st">
-                                    <option value="${e.areaID}"  ${empVO.mm_emp_countryId==e.areaID?'selected':''}>${e.area}</option>
-                                </c:forEach>
+                                <option value="${empVO.mm_emp_countryId}">${empVO.areaName}</option>
                             </select>
                         </div>
                     </div>

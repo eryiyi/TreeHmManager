@@ -71,63 +71,48 @@
 
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">管理的省份</label>
+                        <label class="col-sm-2 control-label">所属省份</label>
 
                         <div class="col-sm-4">
-                            <select class="form-control" id="mm_emp_provinceId" onchange="selectCitys()">
-                                <option value="">--选择省份--</option>
-                                <c:forEach items="${listProvinces}" var="e" varStatus="st">
-                                    <option value="${e.provinceID}">${e.province}</option>
-                                </c:forEach>
+                            <select class="form-control" id="mm_emp_provinceId">
+                                    <option value="${empVO.mm_emp_provinceId}">${empVO.provinceName}</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">管理的城市</label>
+                        <label class="col-sm-2 control-label">所属城市</label>
 
                         <div class="col-sm-4">
-                            <select class="form-control" id="mm_emp_cityId" onchange="selectCountrys()">
-                                <option value="">--选择城市--</option>
-                                <%--<c:forEach items="${listCitys}" var="e" varStatus="st">--%>
-                                <%--<option value="${e.cityID}"  ${empVO.mm_emp_cityId==e.cityID?'selected':''}>${e.city}</option>--%>
-                                <%--</c:forEach>--%>
+                            <select class="form-control" id="mm_emp_cityId">
+                                <option value="${empVO.mm_emp_cityId}">${empVO.cityName}</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">管理的县区</label>
+                        <label class="col-sm-2 control-label">所属县区</label>
 
                         <div class="col-sm-4">
                             <select class="form-control" id="mm_emp_countryId">
-                                <option value="">--选择县区--</option>
-                                <%--<c:forEach items="${listsCountry}" var="e" varStatus="st">--%>
-                                <%--<option value="${e.areaID}"  ${empVO.mm_emp_countryId==e.areaID?'selected':''}>${e.area}</option>--%>
-                                <%--</c:forEach>--%>
+                                <option value="${empVO.mm_emp_countryId}">${empVO.areaName}</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">管理员类型</label>
-
                         <div class="col-sm-4">
                             <select class="form-control" id="mm_manager_type">
-                                <option value="">--选择管理员类型--</option>
-                                <option value="1">县级</option>
-                                <option value="2">市级</option>
-                                <option value="3">省级</option>
-                                <option value="4">全国</option>
-                                <option value="0">顶级</option>
+                                <c:forEach items="${managerTypes}" var="e" varStatus="st">
+                                    <option value="${e.typeId}">${e.typeName}</option>
+                                </c:forEach>
                             </select>
                         </div>
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">选择角色</label>
-
                         <div class="col-sm-4">
                             <select class="form-control" id="permissions">
-                                <option value="">--选择选择角色--</option>
                                 <c:forEach items="${roles}" var="e" varStatus="st">
                                     <option value="${e.id}">${e.name}</option>
                                 </c:forEach>

@@ -56,6 +56,17 @@ public class PaihangController extends ControllerConstants {
         query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
         query.setSize(query.getSize() == 0 ? page.getDefaultSize() : query.getSize());
 
+        //分地区管理
+        if("1".equals(manager.getMm_manager_type())){
+            query.setMm_emp_countryId(manager.getMm_manager_area_uuid());
+        }
+        if("2".equals(manager.getMm_manager_type())) {
+            query.setMm_emp_cityId(manager.getMm_manager_area_uuid());
+        }
+        if("3".equals(manager.getMm_manager_type())){
+            query.setMm_emp_provinceId(manager.getMm_manager_area_uuid());
+        }
+
         Object[] results = (Object[]) recordService.list(query);
         map.put("list", results[0]);
         long count = (Long) results[1];
@@ -63,8 +74,6 @@ public class PaihangController extends ControllerConstants {
         page.setPageCount(calculatePageCount(query.getSize(), count));
         map.addAttribute("page", page);
         map.addAttribute("query", query);
-        //日志记录
-        logoService.save(new LogoObj("查看排行榜", manager.getMm_manager_id()));
         return "paihang/list";
     }
 

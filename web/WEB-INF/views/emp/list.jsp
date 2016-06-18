@@ -100,7 +100,6 @@
                         </select>
                     </div>
 
-                    <c:if test="${is_manager=='0'}">
                         <div class="form-group">
                             <select class="form-control w12" id="mm_emp_provinceId" onchange="selectCitys()">
                                 <option value="">--选择省份--</option>
@@ -113,19 +112,18 @@
                             <select class="form-control w12" id="mm_emp_cityId" onchange="selectCountrys()">
                                 <option value="">--选择城市--</option>
                                 <c:forEach items="${listCitys}" var="e" varStatus="st">
-                                    <option value="${e.cityID}" ${query.mm_emp_cityId == e.cityID?'selected':''}>${e.city}</option>
+                                    <option value="${e.cityID}" ${query.mm_emp_cityId == e.cityID?'selected':''} >${e.city}</option>
                                 </c:forEach>
                             </select>
                         </div>
                         <div class="form-group">
-                            <select class="form-control w12" id="mm_emp_countryId" onchange="selectArea()">
+                            <select class="form-control w12" id="mm_emp_countryId">
                                 <option value="">--选择县区--</option>
                                 <c:forEach items="${listsCountry}" var="e" varStatus="st">
                                     <option value="${e.areaID}" ${query.mm_emp_countryId == e.areaID?'selected':''}>${e.area}</option>
                                 </c:forEach>
                             </select>
                         </div>
-                    </c:if>
 
                     <div class="form-group">
                         <button type="submit" onclick="searchOrder('1')"
@@ -247,9 +245,7 @@
                             <th>备注</th>
                             <th>操作</th>
                             <th>操作</th>
-                            <c:if test="${is_manager=='0'}">
-                                <th>操作</th>
-                            </c:if>
+                            <th>操作</th>
                             <th>操作</th>
                         </tr>
                         </thead>
@@ -307,12 +303,10 @@
                                     <a class="btn btn-default btn-sm" href="#module=/empAd/list&mm_emp_id=${e.mm_emp_id}"
                                        role="button">个人轮播</a>
                                 </td>
-                                <c:if test="${is_manager=='0'}">
-                                    <td>
-                                        <a class="btn btn-default btn-sm"
-                                           href="#module=/emp/toPaihang&mm_emp_id=${e.mm_emp_id}" role="button">上榜</a>
-                                    </td>
-                                </c:if>
+                                <td>
+                                    <a class="btn btn-default btn-sm"
+                                       href="#module=/emp/toPaihang&mm_emp_id=${e.mm_emp_id}" role="button">上榜</a>
+                                </td>
                                 <td>
                                     <a class="btn btn-default btn-sm" href="#module=/emp/detail&mm_emp_id=${e.mm_emp_id}"
                                        role="button">编辑</a>
@@ -383,6 +377,11 @@
         var ischeck = $("#ischeck").val();
         var mm_emp_regtime = $("#mm_emp_regtime").val();
         var is_daoqi = $("#is_daoqi").val();
+
+        var mm_emp_provinceId = $("#mm_emp_provinceId").val();
+        var mm_emp_cityId = $("#mm_emp_cityId").val();
+        var mm_emp_countryId = $("#mm_emp_countryId").val();
+
         if (_index <= ${page.pageCount} && _index >= 1) {
             alert("searchIndex");
             window.location.href = "#module=/emp/list&page=" + _index + "&size=" + size + "&mm_emp_type=" + mm_emp_type + "&keyword=" + keywords
@@ -390,6 +389,9 @@
             + "&mm_level_id=" + mm_level_id
             + "&mm_emp_regtime=" + mm_emp_regtime
             + "&is_daoqi=" + is_daoqi
+            + "&mm_emp_provinceId=" + mm_emp_provinceId
+            + "&mm_emp_cityId=" + mm_emp_cityId
+            + "&mm_emp_countryId=" + mm_emp_countryId
             + "&ischeck=" + ischeck + "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
@@ -406,6 +408,10 @@
         var mm_emp_regtime = $("#mm_emp_regtime").val();
         var is_daoqi = $("#is_daoqi").val();
 
+        var mm_emp_provinceId = $("#mm_emp_provinceId").val();
+        var mm_emp_cityId = $("#mm_emp_cityId").val();
+        var mm_emp_countryId = $("#mm_emp_countryId").val();
+
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1)) {
             window.location.href = "#module=/emp/list&page=" + page + "&size=" + size + "&keyword=" + keywords
@@ -414,6 +420,9 @@
             + "&mm_level_id=" + mm_level_id
             + "&mm_emp_regtime=" + mm_emp_regtime
             + "&is_daoqi=" + is_daoqi
+            + "&mm_emp_provinceId=" + mm_emp_provinceId
+            + "&mm_emp_cityId=" + mm_emp_cityId
+            + "&mm_emp_countryId=" + mm_emp_countryId
             + "&ischeck=" + ischeck + "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
@@ -431,6 +440,11 @@
         var mm_emp_regtime = $("#mm_emp_regtime").val();
         var is_daoqi = $("#is_daoqi").val();
 
+        var mm_emp_provinceId = $("#mm_emp_provinceId").val();
+        var mm_emp_cityId = $("#mm_emp_cityId").val();
+        var mm_emp_countryId = $("#mm_emp_countryId").val();
+
+
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1)) {
             window.location.href = "#module=/emp/list&page=" + page + "&size=" + size + "&keyword=" + keywords
@@ -439,6 +453,9 @@
             + "&mm_level_id=" + mm_level_id
             + "&mm_emp_regtime=" + mm_emp_regtime
             + "&is_daoqi=" + is_daoqi
+            + "&mm_emp_provinceId=" + mm_emp_provinceId
+            + "&mm_emp_cityId=" + mm_emp_cityId
+            + "&mm_emp_countryId=" + mm_emp_countryId
             + "&ischeck=" + ischeck + "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");

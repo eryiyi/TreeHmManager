@@ -59,6 +59,18 @@ public class KefuController extends ControllerConstants {
     @RequestMapping("list")
     public String list(HttpSession session,ModelMap map, KefuQuery query){
         Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
+
+        //分地区管理
+        if("1".equals(manager.getMm_manager_type())){
+            query.setMm_emp_countryId(manager.getMm_manager_area_uuid());
+        }
+        if("2".equals(manager.getMm_manager_type())) {
+            query.setMm_emp_cityId(manager.getMm_manager_area_uuid());
+        }
+        if("3".equals(manager.getMm_manager_type())){
+            query.setMm_emp_provinceId(manager.getMm_manager_area_uuid());
+        }
+
         List<KefuVO> list = (List<KefuVO>) levelService.list(query);
         map.put("list", list);
         return "/kefu/list";

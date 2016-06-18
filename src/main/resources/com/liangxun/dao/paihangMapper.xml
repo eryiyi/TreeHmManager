@@ -52,6 +52,18 @@
         <if test="is_del != null and is_del != ''">
             AND sn.is_del = #{is_del}
         </if>
+
+        <if test="mm_emp_provinceId != null and mm_emp_provinceId != ''">
+            AND lemp.mm_emp_provinceId = #{mm_emp_provinceId}
+        </if>
+        <if test="mm_emp_cityId != null and mm_emp_cityId != ''">
+            AND lemp.mm_emp_cityId = #{mm_emp_cityId}
+        </if>
+        <if test="mm_emp_countryId != null and mm_emp_countryId != ''">
+            AND lemp.mm_emp_countryId = #{mm_emp_countryId}
+        </if>
+
+
         <if test="keyword != null and keyword != ''">
             AND  (mm_emp_nickname like CONCAT('%',#{keyword},'%') OR  mm_emp_mobile = #{keyword} OR mm_emp_company like CONCAT('%',#{keyword},'%'))
         </if>
@@ -61,10 +73,21 @@
 
     <select id="count" resultType="Long">
         SELECT count(sn.mm_paihang_id) FROM mm_paihang sn
+        LEFT JOIN mm_emp lemp ON sn.mm_emp_id=lemp.mm_emp_id
         WHERE 1=1
         <if test="is_del != null and is_del != ''">
             AND sn.is_del = #{is_del}
         </if>
+        <if test="mm_emp_provinceId != null and mm_emp_provinceId != ''">
+            AND lemp.mm_emp_provinceId = #{mm_emp_provinceId}
+        </if>
+        <if test="mm_emp_cityId != null and mm_emp_cityId != ''">
+            AND lemp.mm_emp_cityId = #{mm_emp_cityId}
+        </if>
+        <if test="mm_emp_countryId != null and mm_emp_countryId != ''">
+            AND lemp.mm_emp_countryId = #{mm_emp_countryId}
+        </if>
+
     </select>
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.PaihangObj">

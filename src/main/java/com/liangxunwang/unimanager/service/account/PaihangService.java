@@ -45,6 +45,17 @@ public class PaihangService implements ListService,DeleteService,ExecuteService,
             map.put("keyword", query.getKeyword());
         }
 
+        //分地区管理
+        if(!StringUtil.isNullOrEmpty(query.getMm_emp_provinceId())){
+            map.put("mm_emp_provinceId", query.getMm_emp_provinceId());
+        }
+        if(!StringUtil.isNullOrEmpty(query.getMm_emp_cityId())){
+            map.put("mm_emp_cityId", query.getMm_emp_cityId());
+        }
+        if(!StringUtil.isNullOrEmpty(query.getMm_emp_countryId())){
+            map.put("mm_emp_countryId", query.getMm_emp_countryId());
+        }
+
         List<PaihangObjVO> lists = paihangObjDao.listRecordVo(map);
         for (PaihangObjVO record : lists){
             if (!StringUtil.isNullOrEmpty(record.getMm_emp_cover())){

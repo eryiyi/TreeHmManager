@@ -3,7 +3,7 @@ package com.liangxunwang.unimanager.query;
 /**
  * Created by zhl on 2015/1/31.
  */
-public class GuanzhuAreaQuery {
+public class GuanzhuAreaQuery extends BaseAreaQuery {
     private String keyword;
     private String mm_emp_id;
     private String ischeck;

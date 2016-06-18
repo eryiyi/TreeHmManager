@@ -34,6 +34,18 @@ public class KefuTelService implements ListService,SaveService , UpdateService, 
         if(!StringUtil.isNullOrEmpty(query.getMm_emp_countryId())){
             map.put("mm_emp_countryId", query.getMm_emp_countryId());
         }
+
+        //分地区管理
+        if(!StringUtil.isNullOrEmpty(query.getMm_emp_provinceId())){
+            map.put("mm_emp_provinceId", query.getMm_emp_provinceId());
+        }
+        if(!StringUtil.isNullOrEmpty(query.getMm_emp_cityId())){
+            map.put("mm_emp_cityId", query.getMm_emp_cityId());
+        }
+        if(!StringUtil.isNullOrEmpty(query.getMm_emp_countryId())){
+            map.put("mm_emp_countryId", query.getMm_emp_countryId());
+        }
+
         List<KefuVO> lists = fuwuDao.lists(map);
         return lists;
     }

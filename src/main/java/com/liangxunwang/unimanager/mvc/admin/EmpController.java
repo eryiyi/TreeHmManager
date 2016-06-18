@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -98,6 +99,11 @@ public class EmpController extends ControllerConstants {
         provinceQuery.setIs_use("1");
         List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list(provinceQuery);
         map.put("listProvinces", listProvinces);
+
+//        //根据省份查询城市
+//        if(!StringUtil.isNullOrEmpty(query.getMm_emp_provinceId())){
+//
+//        }
 
         return "/emp/list";
     }
@@ -212,6 +218,17 @@ public class EmpController extends ControllerConstants {
         Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
         query.setSize(query.getSize() == 0 ? page.getDefaultSize() : query.getSize());
+        //分地区管理
+        if("1".equals(manager.getMm_manager_type())){
+            query.setMm_emp_countryId(manager.getMm_manager_area_uuid());
+        }
+        if("2".equals(manager.getMm_manager_type())){
+            query.setMm_emp_cityId(manager.getMm_manager_area_uuid());
+        }
+        if("3".equals(manager.getMm_manager_type())){
+            query.setMm_emp_provinceId(manager.getMm_manager_area_uuid());
+        }
+
         Object[] results = (Object[]) empServiceList.list(query);
         map.put("list", results[0]);
         long count = (Long) results[1];
@@ -241,28 +258,61 @@ public class EmpController extends ControllerConstants {
         //vip星级
         LevelQuery query = new LevelQuery();
         List<Level> list = (List<Level>) levelService.list(query);
-        //查询省份
-        ProvinceQuery provinceQuery = new ProvinceQuery();
-        provinceQuery.setIs_use("1");
-        List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list(provinceQuery);
-        //查询地市
-//        CityQuery cityQuery = new CityQuery();
-//        cityQuery.setFather(empVO.getMm_emp_provinceId());
-//        cityQuery.setIs_use("1");
-//        List<CityObj> listCitys = (List<CityObj>) cityService.list(cityQuery);
-//        //查询县区
-//        CountryQuery countryQuery = new CountryQuery();
-//        countryQuery.setFather(empVO.getMm_emp_cityId());
-//        List<CountryObj> listsCountry = (List<CountryObj>) countryService.list(countryQuery);
+
         map.put("listLevels", list);
         map.put("empVO", empVO);
-        map.put("listProvinces", listProvinces);
-//        map.put("listCitys", listCitys);
-//        map.put("listsCountry", listsCountry);
+        //管理员类型  需要判断管理员类型是省市县还是全国
+        //当前管理员类型
+//        默认0顶级管理员
+//        1是县级
+//        2是市级
+//        3是省级
+//        4是全国
 
         //角色
         List<Role> roles = (List<Role>) roleService.list("");
-        map.put("roles", roles);
+        List<Role> listRoles = new ArrayList<Role>();
+        List<ManagerTypeObj>  managerTypes = new ArrayList<ManagerTypeObj>();
+        if("1".equals(manager.getMm_manager_type())){
+           //县级
+            managerTypes.add(new ManagerTypeObj("1", "县级"));
+            for (Role role:roles){
+                if(role.getType().equals("1")){
+                    listRoles.add(role);
+                }
+            }
+        }
+        if("2".equals(manager.getMm_manager_type())){
+            //市级
+            managerTypes.add(new ManagerTypeObj("1", "县级"));
+            managerTypes.add(new ManagerTypeObj("2", "市级"));
+            for (Role role:roles){
+                if(role.getType().equals("1") || role.getType().equals("2")){
+                    listRoles.add(role);
+                }
+            }
+        }
+        if("3".equals(manager.getMm_manager_type())){
+            //省级
+            managerTypes.add(new ManagerTypeObj("1", "县级"));
+            managerTypes.add(new ManagerTypeObj("2", "市级"));
+            managerTypes.add(new ManagerTypeObj("3", "省级"));
+            for (Role role:roles){
+                if(role.getType().equals("1") || role.getType().equals("2") || role.getType().equals("3")){
+                    listRoles.add(role);
+                }
+            }
+        }
+        if("0".equals(manager.getMm_manager_type()) || "4".equals(manager.getMm_manager_type())){
+            //全国
+            managerTypes.add(new ManagerTypeObj("1", "县级"));
+            managerTypes.add(new ManagerTypeObj("2", "市级"));
+            managerTypes.add(new ManagerTypeObj("3", "省级"));
+            managerTypes.add(new ManagerTypeObj("4", "全国"));
+            listRoles.addAll(roles);
+        }
+        map.put("roles", listRoles);//过滤角色 县级管理员只能选择县级角色 市级管理员只能选择市级角色 以此类推
+        map.put("managerTypes", managerTypes);
         return "/admin/add_detail";
     }
 

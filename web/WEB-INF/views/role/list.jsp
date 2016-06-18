@@ -53,8 +53,7 @@
                             <td>${e.name}</td>
                             <td>
                                 <a class="btn btn-default btn-sm" href="#module=/role/edit&id=${e.id}" role="button">修改权限</a>
-                                <a class="btn btn-default btn-sm" href="javascript:void (0)"
-                                   onclick="deleteRole('${e.id}')" role="button">删除</a>
+                                <%--<a class="btn btn-default btn-sm" href="javascript:void (0)" onclick="deleteRole('${e.id}')" role="button">删除</a>--%>
                             </td>
                         </tr>
                     </c:forEach>

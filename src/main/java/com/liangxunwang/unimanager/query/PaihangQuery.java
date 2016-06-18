@@ -2,7 +2,7 @@ package com.liangxunwang.unimanager.query;
 
 /**
  */
-public class PaihangQuery{
+public class PaihangQuery extends BaseAreaQuery{
     private int index;
     private int size;
     private String is_del;

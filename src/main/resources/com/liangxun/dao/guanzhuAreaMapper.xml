@@ -36,6 +36,18 @@
         <if test="keyword != null and keyword != ''">
             AND lemp.mm_emp_nickname like CONCAT('%',#{keyword},'%')
         </if>
+
+        <if test="mm_emp_provinceId != null and mm_emp_provinceId != ''">
+            AND lemp.mm_emp_provinceId = #{mm_emp_provinceId}
+        </if>
+        <if test="mm_emp_cityId != null and mm_emp_cityId != ''">
+            AND lemp.mm_emp_cityId = #{mm_emp_cityId}
+        </if>
+        <if test="mm_emp_countryId != null and mm_emp_countryId != ''">
+            AND lemp.mm_emp_countryId = #{mm_emp_countryId}
+        </if>
+
+
         ORDER BY sn.reg_time DESC limit #{index},#{size}
     </select>
 
@@ -52,6 +64,17 @@
         <if test="keyword != null and keyword != ''">
             AND lemp.mm_emp_nickname like CONCAT('%',#{keyword},'%')
         </if>
+
+        <if test="mm_emp_provinceId != null and mm_emp_provinceId != ''">
+            AND lemp.mm_emp_provinceId = #{mm_emp_provinceId}
+        </if>
+        <if test="mm_emp_cityId != null and mm_emp_cityId != ''">
+            AND lemp.mm_emp_cityId = #{mm_emp_cityId}
+        </if>
+        <if test="mm_emp_countryId != null and mm_emp_countryId != ''">
+            AND lemp.mm_emp_countryId = #{mm_emp_countryId}
+        </if>
+
     </select>
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.GuanzhuAreaObj">

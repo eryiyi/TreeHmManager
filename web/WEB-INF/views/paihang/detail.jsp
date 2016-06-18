@@ -59,7 +59,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">是否显示</label>
+                        <label class="col-sm-2 control-label">是否上榜显示</label>
 
                         <div class="col-sm-4">
                             <select class="form-control" id="is_del">

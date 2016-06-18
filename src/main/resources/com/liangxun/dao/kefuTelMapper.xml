@@ -29,6 +29,13 @@
         LEFT JOIN hat_city hatc ON sn.mm_emp_cityId=hatc.cityID
         LEFT JOIN hat_area hata ON sn.mm_emp_countryId=hata.areaID
         WHERE  1=1
+
+        <if test="mm_emp_provinceId != null and mm_emp_provinceId != ''">
+            AND sn.mm_emp_provinceId = #{mm_emp_provinceId}
+        </if>
+        <if test="mm_emp_cityId != null and mm_emp_cityId != ''">
+            AND sn.mm_emp_cityId = #{mm_emp_cityId}
+        </if>
         <if test="mm_emp_countryId != null and mm_emp_countryId != ''">
             AND sn.mm_emp_countryId = #{mm_emp_countryId}
         </if>

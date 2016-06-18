@@ -1,13 +1,23 @@
 package com.liangxunwang.unimanager.model;
 
-/**
- * Created by zhl on 2015/8/6.
- * ��ɫ
- */
 public class Role {
     private String id;
     private String name;
     private String permissions;
+    private String type;
+//    默认0顶级管理员
+//    1是县级
+//    2是市级
+//    3是省级
+//    4是全国
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public String getId() {
         return id;
