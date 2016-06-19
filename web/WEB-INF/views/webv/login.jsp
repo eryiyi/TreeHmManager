@@ -110,6 +110,8 @@
             success: function (_data) {
                 var data = $.parseJSON(_data);
                 if (data.success) {
+                    addCookie("loginName", username, 36);
+                    addCookie("loginPassword", password, 36);
                     window.location.href = "/webv/toIndex.do";
                 } else {
                     var _case = {

@@ -138,7 +138,7 @@
         <div class="pro-list mb_10">
 
             <ul class="pro-list-title pt_15">
-                <li class="l2">客服名</li>
+                <li class="l1">客服名</li>
                 <li class="l3">客服号</li>
             </ul>
             <ul id="con_one_2">
@@ -146,7 +146,7 @@
                     <c:if test="${e.mm_weixin_type=='0'}">
                         <li class="text-list">
                             <a href="javascript:void(0)" target="_blank">
-                                <span class="l2">${e.mm_weixin_name}</span>
+                                <span class="l1">${e.mm_weixin_name}</span>
                                 <span class="l3">${e.mm_weixin}</span>
                             </a>
                         </li>
@@ -159,7 +159,7 @@
                     <c:if test="${e.mm_weixin_type=='1'}">
                         <li class="text-list">
                             <a href="javascript:void(0)" target="_blank">
-                                <span class="l2">${e.mm_weixin_name}</span>
+                                <span class="l1">${e.mm_weixin_name}</span>
                                 <a href="tencent://message/?uin=${e.mm_weixin}&Site=&Menu=yes"><span
                                         class="l3">${e.mm_weixin}</span></a>
                             </a>

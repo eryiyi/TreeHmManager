@@ -138,14 +138,14 @@
         <div class="pro-list mb_10">
 
             <ul class="pro-list-title pt_15">
-                <li class="l2">客服</li>
+                <li class="l1">客服</li>
                 <li class="l3">电话</li>
             </ul>
             <ul id="con_one_2">
                 <c:forEach items="${listAll}" var="e" varStatus="st">
                     <li class="text-list">
                         <a href="javascript:void(0)" target="_blank">
-                            <span class="l2">全国客服</span>
+                            <span class="l1">全国客服</span>
                             <span class="l3">${e.mm_tel}</span>
                         </a>
                     </li>
@@ -156,7 +156,7 @@
                 <c:forEach items="${list}" var="e" varStatus="st">
                     <li class="text-list">
                         <a href="javascript:void(0)" target="_blank">
-                            <span class="l2">${e.provinceName}${e.cityName}${e.areaName}</span>
+                            <span class="l1">${e.provinceName}${e.cityName}${e.areaName}</span>
                             <span class="l3">${e.mm_tel}</span>
                         </a>
                     </li>

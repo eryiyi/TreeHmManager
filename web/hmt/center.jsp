@@ -249,9 +249,8 @@
                         <h2>我的关注</h2>
                     </div>
                     <div class="box">
-                        <a href="javascript:void(0)" onclick="guanzhuArea()" target="_blank">
+                        <a href="javascript:void(0)" onclick="guanzhuArea()">
                             <h3>关注区域</h3>
-
                             <p></p>
                         </a>
                     </div>

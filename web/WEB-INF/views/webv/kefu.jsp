@@ -149,10 +149,9 @@
                     <li class="phone-list">
                         <div class="pic-holder"><img src="../../../img/btn_phone.png" alt=""/></div>
                         <div class="info">
-                            <c:if test="${query.isType=='0' && e.areaName!=null}">
-                                <h2 class="name">${e.areaName}</h2>
+                            <c:if test="${query.isType=='0'}">
+                                <h2 class="name">${e.provinceName}${e.cityName}${e.areaName}</h2>
                             </c:if>
-
                             <c:if test="${query.isType=='1'}">
                                 <h2 class="name">${e.mm_tel}</h2>
                             </c:if>

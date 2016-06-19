@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" href="../img/icon.png" type="image/png"/>
     <meta name="renderer" content="webkit">
-    <title>花木通|附近商家</title>
+    <title>花木通|附近经纪人</title>
     <meta name="keywords" content="花木通,惠民,苗木,花木,苗木交易,花木求购,苗木求购,花木资讯,花木论坛,花木销售,苗木销售,苗木资讯,绿化苗木,花草,苗联通,白蜡,园林,惠民皂户李镇,苗木协会">
     <meta name="Description"
           content=" 花木通是惠民县本地第一苗木供求信息平台、信息通讯平台，突破了苗木大市场、绿化工程公司、经纪人、苗农之间的信息壁垒，让市场订单苗木不愁买，苗农种植苗木不愁卖！为本地苗木行业发展助力，让经纪人足不出户，随时随地做生意！让苗农及时了解市场行情，苗木卖价更高更容易！">
@@ -272,7 +272,7 @@
         <div class="pro-list mb_10">
             <ul class="pro-list-title pt_15">
                 <li class="l1">经纪人姓名</li>
-                <li class="l2">公司名称</li>
+                <li class="l4">公司名称</li>
                 <li class="l4">公司地址</li>
             </ul>
             <ul>
@@ -281,9 +281,10 @@
                     <li class="text-list">
                         <a href="/webvProfile/toProfile.do?mm_emp_id=${e.mm_emp_id}&page=1" target="_blank">
                             <span class="l1">${e.mm_emp_nickname}</span>
-                            <span class="l2">${e.mm_emp_company}</span>
+                            <span class="l4">${e.mm_emp_company}</span>
                             <span class="l4">${e.mm_emp_company_address}</span>
-                            <span class="l7"><em class="text-list-view">查看详情</em></span>
+                            <span class="16"><em class="text-list-view">查看详情</em></span>
+
                         </a>
                     </li>
                 </c:forEach>

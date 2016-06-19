@@ -83,7 +83,7 @@
             <c:if test="${is_login=='0'}"><a class="login" href="javaScript:void(0)" onclick="login()">登录</a></c:if>
         </div>
         <form action="" class="search-bar clearfix">
-            <input type="text" id="keyword" value="${query.keyword}" name="keyword" placeholder="标题|手机号|公司名称|联系人">
+            <input type="text" id="keyword" value="${query.keyword}" name="keyword" placeholder="标题|手机号|公司名称">
             <button onclick="searchIndex(event)" style="float:right ">搜索</button>
         </form>
         <div class="right"><a class="publish" href="javaScript:void(0)" onclick="addMsg()">发布</a></div>
