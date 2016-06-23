@@ -44,7 +44,7 @@ public class WebvAddRecordController extends ControllerConstants {
 
     @RequestMapping("/addRecord")
     @ResponseBody
-    public String addRecord(HttpSession session, Record record, String ad_1,String ad_2,String ad_3,String ad_4,String ad_5,String ad_6,String ad_7,String ad_8,String ad_9){
+    public String addRecord(HttpSession session, Record record, String ad_1,String ad_2,String ad_3,String ad_4,String ad_5,String ad_6,String ad_7,String ad_8,String ad_9, String ad_10, String ad_11 ,String ad_12,String ad_13,String ad_14,String ad_15,String ad_16,String ad_17,String ad_18){
         try {
             EmpVO emp = (EmpVO) session.getAttribute(MEMBER_KEY);
             if(emp != null && !StringUtil.isNullOrEmpty(emp.getMm_emp_id())){
@@ -115,6 +115,69 @@ public class WebvAddRecordController extends ControllerConstants {
                         picurl += ad_9;
                     }else {
                         picurl +="," + ad_9;
+                    }
+                }
+                if(!StringUtil.isNullOrEmpty(ad_10)){
+                    if(StringUtil.isNullOrEmpty(picurl)){
+                        picurl += ad_10;
+                    }else {
+                        picurl +="," + ad_10;
+                    }
+                }
+                if(!StringUtil.isNullOrEmpty(ad_11)){
+                    if(StringUtil.isNullOrEmpty(picurl)){
+                        picurl += ad_11;
+                    }else {
+                        picurl +="," + ad_11;
+                    }
+                }
+                if(!StringUtil.isNullOrEmpty(ad_12)){
+                    if(StringUtil.isNullOrEmpty(picurl)){
+                        picurl += ad_12;
+                    }else {
+                        picurl +="," + ad_12;
+                    }
+                }
+                if(!StringUtil.isNullOrEmpty(ad_13)){
+                    if(StringUtil.isNullOrEmpty(picurl)){
+                        picurl += ad_13;
+                    }else {
+                        picurl +="," + ad_13;
+                    }
+                }
+                if(!StringUtil.isNullOrEmpty(ad_14)){
+                    if(StringUtil.isNullOrEmpty(picurl)){
+                        picurl += ad_14;
+                    }else {
+                        picurl +="," + ad_14;
+                    }
+                }
+                if(!StringUtil.isNullOrEmpty(ad_15)){
+                    if(StringUtil.isNullOrEmpty(picurl)){
+                        picurl += ad_15;
+                    }else {
+                        picurl +="," + ad_15;
+                    }
+                }
+                if(!StringUtil.isNullOrEmpty(ad_16)){
+                    if(StringUtil.isNullOrEmpty(picurl)){
+                        picurl += ad_16;
+                    }else {
+                        picurl +="," + ad_16;
+                    }
+                }
+                if(!StringUtil.isNullOrEmpty(ad_17)){
+                    if(StringUtil.isNullOrEmpty(picurl)){
+                        picurl += ad_17;
+                    }else {
+                        picurl +="," + ad_17;
+                    }
+                }
+                if(!StringUtil.isNullOrEmpty(ad_18)){
+                    if(StringUtil.isNullOrEmpty(picurl)){
+                        picurl += ad_18;
+                    }else {
+                        picurl +="," + ad_18;
                     }
                 }
                 record.setMm_msg_picurl(picurl);

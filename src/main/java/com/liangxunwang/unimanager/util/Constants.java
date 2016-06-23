@@ -4,7 +4,7 @@ package com.liangxunwang.unimanager.util;
  * Created by zhl on 2015/1/29.
  */
 public class Constants {
-                public static final String URL = "http://192.168.0.224:8080/";
+                public static final String URL = "http://192.168.3.134:8080/";
 //        public static final String URL = "http://xhmt.sdhmmm.cn/";
 //        public static final String URL = "http://www.huamutong.vip";
 

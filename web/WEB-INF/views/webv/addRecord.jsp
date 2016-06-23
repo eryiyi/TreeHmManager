@@ -360,6 +360,16 @@
         var ad_8 = $("#ad_8").val();
         var ad_9 = $("#ad_9").val();
 
+        var ad_10 = $("#ad_10").val();
+        var ad_11 = $("#ad_11").val();
+        var ad_12 = $("#ad_12").val();
+        var ad_13 = $("#ad_13").val();
+        var ad_14 = $("#ad_14").val();
+        var ad_15 = $("#ad_15").val();
+        var ad_16 = $("#ad_16").val();
+        var ad_17 = $("#ad_17").val();
+        var ad_18 = $("#ad_18").val();
+
         $.ajax({
             cache: true,
             type: "POST",
@@ -376,6 +386,15 @@
                 "ad_7": ad_7,
                 "ad_8": ad_8,
                 "ad_9": ad_9,
+                "ad_10": ad_10,
+                "ad_11": ad_11,
+                "ad_12": ad_12,
+                "ad_13": ad_13,
+                "ad_14": ad_14,
+                "ad_15": ad_15,
+                "ad_16": ad_16,
+                "ad_17": ad_17,
+                "ad_18": ad_18,
                 "mm_msg_content": mm_msg_content
             },
             async: false,

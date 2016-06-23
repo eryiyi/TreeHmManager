@@ -18,12 +18,12 @@
     <div class="row">
 
         <div class="col-md-4 col-sm-6">
-            <a href="http://xhmt.sdhmmm.cn:7777/webv/toIndex.do?page=1" class="cat-item bg-red" target="_blank">
+            <a href="http://xhmt.sdhmmm.cn/webv/toIndex.do?page=1" class="cat-item bg-red" target="_blank">
                 <span>花木通网页</span>
             </a>
         </div>
         <div class="col-md-4 col-sm-6">
-            <a href="http://xhmt.sdhmmm.cn:7777/html/download.html" class="cat-item bg-green" target="_blank">
+            <a href="http://xhmt.sdhmmm.cn/html/download.html" class="cat-item bg-green" target="_blank">
                 <span>花木通下载</span>
             </a>
         </div>

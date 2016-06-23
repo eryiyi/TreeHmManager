@@ -64,9 +64,9 @@
                 <c:if test="${emp.mm_level_num==4}"><h3 class="type">会员等级:vip5</h3>
 
                     <h3 class="type">到期时间：${emp.mm_emp_endtime}</h3></c:if>
-                <h3 class="type">注册时间：${emp.mm_emp_regtime}</h3>
+                <%--<h3 class="type">注册时间：${emp.mm_emp_regtime}</h3>--%>
 
-                <h3 class="type">注册地区：${emp.provinceName}${emp.cityName}${emp.areaName}</h3>
+                <%--<h3 class="type">注册地区：${emp.provinceName}${emp.cityName}${emp.areaName}</h3>--%>
             </div>
         </div>
         <div class="glide__wrapper">
