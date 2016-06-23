@@ -277,7 +277,7 @@ public class EmpController extends ControllerConstants {
            //县级
             managerTypes.add(new ManagerTypeObj("1", "县级"));
             for (Role role:roles){
-                if(role.getType().equals("1")){
+                if(role != null && "1".equals(role.getType())){
                     listRoles.add(role);
                 }
             }
@@ -287,7 +287,7 @@ public class EmpController extends ControllerConstants {
             managerTypes.add(new ManagerTypeObj("1", "县级"));
             managerTypes.add(new ManagerTypeObj("2", "市级"));
             for (Role role:roles){
-                if(role.getType().equals("1") || role.getType().equals("2")){
+                if("1".equals(role.getType()) || "2".equals(role.getType())){
                     listRoles.add(role);
                 }
             }
@@ -298,7 +298,7 @@ public class EmpController extends ControllerConstants {
             managerTypes.add(new ManagerTypeObj("2", "市级"));
             managerTypes.add(new ManagerTypeObj("3", "省级"));
             for (Role role:roles){
-                if(role.getType().equals("1") || role.getType().equals("2") || role.getType().equals("3")){
+                if("1".equals(role.getType()) || "2".equals(role.getType()) || "3".equals(role.getType())){
                     listRoles.add(role);
                 }
             }

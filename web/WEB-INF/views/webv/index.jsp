@@ -79,7 +79,7 @@
     <!-- HEADING -->
     <div class="heading clearfix">
         <div class="left">
-            <c:if test="${is_login=='1'}"><a class="location" onclick="selectPro()">${emp.areaName}-点击查看更多</a></c:if>
+            <c:if test="${is_login=='1'}"><a class="location" onclick="selectPro()">${emp.areaName}-查看更多</a></c:if>
             <c:if test="${is_login=='0'}"><a class="login" href="javaScript:void(0)" onclick="login()">登录</a></c:if>
         </div>
         <form action="" class="search-bar clearfix">
@@ -155,7 +155,7 @@
                     </div>
                 </div>
                 <a class="item-content" href="javaScript:void(0)" onclick="showDetail('${e.mm_msg_id}')">
-                        ${e.mm_msg_title}
+                        <%--${e.mm_msg_title}--%>
                         ${e.mm_msg_content}
                 </a>
 

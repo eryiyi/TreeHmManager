@@ -133,8 +133,13 @@
     function loginAuto() {
         var username = getCookie("loginName");
         var password = getCookie("loginPassword");
-        document.getElementById("mobile").value = username
-        document.getElementById("pwr").value = password
+        if(username != 0 && username !='0'){
+            document.getElementById("mobile").value = username
+        }
+        if(password != 0 && password !='0'){
+            document.getElementById("pwr").value = password
+        }
+//        document.getElementById("pwr").value = password
     }
 </script>
 </html>

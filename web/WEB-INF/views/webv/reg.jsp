@@ -202,6 +202,8 @@
                 if (data.success) {
                     alert("注册成功");
                     //登录页面跳转
+                    addCookie("loginName", mm_emp_nickname, 36);
+                    addCookie("loginPassword", mm_emp_password, 36);
                     window.location.href = "/webvLoginController/toLogin.do";
                 } else {
                     var _case = {1: "注册失败", 2: "该手机号已经注册", 3: "该身份证号已经注册"};
