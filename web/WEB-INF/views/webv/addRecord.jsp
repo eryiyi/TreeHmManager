@@ -100,6 +100,16 @@
             <input type="hidden" id="ad_8">
             <input type="hidden" id="ad_9">
 
+            <input type="hidden" id="ad_10">
+            <input type="hidden" id="ad_11">
+            <input type="hidden" id="ad_12">
+            <input type="hidden" id="ad_13">
+            <input type="hidden" id="ad_14">
+            <input type="hidden" id="ad_15">
+            <input type="hidden" id="ad_16">
+            <input type="hidden" id="ad_17">
+            <input type="hidden" id="ad_18">
+
             <c:if test="${emp.is_pic !=null && emp.is_pic !='0'}">
                 <c:if test="${emp.is_pic =='1'}">
                     <div class="pic-holder">
