@@ -5,11 +5,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>花木通公告</title>
-    <meta name="Keywords" content="花木通,花木,花草,苗联通,白蜡,园林,惠民皂户李镇,苗木协会"/>
-    <meta name="Description" content="花木通是最优秀的花木信息软件，为客户提供最优质的服务"/>
-    <meta property="og:title" content="花木通_公告"/>
-    <meta property="og:description" content="花木通公告"/>
+    <title>花木苗木求购信息、供应信息、金牌榜和服务中心，具备一键拨号、一键导航、一键分享功能。整合全国苗木行业资源，服务于全国苗木行业发展，受到全国苗木行业人士好评.以苗木行业供求信息为基础，搭建起农村信息及电商为一体的网络平台</title>
+    <meta name="Keywords" content="花木通,花木,花草,苗联通,白蜡,园林,绿化,苗木,花草,草坪"/>
+    <meta name="Description" content="花木苗木求购信息、供应信息、金牌榜和服务中心，具备一键拨号、一键导航、一键分享功能。整合全国苗木行业资源，服务于全国苗木行业发展，受到全国苗木行业人士好评.以苗木行业供求信息为基础，搭建起农村信息及电商为一体的网络平台"/>
     <meta name="author" content="花木通"/>
     <meta name="Copyright" content="花木通版权所有"/>
     <meta name="viewport"
@@ -40,11 +38,11 @@
 <body>
 <div class="container">
     <!-- HEADING -->
-    <div class="heading clearfix">
-        <a href="javascript:history.back()()" class="back"><img src="/img/tree_icons_back.png" alt=""></a>
+    <%--<div class="heading clearfix">--%>
+        <%--<a href="javascript:history.back()()" class="back"><img src="/img/tree_icons_back.png" alt=""></a>--%>
 
-        <h1 class="head-title">公告</h1>
-    </div>
+        <%--<h1 class="head-title">公告</h1>--%>
+    <%--</div>--%>
     <!-- CONTENT -->
     <div class="content">
         <c:forEach items="${list}" var="e" varStatus="st">
@@ -54,20 +52,20 @@
                         <div class="detail">
                             <h1 class="company">${e.mm_notice_title}</h1>
 
-                            <h3 class="time">${e.mm_notice_content}</h3>
+                            <%--<h3 class="time">${e.mm_notice_content}</h3>--%>
                         </div>
                     </a>
 
-                    <div class="right">
-                        <div class="top clearfix">
-                            <h3 class="time">${e.dateline}</h3>
-                        </div>
-                    </div>
+                    <%--<div class="right">--%>
+                        <%--<div class="top clearfix">--%>
+                            <%--<h3 class="time">${e.dateline}</h3>--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
                 </div>
             </div>
         </c:forEach>
 
-        <a href="/html/download.html" class="warning" target="_blank">下载安卓APP可以查看更多内容...</a>
+        <a href="/html/download.html" class="warning" target="_blank">下载客户端查看更多内容...</a>
 
         <!--分页信息，页面跳转-->
         <div class="page clearfix">

@@ -5,11 +5,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>花木通完善个人资料</title>
-    <meta name="Keywords" content="花木通,花木,花草,苗联通,白蜡,园林,惠民皂户李镇,苗木协会"/>
-    <meta name="Description" content="花木通是最优秀的花木信息软件，为客户提供最优质的服务"/>
-    <meta property="og:title" content="花木通_完善个人资料"/>
-    <meta property="og:description" content="花木通_完善个人资料"/>
+    <title>花木苗木求购信息、供应信息、金牌榜和服务中心，具备一键拨号、一键导航、一键分享功能。整合全国苗木行业资源，服务于全国苗木行业发展，受到全国苗木行业人士好评.以苗木行业供求信息为基础，搭建起农村信息及电商为一体的网络平台</title>
+    <meta name="Keywords" content="花木通,花木,花草,苗联通,白蜡,园林,绿化,苗木,花草,草坪"/>
+    <meta name="Description" content="花木苗木求购信息、供应信息、金牌榜和服务中心，具备一键拨号、一键导航、一键分享功能。整合全国苗木行业资源，服务于全国苗木行业发展，受到全国苗木行业人士好评.以苗木行业供求信息为基础，搭建起农村信息及电商为一体的网络平台"/>
     <meta name="author" content="花木通"/>
     <meta name="Copyright" content="花木通版权所有"/>
     <meta name="viewport"
@@ -64,9 +62,9 @@
     <div class="heading clearfix">
         <!-- HEADING -->
         <div class="heading clearfix">
-            <a href="javascript:history.back()" class="back"><img src="/img/tree_icons_back.png" alt=""></a>
+            <%--<a href="javascript:history.back()" class="back"><img src="/img/tree_icons_back.png" alt=""></a>--%>
 
-            <h1 class="head-title">完善个人资料</h1>
+            <h1 class="head-title">请先完善个人资料</h1>
         </div>
     </div>
     <!-- CONTENT -->

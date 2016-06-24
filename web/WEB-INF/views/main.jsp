@@ -18,7 +18,7 @@
     <div class="row">
 
         <div class="col-md-4 col-sm-6">
-            <a href="http://xhmt.sdhmmm.cn/webv/toIndex.do?page=1" class="cat-item bg-red" target="_blank">
+            <a href="http://xhmt.sdhmmm.cn" class="cat-item bg-red" target="_blank">
                 <span>花木通网页</span>
             </a>
         </div>

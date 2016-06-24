@@ -8,15 +8,12 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>花木通求购信息</title>
-    <meta name="Keywords" content="花木通,花木,花草,苗联通,白蜡,园林,惠民皂户李镇,苗木协会"/>
-    <meta name="Description" content="花木通是最优秀的花木信息软件，为客户提供最优质的服务"/>
-    <meta property="og:title" content="花木通_求购信息"/>
-    <meta property="og:description" content="花木通_求购信息"/>
+    <title>花木苗木求购信息、供应信息、金牌榜和服务中心，具备一键拨号、一键导航、一键分享功能。整合全国苗木行业资源，服务于全国苗木行业发展，受到全国苗木行业人士好评.以苗木行业供求信息为基础，搭建起农村信息及电商为一体的网络平台</title>
+    <meta name="Keywords" content="花木通,花木,花草,苗联通,白蜡,园林,绿化,苗木,花草,草坪"/>
+    <meta name="Description" content="花木苗木求购信息、供应信息、金牌榜和服务中心，具备一键拨号、一键导航、一键分享功能。整合全国苗木行业资源，服务于全国苗木行业发展，受到全国苗木行业人士好评.以苗木行业供求信息为基础，搭建起农村信息及电商为一体的网络平台"/>
     <meta name="author" content="花木通"/>
     <meta name="Copyright" content="花木通版权所有"/>
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="shortcut icon" type="image/png" href="/img/icon.png">
     <link rel="stylesheet" href="/css/reset.css">
     <link rel="stylesheet" href="/css/common.css">
@@ -136,7 +133,7 @@
                         <div class="detail">
                             <h1 class="company">${e.mm_emp_company}&nbsp;${e.mm_emp_nickname}</h1>
                                 <%--<h3 class="time">${e.dateline}&nbsp;${e.area}</h3>--%>
-                            <h3 class="time">${e.area}&nbsp;${e.dateline}</h3>
+                            <h3 class="time">${e.dateline}&nbsp;${e.area}</h3>
                         </div>
                     </a>
 
@@ -182,9 +179,9 @@
         </c:forEach>
 
         <c:if test="${is_login=='1'}"><a href="/html/download.html" class="warning"
-                                         target="_blank">下载安卓APP可以查看更多内容...</a></c:if>
+                                         target="_blank">下载客户端查看更多内容...</a></c:if>
         <c:if test="${is_login=='0'}"><a href="/webvLoginController/toLogin.do"
-                                         class="warning">查看更多信息，请先注册并登录账号...</a></c:if>
+                                         class="warning">查看更多信息，请登录...</a></c:if>
         <c:if test="${is_login=='1'}">
 
             <!--分页信息，页面跳转-->

@@ -42,7 +42,7 @@
 
                     <div class="form-group">
                         <div class="col-sm-4">
-                            <input type="text" value="${query.keyword}" placeholder="用户名、手机号、标题、公司名称" id="keywords"
+                            <input type="text" value="${query.keyword}" placeholder="用户名、手机号、内容、公司名称" id="keywords"
                                    class="form-control" data-toggle="tooltip" data-placement="bottom"
                                    title="Tooltip for name">
                         </div>

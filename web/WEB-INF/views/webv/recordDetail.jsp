@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>详情</title>
+    <title>${recordVO.mm_emp_nickname}${recordVO.mm_msg_content}</title>
     <meta name="Keywords" content="花木通,花木,花草,苗联通,白蜡,园林,惠民皂户李镇,苗木协会"/>
     <meta name="Description" content="花木通是最优秀的花木信息软件，为客户提供最优质的服务"/>
     <meta property="og:title" content="花木通_详细信息"/>
@@ -36,11 +36,11 @@
 <body style="background-color: #fff; background: none;">
 <div class="container">
     <!-- HEADING -->
-    <div class="heading clearfix">
-        <a href="javascript:history.back()" class="back"><img src="/img/tree_icons_back.png" alt=""></a>
+    <%--<div class="heading clearfix">--%>
+        <%--<a href="javascript:history.back()" class="back"><img src="/img/tree_icons_back.png" alt=""></a>--%>
 
-        <h1 class="head-title">详情</h1>
-    </div>
+        <%--<h1 class="head-title">详情</h1>--%>
+    <%--</div>--%>
     <!-- CONTENT -->
     <div class="content">
         <input type="hidden" id="is_login" name="is_login" value="${is_login}">
@@ -55,7 +55,7 @@
                     <div class="detail">
                         <h1 class="company">${recordVO.mm_emp_company} &nbsp;${recordVO.mm_emp_nickname}</h1>
 
-                        <h3 class="time">${recordVO.dateline}</h3>
+                        <h3 class="time">${recordVO.dateline}&nbsp;${recordVO.area}</h3>
                     </div>
                 </a>
 
@@ -74,11 +74,8 @@
                 </div>
             </div>
             <div class="item-content">
-                <p>${recordVO.mm_msg_title}${recordVO.mm_msg_content}</p>
-
+                <p>${recordVO.mm_msg_content}</p>
                 <div class="img-holder clearfix">
-
-
 
                     <c:if test="${recordVO.mm_msg_video == null}">
                         <%--处理图片--%>
@@ -110,7 +107,7 @@
                     <div class="pic-holder">
                         <img class="cqr" src="/img/mobile_erweima.png" alt=""/>
                     </div>
-                    <a class="btn-download" href="">长按识别图中二维码-安卓版</a>
+                    <a class="btn-download" href="">长按识别二维码-安卓版</a>
                 </div>
             </div>
             <div class="side">
@@ -118,7 +115,7 @@
                     <div class="pic-holder">
                         <img class="cqr" src="/img/weixin_erweima.png" alt=""/>
                     </div>
-                    <a class="btn-download" href="">长按识别图中二维码-微信版</a>
+                    <a class="btn-download" href="">长按识别二维码-微信版</a>
                 </div>
             </div>
         </div>
