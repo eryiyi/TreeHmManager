@@ -2,7 +2,7 @@
 <%@ taglib prefix="um" uri="/unimanager-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh_CH">
 <head>
     <meta charset="utf-8">
     <title>花木苗木求购信息、供应信息、金牌榜和服务中心，具备一键拨号、一键导航、一键分享功能。整合全国苗木行业资源，服务于全国苗木行业发展，受到全国苗木行业人士好评.以苗木行业供求信息为基础，搭建起农村信息及电商为一体的网络平台</title>
@@ -38,23 +38,19 @@
     <!-- CONTENT -->
     <div class="content">
         <ul class="contact-list">
+
             <c:forEach items="${list}" var="e" varStatus="st">
-                <li>
-                    <div class="contact clearfix">
-                        <div class="left">
-                            <h1 class="name">${e.mm_fuwu_nickname}</h1>
-
-                            <h3 class="company">${e.mm_fuwu_content}</h3>
-                        </div>
-                        <div class="right">
-                            <a href="tel:${e.mm_fuwu_tel}" class="button-phone-big clearfix">
-                                <img src="/img/tree_button_icon_phone.png" alt="" class="phone-icon">
-
-                                <h2 class="phone-number">${e.mm_fuwu_tel}</h2>
-                            </a>
-                        </div>
+                <%--new--%>
+                <%--2016-06-24--%>
+                <li class="phone-list">
+                    <div class="pic-holder">
+                        <img src="../../../img/namecard_head_default.png" alt=""/>
                     </div>
-                    <div class="duty"></div>
+                    <div class="info">
+                        <h2 class="name">${e.mm_fuwu_nickname}</h2>
+                        <h3 class="address">${e.mm_fuwu_content}</h3>
+                    </div>
+                    <div class="phone"><a href="tel:${e.mm_fuwu_tel}"><img src="../../../img/btn_phone_green.png"/></a></div>
                 </li>
             </c:forEach>
 

@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh_CH">
 <head>
     <meta charset="utf-8">
     <title>花木通后台管理系统</title>

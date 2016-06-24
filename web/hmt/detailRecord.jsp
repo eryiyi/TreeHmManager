@@ -7,7 +7,7 @@
         src="http://webapi.amap.com/maps?v=1.3&key=98ec561802a0063ec6d8301ae2321505"></script>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh_CH">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

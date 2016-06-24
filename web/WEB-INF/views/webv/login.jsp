@@ -2,7 +2,7 @@
 <%@ taglib prefix="um" uri="/unimanager-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh_CH">
 <head>
     <meta charset="utf-8">
     <title>花木苗木求购信息、供应信息、金牌榜和服务中心，具备一键拨号、一键导航、一键分享功能。整合全国苗木行业资源，服务于全国苗木行业发展，受到全国苗木行业人士好评.以苗木行业供求信息为基础，搭建起农村信息及电商为一体的网络平台</title>
@@ -35,7 +35,7 @@
         <%--<h1 class="head-title">登录</h1>--%>
     <%--</div>--%>
     <!-- CONTENT -->
-    <div class="content w85">
+    <form class="content w85">
         <div class="input-group-icon phone">
             <img src="/img/phone.svg" alt="手机">
             <input placeholder="手机号" type="text" id="mobile" name="mobile">
@@ -45,14 +45,12 @@
             <input placeholder="密码" type="password" id="pwr" name="pwr">
         </div>
 
-        <button class="mt4 w10 fill-green" type="button" onclick="login()">登录</button>
+        <button class="mt4 w10 fill-green" type="submit"  onclick="login()">登录</button>
         <button class="mt4 w10 fill-green" type="button" onclick="reg()">新用户注册</button>
 
         <button class="mt4 w10 fill-green" type="button" onclick="kefu()">客服咨询中心</button>
         <button class="mt4 w10 fill-green" type="button" onclick="findpwr()">忘记密码</button>
-
-
-    </div>
+    </form>
     <!-- TOOLBAR -->
     <div class="toolbar">
         <a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy"></a>

@@ -1,4 +1,5 @@
 .content {
+    font-family: "Microsoft Yahei";
     width: 100%;
 }
 
@@ -6,22 +7,27 @@
     display: block;
 }
 
+.phone-list:first-child {
+    border-top: none;
+}
 .phone-list {
     background-color: #fff;
-    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    border-bottom:1px solid #ddd;
+    margin-bottom: 10px;
     width: 100%;
     display: flex;
     flex-flow: row;
 }
 
 .pic-holder {
-    width: 80px;
+    width: 70px;
 }
 
 .pic-holder > img {
     display: block;
-    height: 80px;
-    width: 80px;
+    height: 70px;
+    width: 70px;
 }
 
 .info {
@@ -31,32 +37,42 @@
 }
 
 .info .name {
-    line-height: 40px;
-    font-size: 18px;
+    padding-top: 6px;
+    line-height: 28px;
+    font-size: 16px;
     font-weight: bold;
 }
-
+.info .name-alone{
+    padding: 6px;
+    line-height: 28px;
+    font-size: 16px;
+    font-weight: bold;
+}
 .info .address {
     line-height: 20px;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 .phone {
-    width: 80px;
+    width: 70px;
 }
 
 .phone > a {
     display: block;
-    background-color: #4ABA67;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-left:1px solid #ddd;
+    background-color: #fff;
     padding: 15px;
 }
 
 .phone > a:active {
-    background-color: #26ac50;
+    background-color: #ddd;
 }
 
 .phone > a > img {
     display: block;
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
 }

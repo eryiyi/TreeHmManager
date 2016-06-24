@@ -2,7 +2,7 @@
 <%@ taglib prefix="um" uri="/unimanager-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh_CH">
 <head>
     <meta charset="utf-8">
     <title>花木苗木求购信息、供应信息、金牌榜和服务中心，具备一键拨号、一键导航、一键分享功能。整合全国苗木行业资源，服务于全国苗木行业发展，受到全国苗木行业人士好评.以苗木行业供求信息为基础，搭建起农村信息及电商为一体的网络平台</title>
@@ -26,25 +26,21 @@
     <script type="text/javascript" src="/js/validation.js"></script>
     <script type="text/javascript" src="/js/PictureUpload.js"></script>
     <style type="text/css">
-
         ul {
             list-style: none;
         }
-
         .Menubox {
             width: 100%;
             /*	background:url(3.gif);*/
-            height: 28px;
             line-height: 28px;
         }
-
         .Menubox ul {
+            border-bottom: 1px solid #ccc;
             margin: 0px;
             padding: 0px;
             list-style: none;
             width: 100%;
         }
-
         .Menubox li {
             padding: 10px 0;
             float: left;
@@ -55,25 +51,19 @@
             font-weight: bold;
             width: 50%;
         }
-
         .Menubox li.hover {
             padding: 10px 0;
             background: #4ABA67;
             color: #fff;
             font-weight: bold;
-            height: 27px;
-            line-height: 27px;
         }
-
         .Contentbox {
             clear: both;
             margin-top: 0px;
             border-top: none;
-            height: 181px;
             text-align: center;
             width: 100%;
         }
-
         -->
     </style>
 
@@ -129,33 +119,52 @@
     <div class="content">
         <input type="hidden" id="isType" name="isType" value="${query.isType}">
         <div class="Menubox">
-            <ul>
+            <ul class="clearfix">
                 <c:if test="${query.isType=='0'}">
-                    <li id="one1" onclick="searchMine('0')" class="hover" style="width: 50%">本地</li>
-                    <li id="one2" onclick="searchMine('1')"  style="width: 49%">全国</li>
+                    <li id="one1" onclick="searchMine('0')" class="hover">本地</li>
+                    <li id="one2" onclick="searchMine('1')">全国</li>
                 </c:if>
 
                 <c:if test="${query.isType=='1'}">
-                    <li id="one1" onclick="searchMine('0')" style="width: 50%">本地</li>
-                    <li id="one2" onclick="searchMine('1')" class="hover" style="width: 49%">全国</li>
+                    <li id="one1" onclick="searchMine('0')">本地</li>
+                    <li id="one2" onclick="searchMine('1')" class="hover">全国</li>
                 </c:if>
             </ul>
         </div>
         <div class="Contentbox">
             <ul class="phones">
+                <%--无头像电话列表--%>
+                <li class="phone-list">
+                    <div class="info">
+                        <h2 class="name-alone">山东省<br/>滨州市惠民县皂户李镇</h2>
+                    </div>
+                    <div class="phone"><a href=""><img src="../../../img/btn_phone_green.png"/></a></div>
+                </li>
+                <%--有头像电话列表--%>
+                <li class="phone-list">
+                    <div class="pic-holder">
+                        <img src="http://cdn.sspai.com/attachment/thumbnail/2016/06/16/8458960de7f686fe4967fb058569002f51556_w_160_h_160_c_1.jpg" alt=""/>
+                    </div>
+                    <div class="info">
+                        <h2 class="name">邴新科</h2>
+                        <h3 class="address">山东滨州惠民皂户李乡</h3>
+                    </div>
+                    <div class="phone"><a href=""><img src="../../../img/btn_phone_green.png"/></a></div>
+                </li>
+
+
                 <c:forEach items="${list}" var="e" varStatus="st">
                     <li class="phone-list">
-                        <div class="pic-holder"><img src="../../../img/btn_phone.png" alt=""/></div>
                         <div class="info">
                             <c:if test="${query.isType=='0'}">
-                                <h2 class="name">${e.provinceName}${e.cityName}${e.areaName}</h2>
+                                <h2 class="name-alone">${e.provinceName}<br/>${e.cityName}${e.areaName}</h2>
                             </c:if>
                             <c:if test="${query.isType=='1'}">
-                                <h2 class="name">${e.mm_tel}</h2>
+                                <h2 class="name-alone">${e.mm_tel}</h2>
                             </c:if>
-                            <h3 class="address">${e.mm_tel}</h3>
+                            <%--<h3 class="address">${e.mm_tel}</h3>--%>
                         </div>
-                        <div class="phone"><a href="tel:${e.mm_tel}" ><img src="../../../img/btn_phone.png" alt=""/></a></div>
+                        <div class="phone"><a href="tel:${e.mm_tel}" ><img src="../../../img/btn_phone_green.png" alt=""/></a></div>
                     </li>
                 </c:forEach>
             </ul>
