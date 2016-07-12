@@ -37,7 +37,7 @@ public class OrderService implements ListService {
             map.put("is_jiaofei", query.getIs_jiaofei());
         }
 
-        List<OrderVO> lists = orderDao.lists(map);
+        List<OrderVO> lists = orderDao.listOrders(map);
         long count = orderDao.count(map);
 
         return new Object[]{lists, count};

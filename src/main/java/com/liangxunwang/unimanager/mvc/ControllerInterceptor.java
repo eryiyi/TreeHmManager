@@ -159,6 +159,7 @@ public class ControllerInterceptor extends ControllerConstants implements Handle
 
                         "|(^/getAllCitys\\.do$)"+
                         "|(^/getAllCountrys\\.do$)"+
+                        "|(^/orderSave\\.do$)"+
 
                         "|(^/memberLogin\\.do$)"
 
