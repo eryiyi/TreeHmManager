@@ -43,6 +43,7 @@
 <!-- 顶部 -->
 <div class="topbar">
     <div class="container clearfix">
+
         <ul class="top-login fl">
             <c:if test="${is_login=='1'}">
                 <ul class="fl">
@@ -153,6 +154,23 @@
 <!--banner-->
 <div class="blank_10"></div>
 <div class="container wrap-1190">
+
+
+    <%--
+    ad start
+        --- 两边广告
+        --- 宽 1920 时显示
+        css 写在 index.css 中
+    --%>
+    <div class="ad-left">
+        <img src="../hmt/images/ad_left.jpg" alt="国际花木城"/>
+    </div>
+    <div class="ad-right">
+        <img src="../hmt/images/ad_right.jpg" alt="会展中心"/>
+    </div>
+    <%--ad end--%>
+
+
     <!--// banner-->
     <div class="position">
         <a href="/hmtIndex/toIndex.do?page=1">花木通信息平台</a> &gt; <a href="javascript:void(0)">
@@ -229,8 +247,14 @@
 
                 <%--</div>--%>
                 <div class="cqr-holder">
-                    <div class="weixin"><img src="../hmt/images/weixin_erweima.png" alt=""/></div>
-                    <div class="app"><img src="../hmt/images/mobile_erweima.png" alt=""/></div>
+                    <div class="weixin">
+                        <img src="../hmt/images/weixin_erweima.png" alt=""/>
+                        <h4>微信关注</h4>
+                    </div>
+                    <div class="app">
+                        <img src="../hmt/images/mobile_erweima.png" alt=""/>
+                        <h4>app下载</h4>
+                    </div>
                 </div>
             </div>
 

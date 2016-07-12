@@ -264,8 +264,8 @@ ul.details-title {
     float: right;
     margin: 20px 20px 0 0;
     width: 340px;
-    border: #fde5d1 solid 1px;
-    background-color: #fdf3eb;
+    /*border: #fde5d1 solid 1px;*/
+    /*background-color: #fdf3eb;*/
     position: relative;
 }
 
@@ -281,11 +281,23 @@ ul.details-title {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+    border: #FFD0AD solid 1px;
+}
+.details .details-contact .cqr-holder .app:hover, .details .details-contact .cqr-holder .weixin:hover {
+    -webkit-box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.15);
+    box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.15);
+    transition: all .3s;
 }
 
 .details .details-contact .cqr-holder .app img, .details .details-contact .cqr-holder .weixin img {
     display: block;
     width: 100%;
+}
+.details .details-contact .cqr-holder .app h4, .details .details-contact .cqr-holder .weixin h4 {
+    text-align: center;
+    margin-top: 5px;
+    font-size: 1rem;
 }
 
 .details .details-contact .tit {

@@ -169,6 +169,20 @@
 
 <div class="container wrap-1190">
 
+<%--
+ad start
+    --- 两边广告
+    --- 宽 1920 时显示
+    css 写在 index.css 中
+--%>
+    <div class="ad-left">
+        <img src="../hmt/images/ad_left.jpg" alt="国际花木城"/>
+    </div>
+    <div class="ad-right">
+        <img src="../hmt/images/ad_right.jpg" alt="会展中心"/>
+    </div>
+<%--ad end--%>
+
     <form action="supply.htm" id="filterForm" class="fl" style="width: 956px;">
         <div class="noticebar mt_15">
             <input type="text" id="keyword" name="keyword" autocomplete="off" class="notice-input" value=""
@@ -292,6 +306,7 @@
 
 </div>
 <!--内容 end-->
+
 
 <jsp:include page="footer.jsp" flush="true"/>
 

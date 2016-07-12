@@ -148,6 +148,22 @@
 <input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${emp.mm_emp_id}">
 
 <div class="card-holder clearfix">
+
+
+    <%--
+    ad start
+    --- 两边广告
+    --- 宽 1920 时显示
+    css 写在 index.css 中
+    --%>
+    <div class="ad-left">
+        <img src="../hmt/images/ad_left.jpg" alt="国际花木城"/>
+    </div>
+    <div class="ad-right">
+        <img src="../hmt/images/ad_right.jpg" alt="会展中心"/>
+    </div>
+    <%--ad end--%>
+
     <c:forEach items="${list}" var="e" varStatus="st">
         <a href="/netProfileController/toProfile.do?page=1&mm_emp_id=${e.mm_emp_id}" target="_blank"
            class="card clearfix">
