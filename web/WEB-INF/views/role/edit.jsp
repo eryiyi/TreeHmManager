@@ -144,7 +144,7 @@
                 var data = $.parseJSON(_data);
                 if (data.success) {
                     alert("修改角色成功");
-                    window.location.href = "#module=role/list&page=1";
+                    window.location.href = "#module=role/list&page=1"+ "&_t=" + new Date().getTime();
                 } else {
                     var _case = {1: "角色名称不能为空", 2: "修改失败"};
                     alert(_case[data.code])

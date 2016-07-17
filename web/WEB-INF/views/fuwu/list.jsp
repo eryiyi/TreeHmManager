@@ -11,7 +11,6 @@
             <li><a href="javascript:void(0)">服务管理</a></li>
             <li><a href="javascript:void(0)">服务列表</a></li>
         </ol>
-
     </div>
 </div>
 
@@ -42,6 +41,7 @@
                     <thead>
                     <tr>
                         <th>服务名称</th>
+                        <th>头像</th>
                         <th>服务电话</th>
                         <th>服务描述</th>
                         <th>服务类型</th>
@@ -58,6 +58,7 @@
                     <c:forEach items="${list}" var="e" varStatus="st">
                         <tr>
                             <td>${e.mm_fuwu_nickname}</td>
+                            <td><img style="width: 32px;height: 32px;" src="${e.mm_fuwu_cover}"/></td>
                             <td>${e.mm_fuwu_tel}</td>
                             <td>${e.mm_fuwu_content}</td>
                             <td>

@@ -99,7 +99,7 @@
                 var data = $.parseJSON(_data);
                 if (data.success) {
                     alert("修改成功");
-                    window.location.href = "#module=guanzhu/list&page=1";
+                    window.location.href = "#module=guanzhu/list&page=1"+ "&_t=" + new Date().getTime();
                 } else {
                     var _case = {1: "修改失败"};
                     alert(_case[data.code])

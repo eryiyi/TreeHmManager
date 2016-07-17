@@ -87,6 +87,6 @@
 <script type="text/javascript">
     function searchOrder() {
         var is_use = $("#is_use").val();
-        window.location.href = "#module=/province/list&is_use=" + is_use;
+        window.location.href = "#module=/province/list&is_use=" + is_use+ "&_t=" + new Date().getTime();
     }
 </script>

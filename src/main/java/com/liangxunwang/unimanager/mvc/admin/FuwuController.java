@@ -253,7 +253,7 @@ public class FuwuController extends ControllerConstants {
 //        map.put("listCitysAll", toJSONString(listCitysAll));
 //        map.put("listsCountryAll", toJSONString(listsCountryAll));
 
-        FuwuObj level = (FuwuObj) levelServiceSaveExe.execute(typeId);
+        FuwuVO level = (FuwuVO) levelServiceSaveExe.execute(typeId);
         map.put("levelObj", level);
         return "/fuwu/editfuwu";
     }

@@ -109,7 +109,7 @@
                 var data = $.parseJSON(_data);
                 if (data.success) {
                     alert("执行成功");
-                    window.location.href = "#module=province/list";
+                    window.location.href = "#module=province/list"+ "&_t=" + new Date().getTime();
                 } else {
                     alert("执行失败，请检查")
                 }

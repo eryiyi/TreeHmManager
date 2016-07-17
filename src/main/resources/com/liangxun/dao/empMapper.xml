@@ -350,12 +350,29 @@
         LEFT JOIN hat_city hatc ON sn.mm_emp_cityId=hatc.cityID
         LEFT JOIN hat_area hata ON sn.mm_emp_countryId=hata.areaID
         WHERE 1=1 AND  sn.mm_emp_type = '0'
+        <if test="lat != null and lat != ''">
+            AND sn.lat_company > (#{lat}-1) AND   (#{lat} + 1) > sn.lat_company
+        </if>
+        <if test="lng != null and lng != ''">
+            AND sn.lng_company > (#{lng}-1) AND   (#{lng} + 1) > sn.lng_company
+        </if>
+
+        <if test="lat != null and lat != '' and lng != null and lng != ''">
+            order by ACOS(SIN((#{lat} * 3.1415) / 180 ) *SIN((lat_company * 3.1415) / 180 ) +COS((#{lat_company} * 3.1415) / 180 ) * COS((lat_company * 3.1415) / 180 ) *COS((#{lng_company}* 3.1415) / 180 - (lng_company * 3.1415) / 180 ) ) * 6380 asc
+        </if>
+
         limit #{index},#{size}
     </select>
 
     <select id="countLocation" resultType="Long">
         SELECT count(sn.mm_emp_id) FROM mm_emp sn
         WHERE 1=1 AND  sn.mm_emp_type = '0'
+        <if test="lat != null and lat != ''">
+            AND sn.lat_company > (#{lat}-1) AND   (#{lat} + 1) > sn.lat_company
+        </if>
+        <if test="lng != null and lng != ''">
+            AND sn.lng_company > (#{lat}-1) AND   (#{lng} + 1) > sn.lng_company
+        </if>
     </select>
 
     <select id="findByMobileAndCard" resultMap="emp_vo">

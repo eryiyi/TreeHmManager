@@ -125,7 +125,7 @@
                 var data = $.parseJSON(_data);
                 if (data.success) {
                     alert("处理举报信息成功");
-                    window.location.href = "#module=/report/list";
+                    window.location.href = "#module=/report/list"+ "&_t=" + new Date().getTime();
                 } else {
                     var _case = {1: "处理举报信息失败"};
                     alert(_case[data.code])

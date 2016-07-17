@@ -150,7 +150,7 @@
         var is_use = $("#is_use").val();
 
         if (_index <= ${page.pageCount} && _index >= 1) {
-            window.location.href = "#module=/report/list&page=" + page + "&size=" + size + "&is_use=" + is_use;
+            window.location.href = "#module=/report/list&page=" + page + "&size=" + size + "&is_use=" + is_use+ "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
@@ -161,7 +161,7 @@
         var is_use = $("#is_use").val();
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1)) {
-            window.location.href = "#module=/report/list&page=" + page + "&size=" + size + "&is_use=" + is_use;
+            window.location.href = "#module=/report/list&page=" + page + "&size=" + size + "&is_use=" + is_use+ "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
@@ -173,7 +173,7 @@
         var is_use = $("#is_use").val();
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1)) {
-            window.location.href = "#module=/report/list&page=" + page + "&size=" + size + "&is_use=" + is_use;
+            window.location.href = "#module=/report/list&page=" + page + "&size=" + size + "&is_use=" + is_use+ "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
