@@ -132,9 +132,6 @@
 </div>
 <!--头部 导航-->
 <div class="type-head top-bg">
-    <h1 class="logo">
-        <a href="/hmtIndex/toIndex.do?page=1&mm_msg_type=0" title="花木通信息平台"></a>
-    </h1>
 </div>
 
 <div class="type-nav">
