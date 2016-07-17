@@ -7,6 +7,7 @@ import com.liangxunwang.unimanager.model.FuwuObj;
 import com.liangxunwang.unimanager.mvc.vo.FuwuVO;
 import com.liangxunwang.unimanager.query.FuwuQuery;
 import com.liangxunwang.unimanager.service.*;
+import com.liangxunwang.unimanager.util.Constants;
 import com.liangxunwang.unimanager.util.DateUtil;
 import com.liangxunwang.unimanager.util.StringUtil;
 import com.liangxunwang.unimanager.util.UUIDFactory;
@@ -63,7 +64,17 @@ public class AppFuwuService implements ListService,SaveService ,DeleteService,Ex
             map.put("mm_fuwu_type", query.getMm_fuwu_type());
         }
         List<FuwuVO> lists = fuwuDao.lists(map);
-
+        for(FuwuVO empVO:lists){
+            if(!StringUtil.isNullOrEmpty(empVO.getLat())){
+                if (!StringUtil.isNullOrEmpty(empVO.getMm_fuwu_cover())) {
+                    if (empVO.getMm_fuwu_cover().startsWith("upload")) {
+                        empVO.setMm_fuwu_cover(Constants.URL + empVO.getMm_fuwu_cover());
+                    }else {
+                        empVO.setMm_fuwu_cover(Constants.QINIU_URL + empVO.getMm_fuwu_cover());
+                    }
+                }
+            }
+        }
         long count = fuwuDao.count(map);
 
         return new Object[]{lists, count};

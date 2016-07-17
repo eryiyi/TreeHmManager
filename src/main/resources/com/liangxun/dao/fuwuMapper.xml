@@ -16,6 +16,7 @@
         <result column="provinceid" property="provinceid"/>
         <result column="cityid" property="cityid"/>
         <result column="countryid" property="countryid"/>
+        <result column="mm_fuwu_cover" property="mm_fuwu_cover"/>
     </resultMap>
 
     <resultMap id="fuwu_vo" type="com.liangxunwang.unimanager.mvc.vo.FuwuVO">
@@ -31,6 +32,7 @@
         <result column="provinceid" property="provinceid"/>
         <result column="cityid" property="cityid"/>
         <result column="countryid" property="countryid"/>
+        <result column="mm_fuwu_cover" property="mm_fuwu_cover"/>
 
         <result column="provinceName" property="provinceName"/>
         <result column="cityName" property="cityName"/>
@@ -38,13 +40,19 @@
 
     </resultMap>
 
-
     <select id="lists" resultMap="fuwu_vo">
         SELECT sn.*,hatp.province as provinceName, hatc.city as cityName, hata.area as areaName from mm_fuwu sn
         LEFT JOIN hat_province hatp ON sn.provinceid=hatp.provinceID
         LEFT JOIN hat_city hatc ON sn.cityid=hatc.cityID
         LEFT JOIN hat_area hata ON sn.countryid=hata.areaID
         WHERE  1=1
+        <if test="lat != null and lat != ''">
+            AND sn.lat > (#{lat}-1) AND   (#{lat} + 1) > sn.lat
+        </if>
+        <if test="lng != null and lng != ''">
+            AND sn.lng > (#{lat}-1) AND   (#{lng} + 1) > sn.lng
+        </if>
+
         <if test="mm_fuwu_type != null and mm_fuwu_type != ''">
             AND sn.mm_fuwu_type = #{mm_fuwu_type}
         </if>
@@ -57,12 +65,29 @@
         <if test="countryid != null and countryid != ''">
             AND sn.countryid = #{countryid}
         </if>
+        <if test="lat != null and lat != '' and lng != null and lng != ''">
+            order by ACOS(SIN((#{lat} * 3.1415) / 180 ) *SIN((lat * 3.1415) / 180 ) +COS((#{lat} * 3.1415) / 180 ) * COS((lat * 3.1415) / 180 ) *COS((#{lng}* 3.1415) / 180 - (lng * 3.1415) / 180 ) ) * 6380 asc
+        </if>
+
+        <!--<if test="lat != null and lat != '' and lng != null and lng != ''">-->
+            <!--order by-->
+            <!--ACOS(SIN((#{lat} * 3.1415) / 180 ) *SIN((sn.lat * 3.1415) / 180 ) +COS((#{lat} * 3.1415) / 180 ) * COS((sn.lat * 3.1415) / 180 ) *COS((#{lng} * 3.1415) / 180 - (sn.lng * 3.1415) / 180 ) ) * 6380-->
+            <!--ASC-->
+        <!--</if>-->
+
         limit #{index},#{size}
     </select>
 
     <select id="count" resultType="Long">
         SELECT count(sn.mm_fuwu_id) FROM mm_fuwu sn
         WHERE  1=1
+        <if test="lat != null and lat != ''">
+            AND sn.lat > (#{lat}-1) AND   (#{lat} + 1) > sn.lat
+        </if>
+        <if test="lng != null and lng != ''">
+            AND sn.lng > (#{lat}-1) AND   (#{lng} + 1) > sn.lng
+        </if>
+
         <if test="mm_fuwu_type != null and mm_fuwu_type != ''">
             AND sn.mm_fuwu_type = #{mm_fuwu_type}
         </if>
@@ -75,24 +100,32 @@
         <if test="countryid != null and countryid != ''">
             AND sn.countryid = #{countryid}
         </if>
+        <!--<if test="lat != null and lat != '' and lng != null and lng != ''">-->
+            <!--order by-->
+            <!--ACOS(SIN((#{lat} * 3.1415) / 180 ) *SIN((sn.lat * 3.1415) / 180 ) +COS((#{lat} * 3.1415) / 180 ) * COS((sn.lat * 3.1415) / 180 ) *COS((#{lng} * 3.1415) / 180 - (sn.lng * 3.1415) / 180 ) ) * 6380-->
+            <!--ASC-->
+        <!--</if>-->
     </select>
 
-
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.FuwuObj">
-        INSERT INTO mm_fuwu(mm_fuwu_id, mm_fuwu_nickname, mm_fuwu_tel, mm_fuwu_content, mm_fuwu_type,dateline,lat,lng,mm_fuwu_url, provinceid,cityid, countryid)
-        VALUES (#{mm_fuwu_id}, #{mm_fuwu_nickname}, #{mm_fuwu_tel}, #{mm_fuwu_content,jdbcType=VARCHAR}, #{mm_fuwu_type}, #{dateline}, #{lat,jdbcType=VARCHAR}, #{lng,jdbcType=VARCHAR}, #{mm_fuwu_url,jdbcType=VARCHAR}, #{provinceid,jdbcType=VARCHAR}, #{cityid,jdbcType=VARCHAR}, #{countryid,jdbcType=VARCHAR})
+        INSERT INTO mm_fuwu(mm_fuwu_id, mm_fuwu_nickname, mm_fuwu_tel, mm_fuwu_content, mm_fuwu_type,dateline,lat,lng,mm_fuwu_url, provinceid,cityid, countryid, mm_fuwu_cover)
+        VALUES (#{mm_fuwu_id}, #{mm_fuwu_nickname}, #{mm_fuwu_tel}, #{mm_fuwu_content,jdbcType=VARCHAR}, #{mm_fuwu_type}, #{dateline}, #{lat,jdbcType=VARCHAR}, #{lng,jdbcType=VARCHAR}, #{mm_fuwu_url,jdbcType=VARCHAR}, #{provinceid,jdbcType=VARCHAR}, #{cityid,jdbcType=VARCHAR}, #{countryid,jdbcType=VARCHAR}, #{mm_fuwu_cover,jdbcType=VARCHAR})
     </insert>
 
     <delete id="delete" parameterType="String">
         DELETE FROM mm_fuwu where mm_fuwu_id = #{mm_fuwu_id}
     </delete>
 
-    <select id="findById" parameterType="String" resultMap="fuwu">
-        SELECT * FROM mm_fuwu where mm_fuwu_id=#{mm_fuwu_id}
+    <select id="findById" parameterType="String" resultMap="fuwu_vo">
+        SELECT sn.*,hatp.province as provinceName, hatc.city as cityName, hata.area as areaName from mm_fuwu sn
+        LEFT JOIN hat_province hatp ON sn.provinceid=hatp.provinceID
+        LEFT JOIN hat_city hatc ON sn.cityid=hatc.cityID
+        LEFT JOIN hat_area hata ON sn.countryid=hata.areaID
+        where mm_fuwu_id=#{mm_fuwu_id}
     </select>
 
     <update id="update" parameterType="com.liangxunwang.unimanager.model.FuwuObj">
-        UPDATE mm_fuwu SET mm_fuwu_nickname=#{mm_fuwu_nickname}, mm_fuwu_tel=#{mm_fuwu_tel}, mm_fuwu_content=#{mm_fuwu_content}, mm_fuwu_type=#{mm_fuwu_type}, lat=#{lat}, lng=#{lng}, mm_fuwu_url=#{mm_fuwu_url}, provinceid=#{provinceid}, cityid=#{cityid}, countryid=#{countryid}
+        UPDATE mm_fuwu SET mm_fuwu_nickname=#{mm_fuwu_nickname}, mm_fuwu_tel=#{mm_fuwu_tel}, mm_fuwu_content=#{mm_fuwu_content}, mm_fuwu_type=#{mm_fuwu_type}, lat=#{lat}, lng=#{lng}, mm_fuwu_url=#{mm_fuwu_url}, provinceid=#{provinceid}, cityid=#{cityid}, countryid=#{countryid}, mm_fuwu_cover=#{mm_fuwu_cover}
          WHERE mm_fuwu_id=#{mm_fuwu_id}
     </update>
 </mapper>

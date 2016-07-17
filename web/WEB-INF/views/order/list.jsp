@@ -128,7 +128,7 @@
         var is_jiaofei = $("#is_jiaofei").val();
 
         if (_index <= ${page.pageCount} && _index >= 1) {
-            window.location.href = "#module=/order/list&page=" + page + "&size=" + size + "&is_jiaofei=" + is_jiaofei;
+            window.location.href = "#module=/order/list&page=" + page + "&size=" + size + "&is_jiaofei=" + is_jiaofei+ "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
@@ -139,7 +139,7 @@
         var is_jiaofei = $("#is_jiaofei").val();
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1)) {
-            window.location.href = "#module=/order/list&page=" + page + "&size=" + size + "&is_jiaofei=" + is_jiaofei;
+            window.location.href = "#module=/order/list&page=" + page + "&size=" + size + "&is_jiaofei=" + is_jiaofei+ "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
@@ -151,7 +151,7 @@
         var is_jiaofei = $("#is_jiaofei").val();
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1)) {
-            window.location.href = "#module=/order/list&page=" + page + "&size=" + size + "&is_jiaofei=" + is_jiaofei;
+            window.location.href = "#module=/order/list&page=" + page + "&size=" + size + "&is_jiaofei=" + is_jiaofei+ "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }

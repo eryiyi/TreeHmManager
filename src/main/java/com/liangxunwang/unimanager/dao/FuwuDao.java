@@ -33,7 +33,7 @@ public interface FuwuDao {
      * @param mm_fuwu_id
      * @return
      */
-    public FuwuObj findById(String mm_fuwu_id);
+    public FuwuVO findById(String mm_fuwu_id);
 
     /**
      * 更新

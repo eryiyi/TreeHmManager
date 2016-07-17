@@ -74,7 +74,7 @@
                 var data = $.parseJSON(_data);
                 if (data.success) {
                     alert("设置审核方式成功");
-                    window.location.href = "#module=/shenheType/list";
+                    window.location.href = "#module=/shenheType/list"+ "&_t=" + new Date().getTime();
                 } else {
                     var _case = {1: "设置审核方式失败"};
                     alert(_case[data.code])

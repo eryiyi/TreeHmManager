@@ -175,9 +175,9 @@
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1)) {
             if (mm_msg_type == 0) {
-                window.location.href = "#module=/record/listQiugou&page=" + page + "&size=" + size + "&keyword=" + keywords;
+                window.location.href = "#module=/record/listQiugou&page=" + page + "&size=" + size + "&keyword=" + keywords+ "&_t=" + new Date().getTime();
             } else {
-                window.location.href = "#module=/record/listGongying&page=" + page + "&size=" + size + "&keyword=" + keywords;
+                window.location.href = "#module=/record/listGongying&page=" + page + "&size=" + size + "&keyword=" + keywords+ "&_t=" + new Date().getTime();
             }
         } else {
             alert("请输入1-${page.pageCount}的页码数");
@@ -193,9 +193,9 @@
         if ((page <= ${page.pageCount} && page >= 1)) {
 
             if (mm_msg_type == 0) {
-                window.location.href = "#module=/record/listQiugou&page=" + page + "&size=" + size + "&keyword=" + keywords;
+                window.location.href = "#module=/record/listQiugou&page=" + page + "&size=" + size + "&keyword=" + keywords+ "&_t=" + new Date().getTime();
             } else {
-                window.location.href = "#module=/record/listGongying&page=" + page + "&size=" + size + "&keyword=" + keywords;
+                window.location.href = "#module=/record/listGongying&page=" + page + "&size=" + size + "&keyword=" + keywords+ "&_t=" + new Date().getTime();
             }
         } else {
             alert("请输入1-${page.pageCount}的页码数");
@@ -214,9 +214,9 @@
                     if (data.success) {
                         alert("删除成功");
                         if (mm_msg_type == 0) {
-                            window.location.href = "#module=/record/listQiugou&page=1";
+                            window.location.href = "#module=/record/listQiugou&page=1"+ "&_t=" + new Date().getTime();
                         } else {
-                            window.location.href = "#module=/record/listGongying&page=1";
+                            window.location.href = "#module=/record/listGongying&page=1"+ "&_t=" + new Date().getTime();
                         }
                     } else {
                         var _case = {1: "删除失败"};

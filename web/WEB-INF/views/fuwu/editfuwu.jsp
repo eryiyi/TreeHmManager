@@ -16,10 +16,9 @@
             <li><a href="javascript:void(0)">服务管理</a></li>
             <li><a href="javascript:void(0)">服务修改</a></li>
         </ol>
-
     </div>
 </div>
-
+<input type="hidden" id="mm_fuwu_cover" name="mm_fuwu_cover" value="${levelObj.mm_fuwu_cover}">
 <div class="row">
     <div class="col-xs-12 col-sm-12">
         <div class="box">
@@ -57,6 +56,26 @@
                                    title="Tooltip for name">
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">头像</label>
+
+                        <div class="col-sm-10 col-md-2">
+                            <img class="img-thumbnail" name="imagePath" id="imageDiv" style="cursor: pointer"
+                                    src="${levelObj.mm_fuwu_cover}"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"></label>
+
+                        <div class="col-sm-10">
+                            <input type="file" name="file" id="fileUpload" style="float: left;"/>
+                            <input type="button" value="上传" onclick="uploadImage('fileUpload','imageDiv')"
+                                   style="float: left;"/><br/><br/>
+                            <font color="red">*如果需要修改头像，请右键“图片另存为”，修改之后重新上传！</font>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <label class="col-sm-2 control-label">服务电话</label>
 
@@ -133,11 +152,9 @@
 
                         <div class="col-sm-4">
                             <select class="form-control" id="mm_emp_cityId" onchange="selectCountrys()">
-                                <option value="">--选择城市--</option>
-                                <c:forEach items="${listCitys}" var="e" varStatus="st">
-                                    <option value="${e.cityID}" ${levelObj.cityid==e.cityID?'selected':''}>${e.city}</option>
-                                </c:forEach>
+                                    <option value="${levelObj.cityid}">${levelObj.cityName}</option>
                             </select>
+
                         </div>
                     </div>
                     <div class="form-group">
@@ -145,10 +162,7 @@
 
                         <div class="col-sm-4">
                             <select class="form-control" id="mm_emp_countryId">
-                                <option value="">--选择县区--</option>
-                                <c:forEach items="${listsCountry}" var="e" varStatus="st">
-                                    <option value="${e.areaID}" ${levelObj.countryid==e.areaID?'selected':''}>${e.area}</option>
-                                </c:forEach>
+                                    <option value="${levelObj.countryid}">${levelObj.areaName}</option>
                             </select>
                         </div>
                     </div>
@@ -227,6 +241,15 @@
             alert("请点击地图选择经纬度");
             return;
         }
+
+        var imagePath = $("img[name='imagePath']").attr("src");
+
+        if (imagePath == "" || imagePath == null) {
+            imagePath =  $("#mm_fuwu_cover").val();
+            return;
+        }
+
+
         $.ajax({
             cache: true,
             type: "POST",
@@ -243,6 +266,7 @@
                 "provinceid": mm_emp_provinceId,
                 "cityid": mm_emp_cityId,
                 "countryid": mm_emp_countryId,
+                "mm_fuwu_cover": imagePath,
 
                 "mm_fuwu_url": mm_fuwu_url
             },
@@ -251,7 +275,7 @@
                 var data = $.parseJSON(_data);
                 if (data.success) {
                     alert("执行成功");
-                    window.location.href = "#module=fuwu/list";
+                    window.location.href = "#module=fuwu/list" + "&_t=" + new Date().getTime();
                 } else {
                     alert("执行失败，请检查")
                 }
@@ -369,3 +393,40 @@
     ;
 </script>
 
+<script type="text/javascript">
+    function uploadImage(_fileUpload, _imageDiv) {
+        $.ajaxFileUpload(
+                {
+                    url: "/uploadUnCompressImage.do?_t=" + new Date().getTime(),            //需要链接到服务器地址
+                    secureuri: false,//是否启用安全提交，默认为false
+                    fileElementId: _fileUpload,                        //文件选择框的id属性
+                    dataType: 'json',                                     //服务器返回的格式，可以是json, xml
+                    success: function (data, status)  //服务器成功响应处理函数
+                    {
+                        if (data.success) {
+                            document.getElementById(_imageDiv).src = data.data;
+                        } else {
+                            if (data.code == 1) {
+                                alert("上传图片失败");
+                            } else if (data.code == 2) {
+                                alert("上传图片格式只能为：jpg、png、gif、bmp、jpeg");
+                            } else if (data.code == 3) {
+                                alert("请选择上传图片");
+                            } else {
+                                alert("上传失败");
+                            }
+                        }
+                    }
+                }
+        );
+    }
+
+    function deleteImage(e, node) {
+        if (e.button == 2) {
+            if (confirm("确定移除该图片吗？")) {
+                $(node).remove();
+            }
+        }
+    }
+    ;
+</script>

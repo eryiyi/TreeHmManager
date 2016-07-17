@@ -162,7 +162,7 @@
         var is_del = $("#is_del").val();
 
         if (_index <= ${page.pageCount} && _index >= 1) {
-            window.location.href = "#module=/paihang/list&page=" + page + "&size=" + size + "&is_del=" + is_del;
+            window.location.href = "#module=/paihang/list&page=1"  + "&size=" + size + "&is_del=" + is_del+ "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
@@ -173,7 +173,7 @@
         var is_del = $("#is_del").val();
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1)) {
-            window.location.href = "#module=/paihang/list&page=" + page + "&size=" + size + "&is_del=" + is_del;
+            window.location.href = "#module=/paihang/list&page=" + page + "&size=" + size + "&is_del=" + is_del+ "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
@@ -185,7 +185,7 @@
         var is_del = $("#is_del").val();
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1)) {
-            window.location.href = "#module=/paihang/list&page=" + page + "&size=" + size + "&is_del=" + is_del;
+            window.location.href = "#module=/paihang/list&page=" + page + "&size=" + size + "&is_del=" + is_del+ "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
@@ -201,7 +201,7 @@
                     var data = $.parseJSON(_data);
                     if (data.success) {
                         alert("删除成功");
-                        window.location.href = "#module=/paihang/listQiugou&page=1";
+                        window.location.href = "#module=/paihang/listQiugou&page=1"+ "&_t=" + new Date().getTime();
                     } else {
                         var _case = {1: "删除失败"};
                         alert(_case[data.code])

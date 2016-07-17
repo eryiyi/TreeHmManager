@@ -8,7 +8,8 @@ public class FuwuObj {
     private String mm_fuwu_nickname;
     private String mm_fuwu_tel;
     private String mm_fuwu_content;
-    private String mm_fuwu_type;//0苗木商店
+    private String mm_fuwu_type;
+    //0苗木商店
 //    1装车工人
 //    2物流中心
 //    3嫁接团队
@@ -17,10 +18,20 @@ public class FuwuObj {
     private String lat;
     private String lng;
     private String mm_fuwu_url;
+    private String mm_fuwu_cover;
+
 
     private String provinceid;
     private String cityid;
     private String countryid;
+
+    public String getMm_fuwu_cover() {
+        return mm_fuwu_cover;
+    }
+
+    public void setMm_fuwu_cover(String mm_fuwu_cover) {
+        this.mm_fuwu_cover = mm_fuwu_cover;
+    }
 
     public String getProvinceid() {
         return provinceid;

@@ -193,7 +193,7 @@
                 var data = $.parseJSON(_data);
                 if (data.success) {
                     alert("添加成功");
-                    window.location.href = "#module=/admin/list";
+                    window.location.href = "#module=/admin/list"+ "&_t=" + new Date().getTime();
                 } else {
                     var _case = {1: "添加失败,该用户如果已经是管理员，不能重复设置"};
                     alert(_case[data.code])

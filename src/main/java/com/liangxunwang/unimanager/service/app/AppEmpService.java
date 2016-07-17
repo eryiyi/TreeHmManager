@@ -71,8 +71,6 @@ public class AppEmpService implements  UpdateService,ListService ,ExecuteService
         return null;
     }
 
-
-
     @Override
     public Object list(Object object) throws ServiceException {
         NearbyQuery query = (NearbyQuery) object;
@@ -82,7 +80,12 @@ public class AppEmpService implements  UpdateService,ListService ,ExecuteService
         int size = query.getSize();
         map.put("index", index);
         map.put("size", size);
-
+        if(!StringUtil.isNullOrEmpty(query.getLat())){
+            map.put("lat", query.getLat());
+        }
+        if(!StringUtil.isNullOrEmpty(query.getLng())){
+            map.put("lng", query.getLng());
+        }
         List<EmpVO> lists = empDao.listsLocation(map);
         List<EmpVO> listsTmp = new ArrayList<EmpVO>();
         for(EmpVO empVO:lists){

@@ -6,10 +6,12 @@ import com.liangxunwang.unimanager.dao.LevelDao;
 import com.liangxunwang.unimanager.model.AccessToken;
 import com.liangxunwang.unimanager.model.FuwuObj;
 import com.liangxunwang.unimanager.model.Level;
+import com.liangxunwang.unimanager.mvc.vo.EmpVO;
 import com.liangxunwang.unimanager.mvc.vo.FuwuVO;
 import com.liangxunwang.unimanager.query.FuwuQuery;
 import com.liangxunwang.unimanager.query.LevelQuery;
 import com.liangxunwang.unimanager.service.*;
+import com.liangxunwang.unimanager.util.Constants;
 import com.liangxunwang.unimanager.util.DateUtil;
 import com.liangxunwang.unimanager.util.StringUtil;
 import com.liangxunwang.unimanager.util.UUIDFactory;
@@ -66,12 +68,20 @@ public class FuwuService implements ListService,SaveService ,DeleteService,Execu
         }
 
         List<FuwuVO> lists = fuwuDao.lists(map);
-
+        for(FuwuVO empVO:lists){
+            if(!StringUtil.isNullOrEmpty(empVO.getLat())){
+                if (!StringUtil.isNullOrEmpty(empVO.getMm_fuwu_cover())) {
+                    if (empVO.getMm_fuwu_cover().startsWith("upload")) {
+                        empVO.setMm_fuwu_cover(Constants.URL + empVO.getMm_fuwu_cover());
+                    }else {
+                        empVO.setMm_fuwu_cover(Constants.QINIU_URL + empVO.getMm_fuwu_cover());
+                    }
+                }
+            }
+        }
         long count = fuwuDao.count(map);
-
         return new Object[]{lists, count};
     }
-
 
     @Override
     public Object save(Object object) throws ServiceException {

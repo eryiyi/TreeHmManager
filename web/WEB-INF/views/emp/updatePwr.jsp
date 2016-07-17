@@ -94,7 +94,7 @@
                 var data = $.parseJSON(_data);
                 if (data.success) {
                     alert("修改成功");
-                    window.location.href = "#module=emp/list";
+                    window.location.href = "#module=emp/list"+ "&_t=" + new Date().getTime();
                 } else {
                     var _case = {1: "修改失败"};
                     alert(_case[data.code])
