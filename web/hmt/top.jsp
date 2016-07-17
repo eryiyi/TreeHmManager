@@ -156,12 +156,16 @@
     --- 宽 1920 时显示
     css 写在 index.css 中
     --%>
-    <div class="ad-left">
-        <img src="../hmt/images/ad_left.jpg" alt="国际花木城"/>
-    </div>
-    <div class="ad-right">
-        <img src="../hmt/images/ad_right.jpg" alt="会展中心"/>
-    </div>
+        <a href="http://www.bfgjhmc.com" target="_blank">
+            <div class="ad-left">
+                <img src="../hmt/images/ad_left.jpg" alt="国际花木城"/>
+            </div>
+        </a>
+        <a href="http://www.bfgjhmc.com" target="_blank">
+            <div class="ad-right">
+                <img src="../hmt/images/ad_right.jpg" alt="会展中心"/>
+            </div>
+        </a>
     <%--ad end--%>
 
     <c:forEach items="${list}" var="e" varStatus="st">

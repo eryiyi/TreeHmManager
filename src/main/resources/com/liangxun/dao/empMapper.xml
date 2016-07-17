@@ -120,7 +120,6 @@
         <if test="ischeck != null and ischeck != ''">
         AND sn.ischeck = #{ischeck}
         </if>
-
         <if test="mm_emp_provinceId != null and mm_emp_provinceId != ''">
             AND sn.mm_emp_provinceId = #{mm_emp_provinceId}
         </if>
@@ -133,18 +132,15 @@
         <if test="mm_emp_regtime != null and mm_emp_regtime != ''">
             AND sn.mm_emp_regtime = #{mm_emp_regtime}
         </if>
-
         <if test="keyword != null and keyword != ''">
             AND  (sn.mm_emp_mobile like CONCAT('%',#{keyword},'%') OR sn.mm_emp_nickname like CONCAT('%',#{keyword},'%') OR  sn.mm_emp_company like CONCAT('%',#{keyword},'%'))
         </if>
-
         <if test="start != null and start != ''">
             AND sn.mm_emp_endtime &gt;= #{start}
         </if>
         <if test="end != null and end != ''">
             AND sn.mm_emp_endtime &lt;= #{end}
         </if>
-
         ORDER BY sn.mm_emp_regtime DESC  limit #{index},#{size}
     </select>
 
@@ -185,7 +181,6 @@
         <if test="keyword != null and keyword != ''">
             AND  (sn.mm_emp_mobile like CONCAT('%',#{keyword},'%') OR sn.mm_emp_nickname like CONCAT('%',#{keyword},'%') OR  sn.mm_emp_company like CONCAT('%',#{keyword},'%'))
         </if>
-
         <if test="start != null and start != ''">
             AND sn.mm_emp_endtime &gt;= #{start}
         </if>
@@ -250,7 +245,6 @@
         LEFT JOIN hat_area hata ON sn.mm_emp_countryId=hata.areaID
         WHERE sn.mm_emp_id=#{mm_emp_id}
     </select>
-
 
     <select id="findByMobile" parameterType="String" resultMap="emp_vo">
         SELECT sn.* ,lev.mm_level_name as levelName,lev.mm_level_num as mm_level_num, hatp.province as provinceName, hatc.city as cityName, hata.area as areaName  from mm_emp sn

@@ -38,6 +38,10 @@
     <script type="text/javascript" src="../js/jquery_latest.js"></script>
     <%--<script src="http://html5media.googlecode.com/svn/trunk/src/html5media.min.js"></script>--%>
 
+    <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
+    <script src="http://webapi.amap.com/maps?v=1.3&key=6928be14197e6c629302aa3884084e05"></script>
+    <script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
+
 </head>
 <body>
 <!-- 顶部 -->
@@ -151,6 +155,12 @@
 <input type="hidden" id="is_login" name="is_login" value="${is_login}">
 <input type="hidden" id="accessToken" name="accessToken" value="${emp.access_token}">
 <input type="hidden" id="mm_emp_id" name="mm_emp_id" value="${recordVO.mm_emp_id}">
+
+<input type="hidden" id="latStr" name="latStr" value="${recordVO.lat}">
+<input type="hidden" id="lngStr" name="lngStr" value="${recordVO.lng}">
+<input type="hidden" id="mm_emp_nickname" name="mm_emp_nickname" value="${recordVO.mm_emp_nickname}">
+<input type="hidden" id="mm_emp_company" name="mm_emp_company" value="${recordVO.mm_emp_company}">
+
 <!--banner-->
 <div class="blank_10"></div>
 <div class="container wrap-1190">
@@ -162,12 +172,16 @@
         --- 宽 1920 时显示
         css 写在 index.css 中
     --%>
-    <div class="ad-left">
-        <img src="../hmt/images/ad_left.jpg" alt="国际花木城"/>
-    </div>
-    <div class="ad-right">
-        <img src="../hmt/images/ad_right.jpg" alt="会展中心"/>
-    </div>
+        <a href="http://www.bfgjhmc.com" target="_blank">
+            <div class="ad-left">
+                <img src="../hmt/images/ad_left.jpg" alt="国际花木城"/>
+            </div>
+        </a>
+        <a href="http://www.bfgjhmc.com" target="_blank">
+        <div class="ad-right">
+            <img src="../hmt/images/ad_right.jpg" alt="会展中心"/>
+        </div>
+        </a>
     <%--ad end--%>
 
 
@@ -188,7 +202,7 @@
             </li>
 
             <li class="details-certification">
-                <img src="../hmt/images/ico-tel.png" alt="联系电话" title="联系电话"/>
+                <img src="../hmt/images/ico-tel.png" alt="登录查看完整联系电话" title="登录查看完整联系电话"/>
                 <c:if test="${is_login=='1'}">${recordVO.mm_emp_mobile}</c:if>
                 <c:if test="${is_login=='0'}">${recordVO.mm_emp_mobile.substring(0,7)}****</c:if>
             </li>
@@ -232,7 +246,7 @@
             </ul>
 
             <div class="details-contact">
-                <%--<div class="map-holder" style="width: 100%;height: 200px;">--%>
+                <div class="map-holder" style="width: 100%;height: 200px;">
                     <%--地图--%>
                     <%--http://m.amap.com/navi/?dest=116.470098,39.992838&destName=阜通西&hideRouteIcon=1&key=(您申请的key)--%>
                     <%--<iframe id="ii" src="../hmt/locationGaode.jsp" style="width: 100%;height: 200px;" frameborder="0"></iframe>--%>
@@ -244,18 +258,18 @@
                             <%--<jsp:param name="mm_emp_nickname" value="${recordVO.mm_emp_nickname}" />--%>
                             <%--<jsp:param name="mm_emp_company" value="${recordVO.mm_emp_company}" />--%>
                         <%--</jsp:include>--%>
-
-                <%--</div>--%>
-                <div class="cqr-holder">
-                    <div class="weixin">
-                        <img src="../hmt/images/weixin_erweima.png" alt=""/>
-                        <h4>微信关注</h4>
-                    </div>
-                    <div class="app">
-                        <img src="../hmt/images/mobile_erweima.png" alt=""/>
-                        <h4>app下载</h4>
-                    </div>
+                        <div id="container"  style="width: 100%;height: 200px;"></div>
                 </div>
+                <%--<div class="cqr-holder">--%>
+                    <%--<div class="weixin">--%>
+                        <%--<img src="../hmt/images/weixin_erweima.png" alt=""/>--%>
+                        <%--<h4>微信关注</h4>--%>
+                    <%--</div>--%>
+                    <%--<div class="app">--%>
+                        <%--<img src="../hmt/images/mobile_erweima.png" alt=""/>--%>
+                        <%--<h4>app下载</h4>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
             </div>
 
             <%--<div class="details-tips">--%>
@@ -285,35 +299,34 @@
                     <ul onclick="showDetail('${e.mm_msg_id}')">
                         <li class="text-list">
                             <a href="javascript:void(0)" target="_blank">
-                <span class="l1">
-                   <c:if test="${e.mm_msg_type=='0'}">
-                       [求购]
-                   </c:if>
-                  <c:if test="${e.mm_msg_type=='1'}">
-                      [供应]
-                  </c:if>
-                ${e.mm_msg_title}
-                </span>
+                                <span class="l1">
+                                   <c:if test="${e.mm_msg_type=='0'}">
+                                       [求购]
+                                   </c:if>
+                                  <c:if test="${e.mm_msg_type=='1'}">
+                                      [供应]
+                                  </c:if>
+                                ${e.mm_msg_title}
+                                </span>
                                 <span class="l2">${e.dateline}</span>
                                 <span class="l4">${e.cityName}${e.area}</span>
                                 <span class="l5">${e.mm_emp_nickname}</span>
 
-               <span class="l6">
-                  <c:if test="${e.is_miaomu=='1'}"><img style="width: 25px;height: 32px;"
-                                                        src="../img/tree_icons_trust.png" title="苗木协会"></c:if>
-                  <c:if test="${e.is_chengxin=='1'}"><img style="width: 25px;height: 32px;"
-                                                          src="../img/tree_icons_group.png" title="诚信会员"></c:if>
-              </span>
+                               <span class="l6">
+                                  <c:if test="${e.is_miaomu=='1'}"><img style="width: 25px;height: 32px;"
+                                                                        src="../img/tree_icons_trust.png" title="苗木协会"></c:if>
+                                  <c:if test="${e.is_chengxin=='1'}"><img style="width: 25px;height: 32px;"
+                                                                          src="../img/tree_icons_group.png" title="诚信会员"></c:if>
+                              </span>
                             </a>
                         </li>
                     </ul>
                 </c:if>
             </c:forEach>
         </div>
-
         <div class="security-tips mb_20"><span class="highlight">安全提示：</span>欢迎使用花木通信息平台，请谨慎核实信息内容!</div>
-
     </div>
+
     <!--内容 end-->
     <div class="sides mt_15">
         <div class="release-but mb_15"><a href="javascript:void(0)" target="_blank" onclick="addMsg()"><i
@@ -457,6 +470,30 @@
         }
 
     }
+
+
+    latStr = $("#latStr").val();
+    lngStr = $("#lngStr").val();
+    mm_emp_nickname = $("#mm_emp_nickname").val();
+    mm_emp_company = $("#mm_emp_company").val();
+
+    var map = new AMap.Map('container', {
+        resizeEnable: true,
+        center: [lngStr,latStr],
+        zoom: 13
+    });
+    var marker = new AMap.Marker({
+        position: map.getCenter()
+    });
+    marker.setMap(map);
+    // 设置鼠标划过点标记显示的文字提示
+    marker.setTitle(mm_emp_nickname);
+
+    // 设置label标签
+    marker.setLabel({//label默认蓝框白底左上角显示，样式className为：amap-marker-label
+        offset: new AMap.Pixel(20, 20),//修改label相对于maker的位置
+        content: mm_emp_company
+    });
 
 </script>
 </html>
