@@ -160,7 +160,7 @@
 }
 
 .content {
-    margin: 0 auto 70px;
+    margin: 0 auto 55px;
     height: 100%;
 }
 
@@ -185,12 +185,12 @@
     display: block;
     float: left;
     width: 25%;
-    height: 60px;
+    height: 50px;
 }
 
 .toolbar .buy {
     background: url("/img/tree_toolbar_wanted.png") no-repeat center center;
-    background-size: 50px;
+    background-size: contain;
 }
 
 .toolbar .buy:active {
@@ -199,12 +199,12 @@
 
 .toolbar .buy-active {
     background: url("/img/tree_toolbar_wanted_p.png") no-repeat center center;
-    background-size: 50px;
+    background-size: contain;
 }
 
 .toolbar .sell {
     background: url("/img/tree_toolbar_sell.png") no-repeat center center;
-    background-size: 50px;
+    background-size: contain;
 }
 
 .toolbar .sell:active {
@@ -213,12 +213,12 @@
 
 .toolbar .sell-active {
     background: url("/img/tree_toolbar_sell_p.png") no-repeat center center;
-    background-size: 50px;
+    background-size: contain;
 }
 
 .toolbar .recommend {
     background: url("/img/tree_toolbar_star.png") no-repeat center center;
-    background-size: 50px;
+    background-size: contain;
 }
 
 .toolbar .recommend:active {
@@ -227,12 +227,12 @@
 
 .toolbar .recommend-active {
     background: url("/img/tree_toolbar_star_p.png") no-repeat center center;
-    background-size: 50px;
+    background-size: contain;
 }
 
 .toolbar .mine {
     background: url("/img/tree_toolbar_user.png") no-repeat center center;
-    background-size: 50px;
+    background-size: contain;
 }
 
 .toolbar .mine:active {
@@ -241,7 +241,7 @@
 
 .toolbar .mine-active {
     background: url("/img/tree_toolbar_user_p.png") no-repeat center center;
-    background-size: 50px;
+    background-size: contain;
 }
 
 .toolbar-2 {
@@ -270,7 +270,7 @@
 
 .toolbar-2 .buy {
     background: url("/img/tree_toolbar_wanted.png") no-repeat center center;
-    background-size: 50px;
+    background-size: contain;
 }
 
 .toolbar-2 .buy:active {
@@ -279,12 +279,12 @@
 
 .toolbar-2 .buy-active {
     background: url("/img/tree_toolbar_wanted_p.png") no-repeat center center;
-    background-size: 50px;
+    background-size: contain;
 }
 
 .toolbar-2 .sell {
     background: url("/img/tree_toolbar_sell.png") no-repeat center center;
-    background-size: 50px;
+    background-size: contain;
 }
 
 .toolbar-2 .sell:active {
@@ -293,12 +293,12 @@
 
 .toolbar-2 .sell-active {
     background: url("/img/tree_toolbar_sell_p.png") no-repeat center center;
-    background-size: 50px;
+    background-size: contain;
 }
 
 .toolbar-2 .recommend {
     background: url("/img/tree_toolbar_star.png") no-repeat center center;
-    background-size: 50px;
+    background-size: contain;
 }
 
 .toolbar-2 .recommend:active {
@@ -307,12 +307,12 @@
 
 .toolbar-2 .recommend-active {
     background: url("/img/tree_toolbar_star_p.png") no-repeat center center;
-    background-size: 50px;
+    background-size: contain;
 }
 
 .toolbar-2 .mine {
     background: url("/img/tree_toolbar_user.png") no-repeat center center;
-    background-size: 50px;
+    background-size: contain;
 }
 
 .toolbar-2 .mine:active {
@@ -321,7 +321,7 @@
 
 .toolbar-2 .mine-active {
     background: url("/img/tree_toolbar_user_p.png") no-repeat center center;
-    background-size: 50px;
+    background-size: contain;
 }
 
 .button-phone-big {
