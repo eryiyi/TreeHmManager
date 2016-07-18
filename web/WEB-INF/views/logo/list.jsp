@@ -70,7 +70,7 @@
                 <%--</div>--%>
                 <%--</form>--%>
 
-                <table class="table">
+                <table class="table table-hover">
                     <thead>
                     <tr>
                         <%--<th>全选<input type="checkbox" name="allmails" onclick="checkAll()"></th>--%>

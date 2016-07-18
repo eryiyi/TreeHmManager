@@ -48,7 +48,7 @@
                     <button type="submit" onclick="searchOrder('1')" class="btn btn-default btn-sm">查找</button>
                 </form>
                 <%--<p>For basic styling add the base class <code>.table</code> to any <code>&lt;table&gt;</code>.</p>--%>
-                <table class="table">
+                <table class="table table-hover">
                     <thead>
                     <tr>
                         <th>缴费人</th>

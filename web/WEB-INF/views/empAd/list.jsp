@@ -39,7 +39,7 @@
             <div class="box-content">
                 <%--<p>For basic styling add the base class <code>.table</code> to any <code>&lt;table&gt;</code>.</p>--%>
                 <button type="submit" onclick="searchOrder('${mm_emp_id}')" class="btn btn-default btn-sm">添加</button>
-                <table class="table">
+                <table class="table table-hover">
                     <thead>
                     <tr>
                         <th>会员姓名</th>

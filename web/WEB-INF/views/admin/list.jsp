@@ -51,7 +51,7 @@
                     </button>
                 </form>
 
-                <table class="table">
+                <table class="table table-hover">
                     <thead>
                     <tr>
                         <th>姓名</th>

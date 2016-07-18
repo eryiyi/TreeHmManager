@@ -62,7 +62,7 @@
                         </div>
                     </form>
                 </c:if>
-                <table class="table">
+                <table class="table table-hover">
                     <thead>
                     <tr>
                         <th><input type="checkbox" name="allmails" onclick="checkAll()"></th>

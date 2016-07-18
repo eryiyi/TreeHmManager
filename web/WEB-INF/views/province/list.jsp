@@ -48,7 +48,7 @@
                 <%--<button type="submit" onclick="searchOrder()" class="btn form-control btn-warning btn-sm btn-block">查找</button>--%>
                 <%--</form>--%>
 
-                <table class="table">
+                <table class="table table-hover">
                     <thead>
                     <tr>
                         <th>省份ID</th>

@@ -37,7 +37,7 @@
             </div>
             <div class="box-content">
                 <%--<p>For basic styling add the base class <code>.table</code> to any <code>&lt;table&gt;</code>.</p>--%>
-                <table class="table">
+                <table class="table table-hover">
                     <thead>
                     <tr>
                         <th>服务名称</th>

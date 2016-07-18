@@ -219,7 +219,7 @@
 
                 </c:if>
                 <%--<p>For basic styling add the base class <code>.table</code> to any <code>&lt;table&gt;</code>.</p>--%>
-                <table class="table">
+                <table class="table table-hover">
                     <thead>
                     <tr>
                         <th><input type="checkbox" name="allmails" onclick="checkAll()"></th>

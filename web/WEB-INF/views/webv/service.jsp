@@ -179,13 +179,13 @@
                 <div class="icon-pic"><img src="/img/tree_user_crane.png" alt=""></div>
                 <h5 class="icon-name">吊车服务</h5>
             </a>
-            <a href="/webvAboutUsController/toAboutUs.do" class="icon">
-                <div class="icon-pic"><img src="/img/tree_user_aboutus.png" alt=""></div>
-                <h5 class="icon-name">关于我们</h5>
-            </a>
             <a href="/webvSuggestController/toSuggest.do" class="icon">
                 <div class="icon-pic"><img src="/img/tree_user_report.png" alt=""></div>
                 <h5 class="icon-name">意见反馈</h5>
+            </a>
+            <a href="http://m.ctrip.com/html5" target="_blank" class="icon">
+                <div class="icon-pic"><img src="/img/btn_car_n.png" alt=""></div>
+                <h5 class="icon-name">汽火飞</h5>
             </a>
             <a href="/webvUpdatePwrController/toFindPwr.do" class="icon">
                 <div class="icon-pic"><img src="/img/tree_user_changepw.png" alt=""></div>
@@ -195,9 +195,9 @@
                 <div class="icon-pic"><img src="/img/tree_user_setup.png" alt=""></div>
                 <h5 class="icon-name">切换账号</h5>
             </a>
-            <a href="http://m.ctrip.com/html5" target="_blank" class="icon">
-                <div class="icon-pic"><img src="/img/btn_car_n.png" alt=""></div>
-                <h5 class="icon-name">汽火飞</h5>
+            <a href="/webvAboutUsController/toAboutUs.do" class="icon">
+                <div class="icon-pic"><img src="/img/tree_user_aboutus.png" alt=""></div>
+                <h5 class="icon-name">关于我们</h5>
             </a>
         </div>
     </div>

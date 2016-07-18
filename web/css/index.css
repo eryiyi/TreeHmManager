@@ -73,7 +73,7 @@ body {
 .item .item-footer .read-status-readed {
     float: left;
     display: block;
-    width: 50px;
+    width: 35px;
     height: 50px;
     margin-left: 5px;
     background: url("/img/tree_icons_read_1.png") no-repeat center center;
@@ -83,7 +83,7 @@ body {
 .item .item-footer .button-pic {
     float: right;
     display: block;
-    height: 50px;
+    height: 35px;
     width: 50px;
     margin: 0 5px;
     background: url("/img/tree_button_pic.png") no-repeat center center;
@@ -98,7 +98,7 @@ body {
 .item .item-footer .button-video {
     float: right;
     display: block;
-    height: 50px;
+    height: 35px;
     width: 50px;
     margin: 0 5px;
     background: url("/img/tree_button_video.png") no-repeat center center;
@@ -144,7 +144,7 @@ body {
 
 .item .item-footer .button-share {
     float: right;
-    height: 50px;
+    height: 35px;
     display: block;
     width: 50px;
     margin: 0 5px;
@@ -160,7 +160,7 @@ body {
 .item .item-footer .button-report {
     float: right;
     display: block;
-    height: 50px;
+    height: 35px;
     width: 50px;
     margin: 0 5px;
     background: url("/img/tree_button_report.png") no-repeat center center;
@@ -195,7 +195,9 @@ body {
 }
 
 .item .button-phone-big .phone-number {
-    font-size: 1.3rem;
+    font-size: 1rem;
+    text-align: center;
+    width: 100%;
 }
 
 .item .img-holder {
@@ -232,7 +234,7 @@ body {
     width: 40px;
     height: 40px;
     margin: 5px 0 5px 5px;
-    border-radius: 8px;
+    /*border-radius: 8px;*/
 }
 
 .item-heading .left .detail {
@@ -277,19 +279,19 @@ body {
 }
 
 .warning {
-    -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
     display: block;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    border-radius: 20px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
     background-color: #4ABA67;
     margin: 13px auto 13px auto;
     color: #fff;
-    width: 80%;
+    width: 75%;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1rem;
     line-height: 200%;
     /*text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);*/
 }
