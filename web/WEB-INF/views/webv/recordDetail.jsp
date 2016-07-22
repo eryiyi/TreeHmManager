@@ -107,7 +107,7 @@
                     <div class="pic-holder">
                         <img class="cqr" src="/img/mobile_erweima.png" alt=""/>
                     </div>
-                    <a class="btn-download" href="">长按识别二维码-安卓版</a>
+                    <a class="btn-download">长按识别二维码-安卓版</a>
                 </div>
             </div>
             <div class="side">
@@ -115,7 +115,7 @@
                     <div class="pic-holder">
                         <img class="cqr" src="/img/weixin_erweima.png" alt=""/>
                     </div>
-                    <a class="btn-download" href="">长按识别二维码-微信版</a>
+                    <a class="btn-download">长按识别二维码-微信版</a>
                 </div>
             </div>
         </div>

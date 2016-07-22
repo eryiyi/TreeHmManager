@@ -99,7 +99,7 @@ public class IndexController extends ControllerConstants {
         while (en.hasMoreElements()) {
             session.removeAttribute((String)en.nextElement());
         }
-        return "redirect:/";
+        return "redirect:/index.do";
     }
 
 

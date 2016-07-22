@@ -358,7 +358,7 @@
         </if>
 
         <if test="lat != null and lat != '' and lng != null and lng != ''">
-            order by ACOS(SIN((#{lat} * 3.1415) / 180 ) *SIN((lat_company * 3.1415) / 180 ) +COS((#{lat_company} * 3.1415) / 180 ) * COS((lat_company * 3.1415) / 180 ) *COS((#{lng_company}* 3.1415) / 180 - (lng_company * 3.1415) / 180 ) ) * 6380 asc
+            order by ACOS(SIN((#{lat} * 3.1415) / 180 ) *SIN((lat_company * 3.1415) / 180 ) +COS((#{lat} * 3.1415) / 180 ) * COS((lat_company * 3.1415) / 180 ) *COS((#{lng}* 3.1415) / 180 - (lng_company * 3.1415) / 180 ) ) * 6380 asc
         </if>
 
         limit #{index},#{size}

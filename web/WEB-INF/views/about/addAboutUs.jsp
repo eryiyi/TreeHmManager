@@ -52,11 +52,11 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label">地址</label>
+                        <label class="col-sm-2 control-label">版权</label>
 
                         <div class="col-sm-4">
                             <input type="text" value="${aboutUs.mm_abou_address}" id="mm_abou_address"
-                                   class="form-control" placeholder="地址" data-toggle="tooltip" data-placement="bottom"
+                                   class="form-control" placeholder="版权" data-toggle="tooltip" data-placement="bottom"
                                    title="Tooltip for name">
                         </div>
                     </div>
@@ -64,9 +64,9 @@
                         <label class="col-sm-2 control-label">请填写内容</label>
 
                         <div class="col-sm-4">
-                            <input type="text" value="${aboutUs.mm_about_cont}" id="mm_about_cont" class="form-control"
-                                   placeholder="请填写内容" data-toggle="tooltip" data-placement="bottom"
-                                   title="Tooltip for name">
+                            <textarea  cols="45" rows="5" value="${aboutUs.mm_about_cont}" id="mm_about_cont" class="form-control"
+                                       placeholder="请填写内容" data-toggle="tooltip" data-placement="bottom"
+                                       title="Tooltip for name">${aboutUs.mm_about_cont}</textarea>
                         </div>
                     </div>
 

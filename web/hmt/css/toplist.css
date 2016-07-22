@@ -30,6 +30,7 @@
     height: 120px;
     width: 120px;
     float: left;
+    overflow: hidden;
 }
 
 .card .pic-holder > img {

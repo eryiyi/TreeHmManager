@@ -18,12 +18,14 @@
     <link rel="stylesheet" href="/css/common_2.css">
     <link rel="stylesheet" href="/css/login.css">
 
-    <script type="text/javascript" src="/js/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/md5.js"></script>
-    <script type="text/javascript" src="/js/cookie.js"></script>
-    <script type="text/javascript" src="/js/ajaxfileupload.js"></script>
-    <script type="text/javascript" src="/js/Util.js"></script>
-    <script type="text/javascript" src="/js/validation.js"></script>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/md5.js"></script>
+    <script type="text/javascript" src="../js/cookie.js"></script>
+    <script type="text/javascript" src="../js/ajaxfileupload.js"></script>
+    <script type="text/javascript" src="../js/Util.js"></script>
+    <script type="text/javascript" src="../js/validation.js"></script>
+    <script language="javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/jquery_latest.js"></script>
 
 </head>
 <body onload="loginAuto()">
@@ -45,7 +47,7 @@
             <input placeholder="密码" type="password" id="pwr" name="pwr">
         </div>
 
-        <button class="mt4 w10 fill-green" type="submit"  onclick="login()">登录</button>
+        <button class="mt4 w10 fill-green" type="button"  onclick="login()">登录</button>
         <button class="mt4 w10 fill-green" type="button" onclick="reg()">新用户注册</button>
 
         <button class="mt4 w10 fill-green" type="button" onclick="kefu()">客服咨询中心</button>
@@ -88,7 +90,6 @@
         //登录
         var username = $("#mobile").val();
         var password = $("#pwr").val();
-
         if (username.replace(/\s/g, '') == '') {
             alert("手机号不能为空");
             return;
@@ -108,7 +109,9 @@
                 if (data.success) {
                     addCookie("loginName", username, 36);
                     addCookie("loginPassword", password, 36);
-                    window.location.href = "/webv/toIndex.do";
+                    alert(1);
+                    window.location.href = "/webv/toIndex.do?page=1";
+                    alert(2);
                 } else {
                     var _case = {
                         1: "该用户不存在",

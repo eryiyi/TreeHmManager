@@ -44,7 +44,6 @@ public class WebvIndexController extends ControllerConstants {
     @Qualifier("adObjService")
     private ListService adObjService;
 
-
     @RequestMapping("toIndex")
     public String add(HttpSession session, ModelMap map, RecordQuery query, Page page,HttpServletRequest request) {
         EmpVO emp = (EmpVO) session.getAttribute(MEMBER_KEY);

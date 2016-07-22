@@ -14,8 +14,8 @@ public class Constants {
         public static final String COVER_DEFAULT = "default_avatar.png";
         public static final String FILE_PATH = "D://recordfile";
 
-        public static final String API_KEY = "py440oPABt8q01nVMRfbMZkq";
-        public static final String SECRET_KEY = "ZHLqAqchldIpI4BlEMQRNmbUOeo5Dqd8";
+        public static final String API_KEY = "HGGcyEBPPlfjIieCVnWSlMD6";
+        public static final String SECRET_KEY = "vFypyImE4aFxWspAHTCbpsm4Nh2P2pPN";
         public static final String IOS_API_KEY = "W38xecAXVYDY955Shv0GGc8f";
         public static final String IOS_SECRET_KEY = "ZrhZicrOHvexKhRoKWFIdyaEsCTrUeom";
 
@@ -47,11 +47,25 @@ public class Constants {
 
 
         //商户PID
-        public static final String PARTNER = "2088411171875200";
+        public static final String PARTNER = "2088421398530212";
         //商户收款账号
         public static final String SELLER = "shandongyoubang@126.com";
         //商户私钥，pkcs8格式
-        public static final String RSA_PRIVATE = "MIICeAIBADANBgkqhkiG9w0BAQEFAASCAmIwggJeAgEAAoGBANQs4I2oiVOvzLk0h63cnqvZuAd6WHzew0+XCsg2M57J2bC+yHpSwxKHi6Aw3xoAhpNWkkYzAUo4rjYhCfcYy5YlNd+S4nTvlqV4O1ncyqfKE4Rwe7/WJI546FcqwE8FNam7Z+Noc7ffSq3Nt+Sy4ZzbDnMGIrVooEV2FWJBqGpVAgMBAAECgYAY0mM2z1e5faCSri2NTnkVm7Pm1A5UFW99+Sqev5CMbArWnYswnEwL9+WCyRTgot0bkY4tPjxRZY4j8PuMd88hO/tHqpDJKqNgg8VqSVvYHi49JLI6kub0uXWz8C6uPGASEwfBI7wXkXfxE4x9bZYyIL+SjRPHa90/pA7ZjY38wQJBAPchNXCxX0sCnZVhApW2EM0oznRpv6rmi3N5IgHd8hcIDnGDR1neVhUONlB6wSf7vg1noOb4ijVBKZuBAqABkgUCQQDbynvtWpjZ0SEOoRvZ7LTWcJfnDkCBvNbECvVBXykKam2Kip5HGtTEE0/wcsOCw2vpJDkblLuGBb2eD4/MrFgRAkEAoJ554EO4HsWVbDg/+NP7eYxTGwB8LXRoIGYTf0kkhmmbEZX0cul543d4P7h5ACazcHzw7A2PrmsqwsIH1b0PjQJBAMRKqDcorE4LybwpApi0ICVL1T4TqmSz5BKdvr+tXxfgSQhsGENkoRSkMsaJmDaWlS9YnHAXewqM4fXh7Alc+iECQQC3mgswgqbsjqj1Es7LnwpgXvEH4iDChf3wW4evsCuZi7iAGd0i+VdAfigzpjEKs/6BxYN6aA+FwA0IVpnVyo4q";
+        public static final String RSA_PRIVATE = "\n" +
+                "MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBALfaqiOS8fV3U8l3" +
+                "HX3cOy3cRjuLFpIMBQOcNeF3XmJ75XDBXajdKdxYTJ/23j7UKBUTeJyUMgFdehwK" +
+                "PyyuDCOfggOszqdd8LC15nj+yXzatwXQ8E3aA77NWaNxGKw23JN7Q8XVIhXWuHKi" +
+                "guTM4HdsJ3RSHhSfaQpbZQVxVpgBAgMBAAECgYAFp9RUA9Etm94X9HITzRKE9qGy" +
+                "czTeiUAePE/r/6AHp4gHT+txplwDSzQQN6fehug0vcSYDHb9U8LN2gLXfQMih/9g" +
+                "R714MgY0CYocfGw/JQkqa60YsAzVMfqFUQv+QNxe5CYMHSz62YVbzqFE5/4+u2dc" +
+                "kzwgsnwS+Wtjk+OAAQJBAOzvjqtqe7ju5WDJZCiCc95tlBfY9Ve8nIqP8m5V5rf4" +
+                "h54SyV2zWhI9ieUUixZyBTwMVFfZ+aVMwyEFwMGJzaECQQDGpbkuYB18k09tusrd" +
+                "S6lUoODarSQLvE8cOILX7YbpOWlCJstLnHHMlKUvlIEr316tTOfGXgTN0nEyc/eS" +
+                "dO5hAkEAq/GNT8iO0L5Np9d+4AcLnzdWaZgBNBKkZ8ne3UNpk8jAYm6vw1gM3X/b" +
+                "OmuWJEvKkLFB5B9DlDoIwUYzhEBFAQJAeyohiQl6/tRvOP/J7C+PS7N79tnHMaeN" +
+                "/VdkePEC5vP7uVJIVhcnz8qSKNAQztzt3NGEG1AL9nl2SevxIlNxwQJBAN6kNRO9" +
+                "uoD6yZjb7CSVyrV7Os/V6I792jI6vHGwuFifSHGiRL7JWGdloH2N7iQhm0nPliSD" +
+                "iqfFZ83jNeETt7w=";
         //支付宝公钥
-        public static final String RSA_PUBLIC = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDULOCNqIlTr8y5NIet3J6r2bgHelh83sNPlwrINjOeydmwvsh6UsMSh4ugMN8aAIaTVpJGMwFKOK42IQn3GMuWJTXfkuJ075aleDtZ3MqnyhOEcHu/1iSOeOhXKsBPBTWpu2fjaHO330qtzbfksuGc2w5zBiK1aKBFdhViQahqVQIDAQAB";
+        public static final String RSA_PUBLIC = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC32qojkvH1d1PJdx193Dst3EY7ixaSDAUDnDXhd15ie+VwwV2o3SncWEyf9t4+1CgVE3iclDIBXXocCj8srgwjn4IDrM6nXfCwteZ4/sl82rcF0PBN2gO+zVmjcRisNtyTe0PF1SIV1rhyooLkzOB3bCd0Uh4Un2kKW2UFcVaYAQIDAQAB";
 }

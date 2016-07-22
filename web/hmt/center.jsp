@@ -225,7 +225,7 @@
                         <h2>短信平台</h2>
                     </div>
                     <div class="box">
-                        <a href="http://mhmt.sdhmmm.cn/loginFront.aspx" target="_blank">
+                        <a href="http://139.129.207.95:82" target="_blank">
                             <h3>苗木通短信平台</h3>
 
                             <p></p>

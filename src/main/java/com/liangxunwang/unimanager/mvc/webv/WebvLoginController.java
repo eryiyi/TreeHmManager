@@ -56,7 +56,7 @@ public class WebvLoginController extends ControllerConstants {
 
     @RequestMapping("/login")
     @ResponseBody
-    public String adminLogin(HttpSession session, @Param(value = "username")String username,@Param(value = "password") String password) throws Exception {
+    public String login(HttpSession session, @Param(value = "username")String username,@Param(value = "password") String password) throws Exception {
         if (StringUtil.isNullOrEmpty(username)){
             return toJSONString(ERROR_5);
         }

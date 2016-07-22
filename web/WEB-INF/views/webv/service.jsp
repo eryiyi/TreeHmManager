@@ -103,7 +103,7 @@
                 <div class="icon-pic"><img src="/img/tree_user_profile.png" alt=""></div>
                 <h5 class="icon-name">个人主页</h5>
             </a>
-            <a href="http://mhmt.sdhmmm.cn/loginFront.aspx" target="_blank" class="icon">
+            <a href="http://139.129.207.95:82" target="_blank" class="icon">
                 <div class="icon-pic"><img src="/img/tree_user_massage.png" alt=""></div>
                 <h5 class="icon-name">短信平台</h5>
             </a>
