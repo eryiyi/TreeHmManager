@@ -83,7 +83,7 @@
     </insert>
 
     <update id="updateOrderById" parameterType="com.liangxunwang.unimanager.model.Order">
-        UPDATE  mm_order SET pay_time=#{pay_time}, status='2', pay_status='1' WHERE trade_no=#{trade_no}
+        UPDATE mm_order SET pay_time=#{pay_time}, status=#{status}, pay_status=#{pay_status} WHERE trade_no=#{trade_no}
     </update>
 
     <update id="updateTradeById" parameterType="String">

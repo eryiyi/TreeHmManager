@@ -41,7 +41,7 @@
     </resultMap>
 
     <select id="listOrders" resultMap="my_order_vo">
-        SELECT pso.*, le.mm_emp_nickname as mm_emp_nickname,le.mm_emp_mobile as mm_emp_mobile FROM guiren_order pso
+        SELECT pso.*, le.mm_emp_nickname as mm_emp_nickname,le.mm_emp_mobile as mm_emp_mobile FROM mm_order pso
         LEFT JOIN mm_emp le ON pso.emp_id=le.mm_emp_id
         WHERE '1'='1'
         <if test="emp_id != null and emp_id != ''">
@@ -61,7 +61,7 @@
     </select>
 
     <select id="count" resultType="Long">
-        SELECT count(pso.order_no) FROM guiren_order pso
+        SELECT count(pso.order_no) FROM mm_order pso
         LEFT JOIN mm_emp le ON pso.emp_id=le.mm_emp_id
         WHERE '1'='1'
         <if test="emp_id != null and emp_id != ''">
@@ -79,7 +79,7 @@
     </select>
 
     <select id="findById" resultMap="my_order_vo" parameterType="String">
-       SELECT pso.*, le.mm_emp_nickname as mm_emp_nickname,le.mm_emp_mobile as mm_emp_mobile FROM guiren_order pso
+       SELECT pso.*, le.mm_emp_nickname as mm_emp_nickname,le.mm_emp_mobile as mm_emp_mobile FROM mm_order pso
         LEFT JOIN mm_emp le ON pso.emp_id=le.mm_emp_id
         WHERE pso.order_no=#{order_no}
     </select>

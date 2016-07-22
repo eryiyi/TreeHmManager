@@ -39,10 +39,10 @@
             <div class="box-content">
                 <form class="form-inline">
                     <div class="form-group">
-                        <select class="form-control" id="is_use">
+                        <select class="form-control" id="status">
                             <option value="">--选择订单缴费状态--</option>
-                            <option value="0" ${query.is_jiaofei=='0'?'selected':''}>是</option>
-                            <option value="1" ${query.is_jiaofei=='1'?'selected':''}>否</option>
+                            <option value="0" ${query.status=='0'?'selected':''}>是</option>
+                            <option value="1" ${query.status=='1'?'selected':''}>否</option>
                         </select>
                     </div>
                     <button type="submit" onclick="searchOrder('1')" class="btn btn-default btn-sm">查找</button>
@@ -53,7 +53,10 @@
                     <tr>
                         <th>缴费人</th>
                         <th>缴费金额</th>
-                        <th>订单时间</th>
+                        <th>订单生成时间</th>
+                        <th>缴费时间</th>
+                        <th>支付方式</th>
+                        <th>商户订单号</th>
                         <th>是否缴费</th>
                     </tr>
                     </thead>
@@ -61,15 +64,18 @@
                     <c:forEach items="${list}" var="e" varStatus="st">
                         <tr>
                             <td>${e.mm_emp_nickname}</td>
-                            <td>${e.mm_order_jine}</td>
-                            <td>${e.dateline}</td>
+                            <td>${e.payable_amount}</td>
+                            <td>${e.create_time}</td>
+                            <td>${e.pay_time}</td>
                             <td>
-                                <c:if test="${e.is_jiaofei=='0'}">未处理</c:if>
-                                <c:if test="${e.is_jiaofei=='1'}">已处理</c:if>
+                                <c:if test="${e.trade_type=='0'}">支付宝</c:if>
+                                <c:if test="${e.trade_type=='1'}">微信支付</c:if>
                             </td>
-                                <%--<td>--%>
-                                <%--<a class="btn btn-default btn-sm" href="#module=/report/detail&id=${e.mm_report_id}" role="button">处理</a>--%>
-                                <%--</td>--%>
+                            <td>${e.trade_no}</td>
+                            <td>
+                                <c:if test="${e.status=='0'}">未交费</c:if>
+                                <c:if test="${e.status=='1'}">已缴费</c:if>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -125,10 +131,10 @@
         if (e.keyCode != 13) return;
         var _index = $("#index").val();
         var size = getCookie("contract_size");
-        var is_jiaofei = $("#is_jiaofei").val();
+        var status = $("#status").val();
 
         if (_index <= ${page.pageCount} && _index >= 1) {
-            window.location.href = "#module=/order/list&page=" + page + "&size=" + size + "&is_jiaofei=" + is_jiaofei+ "&_t=" + new Date().getTime();
+            window.location.href = "#module=/order/list&page=" + page + "&size=" + size + "&status=" + status+ "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
@@ -136,10 +142,10 @@
     function nextPage(_page) {
         var page = parseInt(_page);
         var size = $("#size").val();
-        var is_jiaofei = $("#is_jiaofei").val();
+        var status = $("#status").val();
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1)) {
-            window.location.href = "#module=/order/list&page=" + page + "&size=" + size + "&is_jiaofei=" + is_jiaofei+ "&_t=" + new Date().getTime();
+            window.location.href = "#module=/order/list&page=" + page + "&size=" + size + "&status=" + status+ "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
@@ -148,10 +154,10 @@
     function searchOrder(_page) {
         var page = parseInt(_page);
         var size = $("#size").val();
-        var is_jiaofei = $("#is_jiaofei").val();
+        var status = $("#status").val();
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1)) {
-            window.location.href = "#module=/order/list&page=" + page + "&size=" + size + "&is_jiaofei=" + is_jiaofei+ "&_t=" + new Date().getTime();
+            window.location.href = "#module=/order/list&page=" + page + "&size=" + size + "&status=" + status+ "&_t=" + new Date().getTime();
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }

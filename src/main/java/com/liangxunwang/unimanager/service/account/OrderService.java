@@ -5,6 +5,7 @@ import com.liangxunwang.unimanager.mvc.vo.OrderVO;
 import com.liangxunwang.unimanager.query.OrderQuery;
 import com.liangxunwang.unimanager.service.ListService;
 import com.liangxunwang.unimanager.service.ServiceException;
+import com.liangxunwang.unimanager.util.DateUtil;
 import com.liangxunwang.unimanager.util.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -33,13 +34,20 @@ public class OrderService implements ListService {
         map.put("index", index);
         map.put("size", size);
 
-        if (!StringUtil.isNullOrEmpty(query.getIs_jiaofei())) {
-            map.put("is_jiaofei", query.getIs_jiaofei());
+        if (!StringUtil.isNullOrEmpty(query.getStatus())) {
+            map.put("status", query.getStatus());
         }
 
         List<OrderVO> lists = orderDao.listOrders(map);
         long count = orderDao.count(map);
-
+        for(OrderVO orderVO:lists){
+            if(!StringUtil.isNullOrEmpty(orderVO.getCreate_time())){
+                orderVO.setCreate_time(DateUtil.getDate(orderVO.getCreate_time(), "yyyy-MM-dd HH:mm:ss") + "");
+            }
+            if(!StringUtil.isNullOrEmpty(orderVO.getPay_time())){
+                orderVO.setPay_time(DateUtil.getDate(orderVO.getPay_time(), "yyyy-MM-dd HH:mm:ss") + "");
+            }
+        }
         return new Object[]{lists, count};
     }
 

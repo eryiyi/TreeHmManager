@@ -403,16 +403,16 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">经纬度</label>
+                    <%--<div class="form-group">--%>
+                        <%--<label class="col-sm-2 control-label">经纬度</label>--%>
 
-                        <div class="col-sm-4">
-                            <input type="text" id="lat" class="form-control" value="${empVO.lat}" data-toggle="tooltip"
-                                   data-placement="bottom" title="Tooltip for name" readonly="true">
-                            <input type="text" id="lng" class="form-control" value="${empVO.lng}" data-toggle="tooltip"
-                                   data-placement="bottom" title="Tooltip for name" readonly="true">
-                        </div>
-                    </div>
+                        <%--<div class="col-sm-4">--%>
+                            <%--<input type="text" id="lat" class="form-control" value="${empVO.lat}" data-toggle="tooltip"--%>
+                                   <%--data-placement="bottom" title="Tooltip for name" readonly="true">--%>
+                            <%--<input type="text" id="lng" class="form-control" value="${empVO.lng}" data-toggle="tooltip"--%>
+                                   <%--data-placement="bottom" title="Tooltip for name" readonly="true">--%>
+                        <%--</div>--%>
+                    <%--</div>--%>
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">公司经纬度</label>
@@ -510,8 +510,8 @@
         var is_chengxin = $("#is_chengxin").val();
         var is_miaomu = $("#is_miaomu").val();
         var is_use = $("#is_use").val();
-        var lat = $("#lat").val();
-        var lng = $("#lng").val();
+//        var lat = $("#lat").val();
+//        var lng = $("#lng").val();
         var is_video = $("#is_video").val();
         var ischeck = $("#ischeck").val();
         var lat_company = $("#lat_company").val();
@@ -687,8 +687,8 @@
                 "is_miaomu": is_miaomu,
                 "is_use": is_use,
                 "is_video": is_video,
-                "lat": lat,
-                "lng": lng,
+//                "lat": lat,
+//                "lng": lng,
                 "lat_company": lat_company,
                 "lng_company": lng_company,
                 "ischeck": ischeck

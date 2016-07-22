@@ -6,7 +6,7 @@ package com.liangxunwang.unimanager.query;
 public class OrderQuery  extends BaseAreaQuery{
     private int index;
     private int size;
-    private String is_jiaofei;
+    private String status;
 
     public int getIndex() {
         return index;
@@ -24,11 +24,11 @@ public class OrderQuery  extends BaseAreaQuery{
         this.size = size;
     }
 
-    public String getIs_jiaofei() {
-        return is_jiaofei;
+    public String getStatus() {
+        return status;
     }
 
-    public void setIs_jiaofei(String is_jiaofei) {
-        this.is_jiaofei = is_jiaofei;
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

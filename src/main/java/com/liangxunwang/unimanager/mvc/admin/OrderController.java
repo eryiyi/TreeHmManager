@@ -32,7 +32,7 @@ public class OrderController extends ControllerConstants {
 
 
     @RequestMapping("list")
-    public String listQiugou(HttpSession session,ModelMap map, OrderQuery query, Page page){
+    public String list(HttpSession session,ModelMap map, OrderQuery query, Page page){
         Admin manager = (Admin) session.getAttribute(ACCOUNT_KEY);
         query.setIndex(page.getPage() == 0 ? 1 : page.getPage());
         query.setSize(query.getSize() == 0 ? page.getDefaultSize() : query.getSize());

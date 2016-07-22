@@ -47,22 +47,19 @@ public class AppOrderMakeService implements SaveService,UpdateService,ListServic
 
         //保存总订单--和支付宝一致
         appOrderMakeSaveDao.saveTrade(shoppingTrade);
-
         //构造订单列表
         order.setOrder_no(UUIDFactory.random());
         order.setCreate_time(System.currentTimeMillis() + "");
-        order.setStatus("1");//1生成订单
-        order.setPay_status("0");//0未支付
+        order.setStatus("0");//0生成订单 1支付订单
+        order.setPay_status("0");//0未支付  1支付
         order.setPostscript("");
         order.setTrade_no(out_trade_no);
         order.setInvoice("");
         order.setInvoice_title("");
         order.setTaxes("");
-        order.setTrade_type("0");
 
         //保存订单
         appOrderMakeSaveDao.saveList(order);
-
         //生成sign签名
         // 订单
         String orderInfo = StringUtil.getOrderInfo(out_trade_no, "huamutong", "huamutong_pay", String.valueOf(doublePrices));
