@@ -44,7 +44,7 @@
                 <%--2016-06-24--%>
                 <li class="phone-list">
                     <div class="pic-holder">
-                        <img src="../../../img/namecard_head_default.png" alt=""/>
+                        <img src="${e.mm_fuwu_cover}" alt=""/>
                     </div>
                     <div class="info">
                         <h2 class="name">${e.mm_fuwu_nickname}</h2>

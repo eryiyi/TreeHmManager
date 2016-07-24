@@ -230,4 +230,9 @@ public class StringUtil {
         return sb.toString();
     }
 
+    public static String getSignWx(String strA){
+        return MD5Util.getMD5ofStr(strA).toUpperCase();
+    }
+
+
 }

@@ -68,4 +68,17 @@ public class Constants {
                 "iqfFZ83jNeETt7w=";
         //支付宝公钥
         public static final String RSA_PUBLIC = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC32qojkvH1d1PJdx193Dst3EY7ixaSDAUDnDXhd15ie+VwwV2o3SncWEyf9t4+1CgVE3iclDIBXXocCj8srgwjn4IDrM6nXfCwteZ4/sl82rcF0PBN2gO+zVmjcRisNtyTe0PF1SIV1rhyooLkzOB3bCd0Uh4Un2kKW2UFcVaYAQIDAQAB";
+
+
+        //微信统一下单notify_url
+        public static final String WEIXIN_NOTIFY_URL = URL + "orderSaveWxFk.do";
+
+        //appid
+        public static final String WX_APP_ID = "wxe48c235e104c5332";//yum
+        //商户号
+        public static final String WX_MCH_ID = "1368485802";//yum
+        //  API密钥，在商户平台设置
+        public static final  String WX_API_KEY="cd46a2cae4981a4fab91b2c3271052aa";//yum
+
+
 }

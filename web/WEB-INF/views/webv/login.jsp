@@ -109,9 +109,7 @@
                 if (data.success) {
                     addCookie("loginName", username, 36);
                     addCookie("loginPassword", password, 36);
-                    alert(1);
                     window.location.href = "/webv/toIndex.do?page=1";
-                    alert(2);
                 } else {
                     var _case = {
                         1: "该用户不存在",

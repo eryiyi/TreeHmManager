@@ -29,6 +29,10 @@ public class AppOrderMakeController extends ControllerConstants {
     private SaveService appOrderMakeService;
 
     @Autowired
+    @Qualifier("appOrderMakeWxService")
+    private SaveService appOrderMakeWxServiceSave;
+
+    @Autowired
     @Qualifier("appOrderMakeService")
     private UpdateService appOrderUpdateService;
 
@@ -70,6 +74,37 @@ public class AppOrderMakeController extends ControllerConstants {
                 return toJSONString(ERROR_1);
             }
         }
+        return null;
+    }
+
+    /**
+     * 订单接收---形成订单 ----- 微信
+     * @return
+     */
+    @RequestMapping("/orderSaveWx")
+    @ResponseBody
+    public String orderSaveWx(Order order){
+        try {
+            String out_trade_no = (String) appOrderMakeWxServiceSave.save(order);
+            DataTip tip = new DataTip();
+            tip.setData(out_trade_no);
+            return toJSONString(tip);
+        }catch (ServiceException e){
+            if (e.getMessage().equals("ISWRONG")){
+                return toJSONString(ERROR_1);
+            }
+        }
+        return null;
+    }
+
+    /**
+     * 订单接收---形成订单 ----- 微信----统一下单反馈
+     * @return
+     */
+    @RequestMapping("/orderSaveWxFk")
+    @ResponseBody
+    public String orderSaveWxFk(){
+       //逻辑处理
         return null;
     }
 

@@ -134,23 +134,23 @@
         <div class="Contentbox">
             <ul class="phones">
                 <%--无头像电话列表--%>
-                <li class="phone-list">
-                    <div class="info">
-                        <h2 class="name-alone">山东省<br/>滨州市惠民县皂户李镇</h2>
-                    </div>
-                    <div class="phone"><a href=""><img src="../../../img/btn_phone_green.png"/></a></div>
-                </li>
-                <%--有头像电话列表--%>
-                <li class="phone-list">
-                    <div class="pic-holder">
-                        <img src="http://cdn.sspai.com/attachment/thumbnail/2016/06/16/8458960de7f686fe4967fb058569002f51556_w_160_h_160_c_1.jpg" alt=""/>
-                    </div>
-                    <div class="info">
-                        <h2 class="name">邴新科</h2>
-                        <h3 class="address">山东滨州惠民皂户李乡</h3>
-                    </div>
-                    <div class="phone"><a href=""><img src="../../../img/btn_phone_green.png"/></a></div>
-                </li>
+                <%--<li class="phone-list">--%>
+                    <%--<div class="info">--%>
+                        <%--<h2 class="name-alone">山东省<br/>滨州市惠民县皂户李镇</h2>--%>
+                    <%--</div>--%>
+                    <%--<div class="phone"><a href=""><img src="../../../img/btn_phone_green.png"/></a></div>--%>
+                <%--</li>--%>
+                <%--&lt;%&ndash;有头像电话列表&ndash;%&gt;--%>
+                <%--<li class="phone-list">--%>
+                    <%--<div class="pic-holder">--%>
+                        <%--<img src="http://cdn.sspai.com/attachment/thumbnail/2016/06/16/8458960de7f686fe4967fb058569002f51556_w_160_h_160_c_1.jpg" alt=""/>--%>
+                    <%--</div>--%>
+                    <%--<div class="info">--%>
+                        <%--<h2 class="name">邴新科</h2>--%>
+                        <%--<h3 class="address">山东滨州惠民皂户李乡</h3>--%>
+                    <%--</div>--%>
+                    <%--<div class="phone"><a href=""><img src="../../../img/btn_phone_green.png"/></a></div>--%>
+                <%--</li>--%>
 
 
                 <c:forEach items="${list}" var="e" varStatus="st">
