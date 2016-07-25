@@ -6,7 +6,6 @@ package com.liangxunwang.unimanager.util;
 public class Constants {
         public static final String URL = "http://smilekyle.xicp.net:42765/";
 //        public static final String URL = "http://xhmt.sdhmmm.cn/";
-
         public static final String QINIU_URL = "http://7xqzj9.com1.z0.glb.clouddn.com/";
 
         public static final String QINIU_SPACE = "hmmm-pic";
@@ -44,7 +43,6 @@ public class Constants {
 
         public static final Long DAY_MILLISECOND = 86400000L;
 
-
         //商户PID
         public static final String PARTNER = "2088421398530212";
         //商户收款账号
@@ -71,13 +69,10 @@ public class Constants {
 
         //微信统一下单notify_url
         public static final String WEIXIN_NOTIFY_URL = URL + "orderSaveWxFk.do";
-
         //appid
         public static final String WX_APP_ID = "wxe48c235e104c5332";//yum
         //商户号
         public static final String WX_MCH_ID = "1368485802";//yum
         //  API密钥，在商户平台设置
         public static final  String WX_API_KEY="cd46a2cae4981a4fab91b2c3271052aa";//yum
-
-
 }
