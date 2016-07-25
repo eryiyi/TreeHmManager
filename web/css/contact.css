@@ -16,11 +16,12 @@
     border-bottom:1px solid #ddd;
     margin-bottom: 10px;
     width: 100%;
-    display: flex;
-    flex-flow: row;
+    display: table;
 }
 
 .pic-holder {
+    vertical-align: top;
+    display: table-cell;
     width: 70px;
 }
 
@@ -31,8 +32,9 @@
 }
 
 .info {
+    vertical-align: top;
+    display: table-cell;
     text-align: left;
-    flex: auto;
     padding: 0 5px;
 }
 
@@ -54,6 +56,8 @@
 }
 
 .phone {
+    vertical-align: top;
+    display: table-cell;
     width: 70px;
 }
 
