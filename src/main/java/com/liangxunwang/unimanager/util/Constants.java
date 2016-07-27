@@ -70,7 +70,7 @@ public class Constants {
 
 
         //微信统一下单notify_url
-        public static final String WEIXIN_NOTIFY_URL = URL + "pay/notify_url_wxpay.jsp";
+        public static final String WEIXIN_NOTIFY_URL = URL + "orderSaveWxFk.do";
 
         //appid
         public static final String WX_APP_ID = "wxe48c235e104c5332";//yum
