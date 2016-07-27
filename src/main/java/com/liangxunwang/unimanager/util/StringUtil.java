@@ -148,7 +148,7 @@ public class StringUtil {
         orderInfo += "&total_fee=" + "\"" + price + "\"";
 
         // 服务器异步通知页面路径
-        orderInfo += "&notify_url=" + "\"" + "http://notify.msp.hk/notify.htm"
+        orderInfo += "&notify_url=" + "\"" + Constants.URL+"pay/notify_url_alipay.jsp"
                 + "\"";
 
         // 服务接口名称， 固定值

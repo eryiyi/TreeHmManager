@@ -1,11 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: zhl
-  Date: 2016/7/25
-  Time: 8:50
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="um" uri="/unimanager-tags" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" trimDirectiveWhitespaces="true" %>
 <!DOCTYPE html>
 <html lang="zh_CH">
 <head>
@@ -22,8 +17,22 @@
   <link rel="stylesheet" href="/css/common.css">
   <link rel="stylesheet" href="/css/index.css">
   <link rel="stylesheet" href="/css/shangquan.css"/>
+
+  <script type="text/javascript" src="/js/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/md5.js"></script>
+  <script type="text/javascript" src="/js/cookie.js"></script>
+  <script type="text/javascript" src="/js/ajaxfileupload.js"></script>
+  <script type="text/javascript" src="/js/Util.js"></script>
+  <script type="text/javascript" src="/js/validation.js"></script>
+  <script language="javascript" src="/js/jquery.js"></script>
+  <script type="text/javascript" src="/js/jquery_latest.js"></script>
+  <script type="text/javascript" src="/js/glide.min.js"></script>
+
 </head>
 <body>
+
+<input type="hidden" id="is_login" name="is_login" value="${is_login}">
+
 <div class="container">
   <!-- HEADING -->
   <div class="heading clearfix">
@@ -32,22 +41,22 @@
   <!-- CONTENT -->
   <div class="content">
     <ul class="menu-list">
-      <li>
-        <a href="">
+      <li onclick="clickSq('1')">
+        <a href="javascript:void(0)" >
           <img class="img-icon" src="/img/star_circle.png" />
           <h5>金牌榜</h5>
           <img class="img-more" src="/img/sm_more.png" />
         </a>
       </li>
-      <li>
-        <a href="">
+      <li onclick="clickSq('2')">
+        <a href="javascript:void(0)" >
           <img class="img-icon" src="/img/afd.png" />
           <h5>附近经济人</h5>
           <img class="img-more" src="/img/sm_more.png" />
         </a>
       </li>
-      <li>
-        <a href="">
+      <li onclick="clickSq('3')">
+        <a href="javascript:void(0)" >
           <img class="img-icon" src="/img/icon_ylzc.png" />
           <h5>园林资材</h5>
           <img class="img-more" src="/img/sm_more.png" />
@@ -55,14 +64,57 @@
       </li>
     </ul>
   </div>
+
   <!-- TOOLBAR -->
   <div class="toolbar">
-      <a href="javaScript:void(0)" id="cd-popup-trigger1" class="buy"></a>
-      <a href="javaScript:void(0)" id="cd-popup-trigger2" class="sell"></a>
-      <a href="javaScript:void(0)" id="cd-popup-trigger3" class="recommend recommend-active"></a>
-      <a href="javaScript:void(0)" id="cd-popup-trigger4" class="mine"></a>
+    <c:if test="${is_login=='1'}">
+        <a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy"></a>
+        <a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell"></a>
+        <a href="javaScript:void(0)" onclick="toPage('/webvShangquanController/toShangquan.do','1')" class="recommend recommend-active"></a>
+        <a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')" class="mine"></a>
+    </c:if>
+    <c:if test="${is_login=='0'}">
+        <a href="/webvLoginController/toLogin.do" id="cd-popup-trigger1" class="buy"></a>
+        <a href="/webvLoginController/toLogin.do" id="cd-popup-trigger2" class="sell"></a>
+        <a href="/webvLoginController/toLogin.do" id="cd-popup-trigger3" class="recommend  recommend-active"></a>
+        <a href="/webvLoginController/toLogin.do" id="cd-popup-trigger4" class="mine"></a>
+    </c:if>
   </div>
   <!-- TOOLBAR -->
+
 </div>
 </body>
+<script>
+
+  function toPage(_url, _page) {
+    if (_page != '') {
+      window.location.href = _url + "?page=" + _page;
+    } else {
+      window.location.href = _url;
+    }
+  }
+
+  function clickSq(istype){
+    //点击事件
+    var is_login = $("#is_login").val();
+    if (is_login == 1) {
+      if(istype == '1'){
+        //金牌榜
+        window.location.href = "/webvTopController/toTop.do?page=1" + "&size=10" + "&_t=" + new Date().getTime();
+      }
+      if(istype == '2'){
+        //附近经纪人
+        window.location.href = "/webvNearbyController/nearby.do?page=1"  + "&size=10" + "&_t=" + new Date().getTime();
+      }
+      if(istype == '3'){
+        //园林资材
+        window.location.href = "/webvFuwuCenterController/toCenter.do?mm_fuwu_type=0&page=1"  + "&size=10" + "&_t=" + new Date().getTime();
+      }
+    }else {
+      //没登陆
+      window.location.href = "/webvLoginController/toLogin.do";
+    }
+
+  }
+</script>
 </html>

@@ -26,6 +26,15 @@ public class WebvShangquanController extends ControllerConstants {
 
     @RequestMapping("toShangquan")
     public String toTop(HttpSession session, ModelMap map, PaihangQuery query, Page page){
+        EmpVO emp = (EmpVO) session.getAttribute(MEMBER_KEY);
+        if(emp != null){
+            //说明已经登陆
+            map.put("is_login", "1");
+            map.put("emp", emp);
+        }else{
+            //说明没有登陆
+            map.put("is_login", "0");
+        }
         return "/webv/shangquan";
     }
 

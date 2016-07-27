@@ -167,24 +167,25 @@
                 <div class="right">
                     <c:choose>
                         <c:when test="${page.page == 1}">
-                            <a href="javascript:void(0)">首页</a>
-                            <a href="javascript:void(0)">《</a>
+                            <a class="hide-phone" href="javascript:void(0)">首页</a>
+                            <a href="javascript:void(0)">上一页</a>
                         </c:when>
                         <c:otherwise>
-                            <a href="javascript:void(0);" onclick="nextPage('1')">首页</a>
-                            <a href="javascript:void(0);" onclick="nextPage('${page.page-1}')">《</a>
+                            <a class="hide-phone" href="javascript:void(0);" onclick="nextPage('1')">首页</a>
+                            <a href="javascript:void(0);" onclick="nextPage('${page.page-1}')">上一页</a>
                         </c:otherwise>
                     </c:choose>
-                    <a>第<input type="text" id="index" name="index" onkeyup="searchIndex(event)"
-                               value="${page.page}">页</a>
+                    <a class="hide-phone">第<input type="text" id="index" name="index" onkeyup="searchIndex(event)"
+                                                  value="${page.page}">页</a>
                     <c:choose>
                         <c:when test="${page.page == page.pageCount}">
-                            <a href="javascript:void(0)">》</a>
-                            <a href="javascript:void(0)">末页</a>
+                            <a href="javascript:void(0)">下一页</a>
+                            <a class="hide-phone" href="javascript:void(0)">末页</a>
                         </c:when>
                         <c:otherwise>
-                            <a href="javascript:void(0);" onclick="nextPage('${page.page+1}')">》</a>
-                            <a href="javascript:void(0);" onclick="nextPage('${page.pageCount}')">末页</a>
+                            <a href="javascript:void(0);" onclick="nextPage('${page.page+1}')">下一页</a>
+                            <a class="hide-phone" href="javascript:void(0);"
+                               onclick="nextPage('${page.pageCount}')">末页</a>
                         </c:otherwise>
                     </c:choose>
                 </div>
@@ -198,15 +199,14 @@
         <c:if test="${is_login=='1'}">
             <a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy"></a>
             <a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell"></a>
-            <a href="javaScript:void(0)" onclick="toPage('/webvTopController/toTop.do','1')"
-               class="recommend recommend-active"></a>
+            <a href="javaScript:void(0)" onclick="toPage('/webvShangquanController/toShangquan.do','1')" class="recommend recommend-active"></a>
             <a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')" class="mine"></a>
         </c:if>
         <c:if test="${is_login=='0'}">
-            <a href="javaScript:void(0)" id="cd-popup-trigger1" class="buy"></a>
-            <a href="javaScript:void(0)" id="cd-popup-trigger2" class="sell"></a>
-            <a href="javaScript:void(0)" id="cd-popup-trigger3" class="recommend recommend-active"></a>
-            <a href="javaScript:void(0)" id="cd-popup-trigger4" class="mine"></a>
+            <a href="/webvLoginController/toLogin.do" id="cd-popup-trigger1" class="buy"></a>
+            <a href="/webvLoginController/toLogin.do" id="cd-popup-trigger2" class="sell"></a>
+            <a href="/webvLoginController/toLogin.do" id="cd-popup-trigger3" class="recommend recommend-active"></a>
+            <a href="/webvLoginController/toLogin.do" id="cd-popup-trigger4" class="mine"></a>
         </c:if>
 
 
@@ -214,27 +214,27 @@
     <!-- TOOLBAR -->
 </div>
 
-<link rel="stylesheet" href="/css/dialog_reset.css">
-<!-- CSS reset -->
-<link rel="stylesheet" href="/css/dialog_style.css">
-<!-- Resource style -->
-<script src="/js/dialog_main.js"></script>
-<!-- Resource jQuery -->
+<%--<link rel="stylesheet" href="/css/dialog_reset.css">--%>
+<%--<!-- CSS reset -->--%>
+<%--<link rel="stylesheet" href="/css/dialog_style.css">--%>
+<%--<!-- Resource style -->--%>
+<%--<script src="/js/dialog_main.js"></script>--%>
+<%--<!-- Resource jQuery -->--%>
 
-<div class="cd-popup" role="alert">
-    <div class="cd-popup-container">
-        <p>请先注册或联系管理员</p>
-        <ul class="cd-buttons">
-            <li><a href="javaScript:void(0)" onclick="reg()">注册</a></li>
-            <li><a href="javaScript:void(0)" onclick="login()">登录</a></li>
-        </ul>
-        <ul style="background: #ffffff;line-height: 45px;">
-            <li><a href="/webvKefuController/toKefu.do">客服中心</a></li>
-        </ul>
-        <a href="javaScript:void(0)" class="cd-popup-close img-replace">关闭</a>
-    </div>
-    <!-- cd-popup-container -->
-</div>
+<%--<div class="cd-popup" role="alert">--%>
+    <%--<div class="cd-popup-container">--%>
+        <%--<p>请先注册或联系管理员</p>--%>
+        <%--<ul class="cd-buttons">--%>
+            <%--<li><a href="javaScript:void(0)" onclick="reg()">注册</a></li>--%>
+            <%--<li><a href="javaScript:void(0)" onclick="login()">登录</a></li>--%>
+        <%--</ul>--%>
+        <%--<ul style="background: #ffffff;line-height: 45px;">--%>
+            <%--<li><a href="/webvKefuController/toKefu.do">客服中心</a></li>--%>
+        <%--</ul>--%>
+        <%--<a href="javaScript:void(0)" class="cd-popup-close img-replace">关闭</a>--%>
+    <%--</div>--%>
+    <%--<!-- cd-popup-container -->--%>
+<%--</div>--%>
 <!-- cd-popup -->
 
 </body>

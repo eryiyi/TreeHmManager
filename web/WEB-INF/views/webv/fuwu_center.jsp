@@ -29,6 +29,7 @@
 </head>
 <body>
 <div class="container">
+    <input type="hidden" id="mm_fuwu_type" name="mm_fuwu_type" value="${mm_fuwu_type}">
     <!-- HEADING -->
     <%--<div class="heading clearfix">--%>
         <%--<a href="javascript:history.back()()" class="back"><img src="/img/tree_icons_back.png" alt=""></a>--%>
@@ -72,23 +73,25 @@
             <div class="right">
                 <c:choose>
                     <c:when test="${page.page == 1}">
-                        <a href="javascript:void(0)">首页</a>
-                        <a href="javascript:void(0)">《</a>
+                        <a class="hide-phone" href="javascript:void(0)">首页</a>
+                        <a href="javascript:void(0)">上一页</a>
                     </c:when>
                     <c:otherwise>
-                        <a href="javascript:void(0);" onclick="nextPage('1')">首页</a>
-                        <a href="javascript:void(0);" onclick="nextPage('${page.page-1}')">《</a>
+                        <a class="hide-phone" href="javascript:void(0);" onclick="nextPage('1')">首页</a>
+                        <a href="javascript:void(0);" onclick="nextPage('${page.page-1}')">上一页</a>
                     </c:otherwise>
                 </c:choose>
-                <a>第<input type="text" id="index" name="index" onkeyup="searchIndex(event)" value="${page.page}">页</a>
+                <a class="hide-phone">第<input type="text" id="index" name="index" onkeyup="searchIndex(event)"
+                                              value="${page.page}">页</a>
                 <c:choose>
                     <c:when test="${page.page == page.pageCount}">
-                        <a href="javascript:void(0)">》</a>
-                        <a href="javascript:void(0)">末页</a>
+                        <a href="javascript:void(0)">下一页</a>
+                        <a class="hide-phone" href="javascript:void(0)">末页</a>
                     </c:when>
                     <c:otherwise>
-                        <a href="javascript:void(0);" onclick="nextPage('${page.page+1}')">》</a>
-                        <a href="javascript:void(0);" onclick="nextPage('${page.pageCount}')">末页</a>
+                        <a href="javascript:void(0);" onclick="nextPage('${page.page+1}')">下一页</a>
+                        <a class="hide-phone" href="javascript:void(0);"
+                           onclick="nextPage('${page.pageCount}')">末页</a>
                     </c:otherwise>
                 </c:choose>
             </div>
@@ -99,7 +102,7 @@
     <div class="toolbar">
         <a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy"></a>
         <a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell"></a>
-        <a href="javaScript:void(0)" onclick="toPage('/webvTopController/toTop.do','1')" class="recommend"></a>
+        <a href="javaScript:void(0)" onclick="toPage('/webvShangquanController/toShangquan.do','1')" class="recommend"></a>
         <a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')"
            class="mine mine-active"></a>
     </div>
@@ -112,10 +115,11 @@
     function searchIndex(e) {
         if (e.keyCode != 13) return;
         var _index = $("#index").val();
+        var mm_fuwu_type = $("#mm_fuwu_type").val();
         var page = parseInt(_page);
         var size = $("#size").val();
         if (_index <= ${page.pageCount} && _index >= 1) {
-            window.location.href = "/webvFuwuCenterController/toCenter.do?page=" + page + "&size=" + size+ "&_t=" + new Date().getTime();
+            window.location.href = "/webvFuwuCenterController/toCenter.do?page=" + page + "&size=" + size+ "&_t=" + new Date().getTime()+ "&mm_fuwu_type=" + mm_fuwu_type;
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }
@@ -124,9 +128,10 @@
     function nextPage(_page) {
         var page = parseInt(_page);
         var size = $("#size").val();
+        var mm_fuwu_type = $("#mm_fuwu_type").val();
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1)) {
-            window.location.href = "/webvFuwuCenterController/toCenter.do?page=" + page + "&size=" + size+ "&_t=" + new Date().getTime();
+            window.location.href = "/webvFuwuCenterController/toCenter.do?page=" + page + "&size=" + size+ "&_t=" + new Date().getTime()+ "&mm_fuwu_type=" + mm_fuwu_type;
         } else {
             alert("请输入1-${page.pageCount}的页码数");
         }

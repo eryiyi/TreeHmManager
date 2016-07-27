@@ -125,24 +125,25 @@
                 <div class="right">
                     <c:choose>
                         <c:when test="${page.page == 1}">
-                            <a href="javascript:void(0)">首页</a>
-                            <a href="javascript:void(0)">《</a>
+                            <a class="hide-phone" href="javascript:void(0)">首页</a>
+                            <a href="javascript:void(0)">上一页</a>
                         </c:when>
                         <c:otherwise>
-                            <a href="javascript:void(0);" onclick="nextPage('1')">首页</a>
-                            <a href="javascript:void(0);" onclick="nextPage('${page.page-1}')">《</a>
+                            <a class="hide-phone" href="javascript:void(0);" onclick="nextPage('1')">首页</a>
+                            <a href="javascript:void(0);" onclick="nextPage('${page.page-1}')">上一页</a>
                         </c:otherwise>
                     </c:choose>
-                    <a>第<input type="text" id="index" name="index" onkeyup="searchIndex(event)"
-                               value="${page.page}">页</a>
+                    <a class="hide-phone">第<input type="text" id="index" name="index" onkeyup="searchIndex(event)"
+                                                  value="${page.page}">页</a>
                     <c:choose>
                         <c:when test="${page.page == page.pageCount}">
-                            <a href="javascript:void(0)">》</a>
-                            <a href="javascript:void(0)">末页</a>
+                            <a href="javascript:void(0)">下一页</a>
+                            <a class="hide-phone" href="javascript:void(0)">末页</a>
                         </c:when>
                         <c:otherwise>
-                            <a href="javascript:void(0);" onclick="nextPage('${page.page+1}')">》</a>
-                            <a href="javascript:void(0);" onclick="nextPage('${page.pageCount}')">末页</a>
+                            <a href="javascript:void(0);" onclick="nextPage('${page.page+1}')">下一页</a>
+                            <a class="hide-phone" href="javascript:void(0);"
+                               onclick="nextPage('${page.pageCount}')">末页</a>
                         </c:otherwise>
                     </c:choose>
                 </div>
@@ -212,7 +213,7 @@
             });
         } else {
             //没登陆
-            alert("请先登录");
+            window.location.href = "/webvLoginController/toLogin.do";
         }
     }
 

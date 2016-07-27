@@ -49,6 +49,7 @@ public class WebvFuwuCenterController extends ControllerConstants {
             page.setPageCount(calculatePageCount(query.getSize(), count));
             map.addAttribute("page", page);
             map.addAttribute("query", query);
+            map.put("mm_fuwu_type", query.getMm_fuwu_type());
 
             switch (Integer.parseInt(query.getMm_fuwu_type())){
                 case 0:

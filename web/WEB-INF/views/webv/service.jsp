@@ -160,7 +160,7 @@
             </a>
             <a href="/webvFuwuCenterController/toCenter.do?mm_fuwu_type=0&page=1" class="icon">
                 <div class="icon-pic"><img src="/img/tree_user_shop.png" alt=""></div>
-                <h5 class="icon-name">苗木商店</h5>
+                <h5 class="icon-name">园林资材</h5>
             </a>
             <a href="/webvFuwuCenterController/toCenter.do?mm_fuwu_type=1&page=1" class="icon">
                 <div class="icon-pic"><img src="/img/tree_user_worker.png" alt=""></div>
@@ -205,7 +205,7 @@
     <div class="toolbar">
         <a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy"></a>
         <a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell"></a>
-        <a href="javaScript:void(0)" onclick="toPage('/webvTopController/toTop.do','1')" class="recommend"></a>
+        <a href="javaScript:void(0)" onclick="toPage('/webvShangquanController/toShangquan.do','1')" class="recommend"></a>
         <a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')"
            class="mine mine-active"></a>
     </div>

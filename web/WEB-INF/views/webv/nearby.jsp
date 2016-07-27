@@ -92,24 +92,25 @@
                 <div class="right">
                     <c:choose>
                         <c:when test="${page.page == 1}">
-                            <a href="javascript:void(0)">首页</a>
-                            <a href="javascript:void(0)">《</a>
+                            <a class="hide-phone" href="javascript:void(0)">首页</a>
+                            <a href="javascript:void(0)">上一页</a>
                         </c:when>
                         <c:otherwise>
-                            <a href="javascript:void(0);" onclick="nextPage('1')">首页</a>
-                            <a href="javascript:void(0);" onclick="nextPage('${page.page-1}')">《</a>
+                            <a class="hide-phone" href="javascript:void(0);" onclick="nextPage('1')">首页</a>
+                            <a href="javascript:void(0);" onclick="nextPage('${page.page-1}')">上一页</a>
                         </c:otherwise>
                     </c:choose>
-                    <a>第<input type="text" id="index" name="index" onkeyup="searchIndex(event)"
-                               value="${page.page}">页</a>
+                    <a class="hide-phone">第<input type="text" id="index" name="index" onkeyup="searchIndex(event)"
+                                                  value="${page.page}">页</a>
                     <c:choose>
                         <c:when test="${page.page == page.pageCount}">
-                            <a href="javascript:void(0)">》</a>
-                            <a href="javascript:void(0)">末页</a>
+                            <a href="javascript:void(0)">下一页</a>
+                            <a class="hide-phone" href="javascript:void(0)">末页</a>
                         </c:when>
                         <c:otherwise>
-                            <a href="javascript:void(0);" onclick="nextPage('${page.page+1}')">》</a>
-                            <a href="javascript:void(0);" onclick="nextPage('${page.pageCount}')">末页</a>
+                            <a href="javascript:void(0);" onclick="nextPage('${page.page+1}')">下一页</a>
+                            <a class="hide-phone" href="javascript:void(0);"
+                               onclick="nextPage('${page.pageCount}')">末页</a>
                         </c:otherwise>
                     </c:choose>
                 </div>
@@ -121,9 +122,9 @@
     <div class="toolbar">
         <a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy"></a>
         <a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell"></a>
-        <a href="javaScript:void(0)" onclick="toPage('/webvTopController/toTop.do','1')" class="recommend"></a>
+        <a href="javaScript:void(0)" onclick="toPage('/webvShangquanController/toShangquan.do','1')" class="recommend recommend-active"></a>
         <a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')"
-           class="mine mine-active"></a>
+           class="mine"></a>
     </div>
     <!-- TOOLBAR -->
 </div>
@@ -163,7 +164,7 @@
             });
         } else {
             //没登陆
-            alert("请先登录");
+            window.location.href = "/webvLoginController/toLogin.do";
         }
     }
 

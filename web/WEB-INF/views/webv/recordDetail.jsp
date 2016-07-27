@@ -124,7 +124,7 @@
     <div class="toolbar">
         <a href="javaScript:void(0)" onclick="toPage('/webv/toIndex.do','1')" class="buy"></a>
         <a href="javaScript:void(0)" onclick="toPage('/webvSell/toSell.do','1')" class="sell"></a>
-        <a href="javaScript:void(0)" onclick="toPage('/webvTopController/toTop.do','1')" class="recommend"></a>
+        <a href="javaScript:void(0)" onclick="toPage('/webvShangquanController/toShangquan.do','1')" class="recommend"></a>
         <a href="javaScript:void(0)" onclick="toPage('/webvServiceController/toService.do','1')" class="mine"></a>
     </div>
     <!-- TOOLBAR -->
@@ -163,7 +163,7 @@
             });
         } else {
             //没登陆
-            alert("请先登录");
+            window.location.href = "/webvLoginController/toLogin.do";
         }
     }
 
