@@ -140,7 +140,7 @@
                 <div class="icon-pic"><img src="/img/tree_user_weixin.png" alt=""></div>
                 <h5 class="icon-name">微信客服</h5>
             </a>
-            <a href="http://xhmt.sdhmmm.cn:7777/html/download.html" target="_blank" class="icon">
+            <a href="http://xhmt.sdhmmm.cn/html/download.html" target="_blank" class="icon">
                 <div class="icon-pic"><img src="/img/btn_erweima_n.png" alt=""></div>
                 <h5 class="icon-name">二维码</h5>
             </a>
