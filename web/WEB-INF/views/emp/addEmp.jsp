@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="um" uri="/unimanager-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" trimDirectiveWhitespaces="true" %>
+
 <div class="row">
     <div id="breadcrumb" class="col-xs-12">
         <a href="#" class="show-sidebar">
@@ -370,7 +371,82 @@
             </div>
         </div>
     </div>
+
+    <div class="col-xs-12 col-sm-12">
+        <div class="box">
+            <div class="box-header">
+                <div class="box-icons">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="expand-link">
+                        <i class="fa fa-expand"></i>
+                    </a>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+                <div class="no-move"></div>
+            </div>
+            <div class="box-content" style="height: 500px">
+                <h4 class="page-header">地图</h4>
+                <div id="mapContainer"></div>
+            </div>
+        </div>
+    </div>
+
 </div>
+
+
+<script type="text/javascript">
+    //初始化地图对象，加载地图
+    ////初始化加载地图时，若center及level属性缺省，地图默认显示用户当前城市范围
+    var map = new AMap.Map('mapContainer', {
+        resizeEnable: true
+    });
+    //地图中添加地图操作ToolBar插件
+    map.plugin(['AMap.ToolBar'], function () {
+        //设置地位标记为自定义标记
+        var toolBar = new AMap.ToolBar();
+        map.addControl(toolBar);
+    });
+
+    var mapObj = new AMap.Map("mapContainer", {
+        rotateEnable: true,
+        dragEnable: true,
+        zoomEnable: true,
+        zooms: [3, 18],
+        resizeEnable: true,
+        zoom:11,
+        center: [117.488969, 37.410742]
+        //二维地图显示视口
+//    view: new AMap.View2D({
+//      center:new AMap.LngLat(118.783897, 32.058875),//地图中心点
+//      zoom:15 //地图显示的缩放级别
+//    })
+    });
+    //  mapObj.plugin(["AMap.ToolBar"],function(){
+    //    toolBar = new AMap.ToolBar();
+    //    mapObj.addControl(toolBar);
+    //  });
+    var marker = new AMap.Marker({
+        position: mapObj.getCenter()
+    });
+    marker.setMap(mapObj);
+
+    //为地图注册click事件获取鼠标点击出的经纬度坐标
+    var clickEventListener = AMap.event.addListener(mapObj, 'click', function (e) {
+        document.getElementById("lat_company").value = e.lnglat.getLat();
+        document.getElementById("lng_company").value = e.lnglat.getLng();
+
+        marker.setMap(null);
+        mapObj.setCenter(new AMap.LngLat(e.lnglat.getLng(), e.lnglat.getLat()));
+        marker = new AMap.Marker({
+            position: new AMap.LngLat(e.lnglat.getLng(), e.lnglat.getLat())
+        });
+        marker.setMap(mapObj);
+    });
+</script>
 
 <script type="text/javascript">
 

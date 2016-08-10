@@ -2,10 +2,6 @@
 <%@ taglib prefix="um" uri="/unimanager-tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" trimDirectiveWhitespaces="true" %>
 
-<link rel="stylesheet" href="http://cache.amap.com/lbs/static/main.css?v=1.0"/>
-<script type="text/javascript"
-        src="http://webapi.amap.com/maps?v=1.3&key=98ec561802a0063ec6d8301ae2321505"></script>
-
 <div class="row">
     <div id="breadcrumb" class="col-xs-12">
         <a href="#" class="show-sidebar">
@@ -300,7 +296,10 @@
         rotateEnable: true,
         dragEnable: true,
         zoomEnable: true,
-        zooms: [3, 18]
+        zooms: [3, 18],
+        resizeEnable: true,
+        zoom:11,
+        center: [117.488969, 37.410742]
         //二维地图显示视口
 //    view: new AMap.View2D({
 //      center:new AMap.LngLat(118.783897, 32.058875),//地图中心点
