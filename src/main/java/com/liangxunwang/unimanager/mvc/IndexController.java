@@ -72,7 +72,7 @@ public class IndexController extends ControllerConstants {
         Long memberCount = (Long) list.get(0);
         Long memberCountNo = (Long) list.get(1);
         map.put("memberCount", memberCount);
-        map.put("memberCountAll", memberCount+24002);
+        map.put("memberCountAll", memberCount+44002);
         map.put("memberCountNo", memberCountNo);
         //资讯管理
         Long countQiugou = (Long) list.get(2);

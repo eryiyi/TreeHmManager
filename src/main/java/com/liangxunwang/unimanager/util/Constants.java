@@ -7,7 +7,8 @@ public class Constants {
 //        public static final String URL = "http://smilekyle.xicp.net:42765/";
         public static final String URL = "http://www.zgbfhmt.com/";
 
-        public static final String QINIU_URL = "http://7xqzj9.com1.z0.glb.clouddn.com/";
+//        public static final String QINIU_URL = "http://7xqzj9.com1.z0.glb.clouddn.com/";
+        public static final String QINIU_URL = "http://image.zgbfhmt.com/";
 
         public static final String QINIU_SPACE = "hmmm-pic";
         public static final String COVER_DEFAULT = "default_avatar.png";
