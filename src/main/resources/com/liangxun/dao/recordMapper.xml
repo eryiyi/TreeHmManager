@@ -64,6 +64,10 @@
             AND sn.mm_msg_type = #{mm_msg_type}
         </if>
 
+        <if test="is_check != null and is_check != ''">
+            AND sn.is_check = #{is_check}
+        </if>
+
         <if test="is_guanzhu == '0'">
 
             <if test="provinceid != null and provinceid != ''">
@@ -104,6 +108,9 @@
         <if test="mm_msg_type != null and mm_msg_type != ''">
             AND sn.mm_msg_type = #{mm_msg_type}
         </if>
+        <if test="is_check != null and is_check != ''">
+            AND sn.is_check = #{is_check}
+        </if>
 
         <if test="is_guanzhu == '0'">
 
@@ -136,8 +143,8 @@
     </select>
 
     <insert id="save" parameterType="com.liangxunwang.unimanager.model.Record">
-        INSERT INTO mm_msg( mm_msg_id, mm_emp_id, mm_msg_type, mm_msg_title, mm_msg_content, mm_msg_picurl, dateline,is_del, is_top, top_num, provinceid, cityid, countryid, mm_msg_video)
-        VALUES ( #{mm_msg_id}, #{mm_emp_id}, #{mm_msg_type}, #{mm_msg_title, jdbcType=VARCHAR}, #{mm_msg_content, jdbcType=VARCHAR}, #{mm_msg_picurl, jdbcType=VARCHAR}, #{dateline}, #{is_del}, #{is_top}, #{top_num}, #{provinceid}, #{cityid}, #{countryid}, #{mm_msg_video, jdbcType=VARCHAR})
+        INSERT INTO mm_msg( mm_msg_id, mm_emp_id, mm_msg_type, mm_msg_title, mm_msg_content, mm_msg_picurl, dateline,is_del, is_top, top_num, provinceid, cityid, countryid, mm_msg_video,is_check)
+        VALUES ( #{mm_msg_id}, #{mm_emp_id}, #{mm_msg_type}, #{mm_msg_title, jdbcType=VARCHAR}, #{mm_msg_content, jdbcType=VARCHAR}, #{mm_msg_picurl, jdbcType=VARCHAR}, #{dateline}, #{is_del}, #{is_top}, #{top_num}, #{provinceid}, #{cityid}, #{countryid}, #{mm_msg_video, jdbcType=VARCHAR}, #{is_check, jdbcType=VARCHAR})
     </insert>
 
     <select id="findById" resultMap="record_vo" parameterType="String">
@@ -157,7 +164,7 @@
     </update>
 
     <update id="updateTop" parameterType="String">
-        UPDATE mm_msg SET is_top = #{is_top}, top_num = #{top_num}, mm_msg_type = #{mm_msg_type}, mm_msg_content = #{mm_msg_content}  WHERE mm_msg_id=#{mm_msg_id}
+        UPDATE mm_msg SET is_top = #{is_top}, is_check = #{is_check}, top_num = #{top_num}, mm_msg_type = #{mm_msg_type}, mm_msg_content = #{mm_msg_content}  WHERE mm_msg_id=#{mm_msg_id}
     </update>
 
     <select id="listRecordVoTop" resultMap="record_vo">
@@ -190,7 +197,6 @@
     </select>
 
 
-
     <select id="listRecordVoManager" resultMap="record_vo">
         SELECT m.*,
         (SELECT mm_level_num FROM mm_level ll WHERE m.mm_level_id = ll.mm_level_id ) as mm_level_num
@@ -203,6 +209,10 @@
         WHERE 1=1 AND sn.is_del = 0
         <if test="mm_msg_type != null and mm_msg_type != ''">
             AND sn.mm_msg_type = #{mm_msg_type}
+        </if>
+
+        <if test="is_check != null and is_check != ''">
+            AND sn.is_check = #{is_check}
         </if>
 
         <if test="provinceid != null and provinceid != ''">

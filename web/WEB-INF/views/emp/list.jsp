@@ -57,7 +57,6 @@
                         </div>
                     </div>
 
-
                     <div class="form-group">
                         <select class="form-control w12" id="ischeck">
                             <option value="">--审核状态--</option>
@@ -243,6 +242,7 @@
                             <th>已完善资料</th>
                             <th>审核状态</th>
                             <th>备注</th>
+                            <th>特殊会员</th>
                             <th>操作</th>
                             <th>操作</th>
                             <th>操作</th>
@@ -295,6 +295,10 @@
                                     <c:if test="${e.ischeck=='2'}">未通过</c:if>
                                 </td>
                                 <td>${e.mm_emp_beizhu}</td>
+                                <td>
+                                    <c:if test="${e.is_special=='0'}">否</c:if>
+                                    <c:if test="${e.is_special=='1'}">是</c:if>
+                                </td>
                                 <td>
                                     <a class="btn btn-default btn-sm"
                                        href="#module=/emp/toUpdatePwr&mm_emp_id=${e.mm_emp_id}" role="button">修改密码</a>

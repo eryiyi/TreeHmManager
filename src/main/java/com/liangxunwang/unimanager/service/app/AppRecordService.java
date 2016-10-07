@@ -3,9 +3,8 @@ package com.liangxunwang.unimanager.service.app;
 import com.liangxunwang.unimanager.dao.AccessTokenDao;
 import com.liangxunwang.unimanager.dao.DayValueObjDao;
 import com.liangxunwang.unimanager.dao.RecordDao;
-import com.liangxunwang.unimanager.model.AccessToken;
-import com.liangxunwang.unimanager.model.DayValueObj;
-import com.liangxunwang.unimanager.model.Record;
+import com.liangxunwang.unimanager.dao.ShenheRecordDao;
+import com.liangxunwang.unimanager.model.*;
 import com.liangxunwang.unimanager.mvc.vo.RecordVO;
 import com.liangxunwang.unimanager.query.RecordQuery;
 import com.liangxunwang.unimanager.service.*;
@@ -156,6 +155,7 @@ public class AppRecordService implements ListService ,SaveService, FindService{
                 map.put("end", String.valueOf(dateTime.getMillis()));
             }
         }
+        map.put("is_check", "1");//查看已经审核通过的
         List<RecordVO> list = recordDao.listRecordVo(map);
         long count = recordDao.count(map);
         for (RecordVO record : list){
@@ -206,7 +206,9 @@ public class AppRecordService implements ListService ,SaveService, FindService{
         return new Object[]{list, count};
     }
 
-
+    @Autowired
+    @Qualifier("shenheRecordDao")
+    private ShenheRecordDao shenheRecordDao;
     @Override
     public Object save(Object object) throws ServiceException {
         Record record = (Record) object;
@@ -249,6 +251,29 @@ public class AppRecordService implements ListService ,SaveService, FindService{
         if(!StringUtil.isNullOrEmpty(record.getMm_msg_video())){
             String picName = getVideoPic(record.getMm_msg_video());
             record.setMm_msg_picurl(picName);
+        }
+        //判断是否审核
+        if ("371621".equals(record.getCountryid())){
+            //说明是惠民的
+            //判断审核方式
+            Map<String, Object> map1 = new HashMap<String, Object>();
+            List<ShenheRecordObj> listsShenheType = shenheRecordDao.lists(map1);
+            if(listsShenheType != null && listsShenheType.size()>0){
+                ShenheRecordObj shenheTypeObj = listsShenheType.get(0);
+                if(shenheTypeObj != null){
+                    if("0".equals(shenheTypeObj.getMm_record_shenhe_type())){
+                        //自动审核
+                        record.setIs_check("1");;//是否审核  0默认否  1已审核
+                    }else{
+                        //需要管理员手动审核
+                        record.setIs_check("0");//是否审核  0默认否  1已审核
+                    }
+                }
+
+            }else {
+                record.setIs_check("1");;//是否审核  0默认否  1已审核
+            }
+
         }
         recordDao.save(record);
 

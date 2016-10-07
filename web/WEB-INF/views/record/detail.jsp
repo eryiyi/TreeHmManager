@@ -87,6 +87,17 @@
                             </select>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">是否审核</label>
+
+                        <div class="col-sm-4">
+                            <select class="form-control" id="is_check">
+                                <option value="">--请选择--</option>
+                                <option value="0" ${recordVO.is_check=='0'?'selected':''}>否</option>
+                                <option value="1" ${recordVO.is_check=='1'?'selected':''}>是</option>
+                            </select>
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">置顶数字</label>
@@ -121,6 +132,7 @@
         var mm_msg_id = $("#mm_msg_id").val();
         var is_top = $("#is_top").val();
         var top_num = $("#top_num").val();
+        var is_check = $("#is_check").val();
         $.ajax({
             cache: true,
             type: "POST",
@@ -130,6 +142,7 @@
                 "mm_msg_type": mm_msg_type,
                 "mm_msg_content": mm_msg_content,
                 "is_top": is_top,
+                "is_check": is_check,
                 "top_num": top_num
             },
             async: false,

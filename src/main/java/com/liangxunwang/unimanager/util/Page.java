@@ -8,7 +8,7 @@ public class Page {
     private boolean current;  //是否当前页
 
     private int page; // 欲要显示页数
-    private int defaultSize = 10;  //每页默认显示数据条数
+    private int defaultSize = 5;  //每页默认显示数据条数
     private long pageCount; //共几页
     private long count;//数据总共条数
 

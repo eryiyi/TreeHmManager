@@ -19,9 +19,18 @@ public class Record {
     private String countryid;
     private String accessToken;
     private String mm_msg_video;
+    private String is_check;//是否审核了 只有审核的才能看到 1已经审核 0没有审核  默认0
 
     private String mm_emp_msg_num;//允许会员发布的信息数量
     private String is_read;
+
+    public String getIs_check() {
+        return is_check;
+    }
+
+    public void setIs_check(String is_check) {
+        this.is_check = is_check;
+    }
 
     public String getMm_msg_video() {
         return mm_msg_video;

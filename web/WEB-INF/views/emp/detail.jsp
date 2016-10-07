@@ -434,6 +434,19 @@
                             </select>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">是否特殊会员</label>
+
+                        <div class="col-sm-4">
+                            <select class="form-control" id="is_special">
+                                <option value="">--请选择--</option>
+                                <option value="0" ${empVO.is_special=='0'?'selected':''}>否</option>
+                                <option value="1" ${empVO.is_special=='1'?'selected':''}>是</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <div class="col-sm-9 col-sm-offset-3">
                             <button type="button" class="btn btn-primary" onclick="saveRole('${empVO.mm_emp_id}')">
@@ -513,6 +526,7 @@
         var ischeck = $("#ischeck").val();
         var lat_company = $("#lat_company").val();
         var lng_company = $("#lng_company").val();
+        var is_special = $("#is_special").val();
 
         if (mm_emp_nickname.replace(/\s/g, '') == '') {
             alert("名称不能为空");
@@ -630,6 +644,10 @@
             alert("请选择是否审核");
             return;
         }
+        if (is_special.replace(/\s/g, '') == '') {
+            alert("请选择是否特殊会员");
+            return;
+        }
 
         var imagePath = $("img[name='imagePath']").attr("src");
 
@@ -688,6 +706,7 @@
 //                "lng": lng,
                 "lat_company": lat_company,
                 "lng_company": lng_company,
+                "is_special": is_special,
                 "ischeck": ischeck
             },
             async: false,

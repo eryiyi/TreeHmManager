@@ -12,6 +12,7 @@
         <permission id="REG_EMP" name="人工注册"/>
         <permission id="LIST_EMPLOYEE_JY" name="经营户"/>
         <permission id="LIST_EMPLOYEE_EMP" name="会员"/>
+        <permission id="LIST_EMPLOYEE_EMP_SPECIAL" name="特殊会员"/>
     </group>
     <group id="MESSAGE_MANAGE" name="信息管理">
         <permission id="QIUGOU_MSG" name="求购信息"/>
@@ -63,7 +64,8 @@
         <permission id="AD_LISTMANAGE" name="广告列表"/>
     </group>
     <group id="SHENHE_MANAGE" name="审核方式">
-        <permission id="SHNEHE_TYPE_MANAGE" name="审核方式"/>
+        <permission id="SHNEHE_TYPE_MANAGE" name="注册审核方式"/>
+        <permission id="SHNEHE_RECORD_MANAGE" name="信息审核方式"/>
     </group>
     <group id="WEIXIN_MANAGE" name="微信客服">
         <permission id="ADD_WEIXIN_KEFU_MANAGE" name="添加微信"/>

@@ -47,6 +47,7 @@
         <result column="ad_pic" property="ad_pic"/>
         <result column="is_cover" property="is_cover"/>
         <result column="is_video" property="is_video"/>
+        <result column="is_special" property="is_special"/>
     </resultMap>
     <resultMap id="emp_vo" type="com.liangxunwang.unimanager.mvc.vo.EmpVO">
         <id column="mm_emp_id" property="mm_emp_id"/>
@@ -92,6 +93,7 @@
         <result column="ad_pic" property="ad_pic"/>
         <result column="is_cover" property="is_cover"/>
         <result column="is_video" property="is_video"/>
+        <result column="is_special" property="is_special"/>
 
         <result column="levelName" property="levelName"/>
         <result column="mm_level_num" property="mm_level_num"/>
@@ -110,6 +112,9 @@
         WHERE 1=1 AND sn.mm_emp_nickname is not NULL
         <if test="mm_emp_type != null and mm_emp_type != ''">
         AND sn.mm_emp_type = #{mm_emp_type}
+        </if>
+        <if test="is_special != null and is_special != ''">
+            AND sn.is_special = #{is_special}
         </if>
         <if test="mm_emp_company_type != null and mm_emp_company_type != ''">
         AND sn.mm_emp_company_type = #{mm_emp_company_type}
@@ -231,6 +236,7 @@
         lat_company=#{lat_company},
         lng_company=#{lng_company},
         is_cover=#{is_cover},
+        is_special=#{is_special},
         is_video=#{is_video},
         ischeck=#{ischeck}
         WHERE mm_emp_id=#{mm_emp_id}

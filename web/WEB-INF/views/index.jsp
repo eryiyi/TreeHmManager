@@ -138,7 +138,7 @@
                     </li>
                 </c:if>
 
-                <c:if test="${um:permission('LIST_EMPLOYEE_JY', sessionScope.powers)||um:permission('LIST_EMPLOYEE_EMP', sessionScope.powers)}">
+                <c:if test="${um:permission('REG_EMP', sessionScope.powers)|| um:permission('LIST_EMPLOYEE_JY', sessionScope.powers)||um:permission('LIST_EMPLOYEE_EMP', sessionScope.powers)||um:permission('LIST_EMPLOYEE_EMP_SPECIAL', sessionScope.powers)}">
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
                             <i class="fa fa-group"></i>
@@ -154,6 +154,9 @@
                             </c:if>
                             <c:if test="${um:permission('LIST_EMPLOYEE_EMP', sessionScope.powers)}">
                                 <li><a href="javascript:void(0);" onclick="toPageEmp('/emp/list','1','1')">会员</a></li>
+                            </c:if>
+                            <c:if test="${um:permission('LIST_EMPLOYEE_EMP_SPECIAL', sessionScope.powers)}">
+                                <li><a href="javascript:void(0);" onclick="toPageEmp('/emp/list','1','2')">特殊会员</a></li>
                             </c:if>
                         </ul>
                     </li>
@@ -247,12 +250,15 @@
                     <li class="dropdown">
                         <a href="javascript:void (0);" class="dropdown-toggle">
                             <i class="fa fa-credit-card"></i>
-                            <span>注册审核方式</span>
+                            <span>审核方式</span>
                         </a>
                         <ul class="dropdown-menu">
                             <c:if test="${um:permission('SHNEHE_TYPE_MANAGE', sessionScope.powers)}">
-                                <li><a href="javascript:void(0);" onclick="toPage('/shenheType/add','')">审核方式</a></li>
+                                <li><a href="javascript:void(0);" onclick="toPage('/shenheType/add','')">注册审核方式</a></li>
                             </c:if>
+                            <c:if test="${um:permission('SHNEHE_RECORD_MANAGE', sessionScope.powers)}">
+                            <li><a href="javascript:void(0);" onclick="toPage('/shenheRecordController/add','')">信息审核方式</a></li>
+                        </c:if>
                         </ul>
                     </li>
                 </c:if>

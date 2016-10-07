@@ -92,18 +92,13 @@ public class EmpController extends ControllerConstants {
             map.put("is_manager", "1");
         }
 
-        //0经营户 1会员
+        //0经营户 1会员 2特殊会员is_special
         map.put("mm_emp_type", query.getMm_emp_type());
 
         ProvinceQuery provinceQuery = new ProvinceQuery();
         provinceQuery.setIs_use("1");
         List<ProvinceObj> listProvinces = (List<ProvinceObj>) provinceService.list(provinceQuery);
         map.put("listProvinces", listProvinces);
-
-//        //根据省份查询城市
-//        if(!StringUtil.isNullOrEmpty(query.getMm_emp_provinceId())){
-//
-//        }
 
         return "/emp/list";
     }

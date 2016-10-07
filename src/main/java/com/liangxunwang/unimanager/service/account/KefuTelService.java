@@ -1,15 +1,10 @@
 package com.liangxunwang.unimanager.service.account;
 
-import com.liangxunwang.unimanager.dao.AccessTokenDao;
-import com.liangxunwang.unimanager.dao.FuwuDao;
 import com.liangxunwang.unimanager.dao.KefuTelDao;
-import com.liangxunwang.unimanager.model.FuwuObj;
 import com.liangxunwang.unimanager.model.KefuTel;
 import com.liangxunwang.unimanager.mvc.vo.KefuVO;
-import com.liangxunwang.unimanager.query.FuwuQuery;
 import com.liangxunwang.unimanager.query.KefuQuery;
 import com.liangxunwang.unimanager.service.*;
-import com.liangxunwang.unimanager.util.DateUtil;
 import com.liangxunwang.unimanager.util.StringUtil;
 import com.liangxunwang.unimanager.util.UUIDFactory;
 import org.springframework.beans.factory.annotation.Autowired;

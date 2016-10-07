@@ -73,6 +73,7 @@
                         <th>公司名称</th>
                         <th>电话</th>
                         <th>所属地区</th>
+                        <th>是否审核</th>
                         <th>操作</th>
                         <th>操作</th>
                     </tr>
@@ -91,6 +92,10 @@
                             <td>${e.mm_emp_company}</td>
                             <td>${e.mm_emp_mobile}</td>
                             <td>${e.cityName} ${e.area}</td>
+                            <td>
+                                <c:if test="${e.is_check=='0'}">否</c:if>
+                                <c:if test="${e.is_check=='1'}">是</c:if>
+                            </td>
                             <td>
                                 <a class="btn btn-default btn-sm" onclick="deleteRole('${e.mm_msg_id}')" role="button">删除</a>
                             </td>

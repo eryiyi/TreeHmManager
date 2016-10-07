@@ -48,7 +48,12 @@ public class EmpService implements ListService , UpdateService , ExecuteService{
             map.put("mm_emp_company_type", query.getMm_emp_company_type());
         }
         if (!StringUtil.isNullOrEmpty(query.getMm_emp_type())) {
-            map.put("mm_emp_type", query.getMm_emp_type());
+            if(!"2".equals(query.getMm_emp_type())){
+                //说明是普通会员和经营户
+                map.put("mm_emp_type", query.getMm_emp_type());
+            }else {
+                map.put("is_special", "1");
+            }
         }
         if (!StringUtil.isNullOrEmpty(query.getMm_level_id())) {
             map.put("mm_level_id", query.getMm_level_id());

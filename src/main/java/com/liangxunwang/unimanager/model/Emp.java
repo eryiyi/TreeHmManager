@@ -50,7 +50,15 @@ public class Emp {
     private String lng_company;
     private String is_video;
     private String ad_pic;
+    private String is_special;
 
+    public String getIs_special() {
+        return is_special;
+    }
+
+    public void setIs_special(String is_special) {
+        this.is_special = is_special;
+    }
 
     public String getIs_video() {
         return is_video;
