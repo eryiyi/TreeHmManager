@@ -72,6 +72,24 @@ public class IndexService implements ListService {
         mapR.put("mm_msg_type", "1");//供应信息
         long countGongying = recordDao.count(mapR);
 
+        Map<String, Object> mapRN = new HashMap<String, Object>();
+        //分地区管理
+        if(!StringUtil.isNullOrEmpty(query.getMm_emp_provinceId())){
+            mapRN.put("provinceid", query.getMm_emp_provinceId());
+        }
+        if(!StringUtil.isNullOrEmpty(query.getMm_emp_cityId())){
+            mapRN.put("cityid", query.getMm_emp_cityId());
+        }
+        if(!StringUtil.isNullOrEmpty(query.getMm_emp_countryId())){
+            mapRN.put("countryid", query.getMm_emp_countryId());
+        }
+        mapRN.put("is_check", "0");
+        mapRN.put("mm_msg_type", "0");//求购信息
+        long countQiugouN = recordDao.count(mapRN);
+        mapRN.put("mm_msg_type", "1");//供应信息
+        long countGongyingN = recordDao.count(mapRN);
+
+
         //查询举报数量
         Map<String, Object> mapReport = new HashMap<String, Object>();
         long countReport = reportDao.countAll(mapReport);
@@ -83,6 +101,8 @@ public class IndexService implements ListService {
         list.add(countGongying);
         list.add(countReport);
         list.add(memberCountNoDay);
+        list.add(countQiugouN);
+        list.add(countGongyingN);
         return list;
     }
 }

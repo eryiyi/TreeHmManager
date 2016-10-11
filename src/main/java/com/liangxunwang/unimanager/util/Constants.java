@@ -4,8 +4,8 @@ package com.liangxunwang.unimanager.util;
  * Created by zhl on 2015/1/29.
  */
 public class Constants {
-//        public static final String URL = "http://www.zgbfhmt.com/";
-        public static final String URL = "http://192.168.0.224:8080/";
+        public static final String URL = "http://www.zgbfhmt.com/";
+//        public static final String URL = "http://192.168.0.224:8080/";
 
 //        public static final String QINIU_URL = "http://7xqzj9.com1.z0.glb.clouddn.com/";
         public static final String QINIU_URL = "http://image.zgbfhmt.com/";

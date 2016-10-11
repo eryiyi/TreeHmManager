@@ -83,7 +83,22 @@
             </a>
         </div>
     </div>
-
+    <div class="row">
+        <div class="col-md-4 col-sm-6">
+            <a href="javascript:void(0);" onclick="toPageRecord('record/listQiugou','1','0')" class="cat-item bg-red">
+                <span>未审核求购信息</span>
+                <i>${countQiugouN}</i>
+                <input type="button" class="btn-export" value="导出">
+            </a>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <a href="javascript:void(0);" onclick="toPageRecord('record/listGongying','1','0')" class="cat-item bg-green">
+                <span>未审核供应信息</span>
+                <i>${countGongyingN}</i>
+                <input type="button" class="btn-export" value="导出">
+            </a>
+        </div>
+    </div>
     <c:if test="${mm_manager_type == 0}">
         <div class="row">
             <h3 class="col-md-12 cat-title">投诉管理</h3>
@@ -106,6 +121,14 @@
     function toPage(_url, _page) {
         if (_page != '') {
             window.location.href = "#module=" + _url + "&page=" + _page;
+        } else {
+            window.location.href = "#module=" + _url;
+        }
+    }
+
+    function toPageRecord(_url, _page, is_check) {
+        if (_page != '') {
+            window.location.href = "#module=" + _url + "&page=" + _page+ "&is_check=" + is_check;
         } else {
             window.location.href = "#module=" + _url;
         }

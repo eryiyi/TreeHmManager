@@ -18,6 +18,15 @@ public class RecordQuery  extends BaseAreaQuery{
     private String is_guanzhu;//是否查询的是关注的区域，1是  其他否；如果是关注的区域 countryid就是一个数组
 
     private String mm_manager_type;
+    private String is_check;
+
+    public String getIs_check() {
+        return is_check;
+    }
+
+    public void setIs_check(String is_check) {
+        this.is_check = is_check;
+    }
 
     public String getMm_manager_type() {
         return mm_manager_type;

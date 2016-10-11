@@ -46,7 +46,18 @@
                                    class="form-control" data-toggle="tooltip" data-placement="bottom"
                                    title="Tooltip for name">
                         </div>
+
                     </div>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <select class="form-control w12" id="is_check">
+                                <option value="">--是否审核--</option>
+                                <option value="0" ${query.is_check=='0'?'selected':''}>否</option>
+                                <option value="1" ${query.is_check=='1'?'selected':''}>是</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <button type="submit" onclick="searchOrder('1')"
                             class="btn form-control btn-warning btn-sm btn-block">查找
                     </button>
@@ -160,12 +171,13 @@
         var size = getCookie("contract_size");
         var keywords = $("#keywords").val();
         var mm_msg_type = $("#mm_msg_type").val();
+        var is_check = $("#is_check").val();
 
         if (_index <= ${page.pageCount} && _index >= 1) {
             if (mm_msg_type == 0) {
-                window.location.href = "#module=/record/listQiugou&page=" + page + "&size=" + size + "&keyword=" + keywords;
+                window.location.href = "#module=/record/listQiugou&page=" + page + "&size=" + size + "&keyword=" + keywords+ "&is_check=" + is_check + "&_t=" + new Date().getTime();
             } else {
-                window.location.href = "#module=/record/listGongying&page=" + page + "&size=" + size + "&keyword=" + keywords;
+                window.location.href = "#module=/record/listGongying&page=" + page + "&size=" + size + "&keyword=" + keywords + "&is_check=" + is_check + "&_t=" + new Date().getTime();
             }
 
         } else {
@@ -177,12 +189,14 @@
         var size = $("#size").val();
         var keywords = $("#keywords").val();
         var mm_msg_type = $("#mm_msg_type").val();
+        var is_check = $("#is_check").val();
+
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1)) {
             if (mm_msg_type == 0) {
-                window.location.href = "#module=/record/listQiugou&page=" + page + "&size=" + size + "&keyword=" + keywords+ "&_t=" + new Date().getTime();
+                window.location.href = "#module=/record/listQiugou&page=" + page + "&size=" + size + "&keyword=" + keywords + "&is_check=" +is_check + "&_t=" + new Date().getTime();
             } else {
-                window.location.href = "#module=/record/listGongying&page=" + page + "&size=" + size + "&keyword=" + keywords+ "&_t=" + new Date().getTime();
+                window.location.href = "#module=/record/listGongying&page=" + page + "&size=" + size + "&keyword=" + keywords + "&is_check=" + is_check + "&_t=" + new Date().getTime();
             }
         } else {
             alert("请输入1-${page.pageCount}的页码数");
@@ -194,13 +208,15 @@
         var size = $("#size").val();
         var keywords = $("#keywords").val();
         var mm_msg_type = $("#mm_msg_type").val();
+        var is_check = $("#is_check").val();
+
         addCookie("contract_size", size, 36);
         if ((page <= ${page.pageCount} && page >= 1)) {
 
             if (mm_msg_type == 0) {
-                window.location.href = "#module=/record/listQiugou&page=" + page + "&size=" + size + "&keyword=" + keywords+ "&_t=" + new Date().getTime();
+                window.location.href = "#module=/record/listQiugou&page=" + page + "&size=" + size + "&keyword=" + keywords+ "&is_check=" +is_check + "&_t=" + new Date().getTime();
             } else {
-                window.location.href = "#module=/record/listGongying&page=" + page + "&size=" + size + "&keyword=" + keywords+ "&_t=" + new Date().getTime();
+                window.location.href = "#module=/record/listGongying&page=" + page + "&size=" + size + "&keyword=" + keywords + "&is_check=" +is_check  + "&_t=" + new Date().getTime();
             }
         } else {
             alert("请输入1-${page.pageCount}的页码数");
@@ -218,10 +234,11 @@
                     var data = $.parseJSON(_data);
                     if (data.success) {
                         alert("删除成功");
+                        var is_check = $("#is_check").val();
                         if (mm_msg_type == 0) {
-                            window.location.href = "#module=/record/listQiugou&page=1"+ "&_t=" + new Date().getTime();
+                            window.location.href = "#module=/record/listQiugou&page=1"+"&mm_msg_type="+mm_msg_type+"&is_check="+is_check + "&_t=" + new Date().getTime();
                         } else {
-                            window.location.href = "#module=/record/listGongying&page=1"+ "&_t=" + new Date().getTime();
+                            window.location.href = "#module=/record/listGongying&page=1"+"&mm_msg_type="+mm_msg_type+"&is_check="+is_check + "&_t=" + new Date().getTime();
                         }
                     } else {
                         var _case = {1: "删除失败"};

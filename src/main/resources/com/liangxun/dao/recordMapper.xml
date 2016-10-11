@@ -194,6 +194,9 @@
         <if test="end != null and end != ''">
             AND sn.dateline &lt;= #{end}
         </if>
+        <if test="is_check != null and is_check != ''">
+            AND sn.is_check = #{is_check}
+        </if>
     </select>
 
 
@@ -250,6 +253,10 @@
 
         <if test="countryid != null and countryid != ''" >
             AND sn.countryid = #{countryid}
+        </if>
+
+        <if test="is_check != null and is_check != ''">
+            AND sn.is_check = #{is_check}
         </if>
 
         <if test="keyword != null and keyword != ''">

@@ -42,6 +42,10 @@ public class RecordService implements ListService,DeleteService,ExecuteService,U
             map.put("mm_msg_type", query.getMm_msg_type());
         }
 
+        if(!StringUtil.isNullOrEmpty(query.getIs_check())){
+            map.put("is_check", query.getIs_check());
+        }
+
         if (!StringUtil.isNullOrEmpty(query.getKeyword())) {
             map.put("keyword", query.getKeyword());
         }
