@@ -4,8 +4,11 @@ package com.liangxunwang.unimanager.util;
  * Created by zhl on 2015/1/29.
  */
 public class Constants {
-        public static final String URL = "http://www.zgbfhmt.com/";
+//        public static final String URL = "http://www.zgbfhmt.com/";
 //        public static final String URL = "http://192.168.0.224:8080/";
+        public static final String URL = "http://157j1274e3.iask.in/";
+
+        public static final String DOWNLOAD_URL = URL + "html/huamutong.apk";
 
 //        public static final String QINIU_URL = "http://7xqzj9.com1.z0.glb.clouddn.com/";
         public static final String QINIU_URL = "http://image.zgbfhmt.com/";
@@ -16,8 +19,9 @@ public class Constants {
 
         public static final String API_KEY = "HGGcyEBPPlfjIieCVnWSlMD6";
         public static final String SECRET_KEY = "vFypyImE4aFxWspAHTCbpsm4Nh2P2pPN";
-        public static final String IOS_API_KEY = "W38xecAXVYDY955Shv0GGc8f";
-        public static final String IOS_SECRET_KEY = "ZrhZicrOHvexKhRoKWFIdyaEsCTrUeom";
+
+        public static final String IOS_API_KEY = "7Bh59Y1Rv6o8lLzF0NFq5iUG";
+        public static final String IOS_SECRET_KEY = "0poAXw15j9GmGdGCVxP3SlaQXbs4BKkE";
 
         public static final String SAVE_ERROR = "save_error";
         public static final String DEFAULT_SERVICE_TOP_BG = "img/user_bg.jpg";//默认背景图--顶部的

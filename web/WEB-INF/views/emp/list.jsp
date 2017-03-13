@@ -331,6 +331,7 @@
                                 <option value="20" ${query.size==20?'selected':''}>20</option>
                                 <option value="30" ${query.size==30?'selected':''}>30</option>
                                 <option value="100" ${query.size==100?'selected':''}>100</option>
+                                <option value="1000" ${query.size==1000?'selected':''}>1000</option>
                             </select>&nbsp;条</a>
                         </li>
                         <c:choose>

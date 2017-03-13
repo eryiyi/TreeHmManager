@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/plugins/bootstrap/bootstrap.css" rel="stylesheet">
     <link href="/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet">
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
     <link href="/plugins/fancybox/jquery.fancybox.css" rel="stylesheet">
     <link href="/plugins/fullcalendar/fullcalendar.css" rel="stylesheet">
     <link href="/plugins/xcharts/xcharts.min.css" rel="stylesheet">
@@ -22,7 +22,7 @@
     <script src="http://getbootstrap.com/docs-assets/js/html5shiv.js"></script>
     <script src="http://getbootstrap.com/docs-assets/js/respond.min.js"></script>
     <link href="/css/cat.css" rel="stylesheet">
-
+    <link href="/plugins/icon/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main.css?v=1.0"/>
     <script type="text/javascript"
             src="http://webapi.amap.com/maps?v=1.3&key=98ec561802a0063ec6d8301ae2321505"></script>
@@ -541,6 +541,21 @@
                         </ul>
                     </li>
                 </c:if>
+
+                <c:if test="${um:permission('UPDATE_VERSION_CODE_MAANGER_AD_LIST', sessionScope.powers)}">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle">
+                            <i class="fa fa-picture-o"></i>
+                            <span class="hidden-xs">版本管理</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <c:if test="${um:permission('UPDATE_VERSION_CODE_MAANGER_AD_LIST', sessionScope.powers)}">
+                                <li><a href="javascript:void(0);" onclick="toPage('/versionCodeController/toEdit','')">版本管理</a></li>
+                            </c:if>
+                        </ul>
+                    </li>
+                </c:if>
+
 
             </ul>
         </div>

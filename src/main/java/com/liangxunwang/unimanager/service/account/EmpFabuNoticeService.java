@@ -63,7 +63,10 @@ public class EmpFabuNoticeService implements ExecuteService{
                     notice.setMm_emp_id(empVO.getMm_emp_id());
                     noticeDao.save(notice);//添加公告--针对个人的
 //                (Notice notice,String channelId)
-                    BaiduPush.PushMsgToSingleDevice(notice, (empVO.getChannelId()==null?"":empVO.getChannelId()));
+                    if(!StringUtil.isNullOrEmpty(empVO.getDeviceType())){
+                        BaiduPush.PushMsgToSingleDevice(notice, (empVO.getChannelId()==null?"":empVO.getChannelId()) , empVO.getDeviceType());
+                    }
+
                 }
             }else {
                 return null;

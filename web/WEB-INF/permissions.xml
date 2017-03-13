@@ -98,5 +98,7 @@
         <permission id="HOT_AREA_ADD_MANA" name="添加热门县区"/>
         <permission id="HOT_AREA_LIST_MANA" name="热门城市县区"/>
     </group>
-
+    <group id="MAANGER_VERSION_CODE_MANAGER" name="版本管理">
+        <permission id="UPDATE_VERSION_CODE_MAANGER_AD_LIST" name="版本管理"/>
+    </group>
 </permissions>

@@ -77,6 +77,7 @@
           <element id="library" level="project" name="jxl" />
           <element id="library" level="project" name="json-lib-2.4-jdk15" />
           <element id="library" level="project" name="commons-codec-1.6" />
+          <element id="library" level="project" name="Maven: com.qiniu:qiniu-java-sdk:7.0.11" />
         </element>
       </element>
       <element id="javaee-facet-resources" facet="UniversityManager/web/Web" />

@@ -12,15 +12,24 @@ import com.liangxunwang.unimanager.model.Notice;
  * Created by Administrator on 2016/3/26 0026.
  */
 public class BaiduPush {
-    public static void PushMsgToAll (Notice notice) {
+    public static void PushMsgToAll (Notice notice, String type) {
         /*1. 创建PushKeyPair
          *用于app的合法身份认证
          *apikey和secretKey可在应用详情中获取
          */
-        String apiKey = Constants.API_KEY;
-        String secretKey = Constants.SECRET_KEY;
-        PushKeyPair pair = new PushKeyPair(apiKey,secretKey);
 
+        String apiKey = "";
+        String secretKey = "";
+
+        if (type.equals("3")) {
+            apiKey = Constants.API_KEY;
+            secretKey = Constants.SECRET_KEY;
+        }else {
+            apiKey = Constants.IOS_API_KEY;
+            secretKey = Constants.IOS_SECRET_KEY;
+        }
+
+        PushKeyPair pair = new PushKeyPair(apiKey,secretKey);
         // 2. 创建BaiduPushClient，访问SDK接口
         BaiduPushClient pushClient = new BaiduPushClient(pair,
                 BaiduPushConstants.CHANNEL_REST_URL);
@@ -39,7 +48,7 @@ public class BaiduPush {
                     addMsgExpires(new Integer(3600)).   //设置消息的有效时间,单位秒,默认3600*5.
                     addMessageType(1).              //设置消息类型,0表示透传消息,1表示通知,默认为0.
                     addMessage("{\"title\":\"" + notice.getMm_notice_title() + "\",\"description\":\"" + notice.getMm_notice_content() + "\",\"custom_content\":{\"mm_notice_id\":\"" + notice.getMm_notice_id()+"\"}}").
-                    addDeviceType(3);      //设置设备类型，deviceType => 1 for web, 2 for pc,
+                    addDeviceType(Integer.parseInt(type));      //设置设备类型，deviceType => 1 for web, 2 for pc,
             //3 for android, 4 for ios, 5 for wp.
             // 5. 执行Http请求
             PushMsgToAllResponse response = pushClient.
@@ -74,13 +83,25 @@ public class BaiduPush {
         }
     }
 
-    public static void PushMsgToSingleDevice  (Notice notice,String channelId) {
+    public static void PushMsgToSingleDevice  (Notice notice,String channelId, String type) {
           /*1. 创建PushKeyPair
          *用于app的合法身份认证
          *apikey和secretKey可在应用详情中获取
          */
-        String apiKey = Constants.API_KEY;
-        String secretKey = Constants.SECRET_KEY;
+//        String apiKey = Constants.API_KEY;
+//        String secretKey = Constants.SECRET_KEY;
+
+        String apiKey = "";
+        String secretKey = "";
+
+        if (type.equals("3")) {
+            apiKey = Constants.API_KEY;
+            secretKey = Constants.SECRET_KEY;
+        }else {
+            apiKey = Constants.IOS_API_KEY;
+            secretKey = Constants.IOS_SECRET_KEY;
+        }
+
         PushKeyPair pair = new PushKeyPair(apiKey,secretKey);
 
         // 2. 创建BaiduPushClient，访问SDK接口
@@ -102,7 +123,7 @@ public class BaiduPush {
                     addMsgExpires(new Integer(3600)).   //设置消息的有效时间,单位秒,默认3600*5.
                     addMessageType(1).              //设置消息类型,0表示透传消息,1表示通知,默认为0.
                     addMessage("{\"title\":\"" + notice.getMm_notice_title() + "\",\"description\":\"" + notice.getMm_notice_content() + "\",\"custom_content\":{\"mm_notice_id\":\"" + notice.getMm_notice_id()+"\"}}").
-                    addDeviceType(3);      //设置设备类型，deviceType => 1 for web, 2 for pc,
+                    addDeviceType(Integer.parseInt(type));      //设置设备类型，deviceType => 1 for web, 2 for pc,
             //3 for android, 4 for ios, 5 for wp.
             // 5. 执行Http请求
             PushMsgToSingleDeviceResponse response = pushClient.

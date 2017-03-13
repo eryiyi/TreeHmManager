@@ -34,6 +34,12 @@
         <result column="mm_level_num" property="mm_level_num"/>
         <result column="area" property="area"/>
         <result column="datelineRecord" property="datelineRecord"/>
+
+
+        <result column="lat" property="lat"/>
+        <result column="lng" property="lng"/>
+
+
     </resultMap>
 
     <select id="lists" resultMap="favour_vo">
@@ -54,7 +60,9 @@
         (SELECT mm_emp_company FROM mm_emp lemp WHERE lemp.mm_emp_id = lmsg.mm_emp_id) as mm_emp_company ,
         (SELECT mm_level_id  FROM mm_emp lemp WHERE lemp.mm_emp_id = lmsg.mm_emp_id) as mm_level_id ,
         (SELECT is_chengxin  FROM mm_emp lemp WHERE lemp.mm_emp_id = lmsg.mm_emp_id) as is_chengxin ,
-        (SELECT is_miaomu  FROM mm_emp lemp WHERE lemp.mm_emp_id = lmsg.mm_emp_id) as is_miaomu
+        (SELECT is_miaomu  FROM mm_emp lemp WHERE lemp.mm_emp_id = lmsg.mm_emp_id) as is_miaomu,
+        (SELECT lat_company  FROM mm_emp lemp WHERE lemp.mm_emp_id = lmsg.mm_emp_id) as lat,
+        (SELECT lng_company  FROM mm_emp lemp WHERE lemp.mm_emp_id = lmsg.mm_emp_id) as lng
         from mm_record_favour sn
         LEFT JOIN mm_msg lmsg ON sn.mm_msg_id=lmsg.mm_msg_id
         WHERE 1=1 AND lmsg.mm_msg_id is not NULL

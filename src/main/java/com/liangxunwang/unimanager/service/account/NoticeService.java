@@ -10,6 +10,7 @@ import com.liangxunwang.unimanager.query.KefuQuery;
 import com.liangxunwang.unimanager.query.NoticeQuery;
 import com.liangxunwang.unimanager.service.*;
 import com.liangxunwang.unimanager.util.BaiduPush;
+import com.liangxunwang.unimanager.util.Constants;
 import com.liangxunwang.unimanager.util.DateUtil;
 import com.liangxunwang.unimanager.util.UUIDFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,7 +51,8 @@ public class NoticeService implements ListService,SaveService, ExecuteService{
         notice.setIs_del("0");
         noticeDao.save(notice);
         //发通告
-        BaiduPush.PushMsgToAll(notice);
+        BaiduPush.PushMsgToAll(notice, "3");
+        BaiduPush.PushMsgToAll(notice, "4");
         return null;
     }
 

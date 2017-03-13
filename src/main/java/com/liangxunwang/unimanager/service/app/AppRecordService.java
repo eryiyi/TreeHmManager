@@ -274,6 +274,8 @@ public class AppRecordService implements ListService ,SaveService, FindService{
                 record.setIs_check("1");;//是否审核  0默认否  1已审核
             }
 
+        }else {
+            record.setIs_check("1");;//是否审核  0默认否  1已审核
         }
         recordDao.save(record);
 

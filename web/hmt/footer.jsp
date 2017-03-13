@@ -75,6 +75,8 @@
                                                                                      alt=""/></a>
                 <a class="web-link" href="http://yuanlin.com" target="_blank"><img src="../hmt/images/links/11.png"
                                                                                    alt=""/></a>
+                    <a class="web-link" href="https://www.kuaidi100.com" target="_blank"><img src="../hmt/images/links/kuaidi100.png"
+                                                                                       alt=""/></a>
             </div>
         </div>
 
